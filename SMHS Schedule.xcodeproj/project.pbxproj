@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
+		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
+		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
+		626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226F260035F200903C39 /* Preview Assets.xcassets */; };
+		626A227B260035F200903C39 /* SMHS_ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */; };
+		626A2286260035F200903C39 /* SMHS_ScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		626A2277260035F200903C39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626A225D260035F100903C39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 626A2264260035F100903C39;
+			remoteInfo = "SMHS Schedule";
+		};
+		626A2282260035F200903C39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626A225D260035F100903C39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 626A2264260035F100903C39;
+			remoteInfo = "SMHS Schedule";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		626A2265260035F100903C39 /* SMHS Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHS Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
+		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		626A226C260035F200903C39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		626A226F260035F200903C39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		626A2271260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2276260035F200903C39 /* SMHS ScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SMHS ScheduleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleTests.swift; sourceTree = "<group>"; };
+		626A227C260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2281260035F200903C39 /* SMHS ScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SMHS ScheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleUITests.swift; sourceTree = "<group>"; };
+		626A2287260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		626A2262260035F100903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2273260035F200903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227E260035F200903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		626A225C260035F100903C39 = {
+			isa = PBXGroup;
+			children = (
+				626A2267260035F100903C39 /* SMHS Schedule */,
+				626A2279260035F200903C39 /* SMHS ScheduleTests */,
+				626A2284260035F200903C39 /* SMHS ScheduleUITests */,
+				626A2266260035F100903C39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		626A2266260035F100903C39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				626A2265260035F100903C39 /* SMHS Schedule.app */,
+				626A2276260035F200903C39 /* SMHS ScheduleTests.xctest */,
+				626A2281260035F200903C39 /* SMHS ScheduleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		626A2267260035F100903C39 /* SMHS Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */,
+				626A226A260035F100903C39 /* ContentView.swift */,
+				626A226C260035F200903C39 /* Assets.xcassets */,
+				626A2271260035F200903C39 /* Info.plist */,
+				626A226E260035F200903C39 /* Preview Content */,
+			);
+			path = "SMHS Schedule";
+			sourceTree = "<group>";
+		};
+		626A226E260035F200903C39 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				626A226F260035F200903C39 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		626A2279260035F200903C39 /* SMHS ScheduleTests */ = {
+			isa = PBXGroup;
+			children = (
+				626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */,
+				626A227C260035F200903C39 /* Info.plist */,
+			);
+			path = "SMHS ScheduleTests";
+			sourceTree = "<group>";
+		};
+		626A2284260035F200903C39 /* SMHS ScheduleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */,
+				626A2287260035F200903C39 /* Info.plist */,
+			);
+			path = "SMHS ScheduleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		626A2264260035F100903C39 /* SMHS Schedule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS Schedule" */;
+			buildPhases = (
+				626A2261260035F100903C39 /* Sources */,
+				626A2262260035F100903C39 /* Frameworks */,
+				626A2263260035F100903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SMHS Schedule";
+			productName = "SMHS Schedule";
+			productReference = 626A2265260035F100903C39 /* SMHS Schedule.app */;
+			productType = "com.apple.product-type.application";
+		};
+		626A2275260035F200903C39 /* SMHS ScheduleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A228D260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS ScheduleTests" */;
+			buildPhases = (
+				626A2272260035F200903C39 /* Sources */,
+				626A2273260035F200903C39 /* Frameworks */,
+				626A2274260035F200903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				626A2278260035F200903C39 /* PBXTargetDependency */,
+			);
+			name = "SMHS ScheduleTests";
+			productName = "SMHS ScheduleTests";
+			productReference = 626A2276260035F200903C39 /* SMHS ScheduleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		626A2280260035F200903C39 /* SMHS ScheduleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A2290260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS ScheduleUITests" */;
+			buildPhases = (
+				626A227D260035F200903C39 /* Sources */,
+				626A227E260035F200903C39 /* Frameworks */,
+				626A227F260035F200903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				626A2283260035F200903C39 /* PBXTargetDependency */,
+			);
+			name = "SMHS ScheduleUITests";
+			productName = "SMHS ScheduleUITests";
+			productReference = 626A2281260035F200903C39 /* SMHS ScheduleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		626A225D260035F100903C39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					626A2264260035F100903C39 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					626A2275260035F200903C39 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 626A2264260035F100903C39;
+					};
+					626A2280260035F200903C39 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 626A2264260035F100903C39;
+					};
+				};
+			};
+			buildConfigurationList = 626A2260260035F100903C39 /* Build configuration list for PBXProject "SMHS Schedule" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 626A225C260035F100903C39;
+			productRefGroup = 626A2266260035F100903C39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				626A2264260035F100903C39 /* SMHS Schedule */,
+				626A2275260035F200903C39 /* SMHS ScheduleTests */,
+				626A2280260035F200903C39 /* SMHS ScheduleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		626A2263260035F100903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
+				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2274260035F200903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227F260035F200903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		626A2261260035F100903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A226B260035F100903C39 /* ContentView.swift in Sources */,
+				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2272260035F200903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A227B260035F200903C39 /* SMHS_ScheduleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227D260035F200903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A2286260035F200903C39 /* SMHS_ScheduleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		626A2278260035F200903C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 626A2264260035F100903C39 /* SMHS Schedule */;
+			targetProxy = 626A2277260035F200903C39 /* PBXContainerItemProxy */;
+		};
+		626A2283260035F200903C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 626A2264260035F100903C39 /* SMHS Schedule */;
+			targetProxy = 626A2282260035F200903C39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		626A2288260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		626A2289260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		626A228B260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SMHS Schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SMHS Schedule/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-Schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		626A228C260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SMHS Schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SMHS Schedule/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-Schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		626A228E260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SMHS Schedule.app/SMHS Schedule";
+			};
+			name = Debug;
+		};
+		626A228F260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SMHS Schedule.app/SMHS Schedule";
+			};
+			name = Release;
+		};
+		626A2291260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SMHS Schedule";
+			};
+			name = Debug;
+		};
+		626A2292260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SMHS Schedule";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		626A2260260035F100903C39 /* Build configuration list for PBXProject "SMHS Schedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A2288260035F200903C39 /* Debug */,
+				626A2289260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS Schedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A228B260035F200903C39 /* Debug */,
+				626A228C260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A228D260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS ScheduleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A228E260035F200903C39 /* Debug */,
+				626A228F260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A2290260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHS ScheduleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A2291260035F200903C39 /* Debug */,
+				626A2292260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 626A225D260035F100903C39 /* Project object */;
+}
