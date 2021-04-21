@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* ViewExtensions.swift */; };
+		624ABFF8260079C9000FE7BD /* ClassPeriodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF7260079C9000FE7BD /* ClassPeriodRow.swift */; };
+		624ABFFE260079F9000FE7BD /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFFD260079F9000FE7BD /* ClassPeriod.swift */; };
 		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
 		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
 		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
 		626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226F260035F200903C39 /* Preview Assets.xcassets */; };
 		626A227B260035F200903C39 /* SMHS_ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */; };
 		626A2286260035F200903C39 /* SMHS_ScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */; };
+		626A2296260037E800903C39 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2295260037E800903C39 /* TodayView.swift */; };
+		626A22992600381700903C39 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
+		626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ClassScheduleView.swift */; };
+		626A229F260039BC00903C39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
+		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
+		62DE61F7260252F100B86555 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61F6260252F100B86555 /* TextStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		624ABFF226004949000FE7BD /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		624ABFF7260079C9000FE7BD /* ClassPeriodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPeriodRow.swift; sourceTree = "<group>"; };
+		624ABFFD260079F9000FE7BD /* ClassPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassPeriod.swift; path = ../../../../../../../Pictures/ClassPeriod.swift; sourceTree = "<group>"; };
 		626A2265260035F100903C39 /* SMHS Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHS Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
 		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +57,12 @@
 		626A2281260035F200903C39 /* SMHS ScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SMHS ScheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleUITests.swift; sourceTree = "<group>"; };
 		626A2287260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2295260037E800903C39 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		626A22982600381700903C39 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		626A229B260039AB00903C39 /* ClassScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassScheduleView.swift; sourceTree = "<group>"; };
+		626A229E260039BC00903C39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		62DE61F6260252F100B86555 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextStyles.swift; path = ../../../../../Pictures/TextStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		624ABFFC260079D4000FE7BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				624ABFFD260079F9000FE7BD /* ClassPeriod.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +121,8 @@
 		626A2267260035F100903C39 /* SMHS Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				626A229D260039B200903C39 /* Utility */,
+				626A2293260037C400903C39 /* Views */,
 				626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */,
 				626A226A260035F100903C39 /* ContentView.swift */,
 				626A226C260035F200903C39 /* Assets.xcassets */,
@@ -128,6 +156,53 @@
 				626A2287260035F200903C39 /* Info.plist */,
 			);
 			path = "SMHS ScheduleUITests";
+			sourceTree = "<group>";
+		};
+		626A2293260037C400903C39 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				626A22972600380B00903C39 /* ScheduleView */,
+				626A2294260037D000903C39 /* TodayView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		626A2294260037D000903C39 /* TodayView */ = {
+			isa = PBXGroup;
+			children = (
+				626A2295260037E800903C39 /* TodayView.swift */,
+			);
+			path = TodayView;
+			sourceTree = "<group>";
+		};
+		626A22972600380B00903C39 /* ScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				624ABFFC260079D4000FE7BD /* Model */,
+				626A229A2600399400903C39 /* Components */,
+				626A22982600381700903C39 /* ScheduleView.swift */,
+				62DE61EB2602525400B86555 /* ScheduleViewModel.swift */,
+			);
+			path = ScheduleView;
+			sourceTree = "<group>";
+		};
+		626A229A2600399400903C39 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				626A229B260039AB00903C39 /* ClassScheduleView.swift */,
+				624ABFF7260079C9000FE7BD /* ClassPeriodRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		626A229D260039B200903C39 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				626A229E260039BC00903C39 /* Colors.swift */,
+				624ABFF226004949000FE7BD /* ViewExtensions.swift */,
+				62DE61F6260252F100B86555 /* TextStyles.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62DE61F7260252F100B86555 /* TextStyles.swift in Sources */,
 				626A226B260035F100903C39 /* ContentView.swift in Sources */,
+				626A229F260039BC00903C39 /* Colors.swift in Sources */,
+				624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */,
+				626A22992600381700903C39 /* ScheduleView.swift in Sources */,
+				624ABFFE260079F9000FE7BD /* ClassPeriod.swift in Sources */,
+				62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */,
+				626A2296260037E800903C39 /* TodayView.swift in Sources */,
+				626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */,
 				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
+				624ABFF8260079C9000FE7BD /* ClassPeriodRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
