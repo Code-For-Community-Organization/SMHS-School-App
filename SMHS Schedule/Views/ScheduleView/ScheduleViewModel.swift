@@ -9,6 +9,9 @@ import Combine
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
+    //Async loaded value, will not be directly used by view
+    @Published var ICSText: String = ""
+
     var currentWeekday: String{
         let date = Date()
         let format = DateFormatter()
@@ -16,7 +19,39 @@ class ScheduleViewModel: ObservableObject {
         let formattedDate = format.string(from: date)
         return formattedDate
     }
-    @Published var ICSText: String = ""
+    var scheduleDays: [ScheduleDay] {
+        //ICSText is fetched from networking the calendar ICS URL
+        let rawText = ICSText
+        var parsedText = [ScheduleDay]()
+        for line in rawText.lines {
+            //Find line that contains the date
+            if line.starts(with: "DTSTART;VALUE=DATE:"){
+                //Remove unnecessary text, get date string only
+                let dateString = line.replacingOccurrences(of: "DTSTART;VALUE=DATE:", with: "")
+                
+                //Check if the schedule's date is current date
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyyMMdd"
+                let date = formatter.date(from: dateString)!
+                let currentDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
+                if date >= currentDate {
+                    guard let index = rawText.lines.firstIndex(of: line) else {
+                        print("Error getting index")
+                        return parsedText
+                    }
+                    //Parse summary, and description (block text of schedule)
+                    let summary = rawText.lines[index+1].replacingOccurrences(of: "SUMMARY:", with: "")
+                    guard summary.lowercased().contains("day") else {continue}
+                    let description = String(rawText.lines[index+2]).replacingOccurrences(of: "DESCRIPTION:", with: "")
+                    let scheduleDay = ScheduleDay(date: date,
+                                                  scheduleText: "\(summary)\n\(description.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
+                    parsedText.append(scheduleDay)
+                    
+                }
+            }
+        }
+        return parsedText
+    }
     var currentDate: String{
         let date = Date()
         let format = DateFormatter()
@@ -24,31 +59,24 @@ class ScheduleViewModel: ObservableObject {
         let formattedDate = format.string(from: date)
         return formattedDate
     }
-    init(){
-        let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
-        Downloader.load(url: url){data, error in
-            guard let data = data else {
-                print("Error occurred while fetching iCS: \(error!)")
-                return
+    init(placeholderText: String? = nil){
+        guard let text = placeholderText else {
+            let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
+            Downloader.load(url: url){data, error in
+                guard let data = data else {
+                    print("Error occurred while fetching iCS: \(error!)")
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.ICSText = String(data: data, encoding: .utf8) ?? ""
+                }
             }
-            DispatchQueue.main.async {
-                self.ICSText = String(data: data, encoding: .utf8) ?? ""
-            }
+            return
         }
+        self.ICSText = text
+   
     }
     
-    func formatMilitaryToStandardTime(_ time: Time) -> String {
-        var timeMinutes = time.minutes
-        if time.seconds >= 30 {
-            timeMinutes += 1
-        }
-        let dateAsString = "\(time.hours):\(time.minutes)"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let date = dateFormatter.date(from: dateAsString)
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date!)
-    }
 }
 struct Downloader {
     static func load(url: URL, completion: @escaping (Data?, Error?) -> ()) {

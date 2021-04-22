@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* ViewExtensions.swift */; };
 		624ABFF8260079C9000FE7BD /* ClassPeriodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF7260079C9000FE7BD /* ClassPeriodRow.swift */; };
-		624ABFFE260079F9000FE7BD /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFFD260079F9000FE7BD /* ClassPeriod.swift */; };
+		624ABFFE260079F9000FE7BD /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFFD260079F9000FE7BD /* ScheduleDay.swift */; };
 		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
 		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
 		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
@@ -20,8 +20,10 @@
 		626A22992600381700903C39 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ClassScheduleView.swift */; };
 		626A229F260039BC00903C39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
+		6279EAAC2630EA4A00CF3870 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EAAB2630EA4A00CF3870 /* TextStyles.swift */; };
+		6279EABF2630EB8D00CF3870 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EABE2630EB8D00CF3870 /* String.swift */; };
+		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
-		62DE61F7260252F100B86555 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61F6260252F100B86555 /* TextStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,7 @@
 /* Begin PBXFileReference section */
 		624ABFF226004949000FE7BD /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		624ABFF7260079C9000FE7BD /* ClassPeriodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPeriodRow.swift; sourceTree = "<group>"; };
-		624ABFFD260079F9000FE7BD /* ClassPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassPeriod.swift; path = ../../../../../../../Pictures/ClassPeriod.swift; sourceTree = "<group>"; };
+		624ABFFD260079F9000FE7BD /* ScheduleDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleDay.swift; path = ../../../../../../../Pictures/ScheduleDay.swift; sourceTree = "<group>"; };
 		626A2265260035F100903C39 /* SMHS Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHS Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
 		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,8 +63,10 @@
 		626A22982600381700903C39 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		626A229B260039AB00903C39 /* ClassScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassScheduleView.swift; sourceTree = "<group>"; };
 		626A229E260039BC00903C39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6279EAAB2630EA4A00CF3870 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		6279EABE2630EB8D00CF3870 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../../../../../../Desktop/iPhone Commercial/String.swift"; sourceTree = "<group>"; };
+		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
-		62DE61F6260252F100B86555 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextStyles.swift; path = ../../../../../Pictures/TextStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +97,7 @@
 		624ABFFC260079D4000FE7BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				624ABFFD260079F9000FE7BD /* ClassPeriod.swift */,
+				624ABFFD260079F9000FE7BD /* ScheduleDay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,11 +202,29 @@
 		626A229D260039B200903C39 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				626A229E260039BC00903C39 /* Colors.swift */,
-				624ABFF226004949000FE7BD /* ViewExtensions.swift */,
-				62DE61F6260252F100B86555 /* TextStyles.swift */,
+				6279EAB02630EB5E00CF3870 /* Extensions */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		6279EAAA2630EA3D00CF3870 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				6279EAAB2630EA4A00CF3870 /* TextStyles.swift */,
+				624ABFF226004949000FE7BD /* ViewExtensions.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		6279EAB02630EB5E00CF3870 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6279EAAA2630EA3D00CF3870 /* SwiftUI */,
+				626A229E260039BC00903C39 /* Colors.swift */,
+				6279EABE2630EB8D00CF3870 /* String.swift */,
+				6279EACF2630F6EE00CF3870 /* UIScreen.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,12 +356,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62DE61F7260252F100B86555 /* TextStyles.swift in Sources */,
+				6279EAAC2630EA4A00CF3870 /* TextStyles.swift in Sources */,
+				6279EABF2630EB8D00CF3870 /* String.swift in Sources */,
 				626A226B260035F100903C39 /* ContentView.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
+				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
 				624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */,
 				626A22992600381700903C39 /* ScheduleView.swift in Sources */,
-				624ABFFE260079F9000FE7BD /* ClassPeriod.swift in Sources */,
+				624ABFFE260079F9000FE7BD /* ScheduleDay.swift in Sources */,
 				62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */,
@@ -591,6 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,6 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
