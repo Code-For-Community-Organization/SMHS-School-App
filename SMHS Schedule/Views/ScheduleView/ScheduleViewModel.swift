@@ -6,11 +6,12 @@
 //
 
 import Combine
+import SwiftUI
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
     //Async loaded value, will not be directly used by view
-    @Published var ICSText: String = ""
+    @AppStorage("ICSText") var ICSText: String = ""
 
     var currentWeekday: String{
         let date = Date()
@@ -23,6 +24,7 @@ class ScheduleViewModel: ObservableObject {
         //ICSText is fetched from networking the calendar ICS URL
         let rawText = ICSText
         var parsedText = [ScheduleDay]()
+        var indexNumber = 0
         for line in rawText.lines {
             //Find line that contains the date
             if line.starts(with: "DTSTART;VALUE=DATE:"){
@@ -35,17 +37,21 @@ class ScheduleViewModel: ObservableObject {
                 let date = formatter.date(from: dateString)!
                 let currentDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
                 if date >= currentDate {
-                    guard let index = rawText.lines.firstIndex(of: line) else {
+                    guard let stringIndex = rawText.lines.firstIndex(of: line) else {
                         print("Error getting index")
                         return parsedText
                     }
                     //Parse summary, and description (block text of schedule)
-                    let summary = rawText.lines[index+1].replacingOccurrences(of: "SUMMARY:", with: "")
+                    let summary = rawText.lines[stringIndex+1].replacingOccurrences(of: "SUMMARY:", with: "")
                     guard summary.lowercased().contains("day") else {continue}
-                    let description = String(rawText.lines[index+2]).replacingOccurrences(of: "DESCRIPTION:", with: "")
-                    let scheduleDay = ScheduleDay(date: date,
-                                                  scheduleText: "\(summary)\n\(description.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
+                    let description = String(rawText.lines[stringIndex+2]).replacingOccurrences(of: "DESCRIPTION:", with: "")
+                    let scheduleDay = ScheduleDay(id: indexNumber,
+                                                  date: date,
+                                                  scheduleText: "\(description.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
+
+                    indexNumber += 1
                     parsedText.append(scheduleDay)
+                    
                     
                 }
             }
@@ -75,6 +81,9 @@ class ScheduleViewModel: ObservableObject {
         }
         self.ICSText = text
    
+    }
+    func loadData() {
+  
     }
     
 }

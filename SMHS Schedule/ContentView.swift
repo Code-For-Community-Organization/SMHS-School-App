@@ -10,18 +10,18 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TodayView()
-                .tabItem{
-                    VStack{
-                        Image(systemName: "square.grid.2x2.fill")
-                        Text("Today")
-                    }
-                }
             ScheduleView()
                 .tabItem{
                     VStack{
                         Image(systemName: "calendar")
                         Text("Schedule")
+                    }
+                }
+            TodayView()
+                .tabItem{
+                    VStack{
+                        Image(systemName: "square.grid.2x2.fill")
+                        Text("Today")
                     }
                 }
         }

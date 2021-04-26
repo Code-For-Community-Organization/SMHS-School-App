@@ -9,27 +9,36 @@ import SwiftUI
 
 struct ScheduleView: View {
     @StateObject var scheduleViewModel = ScheduleViewModel()
-    
+    @State var navigationSelection: Int = 0
     var body: some View {
-        VStack{
-            VStack {
-                Text("Daily Schedule")
-                    .titleBold()
-                    .textAlign(.leading)
-                Text(scheduleViewModel.currentDate)
-                    .titleBold()
-                    .opacity(0.5)
-                    .textAlign(.leading)
-            }
-            .padding(.horizontal)
-            TabView {
-                ForEach(scheduleViewModel.scheduleDays, id: \.self){scheduleDay in
-                    ClassScheduleView(scheduleText: scheduleDay.scheduleText)
+        NavigationView {
+            ScrollView{
+                VStack{
+                    VStack {
+                        Text("Daily Schedule")
+                            .titleBold()
+                            .textAlign(.leading)
+                            .opacity(0.5)
+                    }
+                    .padding(.horizontal)
+          
+                        ForEach(scheduleViewModel.scheduleDays, id: \.self){scheduleDay in
+                            NavigationLink(
+                                destination: ClassScheduleView(scheduleText: scheduleDay.scheduleText),
+                                tag: scheduleDay.id,
+                                selection: .constant(0))
+                            {
+                                Text(scheduleDay.title)
+                                    .onTapGesture {
+                                        navigationSelection = scheduleDay.id
+                                    }
+                            }
+                            Divider()
+                        }
+                    Spacer()
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
-            .disableTabViewScroll()
-            Spacer()
+            .navigationBarTitle(Text("\(scheduleViewModel.currentDate)"), displayMode: .automatic)
         }
         
         
@@ -38,7 +47,7 @@ struct ScheduleView: View {
 }
 
 struct ScheduleView_Previews: PreviewProvider {
-
+    
     static var previews: some View {
         ScheduleView(scheduleViewModel: ScheduleViewModel(placeholderText: sampleText))
     }
