@@ -20,10 +20,10 @@ class ScheduleViewModel: ObservableObject {
         let formattedDate = format.string(from: date)
         return formattedDate
     }
-    var scheduleDays: [ScheduleDay] {
+    var scheduleWeeks: [ScheduleWeek] {
         //ICSText is fetched from networking the calendar ICS URL
         let rawText = ICSText
-        var parsedText = [ScheduleDay]()
+        var scheduleWeeks = [ScheduleWeek]()
         var indexNumber = 0
         for line in rawText.lines {
             //Find line that contains the date
@@ -39,7 +39,7 @@ class ScheduleViewModel: ObservableObject {
                 if date >= currentDate {
                     guard let stringIndex = rawText.lines.firstIndex(of: line) else {
                         print("Error getting index")
-                        return parsedText
+                        return scheduleWeeks
                     }
                     //Parse summary, and description (block text of schedule)
                     let summary = rawText.lines[stringIndex+1].replacingOccurrences(of: "SUMMARY:", with: "")
@@ -48,15 +48,18 @@ class ScheduleViewModel: ObservableObject {
                     let scheduleDay = ScheduleDay(id: indexNumber,
                                                   date: date,
                                                   scheduleText: "\(description.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
-
+                    if (indexNumber) % 5 == 0 || indexNumber == 0 {
+                        scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
+                    }
+                    else {
+                        scheduleWeeks.last?.scheduleDays.append(scheduleDay)
+                    }
                     indexNumber += 1
-                    parsedText.append(scheduleDay)
-                    
                     
                 }
             }
         }
-        return parsedText
+        return scheduleWeeks
     }
     var currentDate: String{
         let date = Date()
