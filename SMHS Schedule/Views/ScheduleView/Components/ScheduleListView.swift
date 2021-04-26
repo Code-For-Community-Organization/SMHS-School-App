@@ -12,10 +12,17 @@ struct ScheduleListView: View {
     var body: some View {
         List{
             ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
-                Section(header: Text(scheduleWeek.weekText)) {
+                Section(header: HStack {
+                    Text(scheduleWeek.weekText)
+                    Spacer()
+                }) {
                     ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
                         NavigationLink(
-                            destination: ClassScheduleView(scheduleText: day.scheduleText),
+                            destination: VStack{
+                                Spacer()
+                                ClassScheduleView(scheduleText: day.scheduleText)
+                                
+                            },
                             label: {
                                 Text(day.title)
                                     .textAlign(.leading)
@@ -27,7 +34,34 @@ struct ScheduleListView: View {
   
             }
         }
+        .listItemTint(Color.primary)
         .listStyle(PlainListStyle())
+    }
+}
+struct CustomHeader: View {
+    let name: String
+    let color: Color
+
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Text(name)
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(0).background(FillAll(color: color))
+    }
+}
+
+struct FillAll: View {
+    let color: Color
+    
+    var body: some View {
+        GeometryReader { proxy in
+            self.color.frame(width: proxy.size.width * 1.3).fixedSize()
+        }
     }
 }
 

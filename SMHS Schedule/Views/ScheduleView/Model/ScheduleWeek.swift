@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduleWeek: Hashable {
+struct ScheduleWeek: Hashable, Codable {
     var startDate: Date? {scheduleDays.first?.date ?? nil}
     var endDate: Date? {scheduleDays.last?.date ?? nil}
     var weekText: String {

@@ -12,6 +12,9 @@ struct SMHS_ScheduleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear{
+                    print("ContentView Appear")
+                }
         }
     }
 }

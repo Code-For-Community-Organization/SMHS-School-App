@@ -10,26 +10,46 @@ import SwiftUI
 struct ScheduleView: View {
     @StateObject var scheduleViewModel = ScheduleViewModel()
     @State var navigationSelection: Int?
-    var body: some View {
-        NavigationView {
+    var body: some View { 
+        ZStack{
+            NavigationView {
                 VStack{
                     VStack {
-                        Text("Daily Schedule")
+                        Text(scheduleViewModel.subHeaderText)
                             .titleBold()
                             .textAlign(.leading)
                             .opacity(0.5)
                     }
-                    .padding(.horizontal)
-                    ScheduleListView(scheduleViewModel: scheduleViewModel)
+                    .padding(.horizontal, 20)
+                    if !scheduleViewModel.scheduleWeeks.isEmpty{
+                        ScheduleListView(scheduleViewModel: scheduleViewModel)
+                            .transition(.opacity)
+                    }
                     Spacer()
                 }
+                
+                .navigationBarTitle(Text("\(scheduleViewModel.currentDate)"), displayMode: .automatic)
+            }
+            if scheduleViewModel.scheduleWeeks.isEmpty {
+                ZStack{
+                    VStack{
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .transition(.opacity)
+                        Text("LOADING")
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .opacity(0.5)
+                            
+                    }
+                    
+                }
+            }
             
-            .navigationBarTitle(Text("\(scheduleViewModel.currentDate)"), displayMode: .automatic)
         }
         
-        
-        
     }
+    
 }
 
 struct ScheduleView_Previews: PreviewProvider {
@@ -39,3 +59,4 @@ struct ScheduleView_Previews: PreviewProvider {
     }
     
 }
+
