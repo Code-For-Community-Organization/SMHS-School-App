@@ -1,0 +1,978 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* ViewExtensions.swift */; };
+		626183A72637168D001C4AD4 /* SMHSSchedule__macOS_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */; };
+		626183A92637168D001C4AD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183A82637168D001C4AD4 /* ContentView.swift */; };
+		626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AA2637168E001C4AD4 /* Assets.xcassets */; };
+		626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AD2637168E001C4AD4 /* Preview Assets.xcassets */; };
+		626183DF263718CA001C4AD4 /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183DE263718CA001C4AD4 /* ScheduleDay.swift */; };
+		626183E9263718E0001C4AD4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183E8263718E0001C4AD4 /* String.swift */; };
+		626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */; };
+		6261840426371A6C001C4AD4 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */; };
+		6261840526371A6C001C4AD4 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EAAB2630EA4A00CF3870 /* TextStyles.swift */; };
+		6261840626371A6C001C4AD4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* ViewExtensions.swift */; };
+		6261840726371A6C001C4AD4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183E8263718E0001C4AD4 /* String.swift */; };
+		6261840826371A6C001C4AD4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
+		6261840926371A6C001C4AD4 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		6261840A26371A6C001C4AD4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
+		6261840B26371A6C001C4AD4 /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
+		6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183DE263718CA001C4AD4 /* ScheduleDay.swift */; };
+		6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
+		6261841226371A93001C4AD4 /* ClassScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ClassScheduleView.swift */; };
+		6261841326371A93001C4AD4 /* ClassScheduleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EADD26310F8E00CF3870 /* ClassScheduleRow.swift */; };
+		6261841426371A93001C4AD4 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
+		6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
+		6261841626371A93001C4AD4 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
+		6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 6261841C26371DDF001C4AD4 /* SFSafeSymbols */; };
+		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
+		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
+		6261843A26373D85001C4AD4 /* IconSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261843926373D85001C4AD4 /* IconSymbol.swift */; };
+		6261843B26373D85001C4AD4 /* IconSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261843926373D85001C4AD4 /* IconSymbol.swift */; };
+		62618441263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62618440263740A8001C4AD4 /* ColoredCircleLabelStyle.swift */; };
+		62618442263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62618440263740A8001C4AD4 /* ColoredCircleLabelStyle.swift */; };
+		6261845526374AEC001C4AD4 /* ScheduleDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261845426374AEC001C4AD4 /* ScheduleDetailedView.swift */; };
+		6261845626374AEC001C4AD4 /* ScheduleDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6261845426374AEC001C4AD4 /* ScheduleDetailedView.swift */; };
+		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
+		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
+		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
+		626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226F260035F200903C39 /* Preview Assets.xcassets */; };
+		626A227B260035F200903C39 /* SMHS_ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */; };
+		626A2286260035F200903C39 /* SMHS_ScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */; };
+		626A2296260037E800903C39 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2295260037E800903C39 /* TodayView.swift */; };
+		626A22992600381700903C39 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
+		626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ClassScheduleView.swift */; };
+		626A229F260039BC00903C39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
+		6279EAAC2630EA4A00CF3870 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EAAB2630EA4A00CF3870 /* TextStyles.swift */; };
+		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		6279EADE26310F8E00CF3870 /* ClassScheduleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EADD26310F8E00CF3870 /* ClassScheduleRow.swift */; };
+		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
+		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
+		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
+		629BE8BF2636489600BC49AD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
+		629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 629BE8C1263652FA00BC49AD /* SFSafeSymbols */; };
+		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		626A2277260035F200903C39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626A225D260035F100903C39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 626A2264260035F100903C39;
+			remoteInfo = "SMHS Schedule";
+		};
+		626A2282260035F200903C39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626A225D260035F100903C39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 626A2264260035F100903C39;
+			remoteInfo = "SMHS Schedule";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		624ABFF226004949000FE7BD /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSSchedule__macOS_App.swift; sourceTree = "<group>"; };
+		626183A82637168D001C4AD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		626183AA2637168E001C4AD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		626183AD2637168E001C4AD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		626183AF2637168E001C4AD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626183B02637168E001C4AD4 /* SMHSSchedule__macOS_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SMHSSchedule__macOS_.entitlements; sourceTree = "<group>"; };
+		626183DE263718CA001C4AD4 /* ScheduleDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDay.swift; sourceTree = "<group>"; };
+		626183E8263718E0001C4AD4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		626184222637384E001C4AD4 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		6261843926373D85001C4AD4 /* IconSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSymbol.swift; sourceTree = "<group>"; };
+		62618440263740A8001C4AD4 /* ColoredCircleLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredCircleLabelStyle.swift; sourceTree = "<group>"; };
+		6261845426374AEC001C4AD4 /* ScheduleDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailedView.swift; sourceTree = "<group>"; };
+		626A2265260035F100903C39 /* SMHSSchedule (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
+		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		626A226C260035F200903C39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		626A226F260035F200903C39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		626A2271260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2276260035F200903C39 /* SMHSScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMHSScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleTests.swift; sourceTree = "<group>"; };
+		626A227C260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2281260035F200903C39 /* SMHSScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMHSScheduleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleUITests.swift; sourceTree = "<group>"; };
+		626A2287260035F200903C39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626A2295260037E800903C39 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		626A22982600381700903C39 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		626A229B260039AB00903C39 /* ClassScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassScheduleView.swift; sourceTree = "<group>"; };
+		626A229E260039BC00903C39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6279EAAB2630EA4A00CF3870 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		6279EADD26310F8E00CF3870 /* ClassScheduleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassScheduleRow.swift; sourceTree = "<group>"; };
+		629BE8B8263642BC00BC49AD /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
+		629BE8BA2636430A00BC49AD /* MockScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleView.swift; sourceTree = "<group>"; };
+		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
+		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		626183A12637168D001C4AD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2262260035F100903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2273260035F200903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227E260035F200903C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		624ABFFC260079D4000FE7BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				626183DE263718CA001C4AD4 /* ScheduleDay.swift */,
+				629BE8BC2636444400BC49AD /* ScheduleWeek.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		626183A52637168D001C4AD4 /* SMHSSchedule (macOS) */ = {
+			isa = PBXGroup;
+			children = (
+				626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */,
+				626183A82637168D001C4AD4 /* ContentView.swift */,
+				626183AA2637168E001C4AD4 /* Assets.xcassets */,
+				626183AF2637168E001C4AD4 /* Info.plist */,
+				626183B02637168E001C4AD4 /* SMHSSchedule__macOS_.entitlements */,
+				626183AC2637168E001C4AD4 /* Preview Content */,
+			);
+			path = "SMHSSchedule (macOS)";
+			sourceTree = "<group>";
+		};
+		626183AC2637168E001C4AD4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				626183AD2637168E001C4AD4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		626183D02637179A001C4AD4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				626183D1263717B6001C4AD4 /* Shared */,
+				626183A52637168D001C4AD4 /* SMHSSchedule (macOS) */,
+				626A2267260035F100903C39 /* SMHSSchedule (iOS) */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		626183D1263717B6001C4AD4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6261842926373D40001C4AD4 /* ComponentSubviews */,
+				626A22972600380B00903C39 /* ScheduleView */,
+				626A229D260039B200903C39 /* Utility */,
+				6261845426374AEC001C4AD4 /* ScheduleDetailedView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6261841B26371DDF001C4AD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6261842926373D40001C4AD4 /* ComponentSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				6261843926373D85001C4AD4 /* IconSymbol.swift */,
+			);
+			path = ComponentSubviews;
+			sourceTree = "<group>";
+		};
+		626A225C260035F100903C39 = {
+			isa = PBXGroup;
+			children = (
+				626183D02637179A001C4AD4 /* Sources */,
+				626A2279260035F200903C39 /* SMHS ScheduleTests */,
+				626A2284260035F200903C39 /* SMHS ScheduleUITests */,
+				626A2266260035F100903C39 /* Products */,
+				6261841B26371DDF001C4AD4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		626A2266260035F100903C39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				626A2265260035F100903C39 /* SMHSSchedule (iOS).app */,
+				626A2276260035F200903C39 /* SMHSScheduleTests.xctest */,
+				626A2281260035F200903C39 /* SMHSScheduleUITests.xctest */,
+				626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		626A2267260035F100903C39 /* SMHSSchedule (iOS) */ = {
+			isa = PBXGroup;
+			children = (
+				626A2293260037C400903C39 /* Views */,
+				626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */,
+				626A226A260035F100903C39 /* ContentView.swift */,
+				626A226C260035F200903C39 /* Assets.xcassets */,
+				626A2271260035F200903C39 /* Info.plist */,
+				626A226E260035F200903C39 /* Preview Content */,
+			);
+			path = "SMHSSchedule (iOS)";
+			sourceTree = "<group>";
+		};
+		626A226E260035F200903C39 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				626A226F260035F200903C39 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		626A2279260035F200903C39 /* SMHS ScheduleTests */ = {
+			isa = PBXGroup;
+			children = (
+				626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */,
+				626A227C260035F200903C39 /* Info.plist */,
+			);
+			path = "SMHS ScheduleTests";
+			sourceTree = "<group>";
+		};
+		626A2284260035F200903C39 /* SMHS ScheduleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				626A2285260035F200903C39 /* SMHS_ScheduleUITests.swift */,
+				626A2287260035F200903C39 /* Info.plist */,
+			);
+			path = "SMHS ScheduleUITests";
+			sourceTree = "<group>";
+		};
+		626A2293260037C400903C39 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				626A2294260037D000903C39 /* TodayView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		626A2294260037D000903C39 /* TodayView */ = {
+			isa = PBXGroup;
+			children = (
+				626A2295260037E800903C39 /* TodayView.swift */,
+			);
+			path = TodayView;
+			sourceTree = "<group>";
+		};
+		626A22972600380B00903C39 /* ScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				624ABFFC260079D4000FE7BD /* Model */,
+				626A229A2600399400903C39 /* Components */,
+				626A22982600381700903C39 /* ScheduleView.swift */,
+				62DE61EB2602525400B86555 /* ScheduleViewModel.swift */,
+			);
+			path = ScheduleView;
+			sourceTree = "<group>";
+		};
+		626A229A2600399400903C39 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				626A229B260039AB00903C39 /* ClassScheduleView.swift */,
+				6279EADD26310F8E00CF3870 /* ClassScheduleRow.swift */,
+				629BE8B8263642BC00BC49AD /* ScheduleListView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		626A229D260039B200903C39 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6279EAB02630EB5E00CF3870 /* Extensions */,
+				629BE8BA2636430A00BC49AD /* MockScheduleView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		6279EAAA2630EA3D00CF3870 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */,
+				6279EAAB2630EA4A00CF3870 /* TextStyles.swift */,
+				624ABFF226004949000FE7BD /* ViewExtensions.swift */,
+				626184222637384E001C4AD4 /* RoundedCorners.swift */,
+				62618440263740A8001C4AD4 /* ColoredCircleLabelStyle.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		6279EAB02630EB5E00CF3870 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6279EAAA2630EA3D00CF3870 /* SwiftUI */,
+				626183E8263718E0001C4AD4 /* String.swift */,
+				626A229E260039BC00903C39 /* Colors.swift */,
+				6279EACF2630F6EE00CF3870 /* UIScreen.swift */,
+				629BE8BE2636489600BC49AD /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		626183A32637168D001C4AD4 /* SMHSSchedule (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626183B12637168E001C4AD4 /* Build configuration list for PBXNativeTarget "SMHSSchedule (macOS)" */;
+			buildPhases = (
+				626183A02637168D001C4AD4 /* Sources */,
+				626183A12637168D001C4AD4 /* Frameworks */,
+				626183A22637168D001C4AD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SMHSSchedule (macOS)";
+			packageProductDependencies = (
+				6261841C26371DDF001C4AD4 /* SFSafeSymbols */,
+			);
+			productName = "SMHSSchedule (macOS)";
+			productReference = 626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */;
+			productType = "com.apple.product-type.application";
+		};
+		626A2264260035F100903C39 /* SMHSSchedule (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSSchedule (iOS)" */;
+			buildPhases = (
+				626A2261260035F100903C39 /* Sources */,
+				626A2262260035F100903C39 /* Frameworks */,
+				626A2263260035F100903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SMHSSchedule (iOS)";
+			packageProductDependencies = (
+				629BE8C1263652FA00BC49AD /* SFSafeSymbols */,
+			);
+			productName = "SMHS Schedule";
+			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
+			productType = "com.apple.product-type.application";
+		};
+		626A2275260035F200903C39 /* SMHSScheduleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A228D260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSScheduleTests" */;
+			buildPhases = (
+				626A2272260035F200903C39 /* Sources */,
+				626A2273260035F200903C39 /* Frameworks */,
+				626A2274260035F200903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				626A2278260035F200903C39 /* PBXTargetDependency */,
+			);
+			name = SMHSScheduleTests;
+			productName = "SMHS ScheduleTests";
+			productReference = 626A2276260035F200903C39 /* SMHSScheduleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		626A2280260035F200903C39 /* SMHSScheduleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 626A2290260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSScheduleUITests" */;
+			buildPhases = (
+				626A227D260035F200903C39 /* Sources */,
+				626A227E260035F200903C39 /* Frameworks */,
+				626A227F260035F200903C39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				626A2283260035F200903C39 /* PBXTargetDependency */,
+			);
+			name = SMHSScheduleUITests;
+			productName = "SMHS ScheduleUITests";
+			productReference = 626A2281260035F200903C39 /* SMHSScheduleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		626A225D260035F100903C39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					626183A32637168D001C4AD4 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					626A2264260035F100903C39 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					626A2275260035F200903C39 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 626A2264260035F100903C39;
+					};
+					626A2280260035F200903C39 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 626A2264260035F100903C39;
+					};
+				};
+			};
+			buildConfigurationList = 626A2260260035F100903C39 /* Build configuration list for PBXProject "SMHSSchedule" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 626A225C260035F100903C39;
+			packageReferences = (
+				629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
+			productRefGroup = 626A2266260035F100903C39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				626183A32637168D001C4AD4 /* SMHSSchedule (macOS) */,
+				626A2264260035F100903C39 /* SMHSSchedule (iOS) */,
+				626A2275260035F200903C39 /* SMHSScheduleTests */,
+				626A2280260035F200903C39 /* SMHSScheduleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		626183A22637168D001C4AD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
+				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2263260035F100903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
+				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2274260035F200903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227F260035F200903C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		626183A02637168D001C4AD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */,
+				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
+				6261841226371A93001C4AD4 /* ClassScheduleView.swift in Sources */,
+				62618441263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */,
+				6261841326371A93001C4AD4 /* ClassScheduleRow.swift in Sources */,
+				6261841426371A93001C4AD4 /* ScheduleListView.swift in Sources */,
+				6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */,
+				6261841626371A93001C4AD4 /* ScheduleViewModel.swift in Sources */,
+				6261840426371A6C001C4AD4 /* UserDefaultWrapper.swift in Sources */,
+				6261843A26373D85001C4AD4 /* IconSymbol.swift in Sources */,
+				6261840526371A6C001C4AD4 /* TextStyles.swift in Sources */,
+				6261840626371A6C001C4AD4 /* ViewExtensions.swift in Sources */,
+				6261840726371A6C001C4AD4 /* String.swift in Sources */,
+				6261840826371A6C001C4AD4 /* Colors.swift in Sources */,
+				6261840926371A6C001C4AD4 /* UIScreen.swift in Sources */,
+				6261840A26371A6C001C4AD4 /* Array.swift in Sources */,
+				6261845526374AEC001C4AD4 /* ScheduleDetailedView.swift in Sources */,
+				6261840B26371A6C001C4AD4 /* MockScheduleView.swift in Sources */,
+				626183A92637168D001C4AD4 /* ContentView.swift in Sources */,
+				626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */,
+				626183A72637168D001C4AD4 /* SMHSSchedule__macOS_App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2261260035F100903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626183E9263718E0001C4AD4 /* String.swift in Sources */,
+				6279EAAC2630EA4A00CF3870 /* TextStyles.swift in Sources */,
+				626A226B260035F100903C39 /* ContentView.swift in Sources */,
+				629BE8BF2636489600BC49AD /* Array.swift in Sources */,
+				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
+				626A229F260039BC00903C39 /* Colors.swift in Sources */,
+				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
+				629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */,
+				624ABFF326004949000FE7BD /* ViewExtensions.swift in Sources */,
+				626A22992600381700903C39 /* ScheduleView.swift in Sources */,
+				6261843B26373D85001C4AD4 /* IconSymbol.swift in Sources */,
+				62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */,
+				626A2296260037E800903C39 /* TodayView.swift in Sources */,
+				62618442263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */,
+				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
+				626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */,
+				6279EADE26310F8E00CF3870 /* ClassScheduleRow.swift in Sources */,
+				626183DF263718CA001C4AD4 /* ScheduleDay.swift in Sources */,
+				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
+				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
+				629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */,
+				6261845626374AEC001C4AD4 /* ScheduleDetailedView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A2272260035F200903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A227B260035F200903C39 /* SMHS_ScheduleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		626A227D260035F200903C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				626A2286260035F200903C39 /* SMHS_ScheduleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		626A2278260035F200903C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 626A2264260035F100903C39 /* SMHSSchedule (iOS) */;
+			targetProxy = 626A2277260035F200903C39 /* PBXContainerItemProxy */;
+		};
+		626A2283260035F200903C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 626A2264260035F100903C39 /* SMHSSchedule (iOS) */;
+			targetProxy = 626A2282260035F200903C39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		626183B22637168E001C4AD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Sources/SMHSSchedule (macOS)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHSSchedule--macOS-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		626183B32637168E001C4AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Sources/SMHSSchedule (macOS)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHSSchedule--macOS-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		626A2288260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		626A2289260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		626A228B260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Sources/SMHSSchedule (iOS)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-Schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		626A228C260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Sources/SMHSSchedule (iOS)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-Schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		626A228E260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SMHSSchedule.app/SMHSSchedule";
+			};
+			name = Debug;
+		};
+		626A228F260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SMHSSchedule.app/SMHSSchedule";
+			};
+			name = Release;
+		};
+		626A2291260035F200903C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SMHS Schedule";
+			};
+			name = Debug;
+		};
+		626A2292260035F200903C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNL6P3HKQQ;
+				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jevonmao.SMHS-ScheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SMHS Schedule";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		626183B12637168E001C4AD4 /* Build configuration list for PBXNativeTarget "SMHSSchedule (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626183B22637168E001C4AD4 /* Debug */,
+				626183B32637168E001C4AD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A2260260035F100903C39 /* Build configuration list for PBXProject "SMHSSchedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A2288260035F200903C39 /* Debug */,
+				626A2289260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSSchedule (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A228B260035F200903C39 /* Debug */,
+				626A228C260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A228D260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSScheduleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A228E260035F200903C39 /* Debug */,
+				626A228F260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		626A2290260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSScheduleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				626A2291260035F200903C39 /* Debug */,
+				626A2292260035F200903C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6261841C26371DDF001C4AD4 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		629BE8C1263652FA00BC49AD /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 626A225D260035F100903C39 /* Project object */;
+}
