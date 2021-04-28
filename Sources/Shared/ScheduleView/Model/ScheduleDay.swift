@@ -13,7 +13,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var scheduleText: String
     var title: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d, yyyy"
+        formatter.dateFormat = "EEEE, MMM d"
         return formatter.string(from: date)
     }
 }

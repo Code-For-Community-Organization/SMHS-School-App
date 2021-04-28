@@ -24,7 +24,8 @@ struct TodayView: View {
 
             }
             .padding(.horizontal, 20)
-            .padding(.top)
+            .padding(.vertical)
+            .background(BlurEffectView(style: .regular).edgesIgnoringSafeArea(.all))
             Spacer()
             Group {
                 if let scheduleText = viewModel.todayScheduleText {
