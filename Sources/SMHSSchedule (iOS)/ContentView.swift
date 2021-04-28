@@ -17,9 +17,7 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-                .onAppear{
-                    print("schedule view appear")
-                }
+
             TodayView()
                 .tabItem{
                     VStack{

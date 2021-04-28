@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/jevonmao/Documents/Repo/SMHS Schedule/SMHSSchedule.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
