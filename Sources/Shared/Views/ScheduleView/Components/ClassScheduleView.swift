@@ -15,18 +15,17 @@ struct ClassScheduleView: View {
         guard let text = _scheduleText else {return nil}
         return text.lines
     }
-    init(scheduleText: String){
+    init(scheduleText: String?){
         self._scheduleText = scheduleText
     }
     init<Content: View>(_ view: Content) {
         self.contentView = AnyView(view)
     }
     var body: some View {
-        //VStack{
             ScrollView {
                 Group{
                     if let scheduleLines = scheduleText {
-                        Group {
+                        VStack {
                             ForEach(scheduleLines, id: \.self){
                                 Text($0)
                                     .textAlign(.leading)
@@ -34,23 +33,17 @@ struct ClassScheduleView: View {
                                     .foregroundColor(.platformLabel)
                             }
                         }
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 20)
                               
                     }
                     else if let contentView = contentView {
                         contentView
                     }
                 }
-                .padding(.vertical, 20)
-                .padding(.horizontal, 20)
+
             }
             .navigationBarTitleDisplayMode(.inline)
-
-//        }
-//        .frame(maxWidth: .infinity)
-//        .background(Color.platformBackground)
-//        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-//        .edgesIgnoringSafeArea(.all)
-//        .offset(y: 20)
        
     }
 

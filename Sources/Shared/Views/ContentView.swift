@@ -13,7 +13,7 @@ struct ContentView: View {
             ScheduleView()
                 .tabItem{
                     VStack{
-                        Image(systemName: "calendar")
+                        Image(systemSymbol: .calendar)
                         Text("Schedule")
                     }
                 }
@@ -21,12 +21,20 @@ struct ContentView: View {
             TodayView()
                 .tabItem{
                     VStack{
-                        Image(systemName: "square.grid.2x2.fill")
+                        Image(systemSymbol: .squareGrid2x2Fill)
                         Text("Today")
+                    }
+                }
+            SettingsView()
+                .tabItem {
+                    VStack {
+                        Image(systemSymbol: .gearshapeFill)
+                        Text("Settings")
                     }
                 }
         }
         .accentColor(Color.primary)
+        .environmentObject(UserSettings())
     }
 }
 

@@ -11,6 +11,7 @@ import Foundation
 
 class ScheduleViewModel: ObservableObject {
     @AppStorage("ICSText") var ICSText: String?
+    @Published var showUnavailableMessage: Bool = false
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     var subHeaderText: String {
         if Calendar.current.isDateInWeekend(Date()) {
@@ -42,6 +43,9 @@ class ScheduleViewModel: ObservableObject {
             self.scheduleWeeks = [ScheduleWeek(scheduleDays: [ScheduleDay(id: 0, date: Date(), scheduleText: "Placeholder")])]
             return
         }
+        loadData()
+    }
+    func loadData() {
         let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
         //Load ICS calendar data from network
         Downloader.load(url: url){data, error in
