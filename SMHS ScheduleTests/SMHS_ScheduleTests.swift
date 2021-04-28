@@ -22,12 +22,14 @@ class SMHS_ScheduleTests: XCTestCase {
     func testArrayLastExtension() { 
         var intArray = [1,2,3,0]
         var stringArray = ["a", "c", "b"]
+        var emptyArray: [Double] = []
         XCTAssertEqual(intArray.last, 0)
         XCTAssertEqual(stringArray.last, "b")
         intArray.last = 3
         stringArray.last = "J"
         XCTAssertEqual(intArray.last, 3)
         XCTAssertEqual(stringArray.last, "J")
+        XCTAssertEqual(emptyArray.last, nil)
     }
     
     func testUIKitColorExtension() {
