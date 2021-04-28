@@ -36,12 +36,10 @@ struct TodayView: View {
 
                     
                 }
-                .transition(.opacity)
+                Spacer()
 
             }
         
-        
-     
     }
 }
 

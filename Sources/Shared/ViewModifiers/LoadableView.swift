@@ -17,26 +17,28 @@ struct LoadableView<Body: View>: View {
             ORconditions.allSatisfy({$0})
     }
     var body: some View {
-            if shouldShowLoadingView {
-                ZStack {
-                    VStack {
-                        LoadingIndicatorView(style: loadingViewStyle)
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now()+3){
-                                    if shouldShowLoadingView {
-                                        loadingViewStyle = .unavailable
+        mainView
+            .opacity(shouldShowLoadingView ? 0 : 1)
+            .disabled(shouldShowLoadingView ? true : false)
+            .overlay(
+                Group {
+                    if shouldShowLoadingView {
+                        VStack {
+                            LoadingIndicatorView(style: loadingViewStyle)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now()+3){
+                                        if shouldShowLoadingView {
+                                            loadingViewStyle = .unavailable
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
-         
+                    
                 }
-                .zIndex(10)
-                }
-                else {
-                    mainView
-                }
-        }
+                
+            )
+    }
 }
 
 extension View {

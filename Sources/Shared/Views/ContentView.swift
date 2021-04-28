@@ -25,6 +25,7 @@ struct ContentView: View {
                         Text("Today")
                     }
                 }
+            #if DEBUG
             SettingsView()
                 .tabItem {
                     VStack {
@@ -32,6 +33,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
                 }
+            #endif
         }
         .accentColor(Color.primary)
         .environmentObject(UserSettings())
