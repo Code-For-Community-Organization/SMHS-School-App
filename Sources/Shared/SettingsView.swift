@@ -11,12 +11,14 @@ struct SettingsView: View {
     @EnvironmentObject var userSettings: UserSettings
     var body: some View {
         List {
+            #if DEBUG
             Section(header: Label("Developer Settings", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysLoadingState, label: {
                         Text("Always Show Loading")
                     })
                 
             }
+            #endif
         }
         .listStyle(GroupedListStyle())
     }
