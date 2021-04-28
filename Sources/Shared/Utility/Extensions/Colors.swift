@@ -46,8 +46,8 @@ extension Color {
     }
 }
 
-func hexStringToColor (hex:String) -> Color {
-    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+func hexStringToColor (hex: String) -> Color {
+    var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
     if (cString.hasPrefix("#")) {
         cString.remove(at: cString.startIndex)
@@ -57,11 +57,14 @@ func hexStringToColor (hex:String) -> Color {
         return Color.gray
     }
 
-    var rgbValue:UInt64 = 0
+    var rgbValue: UInt64 = 0
     Scanner(string: cString).scanHexInt64(&rgbValue)
+    let red: Double = Double((rgbValue & 0xFF0000) >> 16)
+    let green: Double = Double((rgbValue & 0x00FF00) >> 8)
+    let blue: Double = Double(rgbValue & 0x0000FF)
     return Color(.sRGB,
-                 red: Double((rgbValue & 0xFF0000) >> 16) / 255.0,
-                 green: Double((rgbValue & 0x00FF00) >> 8) / 255.0,
-                 blue: Double(rgbValue & 0x0000FF) / 255.0,
-                 opacity: 1)
+                 red: red / 255.0,
+                 green: green / 255.0,
+                 blue: blue / 255.0,
+                 opacity: 1.0)
 }

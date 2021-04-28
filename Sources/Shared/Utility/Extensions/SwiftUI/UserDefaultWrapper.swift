@@ -17,7 +17,9 @@ extension Published where Value: Codable {
                 let value = try JSONDecoder().decode(Value.self, from: data)
                 self.init(initialValue: value)
             } catch {
+                #if DEBUG
                 print("Error while deconding data")
+                #endif
                 self.init(initialValue: defaultValue)
             }
         } else {
@@ -30,7 +32,9 @@ extension Published where Value: Codable {
                     let data = try JSONEncoder().encode(val)
                     UserDefaults.standard.set(data, forKey: key)
                 } catch {
+                    #if DEBUG
                     print("Error while decoding data")
+                    #endif
                 }
             }
             .store(in: &cancellableSet)

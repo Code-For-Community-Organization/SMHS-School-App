@@ -11,6 +11,7 @@ import SFSafeSymbols
 struct ClassScheduleView: View {
     var scheduleText: String?
     var contentView: AnyView?
+    
     init(scheduleText: String){
         self.scheduleText = scheduleText
     }
@@ -18,11 +19,10 @@ struct ClassScheduleView: View {
         self.contentView = AnyView(view)
     }
     var body: some View {
-        VStack{
+        //VStack{
             ScrollView {
                 Group{
                     if let text = scheduleText {
-                        #warning("FIXME - Color platfrom adapt")
                         Text(text)
                             .foregroundColor(.platformLabel)
                             .padding(.horizontal, 40)
@@ -34,12 +34,15 @@ struct ClassScheduleView: View {
                 }
                 .padding(.bottom, 20)
             }
-        }
-        .frame(maxWidth: .infinity)
-        .background(Color.platformBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-        .edgesIgnoringSafeArea(.all)
-        .offset(y: 20)
+            .navigationBarTitleDisplayMode(.inline)
+
+//        }
+//        .frame(maxWidth: .infinity)
+//        .background(Color.platformBackground)
+//        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+//        .edgesIgnoringSafeArea(.all)
+//        .offset(y: 20)
+       
     }
 
 }
