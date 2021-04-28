@@ -10,11 +10,24 @@ import Foundation
 extension Array {
     var last: Self.Element? {
         get {
-            self[self.count-1]
+            if self.count == 0 {
+                return nil
+            }
+            else if self.count == 1 {
+                return self[0]
+            }
+            else {
+                return self[self.count-1]
+            }
         }
         set {
             guard let newValue = newValue else {return}
-            self[self.count-1] = newValue
+            if self.count == 1 {
+                self[0] = newValue
+            }
+            else {
+                self[self.count-1] = newValue
+            }
         }
     }
 }
