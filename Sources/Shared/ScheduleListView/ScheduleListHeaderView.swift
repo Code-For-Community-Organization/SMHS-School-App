@@ -19,7 +19,7 @@ struct ScheduleListHeaderView: View {
                 },
                 icon: {
                     Image(systemSymbol: .calendar)
-                        .scaleEffect(1.4)
+                        .font(.system(size: 16))
                 }
             )
             .foregroundColor(Color.primary)

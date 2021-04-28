@@ -9,11 +9,14 @@ import SwiftUI
 import SFSafeSymbols
 
 struct ClassScheduleView: View {
-    var scheduleText: String?
+    var _scheduleText: String?
     var contentView: AnyView?
-    
+    var scheduleText: [Substring]? {
+        guard let text = _scheduleText else {return nil}
+        return text.lines
+    }
     init(scheduleText: String){
-        self.scheduleText = scheduleText
+        self._scheduleText = scheduleText
     }
     init<Content: View>(_ view: Content) {
         self.contentView = AnyView(view)
@@ -22,17 +25,23 @@ struct ClassScheduleView: View {
         //VStack{
             ScrollView {
                 Group{
-                    if let text = scheduleText {
-                        Text(text)
-                            .foregroundColor(.platformLabel)
-                            .padding(.horizontal, 40)
-                            .padding(.vertical, 20)
+                    if let scheduleLines = scheduleText {
+                        Group {
+                            ForEach(scheduleLines, id: \.self){
+                                Text($0)
+                                    .textAlign(.leading)
+                                    .padding(.vertical, 5)
+                                    .foregroundColor(.platformLabel)
+                            }
+                        }
+                              
                     }
                     else if let contentView = contentView {
                         contentView
                     }
                 }
-                .padding(.bottom, 20)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 20)
             }
             .navigationBarTitleDisplayMode(.inline)
 
