@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SMHS_Schedule
+@testable import SMHSSchedule__iOS_
 
 class SMHS_ScheduleTests: XCTestCase {
 
@@ -18,9 +18,15 @@ class SMHS_ScheduleTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testArrayLastExtension() throws {
+        var intArray = [1,2,3,0]
+        var stringArray = ["a", "c", "b"]
+        XCTAssertEqual(intArray.last, 0)
+        XCTAssertEqual(stringArray.last, "b")
+        intArray.last = 3
+        stringArray.last = "J"
+        XCTAssertEqual(intArray.last, 3)
+        XCTAssertEqual(stringArray.last, "J")
     }
 
     func testPerformanceExample() throws {
