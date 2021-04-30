@@ -124,6 +124,12 @@
 		629BE8BA2636430A00BC49AD /* MockScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleView.swift; sourceTree = "<group>"; };
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
 		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		62C9E888263BD2BC00CCA5C5 /* App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App-Icon.png"; sourceTree = "<group>"; };
+		62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleScreen-Light.png"; sourceTree = "<group>"; };
+		62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Light.png"; sourceTree = "<group>"; };
+		62C9E88C263BD35600CCA5C5 /* ScheduleScreen-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleScreen-Dark.png"; sourceTree = "<group>"; };
+		62C9E88D263BD36700CCA5C5 /* TodayScreen-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Dark.png"; sourceTree = "<group>"; };
+		62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Beta-Badge.png"; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F682639249500B609E3 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
 				626A2279260035F200903C39 /* SMHS ScheduleTests */,
 				626A2284260035F200903C39 /* SMHS ScheduleUITests */,
@@ -373,6 +380,35 @@
 				629BE8BE2636489600BC49AD /* Array.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				62C9E88F263BD3A400CCA5C5 /* Icons */,
+				62C9E88A263BD32400CCA5C5 /* Screenshots */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		62C9E88A263BD32400CCA5C5 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				62C9E88C263BD35600CCA5C5 /* ScheduleScreen-Dark.png */,
+				62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */,
+				62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */,
+				62C9E88D263BD36700CCA5C5 /* TodayScreen-Dark.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		62C9E88F263BD3A400CCA5C5 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */,
+				62C9E888263BD2BC00CCA5C5 /* App-Icon.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		62E05F6426391CDF00B609E3 /* ScheduleListView */ = {
