@@ -14,8 +14,9 @@ Available beta testing on [TestFlight](https://testflight.apple.com/join/NkPUafo
     <img src="./Assets/Screenshots/TodayScreen-Light.png" style="display: block; margin: auto;"/ height="450px">
     <img src="./Assets/Screenshots/ScheduleScreen-Dark.png" style="display: block; margin: auto;"/ height="450px">
     <img src="./Assets/Screenshots/TodayScreen-Dark.png" style="display: block; margin: auto;"/ height="450px">
-    SMHS Schedule looks equally gorgeous on both ☀️ light and 🌑 dark mode.
 </p>
+
+<p align="center"> SMHS Schedule looks equally gorgeous on both ☀️ light and 🌑 dark mode. </p>
 
 ## 🧭 Navigation
 - [Build](#-build)
