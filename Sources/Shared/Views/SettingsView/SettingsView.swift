@@ -17,6 +17,9 @@ struct SettingsView: View {
                         Text("Always Show Loading")
                     })
                 
+                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
+                        Text("Always Show Onboarding")
+                    })
             }
             #endif
         }
