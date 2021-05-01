@@ -59,6 +59,10 @@ class SMHS_ScheduleTests: XCTestCase {
         XCTAssertEqual(testString3.lines[3], "7")
     }
     
+    func testOnboardingWrapperViewModel() {
+        let viewModel = OnboardingWrapperViewModel()
+        
+    }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

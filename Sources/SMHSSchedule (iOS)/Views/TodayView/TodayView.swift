@@ -39,6 +39,7 @@ struct TodayView: View {
                 Spacer()
 
             }
+            .onboardingModal()
         
     }
 }

@@ -19,6 +19,10 @@ extension Color {
     static var platformSecondaryBackground: Color {
         Color(UIColor.secondarySystemBackground)
     }
+    static var platformSecondaryLabel: Color {
+        Color(UIColor.secondaryLabel)
+    }
+
 }
 #endif
 
@@ -35,6 +39,9 @@ extension Color {
     static var platformSecondaryBackground: Color {
         Color(NSColor.textBackgroundColor)
     }
+    static var platformSecondaryLabel: Color {
+        Color(NSColor.secondaryLabelColor)
+    }
 }
 #endif
 extension Color {
@@ -42,7 +49,7 @@ extension Color {
         hexStringToColor(hex: "#3498db")
     }
     static var secondary: Color {
-        hexStringToColor(hex: "#f39c12")
+        hexStringToColor(hex: "#12C4A1")
     }
 }
 
