@@ -132,6 +132,8 @@
 		62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Beta-Badge.png"; sourceTree = "<group>"; };
 		62C9E890263CD3B800CCA5C5 /* Mockups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mockups.png; sourceTree = "<group>"; };
 		62C9E891263CDBD300CCA5C5 /* Section.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Section.png; sourceTree = "<group>"; };
+		62C9E894263CE9C700CCA5C5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		62C9E895263CE9ED00CCA5C5 /* ArchitectureDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArchitectureDiagram.png; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F682639249500B609E3 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				62C9E893263CE98300CCA5C5 /* Contributors */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
 				626A2279260035F200903C39 /* SMHS ScheduleTests */,
@@ -387,6 +390,7 @@
 		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				62C9E895263CE9ED00CCA5C5 /* ArchitectureDiagram.png */,
 				62C9E88F263BD3A400CCA5C5 /* Icons */,
 				62C9E88A263BD32400CCA5C5 /* Screenshots */,
 			);
@@ -413,6 +417,14 @@
 				62C9E888263BD2BC00CCA5C5 /* App-Icon.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		62C9E893263CE98300CCA5C5 /* Contributors */ = {
+			isa = PBXGroup;
+			children = (
+				62C9E894263CE9C700CCA5C5 /* README.md */,
+			);
+			path = Contributors;
 			sourceTree = "<group>";
 		};
 		62E05F6426391CDF00B609E3 /* ScheduleListView */ = {
