@@ -24,22 +24,9 @@ struct ClassScheduleView: View {
     var body: some View {
             ScrollView {
                 Group{
-                    if let scheduleLines = scheduleText {
-                        VStack {
-                            ForEach(scheduleLines, id: \.self){
-                                Text($0)
-                                    .textAlign(.leading)
-                                    .padding(.vertical, 5)
-                                    .foregroundColor(.platformLabel)
-                            }
-                        }
+                    ScheduleViewTextLines(scheduleLines: scheduleText)
                         .padding(.vertical, 20)
                         .padding(.horizontal, 20)
-                              
-                    }
-                    else if let contentView = contentView {
-                        contentView
-                    }
                 }
 
             }
