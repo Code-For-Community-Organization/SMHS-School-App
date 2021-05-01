@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "626A2275260035F200903C39"
+               BuildableName = "SMHSScheduleTests.xctest"
+               BlueprintName = "SMHSScheduleTests"
+               ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "626A2280260035F200903C39"
+               BuildableName = "SMHSScheduleUITests.xctest"
+               BlueprintName = "SMHSScheduleUITests"
+               ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

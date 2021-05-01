@@ -67,6 +67,7 @@
 		62C9E8AF263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */; };
 		62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
 		62C9E8B2263D212E00CCA5C5 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
+		62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 62C9E8B3263D2A1300CCA5C5 /* Introspect */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -165,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */,
+				62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +524,7 @@
 			name = "SMHSSchedule (macOS)";
 			packageProductDependencies = (
 				6261841C26371DDF001C4AD4 /* SFSafeSymbols */,
+				62C9E8B3263D2A1300CCA5C5 /* Introspect */,
 			);
 			productName = "SMHSSchedule (macOS)";
 			productReference = 626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */;
@@ -1185,6 +1188,11 @@
 			productName = SFSafeSymbols;
 		};
 		62C9E8A7263D1D4E00CCA5C5 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		62C9E8B3263D2A1300CCA5C5 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
