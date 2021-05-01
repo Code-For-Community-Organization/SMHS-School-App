@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./Assets/Icons/App-Icon.png" style="display: block; margin: auto;"/ height="150px">
+    <img src="./Assets/Icons/Section.png" style="display: block; margin: auto;"/ width="100%">
 </p>
 
 # SMHS Schedule: A SwiftUI app for viewing the SMHS schedule
@@ -10,18 +10,25 @@ Available beta testing on [TestFlight](https://testflight.apple.com/join/NkPUafo
 [<img src="./Assets/Icons/Beta-Badge.png" height="70px">](https://testflight.apple.com/join/NkPUafoE)
 
 <p align="center">
-    <img src="./Assets/Screenshots/ScheduleScreen-Light.png" style="display: block; margin: auto;"/ height="420px">
-    <img src="./Assets/Screenshots/TodayScreen-Light.png" style="display: block; margin: auto;"/ height="420px">
-    <img src="./Assets/Screenshots/ScheduleScreen-Dark.png" style="display: block; margin: auto;"/ height="420px">
-    <img src="./Assets/Screenshots/TodayScreen-Dark.png" style="display: block; margin: auto;"/ height="420px">
+    <img src="./Assets/Screenshots/Mockups.png" style="display: block; margin: auto;"/ width="100%">
 </p>
 
 <p align="center"> SMHS Schedule looks equally gorgeous on both ☀️ light and 🌑 dark mode. </p>
 
 ## 🧭 Navigation
+- [Features Tasklist](#-features-tasklist)
 - [Build](#-build)
 - [Contribute](#-contribute)
 - [License](#-license)
+
+## ✅ Features Tasklist 
+- [x] Turbo fast app launching and loading
+- [x] Schedule screen showing list of all future dates' schedules
+- [x] Today screen for quickly accessing today's schedule
+- [ ] ["What's New" onboarding modal](https://github.com/jevonmao/SMHS-Schedule/issues/3)
+- [ ] [iOS 14 Widgets showing today's schedule](https://github.com/jevonmao/SMHS-Schedule/issues/4)
+- [ ] [Ring progress circle to show live time left of the current schedule block](https://github.com/jevonmao/SMHS-Schedule/issues/5)
+- [ ] [Web scrape school website's news, and show news content in app](https://github.com/jevonmao/SMHS-Schedule/issues/6)
 
 ## 🔨 Build
 This repo is an Xcode Project that contains the SMHS Schedule cross platform app for iOS and macOS. To get things running:
@@ -36,14 +43,15 @@ This repo is an Xcode Project that contains the SMHS Schedule cross platform app
 https://github.com/jevonmao/SMHS-Schedule.git
 ```
 2. Open the `SMHSSchedule.xcodeproj` file to load project
-3. Swift Package Manager should automatically install all dependencies, and you can now build or run the app!
+3. On the upper left corner, select approriate scheme for iOS or macOS
+4. Swift Package Manager should automatically install all dependencies, and you can now build or run the app!
 To learn more about SPM, click [here](https://swift.org/package-manager/)
 
 ## 💪 Contribute
 
 Contributions are welcome here for coders and non-coders alike. No matter what your skill level is, you can for certain contribute to SMHS Schedule's open source community. 
 
-Please read contributing.md before starting. Check the issues or the README tasklist for things to work on.
+Please read contributing.md before starting. Check the issues or the README feature tasklist for things to work on.
 
 **If you encounter ANY issue, have ANY concerns, or ANY comments, please do NOT hesitate to let me know.** Open a discussion, issue, or email me. As a developer, I feel you when you don't understand something in the codebase. I try to comment and document as best as I can, but if you happen to encounter any issues, I will be happy to assist in any way I can.
 
