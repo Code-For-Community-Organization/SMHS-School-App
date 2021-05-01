@@ -13,7 +13,7 @@ struct OnboardingWrapperView<Content: View>: View {
     @StateObject var viewModel: OnboardingWrapperViewModel = OnboardingWrapperViewModel()
     var contentView: Content
     var body: some View {
-        let shouldPresent: Binding<Bool> = Binding(get: {viewModel.versionStatus != .stable || userSettings.developerSettings.alwaysShowOnboarding},
+        let shouldPresent: Binding<Bool> = Binding(get: {return viewModel.versionStatus != .stable || userSettings.developerSettings.alwaysShowOnboarding},
                                                    set: {_ in
                                                         fatalError("Should not be setting this value.")
                                                    })
