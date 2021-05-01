@@ -367,7 +367,6 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				62C9E893263CE98300CCA5C5 /* Contributors */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
 				626A2279260035F200903C39 /* SMHS ScheduleTests */,
@@ -503,7 +502,6 @@
 		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E895263CE9ED00CCA5C5 /* ArchitectureDiagram.png */,
 				62C9E88F263BD3A400CCA5C5 /* Icons */,
 				62C9E88A263BD32400CCA5C5 /* Screenshots */,
 			);
@@ -513,7 +511,6 @@
 		62C9E88A263BD32400CCA5C5 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E890263CD3B800CCA5C5 /* Mockups.png */,
 				62C9E88C263BD35600CCA5C5 /* ScheduleScreen-Dark.png */,
 				62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */,
 				62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */,
@@ -525,7 +522,6 @@
 		62C9E88F263BD3A400CCA5C5 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E891263CDBD300CCA5C5 /* Section.png */,
 				62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */,
 				62C9E888263BD2BC00CCA5C5 /* App-Icon.png */,
 			);
@@ -587,7 +583,6 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
-
 		62E05F6426391CDF00B609E3 /* ScheduleListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +1084,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1152,6 +1148,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1462,7 +1459,6 @@
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 626A225D260035F100903C39 /* Project object */;
