@@ -29,6 +29,7 @@ struct TodayView: View {
                 viewModel.reset()
             }
         }
+        .onboardingModal()
         
     }
 }

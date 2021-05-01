@@ -11,29 +11,30 @@ import SwiftUI
 struct LoadingIndicatorView: View {
     var style: LoadingProgressStyle
     var body: some View {
-        Group {
-            if style == .loading {
-                VStack{
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding(.bottom, 1)
-                    Text("LOADING")
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .opacity(0.5)
-                }
+        if style == .loading {
+            VStack{
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .transition(.opacity)
+                Text("LOADING")
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .opacity(0.5)
+                    
             }
-            else if style == .unavailable {
-                VStack{
-                    Image(systemSymbol: .exclamationmarkTriangleFill)
-                        .padding(.bottom, 1)
-                    Text("Schedule is unavailable")
-                        .font(.caption)
-                        .fontWeight(.medium)
-                }
-                .opacity(0.5)
-                
+            .animation(.default)
+            .transition(.opacity)
+        }
+        else if style == .unavailable {
+            VStack{
+                Image(systemSymbol: .exclamationmarkTriangleFill)
+                    .padding(.vertical, 5)
+                Text("Today schedule is unavailable")
+                    .font(.body)
+                    .fontWeight(.medium)
             }
+            .animation(.default)
+            .transition(.opacity)
         }
     }
     enum LoadingProgressStyle {
