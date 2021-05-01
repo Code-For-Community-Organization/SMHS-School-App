@@ -14,7 +14,15 @@ struct SettingsView: View {
             #if DEBUG
             Section(header: Label("Developer Settings", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysLoadingState, label: {
-                        Text("Always Show Loading")
+                        Text("Always show loading")
+                    })
+                
+                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
+                        Text("Always show onboarding")
+                    })
+                
+                    Toggle(isOn: $userSettings.developerSettings.shouldCacheData, label: {
+                        Text("Cache data")
                     })
                 
                     Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
