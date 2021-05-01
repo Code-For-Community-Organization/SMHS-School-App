@@ -25,6 +25,9 @@ struct SettingsView: View {
                         Text("Cache data")
                     })
                 
+                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
+                        Text("Always Show Onboarding")
+                    })
             }
             #endif
         }
