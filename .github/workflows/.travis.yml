@@ -1,0 +1,8 @@
+os: osx
+language: objective-c
+xcode_project: SMHSSchedule.xcodeproj # path to your xcodeproj folder
+xcode_scheme: SMHSScheduleTests
+xcode_destination: platform=iOS Simulator,OS=14.2,name=iPhone 12 Pro Max
+install: swift package update
+script:
+  - xcodebuild clean -scheme 'SMHSSchedule (iOS) Release' test -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
