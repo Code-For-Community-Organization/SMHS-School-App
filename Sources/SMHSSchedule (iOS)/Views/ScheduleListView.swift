@@ -21,7 +21,6 @@ struct ScheduleListView: View {
                             label: {
                                 Text(day.title)
                                     .textAlign(.leading)
-                                    
 
                             })
                     }

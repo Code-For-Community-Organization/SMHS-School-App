@@ -27,22 +27,38 @@ struct OnboardingView: View {
                 }
             }
             .padding(.top, 50)
-            .padding(.bottom, 80)
-            VStack(spacing: 30) {
-                OnboardingRowItem(title: "View Schedules",
-                                  description: "Schedule for future dates, beautifully grouped by week, easily accesible on your fingle tips.",
-                                  symbolImage: Image(systemSymbol: .calendar).foregroundColor(.primary).font(.system(size: 50)))
-                OnboardingRowItem(title: "Today's Schedule",
-                                  description: "Quickly access today's class schedules with ease, without tapping on any extra menus.",
-                                  symbolImage: Image(systemSymbol: .squareGrid2x2Fill).foregroundColor(.secondary).font(.system(size: 50)))
-                OnboardingRowItem(title: "About the Creator",
-                                  description: "SMHS Schedule is created by Jevon Mao, a Freshman at SMHS who loves designing and coding.",
-                                  symbolImage: Image(systemSymbol: .personCircleFill).foregroundColor(Color(UIColor.systemOrange)).font(.system(size: 50)))
-                OnboardingRowItem(title: "Open Source",
-                                  description: "SMHS Schedule is written in SwiftUI, fully open source, contributions are welcome on Github.",
-                                  symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight).foregroundColor(Color(UIColor.systemPurple)).font(.system(size: 40)),
-                                  linkTitle: "Learn more.",
-                                  linkURL: "https://github.com/jevonmao/SMHS-Schedule")
+            .padding(.bottom, 50)
+            VStack(spacing: 35) {
+                if versionStatus == .new {
+                    OnboardingRowItem(title: "View Schedules",
+                                      description: "Schedule for future dates, beautifully grouped by week, easily accesible.",
+                                      symbolImage: Image(systemSymbol: .calendar).foregroundColor(.primary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Widgets",
+                                      description: "Your daily schedule at a glance with iOS 14 Widgets.",
+                                      symbolImage: Image(systemSymbol: .squareDashedInsetFill).foregroundColor(.primary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Today's Schedule",
+                                      description: "Quickly access today's class schedules with ease without tapping on any extra menus.",
+                                      symbolImage: Image(systemSymbol: .squareGrid2x2Fill).foregroundColor(.secondary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Open Source",
+                                      description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
+                                      symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight).foregroundColor(Color(UIColor.systemPurple)).font(.system(size: 40)),
+                                      linkTitle: "Learn more.",
+                                      linkURL: "https://github.com/jevonmao/SMHS-Schedule")
+                }
+                else {
+                    OnboardingRowItem(title: "Widgets",
+                                      description: "Your daily schedule at a glance with iOS 14 Widgets.",
+                                      symbolImage: Image(systemSymbol: .squareDashedInsetFill).foregroundColor(.primary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "About the Creator",
+                                      description: "SMHS Schedule is created by Jevon Mao, a Freshman at SMHS.",
+                                      symbolImage: Image(systemSymbol: .personCircleFill).foregroundColor(Color(UIColor.systemOrange)).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Open Source",
+                                      description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
+                                      symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight).foregroundColor(Color(UIColor.systemPurple)).font(.system(size: 40)),
+                                      linkTitle: "Learn more.",
+                                      linkURL: "https://github.com/jevonmao/SMHS-Schedule")
+                }
+
             }
 
             Spacer()
