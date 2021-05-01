@@ -14,16 +14,21 @@ struct ScheduleView: View {
     var body: some View {
         NavigationView {
             VStack{
-                HeaderTextView(text: scheduleViewModel.subHeaderText)
+                HeaderTextView(text: scheduleViewModel.dateHelper.subHeaderText)
                 Spacer()
                 ScheduleListView(scheduleViewModel: scheduleViewModel)
                     .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
                                   ORconditions: userSettings.developerSettings.alwaysLoadingState,
                                   reload: scheduleViewModel.loadData)
             }
-            .platformNavigationBarTitle("\(scheduleViewModel.currentDate)")
+            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
             .onboardingModal()
 
+        }
+        .onAppear{
+            if !userSettings.developerSettings.shouldCacheData {
+                scheduleViewModel.reset()
+            }
         }
         
     }

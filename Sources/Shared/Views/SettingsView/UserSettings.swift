@@ -14,4 +14,5 @@ class UserSettings: ObservableObject {
 struct DeveloperSettings: Codable {
     var alwaysLoadingState: Bool = false
     var alwaysShowOnboarding: Bool = false
+    var shouldCacheData: Bool = true
 }
