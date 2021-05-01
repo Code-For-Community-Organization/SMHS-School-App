@@ -12,17 +12,19 @@ struct ScheduleView: View {
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     var body: some View {
-            NavigationView {
-                VStack{
-                    HeaderTextView(text: scheduleViewModel.subHeaderText)
-                    Spacer()
-                    ScheduleListView(scheduleViewModel: scheduleViewModel)
-                                .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
-                                              ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                                              reload: scheduleViewModel.loadData)
-                }
-                .platformNavigationBarTitle("\(scheduleViewModel.currentDate)")
+        NavigationView {
+            VStack{
+                HeaderTextView(text: scheduleViewModel.subHeaderText)
+                Spacer()
+                ScheduleListView(scheduleViewModel: scheduleViewModel)
+                    .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
+                                  ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                                  reload: scheduleViewModel.loadData)
             }
+            .platformNavigationBarTitle("\(scheduleViewModel.currentDate)")
+            .onboardingModal()
+
+        }
         
     }
 }
@@ -49,10 +51,10 @@ struct HeaderTextView: View {
 fileprivate extension View {
     func platformNavigationBarTitle<Content>(_ body: Content) -> some View where Content: StringProtocol {
         #if os(iOS)
-            return self.navigationBarTitle(body)
+        return self.navigationBarTitle(body)
         #elseif os(macOS)
-            return self.navigationTitle(body)
-
+        return self.navigationTitle(body)
+        
         #endif
     }
 }
