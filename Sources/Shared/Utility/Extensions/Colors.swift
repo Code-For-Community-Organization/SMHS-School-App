@@ -63,7 +63,6 @@ func hexStringToColor (hex: String) -> Color {
     if ((cString.count) != 6) {
         return Color.gray
     }
-
     var rgbValue: UInt64 = 0
     Scanner(string: cString).scanHexInt64(&rgbValue)
     let red: Double = Double((rgbValue & 0xFF0000) >> 16)
