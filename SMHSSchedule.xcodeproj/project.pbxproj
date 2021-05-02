@@ -116,6 +116,12 @@
 		62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
 		62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
 		62D1E550263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
+		62D1E554263E6195004DBFAD /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E553263E6195004DBFAD /* SelectableText.swift */; };
+		62D1E555263E6195004DBFAD /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E553263E6195004DBFAD /* SelectableText.swift */; };
+		62D1E557263E61A3004DBFAD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E556263E61A3004DBFAD /* UITextField.swift */; };
+		62D1E558263E61A3004DBFAD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E556263E61A3004DBFAD /* UITextField.swift */; };
+		62D1E559263E6232004DBFAD /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E553263E6195004DBFAD /* SelectableText.swift */; };
+		62D1E55A263E6236004DBFAD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E556263E61A3004DBFAD /* UITextField.swift */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -229,6 +235,8 @@
 		62D1E519263DF779004DBFAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62D1E51B263DF779004DBFAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewTextLines.swift; sourceTree = "<group>"; };
+		62D1E553263E6195004DBFAD /* SelectableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectableText.swift; path = "../../../../../../../Desktop/iPhone Commercial/SelectableText.swift"; sourceTree = "<group>"; };
+		62D1E556263E61A3004DBFAD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F682639249500B609E3 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
@@ -360,6 +368,7 @@
 				62E05F682639249500B609E3 /* BlurEffectView.swift */,
 				6261843926373D85001C4AD4 /* IconSymbol.swift */,
 				62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */,
+				62D1E553263E6195004DBFAD /* SelectableText.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -496,6 +505,7 @@
 				6279EACF2630F6EE00CF3870 /* UIScreen.swift */,
 				629BE8BE2636489600BC49AD /* Array.swift */,
 				62D1E507263DD41C004DBFAD /* Date.swift */,
+				62D1E556263E61A3004DBFAD /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -870,8 +880,10 @@
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62E05F6B2639C47C00B609E3 /* ContentView.swift in Sources */,
 				6261840826371A6C001C4AD4 /* Colors.swift in Sources */,
+				62D1E557263E61A3004DBFAD /* UITextField.swift in Sources */,
 				62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */,
 				6261840926371A6C001C4AD4 /* UIScreen.swift in Sources */,
+				62D1E554263E6195004DBFAD /* SelectableText.swift in Sources */,
 				6261840A26371A6C001C4AD4 /* Array.swift in Sources */,
 				62C9E8AE263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */,
 				6261840B26371A6C001C4AD4 /* MockScheduleView.swift in Sources */,
@@ -913,7 +925,9 @@
 				62E05F6A2639249500B609E3 /* BlurEffectView.swift in Sources */,
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
+				62D1E555263E6195004DBFAD /* SelectableText.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
+				62D1E558263E61A3004DBFAD /* UITextField.swift in Sources */,
 				62618442263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */,
@@ -972,7 +986,9 @@
 				62D1E53D263DF859004DBFAD /* Bindings.swift in Sources */,
 				62D1E53E263DF859004DBFAD /* String.swift in Sources */,
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
+				62D1E559263E6232004DBFAD /* SelectableText.swift in Sources */,
 				62D1E540263DF859004DBFAD /* UIScreen.swift in Sources */,
+				62D1E55A263E6236004DBFAD /* UITextField.swift in Sources */,
 				62D1E541263DF859004DBFAD /* Array.swift in Sources */,
 				62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */,
 				62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */,

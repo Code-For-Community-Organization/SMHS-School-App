@@ -14,7 +14,7 @@ struct ScheduleViewTextLines: View {
         VStack {
             if let scheduleLines = scheduleLines {
                 ForEach(scheduleLines, id: \.self){
-                    Text($0)
+                    SelectableText(String($0), selectable: true)
                         .textAlign(.leading)
                         .padding(.vertical, lineSpacing)
                         .foregroundColor(.platformLabel)
