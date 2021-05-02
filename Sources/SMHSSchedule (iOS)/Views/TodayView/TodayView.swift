@@ -22,14 +22,13 @@ struct TodayView: View {
         .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
                       ANDconditions: viewModel.todayScheduleText == nil,
                       ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                      reload: viewModel.loadData)
+                      reload: viewModel.reloadData)
         
         .onAppear{
             if !userSettings.developerSettings.shouldCacheData {
                 viewModel.reset()
             }
         }
-        .onboardingModal()
         
     }
 }

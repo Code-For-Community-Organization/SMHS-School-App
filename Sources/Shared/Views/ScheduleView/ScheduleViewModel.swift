@@ -10,6 +10,7 @@ import SwiftUI
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
+    @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
@@ -24,13 +25,30 @@ class ScheduleViewModel: ObservableObject {
         //Handle preview instance with mock placeholder text
         if let text = placeholderText {
             self.ICSText = text
-            self.scheduleWeeks = [ScheduleWeek(scheduleDays: [ScheduleDay(id: 0, date: Date(), scheduleText: "Placeholder")])]
             return
         }
-        loadData()
+        print("call loadData()")
+        fetchData()
     }
     
-    func loadData() {
+    func reloadData() {
+        print("called reloadData")
+        if let time = lastReloadTime {
+            if Date().timeIntervalSince(time) > TimeInterval(60) {
+                fetchData()
+                lastReloadTime = Date()
+                
+            }
+        }
+        else {
+            lastReloadTime = Date()
+            fetchData()
+        }
+        
+    }
+    
+    private func fetchData() {
+        print("fetching...")
         let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
         //Load ICS calendar data from network
         Downloader.load(url: url){data, error in
@@ -63,9 +81,9 @@ class ScheduleViewModel: ObservableObject {
             }
         }
     }
-
     
     func reset() {
+        print("resetting...")
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
