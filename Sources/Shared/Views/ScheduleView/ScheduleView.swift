@@ -19,10 +19,10 @@ struct ScheduleView: View {
                 ScheduleListView(scheduleViewModel: scheduleViewModel)
                     .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
                                   ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                                  reload: scheduleViewModel.loadData)
+                                  reload: scheduleViewModel.reloadData)
             }
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
-            .onboardingModal()
+            //.onboardingModal()
 
         }
         .onAppear{
