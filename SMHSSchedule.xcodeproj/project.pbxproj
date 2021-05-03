@@ -122,6 +122,8 @@
 		62D1E558263E61A3004DBFAD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E556263E61A3004DBFAD /* UITextField.swift */; };
 		62D1E559263E6232004DBFAD /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E553263E6195004DBFAD /* SelectableText.swift */; };
 		62D1E55A263E6236004DBFAD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E556263E61A3004DBFAD /* UITextField.swift */; };
+		62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 62D1E55B263F17E9004DBFAD /* Settings.bundle */; };
+		62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 62D1E55B263F17E9004DBFAD /* Settings.bundle */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -237,6 +239,7 @@
 		62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewTextLines.swift; sourceTree = "<group>"; };
 		62D1E553263E6195004DBFAD /* SelectableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectableText.swift; path = "../../../../../../../Desktop/iPhone Commercial/SelectableText.swift"; sourceTree = "<group>"; };
 		62D1E556263E61A3004DBFAD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		62D1E55B263F17E9004DBFAD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F682639249500B609E3 /* BlurEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffectView.swift; sourceTree = "<group>"; };
@@ -376,7 +379,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				62C9E893263CE98300CCA5C5 /* Contributors */,
+				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
 				626A2279260035F200903C39 /* SMHS ScheduleTests */,
@@ -513,7 +516,6 @@
 		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E895263CE9ED00CCA5C5 /* ArchitectureDiagram.png */,
 				62C9E88F263BD3A400CCA5C5 /* Icons */,
 				62C9E88A263BD32400CCA5C5 /* Screenshots */,
 			);
@@ -523,7 +525,6 @@
 		62C9E88A263BD32400CCA5C5 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E890263CD3B800CCA5C5 /* Mockups.png */,
 				62C9E88C263BD35600CCA5C5 /* ScheduleScreen-Dark.png */,
 				62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */,
 				62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */,
@@ -535,7 +536,6 @@
 		62C9E88F263BD3A400CCA5C5 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E891263CDBD300CCA5C5 /* Section.png */,
 				62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */,
 				62C9E888263BD2BC00CCA5C5 /* App-Icon.png */,
 			);
@@ -597,7 +597,6 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
-
 		62E05F6426391CDF00B609E3 /* ScheduleListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
+				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -801,6 +801,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
+				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1478,7 +1479,6 @@
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 626A225D260035F100903C39 /* Project object */;
