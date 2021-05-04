@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+# SMHS Schedule: view SMHS's class schedule better than the official app
 
-You can use the [editor on GitHub](https://github.com/jevonmao/SMHS-Schedule/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<p align="center">
+    <img src="https://github.com/jevonmao/SMHS-Schedule/blob/main/Assets/Icons/Section.png?raw=true" style="display: block; margin: auto;"/ width="100%">
+</p>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**SMHS Schedule** is an app made for viewing Santa Margarita Catholic High School's schedule, much better than the official SMHS app. **SMHS Schedule** is made by a SMHS student, for SMHS students, and aims to deliver a beautiful and native app experience. 
 
-### Markdown
+SMHS Schedule is also written in SwiftUI, 100% open source. Contributing is welcome on the GitHub repo [page](https://github.com/jevonmao/SMHS-Schedule).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<p align="center">
+    <img src="https://github.com/jevonmao/SMHS-Schedule/blob/main/Assets/Screenshots/Mockups.png?raw=true" style="display: block; margin: auto;"/ width="100%">
+</p>
 
-```markdown
-Syntax highlighted code block
+<p align="center"> SMHS Schedule looks equally gorgeous on both ☀️ light and 🌑 dark mode. </p>
 
-# Header 1
-## Header 2
-### Header 3
+## Support or Contact
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jevonmao/SMHS-Schedule/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with app? Suggesting a bug or feature request? Contact the developer at [woodburyjevonmao@gmail.com](woodburyjevonmao@gmail.com), or if you are an SMHS student, Teams message me directly with my name Jingwen Mao.
