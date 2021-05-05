@@ -41,7 +41,6 @@ struct ScheduleDateHelper {
             for (line, stringIndex) in zip(rawText.lines, 0..<rawText.count) {
                 //Find line that contains the date
                 if line.starts(with: "DTSTART;VALUE=DATE:"){
-                    
                     //Remove unnecessary text, get date string only
                     let dateString: String = line.replacingOccurrences(of: "DTSTART;VALUE=DATE:", with: "")
                     
@@ -83,7 +82,9 @@ struct ScheduleDateHelper {
     func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
         //Parse summary, and description (block text of schedule)
         let summary: String = String(rawText.lines[stringIndex+1])
-        guard summary.lowercased().contains("day") else {return nil}
+        let containsDay = summary.lowercased().contains("day")
+        let containsSchedule = summary.lowercased().contains("schedule")
+        guard containsDay || containsSchedule else {return nil}
         let description: String = String(rawText.lines[stringIndex+2])
         let descriptionStripped: String = description.replacingOccurrences(of: "DESCRIPTION:", with: "")
         //id is the current weekday represented by integer

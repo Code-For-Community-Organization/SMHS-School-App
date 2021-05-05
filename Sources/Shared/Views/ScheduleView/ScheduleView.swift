@@ -22,7 +22,6 @@ struct ScheduleView: View {
                                   reload: scheduleViewModel.reloadData)
             }
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
-            //.onboardingModal()
 
         }
         .onAppear{
@@ -37,7 +36,7 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ScheduleView(scheduleViewModel: mockScheduleView)
+        UIElementPreview(ScheduleView(scheduleViewModel: mockScheduleView))
     }
     
 }

@@ -22,7 +22,7 @@ class SMHS_ScheduleTests: XCTestCase {
     func testArrayLastExtension() { 
         var intArray = [1,2,3,0]
         var stringArray = ["a", "c", "b"]
-        var emptyArray: [Double] = []
+        let emptyArray: [Double] = []
         XCTAssertEqual(intArray.last, 0)
         XCTAssertEqual(stringArray.last, "b")
         intArray.last = 3
@@ -78,7 +78,7 @@ class SMHS_ScheduleTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10)
-        let unwrappedScheduleWeeks = try XCTUnwrap(scheduleWeeks)
+        _ = try XCTUnwrap(scheduleWeeks)
         
     }
     

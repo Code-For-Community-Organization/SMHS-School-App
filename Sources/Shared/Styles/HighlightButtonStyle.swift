@@ -15,8 +15,8 @@ struct HighlightButtonStyle: ButtonStyle {
             .background(Color.primary)
             .foregroundColor(Color.platformBackground)
             .clipShape(Capsule(style: .continuous))
-            .brightness(configuration.isPressed ? -0.1 : 0)
-            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+            .brightness(configuration.isPressed ? Double(-0.1) : Double(0))
+            .scaleEffect(configuration.isPressed ? CGFloat(0.97) : CGFloat(1))
             .animation(Animation.easeInOut)
     }
 }

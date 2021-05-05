@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftUIVisualEffects
 
 struct Provider: TimelineProvider {
     let viewModel: ScheduleViewModel = ScheduleViewModel()
@@ -42,7 +43,7 @@ struct WidgetsEntryView : View {
     var body: some View {
         VStack {
             Text(entry.scheduleDay?.scheduleText ?? "")
-                .foregroundColor(Color.platformBackground)
+                .foregroundColor(Color.white)
                 .padding()
         }
         .frame(maxWidth: .infinity)
