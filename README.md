@@ -25,8 +25,8 @@ Available beta testing on [TestFlight](https://testflight.apple.com/join/NkPUafo
 - [x] Turbo fast app launching and loading
 - [x] Schedule screen showing list of all future dates' schedules
 - [x] Today screen for quickly accessing today's schedule
-- [ ] ["What's New" onboarding modal](https://github.com/jevonmao/SMHS-Schedule/issues/3)
-- [ ] [iOS 14 Widgets showing today's schedule](https://github.com/jevonmao/SMHS-Schedule/issues/4)
+- [x] ["What's New" onboarding modal](https://github.com/jevonmao/SMHS-Schedule/issues/3)
+- [x] [iOS 14 Widgets showing today's schedule](https://github.com/jevonmao/SMHS-Schedule/issues/4)
 - [ ] [Ring progress circle to show live time left of the current schedule block](https://github.com/jevonmao/SMHS-Schedule/issues/5)
 - [ ] [Web scrape school website's news, and show news content in app](https://github.com/jevonmao/SMHS-Schedule/issues/6)
 
