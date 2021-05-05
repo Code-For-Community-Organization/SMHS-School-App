@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SFSafeSymbols
+import SwiftUIVisualEffects
 
 struct TodayView: View {
     @StateObject var viewModel = ScheduleViewModel()
@@ -15,6 +16,7 @@ struct TodayView: View {
         VStack{
             TodayViewHeader(viewModel: viewModel)
             ClassScheduleView(scheduleText: viewModel.todayScheduleText)
+                .padding(.bottom, 50)
             Spacer()
             
         }
@@ -22,14 +24,14 @@ struct TodayView: View {
         .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
                       ANDconditions: viewModel.todayScheduleText == nil,
                       ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                      reload: viewModel.loadData)
+                      reload: viewModel.reloadData)
         
         .onAppear{
             if !userSettings.developerSettings.shouldCacheData {
                 viewModel.reset()
             }
         }
-        .onboardingModal()
+        .edgesIgnoringSafeArea(.bottom)
         
     }
 }
@@ -50,7 +52,7 @@ struct TodayViewHeader: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical)
-        .background(BlurEffectView(style: .regular).edgesIgnoringSafeArea(.all))
+        .background(BlurEffect().edgesIgnoringSafeArea(.all))
     }
 }
 struct TodayView_Previews: PreviewProvider {

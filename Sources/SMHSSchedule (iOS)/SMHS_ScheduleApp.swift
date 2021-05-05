@@ -14,5 +14,6 @@ struct SMHS_ScheduleApp: App {
             ContentView()
         }
 
+
     }
 }
