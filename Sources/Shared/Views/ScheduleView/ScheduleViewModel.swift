@@ -61,16 +61,15 @@ class ScheduleViewModel: ObservableObject {
             //Publish changes on main thread
             DispatchQueue.main.async {
                 let rawText = String(data: data, encoding: .utf8) ?? ""
+                guard self.ICSText != rawText else {return}
+                self.ICSText = rawText
                 //Parse data with fetched result only if ICSText is empty (which likely means 1st time app is opened)
-                if self.ICSText == nil {
-                    self.dateHelper.parseScheduleData(withRawText: rawText){result in
-                        DispatchQueue.main.async {
-                            self.scheduleWeeks = result
-                        }
+                self.dateHelper.parseScheduleData(withRawText: rawText){result in
+                    DispatchQueue.main.async {
+                        self.scheduleWeeks = result
+                        self.objectWillChange.send()
                     }
                 }
-                
-                self.ICSText = rawText
             }
         }
         //1st attempt at parsing, before networking
@@ -78,6 +77,7 @@ class ScheduleViewModel: ObservableObject {
         dateHelper.parseScheduleData(withRawText: ICSText){result in
             DispatchQueue.main.async {
                 self.scheduleWeeks = result
+                self.objectWillChange.send()
             }
         }
     }
