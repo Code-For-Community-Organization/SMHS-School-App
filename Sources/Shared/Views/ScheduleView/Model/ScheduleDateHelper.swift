@@ -41,7 +41,6 @@ struct ScheduleDateHelper {
             for (line, stringIndex) in zip(rawText.lines, 0..<rawText.count) {
                 //Find line that contains the date
                 if line.starts(with: "DTSTART;VALUE=DATE:"){
-                    
                     //Remove unnecessary text, get date string only
                     let dateString: String = line.replacingOccurrences(of: "DTSTART;VALUE=DATE:", with: "")
                     
@@ -79,14 +78,18 @@ struct ScheduleDateHelper {
         let currentDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
         return (date, currentDate)
     }
+    
     func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
         //Parse summary, and description (block text of schedule)
-        let summary = rawText.lines[stringIndex+1].replacingOccurrences(of: "SUMMARY:", with: "")
-        guard summary.lowercased().contains("day") else {return nil}
-        let description = String(rawText.lines[stringIndex+2]).replacingOccurrences(of: "DESCRIPTION:", with: "")
+        let summary: String = String(rawText.lines[stringIndex+1])
+        let containsDay = summary.lowercased().contains("day")
+        let containsSchedule = summary.lowercased().contains("schedule")
+        guard containsDay || containsSchedule else {return nil}
+        let description: String = String(rawText.lines[stringIndex+2])
+        let descriptionStripped: String = description.replacingOccurrences(of: "DESCRIPTION:", with: "")
         //id is the current weekday represented by integer
         return ScheduleDay(id: Date.getDayOfTheWeek(for: date),
                            date: date,
-                           scheduleText: "\(description.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
+                           scheduleText: "\(descriptionStripped.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
     }
 }

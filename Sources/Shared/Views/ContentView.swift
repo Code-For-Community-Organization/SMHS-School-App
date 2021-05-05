@@ -17,7 +17,6 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-
             TodayView()
                 .tabItem{
                     VStack{
@@ -35,8 +34,9 @@ struct ContentView: View {
                 }
             #endif
         }
-        .accentColor(Color.primary)
+        .onboardingModal()
         .environmentObject(UserSettings())
+        .accentColor(Color.primary)
     }
 }
 

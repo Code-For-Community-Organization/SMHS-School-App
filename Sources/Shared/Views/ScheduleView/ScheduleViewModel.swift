@@ -10,6 +10,7 @@ import SwiftUI
 import Foundation
 
 class ScheduleViewModel: ObservableObject {
+    @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
@@ -24,13 +25,30 @@ class ScheduleViewModel: ObservableObject {
         //Handle preview instance with mock placeholder text
         if let text = placeholderText {
             self.ICSText = text
-            self.scheduleWeeks = [ScheduleWeek(scheduleDays: [ScheduleDay(id: 0, date: Date(), scheduleText: "Placeholder")])]
             return
         }
-        loadData()
+        print("call loadData()")
+        fetchData()
     }
     
-    func loadData() {
+    func reloadData() {
+        print("called reloadData")
+        if let time = lastReloadTime {
+            if Date().timeIntervalSince(time) > TimeInterval(60) {
+                fetchData()
+                lastReloadTime = Date()
+                
+            }
+        }
+        else {
+            lastReloadTime = Date()
+            fetchData()
+        }
+        
+    }
+    
+    private func fetchData() {
+        print("fetching...")
         let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
         //Load ICS calendar data from network
         Downloader.load(url: url){data, error in
@@ -43,16 +61,15 @@ class ScheduleViewModel: ObservableObject {
             //Publish changes on main thread
             DispatchQueue.main.async {
                 let rawText = String(data: data, encoding: .utf8) ?? ""
+                guard self.ICSText != rawText else {return}
+                self.ICSText = rawText
                 //Parse data with fetched result only if ICSText is empty (which likely means 1st time app is opened)
-                if self.ICSText == nil {
-                    self.dateHelper.parseScheduleData(withRawText: rawText){result in
-                        DispatchQueue.main.async {
-                            self.scheduleWeeks = result
-                        }
+                self.dateHelper.parseScheduleData(withRawText: rawText){result in
+                    DispatchQueue.main.async {
+                        self.scheduleWeeks = result
+                        self.objectWillChange.send()
                     }
                 }
-                
-                self.ICSText = rawText
             }
         }
         //1st attempt at parsing, before networking
@@ -60,12 +77,13 @@ class ScheduleViewModel: ObservableObject {
         dateHelper.parseScheduleData(withRawText: ICSText){result in
             DispatchQueue.main.async {
                 self.scheduleWeeks = result
+                self.objectWillChange.send()
             }
         }
     }
-
     
     func reset() {
+        print("resetting...")
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
