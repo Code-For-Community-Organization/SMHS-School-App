@@ -7,8 +7,17 @@
 
 import XCTest
 import SwiftUI
+import SnapshotTesting
 @testable import SMHSSchedule__iOS_
 
+struct HighlightButtonStyleTestView: View {
+    var body: some View{
+        Button(action: {}, label: {
+            Text("Button")
+        })
+        .buttonStyle(HighlightButtonStyle())
+    }
+}
 class SMHS_ScheduleTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -80,6 +89,11 @@ class SMHS_ScheduleTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
         _ = try XCTUnwrap(scheduleWeeks)
         
+    }
+    
+    func testHighlightButtonStyle() {
+        let view = HighlightButtonStyleTestView()
+        assertSnapshot(matching: view, as: .image)
     }
     
     func testPerformanceExample() throws {
