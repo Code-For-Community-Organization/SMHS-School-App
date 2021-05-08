@@ -13,25 +13,36 @@ struct TodayView: View {
     @StateObject var viewModel = ScheduleViewModel()
     @EnvironmentObject var userSettings: UserSettings
     var body: some View {
-        VStack{
-            TodayViewHeader(viewModel: viewModel)
-            ClassScheduleView(scheduleText: viewModel.todayScheduleText)
-                .padding(.bottom, 50)
-            Spacer()
-            
-        }
-        .onboardingModal()
-        .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
-                      ANDconditions: viewModel.todayScheduleText == nil,
-                      ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                      reload: viewModel.reloadData)
-        
-        .onAppear{
-            if !userSettings.developerSettings.shouldCacheData {
-                viewModel.reset()
+        NavigationView {
+            VStack {
+                TodayViewHeader(viewModel: viewModel)
+                ProgressRingView()
+                    .padding(.vertical)
+                    
+                   
+                NavigationLink(
+                    destination: ClassScheduleView(scheduleText: viewModel.todayScheduleText).padding(.bottom, 50),
+                    label: {
+                            Text("View today's schedule")
+                    })
+                Spacer()
+                
             }
+            .onboardingModal()
+            .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
+                          ANDconditions: viewModel.todayScheduleText == nil,
+                          ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                          reload: viewModel.reloadData)
+            
+            .onAppear{
+                if !userSettings.developerSettings.shouldCacheData {
+                    viewModel.reset()
+                }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
-        .edgesIgnoringSafeArea(.bottom)
         
     }
 }
@@ -42,7 +53,7 @@ struct TodayViewHeader: View {
         VStack {
             Text("Today's Schedule")
                 .font(.largeTitle)
-                .fontWeight(.black)
+                .fontWeight(.bold)
                 .textAlign(.leading)
             Text("\(viewModel.dateHelper.currentDate), \(viewModel.dateHelper.subHeaderText)")
                 .titleBold()
