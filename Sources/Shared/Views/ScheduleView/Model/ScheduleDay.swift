@@ -13,6 +13,16 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var date: Date
     var scheduleText: String
     var periods: [ClassPeriod] {
+        parseClassPeriods()
+    }
+    
+    var title: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d"
+        return formatter.string(from: date)
+    }
+    
+    func parseClassPeriods() -> [ClassPeriod] {
         //Will be returned for value of this variable
         var classPeriods: [ClassPeriod] = [ClassPeriod]()
         let textLines = scheduleText.lines
@@ -92,16 +102,6 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
             }
         }
         return classPeriods
-    }
-    
-    var title: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d"
-        return formatter.string(from: date)
-    }
-    
-    func parseClassPeriods(for line: String, lineNum: Int) {
-        
     }
 }
 
