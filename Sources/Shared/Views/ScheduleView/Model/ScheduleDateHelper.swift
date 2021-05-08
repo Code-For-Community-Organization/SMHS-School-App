@@ -52,7 +52,7 @@ struct ScheduleDateHelper {
                         
                         //Parse the line of schedule text, stripping unwanted characters and words
                         if let scheduleDay: ScheduleDay = self.scheduleLineParser(line: line, rawText: rawText, stringIndex: stringIndex, date: dateChecker.0) {
-                            
+                            print(scheduleDay.periods)
                             //If id equals to 1, means Monday, so append a new week
                             if scheduleDay.id == 1 || scheduleWeeks.isEmpty {
                                 scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))

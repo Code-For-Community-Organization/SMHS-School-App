@@ -90,6 +90,9 @@ class ScheduleViewModel: ObservableObject {
         ICSText = nil; scheduleWeeks = [];
     }
 }
+
+
+
 struct Downloader {
     static func load(url: URL, completion: @escaping (Data?, Error?) -> ()) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
