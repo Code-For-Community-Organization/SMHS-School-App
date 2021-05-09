@@ -42,10 +42,6 @@ struct TodayView: View {
                     
                 }
                 .onboardingModal()
-                .loadableView(headerView: EmptyView().typeErased(),
-                            ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
-                            ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                            reload: scheduleViewViewModel.reloadData)
                 
                 .onAppear{
                     if !userSettings.developerSettings.shouldCacheData {
@@ -55,8 +51,11 @@ struct TodayView: View {
                 .padding(.top, 80)
             }
             TodayViewHeader(viewModel: scheduleViewViewModel)
-                .edgesIgnoringSafeArea(.all)
         }
+        .loadableView(headerView: TodayViewHeader(viewModel: scheduleViewViewModel).typeErased(),
+                    ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
+                    ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                    reload: scheduleViewViewModel.reloadData)
     }
 }
 
@@ -85,6 +84,8 @@ struct TodayViewHeader: View {
         }
         .padding(EdgeInsets(top: 40, leading: 20, bottom: 10, trailing: 20))
         .background(BlurEffect())
+        .edgesIgnoringSafeArea(.all)
+
     }
 }
 struct TodayView_Previews: PreviewProvider {
