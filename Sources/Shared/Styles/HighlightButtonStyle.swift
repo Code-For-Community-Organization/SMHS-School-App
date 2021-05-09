@@ -10,7 +10,7 @@ import SwiftUI
 struct HighlightButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: UIScreen.screenWidth - CGFloat(100))
+            .frame(width: min(400, UIScreen.screenWidth - CGFloat(100)))
             .padding()
             .background(Color.primary)
             .foregroundColor(Color.platformBackground)

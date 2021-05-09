@@ -14,9 +14,9 @@ class ScheduleViewModel: ObservableObject {
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
-    var todayScheduleText: String? {
+    var currentDaySchedule: ScheduleDay? {
         if Date.currentWeekday <= 5 {
-            return scheduleWeeks.first?.scheduleDays.first?.scheduleText
+            return scheduleWeeks.first?.scheduleDays.first 
         }
         return nil
     }
@@ -90,6 +90,9 @@ class ScheduleViewModel: ObservableObject {
         ICSText = nil; scheduleWeeks = [];
     }
 }
+
+
+
 struct Downloader {
     static func load(url: URL, completion: @escaping (Data?, Error?) -> ()) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
