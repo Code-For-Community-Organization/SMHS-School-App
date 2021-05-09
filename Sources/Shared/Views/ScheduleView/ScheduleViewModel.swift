@@ -15,7 +15,7 @@ class ScheduleViewModel: ObservableObject {
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
     var currentDaySchedule: ScheduleDay? {
-        if Date.currentWeekday <= 5 {
+        if Date.currentWeekday != 0 && Date.currentWeekday != 6 {
             return scheduleWeeks.first?.scheduleDays.first 
         }
         return nil
