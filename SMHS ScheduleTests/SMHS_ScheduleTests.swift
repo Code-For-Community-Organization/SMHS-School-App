@@ -91,9 +91,9 @@ class SMHS_ScheduleTests: XCTestCase {
         
     }
     
-    func testHighlightButtonStyle() {
+    func testHighlightButtonStyle1() {
         let view = HighlightButtonStyleTestView()
-        assertSnapshot(matching: view, as: .image)
+        //assertSnapshot(matching: view, as: .image)
     }
     
     func testParseClassPeriods() {
@@ -101,18 +101,21 @@ class SMHS_ScheduleTests: XCTestCase {
         let scheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: testScheduleText)
         let periods = scheduleDay.parseClassPeriods()
         XCTAssertEqual(scheduleDay.periods, periods)
-        
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "H:mm"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        
         XCTAssertEqual(periods.first?.periodNumber, 6)
-        XCTAssertEqual(periods.first?.startTime, formatter.date(from: "8:00"))
-        XCTAssertEqual(periods.first?.endTime, formatter.date(from: "9:05"))
+        XCTAssertEqual(periods.first?.startTime, DateFormatter.formatTime12to24("8:00"))
+        XCTAssertEqual(periods.first?.endTime, DateFormatter.formatTime12to24("9:05"))
         XCTAssertEqual(periods.last?.periodNumber, 2)
-        XCTAssertEqual(periods.last?.startTime, formatter.date(from: "12:21"))
-        XCTAssertEqual(periods.last?.endTime, formatter.date(from: "1:26"))
+        XCTAssertEqual(periods.last?.startTime, DateFormatter.formatTime12to24("12:21"))
+        XCTAssertEqual(periods.last?.endTime, DateFormatter.formatTime12to24("1:26"))
+    }
+    
+    func testIsBetweenExtension() {
+        var minDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        var maxDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        XCTAssertEqual(Date().isBetween(minDate, and: maxDate), true)
+        minDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        maxDate = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        XCTAssertEqual(Date().isBetween(minDate, and: maxDate), false)
     }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

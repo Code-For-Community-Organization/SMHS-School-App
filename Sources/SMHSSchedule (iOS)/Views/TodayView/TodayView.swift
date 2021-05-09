@@ -10,18 +10,18 @@ import SFSafeSymbols
 import SwiftUIVisualEffects
 
 struct TodayView: View {
-    @StateObject var viewModel = ScheduleViewModel()
+    @StateObject var scheduleViewViewModel = ScheduleViewModel()
     @EnvironmentObject var userSettings: UserSettings
     var body: some View {
         NavigationView {
             VStack {
-                TodayViewHeader(viewModel: viewModel)
-                ProgressRingView()
+                TodayViewHeader(viewModel: scheduleViewViewModel)
+                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                     .padding(.vertical)
                     
                    
                 NavigationLink(
-                    destination: ClassScheduleView(scheduleText: viewModel.todayScheduleText).padding(.bottom, 50),
+                    destination: ClassScheduleView(scheduleText: scheduleViewViewModel.currentDaySchedule?.scheduleText),
                     label: {
                             Text("View today's schedule")
                     })
@@ -29,14 +29,14 @@ struct TodayView: View {
                 
             }
             .onboardingModal()
-            .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
-                          ANDconditions: viewModel.todayScheduleText == nil,
+            .loadableView(headerView: TodayViewHeader(viewModel: scheduleViewViewModel).typeErased(),
+                          ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
                           ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                          reload: viewModel.reloadData)
+                          reload: scheduleViewViewModel.reloadData)
             
             .onAppear{
                 if !userSettings.developerSettings.shouldCacheData {
-                    viewModel.reset()
+                    scheduleViewViewModel.reset()
                 }
             }
             .edgesIgnoringSafeArea(.bottom)

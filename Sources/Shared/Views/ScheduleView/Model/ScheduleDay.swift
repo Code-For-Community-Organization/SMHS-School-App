@@ -15,7 +15,25 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var periods: [ClassPeriod] {
         parseClassPeriods()
     }
-    
+    private var currentDateReferenceTime: Date? {Date().convertToReferenceDateLocalTime()}
+    var currentPeriod: ClassPeriod? {
+        //FIXME:
+        #warning("currentPeriod not properly configured for nutrition periods")
+        return periods.filter{currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime) ?? false}.first
+    }
+    var currentPeriodTimeRemaining: TimeInterval? {
+        if let endTime = currentPeriod?.endTime, let reference = currentDateReferenceTime {
+            return endTime - reference
+        }
+        return nil
+    }
+    var currentPeriodPercentRemaining: Double? {
+        if let endTime = currentPeriod?.endTime, let startTime = currentPeriod?.startTime, let timeRemaining = currentPeriodTimeRemaining {
+            let totalTime = endTime - startTime
+            return timeRemaining / totalTime
+        }
+        return nil
+    }
     var title: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d"
@@ -32,11 +50,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         let endTimePattern = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
         let periodPattern = #"Period \d"#.r!
         
-        //DateFormatter for 12hr time `String` to `Date`
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "H:mm"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+
         
         //Iterate over the line text itself
         //and the index of the line in entire text block
@@ -48,8 +62,8 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                let endTime: Substring = endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
                let period: Character = periodPattern.findFirst(in: String(line))?.matched.last {
                 classPeriods.append(ClassPeriod(periodNumber: Int(String(period)),
-                                          startTime: formatter.date(from: String(startTime)) ?? Date(),
-                                          endTime: formatter.date(from: String(endTime)) ?? Date()))
+                                                startTime: DateFormatter.formatTime12to24(startTime) ?? Date(), 
+                                                endTime: DateFormatter.formatTime12to24(endTime) ?? Date()))
             }
             
             //Deal with nutrition schedule case
@@ -73,13 +87,13 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                 //compare nutritionIndex with location of "period #" label to determine which comes 1st
                 if nutritionIndex < line.range(of: period.matched)!.lowerBound {
                     classPeriods.append(ClassPeriod(periodNumber: nil,
-                                                         startTime: formatter.date(from: startTimeFirst) ?? Date(),
-                                                         endTime: formatter.date(from: endTimeFirst) ?? Date())
+                                                    startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? Date(),
+                                                    endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? Date())
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
                     classPeriods.append(ClassPeriod(periodNumber: periodNumber,
-                                                    startTime: formatter.date(from: startTimeLast) ?? Date(),
-                                                    endTime: formatter.date(from: endTimeLast) ?? Date())
+                                                    startTime: DateFormatter.formatTime12to24(startTimeLast) ?? Date(),
+                                                    endTime: DateFormatter.formatTime12to24(endTimeLast) ?? Date())
                                        )
                                              
                 }
@@ -88,13 +102,13 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                 //Reverse the start/end time order
                 else {
                     classPeriods.append(ClassPeriod(periodNumber: nil,
-                                                         startTime: formatter.date(from: startTimeLast) ?? Date(),
-                                                         endTime: formatter.date(from: endTimeLast) ?? Date())
+                                                         startTime: DateFormatter.formatTime12to24(startTimeLast) ?? Date(),
+                                                         endTime: DateFormatter.formatTime12to24(endTimeLast) ?? Date())
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
                     classPeriods.append(ClassPeriod(periodNumber: periodNumber,
-                                                    startTime: formatter.date(from: startTimeFirst) ?? Date(),
-                                                    endTime: formatter.date(from: endTimeFirst) ?? Date())
+                                                    startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? Date(),
+                                                    endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? Date())
                                        )
                                              
                 }
