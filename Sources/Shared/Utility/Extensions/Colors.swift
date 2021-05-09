@@ -22,6 +22,9 @@ extension Color {
     static var platformSecondaryLabel: Color {
         Color(UIColor.secondaryLabel)
     }
+    static var platformTertiaryLabel: Color {
+        Color(UIColor.tertiaryLabel)
+    }
 
 }
 #endif
@@ -41,6 +44,9 @@ extension Color {
     }
     static var platformSecondaryLabel: Color {
         Color(NSColor.secondaryLabelColor)
+    }
+    static var platformTertiaryLabel: Color {
+        Color(NSColor.tertiaryLabelColor)
     }
 }
 #endif

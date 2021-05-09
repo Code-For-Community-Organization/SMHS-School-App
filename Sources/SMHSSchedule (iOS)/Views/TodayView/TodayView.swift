@@ -10,49 +10,81 @@ import SFSafeSymbols
 import SwiftUIVisualEffects
 
 struct TodayView: View {
-    @StateObject var viewModel = ScheduleViewModel()
+    @StateObject var scheduleViewViewModel = ScheduleViewModel()
     @EnvironmentObject var userSettings: UserSettings
+    @State var selectionMode: NutritionScheduleSelection = .firstLunch
     var body: some View {
-        VStack{
-            TodayViewHeader(viewModel: viewModel)
-            ClassScheduleView(scheduleText: viewModel.todayScheduleText)
-                .padding(.bottom, 50)
-            Spacer()
-            
-        }
-        .onboardingModal()
-        .loadableView(headerView: TodayViewHeader(viewModel: viewModel).typeErased(),
-                      ANDconditions: viewModel.todayScheduleText == nil,
-                      ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                      reload: viewModel.reloadData)
-        
-        .onAppear{
-            if !userSettings.developerSettings.shouldCacheData {
-                viewModel.reset()
+        ZStack(alignment: .top) {
+            ScrollView {
+                VStack {
+                    Picker("", selection: $selectionMode){
+                        Text("1st Lunch")
+                            .tag(NutritionScheduleSelection.firstLunch)
+                        Text("2nd Lunch")
+                            .tag(NutritionScheduleSelection.secondLunch)
+                        
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal)
+                    
+                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $selectionMode)
+                        .padding(.vertical)
+                    Divider()
+                        .padding()
+                    Text("Detailed Schedule")
+                        .fontWeight(.semibold)
+                        .font(.title)
+                        .textAlign(.leading)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
+                      
+                    ClassScheduleView(scheduleText: scheduleViewViewModel.currentDaySchedule?.scheduleText)
+                    Spacer()
+                    
+                }
+                .onboardingModal()
+                .loadableView(headerView: EmptyView().typeErased(),
+                            ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
+                            ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                            reload: scheduleViewViewModel.reloadData)
+                
+                .onAppear{
+                    if !userSettings.developerSettings.shouldCacheData {
+                        scheduleViewViewModel.reset()
+                    }
+                }
+                .padding(.top, 80)
             }
+            TodayViewHeader(viewModel: scheduleViewViewModel)
+                .edgesIgnoringSafeArea(.all)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        
     }
 }
+
 
 struct TodayViewHeader: View {
     @StateObject var viewModel: ScheduleViewModel
     var body: some View {
-        VStack {
-            Text("Today's Schedule")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .textAlign(.leading)
-            Text("\(viewModel.dateHelper.currentDate), \(viewModel.dateHelper.subHeaderText)")
-                .titleBold()
-                .textAlign(.leading)
-                .opacity(0.5)
-            
+        HStack {
+            VStack {
+                Text("Today")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .textAlign(.leading)
+                Text(viewModel.dateHelper.currentDate)
+                    .fontWeight(.semibold)
+                    .font(.title2)
+                    .textAlign(.leading)
+                    .foregroundColor(.platformSecondaryLabel)
+                
+            }
+            Spacer()
+            Image(systemSymbol: .calendar)
+                .font(.system(size: 30))
+                .foregroundColor(.platformTertiaryLabel)
+
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical)
-        .background(BlurEffect().edgesIgnoringSafeArea(.all))
+        .padding(EdgeInsets(top: 40, leading: 20, bottom: 10, trailing: 20))
+        .background(BlurEffect())
     }
 }
 struct TodayView_Previews: PreviewProvider {
