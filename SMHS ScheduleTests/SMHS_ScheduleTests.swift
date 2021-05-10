@@ -93,7 +93,7 @@ class SMHS_ScheduleTests: XCTestCase {
     
     func testHighlightButtonStyle1() {
         let view = HighlightButtonStyleTestView()
-        //assertSnapshot(matching: view, as: .image)
+        assertSnapshot(matching: view, as: .image)
     }
     
     func testParseClassPeriods() {

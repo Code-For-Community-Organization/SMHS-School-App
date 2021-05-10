@@ -16,30 +16,43 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         parseClassPeriods()
     }
     private var currentDateReferenceTime: Date? {Date().convertToReferenceDateLocalTime()}
-    var currentPeriod: ClassPeriod? {
-        //FIXME:
-        #warning("currentPeriod not properly configured for nutrition periods")
-        return periods.filter{currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime) ?? false}.first
-    }
-    var currentPeriodTimeRemaining: TimeInterval? {
-        if let endTime = currentPeriod?.endTime, let reference = currentDateReferenceTime {
-            return endTime - reference
-        }
-        return nil
-    }
-    var currentPeriodPercentRemaining: Double? {
-        if let endTime = currentPeriod?.endTime, let startTime = currentPeriod?.startTime, let timeRemaining = currentPeriodTimeRemaining {
-            let totalTime = endTime - startTime
-            return timeRemaining / totalTime
-        }
-        return nil
-    }
     var title: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d"
         return formatter.string(from: date)
     }
     
+    func getCurrentPeriodRemainingTime(selectionMode: NutritionScheduleSelection) -> TimeInterval? {
+        if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime, 
+           let reference = currentDateReferenceTime {
+            return endTime - reference
+        }
+        return nil
+    }
+    
+    func getCurrentPeriodRemainingPercent(selectionMode: NutritionScheduleSelection) -> Double? {
+        if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime,
+           let startTime = getCurrentPeriod(selectionMode: selectionMode)?.startTime,
+           let timeRemaining = getCurrentPeriodRemainingTime(selectionMode: selectionMode) {
+            let totalTime = endTime - startTime
+            return timeRemaining / totalTime
+        }
+        return nil
+    }
+    
+    func getCurrentPeriod(selectionMode: NutritionScheduleSelection) -> ClassPeriod? {
+        //Filter for periods that are possible as current period
+        //Current time within period start/end time
+        let current = periods.filter{currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime) ?? false}
+        
+        guard current.count > 1 else {return current.last}
+        switch selectionMode {
+        case .firstLunch:
+            return current.first
+        case .secondLunch:
+            return current.last
+        }
+    }
     func parseClassPeriods() -> [ClassPeriod] {
         //Will be returned for value of this variable
         var classPeriods: [ClassPeriod] = [ClassPeriod]()

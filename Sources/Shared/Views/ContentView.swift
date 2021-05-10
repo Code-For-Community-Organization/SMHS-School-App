@@ -10,13 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            ScheduleView()
-                .tabItem{
-                    VStack{
-                        Image(systemSymbol: .calendar)
-                        Text("Schedule")
-                    }
-                }
+            
             TodayView()
                 .tabItem{
                     VStack{
@@ -24,6 +18,15 @@ struct ContentView: View {
                         Text("Today")
                     }
                 }
+            
+            ScheduleView()
+                .tabItem{
+                    VStack{
+                        Image(systemSymbol: .calendar)
+                        Text("Schedule")
+                    }
+                }
+
             #if DEBUG
             SettingsView()
                 .tabItem {
