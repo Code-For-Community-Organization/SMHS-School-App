@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIVisualEffects
 
 struct ScheduleView: View {
     @StateObject var scheduleViewModel = ScheduleViewModel()
@@ -14,16 +15,16 @@ struct ScheduleView: View {
     var body: some View {
         NavigationView {
             VStack{
-                HeaderTextView(text: scheduleViewModel.dateHelper.subHeaderText)
-                Spacer()
                 ScheduleListView(scheduleViewModel: scheduleViewModel)
                     .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
                                   ORconditions: userSettings.developerSettings.alwaysLoadingState,
                                   reload: scheduleViewModel.reloadData)
+                Spacer()
             }
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
 
         }
+        .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewModel.reset()
@@ -36,7 +37,7 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     
     static var previews: some View {
-        UIElementPreview(ScheduleView(scheduleViewModel: mockScheduleView))
+        UIElementPreview(ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView))
     }
     
 }
@@ -45,11 +46,15 @@ struct HeaderTextView: View {
     var body: some View {
         VStack {
             Text(text)
-                .titleBold()
+                .fontWeight(.semibold)
+                .font(.title2)
                 .textAlign(.leading)
-                .opacity(0.5)
-                .padding(.horizontal, 20)
+                .vibrancyEffect()
         }
+        .padding(EdgeInsets(top: 45, leading: 20, bottom: 10, trailing: 20))
+        .background(BlurEffect())
+        .vibrancyEffectStyle(.secondaryLabel)
+        .blurEffectStyle(.systemThinMaterial)
     }
 }
 fileprivate extension View {

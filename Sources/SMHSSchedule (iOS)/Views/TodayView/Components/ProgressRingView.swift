@@ -11,12 +11,12 @@ struct ProgressRingView: View {
     var scheduleDay: ScheduleDay?
     @Binding var selectionMode: NutritionScheduleSelection
     @State var countDown: TimeInterval?
-    @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect() 
     var body: some View { 
         ZStack {
             Circle()
-                .stroke(Color.platformSecondaryBackground, style: .init(lineWidth: 30, lineCap: .round))
-                .frame(width: 300, height: 300)
+                .stroke(Color.platformSecondaryFill, style: .init(lineWidth: 30, lineCap: .round))
+                .frame(width: 260, height: 260)
             
             if let percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode) {
                 let gradientEndAngle = Angle.degrees((percent * 360.0)-20)
@@ -27,39 +27,25 @@ struct ProgressRingView: View {
                                             startAngle: .degrees(0),
                                             endAngle: gradientEndAngle), style: .init(lineWidth: 30, lineCap: .round))
                     .animation(.easeInOut)
-                    .frame(width: 300, height: 300)
+                    .frame(width: 260, height: 260)
                     .rotationEffect(.degrees(-90))
             }
-            VStack {
-                if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
-                    Text("PERIOD \(periodNumber)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                }
-                else {
-                    Text("NUTRITION")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                }
-               if let countDown = countDown, let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds() {
-                    Text("\(hours):\(minutes):\(seconds)\nRemaining\n")
-                        .multilineTextAlignment(.center)
-                }
-            }
-
             
-        }
-        .onAppear{
-            self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
+            ProgressCountDown(scheduleDay: scheduleDay,
+                              selectionMode: selectionMode,
+                              countDown: $countDown)
+            
         }
         .onReceive(timer){_ in
             if countDown != nil, countDown! > 0 {
                 self.countDown! -= 1
             }
             else {
-                self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
+                self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode) 
             }
         }
+        .padding(.vertical, 20)
+        
     }
 
 }

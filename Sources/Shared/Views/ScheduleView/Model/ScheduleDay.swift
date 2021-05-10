@@ -99,7 +99,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                 //nutritionIndex is location index of "nutrition" label
                 //compare nutritionIndex with location of "period #" label to determine which comes 1st
                 if nutritionIndex < line.range(of: period.matched)!.lowerBound {
-                    classPeriods.append(ClassPeriod(periodNumber: nil,
+                    classPeriods.append(ClassPeriod(isNutrition: true,
                                                     startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? Date(),
                                                     endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? Date())
                                         )
@@ -114,9 +114,9 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                 //Handles case where period # comes before nutrition
                 //Reverse the start/end time order
                 else {
-                    classPeriods.append(ClassPeriod(periodNumber: nil,
-                                                         startTime: DateFormatter.formatTime12to24(startTimeLast) ?? Date(),
-                                                         endTime: DateFormatter.formatTime12to24(endTimeLast) ?? Date())
+                    classPeriods.append(ClassPeriod(isNutrition: true,
+                                                    startTime: DateFormatter.formatTime12to24(startTimeLast) ?? Date(),
+                                                    endTime: DateFormatter.formatTime12to24(endTimeLast) ?? Date())
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
                     classPeriods.append(ClassPeriod(periodNumber: periodNumber,
@@ -130,9 +130,12 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         }
         return classPeriods
     }
+    
+    static let sampleScheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
 }
 
 struct ClassPeriod: Hashable, Codable  {
+    var isNutrition: Bool = false
     var periodNumber: Int?
     var startTime: Date
     var endTime: Date
