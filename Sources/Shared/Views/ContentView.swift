@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var scheduleViewViewModel = ScheduleViewModel()
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         TabView {
-            
-            TodayView()
+            TodayView(scheduleViewViewModel: scheduleViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .squareGrid2x2Fill)
@@ -19,7 +21,7 @@ struct ContentView: View {
                     }
                 }
             
-            ScheduleView()
+            ScheduleView(scheduleViewModel: scheduleViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .calendar)
@@ -40,6 +42,18 @@ struct ContentView: View {
         .onboardingModal()
         .environmentObject(UserSettings())
         .accentColor(Color.primary)
+        .onChange(of: scenePhase) { newScenePhase in
+              switch newScenePhase {
+              case .active:
+                scheduleViewViewModel.objectWillChange.send()
+              case .inactive:
+                ()
+              case .background:
+                ()
+              @unknown default:
+                ()
+              }
+            }
     }
 }
 

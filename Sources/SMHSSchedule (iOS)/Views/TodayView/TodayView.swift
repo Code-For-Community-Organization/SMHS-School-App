@@ -10,11 +10,12 @@ import SFSafeSymbols
 import SwiftUIVisualEffects
 
 struct TodayView: View {
-    @StateObject var scheduleViewViewModel = ScheduleViewModel()
+    @ObservedObject var scheduleViewViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
     @State var selectionMode: NutritionScheduleSelection
-    init(selectionMode: NutritionScheduleSelection? = nil) {
+    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: NutritionScheduleSelection? = nil) {
         self.selectionMode = selectionMode ?? .firstLunch
+        self.scheduleViewViewModel = scheduleViewViewModel
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
@@ -56,6 +57,7 @@ struct TodayView: View {
         }
             .onboardingModal()
             .onAppear{
+                scheduleViewViewModel.objectWillChange.send()
                 if !userSettings.developerSettings.shouldCacheData {
                     scheduleViewViewModel.reset()
                 }
@@ -99,6 +101,6 @@ struct TodayViewHeader: View {
 }
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView()
+        TodayView(scheduleViewViewModel: ScheduleViewModel())
     }
 }
