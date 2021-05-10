@@ -19,7 +19,7 @@ struct ClassScheduleView: View {
         self._scheduleText = scheduleText
     }
     var body: some View {
-            ScrollView {
+        ScrollView {
                 Group{
                     ScheduleViewTextLines(scheduleLines: scheduleText)
                         .padding(.vertical, 20)

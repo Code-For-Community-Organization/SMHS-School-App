@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62328C9726476E58000F26ED /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9626476E58000F26ED /* CountDown.swift */; };
 		62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9526476E42000F26ED /* ProgressRingView.swift */; };
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
@@ -47,6 +46,7 @@
 		626A22992600381700903C39 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ClassScheduleView.swift */; };
 		626A229F260039BC00903C39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
+		62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62763AA2264A6DEE006162EA /* ProgressCountdown.swift */; };
 		6279EAAC2630EA4A00CF3870 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EAAB2630EA4A00CF3870 /* TextStyles.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
@@ -149,6 +149,7 @@
 		62F30D012649A64C008EDD31 /* NutritionScheduleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* NutritionScheduleSelection.swift */; };
 		62F30D022649A64C008EDD31 /* NutritionScheduleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* NutritionScheduleSelection.swift */; };
 		62F30D032649A64C008EDD31 /* NutritionScheduleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* NutritionScheduleSelection.swift */; };
+		62F30D092649A64C008EDD31 /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = 62F30D082649A64C008EDD31 /* __Snapshots__ */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,7 +192,6 @@
 
 /* Begin PBXFileReference section */
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
-		62328C9626476E58000F26ED /* CountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
 		626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +222,7 @@
 		626A22982600381700903C39 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		626A229B260039AB00903C39 /* ClassScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassScheduleView.swift; sourceTree = "<group>"; };
 		626A229E260039BC00903C39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		62763AA2264A6DEE006162EA /* ProgressCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCountdown.swift; sourceTree = "<group>"; };
 		6279EAAB2630EA4A00CF3870 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		629BE8B8263642BC00BC49AD /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
@@ -262,6 +263,7 @@
 		62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		62F30D002649A64C008EDD31 /* NutritionScheduleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionScheduleSelection.swift; sourceTree = "<group>"; };
+		62F30D082649A64C008EDD31 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				62328C9526476E42000F26ED /* ProgressRingView.swift */,
-				62328C9626476E58000F26ED /* CountDown.swift */,
+				62763AA2264A6DEE006162EA /* ProgressCountdown.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -455,6 +457,7 @@
 		626A2279260035F200903C39 /* SMHS ScheduleTests */ = {
 			isa = PBXGroup;
 			children = (
+				62F30D082649A64C008EDD31 /* __Snapshots__ */,
 				626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */,
 				626A227C260035F200903C39 /* Info.plist */,
 			);
@@ -862,6 +865,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F30D092649A64C008EDD31 /* __Snapshots__ in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,8 +988,8 @@
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
-				62328C9726476E58000F26ED /* CountDown.swift in Sources */,
 				62618442263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */,
+				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
 				626A229C260039AB00903C39 /* ClassScheduleView.swift in Sources */,
