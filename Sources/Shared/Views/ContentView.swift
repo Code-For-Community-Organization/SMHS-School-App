@@ -28,7 +28,13 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-
+            NewsView(scheduleViewModel: scheduleViewViewModel)
+                .tabItem{
+                    VStack{
+                        Image(systemSymbol: .newspaperFill)
+                        Text("News")
+                    }
+                }
             #if DEBUG
             SettingsView()
                 .tabItem {
