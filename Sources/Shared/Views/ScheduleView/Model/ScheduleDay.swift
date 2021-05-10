@@ -48,9 +48,9 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         guard current.count > 1 else {return current.last}
         switch selectionMode {
         case .firstLunch:
-            return current.first
-        case .secondLunch:
             return current.last
+        case .secondLunch:
+            return current.first
         }
     }
     func parseClassPeriods() -> [ClassPeriod] {

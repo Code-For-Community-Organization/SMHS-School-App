@@ -11,6 +11,7 @@ struct ProgressRingView: View {
     var scheduleDay: ScheduleDay?
     @Binding var selectionMode: NutritionScheduleSelection
     @State var countDown: TimeInterval?
+    @State var percent: Double = 0
     @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect() 
     var body: some View { 
         ZStack {
@@ -18,30 +19,32 @@ struct ProgressRingView: View {
                 .stroke(Color.platformSecondaryFill, style: .init(lineWidth: 30, lineCap: .round))
                 .frame(width: 260, height: 260)
             
-            if let percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode) {
-                let gradientEndAngle = Angle.degrees((percent * 360.0)-20)
+            if let percent = percent {
                 Circle()
-                    .trim(from: 0, to: CGFloat(percent))
+                    .trim(from: CGFloat(0) , to: CGFloat(percent))
                     .stroke(AngularGradient(gradient: .init(colors: [.primary, .secondary]),
                                             center: .center,
-                                            startAngle: .degrees(0),
-                                            endAngle: gradientEndAngle), style: .init(lineWidth: 30, lineCap: .round))
+                                            startAngle: .degrees(0.0),
+                                            endAngle: .degrees(percent*360.0)), style: .init(lineWidth: 30, lineCap: .round))
                     .animation(.easeInOut)
                     .frame(width: 260, height: 260)
                     .rotationEffect(.degrees(-90))
             }
             
             ProgressCountDown(scheduleDay: scheduleDay,
-                              selectionMode: selectionMode,
+                              selectionMode: $selectionMode,
                               countDown: $countDown)
             
         }
         .onReceive(timer){_ in
+            self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
+            percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode) ?? 0
             if countDown != nil, countDown! > 0 {
-                self.countDown! -= 1
+                //self.countDown! -= 1
+                
             }
             else {
-                self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode) 
+                //self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
             }
         }
         .padding(.vertical, 20)

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIVisualEffects
 
 struct ScheduleView: View {
-    @StateObject var scheduleViewModel = ScheduleViewModel()
+    @StateObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     var body: some View {
@@ -26,6 +26,7 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
+            scheduleViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewModel.reset()
             }

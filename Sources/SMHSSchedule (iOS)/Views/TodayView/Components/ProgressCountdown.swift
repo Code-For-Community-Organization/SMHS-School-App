@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgressCountDown: View {
     var scheduleDay: ScheduleDay?
-    var selectionMode: NutritionScheduleSelection
+    @Binding var selectionMode: NutritionScheduleSelection
     @Binding var countDown: TimeInterval?
     var text: String {
         if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
@@ -33,9 +33,28 @@ struct ProgressCountDown: View {
             Text(text)
                 .font(.title3)
                 .fontWeight(.semibold)
+                .padding(.bottom, 20)
            if let countDown = countDown, let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds() {
-                Text("\(hours):\(minutes):\(seconds)\nRemaining\n")
-                    .multilineTextAlignment(.center)
+            HStack {
+                Text("\(hours)")
+                    .fontWeight(.medium)
+                Text(":")
+                    .fontWeight(.medium)
+                    .padding(.horizontal, -4)
+                Text("\(minutes)")
+                    .fontWeight(.medium)
+                Text(":")
+                    .fontWeight(.medium)
+                    .padding(.horizontal, -4)
+                Text("\(seconds)")
+                    .fontWeight(.medium)
+            }
+            .fixedSize()
+            .font(.title)
+            Text("REMAINING")
+                .font(.body)
+                .foregroundColor(.platformSecondaryLabel)
+                .multilineTextAlignment(.center)
             }
         }
         .onAppear{
@@ -46,7 +65,7 @@ struct ProgressCountDown: View {
 
 struct ProgressCountdown_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .firstLunch, countDown: .constant(TimeInterval(10)))
-        ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .secondLunch, countDown: .constant(TimeInterval(10)))
+        ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .constant(.firstLunch), countDown: .constant(TimeInterval(10)))
+        ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .constant(.firstLunch), countDown: .constant(TimeInterval(10)))
     }
 }
