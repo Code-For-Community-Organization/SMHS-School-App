@@ -46,6 +46,6 @@ struct ScheduleListView: View {
 
 struct ScheduleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListView(scheduleViewModel: mockScheduleView)
+        ScheduleListView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
     }
 }

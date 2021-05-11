@@ -91,8 +91,21 @@ class SMHS_ScheduleTests: XCTestCase {
         
     }
     
-    func testHighlightButtonStyle1() {
+    func testHighlightButtonStyle() {
         let view = HighlightButtonStyleTestView()
+        assertSnapshot(matching: view, as: .image)
+    }
+    
+    func testTodayView() {
+        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
+            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+            .environmentObject(UserSettings())
+        assertSnapshot(matching: todayView, as: .image, record: true)
+    }
+    
+    func testScheduleView() {
+        let view = ScheduleView(scheduleViewModel: ScheduleViewModel())
+            .environmentObject(UserSettings())
         assertSnapshot(matching: view, as: .image)
     }
     
