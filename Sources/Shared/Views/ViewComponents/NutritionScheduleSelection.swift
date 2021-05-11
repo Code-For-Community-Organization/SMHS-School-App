@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum NutritionScheduleSelection {
-    case firstLunch, secondLunch
+enum NutritionScheduleSelection: String, Codable {
+    case firstLunch, secondLunch, nonLunchSchedule
 }
