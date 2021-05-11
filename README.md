@@ -25,10 +25,9 @@ Available beta testing on [TestFlight](https://testflight.apple.com/join/NkPUafo
 - [x] Turbo fast app launching and loading
 - [x] Schedule screen showing list of all future dates' schedules
 - [x] Today screen for quickly accessing today's schedule
-- [x] ["What's New" onboarding modal](https://github.com/jevonmao/SMHS-Schedule/issues/3)
 - [x] [iOS 14 Widgets showing today's schedule](https://github.com/jevonmao/SMHS-Schedule/issues/4)
-- [ ] [Ring progress circle to show live time left of the current schedule block](https://github.com/jevonmao/SMHS-Schedule/issues/5)
-- [ ] [Web scrape school website's news, and show news content in app](https://github.com/jevonmao/SMHS-Schedule/issues/6)
+- [x] [Ring progress circle to show live time left of the current schedule block](https://github.com/jevonmao/SMHS-Schedule/issues/5)
+- [x] [Beautiful in-app reader for school news browsing](https://github.com/jevonmao/SMHS-Schedule/issues/6)
 
 ## 🔨 Build
 This repo is an Xcode Project that contains the SMHS Schedule cross platform app for iOS and macOS. To get things running:
