@@ -10,7 +10,7 @@ import SwiftSoup
 import Combine
 import SwiftyXMLParser
 
-struct NewsEntry: Hashable {
+struct NewsEntry: Hashable, Codable {
     init(title: String, author: String, imageURL: URL, articleURL: URL, bodyText: String? = nil) {
         self.title = title
         self.author = author
@@ -37,8 +37,11 @@ struct NewsEntry: Hashable {
         do {
             let html = try SwiftSoup.parse(html)
             let bodyDiv = try html.select("div.fsBody").first()
-            let paragraphs = try bodyDiv?.select("p").text()
-            return try bodyDiv?.text()
+            let bodyDivText = try bodyDiv?.text()
+            let paragraphs = try bodyDiv?.children()
+                                .filter{$0.tagName() == "p"}
+                                .map{try $0.text()}
+            return paragraphs?.joined(separator: "\n") ?? bodyDivText
         }
         catch Exception.Error(let type, let message) {
             #if DEBUG
