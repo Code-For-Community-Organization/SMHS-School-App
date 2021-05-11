@@ -13,7 +13,7 @@ struct HighlightButtonStyle: ButtonStyle {
             .frame(width: min(400, UIScreen.screenWidth - CGFloat(100)))
             .padding()
             .background(Color.primary)
-            .foregroundColor(Color.platformBackground)
+            .foregroundColor(Color.white)
             .clipShape(Capsule(style: .continuous))
             .brightness(configuration.isPressed ? Double(-0.1) : Double(0))
             .scaleEffect(configuration.isPressed ? CGFloat(0.97) : CGFloat(1))

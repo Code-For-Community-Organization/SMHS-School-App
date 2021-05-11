@@ -13,28 +13,29 @@ class ScheduleViewModel: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
+    private var currentWeekday: Int?
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
     var currentDaySchedule: ScheduleDay? {
-        if Date.currentWeekday <= 5 {
-            return scheduleWeeks.first?.scheduleDays.first 
+        var weekday = Date.currentWeekday
+        if let currentWeekday = currentWeekday {
+            weekday = currentWeekday
         }
-        return nil
+        return (weekday != 0 && weekday != 6) ? scheduleWeeks.first?.scheduleDays.first : nil
     }
     
-    init(placeholderText: String? = nil){
+    init(placeholderText: String? = nil, currentWeekday: Int? = nil){
         //Handle preview instance with mock placeholder text
-        if let text = placeholderText {
-            self.ICSText = text
+        if placeholderText != nil {
+            self.ICSText = placeholderText
             return
         }
-        print("call loadData()")
+        self.currentWeekday = currentWeekday
         fetchData()
     }
     
     func reloadData() {
-        print("called reloadData")
         if let time = lastReloadTime {
-            if Date().timeIntervalSince(time) > TimeInterval(60) {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(60) {
                 fetchData()
                 lastReloadTime = Date()
                 
@@ -48,7 +49,6 @@ class ScheduleViewModel: ObservableObject {
     }
     
     private func fetchData() {
-        print("fetching...")
         let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
         //Load ICS calendar data from network
         Downloader.load(url: url){data, error in
@@ -83,7 +83,6 @@ class ScheduleViewModel: ObservableObject {
     }
     
     func reset() {
-        print("resetting...")
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()

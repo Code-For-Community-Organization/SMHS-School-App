@@ -46,17 +46,18 @@ struct OnboardingView: View {
                                       linkURL: "https://github.com/jevonmao/SMHS-Schedule")
                 }
                 else {
-                    OnboardingRowItem(title: "Widgets",
-                                      description: "Your daily schedule at a glance with iOS 14 Widgets.",
-                                      symbolImage: Image(systemSymbol: .squareDashedInsetFill).foregroundColor(.primary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "In-Class",
+                                      description: "In-Class is a progress ring and countdown that shows time left in current period.",
+                                      symbolImage: Image(systemSymbol: .studentdesk).foregroundColor(.primary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Refreshed Design",
+                                      description: "A re-designed app experience, now with better layout and colors.",
+                                      symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.secondary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Nutrition Schedule",
+                                      description: "Use a segmented toggle to easily switch between 1st or 2nd lunch.",
+                                      symbolImage: Image(systemSymbol: .calendarCircleFill).foregroundColor(Color(UIColor.systemPurple)).font(.system(size: 50)))
                     OnboardingRowItem(title: "About the Creator",
                                       description: "SMHS Schedule is created by Jevon Mao, a Freshman at SMHS.",
                                       symbolImage: Image(systemSymbol: .personCircleFill).foregroundColor(Color(UIColor.systemOrange)).font(.system(size: 50)))
-                    OnboardingRowItem(title: "Open Source",
-                                      description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
-                                      symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight).foregroundColor(Color(UIColor.systemPurple)).font(.system(size: 40)),
-                                      linkTitle: "Learn more.",
-                                      linkURL: "https://github.com/jevonmao/SMHS-Schedule")
                 }
 
             }

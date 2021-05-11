@@ -12,6 +12,15 @@ struct ScheduleListView: View {
     @State var tappedItem: ScheduleWeek?
     var body: some View {
         List{
+            Section(header:
+                        Text(scheduleViewModel.dateHelper.subHeaderText)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .textAlign(.leading)
+                        .foregroundColor(.platformSecondaryLabel)
+                
+            ){EmptyView()}
+            .textCase(nil)
             ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
                 Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
                     ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
@@ -35,7 +44,7 @@ struct ScheduleListView: View {
 
 struct ScheduleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListView(scheduleViewModel: mockScheduleView)
+        ScheduleListView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
     }
 }
 
