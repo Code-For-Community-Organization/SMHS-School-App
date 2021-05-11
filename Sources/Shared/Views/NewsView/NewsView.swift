@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+import Kingfisher 
 
 struct NewsView: View {
     @StateObject var newsViewViewModel = NewsViewViewModel()
@@ -30,44 +30,11 @@ struct NewsView: View {
                             .textAlign(.leading)
                     }
                     .padding(.horizontal, 3)
-                    .padding(.top, 25)
-                    ForEach(newsViewViewModel.newsEntries, id:\.self){newsEntry in
-                        HStack {
-                            VStack {
-                                Text(newsEntry.author)
-                                    .font(.system(.caption, design: .serif))
-                                    .textAlign(.leading)
-                                    .padding(.bottom, 0.5)
-                                Text(newsEntry.title)
-                                    .font(.system(.headline, design: .default))
-                                    .fontWeight(.black)
-                                    .multilineTextAlignment(.leading)
-                                    .textAlign(.leading)
-                            }
-                            Spacer()
-                            KFImage(newsEntry.imageURL)
-                                .placeholder {
-                                    Color(UIColor.systemGray)
-                                }
-                                .onSuccess{_ in
-                                    print("SUCCESS!")
-                                }
-                                .retry(maxCount: 3, interval: .seconds(3))
-                                .onFailure {
-                                    #if DEBUG
-                                        print("failure: \($0)")
-                                    #endif
-                                    }
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 120, height: 120)
-                                .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
-                        }
-                        .padding()
-                        .background(Color.platformSecondaryBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    .padding(.top, 35)
+                    ForEach(newsViewViewModel.newsEntries, id:\.self){
+                        NewsEntryListItem(newsEntry: $0)
                     }
-                    .padding(.top, 15)
+                    .padding(.top, 10)
 
                 }
                 .padding(.horizontal)
