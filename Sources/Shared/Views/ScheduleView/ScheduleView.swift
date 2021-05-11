@@ -21,6 +21,7 @@ struct ScheduleView: View {
                                   reload: scheduleViewModel.reloadData)
                 Spacer()
             }
+            .edgesIgnoringSafeArea(.bottom)
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
 
         }
