@@ -142,6 +142,9 @@
 		62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
 		62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
 		62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3211E264A175C00C99C42 /* SwiftUIX */; };
+		62D32121264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
+		62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
+		62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -273,6 +276,7 @@
 		62D3210E2649E11800C99C42 /* NewsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntry.swift; sourceTree = "<group>"; };
 		62D321172649F25F00C99C42 /* NewsEntryListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntryListItem.swift; sourceTree = "<group>"; };
 		62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailedView.swift; sourceTree = "<group>"; };
+		62D32120264A4C6700C99C42 /* ClassPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPeriod.swift; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F6C2639C4AC00B609E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				626183DE263718CA001C4AD4 /* ScheduleDay.swift */,
 				629BE8BC2636444400BC49AD /* ScheduleWeek.swift */,
 				62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */,
+				62D32120264A4C6700C99C42 /* ClassPeriod.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -980,6 +985,7 @@
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62E05F6B2639C47C00B609E3 /* ContentView.swift in Sources */,
+				62D32121264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				6261840826371A6C001C4AD4 /* Colors.swift in Sources */,
 				62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */,
 				62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */,
@@ -1038,6 +1044,7 @@
 				62618442263740A8001C4AD4 /* ColoredCircleLabelStyle.swift in Sources */,
 				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
+				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
@@ -1108,6 +1115,7 @@
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* ScheduleViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
+				62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				62D1E518263DF778004DBFAD /* Widgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1464,7 +1472,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 533;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1488,7 +1496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 533;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
