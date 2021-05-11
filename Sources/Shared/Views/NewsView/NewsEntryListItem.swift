@@ -32,9 +32,6 @@ struct NewsEntryListItem: View {
                     .placeholder {
                         Color(UIColor.systemGray)
                     }
-                    .onSuccess{_ in
-                        print("SUCCESS!")
-                    }
                     .retry(maxCount: 3, interval: .seconds(3))
                     .onFailure {
                         #if DEBUG
