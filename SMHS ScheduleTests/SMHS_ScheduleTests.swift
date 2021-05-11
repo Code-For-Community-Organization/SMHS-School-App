@@ -104,7 +104,7 @@ class SMHS_ScheduleTests: XCTestCase {
     }
     
     func testScheduleView() {
-        let view = ScheduleView()
+        let view = ScheduleView(scheduleViewModel: ScheduleViewModel())
             .environmentObject(UserSettings())
         assertSnapshot(matching: view, as: .image)
     }

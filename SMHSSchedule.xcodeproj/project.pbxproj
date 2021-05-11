@@ -141,6 +141,7 @@
 		62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D321172649F25F00C99C42 /* NewsEntryListItem.swift */; };
 		62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
 		62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
+		62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3211E264A175C00C99C42 /* SwiftUIX */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -300,6 +301,7 @@
 				62D321132649E4D300C99C42 /* Kingfisher in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */,
+				62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */,
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
@@ -750,6 +752,7 @@
 				62D321062649D9BA00C99C42 /* SwiftyXMLParser */,
 				62D321122649E4D300C99C42 /* Kingfisher */,
 				62D321152649E64C00C99C42 /* SwiftSoup */,
+				62D3211E264A175C00C99C42 /* SwiftUIX */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -863,6 +866,7 @@
 				62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */,
 				62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1618,6 +1622,14 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 		62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
@@ -1688,6 +1700,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		62D3211E264A175C00C99C42 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;
