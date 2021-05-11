@@ -15,12 +15,12 @@ struct ProgressCountDown: View {
         if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
             return "PERIOD \(periodNumber)"
         }
-        else if let isNutrition = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.isNutrition,
-                isNutrition {
+        else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.nutritionBlock,
+                nutritionSchedule != .nonLunchSchedule {
             return "NUTRITION"
 
         }
-        else if Date.getDayOfTheWeek() == 0 || Date.getDayOfTheWeek() == 6 {
+        else if Date.getDayOfTheWeek() == 0 || Date.getDayOfTheWeek() == 6 { 
             return "NO SCHOOL 🙌"
         }
         else {
