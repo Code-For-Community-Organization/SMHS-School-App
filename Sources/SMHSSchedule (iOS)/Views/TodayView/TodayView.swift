@@ -26,6 +26,7 @@ struct TodayView: View {
             VStack {
                 ScrollView {
                     VStack {
+                        #warning("Fix padding for iPad")
                         Picker("", selection: $selectionMode){
                             Text("1st Lunch")
                                 .tag(NutritionScheduleSelection.firstLunch)
