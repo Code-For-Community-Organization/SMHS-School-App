@@ -27,7 +27,7 @@ struct NewsEntry: Hashable, Codable {
     
     func loadBodyText(completion: @escaping (String?) -> Void) {
         Downloader.load(url: articleURL){data, error in 
-            guard let data = data, error == nil else {print(error); return}
+            guard let data = data, error == nil else {print(error!); return}
             let html = String(data: data, encoding: .ascii)
             completion(parseHTMLBodyText(html: html ?? ""))
         }
@@ -41,7 +41,10 @@ struct NewsEntry: Hashable, Codable {
             let paragraphs = try bodyDiv?.children()
                                 .filter{$0.tagName() == "p"}
                                 .map{try $0.text()}
-            return paragraphs?.joined(separator: "\n") ?? bodyDivText
+                                .filter{$0.count > 3}
+            if let paragraphs = paragraphs, paragraphs != [] {return paragraphs.joined(separator: "\n\n\n")} else {
+                return bodyDivText
+            }
         }
         catch Exception.Error(let type, let message) {
             #if DEBUG
