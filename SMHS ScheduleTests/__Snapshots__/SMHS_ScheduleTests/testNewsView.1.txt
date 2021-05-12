@@ -1,0 +1,27 @@
+<_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentV18SMHSSchedule__iOS_8NewsViewVS_12_FrameLayout__; frame = (0 0; 428 973); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   | <_TtGC7SwiftUI16PlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorGVS_33MulticolumnSplitViewRepresentableVVS_22_VariadicView_Children7ElementOs5NeverGVS_17_UnaryViewAdaptorVS_9EmptyView____; frame = (0 0; 428 973); anchorPoint = (0, 0); tintColor = UIExtendedSRGBColorSpace 0 0.478431 1 1; layer = <CALayer>>
+   |    | <_UISplitViewControllerPanelImplView; frame = (0 0; 428 973); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    | <_UIPanelControllerContentView; frame = (0 0; 428 973); autoresize = W+H; layer = <CALayer>>
+   |    |    |    | <UILayoutContainerView; frame = (0 0; 428 973); clipsToBounds = YES; autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    | <UINavigationTransitionView; frame = (0 0; 428 973); clipsToBounds = YES; autoresize = W+H; layer = <CALayer>>
+   |    |    |    |    |    | <UIViewControllerWrapperView; frame = (0 0; 428 973); layer = <CALayer>>
+   |    |    |    |    |    |    | <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentVVS_22_VariadicView_Children7ElementGVS_18StyleContextWriterVS_19SidebarStyleContext___; frame = (0 0; 428 973); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    | <SwiftUI.HostingScrollView; baseClass = UIScrollView; frame = (0 0; 428 973); anchorPoint = (0, 0); clipsToBounds = YES; gestureRecognizers = <NSArray>; layer = <CALayer>; contentOffset: {0, -143}; contentSize: {428, 83}; adjustedContentInset: {143, 0, 0, 0}>
+   |    |    |    |    |    |    |    |    | <_TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer; frame = (0 0; 428 83); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (19 35; 92.3333 14.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (19 49.3333; 158.667 33.6667); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    | <_UIScrollViewScrollIndicator; frame = (3 824; 422 3); alpha = 0; autoresize = TM; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 422 3); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    | <_UIScrollViewScrollIndicator; frame = (422 726.667; 3 77); alpha = 0; autoresize = LM; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 3 77); layer = <CALayer>>
+   |    |    |    |    | <UINavigationBar; frame = (0 47; 428 96); opaque = NO; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    | <_UIBarBackground; frame = (0 -47; 428 91); userInteractionEnabled = NO; layer = <CALayer>>
+   |    |    |    |    |    |    | <UIVisualEffectView; frame = (0 0; 428 91); alpha = 0; layer = <CALayer>> effect=none
+   |    |    |    |    |    |    |    | <_UIVisualEffectBackdropView; frame = (0 0; 428 91); autoresize = W+H; userInteractionEnabled = NO; layer = <UICABackdropLayer>>
+   |    |    |    |    |    |    | <_UIBarBackgroundShadowView; frame = (0 91; 428 0.333333); layer = <CALayer>> clientRequestedContentView effect=none
+   |    |    |    |    |    |    |    | <_UIBarBackgroundShadowContentImageView; frame = (0 0; 428 0.333333); alpha = 0; autoresize = W+H; userInteractionEnabled = NO; layer = <CALayer>>
+   |    |    |    |    |    | <_UINavigationBarLargeTitleView; frame = (0 44; 428 52); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    | <UILabel; frame = (20 3.66667; 113.667 40.6667); text = 'May 10'; userInteractionEnabled = NO; layer = <_UILabelLayer>>
+   |    |    |    |    |    | <_UINavigationBarContentView; frame = (0 0; 428 44); layer = <CALayer>> layout=
+   |    |    |    |    |    |    | <UILabel; frame = (186 11.6667; 56.3333 20.3333); text = 'May 10'; alpha = 0; userInteractionEnabled = NO; layer = <_UILabelLayer>>
+   |    |    |    |    |    | <UIView; frame = (0 0; 0 0); userInteractionEnabled = NO; layer = <CALayer>>

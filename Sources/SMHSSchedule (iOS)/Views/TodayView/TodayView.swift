@@ -21,10 +21,8 @@ struct TodayView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
     }
     var body: some View {
-        ZStack {
-            Color.platformSecondaryBackground.edgesIgnoringSafeArea(.all)
-            VStack {
-                ScrollView {
+        ZStack(alignment: .top) {
+            ScrollView {
                     VStack {
                         Picker("", selection: $selectionMode){
                             Text("1st Lunch")
@@ -34,7 +32,6 @@ struct TodayView: View {
                             
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                        
                         ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $selectionMode)
                             .padding(.vertical, 10)
                         Divider()
@@ -45,23 +42,24 @@ struct TodayView: View {
                             .padding(.bottom, 5)
                         ScheduleViewTextLines(scheduleLines: scheduleViewViewModel.currentDaySchedule?.scheduleText.lines, lineSpacing: 2)
                     }
-                    .padding(EdgeInsets(top: 90, leading: 7, bottom: 0, trailing: 7))
+                    .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
                     .padding(.horizontal)
                 
                 }
-                .loadableView(headerView: TodayViewHeader(viewModel: scheduleViewViewModel).typeErased(),
+                .loadableView(
                         ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
                         ORconditions: userSettings.developerSettings.alwaysLoadingState,
                         reload: scheduleViewViewModel.reloadData)
-                Spacer()
-        }
-            .onboardingModal()
-            .onAppear{
-                scheduleViewViewModel.objectWillChange.send()
-                if !userSettings.developerSettings.shouldCacheData {
-                    scheduleViewViewModel.reset()
-                }
+                .onboardingModal()
+                .onAppear{
+                    scheduleViewViewModel.objectWillChange.send()
+                    if !userSettings.developerSettings.shouldCacheData {
+                        scheduleViewViewModel.reset()
+                    }
             }
+            
+            TodayViewHeader(viewModel: scheduleViewViewModel)
+
         }
         .edgesIgnoringSafeArea(.bottom)
     }

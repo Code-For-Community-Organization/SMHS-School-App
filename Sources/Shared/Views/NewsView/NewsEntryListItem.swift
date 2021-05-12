@@ -13,39 +13,37 @@ struct NewsEntryListItem: View {
     @State var isActive: Bool = false
     var body: some View {
         ZStack {
-            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry), isActive: $isActive){EmptyView()}
-            HStack {
-                VStack {
-                    Text(newsEntry.author)
-                        .font(.system(.caption, design: .serif))
-                        .textAlign(.leading)
-                        .padding(.bottom, 0.5)
-                    Text(newsEntry.title)
-                        .font(.system(.headline, design: .default))
-                        .fontWeight(.black)
-                        .multilineTextAlignment(.leading)
-                        .textAlign(.leading)
-                }
-                .foregroundColor(Color.platformLabel)
-                Spacer()
-                KFImage(newsEntry.imageURL)
-                    .placeholder {
-                        Color(UIColor.systemGray)
+            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry, isActive: $isActive)) {
+                HStack {
+                    VStack {
+                        Text(newsEntry.author)
+                            .font(.system(.caption, design: .serif))
+                            .textAlign(.leading)
+                            .padding(.bottom, 0.5)
+                        Text(newsEntry.title)
+                            .font(.system(.headline, design: .default))
+                            .fontWeight(.black)
+                            .multilineTextAlignment(.leading)
+                            .textAlign(.leading)
                     }
-                    .retry(maxCount: 3, interval: .seconds(3))
-                    .onFailure {
-                        #if DEBUG
-                            print("failure: \($0)")
-                        #endif
+                    .foregroundColor(Color.platformLabel)
+                    Spacer()
+                    KFImage(newsEntry.imageURL)
+                        .placeholder {
+                            Color(UIColor.systemGray)
                         }
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-            }
-            .padding(.vertical, 5)
-            .onTapGesture {
-                isActive = true
+                        .retry(maxCount: 3, interval: .seconds(3))
+                        .onFailure {
+                            #if DEBUG
+                                print("failure: \($0)")
+                            #endif
+                            }
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                }
+                .padding(.vertical, 5)
             }
         }
  
