@@ -50,3 +50,25 @@ This tag is an evolution of the `feature request` tag. The feature request has b
 
 #### `good first issue` & `intermediate quest` & `hard quest`
 Bugs and features that need to be worked on are also called "quest", which is a name inspired by many RPG games. Those represent the approximate difficulty and complexity of the given issue. 
+
+
+## Releasing and Deploying
+
+### Pre-Releasing
+- Pass all test suites
+- Update onboarding modal for features
+
+### Releasing
+For each numbered version release, it is important to follow semantic versioning guidelines.
+
+- Bump version in `SMHSSchedule.xcodeproj`
+- Verify build number for all targets
+- Update changelog with changes (ignore for now)
+- Tag new version:
+```
+$ git tag -a <VERSION> -m "<MESSAGE>"
+$ git push origin --tags
+```
+- Commit and push changes 
+
+ 
