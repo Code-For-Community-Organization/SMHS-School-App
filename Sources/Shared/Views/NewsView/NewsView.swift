@@ -42,6 +42,9 @@ struct NewsView: View {
             .navigationBarTitle(scheduleViewModel.dateHelper.currentDate)
 
         }
+        .onAppear{
+            newsViewViewModel.fetchXML()
+        }
         .navigationBarTitleDisplayMode(.automatic)
     }
 }
