@@ -26,7 +26,6 @@ class NewsViewViewModel: ObservableObject {
             .sink(receiveCompletion: {_ in}){data, response in
                 guard let rawText = String(data: data, encoding: .utf8) else {return}
                 self.newsEntries = self.parseXML(for: rawText)
-                print(self.newsEntries)
             }
 
     }
