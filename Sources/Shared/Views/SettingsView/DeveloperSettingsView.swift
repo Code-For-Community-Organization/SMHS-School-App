@@ -1,17 +1,17 @@
 //
-//  SettingsView.swift
+//  DeveloperSettingsView.swift
 //  SMHSSchedule
 //
-//  Created by Jevon Mao on 4/28/21.
+//  Created by Jevon Mao on 5/13/21.
 //
 
 import SwiftUI
 
-struct SettingsView: View {
+struct DeveloperSettingsView: View {
     @EnvironmentObject var userSettings: UserSettings
+
     var body: some View {
-        List {
-            #if DEBUG
+        SettingsView {
             Section(header: Label("Developer Settings", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysLoadingState, label: {
                         Text("Always show loading")
@@ -26,14 +26,12 @@ struct SettingsView: View {
                     })
 
             }
-            #endif
         }
-        .listStyle(GroupedListStyle())
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+struct DeveloperSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        DeveloperSettingsView()
     }
 }

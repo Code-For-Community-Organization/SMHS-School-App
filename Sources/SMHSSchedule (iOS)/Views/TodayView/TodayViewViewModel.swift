@@ -8,9 +8,7 @@
 import Combine
 import Foundation
 
-//class TodayViewViewModel: ObservableObject {
-//    @State var countDown: TimeInterval?
-//    @State var percent: Double = 0
-//    
-//    
-//}
+class TodayViewViewModel: ObservableObject {
+    @Published var showEditModal = false
+    
+}

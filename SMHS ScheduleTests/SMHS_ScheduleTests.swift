@@ -96,41 +96,40 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
 
-    func testTodayView() {
-        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
-            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-            .environmentObject(UserSettings())
-        assertSnapshot(matching: todayView, as: .image)
+//    func testTodayView() {
+//        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
+//            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+//            .environmentObject(UserSettings())
+//        assertSnapshot(matching: todayView, as: .recursiveDescription)
+//    }
+//
+//    func testScheduleView() {
+//        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
+//            .environmentObject(UserSettings())
+//        assertSnapshot(matching: view, as: .recursiveDescription)
+//    }
+//
+//    func testContentView() {
+//        let view = ContentView()
+//        let hostingView = UIHostingController(rootView: view)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
+//
+//    func testNewsView() {
+//        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
+//            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+//        let hostingView = UIHostingController(rootView: view)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
+//
+    func testOnboardingViewNew() {
+        let view = OnboardingView(versionStatus: .new, stayInPresentation: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        assertSnapshot(matching: view, as: .image)
     }
 
-    func testScheduleView() {
-        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
-            .environmentObject(UserSettings())
-        assertSnapshot(matching: view, as: .image)
-    }
-    
-    func testContentView() {
-        let view = ContentView()
-        let hostingView = UIHostingController(rootView: view)
-        assertSnapshot(matching: view, as: .image)
-        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-    }
-    
-    func testNewsView() {
-        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
-            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-        let hostingView = UIHostingController(rootView: view)
-        assertSnapShot(matching: hostingView, as: .recursiveDescription)
-    }
-    
-    func testOnboardingViewNew() {
-        let view = OnboardingView(versionStatus: .new, stayInPresentation: .constant(true))
-        assertSnapShot(matching: view, as: .image)
-    }
-    
     func testOnboardingViewUpdate() {
-        let view = OnboardingView(versionStatus: .updated, stayInPresentation: .constant(true))
-        assertSnapShot(matching: view, as: .image)
+        let view = OnboardingView(versionStatus: .updated, stayInPresentation: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        assertSnapshot(matching: view, as: .image)
     }
     func testScheduleDetailView() {
         let view = ClassScheduleView(scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
@@ -173,6 +172,44 @@ class SMHS_ScheduleTests: XCTestCase {
         maxDate = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
         XCTAssertEqual(Date().isBetween(minDate, and: maxDate), false)
     }
+    
+    func testPeriodEditable() {
+        let userSettings = UserSettings()
+        let editable = userSettings.editableSettings
+        for index in 1...7 {
+            XCTAssertEqual(editable[index-1].periodNumber, index)
+            XCTAssertEqual(editable[index-1].textContent, "")
+        }
+    }
+    
+    func testPeriodEditSettingsViewEmpty() {
+        let view = PeriodEditSettingsView(showModal: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).environmentObject(UserSettings())
+        assertSnapshot(matching: view, as: .image)
+      
+    }
+    func testPeriodEditSettingsViewFilled() {
+        let userSettings = UserSettings()
+        userSettings.editableSettings[0].textContent = "English"
+        userSettings.editableSettings[6].textContent = "P.E."
+        userSettings.editableSettings[3].textContent = "Spanish"
+        let view2 = PeriodEditSettingsView(showModal: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).environmentObject(userSettings)
+        assertSnapshot(matching: view2, as: .image)
+    }
+    func testPeriodEditableReset() {
+        let userSettings = UserSettings()
+        userSettings.resetEditableSettings()
+        let editable = userSettings.editableSettings
+        for index in 1...7 {
+            XCTAssertEqual(editable[index-1].periodNumber, index)
+            XCTAssertEqual(editable[index-1].textContent, "")
+        }
+        userSettings.editableSettings[0].textContent = "Test Content"
+        XCTAssertEqual(userSettings.editableSettings[0].title, "Period 1")
+        XCTAssertEqual(userSettings.editableSettings[0].textContent, "Test Content")
+        userSettings.resetEditableSettings()
+        XCTAssertEqual(userSettings.editableSettings[0].textContent, "")
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
