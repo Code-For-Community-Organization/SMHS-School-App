@@ -9,11 +9,17 @@ import SwiftUI
 
 struct ProgressCountDown: View {
     var scheduleDay: ScheduleDay?
+    @EnvironmentObject var userSettings: UserSettings
     @Binding var selectionMode: NutritionScheduleSelection
     @Binding var countDown: TimeInterval?
     var text: String {
         if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
-            return "PERIOD \(periodNumber)"
+            guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
+                  matchingPeriod.textContent != "" else {
+                return "PERIOD \(periodNumber)"
+            }
+            return matchingPeriod.textContent
+            
         }
         else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.nutritionBlock,
                 nutritionSchedule != .nonLunchSchedule {

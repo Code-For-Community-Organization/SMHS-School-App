@@ -36,7 +36,7 @@ struct ContentView: View {
                     }
                 }
             #if DEBUG
-            SettingsView()
+            DeveloperSettingsView()
                 .tabItem {
                     VStack {
                         Image(systemSymbol: .gearshapeFill)
