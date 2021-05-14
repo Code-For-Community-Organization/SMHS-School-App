@@ -79,7 +79,7 @@ struct TodayViewHeader: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .textAlign(.leading)
-                Text(viewModel.dateHelper.currentDate)
+                Text(viewModel.dateHelper.todayDateDescription)
                     .fontWeight(.semibold)
                     .font(.title2)
                     .textAlign(.leading)

@@ -79,18 +79,43 @@ class SMHS_ScheduleTests: XCTestCase {
     }
 
     func testParseScheduleData() throws {
-        let sampleText = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Santa Margarita Catholic High School/finalsite//NONSGML v1.0//EN\r\nCALSCALE:GREGORIAN\r\nX-WR-CALNAME:BELL Schedule\r\nBEGIN:VEVENT\r\nUID:703702@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210322\r\nSUMMARY:SMCHS Events\r\nDESCRIPTION:\\nSpring Recess\\n\\nFaculty/Student Holiday\\n\\nB JV/V Golf @ Ayala Tourn\\n\\nG JV Tennis vs Tesoro 3:00\\n\\nG V Golf vs Aliso Niguel 4:30\\n\\nG V Tennis @ Tesoro 3:00\\n\r\nPRIORITY:0\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:703695@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210323\r\nSUMMARY:Special Schedule Day 5\r\nDESCRIPTION:Period 5                                   8:00-9:05\\n\\nPeriod 6                                   9:12-10:22 \\n(5 minutes for announcements)\\n\\nNutrition             Period 7 \\n10:22-11:02       10:29-11:34 \\n\\nPeriod 7             Nutrition \\n11:09-12:14      11:34-12:14 \\n\\nPeriod 1                                   12:21-1:26 \\n\\nClass Officer Elections            1:31-2:00 \\n(So/Jr report to Distribution Periods for elections) \\n\\nOffice Hours                            2:05-2:30 \\n------------------------------- \\n\\nClass Officer Elections\\n\\n(So/Jr 8:00-2:00)\\n\\n(Fr/Sr 8:00-1:26)\\n\\nHomecoming Spirit Week\\n\\nB FS/JV/V Soccer @ MD 3:15/7:00/5:00\\n\\nFr/V Baseball @ Dana Hills 3:15/3:15\\n\\nG FS/JV/V Soccer vs MD 3:00/7:15/5:30\\n\\nG JV Tennis @ JSerra 3:00\\n\\nG V Tennis vs JSerra 3:15\\n\\nJV Blue Baseball vs Dana Hills 3:15\\n\\nKairos\\n\\nSball @ San Clemente 3:30\\n\r\nPRIORITY:0\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:703692@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210324\r\n"
+        let sampleText = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Santa Margarita Catholic High School/finalsite//NONSGML v1.0//EN\r\nCALSCALE:GREGORIAN\r\nX-WR-CALNAME:BELL Schedule\r\nBEGIN:VEVENT\r\nUID:703702@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210322\r\nSUMMARY:SMCHS Events\r\nDESCRIPTION:\\nSpring Recess\\n\\nFaculty/Student Holiday\\n\\nB JV/V Golf @ Ayala Tourn\\n\\nG JV Tennis vs Tesoro 3:00\\n\\nG V Golf vs Aliso Niguel 4:30\\n\\nG V Tennis @ Tesoro 3:00\\n\r\nPRIORITY:0\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:703695@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210323\r\nSUMMARY:Special Schedule Day 5\r\nDESCRIPTION:Period 5                                   8:00-9:05\\n\\nPeriod 6                                   9:12-10:22 \\n(5 minutes for announcements)\\n\\nNutrition             Period 7 \\n10:22-11:02       10:29-11:34 \\n\\nPeriod 7             Nutrition \\n11:09-12:14      11:34-12:14 \\n\\nPeriod 1                                   12:21-1:26 \\n\\nClass Officer Elections            1:31-2:00 \\n(So/Jr report to Distribution Periods for elections) \\n\\nOffice Hours                            2:05-2:30 \\n------------------------------- \\n\\nClass Officer Elections\\n\\n(So/Jr 8:00-2:00)\\n\\n(Fr/Sr 8:00-1:26)\\n\\nHomecoming Spirit Week\\n\\nB FS/JV/V Soccer @ MD 3:15/7:00/5:00\\n\\nFr/V Baseball @ Dana Hills 3:15/3:15\\n\\nG FS/JV/V Soccer vs MD 3:00/7:15/5:30\\n\\nG JV Tennis @ JSerra 3:00\\n\\nG V Tennis vs JSerra 3:15\\n\\nJV Blue Baseball vs Dana Hills 3:15\\n\\nKairos\\n\\nSball @ San Clemente 3:30\\n\r"
         let expectation = XCTestExpectation(description: "Wait for parsing text")
         var scheduleWeeks: [ScheduleWeek]?
-        ScheduleDateHelper().parseScheduleData(withRawText: sampleText){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let mockDate = formatter.date(from: "2021/03/01 09:30")!
+        ScheduleDateHelper().parseScheduleData(withRawText: sampleText, mockDate: mockDate){
             scheduleWeeks = $0
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10)
-        _ = try XCTUnwrap(scheduleWeeks)
+        let unwrappedScheduleWeeks = try XCTUnwrap(scheduleWeeks) 
+        let date = formatter.date(from: "2021/03/23 07:00")
+        let scheduleDay = try XCTUnwrap(unwrappedScheduleWeeks.first?.scheduleDays.first)
         
+        XCTAssertEqual(unwrappedScheduleWeeks.count, 1)
+        XCTAssertEqual(scheduleDay.date, date)
+        XCTAssertEqual(scheduleDay.scheduleText, "Period 5                                   8:00-9:05\nPeriod 6                                   9:12-10:22 \n(5 minutes for announcements)\nNutrition             Period 7 \n10:22-11:02       10:29-11:34 \nPeriod 7             Nutrition \n11:09-12:14      11:34-12:14 \nPeriod 1                                   12:21-1:26 \nClass Officer Elections            1:31-2:00 \n(So/Jr report to Distribution Periods for elections) \nOffice Hours                            2:05-2:30 \n------------------------------- \nClass Officer Elections\n(So/Jr 8:00-2:00)\n(Fr/Sr 8:00-1:26)\nHomecoming Spirit Week\nB FS/JV/V Soccer @ MD 3:15/7:00/5:00\nFr/V Baseball @ Dana Hills 3:15/3:15\nG FS/JV/V Soccer vs MD 3:00/7:15/5:30\nG JV Tennis @ JSerra 3:00\nG V Tennis vs JSerra 3:15\nJV Blue Baseball vs Dana Hills 3:15\nKairos\nSball @ San Clemente 3:30\n")
     }
     
+    func testParseScheduleDataPastDate() throws {
+        let sampleText = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Santa Margarita Catholic High School/finalsite//NONSGML v1.0//EN\r\nCALSCALE:GREGORIAN\r\nX-WR-CALNAME:BELL Schedule\r\nBEGIN:VEVENT\r\nUID:703702@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210322\r\nSUMMARY:SMCHS Events\r\nDESCRIPTION:\\nSpring Recess\\n\\nFaculty/Student Holiday\\n\\nB JV/V Golf @ Ayala Tourn\\n\\nG JV Tennis vs Tesoro 3:00\\n\\nG V Golf vs Aliso Niguel 4:30\\n\\nG V Tennis @ Tesoro 3:00\\n\r\nPRIORITY:0\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:703695@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210323\r\nSUMMARY:Special Schedule Day 5\r\nDESCRIPTION:Period 5                                   8:00-9:05\\n\\nPeriod 6                                   9:12-10:22 \\n(5 minutes for announcements)\\n\\nNutrition             Period 7 \\n10:22-11:02       10:29-11:34 \\n\\nPeriod 7             Nutrition \\n11:09-12:14      11:34-12:14 \\n\\nPeriod 1                                   12:21-1:26 \\n\\nClass Officer Elections            1:31-2:00 \\n(So/Jr report to Distribution Periods for elections) \\n\\nOffice Hours                            2:05-2:30 \\n------------------------------- \\n\\nClass Officer Elections\\n\\n(So/Jr 8:00-2:00)\\n\\n(Fr/Sr 8:00-1:26)\\n\\nHomecoming Spirit Week\\n\\nB FS/JV/V Soccer @ MD 3:15/7:00/5:00\\n\\nFr/V Baseball @ Dana Hills 3:15/3:15\\n\\nG FS/JV/V Soccer vs MD 3:00/7:15/5:30\\n\\nG JV Tennis @ JSerra 3:00\\n\\nG V Tennis vs JSerra 3:15\\n\\nJV Blue Baseball vs Dana Hills 3:15\\n\\nKairos\\n\\nSball @ San Clemente 3:30\\n\r"
+        let expectation = XCTestExpectation(description: "Wait for parsing text")
+        var scheduleWeeks: [ScheduleWeek]?
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let mockDate = formatter.date(from: "2021/05/01 09:30")!
+        ScheduleDateHelper().parseScheduleData(withRawText: sampleText, mockDate: mockDate){
+            scheduleWeeks = $0
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+        let unwrappedScheduleWeeks = try XCTUnwrap(scheduleWeeks)
+        XCTAssertTrue(unwrappedScheduleWeeks.isEmpty)
+    }
     func testHighlightButtonStyle() {
         let view = HighlightButtonStyleTestView()
         assertSnapshot(matching: view, as: .image)
@@ -133,6 +158,12 @@ class SMHS_ScheduleTests: XCTestCase {
         let view = OnboardingView(versionStatus: .updated, stayInPresentation: .constant(true)).fullFrame()
         assertSnapshot(matching: view, as: .image)
     }
+    
+    func testNewsDetailView() {
+        let view = NewsDetailedView(newsEntry: .constant(.sampleEntry), isActive: .constant(true)).fullFrame()
+        assertSnapshot(matching: view, as: .image)
+    }
+    
     func testScheduleDetailView() {
         let view = ClassScheduleView(scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
             .fullFrame()
@@ -232,6 +263,39 @@ class SMHS_ScheduleTests: XCTestCase {
         
     }
     
+    func testSubHeaderDateText() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let schoolDay = formatter.date(from: "2021/05/10 16:50")!
+        let saturday = formatter.date(from: "2021/01/02 13:00")!
+        let sunday = formatter.date(from: "2021/02/21 19:11")!
+        let scheduleDateHelper1 = ScheduleDateHelper(mockDate: schoolDay)
+        let scheduleDateHelper2 = ScheduleDateHelper(mockDate: saturday)
+        let scheduleDateHelper3 = ScheduleDateHelper(mockDate: sunday)
+        XCTAssertEqual(scheduleDateHelper1.subHeaderText, "Daily Schedule")
+        XCTAssertEqual(scheduleDateHelper2.subHeaderText, "School Holiday")
+        XCTAssertEqual(scheduleDateHelper3.subHeaderText, "School Holiday")
+    }
+    
+    func testCurrentWeekday() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let monday = formatter.date(from: "2021/05/10 16:50")!
+        let tuesday = formatter.date(from: "2021/05/11 16:50")!
+        let wednesday = formatter.date(from: "2021/05/12 16:50")!
+        let saturday = formatter.date(from: "2021/05/15 08:00")!
+        let scheduleDateHelper1 = ScheduleDateHelper(mockDate: monday)
+        let scheduleDateHelper2 = ScheduleDateHelper(mockDate: tuesday)
+        let scheduleDateHelper3 = ScheduleDateHelper(mockDate: wednesday)
+        let scheduleDateHelper4 = ScheduleDateHelper(mockDate: saturday)
+        
+        XCTAssertEqual(scheduleDateHelper1.currentWeekday, "Monday")
+        XCTAssertEqual(scheduleDateHelper2.currentWeekday, "Tuesday")
+        XCTAssertEqual(scheduleDateHelper3.currentWeekday, "Wednesday")
+        XCTAssertEqual(scheduleDateHelper4.currentWeekday, "Saturday")
+    }
     func testProgressRingNutrition() {
         
     }

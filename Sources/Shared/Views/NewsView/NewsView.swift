@@ -17,11 +17,12 @@ struct NewsView: View {
             ScrollView {
                 LazyVStack {
                     VStack {
-                        Text("CAMPUS NEWS")
+                        Text("Campus News")
                             .fontWeight(.semibold)
                             .font(.caption)
                             .foregroundColor(Color.platformSecondaryLabel)
-                            .textAlign(.leading)
+                            .textCase(.uppercase)
+                            .textAlign(.leading) 
                         
                         Text("Top Stories")
                             .fontWeight(.black)
@@ -39,7 +40,7 @@ struct NewsView: View {
                 }
                 .padding(.horizontal)
             }
-            .navigationBarTitle(scheduleViewModel.dateHelper.currentDate)
+            .navigationBarTitle(scheduleViewModel.dateHelper.todayDateDescription)
 
         }
         .onAppear{
