@@ -35,6 +35,10 @@ struct ContentView: View {
                         Text("News")
                     }
                 }
+            SearchView()
+                .tabItem {
+                    Label("Search", systemSymbol: .magnifyingglass)
+                }
             #if DEBUG
             DeveloperSettingsView()
                 .tabItem {
