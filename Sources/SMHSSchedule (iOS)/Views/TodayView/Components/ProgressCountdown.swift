@@ -12,6 +12,7 @@ struct ProgressCountDown: View {
     @EnvironmentObject var userSettings: UserSettings
     @Binding var selectionMode: NutritionScheduleSelection
     @Binding var countDown: TimeInterval?
+    var mockDate: Date?
     var text: String {
         if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
             guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
@@ -26,7 +27,8 @@ struct ProgressCountDown: View {
             return "NUTRITION"
 
         }
-        else if Date.getDayOfTheWeek() == 0 || Date.getDayOfTheWeek() == 6 { 
+        else if Date.getDayOfTheWeek(for: mockDate ?? Date()) == 0 ||
+                    Date.getDayOfTheWeek(for: mockDate ?? Date()) == 6 {
             return "NO SCHOOL 🙌"
         }
         else {
