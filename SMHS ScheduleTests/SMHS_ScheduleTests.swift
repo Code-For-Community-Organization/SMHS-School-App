@@ -263,6 +263,18 @@ class SMHS_ScheduleTests: XCTestCase {
         
     }
     
+//    func testCountDownLongText() throws {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        let date = formatter.date(from: "2021/05/14 08:30")!
+//        let scheduleDay = ScheduleDay(id: 1, date: date, scheduleText: ScheduleDay.sampleScheduleDay.scheduleText, mockDate: date)
+//        let userSettings = UserSettings()
+//        let index = try XCTUnwrap(userSettings.editableSettings.firstIndex(where: {$0.periodNumber == 6}))
+//        userSettings.editableSettings[index].textContent = "Adkflas;gjdfigjdfiogjsdfiodgfdgjsoderhjguohdruhdfhu"
+//        let view = ProgressRingView(scheduleDay: scheduleDay, selectionMode: .constant(.firstLunch)).fullFrame().environmentObject(userSettings)
+//        assertSnapshot(matching: view, as: .image)
+//    }
     func testSubHeaderDateText() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
