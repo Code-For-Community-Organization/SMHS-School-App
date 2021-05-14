@@ -36,8 +36,8 @@ struct PeriodEditSettingsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .actionSheet(isPresented: $showActionSheet) {
-            ActionSheet(title: Text("Title"),
-                                 message: Text("Are you sure you want to clear all periods?"),
+            ActionSheet(title: Text("Clear all Periods"),
+                                 message: Text("Are you sure you want to clear all periods names?"),
                                  buttons: [.destructive(Text("Discard Changes"), action: {userSettings.resetEditableSettings()}),
                                            .cancel(Text("Keep Editing"), action: {showActionSheet = false})])
                 }
