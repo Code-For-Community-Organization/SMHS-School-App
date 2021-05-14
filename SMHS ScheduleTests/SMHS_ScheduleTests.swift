@@ -96,44 +96,46 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
 
-//    func testTodayView() {
-//        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
-//            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-//            .environmentObject(UserSettings())
-//        assertSnapshot(matching: todayView, as: .recursiveDescription)
-//    }
-//
-//    func testScheduleView() {
-//        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
-//            .environmentObject(UserSettings())
-//        assertSnapshot(matching: view, as: .recursiveDescription)
-//    }
-//
-//    func testContentView() {
-//        let view = ContentView()
-//        let hostingView = UIHostingController(rootView: view)
-//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-//    }
-//
-//    func testNewsView() {
-//        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
-//            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-//        let hostingView = UIHostingController(rootView: view)
-//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-//    }
-//
+    func testTodayView() {
+        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
+            .fullFrame()
+            .environmentObject(UserSettings())
+        let hostingView = UIHostingController(rootView: todayView)
+        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+    }
+
+    func testScheduleView() {
+        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
+            .environmentObject(UserSettings())
+        let hostingView = UIHostingController(rootView: view)
+        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+    }
+    
+    func testContentView() {
+        let view = ContentView()
+        let hostingView = UIHostingController(rootView: view)
+        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+    }
+    
+    func testNewsView() {
+        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
+            .fullFrame()
+        let hostingView = UIHostingController(rootView: view)
+        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+    }
+
     func testOnboardingViewNew() {
-        let view = OnboardingView(versionStatus: .new, stayInPresentation: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        let view = OnboardingView(versionStatus: .new, stayInPresentation: .constant(true)).fullFrame()
         assertSnapshot(matching: view, as: .image)
     }
 
     func testOnboardingViewUpdate() {
-        let view = OnboardingView(versionStatus: .updated, stayInPresentation: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        let view = OnboardingView(versionStatus: .updated, stayInPresentation: .constant(true)).fullFrame()
         assertSnapshot(matching: view, as: .image)
     }
     func testScheduleDetailView() {
         let view = ClassScheduleView(scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
-            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+            .fullFrame()
         assertSnapshot(matching: view, as: .image)
     }
     func testParseClassPeriods() {
@@ -183,7 +185,7 @@ class SMHS_ScheduleTests: XCTestCase {
     }
     
     func testPeriodEditSettingsViewEmpty() {
-        let view = PeriodEditSettingsView(showModal: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).environmentObject(UserSettings())
+        let view = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(UserSettings())
         assertSnapshot(matching: view, as: .image)
       
     }
@@ -192,8 +194,9 @@ class SMHS_ScheduleTests: XCTestCase {
         userSettings.editableSettings[0].textContent = "English"
         userSettings.editableSettings[6].textContent = "P.E."
         userSettings.editableSettings[3].textContent = "Spanish"
-        let view2 = PeriodEditSettingsView(showModal: .constant(true)).frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).environmentObject(userSettings)
+        let view2 = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(userSettings)
         assertSnapshot(matching: view2, as: .image)
+        userSettings.resetEditableSettings()
     }
     func testPeriodEditableReset() {
         let userSettings = UserSettings()
@@ -210,6 +213,28 @@ class SMHS_ScheduleTests: XCTestCase {
         XCTAssertEqual(userSettings.editableSettings[0].textContent, "")
     }
     
+    func testProgressRingWeekend() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let weekendDateTime = formatter.date(from: "2021/05/02 09:30")!
+        let view = ProgressCountDown(selectionMode: .constant(.firstLunch), countDown: .constant(nil), mockDate: weekendDateTime).fullFrame()
+        assertSnapshot(matching: view, as: .image)
+    }
+    
+    func testProgressRingPeriod() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let date = formatter.date(from: "2021/05/10 16:50")!
+        let scheduleDay = ScheduleDay(id: 1, date: date, scheduleText: ScheduleDay.sampleScheduleDay.scheduleText, mockDate: date)
+        let view = ProgressRingView(scheduleDay: scheduleDay, selectionMode: .constant(.firstLunch), countDown: TimeInterval(2453), animation: false).fullFrame().environmentObject(UserSettings())
+        assertSnapshot(matching: view, as: .image)
+        
+    }
+    
+    func testProgressRingNutrition() {
+        
+    }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
@@ -217,4 +242,10 @@ class SMHS_ScheduleTests: XCTestCase {
         }
     }
 
+}
+
+extension View {
+    func fullFrame() -> some View {
+        self.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+    }
 }

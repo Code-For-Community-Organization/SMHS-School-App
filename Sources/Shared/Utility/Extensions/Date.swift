@@ -32,15 +32,15 @@ extension Date {
     }
     
     func localDate() -> Date {
-            let nowUTC = Date()
+            let nowUTC = self
             let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowUTC))
             guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: nowUTC) else {return Date()}
 
             return localDate
     }
     
-    func convertToReferenceDateLocalTime() -> Date? {
-        let localDate = self.localDate()
+    func convertToReferenceDateLocalTime(convert: Bool = true) -> Date? {
+        let localDate = convert ? self.localDate() : self
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: localDate)
@@ -57,5 +57,4 @@ extension TimeInterval {
       return (Int(self) / 3600, (Int(self) % 3600) / 60, (Int(self) % 3600) % 60)
     }
 }
-
 
