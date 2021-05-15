@@ -10,7 +10,6 @@ import Kingfisher
 
 struct NewsDetailedView: View {
     @Binding var newsEntry: NewsEntry
-    @Binding var isActive: Bool
     let scheduleDateHelper = ScheduleDateHelper()
     var body: some View {
         GeometryReader {geo in
@@ -80,6 +79,6 @@ struct NewsDetailedView: View {
 
 struct NewsDetailedView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsDetailedView(newsEntry: .constant(.sampleEntry), isActive: .constant(true))
+        NewsDetailedView(newsEntry: .constant(.sampleEntry))
     }
 }

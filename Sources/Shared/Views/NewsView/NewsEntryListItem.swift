@@ -13,7 +13,7 @@ struct NewsEntryListItem: View {
     @State var isActive: Bool = false
     var body: some View {
         ZStack {
-            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry, isActive: $isActive)) {
+            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry)) {
                 HStack {
                     VStack {
                         Text(newsEntry.author)
@@ -28,6 +28,7 @@ struct NewsEntryListItem: View {
                     }
                     .foregroundColor(Color.platformLabel)
                     Spacer()
+                    
                     KFImage(newsEntry.imageURL)
                         .placeholder {
                             Color(UIColor.systemGray)

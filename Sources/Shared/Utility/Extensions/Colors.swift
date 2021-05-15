@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 #if canImport(UIKit)
 import UIKit
 
@@ -56,31 +57,13 @@ extension Color {
 #endif
 extension Color {
     static var primary: Color {
-        hexStringToColor(hex: "#3498db")
+        Color(hexadecimal: "#3498db")
     }
     static var secondary: Color {
-        hexStringToColor(hex: "#12C4A1")
+        Color(hexadecimal: "12C4A1")
+    }
+    static var SMBlue: Color {
+        Color(hexadecimal: "0736A4")
     }
 }
 
-func hexStringToColor (hex: String) -> Color {
-    var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-    if (cString.hasPrefix("#")) {
-        cString.remove(at: cString.startIndex)
-    }
-
-    if ((cString.count) != 6) {
-        return Color.gray
-    }
-    var rgbValue: UInt64 = 0
-    Scanner(string: cString).scanHexInt64(&rgbValue)
-    let red: Double = Double((rgbValue & 0xFF0000) >> 16)
-    let green: Double = Double((rgbValue & 0x00FF00) >> 8)
-    let blue: Double = Double(rgbValue & 0x0000FF)
-    return Color(.sRGB,
-                 red: red / 255.0,
-                 green: green / 255.0,
-                 blue: blue / 255.0,
-                 opacity: 1.0)
-}
