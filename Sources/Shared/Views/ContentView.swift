@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var scheduleViewViewModel = ScheduleViewModel()
+    @StateObject var newsViewViewModel = NewsViewViewModel()
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -28,14 +29,14 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-            NewsView(scheduleViewModel: scheduleViewViewModel)
+            NewsView(newsViewViewModel: newsViewViewModel, scheduleViewModel: scheduleViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .newspaperFill)
                         Text("News")
                     }
                 }
-            SearchView()
+            SearchView(scheduleViewModel: scheduleViewViewModel, newsViewViewModel: newsViewViewModel)
                 .tabItem {
                     Label("Search", systemSymbol: .magnifyingglass)
                 }

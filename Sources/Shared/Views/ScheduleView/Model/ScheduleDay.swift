@@ -22,7 +22,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var periods: [ClassPeriod] {
         parseClassPeriods()
     }
-    var currentDate: Date {
+    fileprivate var currentDate: Date {
         return mockDate ?? Date()
     }
     private var currentDateReferenceTime: Date? {currentDate.convertToReferenceDateLocalTime()}

@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher 
 
 struct NewsView: View {
-    @StateObject var newsViewViewModel = NewsViewViewModel()
+    @StateObject var newsViewViewModel: NewsViewViewModel
     @StateObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
     var body: some View {
@@ -47,11 +47,5 @@ struct NewsView: View {
             newsViewViewModel.fetchXML()
         }
         .navigationBarTitleDisplayMode(.automatic)
-    }
-}
-
-struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsView(scheduleViewModel: ScheduleViewModel())
     }
 }
