@@ -71,7 +71,9 @@ struct NewsDetailedView: View {
         }
         .edgesIgnoringSafeArea(.top)
         .onAppear {
-            newsEntry.loadBodyText{newsEntry.bodyText = $0}
+            var entry = newsEntry
+            newsEntry.loadBodyText{entry.bodyText = $0; newsEntry.bodyText = $0}
+            newsEntry = entry
         }
         .navigationBarTitleDisplayMode(.inline)
     }

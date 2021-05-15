@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class UserSettings: ObservableObject {
+final class UserSettings: ObservableObject {
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
     init(){
