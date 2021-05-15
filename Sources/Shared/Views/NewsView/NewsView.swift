@@ -15,30 +15,34 @@ struct NewsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack {
-                    VStack {
-                        Text("Campus News")
-                            .fontWeight(.semibold)
-                            .font(.caption)
-                            .foregroundColor(Color.platformSecondaryLabel)
-                            .textCase(.uppercase)
-                            .textAlign(.leading) 
-                        
-                        Text("Top Stories")
-                            .fontWeight(.black)
-                            .font(.title)
-                            .foregroundColor(.primary)
-                            .textAlign(.leading)
-                    }
-                    .padding(.horizontal, 3)
-                    .padding(.top, 35)
-                    ForEach(newsViewViewModel.newsEntries, id:\.self){
-                        NewsEntryListItem(newsEntry: $0)
-                    }
-                    .padding(.top, 10)
+                VStack {
+                    NewsSelectionButtons()
+                    LazyVStack {
+                        VStack {
+                            Text("Campus News")
+                                .fontWeight(.semibold)
+                                .font(.caption)
+                                .foregroundColor(Color.platformSecondaryLabel)
+                                .textCase(.uppercase)
+                                .textAlign(.leading)
+                            
+                            Text("Top Stories")
+                                .fontWeight(.black)
+                                .font(.title)
+                                .foregroundColor(.primary)
+                                .textAlign(.leading)
+                        }
+                        .padding(.horizontal, 3)
+                        .padding(.top, 35)
+                        ForEach(newsViewViewModel.newsEntries, id:\.self){
+                            NewsEntryListItem(newsEntry: $0)
+                        }
+                        .padding(.top, 10)
 
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+
             }
             .navigationBarTitle(scheduleViewModel.dateHelper.todayDateDescription)
 
