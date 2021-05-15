@@ -12,6 +12,7 @@ import SwiftSoup
 
 class NewsViewViewModel: ObservableObject {
     var cancellable: AnyCancellable?
+    @Published(key: "bookmarkedEntries") var bookMarkedEntries = [NewsEntry]()
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
     init(newsEntries: [NewsEntry]? = nil) {

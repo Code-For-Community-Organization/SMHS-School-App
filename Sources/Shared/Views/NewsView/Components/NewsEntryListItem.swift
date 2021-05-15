@@ -47,6 +47,14 @@ struct NewsEntryListItem: View {
                 .padding(.vertical, 5)
             }
         }
+        .navigationBarItems(trailing: HStack {
+            Button(action: {}) {
+                Image(systemSymbol: .heartFill)
+            }
+            Button(action: {}) {
+                Image(systemSymbol: .bookmarkFill)
+            }
+        })
  
     }
 }
