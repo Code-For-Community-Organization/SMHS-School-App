@@ -11,6 +11,7 @@ import Kingfisher
 struct NewsEntryListItem: View {
     @State var newsEntry: NewsEntry
     @State var isActive: Bool = false
+    let downsampler = DownsamplingImageProcessor(size: .init(width: 230, height: 230))
     var body: some View {
         ZStack {
             NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry)) {
@@ -30,6 +31,7 @@ struct NewsEntryListItem: View {
                     Spacer()
                     
                     KFImage(newsEntry.imageURL)
+                        .setProcessor(downsampler)
                         .placeholder {
                             Color(UIColor.systemGray)
                         }

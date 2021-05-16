@@ -11,6 +11,7 @@ import Kingfisher
 struct NewsDetailedView: View {
     @Binding var newsEntry: NewsEntry
     let scheduleDateHelper = ScheduleDateHelper()
+    let imageHeight = UIScreen.screenHeight/CGFloat(2)
     var body: some View {
         GeometryReader {geo in
                 ScrollView {
@@ -20,7 +21,7 @@ struct NewsDetailedView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: geo.size.width)
-                            .frame(maxHeight: UIScreen.screenHeight/CGFloat(2))
+                            .frame(maxHeight: imageHeight)
                             .clipped()
                     }
                     else {
@@ -28,7 +29,7 @@ struct NewsDetailedView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: UIScreen.screenWidth)
-                            .frame(maxHeight: UIScreen.screenHeight/CGFloat(2))
+                            .frame(maxHeight: imageHeight)
                             .clipped()
                     }
 

@@ -35,7 +35,6 @@ struct SearchView: View {
                                  hidesNavigationBarDuringPresentation: false,
                                  hidesSearchBarWhenScrolling: false,
                                  cancelClicked: {
-                                    print("cancel clicked")
                                     searchText = ""
                                  },
                                  searchClicked: {
