@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 import Foundation
 
-class ScheduleViewModel: ObservableObject {
+final class ScheduleViewModel: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()

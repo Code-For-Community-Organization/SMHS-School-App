@@ -12,6 +12,7 @@ import SwiftSoup
 
 class NewsViewViewModel: ObservableObject {
     var cancellable: AnyCancellable?
+    @Published(key: "bookmarkedEntries") var bookMarkedEntries = [NewsEntry]()
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
     init(newsEntries: [NewsEntry]? = nil) {
@@ -26,7 +27,6 @@ class NewsViewViewModel: ObservableObject {
             .sink(receiveCompletion: {_ in}){data, response in
                 guard let rawText = String(data: data, encoding: .utf8) else {return}
                 self.newsEntries = self.parseXML(for: rawText)
-                print(self.newsEntries)
             }
 
     }
@@ -65,6 +65,15 @@ class NewsViewViewModel: ObservableObject {
             print(error)
         }
         return nil
+    }
+    
+    func toggleEntryBookmarked(_ entry: NewsEntry) {
+        if bookMarkedEntries.contains(where: {$0.id == entry.id}) {
+            bookMarkedEntries = bookMarkedEntries.filter{$0.id != entry.id}
+        }
+        else {
+            bookMarkedEntries.append(entry)
+        }
     }
 }
 

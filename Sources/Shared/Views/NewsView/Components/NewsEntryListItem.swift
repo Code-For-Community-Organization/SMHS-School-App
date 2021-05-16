@@ -11,9 +11,12 @@ import Kingfisher
 struct NewsEntryListItem: View {
     @State var newsEntry: NewsEntry
     @State var isActive: Bool = false
+    @EnvironmentObject var newsViewViewModel: NewsViewViewModel
+    let downsampler = DownsamplingImageProcessor(size: .init(width: 230, height: 230))
     var body: some View {
         ZStack {
-            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry, isActive: $isActive)) {
+            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry).environmentObject(newsViewViewModel), isActive: $isActive, label: {EmptyView()})
+            Button(action: {isActive = true}) {
                 HStack {
                     VStack {
                         Text(newsEntry.author)
@@ -28,7 +31,9 @@ struct NewsEntryListItem: View {
                     }
                     .foregroundColor(Color.platformLabel)
                     Spacer()
+                    
                     KFImage(newsEntry.imageURL)
+                        .setProcessor(downsampler)
                         .placeholder {
                             Color(UIColor.systemGray)
                         }
@@ -45,7 +50,21 @@ struct NewsEntryListItem: View {
                 }
                 .padding(.vertical, 5)
             }
+
         }
+        .contextMenu {
+            if newsViewViewModel.bookMarkedEntries.contains(where: {$0.id == newsEntry.id}) {
+                Button("Unbookmark", systemImage: .bookmarkFill) {
+                    newsViewViewModel.toggleEntryBookmarked(newsEntry)
+                }
+            }
+            else {
+                Button("Bookmark", systemImage: .bookmark) {
+                    newsViewViewModel.toggleEntryBookmarked(newsEntry)
+                }
+            }
+        }
+        .padding(.bottom, 3)
  
     }
 }

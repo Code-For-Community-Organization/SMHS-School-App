@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class OnboardingWrapperViewModel: ObservableObject {
+final class OnboardingWrapperViewModel: ObservableObject {
     @Published var stayInPresentation = true
     var versionStatus: AppVersionStatus
     

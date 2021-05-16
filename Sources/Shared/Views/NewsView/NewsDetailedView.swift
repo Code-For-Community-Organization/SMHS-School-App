@@ -9,9 +9,10 @@ import SwiftUI
 import Kingfisher
 
 struct NewsDetailedView: View {
+    @EnvironmentObject var newsViewViewModel: NewsViewViewModel
     @Binding var newsEntry: NewsEntry
-    @Binding var isActive: Bool
     let scheduleDateHelper = ScheduleDateHelper()
+    let imageHeight = UIScreen.screenHeight/CGFloat(2)
     var body: some View {
         GeometryReader {geo in
                 ScrollView {
@@ -21,7 +22,7 @@ struct NewsDetailedView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: geo.size.width)
-                            .frame(maxHeight: UIScreen.screenHeight/CGFloat(2))
+                            .frame(maxHeight: imageHeight)
                             .clipped()
                     }
                     else {
@@ -29,7 +30,7 @@ struct NewsDetailedView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: UIScreen.screenWidth)
-                            .frame(maxHeight: UIScreen.screenHeight/CGFloat(2))
+                            .frame(maxHeight: imageHeight)
                             .clipped()
                     }
 
@@ -72,14 +73,17 @@ struct NewsDetailedView: View {
         }
         .edgesIgnoringSafeArea(.top)
         .onAppear {
-            newsEntry.loadBodyText{newsEntry.bodyText = $0}
+            var entry = newsEntry
+            newsEntry.loadBodyText{entry.bodyText = $0; newsEntry.bodyText = $0}
+            newsEntry = entry
         }
+        .navigationBarItems(trailing: NewsNavigationBarButtons(newsEntry: newsEntry).environmentObject(newsViewViewModel))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct NewsDetailedView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsDetailedView(newsEntry: .constant(.sampleEntry), isActive: .constant(true))
+        NewsDetailedView(newsEntry: .constant(.sampleEntry))
     }
 }
