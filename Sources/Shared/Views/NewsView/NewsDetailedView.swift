@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct NewsDetailedView: View {
+    @EnvironmentObject var newsViewViewModel: NewsViewViewModel
     @Binding var newsEntry: NewsEntry
     let scheduleDateHelper = ScheduleDateHelper()
     let imageHeight = UIScreen.screenHeight/CGFloat(2)
@@ -76,6 +77,7 @@ struct NewsDetailedView: View {
             newsEntry.loadBodyText{entry.bodyText = $0; newsEntry.bodyText = $0}
             newsEntry = entry
         }
+        .navigationBarItems(trailing: NewsNavigationBarButtons(newsEntry: newsEntry).environmentObject(newsViewViewModel))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

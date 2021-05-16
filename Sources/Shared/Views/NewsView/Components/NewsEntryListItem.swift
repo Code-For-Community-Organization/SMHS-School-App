@@ -11,10 +11,12 @@ import Kingfisher
 struct NewsEntryListItem: View {
     @State var newsEntry: NewsEntry
     @State var isActive: Bool = false
+    @EnvironmentObject var newsViewViewModel: NewsViewViewModel
     let downsampler = DownsamplingImageProcessor(size: .init(width: 230, height: 230))
     var body: some View {
         ZStack {
-            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry)) {
+            NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry).environmentObject(newsViewViewModel), isActive: $isActive, label: {EmptyView()})
+            Button(action: {isActive = true}) {
                 HStack {
                     VStack {
                         Text(newsEntry.author)
@@ -48,15 +50,8 @@ struct NewsEntryListItem: View {
                 }
                 .padding(.vertical, 5)
             }
+
         }
-        .navigationBarItems(trailing: HStack {
-            Button(action: {}) {
-                Image(systemSymbol: .heartFill)
-            }
-            Button(action: {}) {
-                Image(systemSymbol: .bookmarkFill)
-            }
-        })
  
     }
 }

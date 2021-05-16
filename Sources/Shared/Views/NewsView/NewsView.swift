@@ -12,11 +12,12 @@ struct NewsView: View {
     @StateObject var newsViewViewModel: NewsViewViewModel
     @StateObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
+    @State var selection = 1
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    NewsSelectionButtons()
+                    NewsSelectionButtons(selected: $selection)
                     LazyVStack {
                         VStack {
                             Text("Campus News")
@@ -34,11 +35,19 @@ struct NewsView: View {
                         }
                         .padding(.horizontal, 3)
                         .padding(.top, 35)
-                        ForEach(newsViewViewModel.newsEntries, id:\.self){
-                            NewsEntryListItem(newsEntry: $0)
+                        .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
+                        if selection == 1 {
+                            ForEach(newsViewViewModel.newsEntries, id:\.self){
+                                NewsEntryListItem(newsEntry: $0)
+                                    .environmentObject(newsViewViewModel)
+                            }
                         }
-                        .padding(.top, 10)
-
+                        else {
+                            ForEach(newsViewViewModel.bookMarkedEntries, id:\.self){
+                                NewsEntryListItem(newsEntry: $0)
+                                    .environmentObject(newsViewViewModel)
+                            }
+                        }
                     }
                     .padding(.horizontal)
                 }
