@@ -27,14 +27,12 @@ struct NewsView: View {
                                 .textCase(.uppercase)
                                 .textAlign(.leading)
                             
-                            Text("Top Stories")
+                            Text(selection == 1 ? "Top Stories" : "Your Stories")
                                 .fontWeight(.black)
                                 .font(.title)
                                 .foregroundColor(.primary)
                                 .textAlign(.leading)
                         }
-                        .padding(.horizontal, 3)
-                        .padding(.top, 35)
                         .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
                         if selection == 1 {
                             ForEach(newsViewViewModel.newsEntries, id:\.self){
