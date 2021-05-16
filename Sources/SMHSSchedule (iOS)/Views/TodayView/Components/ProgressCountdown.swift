@@ -9,18 +9,26 @@ import SwiftUI
 
 struct ProgressCountDown: View {
     var scheduleDay: ScheduleDay?
+    @EnvironmentObject var userSettings: UserSettings
     @Binding var selectionMode: NutritionScheduleSelection
     @Binding var countDown: TimeInterval?
+    var mockDate: Date?
     var text: String {
         if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
-            return "PERIOD \(periodNumber)"
+            guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
+                  matchingPeriod.textContent != "" else {
+                return "PERIOD \(periodNumber)"
+            }
+            return matchingPeriod.textContent
+            
         }
         else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.nutritionBlock,
                 nutritionSchedule != .nonLunchSchedule {
             return "NUTRITION"
 
         }
-        else if Date.getDayOfTheWeek() == 0 || Date.getDayOfTheWeek() == 6 { 
+        else if Date.getDayOfTheWeek(for: mockDate ?? Date()) == 0 ||
+                    Date.getDayOfTheWeek(for: mockDate ?? Date()) == 6 {
             return "NO SCHOOL 🙌"
         }
         else {
@@ -34,6 +42,8 @@ struct ProgressCountDown: View {
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.bottom, 20)
+                .minimumScaleFactor(0.5)
+                .frame(maxWidth: 230, maxHeight: 50)
            if let countDown = countDown, let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds() {
             HStack {
                 Text("\(hours)")

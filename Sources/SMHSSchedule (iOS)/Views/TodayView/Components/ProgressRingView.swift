@@ -9,11 +9,19 @@ import SwiftUI
 
 struct ProgressRingView: View {
     var scheduleDay: ScheduleDay?
-    @Binding var selectionMode: NutritionScheduleSelection
+    var selectionMode: Binding<NutritionScheduleSelection>
     @State var countDown: TimeInterval?
-    @State var percent: Double = 0
-    @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect() 
-    var body: some View { 
+    @State var percent: Double?
+    @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    var animation: Bool = true
+    init(scheduleDay: ScheduleDay?, selectionMode: Binding<NutritionScheduleSelection>, countDown: TimeInterval? = nil, percent: Double? = nil, animation: Bool = true) {
+        self.scheduleDay = scheduleDay
+        self.selectionMode = selectionMode
+        self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
+        self.percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue)
+        self.animation = animation
+    }
+    var body: some View {
         ZStack {
             Circle()
                 .stroke(Color.platformSecondaryFill, style: .init(lineWidth: 30, lineCap: .round))
@@ -26,26 +34,19 @@ struct ProgressRingView: View {
                                             center: .center,
                                             startAngle: .degrees(0.0),
                                             endAngle: .degrees(percent*360.0)), style: .init(lineWidth: 30, lineCap: .round))
-                    .animation(.easeInOut)
                     .frame(width: 260, height: 260)
                     .rotationEffect(.degrees(-90))
+                    .animation(animation ? .easeInOut : nil)
             }
             
             ProgressCountDown(scheduleDay: scheduleDay,
-                              selectionMode: $selectionMode,
+                              selectionMode: selectionMode,
                               countDown: $countDown)
             
         }
         .onReceive(timer){_ in
-            self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
-            percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode) ?? 0
-            if countDown != nil, countDown! > 0 {
-                //self.countDown! -= 1
-                
-            }
-            else {
-                //self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode)
-            }
+            self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
+            percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue) ?? 0
         }
         .padding(.vertical, 20)
         

@@ -11,6 +11,7 @@ import SwiftUIVisualEffects
 
 struct TodayView: View {
     @ObservedObject var scheduleViewViewModel: ScheduleViewModel
+    @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
     @State var selectionMode: NutritionScheduleSelection
     init(scheduleViewViewModel: ScheduleViewModel, selectionMode: NutritionScheduleSelection? = nil) {
@@ -58,16 +59,19 @@ struct TodayView: View {
                     }
             }
             
-            TodayViewHeader(viewModel: scheduleViewViewModel)
+            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel) 
 
         }
         .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $todayViewViewModel.showEditModal, content: {PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal)        .environmentObject(userSettings)
+})
     }
 }
 
 
 struct TodayViewHeader: View {
     @StateObject var viewModel: ScheduleViewModel
+    @StateObject var todayViewModel: TodayViewViewModel
     var body: some View {
         HStack {
             VStack {
@@ -75,7 +79,7 @@ struct TodayViewHeader: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .textAlign(.leading)
-                Text(viewModel.dateHelper.currentDate)
+                Text(viewModel.dateHelper.todayDateDescription)
                     .fontWeight(.semibold)
                     .font(.title2)
                     .textAlign(.leading)
@@ -84,10 +88,11 @@ struct TodayViewHeader: View {
                 
             }
             Spacer()
-            Image(systemSymbol: .calendar)
-                .font(.system(size: 30))
-                .foregroundColor(.secondary)
-
+            Button(action: {todayViewModel.showEditModal = true}, label: {
+                Image(systemSymbol: .ellipsisCircle)
+                    .font(.system(size: 30))
+                    .foregroundColor(.secondary)
+            })
         }
         .padding(EdgeInsets(top: 45, leading: 20, bottom: 10, trailing: 20))
         .vibrancyEffectStyle(.secondaryLabel)

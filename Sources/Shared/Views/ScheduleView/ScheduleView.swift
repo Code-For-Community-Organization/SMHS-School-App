@@ -22,7 +22,7 @@ struct ScheduleView: View {
                 Spacer()
             }
             .edgesIgnoringSafeArea(.bottom)
-            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.currentDate)")
+            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
 
         }
         .navigationBarTitleDisplayMode(.automatic)

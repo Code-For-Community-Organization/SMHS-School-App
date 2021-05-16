@@ -1,0 +1,138 @@
+<_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentV18SMHSSchedule__iOS_12ScheduleViewGVS_30_EnvironmentKeyWritingModifierGSqCS2_12UserSettings____; frame = (0 0; 428 926); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   | <_TtGC7SwiftUI16PlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorGVS_33MulticolumnSplitViewRepresentableVVS_22_VariadicView_Children7ElementOs5NeverGVS_17_UnaryViewAdaptorVS_9EmptyView____; frame = (0 0; 428 926); anchorPoint = (0, 0); tintColor = UIExtendedSRGBColorSpace 0 0.478431 1 1; layer = <CALayer>>
+   |    | <_UISplitViewControllerPanelImplView; frame = (0 0; 428 926); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    | <_UIPanelControllerContentView; frame = (0 0; 428 926); autoresize = W+H; layer = <CALayer>>
+   |    |    |    | <UILayoutContainerView; frame = (0 0; 428 926); clipsToBounds = YES; autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    | <UINavigationTransitionView; frame = (0 0; 428 926); clipsToBounds = YES; autoresize = W+H; layer = <CALayer>>
+   |    |    |    |    |    | <UIViewControllerWrapperView; frame = (0 0; 428 926); layer = <CALayer>>
+   |    |    |    |    |    |    | <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentVVS_22_VariadicView_Children7ElementGVS_18StyleContextWriterVS_19SidebarStyleContext___; frame = (0 0; 428 926); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    | <_TtGC7SwiftUI16PlatformViewHostGVS_P13$7fff5695d72832PlatformViewRepresentableAdaptorGVS_P13$7fff5692293017ListRepresentableGVS_20SystemListDataSourceOs5Never_GOS_19SelectionManagerBoxS4_____; frame = (0 0; 428 918); anchorPoint = (0, 0); tintColor = UIExtendedSRGBColorSpace 0 0.478431 1 1; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    | <_TtC7SwiftUIP33_BFB370BA5F1BADDC9D83021565761A4925UpdateCoalescingTableView; baseClass = UITableView; frame = (0 0; 428 918); clipsToBounds = YES; gestureRecognizers = <NSArray>; layer = <CALayer>; contentOffset: {0, -143}; contentSize: {428, 747.66666158040368}; adjustedContentInset: {143, 0, 0, 0}; dataSource: <_TtGC7SwiftUIP13$7fff56921d2819ListCoreCoordinatorGVS_20SystemListDataSourceOs5Never_GOS_19SelectionManagerBoxS2___>>
+   |    |    |    |    |    |    |    |    |    | <UITableViewWrapperView; frame = (20 0; 388 918); gestureRecognizers = <NSArray>; layer = <CALayer>; contentOffset: {0, 0}; contentSize: {388, 918}; adjustedContentInset: {0, 0, 0, 0}>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 666.333; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 44; 388 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 134.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 622.333; 388 44); autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 153.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 578.333; 388 44); autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 127.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 534.333; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 125 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 427.667; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 44; 388 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 108 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 383.667; 388 44); autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 135.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 339.667; 388 44); autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 151 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 295.667; 388 44); autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 125.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 251.667; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 121.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 145; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 44; 388 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 108.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreCellHost; baseClass = UITableViewCell; frame = (0 101; 388 44); clipsToBounds = YES; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 388 44); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Cell; backgroundColor = <UIDynamicSystemColor; name = tableCellGroupedBackgroundColor>>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 388 44); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <UITableViewCellContentView; frame = (0 0; 388 44); gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewGVS_15ModifiedContentVS_14_ViewList_ViewVVS_17CellForRowVisitor12CellModifier__; frame = (0 0; 388 44); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (16 43.6667; 372 0.333333); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (20 12; 133 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (360 16; 7 12); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    | <_UIScrollViewScrollIndicator; frame = (418 769; 7 3); alpha = 0; autoresize = TM; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 7 3); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreHeaderHost; baseClass = UITableViewHeaderFooterView; frame = (0 0; 428 38.3333); text = ''; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 428 38.3333); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Header/Footer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UITableViewHeaderFooterContentView; frame = (20 0; 388 38.3333); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewVS_7AnyView_; frame = (0 0; 388 38.3333); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (0 6; 148.333 26.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreHeaderHost; baseClass = UITableViewHeaderFooterView; frame = (0 55.6667; 428 45.3333); text = ''; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 428 45.3333); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Header/Footer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UITableViewHeaderFooterContentView; frame = (20 0; 388 45.3333); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewVS_7AnyView_; frame = (0 0; 388 45.3333); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (2 19; 15.6667 14.6667); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (27.6667 16; 183.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreHeaderHost; baseClass = UITableViewHeaderFooterView; frame = (0 206.333; 428 45.3333); text = ''; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 428 45.3333); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Header/Footer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UITableViewHeaderFooterContentView; frame = (20 0; 388 45.3333); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewVS_7AnyView_; frame = (0 0; 388 45.3333); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (2 19; 15.6667 14.6667); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (27.6667 16; 182 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <SwiftUI.ListCoreHeaderHost; baseClass = UITableViewHeaderFooterView; frame = (0 489; 428 45.3333); text = ''; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UISystemBackgroundView; frame = (0 0; 428 45.3333); layer = <CALayer>; configuration = <_UIBackgroundViewConfiguration; Base Style = Grouped List Header/Footer>>
+   |    |    |    |    |    |    |    |    |    |    | <_UITableViewHeaderFooterContentView; frame = (20 0; 388 45.3333); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    | <_TtGC7SwiftUI15ListHostingViewVS_7AnyView_; frame = (0 0; 388 45.3333); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (2 19; 15.6667 14.6667); anchorPoint = (0, 0); autoresizesSubviews = NO; layer = <SwiftUI.ImageLayer>>
+   |    |    |    |    |    |    |    |    |    |    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (27.6667 16; 187 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 428 0); layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    | <_UIScrollViewScrollIndicator; frame = (422 92.6667; 3 679.333); alpha = 0; autoresize = LM; layer = <CALayer>>
+   |    |    |    |    |    |    |    |    |    |    | <UIView; frame = (0 0; 3 679.333); layer = <CALayer>>
+   |    |    |    |    | <UINavigationBar; frame = (0 47; 428 96); opaque = NO; autoresize = W; layer = <CALayer>>
+   |    |    |    |    |    | <_UIBarBackground; frame = (0 -47; 428 91); userInteractionEnabled = NO; layer = <CALayer>>
+   |    |    |    |    |    |    | <UIVisualEffectView; frame = (0 0; 428 91); alpha = 0; layer = <CALayer>> effect=none
+   |    |    |    |    |    |    |    | <_UIVisualEffectBackdropView; frame = (0 0; 428 91); autoresize = W+H; userInteractionEnabled = NO; layer = <UICABackdropLayer>>
+   |    |    |    |    |    |    | <_UIBarBackgroundShadowView; frame = (0 91; 428 0.333333); layer = <CALayer>> clientRequestedContentView effect=none
+   |    |    |    |    |    |    |    | <_UIBarBackgroundShadowContentImageView; frame = (0 0; 428 0.333333); alpha = 0; autoresize = W+H; userInteractionEnabled = NO; layer = <CALayer>>
+   |    |    |    |    |    | <_UINavigationBarLargeTitleView; frame = (0 44; 428 52); clipsToBounds = YES; layer = <CALayer>>
+   |    |    |    |    |    |    | <UILabel; frame = (20 3.66667; 112.667 40.6667); text = 'May 13'; userInteractionEnabled = NO; layer = <_UILabelLayer>>
+   |    |    |    |    |    | <_UINavigationBarContentView; frame = (0 0; 428 44); layer = <CALayer>> layout=
+   |    |    |    |    |    |    | <UILabel; frame = (186 11.6667; 56 20.3333); text = 'May 13'; alpha = 0; userInteractionEnabled = NO; layer = <_UILabelLayer>>
+   |    |    |    |    |    | <UIView; frame = (0 0; 0 0); userInteractionEnabled = NO; layer = <CALayer>>
