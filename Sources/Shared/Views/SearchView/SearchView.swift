@@ -31,8 +31,8 @@ struct SearchView: View {
             }
             .navigationBarSearch($searchText,
                                  placeholder: "Dates, News, SM Website, and More",
-                                 hidesNavigationBarDuringPresentation: true,
-                                 hidesSearchBarWhenScrolling: true,
+                                 hidesNavigationBarDuringPresentation: false,
+                                 hidesSearchBarWhenScrolling: false,
                                  cancelClicked: {
                                     print("cancel clicked")
                                     searchText = ""
