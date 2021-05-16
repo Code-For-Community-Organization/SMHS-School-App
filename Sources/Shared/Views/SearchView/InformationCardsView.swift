@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InformationCardsView: View {
     @State var showWebView = false
+    @State private var informationCard: InformationCard?
     let columns = Array.init(repeating: GridItem(.adaptive(minimum: 180)), count: 1)
     
     var body: some View {
@@ -17,7 +18,7 @@ struct InformationCardsView: View {
                 VStack {
                     LazyVGrid(columns: columns, spacing: 30, content: {
                         ForEach(InformationCard.informationCards){card in
-                            Button(action: {showWebView = true}, label: {
+                            Button(action: {informationCard = card; showWebView = true}, label: {
                                 ZStack {
                                     card.image
                                         .resizable()
@@ -42,10 +43,9 @@ struct InformationCardsView: View {
                                 .vibrancyEffectStyle(.secondaryLabel)
                                 .shadow(color: card.backgroundColor.opacity(0.3), radius: 8, x: 4, y: 4)
                             })
-                            .fullScreenCover(isPresented: $showWebView, content: {
-                                SafariView(url: card.link).edgesIgnoringSafeArea(.all)
- 
-                            })
+                            .onAppear{
+                                print("\(card)")
+                            }
 
                         }
                     })
@@ -60,6 +60,9 @@ struct InformationCardsView: View {
         .introspectNavigationController{
             $0.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(Color.primary)]
             $0.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(Color.primary)]
+        }
+        .fullScreenCover(item: $informationCard){
+            SafariView(url: $0.link).edgesIgnoringSafeArea(.all)
         }
     }
 }
