@@ -16,7 +16,7 @@ struct InformationCardsView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                VStack {
+                LazyVStack {
                     LazyVGrid(columns: columns, spacing: 30, content: {
                         ForEach(InformationCard.informationCards){card in
                             Button(action: {informationCard = card; showWebView = true}, label: {
@@ -32,26 +32,23 @@ struct InformationCardsView: View {
                                         .edgesIgnoringSafeArea(.all)
                                     Text(card.title)
                                         .fontWeight(.bold)
+                                        .minimumScaleFactor(0.7)
+                                        .lineLimit(card.lineLimit)
                                         .font(.title3)
                                         .multilineTextAlignment(.center)
-                                        .minimumScaleFactor(0.85)
                                         .padding(.horizontal)
                                         .adaptableTitleColor(colorScheme)
-                                    
                                 }
                                 .blurEffectStyle(.systemUltraThinMaterial)
                                 .roundedCorners(cornerRadius: 10)
                                 .vibrancyEffectStyle(.secondaryLabel)
                                 .shadow(color: card.backgroundColor.opacity(0.3), radius: 8, x: 4, y: 4)
                             })
-                            .onAppear{
-                                print("\(card)")
-                            }
 
                         }
                     })
                     .padding(.horizontal)
-                    .padding(.top, 30)
+                    .padding(.vertical, 30)
                 }
     
                 

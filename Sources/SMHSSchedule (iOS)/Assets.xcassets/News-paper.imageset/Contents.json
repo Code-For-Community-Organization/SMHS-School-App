@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "News-paper.jpg",
-      "idiom" : "universal"
+      "filename" : "News-paper 1@1x.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "News-paper 1@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "News-paper 1@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
