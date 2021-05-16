@@ -26,7 +26,8 @@ struct SearchView: View {
                 else {
                     SearchResultView(searchText: $searchText,
                                      scheduleWeeks: scheduleViewModel.scheduleWeeks,
-                                     newsEntries: newsViewViewModel.newsEntries)
+                                     newsEntries: newsViewViewModel.newsEntries,
+                                     informationCards: InformationCard.informationCards)
                 }
             }
             .navigationBarSearch($searchText,
