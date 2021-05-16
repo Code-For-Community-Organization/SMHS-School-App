@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InformationCardsView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var showWebView = false
     @State private var informationCard: InformationCard?
     let columns = Array.init(repeating: GridItem(.adaptive(minimum: 180)), count: 1)
@@ -27,15 +28,15 @@ struct InformationCardsView: View {
                                         .frame(width: 180, height: 130)
                                     Color.clear.blurEffect().opacity(0.9)
                                     LinearGradient(gradient: Gradient(colors: [card.backgroundColor.opacity(0.3), card.backgroundColor]), startPoint: .leading, endPoint: .trailing)
-                                        .opacity(0.3)
+                                        .opacity(0.5)
                                         .edgesIgnoringSafeArea(.all)
                                     Text(card.title)
                                         .fontWeight(.bold)
                                         .font(.title3)
                                         .multilineTextAlignment(.center)
                                         .minimumScaleFactor(0.85)
-                                        .vibrancyEffect()
                                         .padding(.horizontal)
+                                        .adaptableTitleColor(colorScheme)
                                     
                                 }
                                 .blurEffectStyle(.systemUltraThinMaterial)
@@ -65,10 +66,20 @@ struct InformationCardsView: View {
             SafariView(url: $0.link).edgesIgnoringSafeArea(.all)
         }
     }
+    
 }
 
 struct InformationCardsView_Previews: PreviewProvider {
     static var previews: some View {
         InformationCardsView()
+    }
+}
+
+fileprivate extension View {
+    func adaptableTitleColor(_ colorScheme: ColorScheme) -> AnyView {
+        if colorScheme == .light {
+            return self.foregroundColor(.platformBackground).typeErased()
+        }
+        else {return self.vibrancyEffect().typeErased()}
     }
 }
