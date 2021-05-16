@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsSelectionButtons: View {
-    @State var selected = 1
+    @Binding var selected: Int
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 15) {
@@ -21,16 +21,16 @@ struct NewsSelectionButtons: View {
                         selected = 2
                     }
             }
+            .padding(.horizontal, 20)
    
         }
-        .padding(.top, 10)
-        .padding(.bottom, 25)
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 25, trailing: 0))
         .edgesIgnoringSafeArea(.horizontal)
     }
 }
 
 struct NewsSelectionButtons_Previews: PreviewProvider {
     static var previews: some View {
-        NewsSelectionButtons()
+        NewsSelectionButtons(selected: .constant(1))
     }
 }

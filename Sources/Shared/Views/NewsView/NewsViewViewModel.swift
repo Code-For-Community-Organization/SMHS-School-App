@@ -66,6 +66,15 @@ class NewsViewViewModel: ObservableObject {
         }
         return nil
     }
+    
+    func toggleEntryBookmarked(_ entry: NewsEntry) {
+        if bookMarkedEntries.contains(where: {$0.id == entry.id}) {
+            bookMarkedEntries = bookMarkedEntries.filter{$0.id != entry.id}
+        }
+        else {
+            bookMarkedEntries.append(entry)
+        }
+    }
 }
 
 extension NewsViewViewModel {
