@@ -11,7 +11,6 @@
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F17264EEBF700FF3F28 /* SearchView.swift */; };
 		623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F1A264EED2700FF3F28 /* InformationCard.swift */; };
-		623A7F1E264EF13400FF3F28 /* VisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F1D264EF13400FF3F28 /* VisualEffects */; };
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
@@ -63,6 +62,7 @@
 		6276B5F5264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */; };
 		6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		6287EA612651F513007B41CB /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 6287EA602651F513007B41CB /* SwiftUIX */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
@@ -331,7 +331,6 @@
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
-				623A7F1E264EF13400FF3F28 /* VisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D32126264A52F300C99C42 /* SnapshotTesting in Frameworks */,
+				6287EA612651F513007B41CB /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,7 +823,6 @@
 				62D321122649E4D300C99C42 /* Kingfisher */,
 				62D321152649E64C00C99C42 /* SwiftSoup */,
 				62D3211E264A175C00C99C42 /* SwiftUIX */,
-				623A7F1D264EF13400FF3F28 /* VisualEffects */,
 				623A7F20264F3B3100FF3F28 /* SwiftlySearch */,
 			);
 			productName = "SMHS Schedule";
@@ -846,6 +845,7 @@
 			name = SMHSScheduleTests;
 			packageProductDependencies = (
 				62D32125264A52F300C99C42 /* SnapshotTesting */,
+				6287EA602651F513007B41CB /* SwiftUIX */,
 			);
 			productName = "SMHS ScheduleTests";
 			productReference = 626A2276260035F200903C39 /* SMHSScheduleTests.xctest */;
@@ -940,7 +940,6 @@
 				62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				623A7F1C264EF13400FF3F28 /* XCRemoteSwiftPackageReference "VisualEffects" */,
 				623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
@@ -1418,6 +1417,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				ENABLE_PREVIEWS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sources/SMHSSchedule (iOS)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1428,6 +1428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1444,6 +1445,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				ENABLE_PREVIEWS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Sources/SMHSSchedule (iOS)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1453,6 +1455,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHSSchedule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1550,7 +1553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 903;
+				CURRENT_PROJECT_VERSION = 920;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1574,7 +1577,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 903;
+				CURRENT_PROJECT_VERSION = 920;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1652,14 +1655,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		623A7F1C264EF13400FF3F28 /* XCRemoteSwiftPackageReference "VisualEffects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/VisualEffects";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
-			};
-		};
 		623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thislooksfun/SwiftlySearch";
@@ -1743,11 +1738,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		623A7F1D264EF13400FF3F28 /* VisualEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 623A7F1C264EF13400FF3F28 /* XCRemoteSwiftPackageReference "VisualEffects" */;
-			productName = VisualEffects;
-		};
 		623A7F20264F3B3100FF3F28 /* SwiftlySearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
@@ -1762,6 +1752,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		6287EA602651F513007B41CB /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		629BE8C1263652FA00BC49AD /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
