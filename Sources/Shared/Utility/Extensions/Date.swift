@@ -9,27 +9,13 @@ import Foundation
 
 extension Date {
     
-    static var currentWeekday: Int {
-        get {
-            Calendar.current.component(.weekday, from: Date())-1
-        }
-    }
+    static func currentWeekday(for date: Date = Date()) -> Int {Calendar.current.component(.weekday, from: date)-1}
     
-    static func getDayOfTheWeek(for date: Date) -> Int {
-        Calendar.current.component(.weekday, from: date)-1
-    }
+    static func getDayOfTheWeek(for date: Date = Date()) -> Int {Calendar.current.component(.weekday, from: date)-1}
+        
+    func isBetween(_ date1: Date, and date2: Date) -> Bool {(min(date1, date2) ... max(date1, date2)).contains(self)}
     
-    static func getDayOfTheWeek() -> Int {
-        Calendar.current.component(.weekday, from: Date())-1
-    }
-    
-    func isBetween(_ date1: Date, and date2: Date) -> Bool {
-        return (min(date1, date2) ... max(date1, date2)).contains(self)
-    }
-    
-    static func - (_ lhs: Date, _ rhs: Date) -> TimeInterval {
-        lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
-    }
+    static func - (_ lhs: Date, _ rhs: Date) -> TimeInterval {lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate}
     
     func localDate() -> Date {
             let nowUTC = self
@@ -53,8 +39,6 @@ extension Date {
 }
 
 extension TimeInterval {
-    func secondsToHoursMinutesSeconds () -> (Int, Int, Int) {
-      return (Int(self) / 3600, (Int(self) % 3600) / 60, (Int(self) % 3600) % 60)
-    }
+    func secondsToHoursMinutesSeconds () -> (Int, Int, Int) {(Int(self) / 3600, (Int(self) % 3600) / 60, (Int(self) % 3600) % 60)}
 }
 

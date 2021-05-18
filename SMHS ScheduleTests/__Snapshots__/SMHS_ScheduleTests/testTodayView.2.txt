@@ -1,6 +1,6 @@
 <_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentGS1_V18SMHSSchedule__iOS_9TodayViewVS_12_FrameLayout_GVS_30_EnvironmentKeyWritingModifierGSqCS2_12UserSettings____; frame = (0 0; 428 973); autoresize = W+H; gestureRecognizers = <NSArray>; layer = <CALayer>>
-   | <SwiftUI.HostingScrollView; baseClass = UIScrollView; frame = (0 0; 428 973); anchorPoint = (0, 0); clipsToBounds = YES; gestureRecognizers = <NSArray>; layer = <CALayer>; contentOffset: {0, -46.666666666666664}; contentSize: {428, 1164.6666666666665}; adjustedContentInset: {47, 0, 0, 0}>
-   |    | <_TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer; frame = (0 0; 428 1164.67); layer = <CALayer>>
+   | <SwiftUI.HostingScrollView; baseClass = UIScrollView; frame = (0 0; 428 973); anchorPoint = (0, 0); clipsToBounds = YES; gestureRecognizers = <NSArray>; layer = <CALayer>; contentOffset: {0, -46.666666666666664}; contentSize: {428, 1132.3333333333333}; adjustedContentInset: {47, 0, 0, 0}>
+   |    | <_TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer; frame = (0 0; 428 1132.33); layer = <CALayer>>
    |    |    | <_TtGC7SwiftUI16PlatformViewHostGVS_P13$7fff5695d72832PlatformViewRepresentableAdaptorVS_P13$7fff569055d022SystemSegmentedControl__; frame = (23 110; 382 31); anchorPoint = (0, 0); tintColor = UIExtendedSRGBColorSpace 0 0.478431 1 1; layer = <CALayer>>
    |    |    |    | <_TtCV7SwiftUIP33_D74FE142C3C5A6C2CEA4987A69AEBD7522SystemSegmentedControl18UISegmentedControl; baseClass = UISegmentedControl; frame = (0 0; 382 32); clipsToBounds = YES; opaque = NO; layer = <CALayer>>
    |    |    |    |    | <UIImageView; frame = (0 0; 190 32); opaque = NO; userInteractionEnabled = NO; layer = <CALayer>>
@@ -32,16 +32,15 @@
    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 883.667; 118.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 916; 305.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
    |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 948.333; 142.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 980.667; 228.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1013; 310.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1045.33; 161.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1077.67; 207.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1110; 150.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
-   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1142.33; 323.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 980.667; 184 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1013; 190 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1045.33; 247.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1077.67; 161.667 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
+   |    |    | <_TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView; frame = (23 1110; 323.333 20.3333); anchorPoint = (0, 0); opaque = NO; autoresizesSubviews = NO; layer = <CALayer>>
    |    | <_UIScrollViewScrollIndicator; frame = (3 920.333; 419 3); alpha = 0; autoresize = TM; layer = <CALayer>>
    |    |    | <UIView; frame = (0 0; 419 3); layer = <CALayer>>
-   |    | <_UIScrollViewScrollIndicator; frame = (422 3.66667; 3 702.333); alpha = 0; autoresize = LM; layer = <CALayer>>
-   |    |    | <UIView; frame = (0 0; 3 702.333); layer = <CALayer>>
+   |    | <_UIScrollViewScrollIndicator; frame = (422 3.66667; 3 721.667); alpha = 0; autoresize = LM; layer = <CALayer>>
+   |    |    | <UIView; frame = (0 0; 3 721.667); layer = <CALayer>>
    | <_TtGC7SwiftUI16PlatformViewHostGVS_P13$7fff5695d72832PlatformViewRepresentableAdaptorV20SwiftUIVisualEffects34_BlurVisualEffectViewRepresentable__; frame = (0 0; 428 122); anchorPoint = (0, 0); tintColor = UIExtendedSRGBColorSpace 0 0.478431 1 1; layer = <CALayer>>
    |    | <UIVisualEffectView; frame = (0 0; 428 122); layer = <CALayer>> effect=<UIBlurEffect> style=UIBlurEffectStyleSystemThinMaterial
    |    |    | <_UIVisualEffectBackdropView; frame = (0 0; 428 122); autoresize = W+H; userInteractionEnabled = NO; layer = <UICABackdropLayer>>

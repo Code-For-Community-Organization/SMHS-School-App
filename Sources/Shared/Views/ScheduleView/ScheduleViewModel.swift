@@ -14,24 +14,33 @@ final class ScheduleViewModel: ObservableObject {
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     private var currentWeekday: Int?
+    var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
+    var semaphore: DispatchSemaphore?
+    var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
-        var weekday = Date.currentWeekday
-        if let currentWeekday = currentWeekday {
-            weekday = currentWeekday
-        }
+        let weekday = Date.currentWeekday(for: dateHelper.mockDate ?? Date())
         return (weekday != 0 && weekday != 6) ? scheduleWeeks.first?.scheduleDays.first : nil
     }
     
-    init(placeholderText: String? = nil, currentWeekday: Int? = nil){
+    init(placeholderText: String? = nil,
+         scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
+         downloader: @escaping (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load,
+         purge: Bool = false,
+         urlString: String = "https://www.smhs.org/calendar/calendar_379.ics",
+         semaphore: DispatchSemaphore? = nil){
         //Handle preview instance with mock placeholder text
         if placeholderText != nil {
             self.ICSText = placeholderText
             return
         }
-        self.currentWeekday = currentWeekday
+        if purge {self.lastReloadTime = nil; self.ICSText = nil; self.scheduleWeeks = []}
+        self.dateHelper = scheduleDateHelper
+        self.urlString = urlString
+        self.semaphore = semaphore
+        self.downloader = downloader
         fetchData()
-    }
+    } 
     
     func reloadData() {
         if let time = lastReloadTime {
@@ -49,9 +58,8 @@ final class ScheduleViewModel: ObservableObject {
     }
     
     private func fetchData() {
-        let url = URL(string: "https://www.smhs.org/calendar/calendar_379.ics")!
         //Load ICS calendar data from network
-        Downloader.load(url: url){data, error in
+        downloader(urlString){data, error in
             guard let data = data else {
                 #if DEBUG
                 print("Error occurred while fetching iCS: \(error!)")
@@ -67,6 +75,7 @@ final class ScheduleViewModel: ObservableObject {
                 self.dateHelper.parseScheduleData(withRawText: rawText){result in
                     DispatchQueue.main.async {
                         self.scheduleWeeks = result
+                        self.semaphore?.signal()
                         self.objectWillChange.send()
                     }
                 }
@@ -93,7 +102,8 @@ final class ScheduleViewModel: ObservableObject {
 
 
 struct Downloader {
-    static func load(url: URL, completion: @escaping (Data?, Error?) -> ()) {
+    static func load(_ urlString: String, completion: @escaping (Data?, Error?) -> ()) {
+        let url = URL(string: urlString)!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 completion(nil, error!)
@@ -102,5 +112,9 @@ struct Downloader {
             completion(data, nil)
         }
         task.resume()
+    }
+    
+    static func mockLoad(_ text: String, completion: @escaping (Data?, Error?) -> ()) {
+        completion(text.data(using: .utf8), nil)
     }
 }
