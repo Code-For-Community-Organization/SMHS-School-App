@@ -31,7 +31,7 @@ struct ScheduleListBanner: View {
                         .foregroundColor(.white)
                         .textCase(nil)
                 }
-                .padding(EdgeInsets(top: 15, leading: 15, bottom: 40, trailing: 15))
+                .padding(EdgeInsets(top: 30, leading: 15, bottom: 30, trailing: 15))
             }
             .frame(width: geometryProxy.size.width)
             .fixedSize(horizontal: true, vertical: true)
