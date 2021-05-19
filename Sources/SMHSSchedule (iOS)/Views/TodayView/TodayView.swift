@@ -13,7 +13,7 @@ struct TodayView: View {
     @ObservedObject var scheduleViewViewModel: ScheduleViewModel
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    @State var selectionMode: NutritionScheduleSelection
+    var selectionMode: NutritionScheduleSelection
     init(scheduleViewViewModel: ScheduleViewModel, selectionMode: NutritionScheduleSelection? = nil) {
         self.selectionMode = selectionMode ?? .firstLunch
         self.scheduleViewViewModel = scheduleViewViewModel
@@ -25,7 +25,7 @@ struct TodayView: View {
         ZStack(alignment: .top) {
             ScrollView {
                     VStack {
-                        Picker("", selection: $selectionMode){
+                        Picker("", selection: $todayViewViewModel.selectionMode){
                             Text("1st Lunch")
                                 .tag(NutritionScheduleSelection.firstLunch)
                             Text("2nd Lunch")
@@ -33,7 +33,7 @@ struct TodayView: View {
                             
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                        ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $selectionMode)
+                        ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
                             .padding(.vertical, 10)
                         Divider()
                         Text("Detailed Schedule")
@@ -42,6 +42,9 @@ struct TodayView: View {
                             .textAlign(.leading)
                             .padding(.bottom, 5)
                         ScheduleViewTextLines(scheduleLines: scheduleViewViewModel.currentDaySchedule?.scheduleText.lines, lineSpacing: 2)
+                        Button("About SMHS Schedule", systemImage: .infoCircle){todayViewViewModel.showInfoModal = true}
+                            .font(.caption)
+                            .padding(EdgeInsets(top: 30, leading: 0, bottom: 15, trailing: 0))
                     }
                     .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
                     .padding(.horizontal)
@@ -53,6 +56,7 @@ struct TodayView: View {
                         reload: scheduleViewViewModel.reloadData)
                 .onboardingModal()
                 .onAppear{
+                    todayViewViewModel.selectionMode = selectionMode
                     scheduleViewViewModel.objectWillChange.send()
                     if !userSettings.developerSettings.shouldCacheData {
                         scheduleViewViewModel.reset()
@@ -62,9 +66,10 @@ struct TodayView: View {
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel) 
 
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .sheet(isPresented: $todayViewViewModel.showEditModal, content: {PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal)        .environmentObject(userSettings)
-})
+        .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
+        .sheet(isPresented: $todayViewViewModel.showInfoModal) {
+            
+        }
     }
 }
 
