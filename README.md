@@ -24,18 +24,18 @@ Available beta testing on TestFlight 👈:
 - [License](#-license)
 
 ## ✅ Tasklist 
-- [x] Turbo fast app launching and loading
 - [x] Schedule screen showing list of all future dates' schedules
 - [x] Today screen for quickly accessing today's schedule
 - [x] [iOS 14 Widgets showing today's schedule](https://github.com/jevonmao/SMHS-Schedule/issues/4)
 - [x] [Ring progress circle to show live time left of the current schedule block](https://github.com/jevonmao/SMHS-Schedule/issues/5)
 - [x] [Beautiful in-app reader for school news browsing](https://github.com/jevonmao/SMHS-Schedule/issues/6)
+- [x] Streaming Eagle TV 2.0 in app
+- [ ] [School master calendar](https://github.com/jevonmao/SMHS-Schedule/issues/29)
+- [ ] [Custom before/after school schedule](https://github.com/jevonmao/SMHS-Schedule/issues/28)
+- [ ] [Quickly access tomorrow's schedule on today screen](https://github.com/jevonmao/SMHS-Schedule/issues/30)
 - [ ] Before class start notification reminder
 - [ ] Customizable app icon
-- [ ] Multiple widget sizes and styles
-- [ ] Streaming Eagle TV 2.0 in app
 - [ ] School announcements in app & announcement notifications
-- [ ] Apple Watch app and complications support
 
 ## 🔨 Build
 This repo is an Xcode Project that contains the SMHS Schedule cross platform app for iOS and macOS. To get things running:
