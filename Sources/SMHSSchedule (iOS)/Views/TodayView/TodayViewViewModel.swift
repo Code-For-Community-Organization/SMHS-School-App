@@ -10,5 +10,7 @@ import Foundation
 
 class TodayViewViewModel: ObservableObject {
     @Published var showEditModal = false
-    
+    @Published var showInfoModal = false
+    @Published var selectionMode: NutritionScheduleSelection = .firstLunch
+
 }

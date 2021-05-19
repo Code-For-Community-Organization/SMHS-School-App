@@ -12,10 +12,11 @@ struct ScheduleView: View {
     @StateObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
+    @State var presentModal = false
     var body: some View {
         NavigationView {
             VStack{
-                ScheduleListView(scheduleViewModel: scheduleViewModel)
+                ScheduleListView(scheduleViewModel: scheduleViewModel, presentModal: $presentModal)
                     .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
                                   ORconditions: userSettings.developerSettings.alwaysLoadingState,
                                   reload: scheduleViewModel.reloadData)
@@ -23,6 +24,11 @@ struct ScheduleView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
+            .navigationBarItems(trailing: HStack {
+                Button(systemImage: .infoCircleFill, action: {})
+                Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
+            }
+                )
 
         }
         .navigationBarTitleDisplayMode(.automatic)
@@ -32,7 +38,13 @@ struct ScheduleView: View {
                 scheduleViewModel.reset()
             }
         }
-        
+        .sheet(isPresented: $presentModal) {
+            NavigationView {
+                
+            }
+            .navigationBarTitle("Customize Schedule")
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
@@ -43,22 +55,7 @@ struct ScheduleView_Previews: PreviewProvider {
     }
     
 }
-struct HeaderTextView: View {
-    var text: String
-    var body: some View {
-        VStack {
-            Text(text)
-                .fontWeight(.semibold)
-                .font(.title2)
-                .textAlign(.leading)
-                .vibrancyEffect()
-        }
-        .padding(EdgeInsets(top: 45, leading: 20, bottom: 10, trailing: 20))
-        .background(BlurEffect())
-        .vibrancyEffectStyle(.secondaryLabel)
-        .blurEffectStyle(.systemThinMaterial)
-    }
-}
+
 fileprivate extension View {
     func platformNavigationBarTitle<Content>(_ body: Content) -> some View where Content: StringProtocol {
         #if os(iOS)
