@@ -21,7 +21,7 @@ struct ScheduleListView: View {
                     Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
                         ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
                             NavigationLink(
-                                destination: ClassScheduleView(scheduleText: day.scheduleText)
+                                destination: ClassScheduleView(scheduleDay: day)
                                 ,
                                 label: {
                                     Text(day.title)

@@ -41,7 +41,7 @@ struct TodayView: View {
                             .font(.title2)
                             .textAlign(.leading)
                             .padding(.bottom, 5)
-                        ScheduleViewTextLines(scheduleLines: scheduleViewViewModel.currentDaySchedule?.scheduleText.lines, lineSpacing: 2)
+                        ClassScheduleView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                         Button("About SMHS Schedule", systemImage: .infoCircle){todayViewViewModel.showInfoModal = true}
                             .font(.caption)
                             .padding(EdgeInsets(top: 30, leading: 0, bottom: 15, trailing: 0))
