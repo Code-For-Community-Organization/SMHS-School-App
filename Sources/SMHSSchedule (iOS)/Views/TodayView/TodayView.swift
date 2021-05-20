@@ -24,27 +24,31 @@ struct TodayView: View {
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                    VStack {
-                        Picker("", selection: $todayViewViewModel.selectionMode){
-                            Text("1st Lunch")
-                                .tag(PeriodCategory.firstLunch)
-                            Text("2nd Lunch")
-                                .tag(PeriodCategory.secondLunch)
-                            
+                    ZStack {
+                        VStack {
+                            Picker("", selection: $todayViewViewModel.selectionMode){
+                                Text("1st Lunch")
+                                    .tag(PeriodCategory.firstLunch)
+                                Text("2nd Lunch")
+                                    .tag(PeriodCategory.secondLunch)
+                                
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
+                                .padding(.vertical, 10)
+                            Text("Detailed Schedule")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                                .textAlign(.leading)
+                                .padding(.bottom, 10)
+                            ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                            Spacer(minLength: CGFloat(100))
                         }
-                        .pickerStyle(SegmentedPickerStyle())
-                        ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
-                            .padding(.vertical, 10)
-                        Text("Detailed Schedule")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .textAlign(.leading)
-                            .padding(.bottom, 10)
-                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
-                        Spacer(minLength: CGFloat(100))
+                        .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
+                        .padding(.horizontal)
+
                     }
-                    .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
-                    .padding(.horizontal)
+                    .background(Color.platformBackground.edgesIgnoringSafeArea(.all))
                     .aboutFooter(showModal: $todayViewViewModel.showInfoModal)
                 
                 }
@@ -114,11 +118,10 @@ struct TodayViewHeader: View {
                     .foregroundColor(.secondary)
             })
         }
-        .padding(EdgeInsets(top: 45, leading: 20, bottom: 10, trailing: 20))
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
         .vibrancyEffectStyle(.secondaryLabel)
-        .background(BlurEffect())
+        .background(BlurEffect().edgesIgnoringSafeArea(.all))
         .blurEffectStyle(.systemThinMaterial)
-        .edgesIgnoringSafeArea(.all)
 
     }
 }
