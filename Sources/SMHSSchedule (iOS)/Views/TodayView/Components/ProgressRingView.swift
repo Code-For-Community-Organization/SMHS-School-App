@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProgressRingView: View {
     var scheduleDay: ScheduleDay?
-    var selectionMode: Binding<NutritionScheduleSelection>
+    var selectionMode: Binding<PeriodCategory>
     @State var countDown: TimeInterval?
     @State var percent: Double?
     @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     var animation: Bool = true
-    init(scheduleDay: ScheduleDay?, selectionMode: Binding<NutritionScheduleSelection>, countDown: TimeInterval? = nil, percent: Double? = nil, animation: Bool = true) {
+    init(scheduleDay: ScheduleDay?, selectionMode: Binding<PeriodCategory>, countDown: TimeInterval? = nil, percent: Double? = nil, animation: Bool = true) {
         self.scheduleDay = scheduleDay
         self.selectionMode = selectionMode
         self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)

@@ -32,7 +32,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         return formatter.string(from: date)
     }
     
-    func getCurrentPeriodRemainingTime(selectionMode: NutritionScheduleSelection) -> TimeInterval? {
+    func getCurrentPeriodRemainingTime(selectionMode: PeriodCategory) -> TimeInterval? {
         if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime, 
            let reference = currentDateReferenceTime {
             return endTime - reference
@@ -40,7 +40,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         return nil
     }
     
-    func getCurrentPeriodRemainingPercent(selectionMode: NutritionScheduleSelection) -> Double? {
+    func getCurrentPeriodRemainingPercent(selectionMode: PeriodCategory) -> Double? {
         if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime,
            let startTime = getCurrentPeriod(selectionMode: selectionMode)?.startTime,
            let timeRemaining = getCurrentPeriodRemainingTime(selectionMode: selectionMode) {
@@ -50,11 +50,20 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         return nil
     }
     
-    func getCurrentPeriod(selectionMode: NutritionScheduleSelection) -> ClassPeriod? {
+    func getCurrentPeriod(selectionMode: PeriodCategory) -> ClassPeriod? {
         //Filter for periods that are possible as current period
         //Current time within period start/end time
-        periods.filter{(currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime)) ?? false
-            && ($0.nutritionBlock == selectionMode || $0.nutritionBlock == .nonLunchSchedule)}.first
+        periods.filter {
+            //All all periods that contains current time in between its start/end time
+            guard (currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime)) ?? false else {
+                return false
+            }
+            //Compare against selectionMode only if current period is first or second lunch
+            //Otherwise 1st 2nd lunch don't matter
+            if $0.periodCategory == .firstLunch || $0.periodCategory == .secondLunch {
+                return $0.periodCategory == selectionMode
+            } else {return true}
+        }.first
     }
     func parseClassPeriods() -> [ClassPeriod] {
         //Will be returned for value of this variable
@@ -69,19 +78,32 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         //Iterate over the line text itself
         //and the index of the line in entire text block
         for (line, lineNum) in zip(textLines, 0..<textLines.count) {
-            
+            guard !line.contains(String(repeating: "-", count: 20)) else {return classPeriods}
             //Use Regex to start time, end time, and period
             //Optional unwrap to make sure they exist (Might not exist because some lines do not contain schedule info)
             if let startTime: Substring = startTimePattern.findFirst(in: String(line))?.matched.dropLast(),
                let endTime: Substring = endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
-               let period: Character = periodPattern.findFirst(in: String(line))?.matched.last {
-                classPeriods.append(ClassPeriod(nutritionBlock: .nonLunchSchedule,
+               "[a-zA-Z]".r!.matches(String(line))
+            {
+                guard !line.contains("Office Hours") else {
+                    classPeriods.append(ClassPeriod(nutritionBlock: .officeHour,
+                                                    startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
+                                                    endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate))
+                    continue
+                }
+                guard let period: Character = periodPattern.findFirst(in: String(line))?.matched.last else {
+                    classPeriods.append(ClassPeriod(nutritionBlock: .singleLunch,
+                                                    startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
+                                                    endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate))
+                    continue
+                }
+                classPeriods.append(ClassPeriod(nutritionBlock: .period,
                                                 periodNumber: Int(String(period)),
                                                 startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
                                                 endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate))
             }
             
-            //Deal with nutrition schedule case
+            //Deal with 1st/2nd nutrition schedule case
             else if let nutritionIndex: Substring.Index = line.range(of: "Nutrition")?.lowerBound,
                     let period: Match = periodPattern.findFirst(in: String(line)) {
                 
@@ -106,7 +128,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                                                     endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate)
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
-                    classPeriods.append(ClassPeriod(nutritionBlock: .secondLunch,
+                    classPeriods.append(ClassPeriod(nutritionBlock: .firstLunchPeriod,
                                                     periodNumber: periodNumber,
                                                     startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
                                                     endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate)
@@ -122,7 +144,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                                                     endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate)
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
-                    classPeriods.append(ClassPeriod(nutritionBlock: .firstLunch,
+                    classPeriods.append(ClassPeriod(nutritionBlock: .secondLunchPeriod,
                                                     periodNumber: periodNumber,
                                                     startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
                                                     endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate)

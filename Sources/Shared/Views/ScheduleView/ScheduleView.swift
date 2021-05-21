@@ -13,6 +13,7 @@ struct ScheduleView: View {
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -38,13 +39,7 @@ struct ScheduleView: View {
                 scheduleViewModel.reset()
             }
         }
-        .sheet(isPresented: $presentModal) {
-            NavigationView {
-                
-            }
-            .navigationBarTitle("Customize Schedule")
-            .navigationViewStyle(StackNavigationViewStyle())
-        }
+        .sheet(isPresented: $presentModal) {CustomScheduleView(scheduleViewModel: scheduleViewModel, showModal: $presentModal)}
     }
 }
 

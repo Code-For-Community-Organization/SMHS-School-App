@@ -13,8 +13,8 @@ struct TodayView: View {
     @ObservedObject var scheduleViewViewModel: ScheduleViewModel
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    var selectionMode: NutritionScheduleSelection
-    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: NutritionScheduleSelection? = nil) {
+    var selectionMode: PeriodCategory
+    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: PeriodCategory? = nil) {
         self.selectionMode = selectionMode ?? .firstLunch
         self.scheduleViewViewModel = scheduleViewViewModel
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
@@ -27,9 +27,9 @@ struct TodayView: View {
                     VStack {
                         Picker("", selection: $todayViewViewModel.selectionMode){
                             Text("1st Lunch")
-                                .tag(NutritionScheduleSelection.firstLunch)
+                                .tag(PeriodCategory.firstLunch)
                             Text("2nd Lunch")
-                                .tag(NutritionScheduleSelection.secondLunch)
+                                .tag(PeriodCategory.secondLunch)
                             
                         }
                         .pickerStyle(SegmentedPickerStyle())
@@ -41,7 +41,7 @@ struct TodayView: View {
                             .font(.title2)
                             .textAlign(.leading)
                             .padding(.bottom, 5)
-                        ClassScheduleView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                         Button("About SMHS Schedule", systemImage: .infoCircle){todayViewViewModel.showInfoModal = true}
                             .font(.caption)
                             .padding(EdgeInsets(top: 30, leading: 0, bottom: 15, trailing: 0))

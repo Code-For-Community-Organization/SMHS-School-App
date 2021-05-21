@@ -142,14 +142,14 @@ class SMHS_ScheduleTests: XCTestCase {
 //        assertSnapshot(matching: view, as: .image)
 //        assertSnapshot(matching: hostingView, as: .recursiveDescription)
 //    }
-//    
+//
 //    func testContentView() {
 //        let view = ContentView(scheduleViewViewModel: .mockScheduleView, newsViewViewModel: .sampleNewsViewViewModel)
 //        let hostingView = UIHostingController(rootView: view)
 //        assertSnapshot(matching: view, as: .image, record: true)
 //        assertSnapshot(matching: hostingView, as: .recursiveDescription)
 //    }
-//    
+//
 //    func testNewsView() {
 //        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
 //            .fullFrame()
@@ -173,37 +173,70 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
     
-    func testScheduleDetailView() {
-        let view = ClassScheduleView(scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
-            .fullFrame()
-        assertSnapshot(matching: view, as: .image)
-    }
-    func testParseClassPeriods() {
+//    func testScheduleDetailView() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        let date = formatter.date(from: "2021/05/10 16:50")!
+//        let view = ScheduleDetailView(scheduleDay: ScheduleDay(id: 1,
+//                                                               date: date,
+//                                                               scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n",
+//                                                               mockDate: date))
+//                                .fullFrame()
+//        assertSnapshot(matching: view, as: .image, record: true)
+//    }
+    func testParseClassPeriodRegular() {
         let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
         let scheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: testScheduleText)
         let periods = scheduleDay.parseClassPeriods()
         XCTAssertEqual(scheduleDay.periods, periods)
+        
+        XCTAssertEqual(periods.first?.periodCategory, .period)
         XCTAssertEqual(periods.first?.periodNumber, 6)
         XCTAssertEqual(periods.first?.startTime, DateFormatter.formatTime12to24("8:00"))
         XCTAssertEqual(periods.first?.endTime, DateFormatter.formatTime12to24("9:05"))
         
-        XCTAssertEqual(periods[2].nutritionBlock, .firstLunch)
+        XCTAssertEqual(periods[6].periodNumber, 2)
+        XCTAssertEqual(periods[6].periodCategory, .period)
+        XCTAssertEqual(periods[6].startTime, DateFormatter.formatTime12to24("12:21"))
+        XCTAssertEqual(periods[6].endTime, DateFormatter.formatTime12to24("1:26"))
+    }
+    
+    func testParseClassPeriodLunch() {
+        let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
+        let scheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: testScheduleText)
+        let periods = scheduleDay.parseClassPeriods()
+        
+        XCTAssertEqual(periods[2].periodCategory, .firstLunch)
+        XCTAssertEqual(periods[2].periodNumber, nil)
         XCTAssertEqual(periods[2].startTime, DateFormatter.formatTime12to24("10:22"))
         XCTAssertEqual(periods[2].endTime, DateFormatter.formatTime12to24("11:02"))
         
-        XCTAssertEqual(periods[3].nutritionBlock, .secondLunch)
+        XCTAssertEqual(periods[3].periodCategory, .firstLunchPeriod)
         XCTAssertEqual(periods[3].periodNumber, 1)
         XCTAssertEqual(periods[3].startTime, DateFormatter.formatTime12to24("10:29"))
         XCTAssertEqual(periods[3].endTime, DateFormatter.formatTime12to24("11:34"))
         
-        XCTAssertEqual(periods[5].nutritionBlock, .firstLunch)
+        XCTAssertEqual(periods[4].periodCategory, .secondLunch)
+        XCTAssertEqual(periods[4].periodNumber, nil)
+        XCTAssertEqual(periods[4].startTime, DateFormatter.formatTime12to24("11:34"))
+        XCTAssertEqual(periods[4].endTime, DateFormatter.formatTime12to24("12:14"))
+        
+        XCTAssertEqual(periods[5].periodCategory, .secondLunchPeriod)
         XCTAssertEqual(periods[5].periodNumber, 1)
         XCTAssertEqual(periods[5].startTime, DateFormatter.formatTime12to24("11:09"))
         XCTAssertEqual(periods[5].endTime, DateFormatter.formatTime12to24("12:14"))
+    }
+    
+    func testParseClassPeriodOfficeHour() {
+        let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
+        let scheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: testScheduleText)
+        let periods = scheduleDay.parseClassPeriods()
         
-        XCTAssertEqual(periods.last?.periodNumber, 2)
-        XCTAssertEqual(periods.last?.startTime, DateFormatter.formatTime12to24("12:21"))
-        XCTAssertEqual(periods.last?.endTime, DateFormatter.formatTime12to24("1:26"))
+        XCTAssertEqual(periods[7].periodNumber, nil)
+        XCTAssertEqual(periods[7].periodCategory, .officeHour)
+        XCTAssertEqual(periods[7].startTime, DateFormatter.formatTime12to24("1:33"))
+        XCTAssertEqual(periods[7].endTime, DateFormatter.formatTime12to24("2:30"))
     }
     
     func testIsBetweenExtension() {
