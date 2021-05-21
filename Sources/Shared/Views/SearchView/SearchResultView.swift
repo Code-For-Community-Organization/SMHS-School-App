@@ -22,7 +22,7 @@ struct SearchResultView: View {
                                 .lowercased()
                                 .contains(searchText.lowercased()
                                             .trimmingCharacters(in: .whitespacesAndNewlines))}, id: \.self){day in
-                    NavigationLink(day.title, destination: ClassScheduleView(scheduleDay: day))
+                    NavigationLink(day.title, destination: ScheduleDetailView(scheduleDay: day))
                 }
             }
             Section(header: Text("Campus News")) {

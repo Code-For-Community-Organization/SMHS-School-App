@@ -40,6 +40,7 @@ struct ScheduleListBanner: View {
             .animation(Animation.easeInOut)
             .onAppear {animate = true}
             .onDisappear {animate = false}
+            .padding(.vertical, -5)
     }
 }
 

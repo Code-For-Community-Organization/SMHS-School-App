@@ -9,19 +9,19 @@ import Foundation
 
 struct ClassPeriod: Hashable, Codable  {
     
-    internal init(nutritionBlock: NutritionScheduleSelection, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
-        self.nutritionBlock = nutritionBlock
+    internal init(nutritionBlock: PeriodCategory, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
+        self.periodCategory = nutritionBlock
         self.periodNumber = periodNumber
         self.startTime = startTime
         self.endTime = endTime
     }
-    internal init(nutritionBlock: NutritionScheduleSelection, periodNumber: Int, startTime: Date, endTime: Date) {
-        self.nutritionBlock = nutritionBlock
+    internal init(nutritionBlock: PeriodCategory, periodNumber: Int, startTime: Date, endTime: Date) {
+        self.periodCategory = nutritionBlock
         self.periodNumber = periodNumber
         self.startTime = startTime
         self.endTime = endTime
     }
-    var nutritionBlock: NutritionScheduleSelection?
+    var periodCategory: PeriodCategory?
     var periodNumber: Int?
     var startTime: Date
     var endTime: Date
