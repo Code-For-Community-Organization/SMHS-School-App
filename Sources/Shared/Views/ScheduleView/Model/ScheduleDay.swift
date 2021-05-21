@@ -58,11 +58,9 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
             guard (currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime)) ?? false else {
                 return false
             }
-            //Compare against selectionMode only if current period is first or second lunch
+            //Compare against selectionMode only if current period is lunch revolving
             //Otherwise 1st 2nd lunch don't matter
-            if $0.periodCategory == .firstLunch || $0.periodCategory == .secondLunch {
-                return $0.periodCategory == selectionMode
-            } else {return true}
+            return $0.periodCategory ~=~ selectionMode
         }.first
     }
     func parseClassPeriods() -> [ClassPeriod] {
@@ -128,7 +126,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                                                     endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate)
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
-                    classPeriods.append(ClassPeriod(nutritionBlock: .firstLunchPeriod,
+                    classPeriods.append(ClassPeriod(nutritionBlock: .secondLunchPeriod,
                                                     periodNumber: periodNumber,
                                                     startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
                                                     endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate)
@@ -144,7 +142,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
                                                     endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate)
                                         )
                     guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {continue}
-                    classPeriods.append(ClassPeriod(nutritionBlock: .secondLunchPeriod,
+                    classPeriods.append(ClassPeriod(nutritionBlock: .firstLunchPeriod,
                                                     periodNumber: periodNumber,
                                                     startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
                                                     endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate)

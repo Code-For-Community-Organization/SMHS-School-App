@@ -430,7 +430,6 @@
 			children = (
 				626183DE263718CA001C4AD4 /* ScheduleDay.swift */,
 				629BE8BC2636444400BC49AD /* ScheduleWeek.swift */,
-				62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */,
 				62D32120264A4C6700C99C42 /* ClassPeriod.swift */,
 			);
 			path = Model;
@@ -671,6 +670,7 @@
 		6287EA6B265584C8007B41CB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */,
 				62DE61EB2602525400B86555 /* ScheduleViewModel.swift */,
 				6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */,
 			);
