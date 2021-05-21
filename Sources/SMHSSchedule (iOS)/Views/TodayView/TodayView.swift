@@ -35,21 +35,20 @@ struct TodayView: View {
                         .pickerStyle(SegmentedPickerStyle())
                         ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
                             .padding(.vertical, 10)
-                        Divider()
                         Text("Detailed Schedule")
                             .fontWeight(.semibold)
                             .font(.title2)
                             .textAlign(.leading)
-                            .padding(.bottom, 5)
+                            .padding(.bottom, 10)
                         ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
-                        Button("About SMHS Schedule", systemImage: .infoCircle){todayViewViewModel.showInfoModal = true}
-                            .font(.caption)
-                            .padding(EdgeInsets(top: 30, leading: 0, bottom: 15, trailing: 0))
+                        Spacer(minLength: CGFloat(100))
                     }
                     .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
                     .padding(.horizontal)
+                    .aboutFooter(showModal: $todayViewViewModel.showInfoModal)
                 
                 }
+                .background(Color.platformSecondaryBackground)
                 .loadableView(
                         ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
                         ORconditions: userSettings.developerSettings.alwaysLoadingState,
@@ -68,7 +67,23 @@ struct TodayView: View {
         }
         .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
         .sheet(isPresented: $todayViewViewModel.showInfoModal) {
-            
+            NavigationView {
+                SettingsView {
+                    Section(header: Label("Statements", systemSymbol: .infoCircle)) {
+                        NavigationLink("Why?", destination: Text(""))
+                        NavigationLink("How?", destination: Text(""))
+                        NavigationLink("The Dev", destination: Text(""))
+                    }
+                    
+                    Section(header: Label("Settings", systemSymbol: .gear)) {
+                        NavigationLink("Acknowledgement", destination: Text(""))
+                        NavigationLink("Terms of Use", destination: Text(""))
+                        NavigationLink("Privacy Policy", destination: Text(""))
+                    }
+                }
+                .navigationBarTitle("Settings")
+            }
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }
