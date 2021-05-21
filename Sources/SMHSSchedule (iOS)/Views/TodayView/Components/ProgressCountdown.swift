@@ -24,14 +24,21 @@ struct ProgressCountDown: View {
         }
         else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory,
                 nutritionSchedule.isLunch {
-            return "NUTRITION"
-
+            if selectionMode ~=~ .firstLunch {
+                return "1st NUTRITION"
+            }
+            else {
+                return "2nd NUTRITION"
+            }
         }
         else if Date.getDayOfTheWeek(for: mockDate ?? Date()) == 0 ||
                     Date.getDayOfTheWeek(for: mockDate ?? Date()) == 6 {
             return "NO SCHOOL 🙌"
         }
-        else {
+        else if scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory == .officeHour {
+            return "Office Hours"
+        }
+        else { 
             return "UNAVAILABLE"
          
         }
