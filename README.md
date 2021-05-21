@@ -1,16 +1,19 @@
 <p align="center">
-    <img src="./Assets/Icons/Section.png" style="display: block; margin: auto;"/ width="100%">
+    <img src="./Assets/Icons/Section.png" style="display: block; margin: auto;"/ width="80%">
 </p>
 
 # SMHS Schedule: A SwiftUI app for viewing the SMHS schedule
 **SMHS Schedule** is the one-stop experience for Santa Margarita Catholic High School's students, much better than the official SMHS app. Made by a SMHS student, for SMHS students, SMHS Schedule aims to deliver a beautiful and native app experience. If you like this project, please `star ★`. 
 
-Available beta testing on TestFlight 👈:
-
-[<img src="./Assets/Icons/Beta-Badge.png" height="70px">](https://testflight.apple.com/join/NkPUafoE)
-
+DOWNLOAD NOW on the App Store 👇
+<p float="left">
+    <a href="https://apps.apple.com/us/app/smhs-schedule-news-more/id1565099095" title="SMHS Schedule on App Store">
+<img src="./Assets/Icons/AppStore-badge.svg" height="60px">
+<img src="./Assets/Icons/AppStore-badge-cn.svg" height="60x">
+    </a>
+</p>
 <p align="center">
-    <img src="./Assets/Screenshots/Combined-screenshot.png" style="display: block; margin: auto;"/ width="100%">
+    <img src="./Assets/Screenshots/Combined-screenshot.png" style="display: block; margin: auto;"/ width="85%">
 </p>
 
 <p align="center"> SMHS Schedule looks equally gorgeous on your iPhone and iPad. </p>
