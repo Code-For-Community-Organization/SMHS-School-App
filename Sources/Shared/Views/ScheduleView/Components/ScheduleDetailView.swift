@@ -13,7 +13,12 @@ struct ScheduleDetailView: View {
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory?.isLunchRevolving ?? false} //First index found of 1st/2nd type block
-        guard let firstIndex = firstIndex, let scheduleDay = scheduleDay else {return []}
+        guard let firstIndex = firstIndex,
+              let scheduleDay = scheduleDay else
+        {
+            return scheduleDay?.periods ?? [] //Fallback on all periods, assuming no lunch or single lunch
+            
+        }
         return Array(scheduleDay.periods[0..<firstIndex])
     }
     
@@ -63,32 +68,6 @@ struct ScheduleDetailView: View {
                         Text("Please report this bug.")
                 }
             }
-//                ForEach(periods.indices, id: \.self){index in
-//                    switch periods[index]
-//                    {
-//                    case .singleLunch:
-//                        PeriodBlockItem(block: day, scheduleTitle: "Nutrition")
-//                    case .period:
-//                        PeriodBlockItem(block: day, scheduleTitle: "Period \(String(day.periodNumber ?? -1))")
-//                    case .officeHour:
-//                        PeriodBlockItem(block: day, scheduleTitle: "Office Hour")
-//                    default:
-//                        if let range = nutritionRange,
-//                           range.lowerBound == index {
-//                            VStack {
-//                                HStack {
-//                                    PeriodBlockItem(block: periods[ran], scheduleTitle: )
-//                                }
-//                                HStack {
-//
-//                                }
-//                            }
-//
-//                        }
-//                    }
-//
-//
-//                }
             }
             .padding(.horizontal)
         }.navigationBarTitleDisplayMode(.inline)
