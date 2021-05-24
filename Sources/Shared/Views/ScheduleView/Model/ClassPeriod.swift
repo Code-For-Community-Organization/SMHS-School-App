@@ -21,7 +21,15 @@ struct ClassPeriod: Hashable, Codable  {
         self.startTime = startTime
         self.endTime = endTime
     }
-    var periodCategory: PeriodCategory?
+    internal init(customTitle: String, startTime: Date, endTime: Date) {
+        self.periodCategory = .custom
+        self.customTitle = customTitle
+        self.periodNumber = nil
+        self.startTime = startTime
+        self.endTime = endTime
+    }
+    var periodCategory: PeriodCategory
+    var customTitle: String?
     var periodNumber: Int?
     var startTime: Date
     var endTime: Date

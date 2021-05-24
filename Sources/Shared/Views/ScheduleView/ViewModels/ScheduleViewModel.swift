@@ -13,6 +13,7 @@ final class ScheduleViewModel: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
+    @Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
     private var currentWeekday: Int?
     var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
@@ -43,7 +44,7 @@ final class ScheduleViewModel: ObservableObject {
     } 
     
     func reloadData() {
-        if let time = lastReloadTime {
+        if let time = lastReloadTime { 
             if abs(Date().timeIntervalSince(time)) > TimeInterval(60) {
                 fetchData()
                 lastReloadTime = Date()

@@ -26,7 +26,7 @@ struct CustomScheduleView: View {
                                     .tag($0)
                             }
                         }
-                        .pickerStyle(DefaultPickerStyle())
+                        .pickerStyle(WheelPickerStyle())
                         DatePicker("Start Time", selection: $scheduleCustomViewModel.startTime, displayedComponents: .hourAndMinute)
                         DatePicker("End Time", selection: $scheduleCustomViewModel.endTime, displayedComponents: .hourAndMinute)
                     }
@@ -39,20 +39,12 @@ struct CustomScheduleView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle("Extend Schedule")
             .navigationBarItems(leading: Button("Cancel"){showModal = false},
-                                trailing: Button(action: {
-                                    if scheduleCustomViewModel.validateSelection() {
-                                        showModal = false
-                                    }
-                                    else {
-                                        scheduleCustomViewModel.showAlert = true
-                                    }
-                                    
-                                }){Label("Add", systemImage: .calendarBadgePlus)}
+                                trailing: Button(systemImage: .calendarBadgePlus){addCustomSchedule()}
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
-            //scheduleCustomViewModel.selection = scheduleDays.first
+            scheduleCustomViewModel.selection = scheduleDays.first ?? .sampleScheduleDay
         }
         .introspectViewController {
             $0.isModalInPresentation = showModal
@@ -62,7 +54,25 @@ struct CustomScheduleView: View {
         }
     }
     
+    func addCustomSchedule() {
+        let result = scheduleCustomViewModel.validateAndCreate(scheduleDay: scheduleCustomViewModel.selection)
+        if  result.validated {
+            showModal = false
+            if let indexI = scheduleViewModel.scheduleWeeks.firstIndex(  //Index for getting scheduleWeeks
+                where: {$0.scheduleDays.contains{$0.id == scheduleCustomViewModel.selection.id}
+                }),
+               let indexJ = scheduleViewModel.scheduleWeeks[indexI].scheduleDays.firstIndex(  //Index for getting nested array scheduleDays
+                where: {$0.id == scheduleCustomViewModel.selection.id
+                    
+                }) {
+                guard let block = result.block else {return}
+                scheduleViewModel.scheduleWeeks[indexI][indexJ].customPeriods.append(block)
+            }
+        }
+        else {scheduleCustomViewModel.showAlert = true}
+    }
 }
+
 
 struct CustomScheduleView_Previews: PreviewProvider {
     static var previews: some View {

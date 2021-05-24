@@ -14,43 +14,8 @@ struct PeriodBlockItem: View {
     var body: some View {
         VStack(spacing: 5) {
             VStack {
-                if twoLine {
-                    Text("START: \(formatDate(block.startTime))")
-                        .fontWeight(.medium)
-                        .textAlign(.leading)
-                        .font(.footnote)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                    Text("END: \(formatDate(block.endTime))")
-                        .fontWeight(.medium)
-                        .textAlign(.leading)
-                        .font(.footnote)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                }
-                else {
-                    HStack(spacing: 20) {
-                        HStack {
-                            Text("START:")
-                                .fontWeight(.medium)
-                                .opacity(0.5)
-                            Text(formatDate(block.startTime))
-                                .fontWeight(.medium)
-                        }
-                        .frame(width: 125, alignment: .leading)
-                        HStack {
-                            HStack {
-                                Text("END:")
-                                    .fontWeight(.medium)
-                                    .opacity(0.5)
-                                Text(formatDate(block.endTime))
-                                    .fontWeight(.medium)
-                            }
-                        }
-                        Spacer()
-                    }
-                    .font(.footnote)
-                }
+                if twoLine {singleLineView}
+                else {doubleLineView}
 
                 Spacer()
                 Text(scheduleTitle)
@@ -69,6 +34,46 @@ struct PeriodBlockItem: View {
         .padding(.vertical, 5)
     }
     
+    var singleLineView: some View {
+        VStack {
+            Text("START: \(formatDate(block.startTime))")
+                .fontWeight(.medium)
+                .textAlign(.leading)
+                .font(.footnote)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            Text("END: \(formatDate(block.endTime))")
+                .fontWeight(.medium)
+                .textAlign(.leading)
+                .font(.footnote)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+        }
+    }
+    
+    var doubleLineView: some View {
+        HStack(spacing: 20) {
+            HStack {
+                Text("START:")
+                    .fontWeight(.medium)
+                    .opacity(0.5)
+                Text(formatDate(block.startTime))
+                    .fontWeight(.medium)
+            }
+            .frame(width: 125, alignment: .leading)
+            HStack {
+                HStack {
+                    Text("END:")
+                        .fontWeight(.medium)
+                        .opacity(0.5)
+                    Text(formatDate(block.endTime))
+                        .fontWeight(.medium)
+                }
+            }
+            Spacer()
+        }
+        .font(.footnote)
+    }
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"

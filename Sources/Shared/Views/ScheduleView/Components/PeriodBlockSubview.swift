@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PeriodBlock: View {
+struct PeriodBlockSubview: View {
     var periods: [ClassPeriod]
     var body: some View {
         ForEach(periods, id: \.self){period in
@@ -19,8 +19,11 @@ struct PeriodBlock: View {
                 PeriodBlockItem(block: period, scheduleTitle: "Period \(String(period.periodNumber ?? -1))")
             case .officeHour:
                 PeriodBlockItem(block: period, scheduleTitle: "Office Hour")
+            case .custom:
+                PeriodBlockItem(block: period, scheduleTitle: period.customTitle ?? "")
             default:
-                Text("Please report this bug.")
+                Text("Please file a bug report.")
+                    .font(.body, weight: .medium)
         }
     }
     }

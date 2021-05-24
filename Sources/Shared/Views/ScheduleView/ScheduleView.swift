@@ -16,21 +16,17 @@ struct ScheduleView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                ScheduleListView(scheduleViewModel: scheduleViewModel, presentModal: $presentModal)
-                    .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
-                                  ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                                  reload: scheduleViewModel.reloadData)
-                Spacer()
-            }
+            ScheduleListView(scheduleViewModel: scheduleViewModel, presentModal: $presentModal)
+                .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
+                              ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                              reload: scheduleViewModel.reloadData)
             .edgesIgnoringSafeArea(.bottom)
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
             .navigationBarItems(trailing: HStack {
-                Button(systemImage: .infoCircleFill, action: {})
-                Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
-            }
-                )
-
+                Button(systemImage: .infoCircleFill, action: {presentModal = true})
+                //TODO: Enable slider button after custom schedule fully implemented
+                //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
+            })
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
@@ -39,7 +35,8 @@ struct ScheduleView: View {
                 scheduleViewModel.reset()
             }
         }
-        .sheet(isPresented: $presentModal) {CustomScheduleView(scheduleViewModel: scheduleViewModel, showModal: $presentModal)}
+        .sheet(isPresented: $presentModal) {Text("Info")}
+        
     }
 }
 

@@ -30,4 +30,16 @@ extension Array {
             }
         }
     }
+    
+    mutating func append(_ newElement: Self.Element?)
+    {
+        guard let newElement = newElement else {return}
+        self.append(newElement)
+    }
+    
+    mutating func append<S>(contentsOf newElements: S?) where Element == S.Element, S : Sequence
+    {
+        guard let newElements = newElements else {return}
+        self.append(contentsOf: newElements)
+    }
 }
