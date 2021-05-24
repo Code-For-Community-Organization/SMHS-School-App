@@ -13,7 +13,7 @@ struct ScheduleDetailView: View {
     
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory?.isLunchRevolving ?? false} //First index found of 1st/2nd type block
+        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving} //First index found of 1st/2nd type block
         guard let firstIndex = firstIndex,
               let scheduleDay = scheduleDay else
         {
@@ -25,8 +25,8 @@ struct ScheduleDetailView: View {
     
     //1st or 2nd lunch revolving periods, 2nd out of 3 UI sections
     var lunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory?.isLunchRevolving ?? false}
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory?.isLunchRevolving ?? false} //Last instance 1st/2nd nutrition block
+        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
+        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
         guard let firstIndex = firstIndex,
               let lastIndex = lastIndex,
               let scheduleDay = scheduleDay else {return []}
@@ -35,14 +35,14 @@ struct ScheduleDetailView: View {
     
     //Periods after lunch, 3rd out of 3 UI sections
     var postLunchPeriods: [ClassPeriod] {
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory?.isLunchRevolving ?? false}
+        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving}
         guard let lastIndex = lastIndex, let scheduleDay = scheduleDay else {return []}
         return Array(scheduleDay.periods.suffix(from: lastIndex + 1)) //lastIndex + 1 to shorten array, remove unwanted
     }
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
-                PeriodBlock(periods: preLunchPeriods)
+                PeriodBlockSubview(periods: preLunchPeriods)
                 
                 if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
                    let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
@@ -78,7 +78,7 @@ struct ScheduleDetailView: View {
                         }
                     }
                    }
-                PeriodBlock(periods: postLunchPeriods)
+                PeriodBlockSubview(periods: postLunchPeriods)
             }
             .padding(.horizontal)
         }.navigationBarTitleDisplayMode(.inline)

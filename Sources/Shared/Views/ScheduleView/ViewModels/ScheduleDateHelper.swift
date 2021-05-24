@@ -56,7 +56,7 @@ struct ScheduleDateHelper {
                         //Parse the line of schedule text, stripping unwanted characters and words
                         if let scheduleDay: ScheduleDay = self.scheduleLineParser(line: line, rawText: rawText, stringIndex: stringIndex, date: dateChecker.0) {
                             //If id equals to 1, means Monday, so append a new week
-                            if scheduleDay.id == 1 || scheduleWeeks.isEmpty {
+                            if scheduleDay.dayOfTheWeek == 1 || scheduleWeeks.isEmpty {
                                 scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
                             }
                             //If not Friday, append the `ScheduleDay` to last week in array
@@ -82,16 +82,15 @@ struct ScheduleDateHelper {
     }
     
     func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
-        //Parse summary, and description (block text of schedule)
         let summary: String = String(rawText.lines[stringIndex+1])
-        let containsDay = summary.lowercased().contains("day")
-        let containsSchedule = summary.lowercased().contains("schedule")
+        let containsDay: Bool = summary.lowercased().contains("day")
+        let containsSchedule: Bool = summary.lowercased().contains("schedule")
+        
         guard containsDay || containsSchedule else {return nil}
+        
         let description: String = String(rawText.lines[stringIndex+2])
         let descriptionStripped: String = description.replacingOccurrences(of: "DESCRIPTION:", with: "")
-        //id is the current weekday represented by integer
-        return ScheduleDay(id: Date.getDayOfTheWeek(for: date),
-                           date: date,
+        return ScheduleDay(date: date,
                            scheduleText: "\(descriptionStripped.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
     }
 }

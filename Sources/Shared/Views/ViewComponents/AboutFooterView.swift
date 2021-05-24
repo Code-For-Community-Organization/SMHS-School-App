@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AboutFooterView: View {
-    @Binding var showModal: Bool
+    @State var showModal: Bool = false
+    
     var body: some View {
         VStack {
             Divider()
@@ -25,18 +26,18 @@ struct AboutFooterView: View {
             .padding(EdgeInsets(top: 5, leading: 20, bottom: 30, trailing: 20))
             .textAlign(.leading)
         }
-        .background(
-            Color.platformSecondaryBackground.edgesIgnoringSafeArea(.all)
-        )
+        .sheet(isPresented: $showModal) {FooterModalView()}
     }
 }
 
 extension View {
-    func aboutFooter(showModal: Binding<Bool>) -> some View {
-        VStack {
-            self
-            Spacer()
-            AboutFooterView(showModal: showModal)
+    func aboutFooter() -> some View {
+        ScrollView {
+            VStack {
+                self
+                Spacer()
+                AboutFooterView()
+            }
         }
     }
 }

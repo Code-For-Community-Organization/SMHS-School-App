@@ -13,29 +13,28 @@ struct ScheduleListView: View {
     @Binding var presentModal: Bool
 
     var body: some View {
-        GeometryReader {geo in
-            List{
-                Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
-                Section(header: ScheduleListBanner(presentModal: $presentModal, geometryProxy: geo)){EmptyView()}
-                ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
-                    Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
-                        ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
-                            NavigationLink(
-                                destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
-                                ,
-                                label: {
-                                    Text(day.title)
-                                        .textAlign(.leading)
-                                    
-                                })
-                        }
+        List{
+            Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
+            // TODO: Fix persistent storage issue with custom schedules
+            //Section(header: ScheduleListBanner(presentModal: $presentModal, geometryProxy: geo)){EmptyView()}
+            ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
+                Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
+                    ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
+                        NavigationLink(
+                            destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
+                            ,
+                            label: {
+                                Text(day.title)
+                                    .textAlign(.leading)
+                                
+                            })
                     }
-                    .textCase(nil)
                 }
-                .listItemTint(Color.secondary)
+                .textCase(nil)
             }
-            .listStyle(InsetGroupedListStyle())
+            .listItemTint(Color.secondary)
         }
+        .listStyle(InsetGroupedListStyle())
     }
 }
 
@@ -45,12 +44,3 @@ struct ScheduleListView_Previews: PreviewProvider {
     }
 }
 
-struct FillAll: View {
-    let color: Color
-    
-    var body: some View {
-        GeometryReader { proxy in
-            self.color.frame(width: proxy.size.width * 1.3).fixedSize()
-        }
-    }
-}

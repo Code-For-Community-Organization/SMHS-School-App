@@ -40,6 +40,7 @@ struct SearchView: View {
                                  searchClicked: {
                                     
                                  })
+            .aboutFooter()
             
 
         }
