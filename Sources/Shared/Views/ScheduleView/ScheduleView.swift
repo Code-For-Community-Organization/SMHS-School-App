@@ -40,7 +40,7 @@ struct ScheduleView: View {
                 scheduleViewModel.reset()
             }
         }
-        .sheet(isPresented: $presentModal) {Text("Info")}
+        .sheet(isPresented: $presentModal) {SocialDetailView()}
         
     }
 }

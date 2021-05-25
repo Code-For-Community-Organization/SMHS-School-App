@@ -39,7 +39,8 @@ struct FooterModalView: View {
                 Section {
                     NavigationLink(destination: WhyStatementView()) {Label("Why", systemSymbol: .questionmark)}
                     NavigationLink(destination: HowStatementView()) {Label("How", systemSymbol: .gearshape2)}
-                    NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
+                    NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
+                    //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
             }
             .navigationBarTitle("Settings")

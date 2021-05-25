@@ -28,6 +28,7 @@ The current stable version of SMHS Schedule on App Store.
 - Redesigned schedule detail view by further parsing schedule text and formatting it into custom view elements
 - Progress count down now support "Office Hours" and "1st/2nd Nutrition" text
 - Settings and About SMHS view for settings options, acknowledgement, and various statements
+- New app icons and app names!
 
 ### Fixed
 - [`COMMIT b37c7f0`](https://github.com/jevonmao/SMHS-Schedule/commit/b37c7f0b7f687c705c4182ccd2e3baf4772e7c76) Improved testability of ScheduleViewModel by dependency injection of URL request function

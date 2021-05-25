@@ -7,12 +7,14 @@
 
 import SwiftUI
 import MapKit
+import SwiftUIVisualEffects
 
 struct Marker: Identifiable {
     let id = UUID()
     var location: MapMarker
 }
 struct SocialDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var region = MKCoordinateRegion(center: .init(latitude: 33.64304533631487,
                                                          longitude: -117.58231905977404),
                                            span: .init(latitudeDelta: 0.02, longitudeDelta: 0.02))
@@ -140,7 +142,19 @@ struct SocialDetailView: View {
                 Spacer()
             }
         }
-
+        //.navigationBarBackButtonHidden(true)
+        //.hideNavigationBar()
+        //.overlay(
+//                    Button(action: {presentationMode.wrappedValue.dismiss()}) {
+//                        Image(systemSymbol: .chevronLeft)
+//                            .font(.title3)
+//                            .imageScale(.medium)
+//                            .padding()
+//                            .background(BlurEffect())
+//                            .clipShape(Circle())
+//                            .blurEffectStyle(.systemChromeMaterial)
+//                    }.padding(), alignment: .topLeading
+        //)
     }
     
     func openDirectionsInMap() {

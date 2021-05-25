@@ -7,16 +7,19 @@
 
 import SwiftUI
 import SwiftUIVisualEffects
+import UIKit
+import func AVFoundation.AVMakeRect
 
 struct SMStretchyHeader: View {
-    @State var initialOffset = CGFloat.zero
+    @State var lastOffset = CGFloat.zero
+    @State var image = Image("SM-Field")
     var body: some View {
         GeometryReader {geo in
-            Image(uiImage: #imageLiteral(resourceName: "SM-Field"))
+            image
                 .resizable()
                 .scaledToFill()
-                //.frame(width: geo.size.width)
                 .frame(width: geo.size.width, height: getHeightForHeaderImage(geo))
+                .frame(minWidth: geo.size.width)
                 .offset(x: CGFloat(0), y: getOffsetForHeaderImage(geo))
                 .overlay(
                     VStack {
@@ -47,8 +50,10 @@ struct SMStretchyHeader: View {
                         .offset(x: CGFloat(0), y: getOffsetForHeaderImage(geo))
                         .blurEffectStyle(.systemChromeMaterialDark)
                     }
-
                 )
+                .onAppear {
+                    image = resizedImage(image: UIImage(named: "SM-Field-HiRes")!, size: geo.size)
+                }
         }
         .edgesIgnoringSafeArea(.all)
         .frame(height: 350)
@@ -57,9 +62,7 @@ struct SMStretchyHeader: View {
     
     //MARK: Stretchy Scroll Header (https://medium.com/swlh/swiftui-create-a-stretchable-header-with-parallax-scrolling-4a98faeeb262)
     func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {geometry.frame(in: .global).minY}
-//    private func getOffsetForBar(_ geometry: GeometryProxy) -> CGFloat {
-//        
-//    }
+
     private func getOffsetForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
         let offset: CGFloat = getScrollOffset(geometry)
         // Image was pulled down
@@ -80,6 +83,17 @@ struct SMStretchyHeader: View {
         }
 
         return imageHeight
+    }
+    
+    func resizedImage(image: UIImage, size: CGSize) -> Image {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let renderedImage = renderer.image {context in
+            let rect = AVMakeRect(aspectRatio: image.size,
+                                  insideRect: CGRect(origin: .zero,
+                                                     size: size))
+            image.draw(in: rect)
+        }
+        return Image(uiImage: renderedImage)
     }
 }
 
