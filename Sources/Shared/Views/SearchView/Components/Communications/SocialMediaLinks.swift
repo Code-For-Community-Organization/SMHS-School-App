@@ -37,7 +37,17 @@ struct SocialMediaLinks: View {
                             ForEach(socialMediaIcons, id: \.self) {icon in
                                 Spacer()
                                 Button(action: {openURL(icon.url)}) {
-                                    Image(icon.imageName)
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color.white)
+                                            .frame(width: 52, height: 52)
+                                        Image(icon.imageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 52, height: 52)
+                                    }
+                                    .frame(width: 49, height: 49)
+                                    .clipShape(Circle())
                                 }
                                 Spacer()
                             }
@@ -48,7 +58,6 @@ struct SocialMediaLinks: View {
                 }
                 .frame(minHeight: 60)
                 .fixedSize(horizontal: false, vertical: true)
-
             }
             .edgesIgnoringSafeArea(.horizontal)
             .padding(.vertical)

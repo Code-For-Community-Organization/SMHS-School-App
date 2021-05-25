@@ -9,6 +9,7 @@ import SwiftUI
 import SFSafeSymbols
 
 struct ScheduleDetailView: View {
+    @EnvironmentObject var userSettings: UserSettings
     var scheduleDay: ScheduleDay?
     
     //Periods before lunch, 1st out of 3 UI sections
@@ -41,46 +42,51 @@ struct ScheduleDetailView: View {
     }
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 10) {
-                PeriodBlockSubview(periods: preLunchPeriods)
-                
-                if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                   let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                   let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                   let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                    HStack {
-                        VStack {
-                            Text("1st Nutrition Schedule")
-                                .font(.footnote, weight: .semibold)
-                                .padding(.bottom, 2)
-                                .foregroundColor(.platformSecondaryLabel)
-                                .textAlign(.leading)
-                            PeriodBlockItem(block: firstLunch,
-                                            scheduleTitle: "1st Lunch",
-                                            twoLine: true)
-                            PeriodBlockItem(block: firstLunchPeriod,
-                                            scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                            twoLine: true)
-                        }
-                        .padding(.trailing, 5)
-                        VStack {
-                            Text("2nd Nutrition Schedule")
-                                .font(.footnote, weight: .semibold)
-                                .padding(.bottom, 2)
-                                .foregroundColor(.platformSecondaryLabel)
-                                .textAlign(.leading)
-                            PeriodBlockItem(block: secondLunchPeriod,
-                                            scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                            twoLine: true)
-                            PeriodBlockItem(block: secondLunch,
-                                            scheduleTitle: "2nd Lunch",
-                                            twoLine: true)
-                        }
-                    }
-                   }
-                PeriodBlockSubview(periods: postLunchPeriods)
+            if userSettings.preferLegacySchedule {
+                ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
             }
-            .padding(.horizontal)
+            else {
+                LazyVStack(spacing: 10) {
+                    PeriodBlockSubview(periods: preLunchPeriods)
+                    
+                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
+                       let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
+                       let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
+                       let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
+                        HStack {
+                            VStack {
+                                Text("1st Nutrition Schedule")
+                                    .font(.footnote, weight: .semibold)
+                                    .padding(.bottom, 2)
+                                    .foregroundColor(.platformSecondaryLabel)
+                                    .textAlign(.leading)
+                                PeriodBlockItem(block: firstLunch,
+                                                scheduleTitle: "1st Lunch",
+                                                twoLine: true)
+                                PeriodBlockItem(block: firstLunchPeriod,
+                                                scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
+                                                twoLine: true)
+                            }
+                            .padding(.trailing, 5)
+                            VStack {
+                                Text("2nd Nutrition Schedule")
+                                    .font(.footnote, weight: .semibold)
+                                    .padding(.bottom, 2)
+                                    .foregroundColor(.platformSecondaryLabel)
+                                    .textAlign(.leading)
+                                PeriodBlockItem(block: secondLunchPeriod,
+                                                scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
+                                                twoLine: true)
+                                PeriodBlockItem(block: secondLunch,
+                                                scheduleTitle: "2nd Lunch",
+                                                twoLine: true)
+                            }
+                        }
+                       }
+                    PeriodBlockSubview(periods: postLunchPeriods)
+                }
+                .padding(.horizontal)
+            }
         }.navigationBarTitleDisplayMode(.inline)
         
         

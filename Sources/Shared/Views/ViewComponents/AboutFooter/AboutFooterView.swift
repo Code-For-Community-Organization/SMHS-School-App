@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AboutFooterView: View {
+    @EnvironmentObject var userSettings: UserSettings
     @State var showModal: Bool = false
     var showDivider: Bool = true
     var body: some View {
@@ -28,7 +29,7 @@ struct AboutFooterView: View {
             .padding(EdgeInsets(top: 5, leading: 18, bottom: 30, trailing: 18))
             .textAlign(.leading)
         }
-        .sheet(isPresented: $showModal) {FooterModalView()}
+        .sheet(isPresented: $showModal) {FooterModalView().environmentObject(userSettings)}
     }
 }
 
