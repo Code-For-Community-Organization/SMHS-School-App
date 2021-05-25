@@ -24,7 +24,7 @@ The current stable version of SMHS Schedule on App Store.
 ## [Unreleased] - May 16, 2021
 
 ### Added
-- [`ISSUE 31`](https://github.com/jevonmao/SMHS-Schedule/issues/31) Add Social Media icon buttons linked to school's social medias
+- [`ISSUE 31`](https://github.com/jevonmao/SMHS-Schedule/issues/31) Add Social Media and school information page with phone #s, directions.
 - Redesigned schedule detail view by further parsing schedule text and formatting it into custom view elements
 - Progress count down now support "Office Hours" and "1st/2nd Nutrition" text
 - Settings and About SMHS view for settings options, acknowledgement, and various statements
