@@ -32,8 +32,7 @@ struct ScheduleListHeaderView: View {
 
 struct ScheduleListHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListHeaderView(scheduleWeek: ScheduleWeek(scheduleDays: [ScheduleDay(id: 0,
-                                                                                     date: Date(),
+        ScheduleListHeaderView(scheduleWeek: ScheduleWeek(scheduleDays: [ScheduleDay(date: Date(),
                                                                                     scheduleText: "")]))
     }
 }

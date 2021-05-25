@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## Current Stable - May 16, 2021
- ### v1.0.0 (903)
-The current stable version of SMHS Schedule, distributed on TestFlight. Will resubmit to App Store for review soon.
+ ### v1.0.0 (920)
+The current stable version of SMHS Schedule on App Store.
 
 ### Added
 - [`COMMIT 2fc1752`](https://github.com/jevonmao/SMHS-Schedule/commit/2fc1752736b00a7390f7662b4bae112c13629d64) Add context menu with bookmark/unbookmark option to news entries
@@ -23,6 +23,20 @@ The current stable version of SMHS Schedule, distributed on TestFlight. Will res
 
 ## [Unreleased] - May 16, 2021
 
+### Added
+- [`ISSUE 31`](https://github.com/jevonmao/SMHS-Schedule/issues/31) Add Social Media and school information page with phone #s, directions.
+- Redesigned schedule detail view by further parsing schedule text and formatting it into custom view elements
+- Progress count down now support "Office Hours" and "1st/2nd Nutrition" text
+- Settings and About SMHS view for settings options, acknowledgement, and various statements
+- New app icons and app names!
+
+### Fixed
+- [`COMMIT b37c7f0`](https://github.com/jevonmao/SMHS-Schedule/commit/b37c7f0b7f687c705c4182ccd2e3baf4772e7c76) Improved testability of ScheduleViewModel by dependency injection of URL request function
+- [`COMMIT 36e6ef0`](https://github.com/jevonmao/SMHS-Schedule/commit/36e6ef083055d289a7781c4ed968d4fbebb77344) Fixed a bug introduced by new features where ScheduleDetailView periods array is empty for single lunch period days
+- Fixed a UI bug where search view's information cards stretch unwantedly on smaller devices
+- Improved a UI issue where search view's information cards have different vertical & horizontal spacing
+- Increased icon size and tappable area for navigation bar buttons
+- Fixed an UI bug where today view's schedule cannot be scrolled all the way down
 
 ## [1.0.0 (641)] - May 12, 2021
 

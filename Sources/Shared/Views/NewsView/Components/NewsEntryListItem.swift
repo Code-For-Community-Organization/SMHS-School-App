@@ -48,7 +48,6 @@ struct NewsEntryListItem: View {
                         .frame(width: 100, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 }
-                .padding(.vertical, 5)
             }
 
         }
@@ -64,7 +63,7 @@ struct NewsEntryListItem: View {
                 }
             }
         }
-        .padding(.bottom, 3)
+        .padding(.vertical, 10)
  
     }
 }

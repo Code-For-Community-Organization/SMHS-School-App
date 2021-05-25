@@ -47,15 +47,6 @@ class SMHS_ScheduleTests: XCTestCase {
         XCTAssertEqual(Color.platformSecondaryBackground, Color(UIColor.secondarySystemBackground))
     }
     
-    func testHexStringToColor() {
-        let blueColor = hexStringToColor(hex: "#3498db")
-        let redColor = hexStringToColor(hex: "e74c3c")
-        let testBlueColor = Color(.sRGB, red: 52 / 255, green: 152 / 255, blue: 219 / 255, opacity: 1)
-        let testRedColor = Color(.sRGB, red: 231 / 255, green: 76 / 255, blue: 60 / 255, opacity: 1)
-        XCTAssertEqual(redColor, testRedColor)
-        XCTAssertEqual(blueColor, testBlueColor)
-    }
-    
     func testStringLinesExtension() {
         let testString = "SMHS Schedule\nis the best app\n"
         XCTAssertEqual(testString.lines[0], "SMHS Schedule")
@@ -69,15 +60,62 @@ class SMHS_ScheduleTests: XCTestCase {
     }
     
     func testCurrentWeekDayExtension() {
-        let currentWeekday = Calendar.current.component(.weekday, from: Date())-1
-        XCTAssertEqual(Date.currentWeekday, currentWeekday)
+        let date = Date()
+        let currentWeekday = Calendar.current.component(.weekday, from: date)-1
+        XCTAssertEqual(Date.currentWeekday(for: date), currentWeekday)
     }
     
     func testGetDayOfTheWeekExtension() {
-        let dayOfTheWeek = Calendar.current.component(.weekday, from: Date())-1
-        XCTAssertEqual(Date.getDayOfTheWeek(for: Date()), dayOfTheWeek)
+        let date = Date()
+        let dayOfTheWeek = Calendar.current.component(.weekday, from: date)-1
+        XCTAssertEqual(Date.getDayOfTheWeek(for: date), dayOfTheWeek)
     }
 
+    func getCurrentPeriodHelper(date: String) -> ScheduleDay {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let mockDate = formatter.date(from: date)!
+        let scheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
+        let scheduleDay = ScheduleDay(date: mockDate,
+                                      scheduleText: scheduleText,
+                                      mockDate: mockDate)
+        return scheduleDay
+    }
+    
+    func testGetCurrentPeriodRemainingTimeNormal() throws {
+        let scheduleDay = getCurrentPeriodHelper(date: "2021/03/01 09:30")
+        let remainingTime = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingTime(selectionMode: .firstLunch))
+        
+        XCTAssertEqual(remainingTime, 3120)
+        
+    }
+    
+    func testGetCurrentPeriodRemainingTimeLunch1() throws {
+        let scheduleDay = getCurrentPeriodHelper(date: "2021/05/20 11:10")
+        let remainingTimeFirstLunch = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingTime(selectionMode: .firstLunch))
+        let remainingTimeSecondLunch = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingTime(selectionMode: .secondLunch))
+        
+        XCTAssertEqual(remainingTimeFirstLunch, 3840)
+        XCTAssertEqual(remainingTimeSecondLunch, 1440)
+    }
+    
+    func testGetCurrentPeriodRemainingTimeLunch2() throws {
+        let scheduleDay = getCurrentPeriodHelper(date: "2021/01/01 10:30")
+        let remainingTimeFirstLunch = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingTime(selectionMode: .firstLunch))
+        let remainingTimeSecondLunch = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingTime(selectionMode: .secondLunch))
+        
+        XCTAssertEqual(remainingTimeFirstLunch, 1920)
+        XCTAssertEqual(remainingTimeSecondLunch, 3840)
+    }
+    
+    func testGetCurrentPeriodRemainingPercent() throws {
+        let scheduleDay = getCurrentPeriodHelper(date: "2021/05/10 11:00")
+        //.firstLunchPeriod and .firstLunch in this context should refer to same thing
+        let percent = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingPercent(selectionMode: .firstLunchPeriod))
+        let percent2 = try XCTUnwrap(scheduleDay.getCurrentPeriodRemainingPercent(selectionMode: .firstLunch))
+        XCTAssertEqual(percent, 0.05)
+        XCTAssertEqual(percent2, percent)
+    }
     func testParseScheduleData() throws {
         let sampleText = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Santa Margarita Catholic High School/finalsite//NONSGML v1.0//EN\r\nCALSCALE:GREGORIAN\r\nX-WR-CALNAME:BELL Schedule\r\nBEGIN:VEVENT\r\nUID:703702@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210322\r\nSUMMARY:SMCHS Events\r\nDESCRIPTION:\\nSpring Recess\\n\\nFaculty/Student Holiday\\n\\nB JV/V Golf @ Ayala Tourn\\n\\nG JV Tennis vs Tesoro 3:00\\n\\nG V Golf vs Aliso Niguel 4:30\\n\\nG V Tennis @ Tesoro 3:00\\n\r\nPRIORITY:0\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:703695@smhsorg.finalsite.com\r\nDTSTAMP:20210421T222201Z\r\nDTSTART;VALUE=DATE:20210323\r\nSUMMARY:Special Schedule Day 5\r\nDESCRIPTION:Period 5                                   8:00-9:05\\n\\nPeriod 6                                   9:12-10:22 \\n(5 minutes for announcements)\\n\\nNutrition             Period 7 \\n10:22-11:02       10:29-11:34 \\n\\nPeriod 7             Nutrition \\n11:09-12:14      11:34-12:14 \\n\\nPeriod 1                                   12:21-1:26 \\n\\nClass Officer Elections            1:31-2:00 \\n(So/Jr report to Distribution Periods for elections) \\n\\nOffice Hours                            2:05-2:30 \\n------------------------------- \\n\\nClass Officer Elections\\n\\n(So/Jr 8:00-2:00)\\n\\n(Fr/Sr 8:00-1:26)\\n\\nHomecoming Spirit Week\\n\\nB FS/JV/V Soccer @ MD 3:15/7:00/5:00\\n\\nFr/V Baseball @ Dana Hills 3:15/3:15\\n\\nG FS/JV/V Soccer vs MD 3:00/7:15/5:30\\n\\nG JV Tennis @ JSerra 3:00\\n\\nG V Tennis vs JSerra 3:15\\n\\nJV Blue Baseball vs Dana Hills 3:15\\n\\nKairos\\n\\nSball @ San Clemente 3:30\\n\r"
         let expectation = XCTestExpectation(description: "Wait for parsing text")
@@ -121,33 +159,49 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
 
-    func testTodayView() {
-        let todayView = TodayView(scheduleViewViewModel: ScheduleViewModel(currentWeekday: 1))
-            .fullFrame()
-            .environmentObject(UserSettings())
-        let hostingView = UIHostingController(rootView: todayView)
-        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-    }
-
-    func testScheduleView() {
-        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
-            .environmentObject(UserSettings())
-        let hostingView = UIHostingController(rootView: view)
-        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-    }
-    
-    func testContentView() {
-        let view = ContentView()
-        let hostingView = UIHostingController(rootView: view)
-        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-    }
-    
-    func testNewsView() {
-        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
-            .fullFrame()
-        let hostingView = UIHostingController(rootView: view)
-        assertSnapshot(matching: hostingView, as: .recursiveDescription)
-    }
+//    func testTodayView() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        let mockDate = formatter.date(from: "2021/05/10 09:30")!
+//        let sampleText = ScheduleViewModel.sampleText
+//        let semaphore = DispatchSemaphore(value: 1)
+//        let scheduleViewModel = ScheduleViewModel(scheduleDateHelper: ScheduleDateHelper(mockDate: mockDate),
+//                                                  downloader: Downloader.mockLoad,
+//                                                  purge: true,
+//                                                  urlString: sampleText,
+//                                                  semaphore: semaphore)
+//        semaphore.wait()
+//        let todayView = TodayView(scheduleViewViewModel: scheduleViewModel)
+//                            .fullFrame()
+//                            .environmentObject(UserSettings())
+//        let hostingView = UIHostingController(rootView: todayView)
+//        assertSnapshot(matching: todayView, as: .image)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
+//
+//    func testScheduleView() {
+//        let view = ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
+//            .environmentObject(UserSettings())
+//        let hostingView = UIHostingController(rootView: view)
+//        assertSnapshot(matching: view, as: .image)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
+//
+//    func testContentView() {
+//        let view = ContentView(scheduleViewViewModel: .mockScheduleView, newsViewViewModel: .sampleNewsViewViewModel)
+//        let hostingView = UIHostingController(rootView: view)
+//        assertSnapshot(matching: view, as: .image, record: true)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
+//
+//    func testNewsView() {
+//        let view = NewsView(newsViewViewModel: .sampleNewsViewViewModel, scheduleViewModel: .mockScheduleView)
+//            .fullFrame()
+//        let hostingView = UIHostingController(rootView: view)
+//        assertSnapshot(matching: view, as: .image)
+//        assertSnapshot(matching: hostingView, as: .recursiveDescription)
+//    }
 
     func testOnboardingViewNew() {
         let view = OnboardingView(versionStatus: .new, stayInPresentation: .constant(true)).fullFrame()
@@ -159,44 +213,89 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
     
-    func testNewsDetailView() {
-        let view = NewsDetailedView(newsEntry: .constant(.sampleEntry), isActive: .constant(true)).fullFrame()
-        assertSnapshot(matching: view, as: .image)
-    }
-    
-    func testScheduleDetailView() {
-        let view = ClassScheduleView(scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
-            .fullFrame()
-        assertSnapshot(matching: view, as: .image)
-    }
-    func testParseClassPeriods() {
+//    func testScheduleDetailView() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        let date = formatter.date(from: "2021/05/10 16:50")!
+//        let view = ScheduleDetailView(scheduleDay: ScheduleDay(id: 1,
+//                                                               date: date,
+//                                                               scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n",
+//                                                               mockDate: date))
+//                                .fullFrame()
+//        assertSnapshot(matching: view, as: .image, record: true)
+//    }
+    func testParseClassPeriodRegular() {
         let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
-        let scheduleDay = ScheduleDay(id: 1, date: Date(), scheduleText: testScheduleText)
+        let scheduleDay = ScheduleDay(date: Date(), scheduleText: testScheduleText)
         let periods = scheduleDay.parseClassPeriods()
         XCTAssertEqual(scheduleDay.periods, periods)
+        
+        XCTAssertEqual(periods.first?.periodCategory, .period)
         XCTAssertEqual(periods.first?.periodNumber, 6)
         XCTAssertEqual(periods.first?.startTime, DateFormatter.formatTime12to24("8:00"))
         XCTAssertEqual(periods.first?.endTime, DateFormatter.formatTime12to24("9:05"))
         
-        XCTAssertEqual(periods[2].nutritionBlock, .firstLunch)
+        XCTAssertEqual(periods[6].periodNumber, 2)
+        XCTAssertEqual(periods[6].periodCategory, .period)
+        XCTAssertEqual(periods[6].startTime, DateFormatter.formatTime12to24("12:21"))
+        XCTAssertEqual(periods[6].endTime, DateFormatter.formatTime12to24("1:26"))
+    }
+    
+    func testParseClassPeriodLunch() {
+        let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
+        let scheduleDay = ScheduleDay(date: Date(), scheduleText: testScheduleText)
+        let periods = scheduleDay.parseClassPeriods()
+        
+        XCTAssertEqual(periods[2].periodCategory, .firstLunch)
+        XCTAssertEqual(periods[2].periodNumber, nil)
         XCTAssertEqual(periods[2].startTime, DateFormatter.formatTime12to24("10:22"))
         XCTAssertEqual(periods[2].endTime, DateFormatter.formatTime12to24("11:02"))
         
-        XCTAssertEqual(periods[3].nutritionBlock, .secondLunch)
+        XCTAssertEqual(periods[3].periodCategory, .secondLunchPeriod)
         XCTAssertEqual(periods[3].periodNumber, 1)
         XCTAssertEqual(periods[3].startTime, DateFormatter.formatTime12to24("10:29"))
         XCTAssertEqual(periods[3].endTime, DateFormatter.formatTime12to24("11:34"))
         
-        XCTAssertEqual(periods[5].nutritionBlock, .firstLunch)
+        XCTAssertEqual(periods[4].periodCategory, .secondLunch)
+        XCTAssertEqual(periods[4].periodNumber, nil)
+        XCTAssertEqual(periods[4].startTime, DateFormatter.formatTime12to24("11:34"))
+        XCTAssertEqual(periods[4].endTime, DateFormatter.formatTime12to24("12:14"))
+        
+        XCTAssertEqual(periods[5].periodCategory, .firstLunchPeriod)
         XCTAssertEqual(periods[5].periodNumber, 1)
         XCTAssertEqual(periods[5].startTime, DateFormatter.formatTime12to24("11:09"))
         XCTAssertEqual(periods[5].endTime, DateFormatter.formatTime12to24("12:14"))
-        
-        XCTAssertEqual(periods.last?.periodNumber, 2)
-        XCTAssertEqual(periods.last?.startTime, DateFormatter.formatTime12to24("12:21"))
-        XCTAssertEqual(periods.last?.endTime, DateFormatter.formatTime12to24("1:26"))
     }
     
+    func testParseClassPeriodOfficeHour() {
+        let testScheduleText = "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n"
+        let scheduleDay = ScheduleDay(date: Date(), scheduleText: testScheduleText)
+        let periods = scheduleDay.parseClassPeriods()
+        
+        XCTAssertEqual(periods[7].periodNumber, nil)
+        XCTAssertEqual(periods[7].periodCategory, .officeHour)
+        XCTAssertEqual(periods[7].startTime, DateFormatter.formatTime12to24("1:33"))
+        XCTAssertEqual(periods[7].endTime, DateFormatter.formatTime12to24("2:30"))
+    }
+    
+    func testParseClassPeriodSingleLunch() {
+        var testScheduleText = #"Wednesday\, April 21 \nSpecial Virtual Day 2 \n(40 minute classes) \n\nPeriod 2                         8:00-8:40 \n\nPeriod 3                         8:45-9:25 \n(10 minute break) \n\nPeriod 4                         9:35-10:15 \n\nPeriod 5                         10:20-11:40 \n(40 minute DIVE Presentation) \n\nNutrition                      11:40-12:10 \n\nPeriod 6                         12:15-12:55 \n\nPeriod 7                         1:00-1:40 \n\nPeriod 1                         1:45-2:25 \n-------------------------------\n\n\nClasses 8:00-2:25\n\nDive Presentation\n\nB JV Tennis vs JSerra 5:30\n\nB JV/V LAX vs JSerra 7:30/5:30\n\nB JV/V Vball vs Bosco 3:00/3:00\n\nB V Basketball vs Bosco 7:00\n\nB V Golf @ Hunt Beach 3:00\n\nG JV Tennis vs Orange Luth 3:15\n\nG V LAX @ JSerra 5:30\n\nG V Tennis @ Orange Luth 2:30\n\nJV Gold Baseball vs JSerra 3:30\n\nJV/V Baseball @ South Hills 2:30/3:15\n\n\n\nV Sball vs Mission Viejo 3:30\n"#
+        
+        testScheduleText = testScheduleText.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n")
+        let scheduleDay = ScheduleDay(date: Date(), scheduleText: testScheduleText)
+        let periods = scheduleDay.parseClassPeriods()
+        
+        XCTAssertEqual(periods[0].periodCategory, .period)
+        XCTAssertEqual(periods[0].periodNumber, 2)
+        XCTAssertEqual(periods[0].startTime, DateFormatter.formatTime12to24("8:00"))
+        XCTAssertEqual(periods[0].endTime, DateFormatter.formatTime12to24("8:40"))
+        
+        XCTAssertEqual(periods[4].periodCategory, .singleLunch)
+        XCTAssertEqual(periods[4].periodNumber, nil)
+        XCTAssertEqual(periods[4].startTime, DateFormatter.formatTime12to24("11:40"))
+        XCTAssertEqual(periods[4].endTime, DateFormatter.formatTime12to24("12:10"))
+    }
     func testIsBetweenExtension() {
         var minDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
         var maxDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
@@ -257,9 +356,9 @@ class SMHS_ScheduleTests: XCTestCase {
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let date = formatter.date(from: "2021/05/10 16:50")!
-        let scheduleDay = ScheduleDay(id: 1, date: date, scheduleText: ScheduleDay.sampleScheduleDay.scheduleText, mockDate: date)
+        let scheduleDay = ScheduleDay(date: date, scheduleText: ScheduleDay.sampleScheduleDay.scheduleText, mockDate: date)
         let view = ProgressRingView(scheduleDay: scheduleDay, selectionMode: .constant(.firstLunch), countDown: TimeInterval(2453), animation: false).fullFrame().environmentObject(UserSettings())
-        assertSnapshot(matching: view, as: .image)
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
         
     }
     

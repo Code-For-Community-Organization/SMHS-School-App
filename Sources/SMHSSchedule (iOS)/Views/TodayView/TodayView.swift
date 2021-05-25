@@ -13,8 +13,8 @@ struct TodayView: View {
     @ObservedObject var scheduleViewViewModel: ScheduleViewModel
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    @State var selectionMode: NutritionScheduleSelection
-    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: NutritionScheduleSelection? = nil) {
+    var selectionMode: PeriodCategory
+    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: PeriodCategory? = nil) {
         self.selectionMode = selectionMode ?? .firstLunch
         self.scheduleViewViewModel = scheduleViewViewModel
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
@@ -24,47 +24,46 @@ struct TodayView: View {
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                    VStack {
-                        Picker("", selection: $selectionMode){
-                            Text("1st Lunch")
-                                .tag(NutritionScheduleSelection.firstLunch)
-                            Text("2nd Lunch")
-                                .tag(NutritionScheduleSelection.secondLunch)
-                            
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $selectionMode)
-                            .padding(.vertical, 10)
-                        Divider()
-                        Text("Detailed Schedule")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .textAlign(.leading)
-                            .padding(.bottom, 5)
-                        ScheduleViewTextLines(scheduleLines: scheduleViewViewModel.currentDaySchedule?.scheduleText.lines, lineSpacing: 2)
+                VStack {
+                    Picker("", selection: $todayViewViewModel.selectionMode){
+                        Text("1st Lunch")
+                            .tag(PeriodCategory.firstLunch)
+                        Text("2nd Lunch")
+                            .tag(PeriodCategory.secondLunch)
+                        
                     }
-                    .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
-                    .padding(.horizontal)
-                
+                    .pickerStyle(SegmentedPickerStyle())
+                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
+                        .padding(.vertical, 10)
+                    Text("Detailed Schedule")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .textAlign(.leading)
+                        .padding(.bottom, 10)
+                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                 }
-                .loadableView(
-                        ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
-                        ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                        reload: scheduleViewViewModel.reloadData)
-                .onboardingModal()
-                .onAppear{
-                    scheduleViewViewModel.objectWillChange.send()
-                    if !userSettings.developerSettings.shouldCacheData {
-                        scheduleViewViewModel.reset()
-                    }
+                .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
+                .padding(.horizontal)
             }
+            .background(Color.platformBackground)
+            .loadableView(
+                ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
+                ORconditions: userSettings.developerSettings.alwaysLoadingState,
+                reload: scheduleViewViewModel.reloadData)
+            .onboardingModal()
+            .onAppear{
+                todayViewViewModel.selectionMode = selectionMode
+                scheduleViewViewModel.objectWillChange.send()
+                if !userSettings.developerSettings.shouldCacheData {
+                    scheduleViewViewModel.reset()
+                }
+            }
+            .aboutFooter()
             
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel) 
-
+            
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .sheet(isPresented: $todayViewViewModel.showEditModal, content: {PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal)        .environmentObject(userSettings)
-})
+        .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
     }
 }
 
@@ -84,22 +83,23 @@ struct TodayViewHeader: View {
                     .font(.title2)
                     .textAlign(.leading)
                     .vibrancyEffect()
-                    //.foregroundColor(.platformSecondaryLabel)
+                //.foregroundColor(.platformSecondaryLabel)
                 
             }
             Spacer()
             Button(action: {todayViewModel.showEditModal = true}, label: {
                 Image(systemSymbol: .ellipsisCircle)
-                    .font(.system(size: 30))
+                    .font(.title3)
+                    .imageScale(.large)
+                    .padding(5)
                     .foregroundColor(.secondary)
             })
         }
-        .padding(EdgeInsets(top: 45, leading: 20, bottom: 10, trailing: 20))
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
         .vibrancyEffectStyle(.secondaryLabel)
-        .background(BlurEffect())
+        .background(BlurEffect().edgesIgnoringSafeArea(.all))
         .blurEffectStyle(.systemThinMaterial)
-        .edgesIgnoringSafeArea(.all)
-
+        
     }
 }
 struct TodayView_Previews: PreviewProvider {

@@ -19,20 +19,11 @@ struct NewsNavigationBarButtons: View {
     var body: some View {
         HStack {
             Group {
-                Button(action: {
-                    var hapticsManager = HapticsManager(impactStyle: .medium)
-                    newsViewViewModel.toggleEntryBookmarked(newsEntry)
-                    showIsBookmarked.toggle()
-                    hapticsManager.UIFeedbackImpact()
-                    animate = true
-                    DispatchQueue.main.asyncAfter(deadline: .now()+animationDuration) {
-                        animate = false
-                    }
-                }) {
+                Button(action: handleButtonPress) {
                     Image(systemSymbol: showIsBookmarked ? .bookmarkFill : .bookmark)
                         .font(.system(size: 25))
                         .foregroundColor(showIsBookmarked ? .secondary : .platformLabel)
-                        .scaleEffect(animate ? 1.1 : 1)
+                        .scaleEffect(animate ? CGFloat(1.1) : CGFloat(1))
                 }
             }
             .animation(.spring())
@@ -43,6 +34,18 @@ struct NewsNavigationBarButtons: View {
     }
 }
 
+extension NewsNavigationBarButtons {
+    func handleButtonPress() {
+        var hapticsManager = HapticsManager(impactStyle: .medium)
+        newsViewViewModel.toggleEntryBookmarked(newsEntry)
+        showIsBookmarked.toggle()
+        hapticsManager.UIFeedbackImpact()
+        animate = true
+        DispatchQueue.main.asyncAfter(deadline: .now()+animationDuration) {
+            animate = false
+        }
+    }
+}
 struct NewsNavigationBarButtons_Previews: PreviewProvider {
     static var previews: some View {
         NewsNavigationBarButtons(newsEntry: .sampleEntry)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385EE265C60D500F4806C /* InformationCardItem.swift */; };
+		621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
 		62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9526476E42000F26ED /* ProgressRingView.swift */; };
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F17264EEBF700FF3F28 /* SearchView.swift */; };
@@ -73,6 +75,10 @@
 		6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */; };
 		6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
 		6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
+
+		6287EA7826580CC5007B41CB /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
+		6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
+		6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
@@ -82,6 +88,39 @@
 		629EC8362645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8392645D7C900E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC8382645D7C900E236DC /* Regex */; };
 		629EC83D2645E14F00E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC83C2645E14F00E236DC /* Regex */; };
+		62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
+		62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
+		62B227BE265CC0310023A7E6 /* PeriodEditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626394264DD21D004146CE /* PeriodEditItem.swift */; };
+		62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
+		62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */; };
+		62B227C2265CC1D20023A7E6 /* WhyStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */; };
+		62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */; };
+		62B227C5265CC1E00023A7E6 /* HowStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C4265CC1E00023A7E6 /* HowStatementView.swift */; };
+		62B227C6265CC1E00023A7E6 /* HowStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C4265CC1E00023A7E6 /* HowStatementView.swift */; };
+		62B227C7265CC1E00023A7E6 /* HowStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C4265CC1E00023A7E6 /* HowStatementView.swift */; };
+		62B227C9265CD06E0023A7E6 /* AboutDevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C8265CD06E0023A7E6 /* AboutDevView.swift */; };
+		62B227CA265CD06E0023A7E6 /* AboutDevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C8265CD06E0023A7E6 /* AboutDevView.swift */; };
+		62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C8265CD06E0023A7E6 /* AboutDevView.swift */; };
+		62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
+		62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
+		62B227CF265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
+		62B227D1265D63270023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
+		62B227D2265D63270023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
+		62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
+		62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
+		62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
+		62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
+		62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
+		62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
+		62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
+		62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
+		62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
+		62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
+		62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
+		62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
 		62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
 		62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
 		62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */; };
@@ -227,6 +266,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		621385EE265C60D500F4806C /* InformationCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardItem.swift; sourceTree = "<group>"; };
+		621385F0265C630B00F4806C /* PeriodParseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodParseExtensions.swift; sourceTree = "<group>"; };
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -276,6 +317,9 @@
 		6287EA6926558081007B41CB /* CustomScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScheduleView.swift; sourceTree = "<group>"; };
 		6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCustomViewModel.swift; sourceTree = "<group>"; };
 		6287EA702657783A007B41CB /* PeriodBlockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockItem.swift; sourceTree = "<group>"; };
+		6287EA7526580CC5007B41CB /* AboutFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutFooterView.swift; sourceTree = "<group>"; };
+		6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockSubview.swift; sourceTree = "<group>"; };
+		6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockGrid.swift; sourceTree = "<group>"; };
 		6287EA7326578BEA007B41CB /* AppStore-badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AppStore-badge.svg"; sourceTree = "<group>"; };
 		6287EA7426578C13007B41CB /* AppStore-badge-cn.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AppStore-badge-cn.svg"; sourceTree = "<group>"; };
 		629BE8B8263642BC00BC49AD /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
@@ -283,6 +327,17 @@
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
 		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		629EC8342645D50900E236DC /* TodayViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewViewModel.swift; sourceTree = "<group>"; };
+		62B227BB265CBE530023A7E6 /* Acknowledgements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
+		62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyStatementView.swift; sourceTree = "<group>"; };
+		62B227C4265CC1E00023A7E6 /* HowStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowStatementView.swift; sourceTree = "<group>"; };
+		62B227C8265CD06E0023A7E6 /* AboutDevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDevView.swift; sourceTree = "<group>"; };
+		62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMStretchyHeader.swift; sourceTree = "<group>"; };
+		62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaIcons.swift; sourceTree = "<group>"; };
+		62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewRepresentable.swift; sourceTree = "<group>"; };
+		62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesStatementView.swift; sourceTree = "<group>"; };
+		62C48DAA265C6CA70032301E /* FooterModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterModalView.swift; sourceTree = "<group>"; };
+		62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLinks.swift; sourceTree = "<group>"; };
+		62C48DB2265CA88A0032301E /* SocialDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDetailView.swift; sourceTree = "<group>"; };
 		62C9E888263BD2BC00CCA5C5 /* App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App-Icon.png"; sourceTree = "<group>"; };
 		62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleScreen-Light.png"; sourceTree = "<group>"; };
 		62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Light.png"; sourceTree = "<group>"; };
@@ -383,6 +438,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		621385EC265C609400F4806C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				62C48DB1265CA85E0032301E /* Communications */,
+				621385ED265C60B100F4806C /* Cards */,
+				624F79EE264F87BE00B93C63 /* SearchResultView.swift */,
+				623A7F22264F595400FF3F28 /* SafariView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		621385ED265C60B100F4806C /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				624F79EC264F875900B93C63 /* InformationCardsView.swift */,
+				621385EE265C60D500F4806C /* InformationCardItem.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		62328C9426476E3A000F26ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,11 +480,9 @@
 		623A7F16264EEBE000FF3F28 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				624F79EC264F875900B93C63 /* InformationCardsView.swift */,
-				623A7F19264EECFB00FF3F28 /* Model */,
 				623A7F17264EEBF700FF3F28 /* SearchView.swift */,
-				623A7F22264F595400FF3F28 /* SafariView.swift */,
-				624F79EE264F87BE00B93C63 /* SearchResultView.swift */,
+				621385EC265C609400F4806C /* Components */,
+				623A7F19264EECFB00FF3F28 /* Model */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -427,8 +500,8 @@
 			children = (
 				626183DE263718CA001C4AD4 /* ScheduleDay.swift */,
 				629BE8BC2636444400BC49AD /* ScheduleWeek.swift */,
-				62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */,
 				62D32120264A4C6700C99C42 /* ClassPeriod.swift */,
+				621385F0265C630B00F4806C /* PeriodParseExtensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,9 +509,11 @@
 		624F79F2264FA11600B93C63 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */,
 				624F79FC2651A45400B93C63 /* Buttons */,
 				62D321172649F25F00C99C42 /* NewsEntryListItem.swift */,
 				62D3210E2649E11800C99C42 /* NewsEntry.swift */,
+				62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -508,6 +583,7 @@
 		6261842926373D40001C4AD4 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				62C48DA9265C6C8B0032301E /* AboutFooter */,
 				62E05F6C2639C4AC00B609E3 /* SettingsView.swift */,
 				62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */,
 				62F30D002649A64C008EDD31 /* PeriodCategory.swift */,
@@ -618,6 +694,8 @@
 				62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */,
 				6287EA6926558081007B41CB /* CustomScheduleView.swift */,
 				6287EA702657783A007B41CB /* PeriodBlockItem.swift */,
+				6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */,
+				6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -667,12 +745,34 @@
 		6287EA6B265584C8007B41CB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */,
 				62DE61EB2602525400B86555 /* ScheduleViewModel.swift */,
 				6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		62C48DA9265C6C8B0032301E /* AboutFooter */ = {
+			isa = PBXGroup;
+			children = (
+				6287EA7526580CC5007B41CB /* AboutFooterView.swift */,
+				62C48DAA265C6CA70032301E /* FooterModalView.swift */,
+			);
+			path = AboutFooter;
+			sourceTree = "<group>";
+		};
+		62C48DB1265CA85E0032301E /* Communications */ = {
+			isa = PBXGroup;
+			children = (
+				62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */,
+				62C48DB2265CA88A0032301E /* SocialDetailView.swift */,
+				62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */,
+				62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */,
+			);
+			path = Communications;
+			sourceTree = "<group>";
+		};
+
 		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +827,11 @@
 			children = (
 				62E05F702639C5D000B609E3 /* UserSettings.swift */,
 				6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */,
+				62B227BB265CBE530023A7E6 /* Acknowledgements.swift */,
+				62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */,
+				62B227C4265CC1E00023A7E6 /* HowStatementView.swift */,
+				62B227C8265CD06E0023A7E6 /* AboutDevView.swift */,
+				62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -764,7 +869,6 @@
 				62D321022649D8D700C99C42 /* NewsView.swift */,
 				624F79F2264FA11600B93C63 /* Components */,
 				6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */,
-				62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */,
 			);
 			path = NewsView;
 			sourceTree = "<group>";
@@ -784,6 +888,8 @@
 				623A7F16264EEBE000FF3F28 /* SearchView */,
 				62D321012649D8C800C99C42 /* NewsView */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
+				623A7F16264EEBE000FF3F28 /* SearchView */,
+				62D321012649D8C800C99C42 /* NewsView */,
 				62C9E89E263D0E8000CCA5C5 /* SettingsView */,
 				62C9E899263D0B0500CCA5C5 /* OnboardingView */,
 				626A22972600380B00903C39 /* ScheduleView */,
@@ -843,7 +949,7 @@
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
-				62E05F7A263A1BBC00B609E3 /* ShellScript */,
+				62E05F7A263A1BBC00B609E3 /* Run Script */,
 				62D1E51F263DF779004DBFAD /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -1040,7 +1146,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62E05F7A263A1BBC00B609E3 /* ShellScript */ = {
+		62E05F7A263A1BBC00B609E3 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1049,6 +1155,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1065,6 +1172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */,
+				62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */,
 				62C9E8AB263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */,
@@ -1073,9 +1181,12 @@
 				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
 				6261841226371A93001C4AD4 /* ScheduleDetailView.swift in Sources */,
 				62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
+				62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
+				62B227C9265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				62E3BF002642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */,
 				6261841626371A93001C4AD4 /* ScheduleViewModel.swift in Sources */,
+				6287EA7626580CC5007B41CB /* AboutFooterView.swift in Sources */,
 				62E05F752639CBA700B609E3 /* LoadableView.swift in Sources */,
 				62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
@@ -1083,6 +1194,7 @@
 				6261840426371A6C001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				62C9E8A0263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
+				62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
@@ -1090,12 +1202,17 @@
 				62D1E508263DD41C004DBFAD /* Date.swift in Sources */,
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
+				62B227C5265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62E05F6B2639C47C00B609E3 /* ContentView.swift in Sources */,
+				62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
 				62D32121264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				6261840826371A6C001C4AD4 /* Colors.swift in Sources */,
 				62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */,
+				62B227D1265D63270023A7E6 /* SocialMediaIcons.swift in Sources */,
 				6276B5F5264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
+				62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */,
+				62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */,
 				6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				62D321182649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
 				62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
@@ -1118,6 +1235,7 @@
 				62D321042649D8D700C99C42 /* NewsView.swift in Sources */,
 				62C9E8A5263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */,
+				62B227C6265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
@@ -1133,14 +1251,21 @@
 				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
+				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
+				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
+				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
+				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
 				62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */,
 				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
+				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
+				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */,
 				62C9E8AC263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
+				62B227D2265D63270023A7E6 /* SocialMediaIcons.swift in Sources */,
 				62C9E8B2263D212E00CCA5C5 /* Bindings.swift in Sources */,
 				626A22992600381700903C39 /* ScheduleView.swift in Sources */,
 				62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
@@ -1150,15 +1275,18 @@
 				62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62D1E50C263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
+				62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */,
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */,
 				6287EA6A26558081007B41CB /* CustomScheduleView.swift in Sources */,
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
+				621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */,
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
@@ -1166,12 +1294,17 @@
 				6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
 				624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */,
+				62B227C2265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
 				626A229C260039AB00903C39 /* ScheduleDetailView.swift in Sources */,
 				626183DF263718CA001C4AD4 /* ScheduleDay.swift in Sources */,
 				62D321102649E11800C99C42 /* NewsEntry.swift in Sources */,
 				623A7F23264F595400FF3F28 /* SafariView.swift in Sources */,
 				624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */,
 				62C9E8AF263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */,
+				621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */,
+				6287EA7726580CC5007B41CB /* AboutFooterView.swift in Sources */,
+				6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */,
+				62B227CA265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
 				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
 				6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */,
@@ -1202,6 +1335,8 @@
 			files = (
 				62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62D1E527263DF859004DBFAD /* HighlightButtonStyle.swift in Sources */,
+				62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */,
+				62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				62CFAA43264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */,
 				62D1E550263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
@@ -1215,27 +1350,41 @@
 				62D1E531263DF859004DBFAD /* OnboardingView.swift in Sources */,
 				62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */,
 				62D1E533263DF859004DBFAD /* OnboardingWrapperView.swift in Sources */,
+				6287EA7826580CC5007B41CB /* AboutFooterView.swift in Sources */,
 				62D1E534263DF859004DBFAD /* ScheduleDay.swift in Sources */,
 				6287EA682654D776007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				62D1E535263DF859004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E536263DF859004DBFAD /* ScheduleView.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
+				62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */,
+				62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
+				6287EA98265854C8007B41CB /* PeriodBlockSubview.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
+				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
 				6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */,
+				62B227C7265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62D1E53B263DF859004DBFAD /* RoundedCorners.swift in Sources */,
 				62D1E53D263DF859004DBFAD /* Bindings.swift in Sources */,
+				62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */,
+				62B227BE265CC0310023A7E6 /* PeriodEditItem.swift in Sources */,
 				6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */,
 				62D1E53E263DF859004DBFAD /* String.swift in Sources */,
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
+				62B227CF265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62D1E540263DF859004DBFAD /* UIScreen.swift in Sources */,
+				62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */,
+				62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62CFAA3F264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */,
 				62D1E541263DF859004DBFAD /* Array.swift in Sources */,
 				62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */,
 				62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */,
 				6287EA6E265587C1007B41CB /* CustomScheduleView.swift in Sources */,
+				6287EA9B265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
+				62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* ScheduleViewModel.swift in Sources */,
 				6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
@@ -1473,6 +1622,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=75 -Xfrontend -warn-long-expression-type-checking=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1601,7 +1751,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 920;
+				CURRENT_PROJECT_VERSION = 1279;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1625,7 +1775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 920;
+				CURRENT_PROJECT_VERSION = 1279;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;

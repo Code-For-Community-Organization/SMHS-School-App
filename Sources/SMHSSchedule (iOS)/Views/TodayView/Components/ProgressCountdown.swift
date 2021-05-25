@@ -10,7 +10,7 @@ import SwiftUI
 struct ProgressCountDown: View {
     var scheduleDay: ScheduleDay?
     @EnvironmentObject var userSettings: UserSettings
-    @Binding var selectionMode: NutritionScheduleSelection
+    @Binding var selectionMode: PeriodCategory
     @Binding var countDown: TimeInterval?
     var mockDate: Date?
     var text: String {
@@ -22,16 +22,23 @@ struct ProgressCountDown: View {
             return matchingPeriod.textContent
             
         }
-        else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.nutritionBlock,
-                nutritionSchedule != .nonLunchSchedule {
-            return "NUTRITION"
-
+        else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory,
+                nutritionSchedule.isLunch {
+            if selectionMode ~=~ .firstLunch {
+                return "1st NUTRITION"
+            }
+            else {
+                return "2nd NUTRITION"
+            }
         }
         else if Date.getDayOfTheWeek(for: mockDate ?? Date()) == 0 ||
                     Date.getDayOfTheWeek(for: mockDate ?? Date()) == 6 {
             return "NO SCHOOL 🙌"
         }
-        else {
+        else if scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory == .officeHour {
+            return "Office Hours"
+        }
+        else { 
             return "UNAVAILABLE"
          
         }
