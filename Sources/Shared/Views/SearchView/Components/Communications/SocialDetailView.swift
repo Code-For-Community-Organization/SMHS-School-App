@@ -15,7 +15,7 @@ struct Marker: Identifiable {
 struct SocialDetailView: View {
     @State var region = MKCoordinateRegion(center: .init(latitude: 33.64304533631487,
                                                          longitude: -117.58231905977404),
-                                           span: .init(latitudeDelta: 0.029, longitudeDelta: 0.029))
+                                           span: .init(latitudeDelta: 0.02, longitudeDelta: 0.02))
     let markers = [Marker(location: MapMarker(coordinate: .init(latitude: 33.64304533631487,
                                                                 longitude: -117.58231905977404),
                                               tint: Color(hexadecimal: "0736A4")))]
@@ -104,6 +104,7 @@ struct SocialDetailView: View {
                     }
                     .padding(.bottom, 2)
                     .foregroundColor(.platformSecondaryLabel)
+                    Divider()
                     Text("School Location")
                         .font(.title, weight: .bold)
                         .textAlign(.leading)
@@ -113,9 +114,11 @@ struct SocialDetailView: View {
                     Group {
                         Text("Address: ")
                             .font(.body, weight: .semibold)
+                            .textAlign(.leading)
                         Text("22062 Antonio Parkway\nRancho Santa Margarita, CA 92688")
                             .font(.callout, weight: .regular)
                             .textAlign(.leading)
+                            .foregroundColor(.platformSecondaryLabel)
                             .padding(.bottom)
                             .lineLimit(nil)
                         Button(action: openDirectionsInMap, label: {
