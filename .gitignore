@@ -5,3 +5,6 @@
 xcschememanagement.plist
 xcuserdata/
 *.xcuserstate
+*.moved-aside
+*.xccheckout
+DerivedData/
