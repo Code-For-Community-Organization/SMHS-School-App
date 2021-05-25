@@ -75,13 +75,10 @@
 		6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */; };
 		6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
 		6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
-		6287EA7626580CC5007B41CB /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
-		6287EA7726580CC5007B41CB /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
+
 		6287EA7826580CC5007B41CB /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
 		6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
-		6287EA98265854C8007B41CB /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
 		6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */; };
-		6287EA9B265854D4007B41CB /* PeriodBlockGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
@@ -323,6 +320,8 @@
 		6287EA7526580CC5007B41CB /* AboutFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutFooterView.swift; sourceTree = "<group>"; };
 		6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockSubview.swift; sourceTree = "<group>"; };
 		6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockGrid.swift; sourceTree = "<group>"; };
+		6287EA7326578BEA007B41CB /* AppStore-badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AppStore-badge.svg"; sourceTree = "<group>"; };
+		6287EA7426578C13007B41CB /* AppStore-badge-cn.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AppStore-badge-cn.svg"; sourceTree = "<group>"; };
 		629BE8B8263642BC00BC49AD /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		629BE8BA2636430A00BC49AD /* MockScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleView.swift; sourceTree = "<group>"; };
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
@@ -344,7 +343,6 @@
 		62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Light.png"; sourceTree = "<group>"; };
 		62C9E88C263BD35600CCA5C5 /* ScheduleScreen-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleScreen-Dark.png"; sourceTree = "<group>"; };
 		62C9E88D263BD36700CCA5C5 /* TodayScreen-Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Dark.png"; sourceTree = "<group>"; };
-		62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Beta-Badge.png"; sourceTree = "<group>"; };
 		62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWrapperView.swift; sourceTree = "<group>"; };
 		62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		62C9E89F263D110100CCA5C5 /* OnboardingRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRowItem.swift; sourceTree = "<group>"; };
@@ -774,6 +772,7 @@
 			path = Communications;
 			sourceTree = "<group>";
 		};
+
 		62C9E887263BD2AC00CCA5C5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,7 +796,8 @@
 		62C9E88F263BD3A400CCA5C5 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E88E263BD39300CCA5C5 /* Beta-Badge.png */,
+				6287EA7426578C13007B41CB /* AppStore-badge-cn.svg */,
+				6287EA7326578BEA007B41CB /* AppStore-badge.svg */,
 				62C9E888263BD2BC00CCA5C5 /* App-Icon.png */,
 			);
 			path = Icons;
@@ -885,6 +885,8 @@
 			isa = PBXGroup;
 			children = (
 				626A226A260035F100903C39 /* ContentView.swift */,
+				623A7F16264EEBE000FF3F28 /* SearchView */,
+				62D321012649D8C800C99C42 /* NewsView */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
 				62D321012649D8C800C99C42 /* NewsView */,
