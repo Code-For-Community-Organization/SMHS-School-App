@@ -89,7 +89,9 @@ struct TodayViewHeader: View {
             Spacer()
             Button(action: {todayViewModel.showEditModal = true}, label: {
                 Image(systemSymbol: .ellipsisCircle)
-                    .font(.system(size: 30))
+                    .font(.title3)
+                    .imageScale(.large)
+                    .padding(5)
                     .foregroundColor(.secondary)
             })
         }

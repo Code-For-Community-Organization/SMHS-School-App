@@ -10,13 +10,13 @@ import SwiftUI
 struct InformationCardsView: View {
     @State var showWebView = false
     @State private var informationCard: InformationCard?
-    let columns = Array.init(repeating: GridItem(.adaptive(minimum: 180)), count: 1)
+    let columns = Array.init(repeating: GridItem(.adaptive(minimum: 150, maximum: 270)), count: 1)
     
     var body: some View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    LazyVGrid(columns: columns, spacing: 30, content: {
+                    LazyVGrid(columns: columns, spacing: 20, content: {
                         ForEach(InformationCard.informationCards){card in
                             Button(action: {informationCard = card; showWebView = true}, label: {
                                 InformationCardItem(card: card)
