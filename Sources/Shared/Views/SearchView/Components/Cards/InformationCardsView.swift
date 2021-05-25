@@ -24,7 +24,9 @@ struct InformationCardsView: View {
                         }
                     })
                     .padding(.horizontal)
-                    .padding(.vertical, 30)
+                    .padding(.top, 30)
+                    .padding(.bottom, 60)
+                    SocialMediaLinks()
                 }
     
                 

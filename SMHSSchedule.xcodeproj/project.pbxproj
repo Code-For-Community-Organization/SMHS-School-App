@@ -95,6 +95,7 @@
 		62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
 		62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
 		62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
+		62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
 		62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
 		62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
 		62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */; };
@@ -300,6 +301,7 @@
 		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		629EC8342645D50900E236DC /* TodayViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewViewModel.swift; sourceTree = "<group>"; };
 		62C48DAA265C6CA70032301E /* FooterModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterModalView.swift; sourceTree = "<group>"; };
+		62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLinks.swift; sourceTree = "<group>"; };
 		62C9E888263BD2BC00CCA5C5 /* App-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App-Icon.png"; sourceTree = "<group>"; };
 		62C9E889263BD31A00CCA5C5 /* ScheduleScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleScreen-Light.png"; sourceTree = "<group>"; };
 		62C9E88B263BD34B00CCA5C5 /* TodayScreen-Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TodayScreen-Light.png"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				621385ED265C60B100F4806C /* Cards */,
 				624F79EE264F87BE00B93C63 /* SearchResultView.swift */,
 				623A7F22264F595400FF3F28 /* SafariView.swift */,
+				62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -890,7 +893,7 @@
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
-				62E05F7A263A1BBC00B609E3 /* ShellScript */,
+				62E05F7A263A1BBC00B609E3 /* Run Script */,
 				62D1E51F263DF779004DBFAD /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -1087,7 +1090,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62E05F7A263A1BBC00B609E3 /* ShellScript */ = {
+		62E05F7A263A1BBC00B609E3 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1096,6 +1099,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1185,6 +1189,7 @@
 				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
+				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
 				62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */,
@@ -1662,7 +1667,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 920;
+				CURRENT_PROJECT_VERSION = 1154;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1686,7 +1691,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 920;
+				CURRENT_PROJECT_VERSION = 1154;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;

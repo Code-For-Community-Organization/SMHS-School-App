@@ -72,6 +72,6 @@ fileprivate extension Array where Element == ScheduleWeek {
                 .lowercased()
                 .contains(searchText.lowercased()
                             .trimmingCharacters(in: .whitespacesAndNewlines))}
-    } 
+    }
 }
  
