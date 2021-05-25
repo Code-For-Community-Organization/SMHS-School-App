@@ -23,7 +23,12 @@ struct ScheduleView: View {
             .edgesIgnoringSafeArea(.bottom)
             .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
             .navigationBarItems(trailing: HStack {
-                Button(systemImage: .infoCircleFill, action: {presentModal = true})
+                Button(action: {presentModal = true}) {
+                    Image(systemSymbol: .infoCircleFill)
+                        .font(.title3)
+                        .imageScale(.large)
+                        .padding(5)
+                }
                 //TODO: Enable slider button after custom schedule fully implemented
                 //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
             })

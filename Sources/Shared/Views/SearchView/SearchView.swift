@@ -21,7 +21,7 @@ struct SearchView: View {
             ZStack {
                 if searchText.isEmpty {
                     InformationCardsView()
-                        
+                        .aboutFooter(showDivider: false)
                 }
                 else {
                     SearchResultView(searchText: $searchText,
@@ -40,7 +40,6 @@ struct SearchView: View {
                                  searchClicked: {
                                     
                                  })
-            .aboutFooter(showDivider: false)
             
 
         }

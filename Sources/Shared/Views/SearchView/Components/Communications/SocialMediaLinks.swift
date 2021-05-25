@@ -18,9 +18,16 @@ struct SocialMediaLinks: View {
     var body: some View {
             VStack {
                 Group {
-                    Text("Follow SMCHS")
-                        .font(.title3, weight: .semibold)
-                        .textAlign(.leading)
+                    HStack {
+                        Text("Follow SMCHS")
+                            .font(.title3, weight: .semibold)
+                        Spacer()
+                        NavigationLink(destination: SocialDetailView()) {
+                            Text("See More")
+                                .foregroundColor(.primary)
+                                .font(.callout, weight: .medium)
+                        }
+                    }
                     Divider()
                 }
                 .padding(.horizontal)
