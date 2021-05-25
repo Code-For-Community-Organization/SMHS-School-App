@@ -40,7 +40,7 @@ struct SearchView: View {
                                  searchClicked: {
                                     
                                  })
-            .aboutFooter()
+            .aboutFooter(showDivider: false)
             
 
         }

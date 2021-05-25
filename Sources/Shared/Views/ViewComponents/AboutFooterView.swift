@@ -9,12 +9,14 @@ import SwiftUI
 
 struct AboutFooterView: View {
     @State var showModal: Bool = false
-    
+    var showDivider: Bool = true
     var body: some View {
         VStack {
-            Divider()
-                .padding(.horizontal)
-                .padding(.top)
+            if showDivider {
+                Divider()
+                    .padding(.horizontal)
+                    .padding(.top)
+            }
             Button(action: {showModal = true}) {
                 HStack {
                     Text("About SMHS Schedule")
@@ -23,7 +25,7 @@ struct AboutFooterView: View {
                         .font(.caption, weight: .medium)
                 }
             }
-            .padding(EdgeInsets(top: 5, leading: 20, bottom: 30, trailing: 20))
+            .padding(EdgeInsets(top: 5, leading: 18, bottom: 30, trailing: 18))
             .textAlign(.leading)
         }
         .sheet(isPresented: $showModal) {FooterModalView()}
@@ -31,12 +33,12 @@ struct AboutFooterView: View {
 }
 
 extension View {
-    func aboutFooter() -> some View {
+    func aboutFooter(showDivider: Bool = true) -> some View {
         ScrollView {
             VStack {
                 self
                 Spacer()
-                AboutFooterView()
+                AboutFooterView(showDivider: showDivider)
             }
         }
     }
