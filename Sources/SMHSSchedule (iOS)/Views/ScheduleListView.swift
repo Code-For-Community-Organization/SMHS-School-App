@@ -10,27 +10,23 @@ import SwiftUI
 struct ScheduleListView: View {
     var scheduleViewModel: ScheduleViewModel
     @State var tappedItem: ScheduleWeek?
+    @Binding var presentModal: Bool
+
     var body: some View {
         List{
-            Section(header:
-                        Text(scheduleViewModel.dateHelper.subHeaderText)
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .foregroundColor(.platformSecondaryLabel)
-                
-            ){EmptyView()}
-            .textCase(nil)
+            Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
+            // TODO: Fix persistent storage issue with custom schedules
+            //Section(header: ScheduleListBanner(presentModal: $presentModal, geometryProxy: geo)){EmptyView()}
             ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
                 Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
                     ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
                         NavigationLink(
-                            destination: ClassScheduleView(scheduleText: day.scheduleText)
+                            destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
                             ,
                             label: {
                                 Text(day.title)
                                     .textAlign(.leading)
-
+                                
                             })
                     }
                 }
@@ -38,22 +34,13 @@ struct ScheduleListView: View {
             }
             .listItemTint(Color.secondary)
         }
-            .listStyle(InsetGroupedListStyle())
+        .listStyle(InsetGroupedListStyle())
     }
 }
 
 struct ScheduleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListView(scheduleViewModel: ScheduleViewModel.mockScheduleView)
+        ScheduleListView(scheduleViewModel: ScheduleViewModel.mockScheduleView, presentModal: .constant(true))
     }
 }
 
-struct FillAll: View {
-    let color: Color
-    
-    var body: some View {
-        GeometryReader { proxy in
-            self.color.frame(width: proxy.size.width * 1.3).fixedSize()
-        }
-    }
-}

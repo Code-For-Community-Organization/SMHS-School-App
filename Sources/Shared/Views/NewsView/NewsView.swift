@@ -19,21 +19,7 @@ struct NewsView: View {
                 VStack {
                     NewsSelectionButtons(selected: $selection)
                     LazyVStack {
-                        VStack {
-                            Text("Campus News")
-                                .fontWeight(.semibold)
-                                .font(.caption)
-                                .foregroundColor(Color.platformSecondaryLabel)
-                                .textCase(.uppercase)
-                                .textAlign(.leading)
-                            
-                            Text(selection == 1 ? "Top Stories" : "Your Stories")
-                                .fontWeight(.black)
-                                .font(.title)
-                                .foregroundColor(.primary)
-                                .textAlign(.leading)
-                        }
-                        .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
+                        subHeader
                         if selection == 1 {
                             ForEach(newsViewViewModel.newsEntries, id:\.self){
                                 NewsEntryListItem(newsEntry: $0)
@@ -52,11 +38,31 @@ struct NewsView: View {
 
             }
             .navigationBarTitle(scheduleViewModel.dateHelper.todayDateDescription)
+            .aboutFooter()
 
         }
         .onAppear{
             newsViewViewModel.fetchXML()
         }
         .navigationBarTitleDisplayMode(.automatic)
+    }
+    
+    var subHeader: some View {
+        VStack {
+            Text("Campus News")
+                .fontWeight(.semibold)
+                .font(.caption)
+                .foregroundColor(Color.platformSecondaryLabel)
+                .textCase(.uppercase)
+                .textAlign(.leading)
+            
+            Text(selection == 1 ? "Top Stories" : "Your Stories")
+                .fontWeight(.black)
+                .font(.title)
+                .foregroundColor(.primary)
+                .textAlign(.leading)
+        }
+        .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
+
     }
 }

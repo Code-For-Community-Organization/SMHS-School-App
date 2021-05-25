@@ -23,4 +23,13 @@ struct ScheduleWeek: Hashable, Codable {
         }
     }
     var scheduleDays: [ScheduleDay]
+    
+    subscript(dayIndex: Int) -> ScheduleDay {
+        get {
+            scheduleDays[dayIndex]
+        }
+        set {
+            scheduleDays[dayIndex] = newValue
+        }
+    }
 }

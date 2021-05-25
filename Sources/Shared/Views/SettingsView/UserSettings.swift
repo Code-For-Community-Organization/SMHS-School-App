@@ -11,6 +11,8 @@ import Foundation
 final class UserSettings: ObservableObject {
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
+    @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
+    
     init(){
         if editableSettings.isEmpty {
             resetEditableSettings()
