@@ -112,6 +112,12 @@
 		62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
 		62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
 		62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
+		62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
+		62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
+		62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
+		62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
 		62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
 		62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
 		62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
@@ -329,6 +335,7 @@
 		62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMStretchyHeader.swift; sourceTree = "<group>"; };
 		62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaIcons.swift; sourceTree = "<group>"; };
 		62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewRepresentable.swift; sourceTree = "<group>"; };
+		62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesStatementView.swift; sourceTree = "<group>"; };
 		62C48DAA265C6CA70032301E /* FooterModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterModalView.swift; sourceTree = "<group>"; };
 		62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLinks.swift; sourceTree = "<group>"; };
 		62C48DB2265CA88A0032301E /* SocialDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDetailView.swift; sourceTree = "<group>"; };
@@ -824,6 +831,7 @@
 				62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */,
 				62B227C4265CC1E00023A7E6 /* HowStatementView.swift */,
 				62B227C8265CD06E0023A7E6 /* AboutDevView.swift */,
+				62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1184,6 +1192,7 @@
 				6261840426371A6C001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				62C9E8A0263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
+				62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
@@ -1244,6 +1253,7 @@
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
+				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
 				62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */,
@@ -1344,6 +1354,8 @@
 				62D1E535263DF859004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E536263DF859004DBFAD /* ScheduleView.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
+				62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */,
+				62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				6287EA98265854C8007B41CB /* PeriodBlockSubview.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
@@ -1359,6 +1371,7 @@
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
 				62B227CF265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62D1E540263DF859004DBFAD /* UIScreen.swift in Sources */,
+				62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */,
 				62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62CFAA3F264756ED003B2EA0 /* DateFormatter.swift in Sources */,
 				62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */,
@@ -1369,6 +1382,7 @@
 				6287EA9B265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
+				62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* ScheduleViewModel.swift in Sources */,
 				6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
@@ -1735,7 +1749,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1208;
+				CURRENT_PROJECT_VERSION = 1279;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1759,7 +1773,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1208;
+				CURRENT_PROJECT_VERSION = 1279;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
