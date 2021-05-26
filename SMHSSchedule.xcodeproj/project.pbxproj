@@ -114,6 +114,8 @@
 		62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
 		62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
 		62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
+		62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E2265E27AD0023A7E6 /* AlertKit */; };
+		62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E4265E28D60023A7E6 /* AlertKit */; };
 		62B227DF265DADC70023A7E6 /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
 		62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
 		62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
@@ -396,6 +398,7 @@
 			files = (
 				62D321132649E4D300C99C42 /* Kingfisher in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
+				62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */,
 				629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
 				62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */,
@@ -426,6 +429,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */,
 				624F79F1264F8C1A00B93C63 /* SwiftUIX in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
 				62D1E546263DF8BB004DBFAD /* SFSafeSymbols in Frameworks */,
@@ -966,6 +970,7 @@
 				62D321152649E64C00C99C42 /* SwiftSoup */,
 				62D3211E264A175C00C99C42 /* SwiftUIX */,
 				623A7F20264F3B3100FF3F28 /* SwiftlySearch */,
+				62B227E2265E27AD0023A7E6 /* AlertKit */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -1030,6 +1035,7 @@
 				62E3BF092642715200E1FF88 /* SwiftUIVisualEffects */,
 				629EC83C2645E14F00E236DC /* Regex */,
 				624F79F0264F8C1A00B93C63 /* SwiftUIX */,
+				62B227E4265E28D60023A7E6 /* AlertKit */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1083,6 +1089,7 @@
 				62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */,
+				62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1747,7 +1754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1280;
+				CURRENT_PROJECT_VERSION = 1289;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1771,7 +1778,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1280;
+				CURRENT_PROJECT_VERSION = 1289;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1873,6 +1880,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/AlertKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
@@ -1966,6 +1981,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */;
 			productName = Regex;
+		};
+		62B227E2265E27AD0023A7E6 /* AlertKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */;
+			productName = AlertKit;
+		};
+		62B227E4265E28D60023A7E6 /* AlertKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */;
+			productName = AlertKit;
 		};
 		62C9E8A7263D1D4E00CCA5C5 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;

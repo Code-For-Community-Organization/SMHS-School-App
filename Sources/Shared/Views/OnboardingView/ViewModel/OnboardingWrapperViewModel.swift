@@ -27,9 +27,6 @@ final class OnboardingWrapperViewModel: ObservableObject {
             return .new
         }
         
-        // Updating new version to UserDefaults
-        defaults?.set(currentAppVersion, forKey: "appVersion")
-        
         let comparisonResult = currentAppVersion.compare(previousVersion, options: .numeric, range: nil, locale: nil)
         switch comparisonResult {
         case .orderedDescending:
@@ -39,5 +36,12 @@ final class OnboardingWrapperViewModel: ObservableObject {
             //Remain same or downgraded
             return .stable
         }
+    }
+    
+    static func setCurrentVersionStatus() {
+        let defaults = UserDefaults(suiteName: "AppVersion")
+        guard let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {return}
+        // Updating new version to UserDefaults
+        defaults?.set(currentAppVersion, forKey: "appVersion")
     }
 }
