@@ -57,6 +57,8 @@ struct ContentView: View {
               switch newScenePhase {
               case .active:
                 scheduleViewViewModel.objectWillChange.send()
+                let activeCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
+                UserDefaults.standard.set(activeCount+1, forKey:"activeSceneCount")
               case .inactive:
                 ()
               case .background:
