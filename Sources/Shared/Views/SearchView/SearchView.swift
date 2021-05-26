@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftUIX
-import VisualEffects
 import SwiftUIVisualEffects
 import SwiftlySearch
 
