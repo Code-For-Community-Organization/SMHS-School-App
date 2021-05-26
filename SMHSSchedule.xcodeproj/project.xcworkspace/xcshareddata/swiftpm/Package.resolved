@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AlertKit",
+        "repositoryURL": "https://github.com/rebeloper/AlertKit.git",
+        "state": {
+          "branch": null,
+          "revision": "be3d9f6ca6ff5962057634795c9335b14b16ebdc",
+          "version": "0.2.0"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {

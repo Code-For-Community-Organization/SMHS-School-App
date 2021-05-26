@@ -74,7 +74,7 @@ struct TodayViewHeader: View {
     var body: some View {
         HStack {
             VStack {
-                Text("Today")
+                Text(viewModel.dateHelper.currentWeekday)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .textAlign(.leading)
