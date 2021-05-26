@@ -12,10 +12,9 @@ import func AVFoundation.AVMakeRect
 
 struct SMStretchyHeader: View {
     @State var lastOffset = CGFloat.zero
-    @State var image = Image("SM-Field")
     var body: some View {
         GeometryReader {geo in
-            image
+            resizedImage(image: UIImage(named: "SM-Field-HiRes")!, size: geo.size)
                 .resizable()
                 .scaledToFill()
                 .frame(width: geo.size.width, height: getHeightForHeaderImage(geo))
@@ -51,9 +50,6 @@ struct SMStretchyHeader: View {
                         .blurEffectStyle(.systemChromeMaterialDark)
                     }
                 )
-                .onAppear {
-                    image = resizedImage(image: UIImage(named: "SM-Field-HiRes")!, size: geo.size)
-                }
         }
         .edgesIgnoringSafeArea(.all)
         .frame(height: 350)
@@ -67,7 +63,6 @@ struct SMStretchyHeader: View {
         let offset: CGFloat = getScrollOffset(geometry)
         // Image was pulled down
         if offset > 0 {
-            print("Offset for image: \(-offset)")
             return -offset
         }
         
@@ -78,7 +73,6 @@ struct SMStretchyHeader: View {
         let imageHeight = geometry.size.height
 
         if offset > 0 {
-            print("Height for image: \(imageHeight + offset)")
             return imageHeight + offset
         }
 
