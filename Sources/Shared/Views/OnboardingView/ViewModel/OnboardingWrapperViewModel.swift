@@ -28,6 +28,7 @@ final class OnboardingWrapperViewModel: ObservableObject {
         }
         
         let comparisonResult = currentAppVersion.compare(previousVersion, options: .numeric, range: nil, locale: nil)
+        defaults?.set(currentAppVersion, forKey: "appVersion")
         switch comparisonResult {
         case .orderedDescending:
             //Updated

@@ -17,10 +17,12 @@ final class UserSettings: ObservableObject {
         if editableSettings.isEmpty {
             resetEditableSettings()
         }
-
+        #if DEBUG
+        #else
+        resetDeveloperSettings()
+        #endif
 
     }
-    
     func resetEditableSettings()
     {
         let periods = 1...7
@@ -31,6 +33,10 @@ final class UserSettings: ObservableObject {
         self.editableSettings = settings
     }
     
+    func resetDeveloperSettings()
+    {
+        self.developerSettings = DeveloperSettings()
+    }
 }
 struct EditableSetting: Codable, Hashable {
     var periodNumber: Int
