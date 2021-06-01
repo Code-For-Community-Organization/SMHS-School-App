@@ -11,7 +11,8 @@ struct ContentView: View {
     @StateObject var scheduleViewViewModel = ScheduleViewModel()
     @StateObject var newsViewViewModel = NewsViewViewModel()
     @Environment(\.scenePhase) var scenePhase
-    
+    @EnvironmentObject var userSettings: UserSettings
+
     var body: some View {
         TabView {
             TodayView(scheduleViewViewModel: scheduleViewViewModel)

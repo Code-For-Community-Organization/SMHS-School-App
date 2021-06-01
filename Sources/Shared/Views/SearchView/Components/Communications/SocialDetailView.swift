@@ -26,10 +26,10 @@ struct SocialDetailView: View {
             VStack {
                 SMStretchyHeader()
                 VStack {
-                    Text("Social Medias")
+                    Text("Social Media")
                         .font(.title, weight: .bold)
                         .textAlign(.leading)
-                        .padding(.top)
+                        .padding(.top, 20)
                         .padding(.bottom, 10)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
@@ -46,10 +46,11 @@ struct SocialDetailView: View {
                         Text("Contact SMCHS")
                             .font(.title, weight: .bold)
                             .textAlign(.leading)
-                            .padding(.vertical)
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
-                        
+
                         Text("General Inquries")
                             .font(.title3, weight: .bold)
                             .textAlign(.leading)
@@ -136,28 +137,24 @@ struct SocialDetailView: View {
                         .frame(maxWidth: .infinity)
                         .roundedCorners(cornerRadius: 10)
                     }
-                    
+
                 }
                 .padding(.horizontal)
                 Spacer()
             }
         }
-        //.navigationBarBackButtonHidden(true)
-        //.hideNavigationBar()
-        //.overlay(
-//                    Button(action: {presentationMode.wrappedValue.dismiss()}) {
-//                        Image(systemSymbol: .chevronLeft)
-//                            .font(.title3)
-//                            .imageScale(.medium)
-//                            .padding()
-//                            .background(BlurEffect())
-//                            .clipShape(Circle())
-//                            .blurEffectStyle(.systemChromeMaterial)
-//                    }.padding(), alignment: .topLeading
-        //)
+        .overlay(
+            BlurEffect()
+                .frame(height: UIDevice.hasTopNotch ? 35 : 20) 
+                .frame(maxWidth: .infinity)
+                .blurEffectStyle(.systemUltraThinMaterial),
+            alignment: .top)
+        .navigationSearchBarHiddenWhenScrolling(true)
+        //.navigationBarTransparent(true)
+        .edgesIgnoringSafeArea(.top)
     }
     
-    func openDirectionsInMap() {
+    func openDirectionsInMap() { 
         let coordinate = CLLocationCoordinate2DMake(33.64304533631487, -117.58231905977404)
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
         mapItem.name = "Santa Margarita Catholic High School"

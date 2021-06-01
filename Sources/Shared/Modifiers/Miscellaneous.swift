@@ -27,8 +27,4 @@ extension View {
             return self.typeErased()
         }
     }
-    
-    func onboardingModal() -> some View {
-        OnboardingWrapperView(contentView: self)
-    }
 }
