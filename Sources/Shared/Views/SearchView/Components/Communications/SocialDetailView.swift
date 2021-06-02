@@ -118,19 +118,19 @@ struct SocialDetailView: View {
                         Text("Address: ")
                             .font(.body, weight: .semibold)
                             .textAlign(.leading)
-                        Text("22062 Antonio Parkway\nRancho Santa Margarita, CA 92688")
+                        Text("22062 Antonio Parkway, Rancho Santa Margarita, CA 92688")
                             .font(.callout, weight: .regular)
                             .textAlign(.leading)
                             .foregroundColor(.platformSecondaryLabel)
                             .padding(.bottom)
-                            .lineLimit(nil)
+                            .lineLimit(2)
                         Button(action: openDirectionsInMap, label: {
                             Label("Get Directions", systemSymbol: .locationFill)
                                 .font(.body, weight: .semibold)
                         })
                         .buttonStyle(HighlightButtonStyle())
                         .padding(.bottom)
-                        Map(coordinateRegion: $region, interactionModes: .zoom, showsUserLocation: false, annotationItems: markers) {marker in
+                        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: false, annotationItems: markers) {marker in
                             marker.location
                         }
                         .frame(height: 200)
