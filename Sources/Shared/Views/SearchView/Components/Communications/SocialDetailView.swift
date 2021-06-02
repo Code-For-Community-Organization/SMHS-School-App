@@ -26,10 +26,10 @@ struct SocialDetailView: View {
             VStack {
                 SMStretchyHeader()
                 VStack {
-                    Text("Social Medias")
+                    Text("Social Media")
                         .font(.title, weight: .bold)
                         .textAlign(.leading)
-                        .padding(.top)
+                        .padding(.top, 20)
                         .padding(.bottom, 10)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
@@ -46,10 +46,11 @@ struct SocialDetailView: View {
                         Text("Contact SMCHS")
                             .font(.title, weight: .bold)
                             .textAlign(.leading)
-                            .padding(.vertical)
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
-                        
+
                         Text("General Inquries")
                             .font(.title3, weight: .bold)
                             .textAlign(.leading)
@@ -117,47 +118,43 @@ struct SocialDetailView: View {
                         Text("Address: ")
                             .font(.body, weight: .semibold)
                             .textAlign(.leading)
-                        Text("22062 Antonio Parkway\nRancho Santa Margarita, CA 92688")
+                        Text("22062 Antonio Parkway, Rancho Santa Margarita, CA 92688")
                             .font(.callout, weight: .regular)
                             .textAlign(.leading)
                             .foregroundColor(.platformSecondaryLabel)
                             .padding(.bottom)
-                            .lineLimit(nil)
+                            .lineLimit(2)
                         Button(action: openDirectionsInMap, label: {
                             Label("Get Directions", systemSymbol: .locationFill)
                                 .font(.body, weight: .semibold)
                         })
                         .buttonStyle(HighlightButtonStyle())
                         .padding(.bottom)
-                        Map(coordinateRegion: $region, interactionModes: .zoom, showsUserLocation: false, annotationItems: markers) {marker in
+                        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: false, annotationItems: markers) {marker in
                             marker.location
                         }
                         .frame(height: 200)
                         .frame(maxWidth: .infinity)
                         .roundedCorners(cornerRadius: 10)
                     }
-                    
+
                 }
                 .padding(.horizontal)
                 Spacer()
             }
         }
-        //.navigationBarBackButtonHidden(true)
-        //.hideNavigationBar()
-        //.overlay(
-//                    Button(action: {presentationMode.wrappedValue.dismiss()}) {
-//                        Image(systemSymbol: .chevronLeft)
-//                            .font(.title3)
-//                            .imageScale(.medium)
-//                            .padding()
-//                            .background(BlurEffect())
-//                            .clipShape(Circle())
-//                            .blurEffectStyle(.systemChromeMaterial)
-//                    }.padding(), alignment: .topLeading
-        //)
+        .overlay(
+            BlurEffect()
+                .frame(height: UIDevice.hasTopNotch ? 35 : 20) 
+                .frame(maxWidth: .infinity)
+                .blurEffectStyle(.systemUltraThinMaterial),
+            alignment: .top)
+        .navigationSearchBarHiddenWhenScrolling(true)
+        //.navigationBarTransparent(true)
+        .edgesIgnoringSafeArea(.top)
     }
     
-    func openDirectionsInMap() {
+    func openDirectionsInMap() { 
         let coordinate = CLLocationCoordinate2DMake(33.64304533631487, -117.58231905977404)
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
         mapItem.name = "Santa Margarita Catholic High School"

@@ -63,6 +63,10 @@
 		62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62763AA2264A6DEE006162EA /* ProgressCountdown.swift */; };
 		6276B5F5264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */; };
 		6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */; };
+		627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
+		627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
+		627752FA266603B8000BAD0B /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		627752FC26660433000BAD0B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752FB26660433000BAD0B /* UIDevice.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		6287EA612651F513007B41CB /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 6287EA602651F513007B41CB /* SwiftUIX */; };
 		6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
@@ -75,7 +79,6 @@
 		6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6C265584E0007B41CB /* ScheduleCustomViewModel.swift */; };
 		6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
 		6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
-		6287EA7826580CC5007B41CB /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
 		6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
 		6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
@@ -102,7 +105,6 @@
 		62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C8265CD06E0023A7E6 /* AboutDevView.swift */; };
 		62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
 		62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
-		62B227CF265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */; };
 		62B227D1265D63270023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
 		62B227D2265D63270023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
 		62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
@@ -110,18 +112,13 @@
 		62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */; };
 		62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
 		62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
-		62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */; };
-		62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
-		62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */; };
-		62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
-		62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E2265E27AD0023A7E6 /* AlertKit */; };
-		62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E4265E28D60023A7E6 /* AlertKit */; };
 		62B227DF265DADC70023A7E6 /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
 		62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA7526580CC5007B41CB /* AboutFooterView.swift */; };
+		62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E2265E27AD0023A7E6 /* AlertKit */; };
+		62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62B227E4265E28D60023A7E6 /* AlertKit */; };
 		62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
 		62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
 		62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
-		62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAA265C6CA70032301E /* FooterModalView.swift */; };
 		62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */; };
 		62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C48DB2265CA88A0032301E /* SocialDetailView.swift */; };
 		62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
@@ -159,19 +156,15 @@
 		62D1E524263DF7FB004DBFAD /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		62D1E526263DF833004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
-		62D1E527263DF859004DBFAD /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */; };
 		62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62D1E52C263DF859004DBFAD /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
 		62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6C2639C4AC00B609E3 /* SettingsView.swift */; };
 		62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
 		62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */; };
-		62D1E531263DF859004DBFAD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */; };
 		62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E89F263D110100CCA5C5 /* OnboardingRowItem.swift */; };
-		62D1E533263DF859004DBFAD /* OnboardingWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */; };
 		62D1E534263DF859004DBFAD /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183DE263718CA001C4AD4 /* ScheduleDay.swift */; };
 		62D1E535263DF859004DBFAD /* ScheduleDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */; };
-		62D1E536263DF859004DBFAD /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */; };
 		62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
@@ -179,7 +172,6 @@
 		62D1E53D263DF859004DBFAD /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
 		62D1E53E263DF859004DBFAD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183E8263718E0001C4AD4 /* String.swift */; };
 		62D1E53F263DF859004DBFAD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
-		62D1E540263DF859004DBFAD /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		62D1E541263DF859004DBFAD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
 		62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
@@ -314,6 +306,8 @@
 		626A229E260039BC00903C39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		62763AA2264A6DEE006162EA /* ProgressCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCountdown.swift; sourceTree = "<group>"; };
 		6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewViewModel.swift; sourceTree = "<group>"; };
+		627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOverlayLabel.swift; sourceTree = "<group>"; };
+		627752FB26660433000BAD0B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = "../../../../../../../Desktop/iPhone Commercial/UIDevice.swift"; sourceTree = "<group>"; };
 		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListBanner.swift; sourceTree = "<group>"; };
 		6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderText.swift; sourceTree = "<group>"; };
@@ -715,6 +709,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		627752F52665FC73000BAD0B /* StretchyHeader */ = {
+			isa = PBXGroup;
+			children = (
+				62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */,
+				627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */,
+			);
+			path = StretchyHeader;
+			sourceTree = "<group>";
+		};
 		6279EAAA2630EA3D00CF3870 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +737,7 @@
 				629BE8BE2636489600BC49AD /* Array.swift */,
 				62D1E507263DD41C004DBFAD /* Date.swift */,
 				62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */,
+				627752FB26660433000BAD0B /* UIDevice.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -769,9 +773,9 @@
 		62C48DB1265CA85E0032301E /* Communications */ = {
 			isa = PBXGroup;
 			children = (
+				627752F52665FC73000BAD0B /* StretchyHeader */,
 				62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */,
 				62C48DB2265CA88A0032301E /* SocialDetailView.swift */,
-				62B227CC265D61A10023A7E6 /* SMStretchyHeader.swift */,
 				62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */,
 			);
 			path = Communications;
@@ -1200,6 +1204,7 @@
 				62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
 				62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
+				627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
 				62E05F782639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */,
@@ -1242,6 +1247,7 @@
 				62B227C6265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
+				627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				626183E9263718E0001C4AD4 /* String.swift in Sources */,
 				62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */,
@@ -1290,6 +1296,7 @@
 				6287EA6A26558081007B41CB /* CustomScheduleView.swift in Sources */,
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
+				627752FC26660433000BAD0B /* UIDevice.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */,
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
@@ -1338,7 +1345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */,
-				62D1E527263DF859004DBFAD /* HighlightButtonStyle.swift in Sources */,
 				62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */,
 				62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				62CFAA43264756F9003B2EA0 /* TimeInterval.swift in Sources */,
@@ -1351,17 +1357,11 @@
 				62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */,
 				62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */,
 				62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */,
-				62D1E531263DF859004DBFAD /* OnboardingView.swift in Sources */,
 				62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */,
-				62D1E533263DF859004DBFAD /* OnboardingWrapperView.swift in Sources */,
-				6287EA7826580CC5007B41CB /* AboutFooterView.swift in Sources */,
 				62D1E534263DF859004DBFAD /* ScheduleDay.swift in Sources */,
 				6287EA682654D776007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				62D1E535263DF859004DBFAD /* ScheduleDateHelper.swift in Sources */,
-				62D1E536263DF859004DBFAD /* ScheduleView.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
-				62B227DC265D9D150023A7E6 /* SocialDetailView.swift in Sources */,
-				62B227DB265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
@@ -1375,19 +1375,15 @@
 				6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */,
 				62D1E53E263DF859004DBFAD /* String.swift in Sources */,
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
-				62B227CF265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
-				62D1E540263DF859004DBFAD /* UIScreen.swift in Sources */,
-				62B227DD265D9D1F0023A7E6 /* SocialMediaIcons.swift in Sources */,
 				62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62CFAA3F264756ED003B2EA0 /* DateFormatter.swift in Sources */,
-				62C48DAD265C6CB20032301E /* FooterModalView.swift in Sources */,
 				62D1E541263DF859004DBFAD /* Array.swift in Sources */,
+				627752FA266603B8000BAD0B /* UIScreen.swift in Sources */,
 				62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */,
 				62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */,
 				6287EA6E265587C1007B41CB /* CustomScheduleView.swift in Sources */,
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
-				62B227DE265D9D3E0023A7E6 /* SocialMediaLinks.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* ScheduleViewModel.swift in Sources */,
 				6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
@@ -1473,6 +1469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_OPTIMIZATION = time;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1524,6 +1521,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LLVM_LTO = NO;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1544,6 +1542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_OPTIMIZATION = time;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1580,7 +1579,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1590,12 +1589,13 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LLVM_LTO = NO;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -1754,7 +1754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1289;
+				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1778,7 +1778,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1289;
+				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
