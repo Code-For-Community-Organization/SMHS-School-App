@@ -17,11 +17,12 @@ struct TodayView: View {
     
     var body: some View { 
         ZStack(alignment: .top) {
-            if scheduleViewViewModel.isNetworkAvailable {
-                TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
+            if !scheduleViewViewModel.isNetworkAvailable &&
+                scheduleViewViewModel.currentDaySchedule == nil {
+                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading, reloadData: scheduleViewViewModel.reloadDataNow)
             }
             else {
-                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading, reloadData: scheduleViewViewModel.reloadDataNow)
+                TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
             }
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
             

@@ -15,8 +15,8 @@ struct ScheduleView: View {
     @State var presentModal = false
     var body: some View {
         NavigationView {
-            if scheduleViewModel.isNetworkAvailable {
-                ScheduleListView(scheduleViewModel: scheduleViewModel, presentModal: $presentModal)
+            if scheduleViewModel.isNetworkAvailable || !scheduleViewModel.scheduleWeeks.isEmpty {
+                ScheduleListView(scheduleViewModel: scheduleViewModel)
                 .edgesIgnoringSafeArea(.bottom)
                 .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
                 .navigationBarItems(trailing: HStack {
