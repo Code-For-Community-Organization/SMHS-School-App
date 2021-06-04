@@ -23,6 +23,11 @@ struct SelectedDateView: View {
                             .font(.headline, weight: .medium)
                             .padding(.bottom, 0.5)
                         if day.isFullDay {
+                            Text("Full Day")
+                                .font(.caption)
+                                .foregroundColor(.platformSecondaryLabel)
+                        }
+                        else {
                             HStack {
                                 Text(day.startTimeText)
                                 Image(systemSymbol: .arrowRightSquare)
@@ -31,11 +36,6 @@ struct SelectedDateView: View {
                             }
                             .font(.caption)
                             .foregroundColor(.platformSecondaryLabel)
-                        }
-                        else {
-                            Text("Full Day")
-                                .font(.caption)
-                                .foregroundColor(.platformSecondaryLabel)
                         }
                     }
                     .foregroundColor(.platformLabel)
