@@ -28,8 +28,10 @@ The current stable version of SMHS Schedule on App Store.
 - Fixed an UI bug where today view's schedule cannot be scrolled all the way down
 
 
-## [Unreleased] - June 2, 2021
+## [Unreleased] - June 3, 2021
 
+### Added
+-[`COMMIT b443b417`](https://github.com/jevonmao/SMHS-Schedule/commit/b443b41776866c94a49847ab7b85d65b26b20eb8) Network connectivity error view with retry fetch button
 
 ## [1.0.0 (920)] - May 16, 2021
 ### Added
