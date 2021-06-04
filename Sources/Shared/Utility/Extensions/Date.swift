@@ -25,7 +25,7 @@ extension Date {
             return localDate
     }
     
-    func convertToReferenceDateLocalTime(convert: Bool = true) -> Date? {
+    func convertToReferenceDateLocalTime(convert: Bool = true) -> Date {
         let localDate = convert ? self.localDate() : self
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
@@ -33,7 +33,7 @@ extension Date {
         dateComponents.year = 2000
         dateComponents.month = 1
         dateComponents.day = 1
-        let newDate = calendar.date(from: dateComponents)
+        let newDate = calendar.date(from: dateComponents)!
         return newDate
     }
 }
