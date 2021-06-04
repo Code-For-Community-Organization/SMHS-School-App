@@ -41,6 +41,7 @@ extension View {
                 Spacer()
                 AboutFooterView(showDivider: showDivider)
             }
+            .frame(maxHeight: .infinity)
         }
     }
 }

@@ -10,60 +10,33 @@ import SFSafeSymbols
 import SwiftUIVisualEffects
 
 struct TodayView: View {
-    @ObservedObject var scheduleViewViewModel: ScheduleViewModel
+    @StateObject var scheduleViewViewModel: ScheduleViewModel
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    var selectionMode: PeriodCategory
-    init(scheduleViewViewModel: ScheduleViewModel, selectionMode: PeriodCategory? = nil) {
-        self.selectionMode = selectionMode ?? .firstLunch
-        self.scheduleViewViewModel = scheduleViewViewModel
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
-    }
-    var body: some View {
+
+    
+    var body: some View { 
         ZStack(alignment: .top) {
-            ScrollView {
-                VStack {
-                    Picker("", selection: $todayViewViewModel.selectionMode){
-                        Text("1st Lunch")
-                            .tag(PeriodCategory.firstLunch)
-                        Text("2nd Lunch")
-                            .tag(PeriodCategory.secondLunch)
-                        
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
-                        .padding(.vertical, 10)
-                    Text("Detailed Schedule")
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .padding(.bottom, 10)
-                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
-                }
-                .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
-                .padding(.horizontal)
+            if scheduleViewViewModel.isNetworkAvailable {
+                TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
             }
-            .background(Color.platformBackground)
-            .loadableView(
-                ANDconditions: scheduleViewViewModel.currentDaySchedule?.scheduleText == nil,
-                ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                reload: scheduleViewViewModel.reloadData)
-            .onboardingModal()
-            .onAppear{
-                todayViewViewModel.selectionMode = selectionMode
-                scheduleViewViewModel.objectWillChange.send()
-                if !userSettings.developerSettings.shouldCacheData {
-                    scheduleViewViewModel.reset()
-                }
+            else {
+                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading, reloadData: scheduleViewViewModel.reloadDataNow)
             }
-            .aboutFooter()
-            
-            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel) 
+            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
             
         }
         .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
+        .onChange(of: scheduleViewViewModel.isNetworkAvailable) {isAvailable in
+            if isAvailable {
+                scheduleViewViewModel.reloadDataNow()
+            }
+        }
+        .onAppear {
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
+        }
     }
 }
 
