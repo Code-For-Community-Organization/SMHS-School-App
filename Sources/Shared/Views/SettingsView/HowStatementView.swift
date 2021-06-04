@@ -17,6 +17,13 @@ struct HowStatementView: View {
                     .textAlign(.leading)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
+                HStack {
+                    Image(uiImage: #imageLiteral(resourceName: "Developer_thumbs"))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 100)
+                    Spacer()
+                }
                 VStack {
                     Text("""
                         How is the SMHS app possible?\nIs it trustworthy?"
@@ -25,8 +32,8 @@ struct HowStatementView: View {
                         .foregroundColor(.platformTertiaryLabel)
                         .padding(.leading, 15)
                         .textAlign(.leading)
-                        .background(Color.platformSecondaryFill)
-                        .cornerRadius(5)
+                        //.background(Color.platformSecondaryFill)
+                        //.cornerRadius(5)
 
                     Text("How Does SMHS work?")
                         .font(.title2, weight: .bold)
