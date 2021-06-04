@@ -13,7 +13,6 @@ struct ScheduleView: View {
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
-    
     var body: some View {
         NavigationView {
             if scheduleViewModel.isNetworkAvailable {
