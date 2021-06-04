@@ -11,6 +11,24 @@
         }
       },
       {
+        "package": "ElegantCalendar",
+        "repositoryURL": "https://github.com/ThasianX/ElegantCalendar",
+        "state": {
+          "branch": null,
+          "revision": "c3720484aef41aaf12cdee2d21a85dfed9a07498",
+          "version": "4.3.1"
+        }
+      },
+      {
+        "package": "ElegantPages",
+        "repositoryURL": "https://github.com/ThasianX/ElegantPages",
+        "state": {
+          "branch": null,
+          "revision": "d598ce4824c40296decc84eae5b3c042d3dff842",
+          "version": "1.4.2"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {

@@ -8,8 +8,17 @@
 import SwiftUI
 import StoreKit
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+    static var orientationLock = UIInterfaceOrientationMask.portrait
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return AppDelegate.orientationLock
+    }
+}
+
 @main
 struct SMHS_ScheduleApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
         // get current number of times app has been launched (https://stackoverflow.com/questions/31966810/count-number-of-times-app-has-been-launched-using-swift)
         let currentCount = UserDefaults.standard.integer(forKey: "launchCount")
