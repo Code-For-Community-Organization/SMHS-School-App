@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalendarEvent: Hashable {
+struct CalendarEvent: Hashable, Codable {
     var title: String
     var isFullDay: Bool = false
     var startTime: Date?

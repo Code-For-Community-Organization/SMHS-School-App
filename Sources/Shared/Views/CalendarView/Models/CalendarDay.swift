@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalendarDay {
+struct CalendarDay: Codable {
     var date: Date
     var events: [CalendarEvent]
 }

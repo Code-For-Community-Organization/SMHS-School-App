@@ -10,9 +10,25 @@ import Foundation
 import SwiftSoup
 
 class MasterCalendarViewModel: ObservableObject {
-    @Published var calendarManager = CalendarManager()
+    @Published(key: "calendarManager") var calendarManager = CalendarManager()
+    @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     
-    func fetchData(from startDate: Date, to endDate: Date, completion: @escaping () -> ()) {
+    func reloadData(completion: @escaping () -> ()) {
+        if let time = lastReloadTime, !calendarManager.days.isEmpty {
+            completion()
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(0) {
+                lastReloadTime = Date()
+                fetchData{completion()}
+            }
+        }
+        else {
+            lastReloadTime = Date()
+            fetchData{completion()}
+        }
+    }
+    func fetchData(from startDate: Date = Date(),
+                   to endDate: Date = Calendar.current.date(byAdding: .month, value: 3, to: Date())!,
+                   completion: @escaping () -> ()) {
         let months = endDate.months(from: startDate)
         var inBetweenMonths = [String]()
         guard endDate > startDate else {return}
