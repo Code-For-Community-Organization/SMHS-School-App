@@ -25,6 +25,7 @@ struct AboutFooterView: View {
                     Image(systemSymbol: .chevronRight)
                         .font(.caption, weight: .medium)
                 }
+                .foregroundColor(.platformSecondaryLabel)
             }
             .padding(EdgeInsets(top: 5, leading: 18, bottom: 30, trailing: 18))
             .textAlign(.leading)
