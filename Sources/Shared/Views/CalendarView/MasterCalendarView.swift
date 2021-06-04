@@ -9,22 +9,25 @@ import SwiftUI
 import ElegantCalendar
 
 struct MasterCalendarView: View {
-    // Start & End date should be configured based on your needs.
-    //static let startDate = Calendar.current.date(bySetting: .month, value: 1, of: Date())!
-    //static let endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
+
     @State var hapticsManager = HapticsManager(impactStyle: .light)
-    @Binding var showCalendar: Bool
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var calendarManager = ElegantCalendarManager(
         configuration: CalendarConfiguration(startDate: startDate(),
                                              endDate: endDate()),
         initialMonth: Date())
+    @ObservedObject var calendarViewModel: MasterCalendarViewModel
+    init(calendarViewModel: MasterCalendarViewModel) {
+        self.calendarViewModel = calendarViewModel
+        calendarManager.datasource = self
+    }
     var body: some View {
         ZStack(alignment: .bottom) {
             ElegantCalendarView(calendarManager: calendarManager)
                 .theme(.init(primary: .primary))
             Button(action: {
                 hapticsManager.UIFeedbackImpact()
-                showCalendar = false
+                presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemSymbol: .xmark)
                     .foregroundColor(Color.platformSecondaryLabel)
@@ -67,5 +70,15 @@ struct MasterCalendarView: View {
 }
 
 extension MasterCalendarView: ElegantCalendarDataSource {
-    
+    func calendar(backgroundColorOpacityForDate date: Date) -> Double {
+        calendarViewModel.calendarManager.getOpacity(forDay: date)
+    }
+
+    func calendar(canSelectDate date: Date) -> Bool {true}
+
+    func calendar(viewForSelectedDate date: Date, dimensions size: CGSize) -> AnyView
+    {
+        SelectedDateView(events: calendarViewModel.calendarManager.days[date]?.events ?? [])
+            .typeErased()
+    }
 }
