@@ -21,9 +21,9 @@ struct SocialMediaLinks: View {
                                 .font(.callout, weight: .medium)
                         }
                     }
-                    Divider()
                 }
                 .padding(.horizontal)
+                Divider()
                 SocialMediaIcons()
             }
             .edgesIgnoringSafeArea(.horizontal)

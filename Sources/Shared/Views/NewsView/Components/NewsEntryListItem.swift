@@ -51,7 +51,7 @@ struct NewsEntryListItem: View {
                 }
             }
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 6)
     }
         var authorAndTitle: some View {
             VStack {
