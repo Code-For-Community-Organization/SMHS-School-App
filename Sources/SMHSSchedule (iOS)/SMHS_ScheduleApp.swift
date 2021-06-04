@@ -19,7 +19,9 @@ struct SMHS_ScheduleApp: App {
         if currentCount > 8 ||
             activeSceneCount > 20 {
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-                SKStoreReviewController.requestReview()
+                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene { 
+                    SKStoreReviewController.requestReview(in: scene)
+                }
                 UserDefaults.standard.setValue(0, forKey: "launchCount")
                 UserDefaults.standard.setValue(0, forKey: "activeSceneCount")
             }

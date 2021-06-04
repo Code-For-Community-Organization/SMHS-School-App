@@ -351,6 +351,30 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
     
+//    func testProgressRingUnavailable() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        let beforeSchoolDate = formatter.date(from: "2021/05/26 06:16")!
+//        let view = ProgressCountDown(scheduleDay: .ampeselectionMode: .constant(.firstLunch), countDown: .constant(nil), mockDate: beforeSchoolDate).fullFrame()
+//        assertSnapshot(matching: view, as: .image)
+//    }
+    
+//    func testProgressRing1stLunch() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        let weekendDateTime = formatter.date(from: "2021/05/02 09:30")!
+//        let view = ProgressCountDown(selectionMode: .constant(.firstLunch), countDown: .constant(nil), mockDate: weekendDateTime).fullFrame()
+//        assertSnapshot(matching: view, as: .image)
+//    }
+//    
+//    func testProgressRing2ndLunch() {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+//        let weekendDateTime = formatter.date(from: "2021/05/02 09:30")!
+//        let view = ProgressCountDown(selectionMode: .constant(.firstLunch), countDown: .constant(nil), mockDate: weekendDateTime).fullFrame()
+//        assertSnapshot(matching: view, as: .image)
+//    }
+    
     func testProgressRingPeriod() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
