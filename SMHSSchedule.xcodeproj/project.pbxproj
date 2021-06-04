@@ -20,6 +20,11 @@
 		621F5C96266A95C2006EBE8F /* MasterCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C93266A9540006EBE8F /* MasterCalendarView.swift */; };
 		621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 621F5C97266A95E6006EBE8F /* ElegantCalendar */; };
 		621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FF2651A4E600B93C63 /* HapticsManager.swift */; };
+		621F5C9E266AA85F006EBE8F /* MasterCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */; };
+		621F5CA1266AAA9C006EBE8F /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */; };
+		621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */; };
+		621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA4266AAB35006EBE8F /* CalendarManager.swift */; };
+		621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */; };
 		62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9526476E42000F26ED /* ProgressRingView.swift */; };
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F17264EEBF700FF3F28 /* SearchView.swift */; };
@@ -276,6 +281,11 @@
 		621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMapDirections.swift; sourceTree = "<group>"; };
 		621F5C91266A94CD006EBE8F /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = "../../../../../../../../Documents/Repo/SMHS Schedule/ElegantCalendar.xcassets"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621F5C93266A9540006EBE8F /* MasterCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarView.swift; sourceTree = "<group>"; };
+		621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarViewModel.swift; sourceTree = "<group>"; };
+		621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		621F5CA4266AAB35006EBE8F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateView.swift; sourceTree = "<group>"; };
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -507,6 +517,27 @@
 			path = Connection;
 			sourceTree = "<group>";
 		};
+		621F5C9C266AA82A006EBE8F /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				621F5C9F266AA8B7006EBE8F /* Models */,
+				621F5C93266A9540006EBE8F /* MasterCalendarView.swift */,
+				621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */,
+				621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		621F5C9F266AA8B7006EBE8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */,
+				621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */,
+				621F5CA4266AAB35006EBE8F /* CalendarManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		62328C9426476E3A000F26ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,7 +763,6 @@
 				624ABFFC260079D4000FE7BD /* Model */,
 				626A229A2600399400903C39 /* Components */,
 				626A22982600381700903C39 /* ScheduleView.swift */,
-				621F5C93266A9540006EBE8F /* MasterCalendarView.swift */,
 			);
 			path = ScheduleView;
 			sourceTree = "<group>";
@@ -945,6 +975,7 @@
 		62E05F6F2639C5A200B609E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				621F5C9C266AA82A006EBE8F /* CalendarView */,
 				626A226A260035F100903C39 /* ContentView.swift */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
@@ -1310,17 +1341,20 @@
 				62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				62626396264DD21D004146CE /* PeriodEditItem.swift in Sources */,
 				62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */,
+				621F5C9E266AA85F006EBE8F /* MasterCalendarViewModel.swift in Sources */,
 				62E3BF012642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				626A226B260035F100903C39 /* ContentView.swift in Sources */,
 				629BE8BF2636489600BC49AD /* Array.swift in Sources */,
 				6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */,
 				629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */,
+				621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */,
 				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
 				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
+				621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */,
 				621F5C8B2669F7FF006EBE8F /* SMHSInformation.swift in Sources */,
 				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
 				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
@@ -1341,7 +1375,9 @@
 				62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
 				62C9E89D263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
 				62E05F792639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */,
+				621F5CA1266AAA9C006EBE8F /* CalendarDay.swift in Sources */,
 				62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */,
+				621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */,
 				62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62D1E50C263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,

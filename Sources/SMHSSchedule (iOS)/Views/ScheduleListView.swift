@@ -12,11 +12,17 @@ struct ScheduleListView: View {
     @State var tappedItem: ScheduleWeek?
     @Binding var presentModal: Bool
     @State var presentCalendar = false
-
+    @StateObject var masterCalendarViewModel = MasterCalendarViewModel()
     var body: some View {
         List{
             Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
-            Section(header: Button("Master Calendar", action: {presentCalendar = true})){EmptyView()}
+            Section(header: Button("Master Calendar", action: {
+                masterCalendarViewModel.fetchData(from: Date(),
+                                                  to: Calendar.current.date(byAdding: .month, value: 12, to: Date())!) {
+                    presentCalendar = true
+                }
+                
+            })){EmptyView()}
             // TODO: Fix persistent storage issue with custom schedules
             //Section(header: ScheduleListBanner(presentModal: $presentModal, geometryProxy: geo)){EmptyView()}
             ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
@@ -38,7 +44,7 @@ struct ScheduleListView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .fullScreenCover(isPresented: $presentCalendar) {
-            MasterCalendarView(showCalendar: $presentCalendar)
+            MasterCalendarView(calendarViewModel: masterCalendarViewModel)
         }
     }
 }
