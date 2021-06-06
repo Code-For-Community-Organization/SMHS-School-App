@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InternetErrorView: View {
     @Binding var shouldShowLoading: Bool
+    @Binding var show: Bool
     var reloadData: () -> ()
     var body: some View {
         VStack {
@@ -30,6 +31,15 @@ struct InternetErrorView: View {
                         .padding(.horizontal)
                         .padding(.vertical, 3)
                         .border(Color.primary, width: 1, cornerRadius: 2, style: .continuous)
+                }
+                Button(action: {
+                    show = false
+                }) {
+                    Text("IGNORE")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundColor(.primary)
+                        .padding(.top, 10)
                 }
             }
 

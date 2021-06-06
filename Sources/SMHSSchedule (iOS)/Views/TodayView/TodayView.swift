@@ -18,8 +18,12 @@ struct TodayView: View {
     var body: some View { 
         ZStack(alignment: .top) {
             if !scheduleViewViewModel.isNetworkAvailable &&
-                scheduleViewViewModel.currentDaySchedule == nil {
-                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading, reloadData: scheduleViewViewModel.reloadDataNow)
+                scheduleViewViewModel.currentDaySchedule == nil &&
+                todayViewViewModel.showNetworkError
+                {
+                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading,
+                                  show: $todayViewViewModel.showNetworkError,
+                                  reloadData: scheduleViewViewModel.reloadDataNow)
             }
             else {
                 TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
@@ -37,6 +41,9 @@ struct TodayView: View {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
+        }
+        .onDisappear {
+            todayViewViewModel.showNetworkError = true
         }
     }
 }

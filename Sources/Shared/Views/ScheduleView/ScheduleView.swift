@@ -13,9 +13,15 @@ struct ScheduleView: View {
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
+    @State var showNetworkError = true
     var body: some View {
         NavigationView {
-            if scheduleViewModel.isNetworkAvailable || !scheduleViewModel.scheduleWeeks.isEmpty {
+            if !scheduleViewModel.isNetworkAvailable &&
+                scheduleViewModel.scheduleWeeks.isEmpty &&
+                showNetworkError {
+                InternetErrorView(shouldShowLoading: $scheduleViewModel.isLoading, show: $showNetworkError, reloadData: scheduleViewModel.reloadDataNow)
+            }
+            else {
                 ScheduleListView(scheduleViewModel: scheduleViewModel)
                 .edgesIgnoringSafeArea(.bottom)
                 .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
@@ -30,9 +36,7 @@ struct ScheduleView: View {
                     //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
                 })
             }
-            else {
-                InternetErrorView(shouldShowLoading: $scheduleViewModel.isLoading, reloadData: scheduleViewModel.reloadDataNow)
-            }
+
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
@@ -40,6 +44,9 @@ struct ScheduleView: View {
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewModel.reset()
             }
+        }
+        .onDisappear {
+            showNetworkError = true
         }
         .sheet(isPresented: $presentModal) {SocialDetailView()}
         
