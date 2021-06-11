@@ -15,7 +15,6 @@
 		621F5C8B2669F7FF006EBE8F /* SMHSInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */; };
 		621F5C8D2669FBA0006EBE8F /* SchoolMapDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */; };
 		621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 621F5C8F266A9479006EBE8F /* ElegantCalendar */; };
-		621F5C92266A94CD006EBE8F /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621F5C91266A94CD006EBE8F /* ElegantCalendar.xcassets */; };
 		621F5C94266A9540006EBE8F /* MasterCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C93266A9540006EBE8F /* MasterCalendarView.swift */; };
 		621F5C96266A95C2006EBE8F /* MasterCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C93266A9540006EBE8F /* MasterCalendarView.swift */; };
 		621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 621F5C97266A95E6006EBE8F /* ElegantCalendar */; };
@@ -34,7 +33,6 @@
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EC264F875900B93C63 /* InformationCardsView.swift */; };
 		624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EE264F87BE00B93C63 /* SearchResultView.swift */; };
-		624F79F1264F8C1A00B93C63 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 624F79F0264F8C1A00B93C63 /* SwiftUIX */; };
 		624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F3264FA13500B93C63 /* NewsSelectionButtons.swift */; };
 		624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */; };
 		624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */; };
@@ -57,7 +55,6 @@
 		6261841226371A93001C4AD4 /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ScheduleDetailView.swift */; };
 		6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		6261841626371A93001C4AD4 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
-		6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 6261841C26371DDF001C4AD4 /* SFSafeSymbols */; };
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
@@ -84,7 +81,6 @@
 		627752FA266603B8000BAD0B /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		627752FC26660433000BAD0B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752FB26660433000BAD0B /* UIDevice.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
-		6287EA612651F513007B41CB /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 6287EA602651F513007B41CB /* SwiftUIX */; };
 		6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */; };
@@ -101,7 +97,6 @@
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		629BE8BF2636489600BC49AD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
-		629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 629BE8C1263652FA00BC49AD /* SFSafeSymbols */; };
 		629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8362645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8392645D7C900E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC8382645D7C900E236DC /* Regex */; };
@@ -188,7 +183,6 @@
 		62D1E53F263DF859004DBFAD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
 		62D1E541263DF859004DBFAD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
 		62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
-		62D1E546263DF8BB004DBFAD /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D1E545263DF8BB004DBFAD /* SFSafeSymbols */; };
 		62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 62D1E547263DF8BE004DBFAD /* Introspect */; };
 		62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
 		62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
@@ -200,18 +194,21 @@
 		62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321062649D9BA00C99C42 /* SwiftyXMLParser */; };
 		62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3210E2649E11800C99C42 /* NewsEntry.swift */; };
 		62D321102649E11800C99C42 /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3210E2649E11800C99C42 /* NewsEntry.swift */; };
-		62D321132649E4D300C99C42 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321122649E4D300C99C42 /* Kingfisher */; };
 		62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321152649E64C00C99C42 /* SwiftSoup */; };
 		62D321182649F25F00C99C42 /* NewsEntryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D321172649F25F00C99C42 /* NewsEntryListItem.swift */; };
 		62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D321172649F25F00C99C42 /* NewsEntryListItem.swift */; };
 		62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
 		62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
-		62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3211E264A175C00C99C42 /* SwiftUIX */; };
 		62D32121264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32126264A52F300C99C42 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 62D32125264A52F300C99C42 /* SnapshotTesting */; };
 		62D32128264A53B200C99C42 /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = 62D32127264A53B200C99C42 /* __Snapshots__ */; };
+		62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA726741BDD0019D87E /* SFSafeSymbols */; };
+		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
+		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
+		62D3EEBE267422FB0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBD267422FB0019D87E /* SwiftUIX */; };
+		62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBF2674230A0019D87E /* SwiftUIX */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -232,6 +229,9 @@
 		62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
+		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
+		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
+		62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,7 +279,6 @@
 		621F5C862669F368006EBE8F /* InternetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetErrorView.swift; sourceTree = "<group>"; };
 		621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSInformation.swift; sourceTree = "<group>"; };
 		621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMapDirections.swift; sourceTree = "<group>"; };
-		621F5C91266A94CD006EBE8F /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = "../../../../../../../../Documents/Repo/SMHS Schedule/ElegantCalendar.xcassets"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621F5C93266A9540006EBE8F /* MasterCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarView.swift; sourceTree = "<group>"; };
 		621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarViewModel.swift; sourceTree = "<group>"; };
 		621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
@@ -396,6 +395,7 @@
 		62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		62F30D002649A64C008EDD31 /* PeriodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCategory.swift; sourceTree = "<group>"; };
+		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,7 +403,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */,
 				62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */,
 				62E3BF06264270AE00E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
@@ -413,17 +412,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62D321132649E4D300C99C42 /* Kingfisher in Frameworks */,
+				62D3EEBE267422FB0019D87E /* SwiftUIX in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */,
-				629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
-				62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */,
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
+				62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +431,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D32126264A52F300C99C42 /* SnapshotTesting in Frameworks */,
-				6287EA612651F513007B41CB /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +445,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */,
 				62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */,
-				624F79F1264F8C1A00B93C63 /* SwiftUIX in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
-				62D1E546263DF8BB004DBFAD /* SFSafeSymbols in Frameworks */,
+				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
 				62D1E515263DF778004DBFAD /* SwiftUI.framework in Frameworks */,
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
@@ -673,7 +671,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				621F5C91266A94CD006EBE8F /* ElegantCalendar.xcassets */,
+				62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
@@ -1024,7 +1022,6 @@
 			);
 			name = "SMHSSchedule (macOS)";
 			packageProductDependencies = (
-				6261841C26371DDF001C4AD4 /* SFSafeSymbols */,
 				62C9E8B3263D2A1300CCA5C5 /* Introspect */,
 				62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */,
 			);
@@ -1049,17 +1046,17 @@
 			);
 			name = "SMHSSchedule (iOS)";
 			packageProductDependencies = (
-				629BE8C1263652FA00BC49AD /* SFSafeSymbols */,
 				62C9E8A7263D1D4E00CCA5C5 /* Introspect */,
 				62E3BF07264270B400E1FF88 /* SwiftUIVisualEffects */,
 				629EC8382645D7C900E236DC /* Regex */,
 				62D321062649D9BA00C99C42 /* SwiftyXMLParser */,
-				62D321122649E4D300C99C42 /* Kingfisher */,
 				62D321152649E64C00C99C42 /* SwiftSoup */,
-				62D3211E264A175C00C99C42 /* SwiftUIX */,
 				623A7F20264F3B3100FF3F28 /* SwiftlySearch */,
 				62B227E2265E27AD0023A7E6 /* AlertKit */,
 				621F5C8F266A9479006EBE8F /* ElegantCalendar */,
+				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
+				62D3EEB826741DE20019D87E /* Kingfisher */,
+				62D3EEBD267422FB0019D87E /* SwiftUIX */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -1081,7 +1078,6 @@
 			name = SMHSScheduleTests;
 			packageProductDependencies = (
 				62D32125264A52F300C99C42 /* SnapshotTesting */,
-				6287EA602651F513007B41CB /* SwiftUIX */,
 			);
 			productName = "SMHS ScheduleTests";
 			productReference = 626A2276260035F200903C39 /* SMHSScheduleTests.xctest */;
@@ -1119,13 +1115,13 @@
 			);
 			name = WidgetsExtension;
 			packageProductDependencies = (
-				62D1E545263DF8BB004DBFAD /* SFSafeSymbols */,
 				62D1E547263DF8BE004DBFAD /* Introspect */,
 				62E3BF092642715200E1FF88 /* SwiftUIVisualEffects */,
 				629EC83C2645E14F00E236DC /* Regex */,
-				624F79F0264F8C1A00B93C63 /* SwiftUIX */,
 				62B227E4265E28D60023A7E6 /* AlertKit */,
 				621F5C97266A95E6006EBE8F /* ElegantCalendar */,
+				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
+				62D3EEBF2674230A0019D87E /* SwiftUIX */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1138,7 +1134,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					626183A32637168D001C4AD4 = {
 						CreatedOnToolsVersion = 12.4;
@@ -1169,18 +1165,18 @@
 			);
 			mainGroup = 626A225C260035F100903C39;
 			packageReferences = (
-				629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 				629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */,
 				62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */,
-				62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */,
 				62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
+				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1204,6 +1200,7 @@
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
+				62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,8 +1210,8 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
+				62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
-				621F5C92266A94CD006EBE8F /* ElegantCalendar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,6 +1233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1516,6 +1514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
@@ -1542,6 +1541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
@@ -1619,6 +1619,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LLVM_LTO = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1687,6 +1688,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LLVM_LTO = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -1854,7 +1856,7 @@
 				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1878,7 +1880,7 @@
 				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1969,14 +1971,6 @@
 				minimumVersion = 1.2.4;
 			};
 		};
-		629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.3;
-			};
-		};
 		629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/crossroadlabs/Regex.git";
@@ -2009,14 +2003,6 @@
 				minimumVersion = 5.3.0;
 			};
 		};
-		62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.0;
-			};
-		};
 		62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -2025,20 +2011,36 @@
 				minimumVersion = 2.3.2;
 			};
 		};
-		62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
-			};
-		};
 		62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.9.0;
+			};
+		};
+		62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.7;
 			};
 		};
 		62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
@@ -2066,26 +2068,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
 			productName = SwiftlySearch;
-		};
-		624F79F0264F8C1A00B93C63 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		6261841C26371DDF001C4AD4 /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
-		6287EA602651F513007B41CB /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		629BE8C1263652FA00BC49AD /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2117,11 +2099,6 @@
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		62D1E545263DF8BB004DBFAD /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
 		62D1E547263DF8BE004DBFAD /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
@@ -2132,25 +2109,40 @@
 			package = 62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */;
 			productName = SwiftyXMLParser;
 		};
-		62D321122649E4D300C99C42 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		62D321152649E64C00C99C42 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		62D3211E264A175C00C99C42 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
 		62D32125264A52F300C99C42 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		62D3EEA726741BDD0019D87E /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		62D3EEA926741C1B0019D87E /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		62D3EEB826741DE20019D87E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		62D3EEBD267422FB0019D87E /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		62D3EEBF2674230A0019D87E /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;
