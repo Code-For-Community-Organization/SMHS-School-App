@@ -31,12 +31,12 @@ class ScheduleCustomViewModel: ObservableObject {
         
         if !title.isEmpty &&
             endTime > startTime &&
-            !existingDayRange.contains(startTime.convertToReferenceDateLocalTime()!) &&
-            !existingDayRange.contains(endTime.convertToReferenceDateLocalTime()!)
+            !existingDayRange.contains(startTime.convertToReferenceDateLocalTime()) &&
+            !existingDayRange.contains(endTime.convertToReferenceDateLocalTime())
         {
             let customBlock = ClassPeriod(customTitle: title,
-                                          startTime: startTime.convertToReferenceDateLocalTime()!,
-                                          endTime: endTime.convertToReferenceDateLocalTime()!)
+                                          startTime: startTime.convertToReferenceDateLocalTime(),
+                                          endTime: endTime.convertToReferenceDateLocalTime())
             return (true, customBlock) 
         }
         return (false, nil)

@@ -42,6 +42,7 @@ struct FooterModalView: View {
                     NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
+                .foregroundColor(.secondary)
             }
             .navigationBarTitle("Settings")
         }

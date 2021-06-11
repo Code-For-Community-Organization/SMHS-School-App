@@ -45,6 +45,7 @@ struct NewsView: View {
             newsViewViewModel.fetchXML()
         }
         .navigationBarTitleDisplayMode(.automatic)
+        .navigationViewStyle() 
     }
     
     var subHeader: some View {
@@ -64,5 +65,16 @@ struct NewsView: View {
         }
         .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
 
+    }
+}
+
+fileprivate extension View {
+    func navigationViewStyle() -> AnyView {
+        if UIScreen.idiom == .pad {
+            return self.navigationViewStyle(DefaultNavigationViewStyle()).typeErased()
+        }
+        else {
+            return self.navigationViewStyle(StackNavigationViewStyle()).typeErased()
+        }
     }
 }

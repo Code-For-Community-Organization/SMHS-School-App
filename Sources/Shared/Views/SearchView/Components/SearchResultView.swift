@@ -13,8 +13,17 @@ struct SearchResultView: View {
     @State var newsEntries: [NewsEntry]
     @State var informationCards: [InformationCard]
     @State var informationCard: InformationCard?
+    
+    //MARK: - Search Results Filter
+    var campusNewsResults: [NewsEntry] {
+        newsEntries
+                .filter{$0.title.lowercased()
+                    .contains(searchText.lowercased()
+                                .trimmingCharacters(in: .whitespacesAndNewlines))}
+    }
     var body: some View {
         List {
+            //if !searchText.isEmpty
             scheduleDays
             campusNews
             quickInformation
@@ -22,6 +31,7 @@ struct SearchResultView: View {
         .listStyle(GroupedListStyle())
     }
     
+    //MARK: - SwiftUI View Components
     var scheduleDays: some View {
         Section(header: Text("Schedule Days")) {
             ForEach(scheduleWeeks
@@ -33,10 +43,7 @@ struct SearchResultView: View {
     
     var campusNews: some View {
         Section(header: Text("Campus News")) {
-            ForEach(newsEntries
-                        .filter{$0.title.lowercased()
-                            .contains(searchText.lowercased()
-                                        .trimmingCharacters(in: .whitespacesAndNewlines))}, id: \.self){news in
+            ForEach(campusNewsResults, id: \.self){news in
                 let bindingNews = Binding(get: {news}, set: {
                     guard let index = newsEntries.firstIndex(where: {$0.id == news.id}) else {return}
                     newsEntries[index] = $0

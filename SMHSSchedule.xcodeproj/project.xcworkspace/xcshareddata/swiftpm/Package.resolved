@@ -11,8 +11,26 @@
         }
       },
       {
+        "package": "ElegantCalendar",
+        "repositoryURL": "https://github.com/ThasianX/ElegantCalendar",
+        "state": {
+          "branch": null,
+          "revision": "c3720484aef41aaf12cdee2d21a85dfed9a07498",
+          "version": "4.3.1"
+        }
+      },
+      {
+        "package": "ElegantPages",
+        "repositoryURL": "https://github.com/ThasianX/ElegantPages",
+        "state": {
+          "branch": null,
+          "revision": "d598ce4824c40296decc84eae5b3c042d3dff842",
+          "version": "1.4.2"
+        }
+      },
+      {
         "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
           "revision": "44450a8f564d7c0165f736ba2250649ff8d3e556",
@@ -30,7 +48,7 @@
       },
       {
         "package": "SFSafeSymbols",
-        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols.git",
+        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
           "branch": null,
           "revision": "c61de7a6e9eb1520d32316b06d5932accd974e70",
@@ -38,7 +56,7 @@
         }
       },
       {
-        "package": "SnapshotTesting",
+        "package": "swift-snapshot-testing",
         "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
         "state": {
           "branch": null,
@@ -65,7 +83,7 @@
         }
       },
       {
-        "package": "Introspect",
+        "package": "SwiftUI-Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
         "state": {
           "branch": null,
@@ -74,7 +92,7 @@
         }
       },
       {
-        "package": "SwiftUIVisualEffects",
+        "package": "swiftui-visual-effects",
         "repositoryURL": "https://github.com/lucasbrown/swiftui-visual-effects",
         "state": {
           "branch": null,
@@ -87,8 +105,8 @@
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
         "state": {
           "branch": null,
-          "revision": "e0fd9ff48354a447d5dccdb4b485a69b63688e48",
-          "version": "0.0.6"
+          "revision": "5837e88eca8e05fa70c82c6aaecfc59bf7e81bfd",
+          "version": "0.0.7"
         }
       },
       {

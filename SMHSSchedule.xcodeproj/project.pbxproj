@@ -9,6 +9,21 @@
 /* Begin PBXBuildFile section */
 		621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385EE265C60D500F4806C /* InformationCardItem.swift */; };
 		621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
+		621F5C842669F2D5006EBE8F /* TodayHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C822669F2D5006EBE8F /* TodayHeroView.swift */; };
+		621F5C872669F368006EBE8F /* InternetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C862669F368006EBE8F /* InternetErrorView.swift */; };
+		621F5C892669F58D006EBE8F /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
+		621F5C8B2669F7FF006EBE8F /* SMHSInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */; };
+		621F5C8D2669FBA0006EBE8F /* SchoolMapDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */; };
+		621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 621F5C8F266A9479006EBE8F /* ElegantCalendar */; };
+		621F5C94266A9540006EBE8F /* MasterCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C93266A9540006EBE8F /* MasterCalendarView.swift */; };
+		621F5C96266A95C2006EBE8F /* MasterCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C93266A9540006EBE8F /* MasterCalendarView.swift */; };
+		621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 621F5C97266A95E6006EBE8F /* ElegantCalendar */; };
+		621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FF2651A4E600B93C63 /* HapticsManager.swift */; };
+		621F5C9E266AA85F006EBE8F /* MasterCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */; };
+		621F5CA1266AAA9C006EBE8F /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */; };
+		621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */; };
+		621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA4266AAB35006EBE8F /* CalendarManager.swift */; };
+		621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */; };
 		62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9526476E42000F26ED /* ProgressRingView.swift */; };
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F17264EEBF700FF3F28 /* SearchView.swift */; };
@@ -18,7 +33,6 @@
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EC264F875900B93C63 /* InformationCardsView.swift */; };
 		624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EE264F87BE00B93C63 /* SearchResultView.swift */; };
-		624F79F1264F8C1A00B93C63 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 624F79F0264F8C1A00B93C63 /* SwiftUIX */; };
 		624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F3264FA13500B93C63 /* NewsSelectionButtons.swift */; };
 		624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */; };
 		624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */; };
@@ -41,7 +55,6 @@
 		6261841226371A93001C4AD4 /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ScheduleDetailView.swift */; };
 		6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		6261841626371A93001C4AD4 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
-		6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 6261841C26371DDF001C4AD4 /* SFSafeSymbols */; };
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
@@ -68,7 +81,6 @@
 		627752FA266603B8000BAD0B /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		627752FC26660433000BAD0B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752FB26660433000BAD0B /* UIDevice.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
-		6287EA612651F513007B41CB /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 6287EA602651F513007B41CB /* SwiftUIX */; };
 		6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */; };
@@ -85,14 +97,12 @@
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		629BE8BF2636489600BC49AD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
-		629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 629BE8C1263652FA00BC49AD /* SFSafeSymbols */; };
 		629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8362645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8392645D7C900E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC8382645D7C900E236DC /* Regex */; };
 		629EC83D2645E14F00E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC83C2645E14F00E236DC /* Regex */; };
 		62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
-		62B227BE265CC0310023A7E6 /* PeriodEditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626394264DD21D004146CE /* PeriodEditItem.swift */; };
 		62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */; };
 		62B227C2265CC1D20023A7E6 /* WhyStatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */; };
@@ -157,7 +167,6 @@
 		62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		62D1E526263DF833004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
 		62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
-		62D1E52C263DF859004DBFAD /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
 		62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6C2639C4AC00B609E3 /* SettingsView.swift */; };
 		62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
@@ -174,8 +183,6 @@
 		62D1E53F263DF859004DBFAD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229E260039BC00903C39 /* Colors.swift */; };
 		62D1E541263DF859004DBFAD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
 		62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
-		62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
-		62D1E546263DF8BB004DBFAD /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D1E545263DF8BB004DBFAD /* SFSafeSymbols */; };
 		62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 62D1E547263DF8BE004DBFAD /* Introspect */; };
 		62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
 		62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E54D263DFD46004DBFAD /* ScheduleViewTextLines.swift */; };
@@ -187,18 +194,21 @@
 		62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321062649D9BA00C99C42 /* SwiftyXMLParser */; };
 		62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3210E2649E11800C99C42 /* NewsEntry.swift */; };
 		62D321102649E11800C99C42 /* NewsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3210E2649E11800C99C42 /* NewsEntry.swift */; };
-		62D321132649E4D300C99C42 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321122649E4D300C99C42 /* Kingfisher */; };
 		62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 62D321152649E64C00C99C42 /* SwiftSoup */; };
 		62D321182649F25F00C99C42 /* NewsEntryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D321172649F25F00C99C42 /* NewsEntryListItem.swift */; };
 		62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D321172649F25F00C99C42 /* NewsEntryListItem.swift */; };
 		62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
 		62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */; };
-		62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3211E264A175C00C99C42 /* SwiftUIX */; };
 		62D32121264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D32120264A4C6700C99C42 /* ClassPeriod.swift */; };
 		62D32126264A52F300C99C42 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 62D32125264A52F300C99C42 /* SnapshotTesting */; };
 		62D32128264A53B200C99C42 /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = 62D32127264A53B200C99C42 /* __Snapshots__ */; };
+		62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA726741BDD0019D87E /* SFSafeSymbols */; };
+		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
+		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
+		62D3EEBE267422FB0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBD267422FB0019D87E /* SwiftUIX */; };
+		62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBF2674230A0019D87E /* SwiftUIX */; };
 		62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* ScheduleViewModel.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -209,7 +219,6 @@
 		62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62E05F752639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
-		62E05F782639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
 		62E05F792639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
 		62E3BF002642583100E1FF88 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */; };
 		62E3BF012642583100E1FF88 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */; };
@@ -220,6 +229,9 @@
 		62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
+		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
+		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
+		62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +275,16 @@
 /* Begin PBXFileReference section */
 		621385EE265C60D500F4806C /* InformationCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardItem.swift; sourceTree = "<group>"; };
 		621385F0265C630B00F4806C /* PeriodParseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodParseExtensions.swift; sourceTree = "<group>"; };
+		621F5C822669F2D5006EBE8F /* TodayHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeroView.swift; sourceTree = "<group>"; };
+		621F5C862669F368006EBE8F /* InternetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetErrorView.swift; sourceTree = "<group>"; };
+		621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSInformation.swift; sourceTree = "<group>"; };
+		621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMapDirections.swift; sourceTree = "<group>"; };
+		621F5C93266A9540006EBE8F /* MasterCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarView.swift; sourceTree = "<group>"; };
+		621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCalendarViewModel.swift; sourceTree = "<group>"; };
+		621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		621F5CA4266AAB35006EBE8F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateView.swift; sourceTree = "<group>"; };
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -373,6 +395,7 @@
 		62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		62F30D002649A64C008EDD31 /* PeriodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCategory.swift; sourceTree = "<group>"; };
+		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,7 +403,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6261841D26371DDF001C4AD4 /* SFSafeSymbols in Frameworks */,
 				62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */,
 				62E3BF06264270AE00E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
@@ -390,16 +412,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62D321132649E4D300C99C42 /* Kingfisher in Frameworks */,
+				62D3EEBE267422FB0019D87E /* SwiftUIX in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				62B227E3265E27AD0023A7E6 /* AlertKit in Frameworks */,
-				629BE8C2263652FA00BC49AD /* SFSafeSymbols in Frameworks */,
+				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
-				62D3211F264A175C00C99C42 /* SwiftUIX in Frameworks */,
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
+				62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +431,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D32126264A52F300C99C42 /* SnapshotTesting in Frameworks */,
-				6287EA612651F513007B41CB /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,12 +445,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */,
 				62B227E5265E28D60023A7E6 /* AlertKit in Frameworks */,
-				624F79F1264F8C1A00B93C63 /* SwiftUIX in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
-				62D1E546263DF8BB004DBFAD /* SFSafeSymbols in Frameworks */,
+				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
 				62D1E515263DF778004DBFAD /* SwiftUI.framework in Frameworks */,
+				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
 				62D1E513263DF778004DBFAD /* WidgetKit.framework in Frameworks */,
 				62E3BF0A2642715200E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
@@ -457,13 +480,68 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		621F5C7F2669F2A1006EBE8F /* ProgressRing */ = {
+			isa = PBXGroup;
+			children = (
+				62763AA2264A6DEE006162EA /* ProgressCountdown.swift */,
+				62328C9526476E42000F26ED /* ProgressRingView.swift */,
+			);
+			path = ProgressRing;
+			sourceTree = "<group>";
+		};
+		621F5C802669F2B0006EBE8F /* PeriodEdit */ = {
+			isa = PBXGroup;
+			children = (
+				62626394264DD21D004146CE /* PeriodEditItem.swift */,
+				62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */,
+			);
+			path = PeriodEdit;
+			sourceTree = "<group>";
+		};
+		621F5C812669F2B6006EBE8F /* TodayView */ = {
+			isa = PBXGroup;
+			children = (
+				621F5C822669F2D5006EBE8F /* TodayHeroView.swift */,
+			);
+			path = TodayView;
+			sourceTree = "<group>";
+		};
+		621F5C882669F374006EBE8F /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */,
+				621F5C862669F368006EBE8F /* InternetErrorView.swift */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		621F5C9C266AA82A006EBE8F /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				621F5C9F266AA8B7006EBE8F /* Models */,
+				621F5C93266A9540006EBE8F /* MasterCalendarView.swift */,
+				621F5C9D266AA85F006EBE8F /* MasterCalendarViewModel.swift */,
+				621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		621F5C9F266AA8B7006EBE8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				621F5CA0266AAA9C006EBE8F /* CalendarDay.swift */,
+				621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */,
+				621F5CA4266AAB35006EBE8F /* CalendarManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		62328C9426476E3A000F26ED /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				62328C9526476E42000F26ED /* ProgressRingView.swift */,
-				62763AA2264A6DEE006162EA /* ProgressCountdown.swift */,
-				62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */,
-				62626394264DD21D004146CE /* PeriodEditItem.swift */,
+				621F5C812669F2B6006EBE8F /* TodayView */,
+				621F5C802669F2B0006EBE8F /* PeriodEdit */,
+				621F5C7F2669F2A1006EBE8F /* ProgressRing */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -582,9 +660,9 @@
 		6261842926373D40001C4AD4 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				621F5C882669F374006EBE8F /* Connection */,
 				62C48DA9265C6C8B0032301E /* AboutFooter */,
 				62E05F6C2639C4AC00B609E3 /* SettingsView.swift */,
-				62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */,
 				62F30D002649A64C008EDD31 /* PeriodCategory.swift */,
 			);
 			path = ViewComponents;
@@ -593,6 +671,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
@@ -775,8 +854,10 @@
 			children = (
 				627752F52665FC73000BAD0B /* StretchyHeader */,
 				62C48DAF265C7A6D0032301E /* SocialMediaLinks.swift */,
+				621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */,
 				62C48DB2265CA88A0032301E /* SocialDetailView.swift */,
 				62B227D0265D63270023A7E6 /* SocialMediaIcons.swift */,
+				621F5C8C2669FBA0006EBE8F /* SchoolMapDirections.swift */,
 			);
 			path = Communications;
 			sourceTree = "<group>";
@@ -892,6 +973,7 @@
 		62E05F6F2639C5A200B609E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				621F5C9C266AA82A006EBE8F /* CalendarView */,
 				626A226A260035F100903C39 /* ContentView.swift */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
@@ -940,7 +1022,6 @@
 			);
 			name = "SMHSSchedule (macOS)";
 			packageProductDependencies = (
-				6261841C26371DDF001C4AD4 /* SFSafeSymbols */,
 				62C9E8B3263D2A1300CCA5C5 /* Introspect */,
 				62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */,
 			);
@@ -965,16 +1046,17 @@
 			);
 			name = "SMHSSchedule (iOS)";
 			packageProductDependencies = (
-				629BE8C1263652FA00BC49AD /* SFSafeSymbols */,
 				62C9E8A7263D1D4E00CCA5C5 /* Introspect */,
 				62E3BF07264270B400E1FF88 /* SwiftUIVisualEffects */,
 				629EC8382645D7C900E236DC /* Regex */,
 				62D321062649D9BA00C99C42 /* SwiftyXMLParser */,
-				62D321122649E4D300C99C42 /* Kingfisher */,
 				62D321152649E64C00C99C42 /* SwiftSoup */,
-				62D3211E264A175C00C99C42 /* SwiftUIX */,
 				623A7F20264F3B3100FF3F28 /* SwiftlySearch */,
 				62B227E2265E27AD0023A7E6 /* AlertKit */,
+				621F5C8F266A9479006EBE8F /* ElegantCalendar */,
+				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
+				62D3EEB826741DE20019D87E /* Kingfisher */,
+				62D3EEBD267422FB0019D87E /* SwiftUIX */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -996,7 +1078,6 @@
 			name = SMHSScheduleTests;
 			packageProductDependencies = (
 				62D32125264A52F300C99C42 /* SnapshotTesting */,
-				6287EA602651F513007B41CB /* SwiftUIX */,
 			);
 			productName = "SMHS ScheduleTests";
 			productReference = 626A2276260035F200903C39 /* SMHSScheduleTests.xctest */;
@@ -1034,12 +1115,13 @@
 			);
 			name = WidgetsExtension;
 			packageProductDependencies = (
-				62D1E545263DF8BB004DBFAD /* SFSafeSymbols */,
 				62D1E547263DF8BE004DBFAD /* Introspect */,
 				62E3BF092642715200E1FF88 /* SwiftUIVisualEffects */,
 				629EC83C2645E14F00E236DC /* Regex */,
-				624F79F0264F8C1A00B93C63 /* SwiftUIX */,
 				62B227E4265E28D60023A7E6 /* AlertKit */,
+				621F5C97266A95E6006EBE8F /* ElegantCalendar */,
+				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
+				62D3EEBF2674230A0019D87E /* SwiftUIX */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1052,7 +1134,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					626183A32637168D001C4AD4 = {
 						CreatedOnToolsVersion = 12.4;
@@ -1083,17 +1165,18 @@
 			);
 			mainGroup = 626A225C260035F100903C39;
 			packageReferences = (
-				629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 				629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */,
 				62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */,
-				62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */,
 				62B227E1265E27AD0023A7E6 /* XCRemoteSwiftPackageReference "AlertKit" */,
+				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
+				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1117,6 +1200,7 @@
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
+				62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1210,7 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
+				62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1148,6 +1233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1207,7 +1293,6 @@
 				627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
-				62E05F782639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */,
 				62D1E508263DD41C004DBFAD /* Date.swift in Sources */,
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
@@ -1223,6 +1308,7 @@
 				62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */,
 				62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */,
 				6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
+				621F5C96266A95C2006EBE8F /* MasterCalendarView.swift in Sources */,
 				62D321182649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
 				62D3211B2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				6261840926371A6C001C4AD4 /* UIScreen.swift in Sources */,
@@ -1253,17 +1339,21 @@
 				62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				62626396264DD21D004146CE /* PeriodEditItem.swift in Sources */,
 				62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */,
+				621F5C9E266AA85F006EBE8F /* MasterCalendarViewModel.swift in Sources */,
 				62E3BF012642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				626A226B260035F100903C39 /* ContentView.swift in Sources */,
 				629BE8BF2636489600BC49AD /* Array.swift in Sources */,
 				6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */,
 				629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */,
+				621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */,
 				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
 				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
+				621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */,
+				621F5C8B2669F7FF006EBE8F /* SMHSInformation.swift in Sources */,
 				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
 				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
@@ -1273,6 +1363,7 @@
 				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
 				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */,
+				621F5C94266A9540006EBE8F /* MasterCalendarView.swift in Sources */,
 				62C9E8AC263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
 				62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */,
@@ -1282,11 +1373,14 @@
 				62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
 				62C9E89D263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
 				62E05F792639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */,
+				621F5CA1266AAA9C006EBE8F /* CalendarDay.swift in Sources */,
 				62DE61EC2602525400B86555 /* ScheduleViewModel.swift in Sources */,
+				621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */,
 				62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62D1E50C263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
 				62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */,
+				621F5C872669F368006EBE8F /* InternetErrorView.swift in Sources */,
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
@@ -1298,6 +1392,7 @@
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				627752FC26660433000BAD0B /* UIDevice.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
+				621F5C8D2669FBA0006EBE8F /* SchoolMapDirections.swift in Sources */,
 				621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */,
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */,
@@ -1306,6 +1401,7 @@
 				6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
 				624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */,
+				621F5C842669F2D5006EBE8F /* TodayHeroView.swift in Sources */,
 				62B227C2265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
 				626A229C260039AB00903C39 /* ScheduleDetailView.swift in Sources */,
 				626183DF263718CA001C4AD4 /* ScheduleDay.swift in Sources */,
@@ -1351,7 +1447,6 @@
 				62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */,
 				62D1E550263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				62E3BF022642583100E1FF88 /* UIElementPreview.swift in Sources */,
-				62D1E52C263DF859004DBFAD /* LoadingIndicatorView.swift in Sources */,
 				62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */,
 				629EC8362645D50900E236DC /* TodayViewViewModel.swift in Sources */,
 				62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */,
@@ -1365,13 +1460,13 @@
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
+				621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */,
 				6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */,
 				62B227C7265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62B227DF265DADC70023A7E6 /* PeriodBlockSubview.swift in Sources */,
 				62D1E53B263DF859004DBFAD /* RoundedCorners.swift in Sources */,
 				62D1E53D263DF859004DBFAD /* Bindings.swift in Sources */,
 				62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */,
-				62B227BE265CC0310023A7E6 /* PeriodEditItem.swift in Sources */,
 				6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */,
 				62D1E53E263DF859004DBFAD /* String.swift in Sources */,
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
@@ -1379,8 +1474,8 @@
 				62CFAA3F264756ED003B2EA0 /* DateFormatter.swift in Sources */,
 				62D1E541263DF859004DBFAD /* Array.swift in Sources */,
 				627752FA266603B8000BAD0B /* UIScreen.swift in Sources */,
-				62D1E543263DF864004DBFAD /* ScheduleListView.swift in Sources */,
 				62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */,
+				621F5C892669F58D006EBE8F /* LoadingIndicatorView.swift in Sources */,
 				6287EA6E265587C1007B41CB /* CustomScheduleView.swift in Sources */,
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
@@ -1419,6 +1514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
@@ -1445,6 +1541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sources/SMHSSchedule (macOS)/SMHSSchedule__macOS_.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (macOS)/Preview Content\"";
@@ -1522,6 +1619,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LLVM_LTO = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1590,6 +1688,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LLVM_LTO = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "";
@@ -1757,7 +1856,7 @@
 				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1781,7 +1880,7 @@
 				CURRENT_PROJECT_VERSION = 1363;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1856,20 +1955,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ThasianX/ElegantCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.1;
+			};
+		};
 		623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thislooksfun/SwiftlySearch";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.4;
-			};
-		};
-		629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.3;
 			};
 		};
 		629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */ = {
@@ -1904,14 +2003,6 @@
 				minimumVersion = 5.3.0;
 			};
 		};
-		62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.0;
-			};
-		};
 		62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -1920,20 +2011,36 @@
 				minimumVersion = 2.3.2;
 			};
 		};
-		62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
-			};
-		};
 		62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.9.0;
+			};
+		};
+		62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.7;
 			};
 		};
 		62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
@@ -1947,30 +2054,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		621F5C8F266A9479006EBE8F /* ElegantCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */;
+			productName = ElegantCalendar;
+		};
+		621F5C97266A95E6006EBE8F /* ElegantCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */;
+			productName = ElegantCalendar;
+		};
 		623A7F20264F3B3100FF3F28 /* SwiftlySearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
 			productName = SwiftlySearch;
-		};
-		624F79F0264F8C1A00B93C63 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		6261841C26371DDF001C4AD4 /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
-		6287EA602651F513007B41CB /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		629BE8C1263652FA00BC49AD /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2002,11 +2099,6 @@
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		62D1E545263DF8BB004DBFAD /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 629BE8C0263652FA00BC49AD /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
 		62D1E547263DF8BE004DBFAD /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
@@ -2017,25 +2109,40 @@
 			package = 62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */;
 			productName = SwiftyXMLParser;
 		};
-		62D321122649E4D300C99C42 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D321112649E4D300C99C42 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		62D321152649E64C00C99C42 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62D321142649E64C00C99C42 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		62D3211E264A175C00C99C42 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3211D264A175C00C99C42 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
 		62D32125264A52F300C99C42 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62D32124264A52F300C99C42 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		62D3EEA726741BDD0019D87E /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		62D3EEA926741C1B0019D87E /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		62D3EEB826741DE20019D87E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		62D3EEBD267422FB0019D87E /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		62D3EEBF2674230A0019D87E /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;

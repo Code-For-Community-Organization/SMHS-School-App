@@ -18,20 +18,8 @@ struct NewsEntryListItem: View {
             NavigationLink(destination: NewsDetailedView(newsEntry: $newsEntry).environmentObject(newsViewViewModel), isActive: $isActive, label: {EmptyView()})
             Button(action: {isActive = true}) {
                 HStack {
-                    VStack {
-                        Text(newsEntry.author)
-                            .font(.system(.caption, design: .serif))
-                            .textAlign(.leading)
-                            .padding(.bottom, 0.5)
-                        Text(newsEntry.title)
-                            .font(.system(.headline, design: .default))
-                            .fontWeight(.black)
-                            .multilineTextAlignment(.leading)
-                            .textAlign(.leading)
-                    }
-                    .foregroundColor(Color.platformLabel)
+                    authorAndTitle
                     Spacer()
-                    
                     KFImage(newsEntry.imageURL)
                         .setProcessor(downsampler)
                         .placeholder {
@@ -63,9 +51,23 @@ struct NewsEntryListItem: View {
                 }
             }
         }
-        .padding(.vertical, 10)
- 
+        .padding(.vertical, 6)
     }
+        var authorAndTitle: some View {
+            VStack {
+                Text(newsEntry.author)
+                    .font(.system(.caption, design: .serif))
+                    .textAlign(.leading)
+                    .padding(.bottom, 0.5)
+                Text(newsEntry.title)
+                    .font(.system(.headline, design: .default))
+                    .fontWeight(.black)
+                    .multilineTextAlignment(.leading)
+                    .textAlign(.leading)
+            }
+            .foregroundColor(Color.platformLabel)
+        }
+    
 }
 
 struct NewsEntryListItem_Previews: PreviewProvider {
