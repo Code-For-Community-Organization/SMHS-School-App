@@ -13,14 +13,14 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         self.scheduleText = scheduleText
         self.mockDate = mockDate
     }
-    var mockDate: Date?
+    var mockDate: Date?  //Mock representation of current date, for testing
     var id = UUID()
     var dayOfTheWeek: Int {
         Date.getDayOfTheWeek(for: date)
     }
     var date: Date
     var scheduleText: String
-    var customPeriods = [ClassPeriod]()
+    var customPeriods = [ClassPeriod]()  //Future feature, no use for now
     var periods: [ClassPeriod] {
         //var schoolPeriods = parseClassPeriods()
 //        let preStarts = customPeriods.filter{ //Get all custom blocks before school start time

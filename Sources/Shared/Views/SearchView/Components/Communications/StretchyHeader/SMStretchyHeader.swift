@@ -43,7 +43,7 @@ struct SMStretchyHeader: View {
     static func getOffsetForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
         let offset: CGFloat = Self.getScrollOffset(geometry)
         // Image was pulled down
-        if offset > 0 {
+        if offset > CGFloat(0) {
             return -offset
         }
         

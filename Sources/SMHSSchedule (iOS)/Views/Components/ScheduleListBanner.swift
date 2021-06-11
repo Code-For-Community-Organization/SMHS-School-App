@@ -10,13 +10,14 @@ import SwiftUI
 struct ScheduleListBanner: View {
     @AppStorage("showBanner") var showBanner = true
     @State var animate = false
-    @Binding var presentModal: Bool
+    @Binding var present: Bool
+    var action: () -> ()
     var geometryProxy: GeometryProxy
     var body: some View {
             VStack {
                 VStack {
-                    Button(action: {presentModal = true; showBanner = false}) {
-                        Text("Customize Schedule")
+                    Button(action: action) {
+                        Text("Master Calendar")
                             .font(.body)
                             .fontWeight(.semibold)
                             .textCase(nil)
@@ -25,7 +26,7 @@ struct ScheduleListBanner: View {
                     .background(Color.platformBackground)
                     .foregroundColor(.primary)
                     .clipShape(Capsule(style: .continuous))
-                    Text("Add your personal schedule for before or after school hours.")
+                    Text("View calendar for all school events.")
                         .font(.caption)
                         .fontWeight(.medium)
                         .foregroundColor(.white)

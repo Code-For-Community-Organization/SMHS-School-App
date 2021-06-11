@@ -31,16 +31,14 @@ struct ProgressCountDown: View {
                 return "2nd NUTRITION"
             }
         }
-        else if Date.getDayOfTheWeek(for: mockDate ?? Date()) == 0 ||
-                    Date.getDayOfTheWeek(for: mockDate ?? Date()) == 6 {
-            return "NO SCHOOL 🙌"
-        }
         else if scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory == .officeHour {
             return "Office Hours"
         }
+        else if scheduleDay == nil {
+            return "NO SCHOOL 🙌"
+        }
         else { 
-            return "UNAVAILABLE"
-         
+            return "SCHEDULE UNAVAILABLE"
         }
     }
     var body: some View {
@@ -50,7 +48,8 @@ struct ProgressCountDown: View {
                 .fontWeight(.semibold)
                 .padding(.bottom, 20)
                 .minimumScaleFactor(0.5)
-                .frame(maxWidth: 230, maxHeight: 50)
+                .lineLimit(2)
+                .frame(maxWidth: 200, maxHeight: 50)
            if let countDown = countDown, let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds() {
             HStack {
                 Text("\(hours)")

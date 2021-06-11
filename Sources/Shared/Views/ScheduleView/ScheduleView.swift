@@ -13,25 +13,26 @@ struct ScheduleView: View {
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
-    
     var body: some View {
         NavigationView {
-            ScheduleListView(scheduleViewModel: scheduleViewModel, presentModal: $presentModal)
-                .loadableView(ANDconditions: scheduleViewModel.scheduleWeeks.isEmpty,
-                              ORconditions: userSettings.developerSettings.alwaysLoadingState,
-                              reload: scheduleViewModel.reloadData)
-            .edgesIgnoringSafeArea(.bottom)
-            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
-            .navigationBarItems(trailing: HStack {
-                Button(action: {presentModal = true}) {
-                    Image(systemSymbol: .infoCircleFill)
-                        .font(.title3)
-                        .imageScale(.large)
-                        .padding(5)
-                }
-                //TODO: Enable slider button after custom schedule fully implemented
-                //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
-            })
+            if scheduleViewModel.isNetworkAvailable || !scheduleViewModel.scheduleWeeks.isEmpty {
+                ScheduleListView(scheduleViewModel: scheduleViewModel)
+                .edgesIgnoringSafeArea(.bottom)
+                .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
+                .navigationBarItems(trailing: HStack {
+                    Button(action: {presentModal = true}) {
+                        Image(systemSymbol: .infoCircleFill)
+                            .font(.title3)
+                            .imageScale(.large)
+                            .padding(5)
+                    }
+                    //TODO: Enable slider button after custom schedule fully implemented
+                    //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
+                })
+            }
+            else {
+                InternetErrorView(shouldShowLoading: $scheduleViewModel.isLoading, reloadData: scheduleViewModel.reloadDataNow)
+            }
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
