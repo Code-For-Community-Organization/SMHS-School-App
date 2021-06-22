@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385EE265C60D500F4806C /* InformationCardItem.swift */; };
 		621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
+		621D74CB26819C34009965C5 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D74CA26819C34009965C5 /* ElegantCalendar.xcassets */; };
+		621D74CC26819C34009965C5 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D74CA26819C34009965C5 /* ElegantCalendar.xcassets */; };
+		621D74CD26819C34009965C5 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621D74CA26819C34009965C5 /* ElegantCalendar.xcassets */; };
 		621F5C842669F2D5006EBE8F /* TodayHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C822669F2D5006EBE8F /* TodayHeroView.swift */; };
 		621F5C872669F368006EBE8F /* InternetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C862669F368006EBE8F /* InternetErrorView.swift */; };
 		621F5C892669F58D006EBE8F /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
@@ -275,6 +278,7 @@
 /* Begin PBXFileReference section */
 		621385EE265C60D500F4806C /* InformationCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardItem.swift; sourceTree = "<group>"; };
 		621385F0265C630B00F4806C /* PeriodParseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodParseExtensions.swift; sourceTree = "<group>"; };
+		621D74CA26819C34009965C5 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ElegantCalendar.xcassets; sourceTree = "<group>"; };
 		621F5C822669F2D5006EBE8F /* TodayHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeroView.swift; sourceTree = "<group>"; };
 		621F5C862669F368006EBE8F /* InternetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetErrorView.swift; sourceTree = "<group>"; };
 		621F5C8A2669F7FF006EBE8F /* SMHSInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSInformation.swift; sourceTree = "<group>"; };
