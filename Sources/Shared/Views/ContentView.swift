@@ -40,7 +40,7 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-            NewsView(newsViewViewModel: newsViewViewModel, scheduleViewModel: scheduleViewViewModel)
+            NewsView(newsViewViewModel: newsViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .newspaperFill)
