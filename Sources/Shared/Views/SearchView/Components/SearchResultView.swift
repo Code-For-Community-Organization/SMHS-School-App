@@ -13,7 +13,7 @@ struct SearchResultView: View {
     @State var newsEntries: [NewsEntry]
     @State var informationCards: [InformationCard]
     @State var informationCard: InformationCard?
-    
+    @EnvironmentObject var newsViewViewModel: NewsViewViewModel
     //MARK: - Search Results Filter
     var campusNewsResults: [NewsEntry] {
         newsEntries
@@ -47,9 +47,11 @@ struct SearchResultView: View {
                 let bindingNews = Binding(get: {news}, set: {
                     guard let index = newsEntries.firstIndex(where: {$0.id == news.id}) else {return}
                     newsEntries[index] = $0
-                    
+                     
                 })
-                NavigationLink(news.title, destination: NewsDetailedView(newsEntry: bindingNews))
+                NavigationLink(news.title,
+                               destination: NewsDetailedView(newsEntry: bindingNews)
+                                                .environmentObject(newsViewViewModel))
             }
         }
     }
