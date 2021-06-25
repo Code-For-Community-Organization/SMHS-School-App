@@ -10,10 +10,8 @@ import AlertKit
 
 struct ContentView: View {
     @StateObject var scheduleViewViewModel = SharedScheduleInformation()
-    @StateObject var alertManager = AlertManager()
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
-    @AppStorage("didShowGradAlert") var didShowGradAlert = false
 
     var body: some View {
         TabView {
@@ -23,13 +21,6 @@ struct ContentView: View {
                     VStack{
                         Image(systemSymbol: .squareGrid2x2Fill)
                         Text("Today")
-                    }
-                }
-                .onAppear {
-                    if !didShowGradAlert {
-                        alertManager.show(dismiss: .info(title: "Congratulations!", message: "Congradulations to graduating the Class of 2021.",
-                                                         dismissButton: .cancel(Text("Don't Show Again"))))
-                        didShowGradAlert.toggle()
                     }
                 }
             
@@ -79,7 +70,6 @@ struct ContentView: View {
                 ()
               }
             }
-        .uses(alertManager)
     }
 }
 
