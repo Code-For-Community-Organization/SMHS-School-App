@@ -18,7 +18,7 @@ struct NewsEntry: Hashable, Codable {
         self.articleURL = articleURL
         self.bodyText = bodyText
     }
-    var id = UUID()
+    var id: String {articleURL.absoluteString}
     var title: String
     var author: String
     var imageURL: URL
