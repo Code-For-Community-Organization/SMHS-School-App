@@ -11,8 +11,8 @@ import SwiftUIVisualEffects
 import SwiftlySearch
 
 struct SearchView: View {
-    @StateObject var scheduleViewModel: SharedScheduleInformation
-    @StateObject var newsViewViewModel: NewsViewViewModel
+    @StateObject var scheduleViewModel = SharedScheduleInformation()
+    @StateObject var newsViewViewModel = NewsViewViewModel()
     @State var searchText: String = ""
     
     var body: some View {

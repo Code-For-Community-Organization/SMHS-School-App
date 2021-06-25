@@ -10,7 +10,7 @@ import Kingfisher
 
 struct NewsView: View {
     var todayDateDescription: String {ScheduleDateHelper().todayDateDescription}
-    @StateObject var newsViewViewModel: NewsViewViewModel
+    @StateObject var newsViewViewModel = NewsViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
     @State var selection = 1
     var body: some View {

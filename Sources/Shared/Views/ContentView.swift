@@ -11,7 +11,6 @@ import AlertKit
 struct ContentView: View {
     @StateObject var scheduleViewViewModel = SharedScheduleInformation()
     @StateObject var alertManager = AlertManager()
-    @StateObject var newsViewViewModel = NewsViewViewModel()
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
     @AppStorage("didShowGradAlert") var didShowGradAlert = false
@@ -42,14 +41,14 @@ struct ContentView: View {
                         Text("Schedule")
                     }
                 }
-            NewsView(newsViewViewModel: newsViewViewModel)
+            NewsView()
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .newspaperFill)
                         Text("News")
                     }
                 }
-            SearchView(scheduleViewModel: scheduleViewViewModel, newsViewViewModel: newsViewViewModel)
+            SearchView()
                 .tabItem {
                     Label("Search", systemSymbol: .magnifyingglass)
                 }
