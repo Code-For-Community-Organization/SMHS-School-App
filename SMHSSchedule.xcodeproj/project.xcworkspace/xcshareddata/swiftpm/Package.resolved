@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "AlertKit",
-        "repositoryURL": "https://github.com/rebeloper/AlertKit.git",
-        "state": {
-          "branch": null,
-          "revision": "be3d9f6ca6ff5962057634795c9335b14b16ebdc",
-          "version": "0.2.0"
-        }
-      },
-      {
         "package": "ElegantCalendar",
         "repositoryURL": "https://github.com/ThasianX/ElegantCalendar",
         "state": {
@@ -56,7 +47,7 @@
         }
       },
       {
-        "package": "SnapshotTesting",
+        "package": "swift-snapshot-testing",
         "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
         "state": {
           "branch": null,
@@ -83,7 +74,7 @@
         }
       },
       {
-        "package": "Introspect",
+        "package": "SwiftUI-Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
         "state": {
           "branch": null,
@@ -92,7 +83,7 @@
         }
       },
       {
-        "package": "SwiftUIVisualEffects",
+        "package": "swiftui-visual-effects",
         "repositoryURL": "https://github.com/lucasbrown/swiftui-visual-effects",
         "state": {
           "branch": null,

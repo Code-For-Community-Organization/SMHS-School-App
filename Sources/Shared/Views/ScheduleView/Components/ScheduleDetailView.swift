@@ -12,7 +12,6 @@ import AlertKit
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
     var scheduleDay: ScheduleDay?
-    @StateObject var alertManager = AlertManager()
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving} //First index found of 1st/2nd type block
