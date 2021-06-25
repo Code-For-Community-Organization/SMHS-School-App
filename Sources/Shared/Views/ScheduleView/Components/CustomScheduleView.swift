@@ -9,7 +9,7 @@ import SwiftUI
 import Introspect
 
 struct CustomScheduleView: View {
-    @StateObject var scheduleViewModel: ScheduleViewModel
+    @StateObject var scheduleViewModel: SharedScheduleInformation
     @StateObject var scheduleCustomViewModel = ScheduleCustomViewModel()
     var scheduleDays: [ScheduleDay] {
         scheduleViewModel.scheduleWeeks.flatMap{$0.scheduleDays}

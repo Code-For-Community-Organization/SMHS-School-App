@@ -9,17 +9,21 @@ import SwiftUI
 import SwiftUIVisualEffects
 
 struct ScheduleView: View {
-    @StateObject var scheduleViewModel: ScheduleViewModel
+    @StateObject var networkLoadingViewModel: NetworkLoadViewModel
+    @StateObject var scheduleViewModel: SharedScheduleInformation
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
     @State var showNetworkError = true
+    
     var body: some View {
         NavigationView {
-            if !scheduleViewModel.isNetworkAvailable &&
+            if !networkLoadingViewModel.isNetworkAvailable &&
                 scheduleViewModel.scheduleWeeks.isEmpty &&
                 showNetworkError {
-                InternetErrorView(shouldShowLoading: $scheduleViewModel.isLoading, show: $showNetworkError, reloadData: scheduleViewModel.reloadDataNow)
+                InternetErrorView(shouldShowLoading: $networkLoadingViewModel.isLoading,
+                                  show: $showNetworkError,
+                                  reloadData: networkLoadingViewModel.reloadDataNow)
             }
             else {
                 ScheduleListView(scheduleViewModel: scheduleViewModel)
@@ -53,13 +57,13 @@ struct ScheduleView: View {
     }
 }
 
-struct ScheduleView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        UIElementPreview(ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView))
-    }
-    
-}
+//struct ScheduleView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        UIElementPreview(ScheduleView(scheduleViewModel: SharedScheduleInformation.mockScheduleView))
+//    }
+//    
+//}
 
 fileprivate extension View {
     func platformNavigationBarTitle<Content>(_ body: Content) -> some View where Content: StringProtocol {
