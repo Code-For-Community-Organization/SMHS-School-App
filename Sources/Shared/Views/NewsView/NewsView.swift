@@ -9,8 +9,8 @@ import SwiftUI
 import Kingfisher 
 
 struct NewsView: View {
+    var todayDateDescription: String {ScheduleDateHelper().todayDateDescription}
     @StateObject var newsViewViewModel: NewsViewViewModel
-    @StateObject var scheduleViewModel: ScheduleViewModel
     @EnvironmentObject var userSettings: UserSettings
     @State var selection = 1
     var body: some View {
@@ -37,7 +37,7 @@ struct NewsView: View {
                 }
 
             }
-            .navigationBarTitle(scheduleViewModel.dateHelper.todayDateDescription)
+            .navigationBarTitle(todayDateDescription)
             .aboutFooter()
 
         }
