@@ -8,49 +8,33 @@
 import Combine
 import SwiftUI
 import Foundation
-import Network
 
-final class ScheduleViewModel: ObservableObject {
+final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
     @AppStorage("ICSText") var ICSText: String?
+    
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
-    @Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
-    @Published var isLoading = false
-    @Published var isNetworkAvailable: Bool = false
+    //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
+    
+    
     private var currentWeekday: Int?
+    
     var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
-    var semaphore: DispatchSemaphore?
     var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
         let weekday = Date.currentWeekday(for: dateHelper.mockDate ?? Date())  //Get current weekday represented by integer
         return (weekday != 0 && weekday != 6) ? scheduleWeeks.first?.scheduleDays.first : nil  //Return today `ScheduleDay` if not weekend, otherwise return nil
     }
     
-    func startNetworkMonitorer() {
-        let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = {path in 
-            DispatchQueue.main.async {
-                print(path.status)
-                if path.status == .satisfied {
-                    self.isNetworkAvailable = true
-                }
-                else {
-                    self.isNetworkAvailable = false
-                }
-            }
-        }
-        let queue = DispatchQueue(label: "Monitor")
-        monitor.start(queue: queue)
-    }
+    
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
          downloader: @escaping (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load,
          purge: Bool = false,
          urlString: String = "https://www.smhs.org/calendar/calendar_379.ics",
-         semaphore: DispatchSemaphore? = nil){
+         semaphore: DispatchSemaphore? = nil) {
         
-        startNetworkMonitorer()
         //Handle preview instance with mock placeholder text
         if placeholderText != nil {
             self.ICSText = placeholderText
@@ -59,7 +43,6 @@ final class ScheduleViewModel: ObservableObject {
         if purge {self.lastReloadTime = nil; self.ICSText = nil; self.scheduleWeeks = []}
         self.dateHelper = scheduleDateHelper
         self.urlString = urlString
-        self.semaphore = semaphore
         self.downloader = downloader
         fetchData()
     } 
@@ -77,16 +60,6 @@ final class ScheduleViewModel: ObservableObject {
             fetchData()
         }
         
-    }
-    
-    func reloadDataNow() {
-        //Show indicator while loading
-        isLoading = true
-        fetchData{success in
-            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                self.isLoading = false
-            }
-        }
     }
     func fetchData(completion: ((Bool) -> Void)? = nil) {
         //Load ICS calendar data from network
@@ -107,7 +80,6 @@ final class ScheduleViewModel: ObservableObject {
                 self.dateHelper.parseScheduleData(withRawText: rawText){result in
                     DispatchQueue.main.async {
                         self.scheduleWeeks = result
-                        self.semaphore?.signal()
                         self.objectWillChange.send()
                         completion?(true)
                     }

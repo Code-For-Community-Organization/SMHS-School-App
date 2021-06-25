@@ -9,7 +9,7 @@ import SwiftUI
 import AlertKit
 
 struct ContentView: View {
-    @StateObject var scheduleViewViewModel = ScheduleViewModel()
+    @StateObject var scheduleViewViewModel = SharedScheduleInformation()
     @StateObject var alertManager = AlertManager()
     @StateObject var newsViewViewModel = NewsViewViewModel()
     @Environment(\.scenePhase) var scenePhase
@@ -18,7 +18,8 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            TodayView(scheduleViewViewModel: scheduleViewViewModel)
+            TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: scheduleViewViewModel.fetchData),
+                      scheduleViewViewModel: scheduleViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .squareGrid2x2Fill)
@@ -33,7 +34,8 @@ struct ContentView: View {
                     }
                 }
             
-            ScheduleView(scheduleViewModel: scheduleViewViewModel)
+            ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: scheduleViewViewModel.fetchData),
+                         scheduleViewModel: scheduleViewViewModel)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .calendar)
