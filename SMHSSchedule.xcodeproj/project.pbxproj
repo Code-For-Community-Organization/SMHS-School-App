@@ -220,6 +220,7 @@
 		62E05F752639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62E05F792639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
+		62E2E08A26859558009608FB /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */; };
 		62E3BF002642583100E1FF88 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */; };
 		62E3BF012642583100E1FF88 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */; };
 		62E3BF022642583100E1FF88 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */; };
@@ -640,8 +641,6 @@
 			isa = PBXGroup;
 			children = (
 				62E3BF032642590E00E1FF88 /* Mocks */,
-				62C9E8A2263D13AA00CCA5C5 /* Styles */,
-				62E05F732639CB9600B609E3 /* Modifiers */,
 				62E05F6F2639C5A200B609E3 /* Views */,
 				626A229D260039B200903C39 /* Utility */,
 			);
@@ -800,6 +799,10 @@
 		6279EAAA2630EA3D00CF3870 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */,
+				626184222637384E001C4AD4 /* RoundedCorners.swift */,
+				624ABFF226004949000FE7BD /* Miscellaneous.swift */,
+				62E05F742639CBA700B609E3 /* LoadableView.swift */,
 				626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */,
 				62C9E8B0263D212E00CCA5C5 /* Bindings.swift */,
 			);
@@ -925,14 +928,6 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
-		62C9E8A2263D13AA00CCA5C5 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */,
-			);
-			path = Styles;
-			sourceTree = "<group>";
-		};
 		62C9E8A9263D1DA200CCA5C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,16 +979,6 @@
 				62E05F6426391CDF00B609E3 /* ScheduleListView */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		62E05F732639CB9600B609E3 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				626184222637384E001C4AD4 /* RoundedCorners.swift */,
-				624ABFF226004949000FE7BD /* Miscellaneous.swift */,
-				62E05F742639CBA700B609E3 /* LoadableView.swift */,
-			);
-			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		62E3BF032642590E00E1FF88 /* Mocks */ = {
@@ -1440,6 +1425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E2E08A26859558009608FB /* HighlightButtonStyle.swift in Sources */,
 				62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */,
 				62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
