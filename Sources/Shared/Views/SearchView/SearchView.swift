@@ -27,6 +27,7 @@ struct SearchView: View {
                                      scheduleWeeks: scheduleViewModel.scheduleWeeks,
                                      newsEntries: newsViewViewModel.newsEntries,
                                      informationCards: InformationCard.informationCards)
+                        .environmentObject(newsViewViewModel)
                 }
             }
             .navigationBarSearch($searchText,
