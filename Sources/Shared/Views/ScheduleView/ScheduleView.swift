@@ -9,34 +9,39 @@ import SwiftUI
 import SwiftUIVisualEffects
 
 struct ScheduleView: View {
-    @StateObject var scheduleViewModel: ScheduleViewModel
+    @StateObject var networkLoadingViewModel: NetworkLoadViewModel
+    @StateObject var scheduleViewModel: SharedScheduleInformation
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
     @State var showNetworkError = true
+    
     var body: some View {
         NavigationView {
-            if !scheduleViewModel.isNetworkAvailable &&
-                scheduleViewModel.scheduleWeeks.isEmpty &&
-                showNetworkError {
-                InternetErrorView(shouldShowLoading: $scheduleViewModel.isLoading, show: $showNetworkError, reloadData: scheduleViewModel.reloadDataNow)
+            ScheduleListView(scheduleViewModel: scheduleViewModel)
+            .edgesIgnoringSafeArea(.bottom)
+            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
+            .navigationBarItems(trailing: HStack {
+                Button(action: {presentModal = true}) {
+                    Image(systemSymbol: .infoCircleFill)
+                        .font(.title3)
+                        .imageScale(.large)
+                        .padding(5)
+                }
+                //TODO: Enable slider button after custom schedule fully implemented
+                //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
+            })
+            .overlay(
+                Group {
+                if !networkLoadingViewModel.isNetworkAvailable &&  //Network disconnected and not available
+                    scheduleViewModel.scheduleWeeks.isEmpty &&  //No cached schedule weeks to show
+                    showNetworkError {  //User have not dismissed the error view
+                    InternetErrorView(shouldShowLoading: $networkLoadingViewModel.isLoading,
+                                      show: $showNetworkError,
+                                      reloadData: networkLoadingViewModel.reloadDataNow)
+                }
             }
-            else {
-                ScheduleListView(scheduleViewModel: scheduleViewModel)
-                .edgesIgnoringSafeArea(.bottom)
-                .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
-                .navigationBarItems(trailing: HStack {
-                    Button(action: {presentModal = true}) {
-                        Image(systemSymbol: .infoCircleFill)
-                            .font(.title3)
-                            .imageScale(.large)
-                            .padding(5)
-                    }
-                    //TODO: Enable slider button after custom schedule fully implemented
-                    //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))
-                })
-            }
-
+            )
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
@@ -56,7 +61,7 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     
     static var previews: some View {
-        UIElementPreview(ScheduleView(scheduleViewModel: ScheduleViewModel.mockScheduleView))
+        UIElementPreview(ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: SharedScheduleInformation.mockScheduleView.fetchData), scheduleViewModel: SharedScheduleInformation.mockScheduleView))
     }
     
 }

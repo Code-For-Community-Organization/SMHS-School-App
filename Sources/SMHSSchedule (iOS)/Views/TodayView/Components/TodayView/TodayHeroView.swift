@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodayHeroView: View {
-    @StateObject var scheduleViewViewModel: ScheduleViewModel
+    @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel: TodayViewViewModel
     @EnvironmentObject var userSettings: UserSettings
 

@@ -10,33 +10,32 @@ import SFSafeSymbols
 import SwiftUIVisualEffects
 
 struct TodayView: View {
-    @StateObject var scheduleViewViewModel: ScheduleViewModel
+    @StateObject var networkLoadViewModel: NetworkLoadViewModel
+    @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
 
     
     var body: some View { 
         ZStack(alignment: .top) {
-            if !scheduleViewViewModel.isNetworkAvailable &&
-                scheduleViewViewModel.currentDaySchedule == nil &&
-                todayViewViewModel.showNetworkError
-                {
-                InternetErrorView(shouldShowLoading: $scheduleViewViewModel.isLoading,
-                                  show: $todayViewViewModel.showNetworkError,
-                                  reloadData: scheduleViewViewModel.reloadDataNow)
-            }
-            else {
-                TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
-            }
+            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
+                .overlay(
+                    Group {
+                    if !networkLoadViewModel.isNetworkAvailable &&
+                        scheduleViewViewModel.currentDaySchedule == nil &&
+                        todayViewViewModel.showNetworkError
+                        {
+                        InternetErrorView(shouldShowLoading: $networkLoadViewModel.isLoading,
+                                          show: $todayViewViewModel.showNetworkError,
+                                          reloadData: networkLoadViewModel.reloadDataNow)
+                    }
+                }
+                )
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
             
         }
         .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
-        .onChange(of: scheduleViewViewModel.isNetworkAvailable) {isAvailable in
-            if isAvailable {
-                scheduleViewViewModel.reloadDataNow()
-            }
-        }
+    
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -50,7 +49,7 @@ struct TodayView: View {
 
 
 struct TodayViewHeader: View {
-    @StateObject var viewModel: ScheduleViewModel
+    @StateObject var viewModel: SharedScheduleInformation
     @StateObject var todayViewModel: TodayViewViewModel
     var body: some View {
         HStack {
@@ -83,8 +82,8 @@ struct TodayViewHeader: View {
         
     }
 }
-struct TodayView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodayView(scheduleViewViewModel: ScheduleViewModel())
-    }
-}
+//struct TodayView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TodayView(scheduleViewViewModel: SharedScheduleInformation())
+//    }
+//}

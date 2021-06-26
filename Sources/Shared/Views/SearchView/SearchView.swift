@@ -11,8 +11,7 @@ import SwiftUIVisualEffects
 import SwiftlySearch
 
 struct SearchView: View {
-    @StateObject var scheduleViewModel: ScheduleViewModel
-    @StateObject var newsViewViewModel: NewsViewViewModel
+    @StateObject var newsViewViewModel = NewsViewViewModel()
     @State var searchText: String = ""
     
     var body: some View {
@@ -24,7 +23,6 @@ struct SearchView: View {
                 }
                 else {
                     SearchResultView(searchText: $searchText,
-                                     scheduleWeeks: scheduleViewModel.scheduleWeeks,
                                      newsEntries: newsViewViewModel.newsEntries,
                                      informationCards: InformationCard.informationCards)
                         .environmentObject(newsViewViewModel)
