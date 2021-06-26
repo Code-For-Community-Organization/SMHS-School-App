@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AlertKit
 
 struct ContentView: View {
     @StateObject var sharedScheduleInformation = SharedScheduleInformation()
