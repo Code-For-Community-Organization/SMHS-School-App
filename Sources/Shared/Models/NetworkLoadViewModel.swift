@@ -41,7 +41,6 @@ final class NetworkLoadViewModel: ObservableObject {
         let monitor = NWPathMonitor()
         monitor.pathUpdateHandler = {path in
             DispatchQueue.main.async {
-                print(path.status)
                 if path.status == .satisfied {
                     self.isNetworkAvailable = true
                 }
