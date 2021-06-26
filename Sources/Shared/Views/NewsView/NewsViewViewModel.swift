@@ -45,7 +45,9 @@ class NewsViewViewModel: ObservableObject {
             return newsEntries
         }
         catch {
+            #if DEBUG
             print("Parse XML failed with error: \(error)")
+            #endif
             return []
         }
    
@@ -59,7 +61,9 @@ class NewsViewViewModel: ObservableObject {
             return URL(string: urlString ?? "")
         }
         catch Exception.Error(let type, Message: let message) {
+            #if DEBUG
             print("Error of type \(type), \(message)")
+            #endif
         }
         catch {
             print(error)
