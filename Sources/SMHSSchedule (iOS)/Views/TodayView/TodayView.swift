@@ -18,17 +18,19 @@ struct TodayView: View {
     
     var body: some View { 
         ZStack(alignment: .top) {
-            if !networkLoadViewModel.isNetworkAvailable &&
-                scheduleViewViewModel.currentDaySchedule == nil &&
-                todayViewViewModel.showNetworkError
-                {
-                InternetErrorView(shouldShowLoading: $networkLoadViewModel.isLoading,
-                                  show: $todayViewViewModel.showNetworkError,
-                                  reloadData: networkLoadViewModel.reloadDataNow)
-            }
-            else {
-                TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
-            }
+            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
+                .overlay(
+                    Group {
+                    if !networkLoadViewModel.isNetworkAvailable &&
+                        scheduleViewViewModel.currentDaySchedule == nil &&
+                        todayViewViewModel.showNetworkError
+                        {
+                        InternetErrorView(shouldShowLoading: $networkLoadViewModel.isLoading,
+                                          show: $todayViewViewModel.showNetworkError,
+                                          reloadData: networkLoadViewModel.reloadDataNow)
+                    }
+                }
+                )
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
             
         }
