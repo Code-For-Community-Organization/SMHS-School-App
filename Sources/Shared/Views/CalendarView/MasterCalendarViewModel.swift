@@ -93,10 +93,14 @@ class MasterCalendarViewModel: ObservableObject {
                     }
                 }
                 catch Exception.Error(type: let type, Message: let message) {
+                    #if DEBUG
                     print("Error of type \(type), \(message)")
+                    #endif
                 }
                 catch {
+                    #if DEBUG
                     print("Unknown error")
+                    #endif
                 }
                 dispatchGroup.leave()
             }

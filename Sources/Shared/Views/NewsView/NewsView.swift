@@ -9,8 +9,8 @@ import SwiftUI
 import Kingfisher 
 
 struct NewsView: View {
-    @StateObject var newsViewViewModel: NewsViewViewModel
-    @StateObject var scheduleViewModel: ScheduleViewModel
+    var todayDateDescription: String {ScheduleDateHelper().todayDateDescription}
+    @StateObject var newsViewViewModel = NewsViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
     @State var selection = 1
     var body: some View {
@@ -37,7 +37,7 @@ struct NewsView: View {
                 }
 
             }
-            .navigationBarTitle(scheduleViewModel.dateHelper.todayDateDescription)
+            .navigationBarTitle(todayDateDescription)
             .aboutFooter()
 
         }
@@ -69,12 +69,14 @@ struct NewsView: View {
 }
 
 fileprivate extension View {
-    func navigationViewStyle() -> AnyView {
+    
+    @ViewBuilder
+    func navigationViewStyle() -> some View {
         if UIScreen.idiom == .pad {
-            return self.navigationViewStyle(DefaultNavigationViewStyle()).typeErased()
+            self.navigationViewStyle(DefaultNavigationViewStyle())
         }
         else {
-            return self.navigationViewStyle(StackNavigationViewStyle()).typeErased()
+            self.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

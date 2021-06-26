@@ -27,7 +27,7 @@ struct NewsEntry: Hashable, Codable {
     
     func loadBodyText(completion: @escaping (String?) -> Void) {
         Downloader.load(articleURL.absoluteString){data, error in 
-            guard let data = data, error == nil else {print(error!); return}
+            guard let data = data, error == nil else {return}
             let html = String(data: data, encoding: .ascii)
             completion(parseHTMLBodyText(html: html ?? ""))
         }
