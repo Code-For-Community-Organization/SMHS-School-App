@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SFSafeSymbols
-import AlertKit
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
