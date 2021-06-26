@@ -47,10 +47,12 @@ struct InformationCardItem_Previews: PreviewProvider {
 }
 
 fileprivate extension View {
-    func adaptableTitleColor(_ colorScheme: ColorScheme) -> AnyView {
+    
+    @ViewBuilder
+    func adaptableTitleColor(_ colorScheme: ColorScheme) -> some View {
         if colorScheme == .light {
-            return self.foregroundColor(.platformBackground).typeErased()
+            self.foregroundColor(.platformBackground)
         }
-        else {return self.vibrancyEffect().typeErased()}
+        else {self.vibrancyEffect()}
     }
 }

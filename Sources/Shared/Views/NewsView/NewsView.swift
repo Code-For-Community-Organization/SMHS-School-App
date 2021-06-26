@@ -69,12 +69,14 @@ struct NewsView: View {
 }
 
 fileprivate extension View {
-    func navigationViewStyle() -> AnyView {
+    
+    @ViewBuilder
+    func navigationViewStyle() -> some View {
         if UIScreen.idiom == .pad {
-            return self.navigationViewStyle(DefaultNavigationViewStyle()).typeErased()
+            self.navigationViewStyle(DefaultNavigationViewStyle())
         }
         else {
-            return self.navigationViewStyle(StackNavigationViewStyle()).typeErased()
+            self.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

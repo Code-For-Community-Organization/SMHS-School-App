@@ -163,7 +163,6 @@
 		62D1E524263DF7FB004DBFAD /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		62D1E526263DF833004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
-		62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6C2639C4AC00B609E3 /* SettingsView.swift */; };
 		62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
@@ -214,8 +213,6 @@
 		62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6C2639C4AC00B609E3 /* SettingsView.swift */; };
 		62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
-		62E05F752639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
-		62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F742639CBA700B609E3 /* LoadableView.swift */; };
 		62E05F792639CD5B00B609E3 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */; };
 		62E2E08A26859558009608FB /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */; };
 		62E2E091268598AA009608FB /* NetworkLoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2E090268598AA009608FB /* NetworkLoadViewModel.swift */; };
@@ -393,7 +390,6 @@
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F6C2639C4AC00B609E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		62E05F702639C5D000B609E3 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		62E05F742639CBA700B609E3 /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
 		62E05F772639CD5B00B609E3 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		62E2E090268598AA009608FB /* NetworkLoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoadViewModel.swift; sourceTree = "<group>"; };
 		62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
@@ -803,7 +799,6 @@
 				62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */,
 				626184222637384E001C4AD4 /* RoundedCorners.swift */,
 				624ABFF226004949000FE7BD /* Miscellaneous.swift */,
-				62E05F742639CBA700B609E3 /* LoadableView.swift */,
 				626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */,
 				62C9E8B0263D212E00CCA5C5 /* Bindings.swift */,
 			);
@@ -1273,7 +1268,6 @@
 				62E2E091268598AA009608FB /* NetworkLoadViewModel.swift in Sources */,
 				6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */,
 				6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */,
-				62E05F752639CBA700B609E3 /* LoadableView.swift in Sources */,
 				62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				62626395264DD21D004146CE /* PeriodEditItem.swift in Sources */,
@@ -1350,7 +1344,6 @@
 				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
-				62E05F762639CBA700B609E3 /* LoadableView.swift in Sources */,
 				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
 				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
 				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
@@ -1438,7 +1431,6 @@
 				62C48DA8265C65EC0032301E /* PeriodParseExtensions.swift in Sources */,
 				62B227CB265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				62CFAA43264756F9003B2EA0 /* TimeInterval.swift in Sources */,
-				62D1E528263DF859004DBFAD /* LoadableView.swift in Sources */,
 				62D1E550263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				62E3BF022642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */,

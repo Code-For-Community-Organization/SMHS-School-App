@@ -11,20 +11,21 @@ extension View {
     func typeErased() -> AnyView {AnyView(self)}
     
     //Easily align text to left or right of frame
-    func textAlign(_ align: Alignment) -> AnyView {
+    @ViewBuilder
+    func textAlign(_ align: Alignment) -> some View {
         switch align {
         case .leading:
-            return HStack{
+            HStack{
                 self
                 Spacer()
-            }.typeErased()
+            }
         case .trailing:
-            return HStack{
+            HStack{
                 Spacer()
                 self
-            }.typeErased()
+            }
         default:
-            return self.typeErased()
+            self
         }
     }
 }

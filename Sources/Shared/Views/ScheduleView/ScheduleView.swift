@@ -18,9 +18,9 @@ struct ScheduleView: View {
     
     var body: some View {
         NavigationView {
-            if !networkLoadingViewModel.isNetworkAvailable &&
-                scheduleViewModel.scheduleWeeks.isEmpty &&
-                showNetworkError {
+            if !networkLoadingViewModel.isNetworkAvailable &&  //Network disconnected and not available
+                scheduleViewModel.scheduleWeeks.isEmpty &&  //No cached schedule weeks to show
+                showNetworkError {  //User have not dismissed the error view
                 InternetErrorView(shouldShowLoading: $networkLoadingViewModel.isLoading,
                                   show: $showNetworkError,
                                   reloadData: networkLoadingViewModel.reloadDataNow)
@@ -57,13 +57,13 @@ struct ScheduleView: View {
     }
 }
 
-//struct ScheduleView_Previews: PreviewProvider {
-//    
-//    static var previews: some View {
-//        UIElementPreview(ScheduleView(scheduleViewModel: SharedScheduleInformation.mockScheduleView))
-//    }
-//    
-//}
+struct ScheduleView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        UIElementPreview(ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: SharedScheduleInformation.mockScheduleView.fetchData), scheduleViewModel: SharedScheduleInformation.mockScheduleView))
+    }
+    
+}
 
 fileprivate extension View {
     func platformNavigationBarTitle<Content>(_ body: Content) -> some View where Content: StringProtocol {
