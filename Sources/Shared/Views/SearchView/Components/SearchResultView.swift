@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchResultView: View {
     @Binding var searchText: String
-    @State var scheduleWeeks: [ScheduleWeek]
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
     @State var newsEntries: [NewsEntry]
     @State var informationCards: [InformationCard]
     @State var informationCard: InformationCard?
@@ -34,7 +34,7 @@ struct SearchResultView: View {
     //MARK: - SwiftUI View Components
     var scheduleDays: some View {
         Section(header: Text("Schedule Days")) {
-            ForEach(scheduleWeeks
+            ForEach(sharedScheduleInformation.scheduleWeeks
                         .mapAndFilter(searchText: searchText), id: \.self){day in
                 NavigationLink(day.title, destination: ScheduleDetailView(scheduleDay: day))
             }

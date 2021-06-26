@@ -9,14 +9,15 @@ import SwiftUI
 import AlertKit
 
 struct ContentView: View {
-    @StateObject var scheduleViewViewModel = SharedScheduleInformation()
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
 
     var body: some View {
         TabView {
-            TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: scheduleViewViewModel.fetchData),
-                      scheduleViewViewModel: scheduleViewViewModel)
+            let networkLoadViewModel = NetworkLoadViewModel(dataReload: sharedScheduleInformation.fetchData)
+            TodayView(networkLoadViewModel: networkLoadViewModel,
+                      scheduleViewViewModel: sharedScheduleInformation)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .squareGrid2x2Fill)
@@ -24,8 +25,8 @@ struct ContentView: View {
                     }
                 }
             
-            ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: scheduleViewViewModel.fetchData),
-                         scheduleViewModel: scheduleViewViewModel)
+            ScheduleView(networkLoadingViewModel: networkLoadViewModel,
+                         scheduleViewModel: sharedScheduleInformation)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .calendar)
@@ -59,7 +60,7 @@ struct ContentView: View {
         .onChange(of: scenePhase) { newScenePhase in
               switch newScenePhase {
               case .active:
-                scheduleViewViewModel.objectWillChange.send()
+                sharedScheduleInformation.objectWillChange.send()
                 let activeCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
                 UserDefaults.standard.set(activeCount+1, forKey:"activeSceneCount")
               case .inactive:
