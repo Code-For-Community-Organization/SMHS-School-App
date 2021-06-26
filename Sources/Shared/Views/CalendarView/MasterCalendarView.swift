@@ -9,7 +9,7 @@ import SwiftUI
 import ElegantCalendar
 
 struct MasterCalendarView: View {
-
+    @State var orientationValue: Int?
     @State var hapticsManager = HapticsManager(impactStyle: .light)
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var calendarManager = ElegantCalendarManager(
@@ -40,14 +40,15 @@ struct MasterCalendarView: View {
         .onAppear {
             DispatchQueue.main.async {
                 AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
-                UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+                orientationValue = UIDevice.current.orientation.rawValue
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
                 UINavigationController.attemptRotationToDeviceOrientation()
             }
         }
         .onDisappear {
             DispatchQueue.main.async {
                     AppDelegate.orientationLock = UIInterfaceOrientationMask.all
-                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+                    UIDevice.current.setValue(orientationValue, forKey: "orientation")
                     UINavigationController.attemptRotationToDeviceOrientation()
             }
         }
