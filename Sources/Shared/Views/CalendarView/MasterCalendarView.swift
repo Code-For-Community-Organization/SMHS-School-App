@@ -12,7 +12,7 @@ struct MasterCalendarView: View {
 
     @State var hapticsManager = HapticsManager(impactStyle: .light)
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var calendarManager = ElegantCalendarManager(
+    @StateObject var calendarManager = ElegantCalendarManager(
         configuration: CalendarConfiguration(startDate: startDate(),
                                              endDate: endDate()),
         initialMonth: Date())
