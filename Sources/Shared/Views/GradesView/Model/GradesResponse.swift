@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct GradesResponse: Codable {
+struct CourseGrade: Codable, Hashable {
     var periodNum: Int
     var periodName: String
     var teacherName: String
-    var gradePercent: Double
+    var gradePercent: String
     var currentMark: String
     var isPrior: Bool
 }
