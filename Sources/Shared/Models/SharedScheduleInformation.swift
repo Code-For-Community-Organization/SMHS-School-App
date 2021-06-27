@@ -10,8 +10,8 @@ import SwiftUI
 import Foundation
 
 final class SharedScheduleInformation: ObservableObject {
-    @Storage(key: "lastReloadTime", defaultValue: nil) var lastReloadTime: Date?
-    @AppStorage("ICSText") var ICSText: String?
+    @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
+    @AppStorage("ICSText") private var ICSText: String?
     
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
@@ -19,9 +19,9 @@ final class SharedScheduleInformation: ObservableObject {
     
     private var currentWeekday: Int?
     
-    var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
+    private var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
-    var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
+    private var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
         let weekday = Date.currentWeekday(for: dateHelper.mockDate ?? Date())  //Get current weekday represented by integer
         return (weekday != 0 && weekday != 6) ? scheduleWeeks.first?.scheduleDays.first : nil  //Return today `ScheduleDay` if not weekend, otherwise return nil

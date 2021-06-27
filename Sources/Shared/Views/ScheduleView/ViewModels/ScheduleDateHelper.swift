@@ -73,7 +73,7 @@ struct ScheduleDateHelper {
         
     }
     //Returns a Date created from given date string, at 0:00:00, and current Date
-    func scheduleDateChecker(dateString: String, mockDate: Date = Date()) -> (Date, Date) {
+    private func scheduleDateChecker(dateString: String, mockDate: Date = Date()) -> (Date, Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         let date = formatter.date(from: dateString)!
@@ -81,7 +81,7 @@ struct ScheduleDateHelper {
         return (date, currentDate)
     }
     
-    func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
+    private func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
         let summary: String = String(rawText.lines[stringIndex+1])
         let containsDay: Bool = summary.lowercased().contains("day")
         let containsSchedule: Bool = summary.lowercased().contains("schedule")
