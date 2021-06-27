@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class ScheduleCustomViewModel: ObservableObject {
+final class ScheduleCustomViewModel: ObservableObject {
     @Published var selection: ScheduleDay = ScheduleDay.sampleScheduleDay
     @Published var startTime: Date = makeCurrentDateComponentTime(hours: 15, minutes: 0)
     @Published var endTime: Date = makeCurrentDateComponentTime(hours: 16, minutes: 0)
