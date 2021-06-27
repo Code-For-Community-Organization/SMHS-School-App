@@ -10,11 +10,21 @@ import Foundation
 
 final class GradesViewModel: ObservableObject {
     var gradesNetworkModel = GradesNetworkModel()
-    @Published var email: String = "Jingwen.mao@smhsstudents.org"
-    @Published var password: String = "Mao511969"
-    @Published var gradesResponse = [CourseGrade]()
+    @Published(key: "email") var email: String = "Jingwen.mao@smhsstudents.org"
+    @Published(key: "password") var password: String = "Mao511969"
+    @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
     @Published var error: RequestError?
     @Published var isLoading = false
+    var isLoggedIn: Bool {
+        if !email.isEmpty &&
+            !password.isEmpty &&
+            !gradesResponse.isEmpty {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     var anyCancellables: Set<AnyCancellable> = []
     
