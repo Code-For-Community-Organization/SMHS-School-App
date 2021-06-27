@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
 

@@ -228,6 +228,12 @@
 		62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
 		62F30D032649A64C008EDD31 /* PeriodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F30D002649A64C008EDD31 /* PeriodCategory.swift */; };
+		62F43CC02688F2AA0009CD34 /* GradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CBF2688F2AA0009CD34 /* GradesView.swift */; };
+		62F43CC22688F3440009CD34 /* GradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC12688F3440009CD34 /* GradesViewModel.swift */; };
+		62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */; };
+		62F43CC8268902380009CD34 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC7268902380009CD34 /* Endpoint.swift */; };
+		62F43CCA268902410009CD34 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC9268902410009CD34 /* RequestError.swift */; };
+		62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesResponse.swift */; };
 		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 		62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
@@ -394,6 +400,12 @@
 		62E2E090268598AA009608FB /* NetworkLoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoadViewModel.swift; sourceTree = "<group>"; };
 		62E3BEFF2642583100E1FF88 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		62F30D002649A64C008EDD31 /* PeriodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCategory.swift; sourceTree = "<group>"; };
+		62F43CBF2688F2AA0009CD34 /* GradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesView.swift; sourceTree = "<group>"; };
+		62F43CC12688F3440009CD34 /* GradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewModel.swift; sourceTree = "<group>"; };
+		62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesNetworkModel.swift; sourceTree = "<group>"; };
+		62F43CC7268902380009CD34 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		62F43CC9268902410009CD34 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestError.swift; path = ../../../../../../../../Pictures/RequestError.swift; sourceTree = "<group>"; };
+		62F43CCB2689028A0009CD34 /* GradesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesResponse.swift; sourceTree = "<group>"; };
 		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -964,6 +976,7 @@
 			isa = PBXGroup;
 			children = (
 				626A226A260035F100903C39 /* ContentView.swift */,
+				62F43CBE2688F2960009CD34 /* GradesView */,
 				621F5C9C266AA82A006EBE8F /* CalendarView */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
@@ -992,6 +1005,35 @@
 				629BE8BA2636430A00BC49AD /* MockScheduleView.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		62F43CBE2688F2960009CD34 /* GradesView */ = {
+			isa = PBXGroup;
+			children = (
+				62F43CC6268902230009CD34 /* Model */,
+				62F43CC5268902070009CD34 /* ViewModel */,
+				62F43CBF2688F2AA0009CD34 /* GradesView.swift */,
+			);
+			path = GradesView;
+			sourceTree = "<group>";
+		};
+		62F43CC5268902070009CD34 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				62F43CC12688F3440009CD34 /* GradesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		62F43CC6268902230009CD34 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */,
+				62F43CC7268902380009CD34 /* Endpoint.swift */,
+				62F43CC9268902410009CD34 /* RequestError.swift */,
+				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1333,6 +1375,7 @@
 				629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */,
 				621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */,
 				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
+				62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
 				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
@@ -1363,6 +1406,7 @@
 				62DE61EC2602525400B86555 /* SharedScheduleInformation.swift in Sources */,
 				621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */,
 				62E05F722639C5D000B609E3 /* UserSettings.swift in Sources */,
+				62F43CC22688F3440009CD34 /* GradesViewModel.swift in Sources */,
 				62D1E50C263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
 				62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */,
@@ -1383,6 +1427,7 @@
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
+				62F43CCA268902410009CD34 /* RequestError.swift in Sources */,
 				624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */,
 				6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
@@ -1392,13 +1437,16 @@
 				626A229C260039AB00903C39 /* ScheduleDetailView.swift in Sources */,
 				626183DF263718CA001C4AD4 /* ScheduleDay.swift in Sources */,
 				62D321102649E11800C99C42 /* NewsEntry.swift in Sources */,
+				62F43CC02688F2AA0009CD34 /* GradesView.swift in Sources */,
 				623A7F23264F595400FF3F28 /* SafariView.swift in Sources */,
 				624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */,
 				62C9E8AF263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */,
 				621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */,
 				6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */,
+				62F43CC8268902380009CD34 /* Endpoint.swift in Sources */,
 				62B227CA265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
+				62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */,
 				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
 				6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */,
 				629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */,
