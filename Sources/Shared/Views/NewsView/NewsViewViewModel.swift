@@ -10,8 +10,8 @@ import Combine
 import SwiftyXMLParser
 import SwiftSoup
 
-class NewsViewViewModel: ObservableObject {
-    var cancellable: AnyCancellable?
+final class NewsViewViewModel: ObservableObject {
+    private var cancellable: AnyCancellable?
     @Published(key: "bookmarkedEntries") var bookMarkedEntries = [NewsEntry]()
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
@@ -19,7 +19,7 @@ class NewsViewViewModel: ObservableObject {
         fetchXML()
     } 
     
-    func fetchXML() {
+    private func fetchXML() {
         let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .retry(2)
@@ -31,7 +31,7 @@ class NewsViewViewModel: ObservableObject {
 
     }
     
-    func parseXML(for rawText: String) -> [NewsEntry] {
+    private func parseXML(for rawText: String) -> [NewsEntry] {
         do {
             let xml = try XML.parse(rawText)
             var newsEntries = [NewsEntry]()
@@ -53,7 +53,7 @@ class NewsViewViewModel: ObservableObject {
    
     }
     
-    func parseHTMLImgTag(for html: String) -> URL? {
+    private func parseHTMLImgTag(for html: String) -> URL? {
         do {
             let parsed = try SwiftSoup.parse(html)
             let img = try parsed.select("img").first()
@@ -71,7 +71,7 @@ class NewsViewViewModel: ObservableObject {
         return nil
     }
     
-    func toggleEntryBookmarked(_ entry: NewsEntry) {
+    private func toggleEntryBookmarked(_ entry: NewsEntry) {
         if bookMarkedEntries.contains(where: {$0.id == entry.id}) {
             bookMarkedEntries = bookMarkedEntries.filter{$0.id != entry.id}
         }
