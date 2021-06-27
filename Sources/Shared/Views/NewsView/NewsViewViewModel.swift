@@ -19,7 +19,7 @@ final class NewsViewViewModel: ObservableObject {
         fetchXML()
     } 
     
-    private func fetchXML() {
+    func fetchXML() {
         let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .retry(2)
@@ -71,7 +71,7 @@ final class NewsViewViewModel: ObservableObject {
         return nil
     }
     
-    private func toggleEntryBookmarked(_ entry: NewsEntry) {
+    func toggleEntryBookmarked(_ entry: NewsEntry) {
         if bookMarkedEntries.contains(where: {$0.id == entry.id}) {
             bookMarkedEntries = bookMarkedEntries.filter{$0.id != entry.id}
         }
