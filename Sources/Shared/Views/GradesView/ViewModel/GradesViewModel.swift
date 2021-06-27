@@ -10,10 +10,11 @@ import Foundation
 
 final class GradesViewModel: ObservableObject {
     var gradesNetworkModel = GradesNetworkModel()
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var gradesResponse: GradesResponse?
+    @Published var email: String = "Jingwen.mao@smhsstudents.org"
+    @Published var password: String = "Mao511969"
+    @Published var gradesResponse = [CourseGrade]()
     @Published var error: RequestError?
+    @Published var isLoading = false
     
     var anyCancellables: Set<AnyCancellable> = []
     
@@ -22,10 +23,15 @@ final class GradesViewModel: ObservableObject {
     }
     
     func loginAndFetch() {
+        guard !email.isEmpty && !password.isEmpty else {
+            return
+        }
+        isLoading = true
         let endpoint = Endpoint.studentLogin(email: email, password: password)
-        gradesNetworkModel.fetch(with: endpoint.url, type: GradesResponse.self)
+        gradesNetworkModel.fetch(with: endpoint.url, type: [CourseGrade].self)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {[weak self] error in
+                self?.isLoading = false
                 switch error {
                 case let .failure(requestError):
                     self?.error = requestError
