@@ -37,6 +37,7 @@
 		624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */; };
 		624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */; };
 		624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FF2651A4E600B93C63 /* HapticsManager.swift */; };
+		625F189F268A9256000B71B4 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F189E268A9256000B71B4 /* RequestError.swift */; };
 		626183A72637168D001C4AD4 /* SMHSSchedule__macOS_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */; };
 		626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AA2637168E001C4AD4 /* Assets.xcassets */; };
 		626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AD2637168E001C4AD4 /* Preview Assets.xcassets */; };
@@ -232,7 +233,6 @@
 		62F43CC22688F3440009CD34 /* GradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC12688F3440009CD34 /* GradesViewModel.swift */; };
 		62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */; };
 		62F43CC8268902380009CD34 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC7268902380009CD34 /* Endpoint.swift */; };
-		62F43CCA268902410009CD34 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC9268902410009CD34 /* RequestError.swift */; };
 		62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesResponse.swift */; };
 		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
@@ -302,6 +302,7 @@
 		624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelButton.swift; sourceTree = "<group>"; };
 		624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNavigationBarButtons.swift; sourceTree = "<group>"; };
 		624F79FF2651A4E600B93C63 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		625F189E268A9256000B71B4 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSSchedule__macOS_App.swift; sourceTree = "<group>"; };
 		626183AA2637168E001C4AD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -404,7 +405,6 @@
 		62F43CC12688F3440009CD34 /* GradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewModel.swift; sourceTree = "<group>"; };
 		62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesNetworkModel.swift; sourceTree = "<group>"; };
 		62F43CC7268902380009CD34 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		62F43CC9268902410009CD34 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestError.swift; path = ../../../../../../../../Pictures/RequestError.swift; sourceTree = "<group>"; };
 		62F43CCB2689028A0009CD34 /* GradesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesResponse.swift; sourceTree = "<group>"; };
 		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1030,8 +1030,8 @@
 			children = (
 				62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */,
 				62F43CC7268902380009CD34 /* Endpoint.swift */,
-				62F43CC9268902410009CD34 /* RequestError.swift */,
 				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
+				625F189E268A9256000B71B4 /* RequestError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1387,6 +1387,7 @@
 				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
+				625F189F268A9256000B71B4 /* RequestError.swift in Sources */,
 				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
 				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
 				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
@@ -1427,7 +1428,6 @@
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
-				62F43CCA268902410009CD34 /* RequestError.swift in Sources */,
 				624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */,
 				6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
