@@ -16,39 +16,8 @@ struct GradesView: View {
             GeometryReader {geo in
                 ScrollView {
                     LazyVStack(spacing: 10) {
-                        ForEach(gradesViewModel.gradesResponse.filter{!$0.isPrior}, id: \.self){course in
-                            HStack {
-                                VStack {
-                                    Group {
-                                        Text("PERIOD \(course.periodNum)")
-                                            .font(.caption)
-                                            .fontWeight(.medium)
-                                            .foregroundColor(.platformSecondaryLabel)
-                                        Text(course.periodName)
-                                            .font(.title2)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.7)
-                                            .padding(.bottom, 1)
-                                        Text(course.teacherName)
-                                            .font(.subheadline)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.platformSecondaryLabel)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                Spacer()
-                                Text(course.currentMark)
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                
-                                    Text("\(course.gradePercent)%")
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                
-                            }
-                            .padding()
-                            .background(.platformBackground)
-                            .roundedCorners(cornerRadius: 10)
+                        ForEach(gradesViewModel.gradesResponse.filter{!$0.isPrior}, id: \.self){
+                            CourseGradeItem(course: $0)
                         }
                     }
                     .padding(.horizontal)
@@ -67,26 +36,7 @@ struct GradesView: View {
             
         }
         else {
-            VStack {
-                TextField("Email", text: $gradesViewModel.email)
-                TextField("Password", text: $gradesViewModel.password)
-                    .padding(.bottom, 40)
-                Button(action: {gradesViewModel.loginAndFetch()}) {
-                    Group {
-                        if gradesViewModel.isLoading {
-                            ProgressView().progressViewStyle(CircularProgressViewStyle()).foregroundColor(.white)
-                        }
-                        else {
-                            Text("Login")
-                                .fontWeight(.semibold)
-                        }
-                    }
-                }
-                .buttonStyle(HighlightButtonStyle())
-            }
-            .padding(.horizontal)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .animation(nil)
+            GradesLoginView(gradesViewModel: gradesViewModel)
         }
 
     }
