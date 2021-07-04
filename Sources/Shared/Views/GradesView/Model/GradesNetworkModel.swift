@@ -10,6 +10,7 @@ import Foundation
 
 struct GradesNetworkModel {
     func fetch<T: Codable>(with url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
+        print("URL is: \(url)")
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap{data, response in
                 guard let response = response as? HTTPURLResponse else {
