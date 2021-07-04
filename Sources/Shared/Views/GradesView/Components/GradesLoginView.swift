@@ -13,43 +13,49 @@ struct GradesLoginView: View {
     
     var body: some View {
         VStack {
-            TextField("Email", text: $gradesViewModel.email)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .keyboardType(.emailAddress)
-                .textFieldStyle(LoginTextFieldRoundedStyle(focused: $gradesViewModel.emailFieldFocused))
-                .onTapGesture {
-                    gradesViewModel.passwordFieldFocused = false
-                    gradesViewModel.emailFieldFocused = true
+            Form {
+                Section(header: Text("Aeries Gradebook Login")) {
+                    TextField("School email", text: $gradesViewModel.email)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .keyboardType(.emailAddress)
+                        .onTapGesture {
+                            gradesViewModel.passwordFieldFocused = false
+                            gradesViewModel.emailFieldFocused = true
+                        }
+                    
+                    SecureField("Password", text: $gradesViewModel.password)
+                        .onTapGesture {
+                            gradesViewModel.passwordFieldFocused = true
+                            gradesViewModel.emailFieldFocused = false
+                        }
                 }
-            
-            SecureField("Password", text: $gradesViewModel.password)
-                .padding(.bottom, 40)
-                .textFieldStyle(LoginTextFieldRoundedStyle(focused: $gradesViewModel.passwordFieldFocused))
-                .onTapGesture {
-                    gradesViewModel.passwordFieldFocused = true
-                    gradesViewModel.emailFieldFocused = false
-                }
-            
+            }
             Button(action: {
                 withAnimation {
                     gradesViewModel.loginAndFetch()
                 }
-            }) {
-                Group {
+            }){
+                ZStack {
                     if gradesViewModel.isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle()).foregroundColor(.white)
+                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                            .foregroundColor(.white)
+                            .padding()
                     }
                     else {
-                        Text("Login")
+                        Text("Log In")
                             .fontWeight(.semibold)
+                            .padding()
                     }
                 }
+                .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
+                .background(.primary)
+                .foregroundColor(.platformBackground)
+                .roundedCorners(cornerRadius: 10)
+         
             }
             .disabled(gradesViewModel.isLoading)
         }
-        .frame(maxWidth: 350)
-        
     }
 }
 
@@ -59,9 +65,9 @@ struct LoginTextFieldRoundedStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
             configuration
             .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .padding(.vertical, 15)
             .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
                     .stroke(focused ? Color.primary : .gray, lineWidth: 3)
             ).padding()
         }
