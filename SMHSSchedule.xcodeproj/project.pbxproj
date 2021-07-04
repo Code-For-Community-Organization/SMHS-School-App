@@ -111,6 +111,9 @@
 		62B0D9662692638900AA6CF4 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */; };
 		62B0D9672692638A00AA6CF4 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */; };
 		62B0D969269263A800AA6CF4 /* KeychainPublishedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */; };
+		62B0D96B2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
+		62B0D96C2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
+		62B0D96D2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
 		62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
@@ -366,6 +369,7 @@
 		62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
 		62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPublishedWrapper.swift; sourceTree = "<group>"; };
+		62B0D96A2692776200AA6CF4 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		62B227BB265CBE530023A7E6 /* Acknowledgements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
 		62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyStatementView.swift; sourceTree = "<group>"; };
 		62B227C4265CC1E00023A7E6 /* HowStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowStatementView.swift; sourceTree = "<group>"; };
@@ -695,6 +699,7 @@
 				62C48DA9265C6C8B0032301E /* AboutFooter */,
 				62E05F6C2639C4AC00B609E3 /* SettingsView.swift */,
 				62F30D002649A64C008EDD31 /* PeriodCategory.swift */,
+				62B0D96A2692776200AA6CF4 /* ActionButton.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -1010,9 +1015,9 @@
 			isa = PBXGroup;
 			children = (
 				626A226A260035F100903C39 /* ContentView.swift */,
+				6261842926373D40001C4AD4 /* ViewComponents */,
 				62F43CBE2688F2960009CD34 /* GradesView */,
 				621F5C9C266AA82A006EBE8F /* CalendarView */,
-				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
 				62D321012649D8C800C99C42 /* NewsView */,
 				62C9E89E263D0E8000CCA5C5 /* SettingsView */,
@@ -1358,6 +1363,7 @@
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
 				62D1E508263DD41C004DBFAD /* Date.swift in Sources */,
+				62B0D96B2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
 				62B227C5265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
@@ -1433,6 +1439,7 @@
 				629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */,
 				621F5C94266A9540006EBE8F /* MasterCalendarView.swift in Sources */,
 				625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */,
+				62B0D96C2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				62C9E8AC263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
 				62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */,
@@ -1539,6 +1546,7 @@
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
 				621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */,
+				62B0D96D2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */,
 				62B227C7265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62B227DF265DADC70023A7E6 /* PeriodBlockSubview.swift in Sources */,
