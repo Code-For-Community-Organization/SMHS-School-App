@@ -9,13 +9,18 @@ import SwiftUI
 
 struct GradesLoginView: View {
     @ObservedObject var gradesViewModel: GradesViewModel
+    var animation: Namespace.ID
     
     var body: some View {
         VStack {
             TextField("Email", text: $gradesViewModel.email)
             TextField("Password", text: $gradesViewModel.password)
                 .padding(.bottom, 40)
-            Button(action: {gradesViewModel.loginAndFetch()}) {
+            Button(action: {
+                withAnimation {
+                    gradesViewModel.loginAndFetch()
+                }
+            }) {
                 Group {
                     if gradesViewModel.isLoading {
                         ProgressView().progressViewStyle(CircularProgressViewStyle()).foregroundColor(.white)
@@ -26,11 +31,11 @@ struct GradesLoginView: View {
                     }
                 }
             }
-            .buttonStyle(HighlightButtonStyle())
+            .disabled(gradesViewModel.isLoading)
         }
         .padding(.horizontal)
         .textFieldStyle(RoundedBorderTextFieldStyle())
-        .animation(nil)
+        
     }
 }
 

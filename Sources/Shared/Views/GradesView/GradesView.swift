@@ -10,7 +10,8 @@ import SwiftUIVisualEffects
 
 struct GradesView: View {
     @StateObject var gradesViewModel = GradesViewModel()
-
+    @Namespace private var viewAnimation
+    
     var body: some View {
         if gradesViewModel.isLoggedIn {
             GeometryReader {geo in
@@ -19,6 +20,16 @@ struct GradesView: View {
                         ForEach(gradesViewModel.gradesResponse.filter{!$0.isPrior}, id: \.self){
                             CourseGradeItem(course: $0)
                         }
+                        Button(action: {
+                            withAnimation {
+                                gradesViewModel.signoutAndRemove()
+                            }
+                        }) {
+                            Text("Log out")
+                                .fontWeight(.semibold)
+                        }
+                        .padding(.top, 20)
+
                     }
                     .padding(.horizontal)
                     .padding(.vertical, geo.safeAreaInsets.top)
@@ -33,10 +44,12 @@ struct GradesView: View {
                 .background(.platformSecondaryBackground)
                 .edgesIgnoringSafeArea(.top)
             }
+            .transition(.slide)
             
         }
         else {
-            GradesLoginView(gradesViewModel: gradesViewModel)
+            GradesLoginView(gradesViewModel: gradesViewModel, animation: viewAnimation)
+                .transition(.slide)
         }
 
     }
