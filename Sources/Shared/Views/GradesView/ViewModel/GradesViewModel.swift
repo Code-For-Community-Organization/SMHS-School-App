@@ -14,9 +14,16 @@ final class GradesViewModel: ObservableObject {
     @Published(keychain: "password") var password: String = "Mao511969"
     @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
     @Published var error: RequestError?
+    
+    //Whether isLoading to determine showing loading animation
     @Published var isLoading = false
+    
+    //Remember login status
     @Published(key: "isLoggedIn") var isLoggedIn = false
     
+    //Whether email field is focused, used to display textfield color change
+    @Published var emailFieldFocused = false
+    @Published var passwordFieldFocused = false
     var anyCancellables: Set<AnyCancellable> = []
     
     init(gradesNetworkModel: GradesNetworkModel = GradesNetworkModel()) {

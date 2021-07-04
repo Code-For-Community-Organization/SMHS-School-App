@@ -17,9 +17,20 @@ struct GradesLoginView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .keyboardType(.emailAddress)
+                .textFieldStyle(LoginTextFieldRoundedStyle(focused: $gradesViewModel.emailFieldFocused))
+                .onTapGesture {
+                    gradesViewModel.passwordFieldFocused = false
+                    gradesViewModel.emailFieldFocused = true
+                }
             
             SecureField("Password", text: $gradesViewModel.password)
                 .padding(.bottom, 40)
+                .textFieldStyle(LoginTextFieldRoundedStyle(focused: $gradesViewModel.passwordFieldFocused))
+                .onTapGesture {
+                    gradesViewModel.passwordFieldFocused = true
+                    gradesViewModel.emailFieldFocused = false
+                }
+            
             Button(action: {
                 withAnimation {
                     gradesViewModel.loginAndFetch()
@@ -37,9 +48,21 @@ struct GradesLoginView: View {
             }
             .disabled(gradesViewModel.isLoading)
         }
-        .padding(.horizontal)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
+        .frame(maxWidth: 350)
         
     }
 }
 
+struct LoginTextFieldRoundedStyle: TextFieldStyle {
+    @Binding var focused: Bool
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+            configuration
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(focused ? Color.primary : .gray, lineWidth: 3)
+            ).padding()
+        }
+}
