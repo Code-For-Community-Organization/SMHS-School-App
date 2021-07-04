@@ -15,7 +15,7 @@ final class GradesViewModel: ObservableObject {
     @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
     @Published var error: RequestError?
     @Published var isLoading = false
-    @Published var isLoggedIn = false
+    @Published(key: "isLoggedIn") var isLoggedIn = false
     
     var anyCancellables: Set<AnyCancellable> = []
     

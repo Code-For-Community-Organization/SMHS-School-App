@@ -14,7 +14,11 @@ struct GradesLoginView: View {
     var body: some View {
         VStack {
             TextField("Email", text: $gradesViewModel.email)
-            TextField("Password", text: $gradesViewModel.password)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
+            
+            SecureField("Password", text: $gradesViewModel.password)
                 .padding(.bottom, 40)
             Button(action: {
                 withAnimation {
