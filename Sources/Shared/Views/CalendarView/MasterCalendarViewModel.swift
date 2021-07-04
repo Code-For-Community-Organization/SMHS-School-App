@@ -29,6 +29,7 @@ class MasterCalendarViewModel: ObservableObject {
     func fetchData(from startDate: Date = Date(),
                    to endDate: Date = Calendar.current.date(byAdding: .month, value: 3, to: Date())!,
                    completion: @escaping () -> ()) {
+        print("Fetching calendar data")
         let months = endDate.months(from: startDate)
         var inBetweenMonths = [String]()
         guard endDate > startDate else {return}
