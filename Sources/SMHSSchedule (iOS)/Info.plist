@@ -19,7 +19,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>1590</string>
+=======
+	<string>1541</string>
+>>>>>>> Refactor schedule weeks parsing
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
