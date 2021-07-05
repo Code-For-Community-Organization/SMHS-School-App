@@ -23,7 +23,7 @@ struct ScheduleDateHelper {
         let formattedDate = format.string(from: date)
         return formattedDate
     }
-        
+    
     var todayDateDescription: String {
         let date = mockDate ?? Date()
         let format = DateFormatter()
@@ -36,36 +36,45 @@ struct ScheduleDateHelper {
     init(mockDate: Date? = nil) {
         self.mockDate = mockDate
     }
-    func parseScheduleData(withRawText rawText: String?, mockDate: Date = Date(), completion: @escaping ([ScheduleWeek]) -> Void) {
+    
+    func parseScheduleData(withRawText rawText: String?,
+                           mockDate: Date = Date(),
+                           completion: @escaping ([ScheduleWeek]) -> Void) {
         guard let rawText: String = rawText else {return}
-        //CPU performance intensive operation, use background thread to avoid blocking UI
-        DispatchQueue.global(qos: .utility).async {
+        
+        //CPU performance intensive operation,
+        //use background thread to avoid blocking UI
+        DispatchQueue.global(qos: .userInteractive).async {
             var scheduleWeeks = [ScheduleWeek]()
-            for (line, stringIndex) in zip(rawText.lines, 0..<rawText.count) {
+            for (line, stringIndex) in zip(rawText.lines,
+                                           0..<rawText.count) {
+                
                 //Find line that contains the date
-                if line.starts(with: "DTSTART;VALUE=DATE:"){
-                    //Remove unnecessary text, get date string only
-                    let dateString: String = line.replacingOccurrences(of: "DTSTART;VALUE=DATE:", with: "")
-                    
-                    //For each day of schedule found, check if the date is a date equal to or after current date
-                    let dateChecker: (Date, Date) = self.scheduleDateChecker(dateString: dateString, mockDate: mockDate)
-                    
-                    //.0 is the schedule's date, .1 is current date
-                    if dateChecker.0 >= dateChecker.1 {
-                        
-                        //Parse the line of schedule text, stripping unwanted characters and words
-                        if let scheduleDay: ScheduleDay = self.scheduleLineParser(line: line, rawText: rawText, stringIndex: stringIndex, date: dateChecker.0) {
-                            //If id equals to 1, means Monday, so append a new week
-                            if scheduleDay.dayOfTheWeek == 1 || scheduleWeeks.isEmpty {
-                                scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
-                            }
-                            //If not Friday, append the `ScheduleDay` to last week in array
-                            else {
-                                scheduleWeeks.last?.scheduleDays.append(scheduleDay)
-                            }
-                        }
-                        
-                    }
+                guard line.starts(with: "DTSTART;VALUE=DATE:") else { continue }
+                
+                //Remove unnecessary text, get date string only
+                let dateString = line.replacingOccurrences(of: "DTSTART;VALUE=DATE:",
+                                                           with: "")
+                
+                //For each day of schedule found, check if the date
+                //is a date equal to or after current date
+                let dateChecker: (Date, Date) = self.scheduleDateChecker(dateString: dateString,
+                                                                         mockDate: mockDate)
+                //.0 is the schedule's date, .1 is current date
+                guard dateChecker.0 >= dateChecker.1 else { continue }
+                
+                //Parse the line of schedule text, stripping unwanted characters and words
+                guard let scheduleDay = self.scheduleLineParser(line: line,
+                                                             rawText: rawText,
+                                                             stringIndex: stringIndex,
+                                                                date: dateChecker.0) else { continue }
+                //If id equals to 1, means Monday, so append a new week
+                if scheduleDay.dayOfTheWeek == 1 || scheduleWeeks.isEmpty {
+                    scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
+                }
+                //If not Friday, append the `ScheduleDay` to last week in array
+                else {
+                    scheduleWeeks.last?.scheduleDays.append(scheduleDay)
                 }
             }
             completion(scheduleWeeks)
