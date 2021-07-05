@@ -60,7 +60,8 @@ struct ScheduleDateHelper {
                 //is a date equal to or after current date
                 let dateChecker: (Date, Date) = self.scheduleDateChecker(dateString: dateString,
                                                                          mockDate: mockDate)
-                //.0 is the schedule's date, .1 is current date
+                //Verify that the schedule's date is later than
+                //today's date because no point in showing old schedule.
                 guard dateChecker.0 >= dateChecker.1 else { continue }
                 
                 //Parse the line of schedule text, stripping unwanted characters and words
@@ -81,7 +82,8 @@ struct ScheduleDateHelper {
         }
         
     }
-    //Returns a Date created from given date string, at 0:00:00, and current Date
+    //Returns a Date created from given date string, at 0:00:00;
+    //Also returns the current Date, at 0:00:00 time
     private func scheduleDateChecker(dateString: String, mockDate: Date = Date()) -> (Date, Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
@@ -90,14 +92,23 @@ struct ScheduleDateHelper {
         return (date, currentDate)
     }
     
+    //Constructs a ScheduleDay object from a given
+    //line of schedule date
     private func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
         let summary: String = String(rawText.lines[stringIndex+1])
         let containsDay: Bool = summary.lowercased().contains("day")
         let containsSchedule: Bool = summary.lowercased().contains("schedule")
         
+        //Handle false positive case where
+        //no schedule information of interest is found
         guard containsDay || containsSchedule else {return nil}
         
+        //The full schedule information, containing classes
+        //and their respective start and end times;
+        //Also contains preformatted newlines
         let description: String = String(rawText.lines[stringIndex+2])
+        
+        //Strip the DESCRIPTION: identifier at start of description text
         let descriptionStripped: String = description.replacingOccurrences(of: "DESCRIPTION:", with: "")
         return ScheduleDay(date: date,
                            scheduleText: "\(descriptionStripped.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n"))")
