@@ -30,6 +30,25 @@ class MasterCalendarViewModel: ObservableObject {
         }
     }
     
+    func getFirstDayOfYear() -> Date {
+        // Get the current year
+        let year = Calendar.current.component(.year, from: Date())
+        
+        // Get the last day of last year
+        if let lastDay = Calendar.current.date(from: DateComponents(year: year - 1, month: 1, day: 1)) {
+            // Get the first day of the current year
+            if let firstDay = Calendar.current.date(byAdding: .day, value: +1, to: lastDay) {
+                return firstDay
+            }
+            else {
+                preconditionFailure("Cannot get first day of this year")
+            }
+        }
+        else {
+            preconditionFailure("Cannot get last day of last year")
+        }
+    }
+    
     func getInBetweenMonths(forStart startDate: Date, endDate: Date) -> [String]? {
         //Compute dates of each month in bewteen 2 given dates
         computeMonths: do {
@@ -58,8 +77,7 @@ class MasterCalendarViewModel: ObservableObject {
     func fetchData(from startDate: Date = Date(),
                    to endDate: Date = Calendar.current.date(byAdding: .month, value: 3, to: Date())!,
                    completion: @escaping () -> ()) {
-    
-        guard let inBetweenMonths = getInBetweenMonths(forStart: startDate,
+        guard let inBetweenMonths = getInBetweenMonths(forStart: getFirstDayOfYear(),
                                                        endDate: endDate)
         else { return }
     
