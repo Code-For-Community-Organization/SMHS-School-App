@@ -12,21 +12,27 @@ struct NewsView: View {
     var todayDateDescription: String {ScheduleDateHelper().todayDateDescription}
     @StateObject var newsViewViewModel = NewsViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    @State var selection = 1
+    @State var selection = NewsCategories.general
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
-                    NewsSelectionButtons(selected: $selection)
+                LazyVStack {
+                    NewsSelectionButtons(newsViewViewModel: newsViewViewModel,
+                                         selected: $selection)
                     LazyVStack {
                         subHeader
-                        if selection == 1 {
+                        switch selection {
+                        case .general:
                             ForEach(newsViewViewModel.newsEntries, id:\.self){
                                 NewsEntryListItem(newsEntry: $0)
                                     .environmentObject(newsViewViewModel)
                             }
-                        }
-                        else {
+                        case .art:
+                            ForEach(newsViewViewModel.artEntries, id:\.self){
+                                NewsEntryListItem(newsEntry: $0)
+                                    .environmentObject(newsViewViewModel)
+                            }
+                        case .bookmarked:
                             ForEach(newsViewViewModel.bookMarkedEntries, id:\.self){
                                 NewsEntryListItem(newsEntry: $0)
                                     .environmentObject(newsViewViewModel)
@@ -41,13 +47,20 @@ struct NewsView: View {
             .aboutFooter()
 
         }
-        .onAppear{
-            newsViewViewModel.fetchXML()
-        }
         .navigationBarTitleDisplayMode(.automatic)
         .navigationViewStyle() 
     }
     
+    var subHeaderText: String {
+        switch selection {
+        case .general:
+            return "Top Stories"
+        case .art:
+            return "Arts Stories"
+        case .bookmarked:
+            return "Your Stories"
+        }
+    }
     var subHeader: some View {
         VStack {
             Text("Campus News")
@@ -56,8 +69,7 @@ struct NewsView: View {
                 .foregroundColor(Color.platformSecondaryLabel)
                 .textCase(.uppercase)
                 .textAlign(.leading)
-            
-            Text(selection == 1 ? "Top Stories" : "Your Stories")
+            Text(subHeaderText)
                 .fontWeight(.black)
                 .font(.title)
                 .foregroundColor(.primary)

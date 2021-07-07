@@ -11,23 +11,36 @@ import SwiftyXMLParser
 import SwiftSoup
 
 final class NewsViewViewModel: ObservableObject {
-    private var cancellable: AnyCancellable?
+    private var cancellable: Set<AnyCancellable> = []
     @Published(key: "bookmarkedEntries") var bookMarkedEntries = [NewsEntry]()
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
+    @Published(key: "artEntires") var artEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
     init(newsEntries: [NewsEntry]? = nil) {
-        fetchXML()
-    } 
-    
-    func fetchXML() {
-        let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+        fetchXML(for: .general)
+    }
+        
+    func fetchXML(for category: NewsCategory) {
+        //Catch case where category is bookmarked
+        //This function should never be called for bookmarked
+        assert(category.category != .bookmarked)
+        
+        let endpoint = Endpoint.newsPosts(id: category.id)
+        URLSession.shared.dataTaskPublisher(for: endpoint.url)
             .retry(2)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {_ in}){data, response in
                 guard let rawText = String(data: data, encoding: .utf8) else {return}
-                self.newsEntries = self.parseXML(for: rawText)
+                switch category.category {
+                    case .general:
+                        self.newsEntries = self.parseXML(for: rawText)
+                    case .art:
+                        self.artEntries = self.parseXML(for: rawText)
+                    case .bookmarked:
+                        ()
+                }
             }
+            .store(in: &cancellable)
 
     }
     
@@ -71,7 +84,10 @@ final class NewsViewViewModel: ObservableObject {
         return nil
     }
     
+    //Toggle bookmarked status for a given news article
     func toggleEntryBookmarked(_ entry: NewsEntry) {
+        
+        //Check if already bookmarked
         if bookMarkedEntries.contains(where: {$0.id == entry.id}) {
             bookMarkedEntries = bookMarkedEntries.filter{$0.id != entry.id}
         }

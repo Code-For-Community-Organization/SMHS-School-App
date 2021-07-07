@@ -8,25 +8,23 @@
 import SwiftUI
 
 struct NewsSelectionButtons: View {
-    @Binding var selected: Int
+    @ObservedObject var newsViewViewModel: NewsViewViewModel
+    @Binding var selected: NewsCategories
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 15) {
-                HorizontalLabelButton(label: "All Stories", symbol: .squareGrid3x2Fill, tag: 1, selected: $selected)
+                HorizontalLabelButton(label: "Campus Stories", symbol: .squareGrid3x2Fill, tag: .general, selected: $selected)
                     .onTapGesture {
-                        selected = 1
+                        selected = .general
                     }
-                HorizontalLabelButton(label: "Bookmarked", symbol: .bookmarkFill, tag: 2, selected: $selected)
+                HorizontalLabelButton(label: "Bookmarked", symbol: .bookmarkFill, tag: .bookmarked, selected: $selected)
                     .onTapGesture {
-                        selected = 2
+                        selected = .bookmarked
                     }
-                HorizontalLabelButton(label: "Sports", tag: 3, selected: $selected)
+                HorizontalLabelButton(label: "Art", tag: .art, selected: $selected)
                     .onTapGesture {
-                        selected = 3
-                    }
-                HorizontalLabelButton(label: "Arts", tag: 4, selected: $selected)
-                    .onTapGesture {
-                        selected = 4
+                        selected = .art
+                        newsViewViewModel.fetchXML(for: .art)
                     }
             }
             .padding(.horizontal, 20)
@@ -34,11 +32,5 @@ struct NewsSelectionButtons: View {
         }
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 25, trailing: 0))
         .edgesIgnoringSafeArea(.horizontal)
-    }
-}
-
-struct NewsSelectionButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsSelectionButtons(selected: .constant(1))
     }
 }

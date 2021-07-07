@@ -114,6 +114,12 @@
 		62B0D96B2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
 		62B0D96C2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
 		62B0D96D2692776200AA6CF4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96A2692776200AA6CF4 /* ActionButton.swift */; };
+		62B0D96F2696249800AA6CF4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96E2696249800AA6CF4 /* URL.swift */; };
+		62B0D9702696249800AA6CF4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96E2696249800AA6CF4 /* URL.swift */; };
+		62B0D9712696249800AA6CF4 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D96E2696249800AA6CF4 /* URL.swift */; };
+		62B0D974269627BD00AA6CF4 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D973269627BD00AA6CF4 /* NewsCategory.swift */; };
+		62B0D975269627BD00AA6CF4 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D973269627BD00AA6CF4 /* NewsCategory.swift */; };
+		62B0D976269627BD00AA6CF4 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D973269627BD00AA6CF4 /* NewsCategory.swift */; };
 		62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
 		62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B227BB265CBE530023A7E6 /* Acknowledgements.swift */; };
@@ -370,6 +376,8 @@
 		62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
 		62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPublishedWrapper.swift; sourceTree = "<group>"; };
 		62B0D96A2692776200AA6CF4 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		62B0D96E2696249800AA6CF4 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		62B0D973269627BD00AA6CF4 /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
 		62B227BB265CBE530023A7E6 /* Acknowledgements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
 		62B227C0265CC1D20023A7E6 /* WhyStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyStatementView.swift; sourceTree = "<group>"; };
 		62B227C4265CC1E00023A7E6 /* HowStatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowStatementView.swift; sourceTree = "<group>"; };
@@ -616,7 +624,6 @@
 				62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */,
 				624F79FC2651A45400B93C63 /* Buttons */,
 				62D321172649F25F00C99C42 /* NewsEntryListItem.swift */,
-				62D3210E2649E11800C99C42 /* NewsEntry.swift */,
 				62B227D4265D82C40023A7E6 /* WKWebViewRepresentable.swift */,
 			);
 			path = Components;
@@ -857,6 +864,7 @@
 				62D1E507263DD41C004DBFAD /* Date.swift */,
 				62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */,
 				627752FB26660433000BAD0B /* UIDevice.swift */,
+				62B0D96E2696249800AA6CF4 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -887,6 +895,16 @@
 				62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		62B0D972269627A600AA6CF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */,
+				62D3210E2649E11800C99C42 /* NewsEntry.swift */,
+				62B0D973269627BD00AA6CF4 /* NewsCategory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		62C48DA9265C6C8B0032301E /* AboutFooter */ = {
@@ -996,9 +1014,9 @@
 		62D321012649D8C800C99C42 /* NewsView */ = {
 			isa = PBXGroup;
 			children = (
+				62B0D972269627A600AA6CF4 /* Model */,
 				62D321022649D8D700C99C42 /* NewsView.swift */,
 				624F79F2264FA11600B93C63 /* Components */,
-				6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */,
 			);
 			path = NewsView;
 			sourceTree = "<group>";
@@ -1353,6 +1371,7 @@
 				6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */,
 				62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
+				62B0D96F2696249800AA6CF4 /* URL.swift in Sources */,
 				62626395264DD21D004146CE /* PeriodEditItem.swift in Sources */,
 				6261840426371A6C001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				62C9E8A0263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
@@ -1388,6 +1407,7 @@
 				62D321032649D8D700C99C42 /* NewsView.swift in Sources */,
 				6261840B26371A6C001C4AD4 /* MockScheduleView.swift in Sources */,
 				62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
+				62B0D974269627BD00AA6CF4 /* NewsCategory.swift in Sources */,
 				62353A522638894500207C15 /* ScheduleListView.swift in Sources */,
 				626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */,
 				626183A72637168D001C4AD4 /* SMHSSchedule__macOS_App.swift in Sources */,
@@ -1400,11 +1420,13 @@
 			files = (
 				62D321042649D8D700C99C42 /* NewsView.swift in Sources */,
 				62C9E8A5263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
+				62B0D9702696249800AA6CF4 /* URL.swift in Sources */,
 				623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */,
 				62B227C6265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */,
+				62B0D975269627BD00AA6CF4 /* NewsCategory.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				626183E9263718E0001C4AD4 /* String.swift in Sources */,
 				62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */,
@@ -1533,6 +1555,7 @@
 				62E3BF022642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */,
 				629EC8362645D50900E236DC /* TodayViewViewModel.swift in Sources */,
+				62B0D9712696249800AA6CF4 /* URL.swift in Sources */,
 				62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */,
 				62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */,
 				62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */,
@@ -1542,6 +1565,7 @@
 				62D1E535263DF859004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62E2E093268598AA009608FB /* NetworkLoadViewModel.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
+				62B0D976269627BD00AA6CF4 /* NewsCategory.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,

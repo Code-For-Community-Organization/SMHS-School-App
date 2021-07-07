@@ -11,8 +11,8 @@ import SFSafeSymbols
 struct HorizontalLabelButton: View {
     var label: String
     var symbol: SFSymbol? = nil
-    var tag: Int
-    @Binding var selected: Int
+    var tag: NewsCategories
+    @Binding var selected: NewsCategories
     
     //Selected color depends on function of button
     //"Special" button has exclusive SFSymbol,
