@@ -20,6 +20,14 @@ struct NewsSelectionButtons: View {
                     .onTapGesture {
                         selected = 2
                     }
+                HorizontalLabelButton(label: "Sports", tag: 3, selected: $selected)
+                    .onTapGesture {
+                        selected = 3
+                    }
+                HorizontalLabelButton(label: "Arts", tag: 4, selected: $selected)
+                    .onTapGesture {
+                        selected = 4
+                    }
             }
             .padding(.horizontal, 20)
    

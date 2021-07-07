@@ -10,21 +10,26 @@ import SFSafeSymbols
 
 struct HorizontalLabelButton: View {
     var label: String
-    var symbol: SFSymbol
+    var symbol: SFSymbol? = nil
     var tag: Int
     @Binding var selected: Int
+    
+    //Selected color depends on function of button
+    //"Special" button has exclusive SFSymbol,
+    //and a prominent color
     var body: some View {
         HStack {
             Group {
-                Image(systemSymbol: symbol)
-                    .font(.system(size: 20))
-                    .foregroundColor(Color.secondary)
+                if let symbol = symbol {
+                    Image(systemSymbol: symbol)
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.secondary)
+                }
                 Text(label)
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundColor(tag == selected ? Color.platformBackground : Color.platformLabel)
             }
-
         }
         .padding()
         .background(tag == selected ? Color.platformLabel : Color.platformSecondaryFill)
