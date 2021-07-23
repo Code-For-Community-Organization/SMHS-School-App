@@ -19,7 +19,6 @@ struct MasterCalendarView: View {
     @ObservedObject private var calendarViewModel: MasterCalendarViewModel
     init(calendarViewModel: MasterCalendarViewModel) {
         self.calendarViewModel = calendarViewModel
-        calendarManager.datasource = self
     }
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -39,6 +38,7 @@ struct MasterCalendarView: View {
         }
         .onAppear {
             DispatchQueue.main.async {
+                calendarManager.datasource = self
                 AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
                 orientationValue = UIDevice.current.orientation.rawValue
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
