@@ -32,4 +32,15 @@ struct ScheduleWeek: Hashable, Codable {
             scheduleDays[dayIndex] = newValue
         }
     }
+    
+    func getDayByDate(_ date: Date) -> ScheduleDay? {
+        scheduleDays.first{$0.date == date.eraseTime()}
+    }
+//
+//    func contains(_ date: Date) -> Bool {
+//        guard let startDate = startDate, let endDate = endDate else {
+//            return false
+//        }
+//        return date > startDate && date < endDate
+//    }
 }
