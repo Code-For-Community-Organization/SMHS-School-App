@@ -6,35 +6,30 @@
 //
 
 import SwiftUI
+import func AVFoundation.AVMakeRect
 
 struct HowStatementView: View {
+    
+    @State var imageCache = NSCache<NSString, UIImage>()
     var body: some View {
         ScrollView {
             VStack {
+                GeometryReader {geo in
+                    resizedImage(image: UIImage(named: "Developer_thumbs")!, size: geo.size)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: geo.size.width)
+                }
+                .frame(height: 250)
+                .edgesIgnoringSafeArea(.top)
+                
                 Text("HOW DOES\nSMHS WORK?")
                     .font(.largeTitle, weight: .bold)
                     .padding(.bottom)
                     .textAlign(.leading)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
-                HStack {
-                    Image(uiImage: #imageLiteral(resourceName: "Developer_thumbs"))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 100)
-                    Spacer()
-                }
                 VStack {
-                    Text("""
-                        How is the SMHS app possible?\nIs it trustworthy?"
-                        """)
-                        .font(.system(.title3, design: .serif))
-                        .foregroundColor(.platformTertiaryLabel)
-                        .padding(.leading, 15)
-                        .textAlign(.leading)
-                        //.background(Color.platformSecondaryFill)
-                        //.cornerRadius(5)
-
                     Text("How Does SMHS work?")
                         .font(.title2, weight: .bold)
                         .padding(.top)
@@ -42,7 +37,7 @@ struct HowStatementView: View {
                         .textAlign(.leading)
                         .padding(.bottom, 2)
 
-                    Text("In short, SMHS will always be just as trustworthy, if not more trustworthy than SMCHS's official website or app. Because this app fetches its information directly from the website, and constantly gets the newest schedule information everytime you open the app.")
+                    Text("The SMHS app will always be just as trustworthy as SMCHS's official website and app. We fetch information directly from the website, and constantly gets the newest schedule information everytime you open the app.")
                     
                     Text("SMHS on a Technical Level")
                         .font(.title2, weight: .bold)
@@ -51,7 +46,7 @@ struct HowStatementView: View {
                         .textAlign(.leading)
                         .padding(.bottom, 2)
 
-                    Text("Keep reading if you want to learn more about the technical implementations of SMHS on the programming level.\n\nFor the schedle information (campus news please read following section), the answers lies in the calendar feed, or .ICS iCalendar files. On the bell schedule page of the SMHS's website, there is a button that gives the calendar feed.\n\niCalendar file is a standard media type for exchanging scheduling information, and this means SMHS Schedule can simply periodically download the .ICS file as a raw text, to get updated schedule information.\n\nIn fact, you can click on this link to download the .ICS file and right click to open it as a text file on your computer. This resembles the raw text that SMHS Schdeule will parse.")
+                    Text("Keep reading if you want to learn more about the technical implementations of SMHS on the programming level.\n\nFor the schedule information (campus news please read following section), the answers lies in the calendar feed, or .ICS iCalendar files. On the bell schedule page of the SMHS's website, there is a button that gives the calendar feed.\n\niCalendar file is a standard media type for exchanging scheduling information, and this means SMHS Schedule can simply periodically download the .ICS file as a raw text, to get updated schedule information.\n\nIn fact, you can click on this link to download the .ICS file and right click to open it as a text file on your computer. This resembles the raw text that SMHS Schdeule will parse.")
                         .textAlign(.leading)
 
                     Text("Scraping SMHS Website")
@@ -74,6 +69,21 @@ struct HowStatementView: View {
             }
             .padding()
         }
+    }
+    
+    func resizedImage(image: UIImage, size: CGSize) -> Image {
+        guard let cachedImage = imageCache.object(forKey: "mainImage") else {
+            let renderer = UIGraphicsImageRenderer(size: size)
+            let renderedImage = renderer.image {context in
+                let rect = AVMakeRect(aspectRatio: image.size,
+                                      insideRect: CGRect(origin: .zero,
+                                                         size: size))
+                image.draw(in: rect)
+            }
+            imageCache.setObject(renderedImage, forKey: "mainImage")
+            return Image(uiImage: renderedImage)
+        }
+        return Image(uiImage: cachedImage)
     }
 }
 
