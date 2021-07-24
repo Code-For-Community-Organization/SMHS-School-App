@@ -9,19 +9,15 @@ import Foundation
 
 extension StringProtocol {
     var lines: [SubSequence] { split(whereSeparator: \.isNewline) }
-}
-
-extension String {
-    func removingRegexMatches(pattern: String, replaceWith: String = "") -> String {
-        do {
-            let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-            let range = NSMakeRange(0, count)
-            return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replaceWith)
-        } catch { return self}
+    
+    var autoCapitalized: String {
+        if self.contains(" ") {
+            return self.capitalized
+        }
+        else {
+            return self.uppercased()
+        }
     }
-}
-
-extension StringProtocol {
     func index<S: StringProtocol>(of string: S, options: String.CompareOptions = []) -> Index? {
         range(of: string, options: options)?.lowerBound
     }
@@ -42,5 +38,15 @@ extension StringProtocol {
                     index(range.lowerBound, offsetBy: 1, limitedBy: endIndex) ?? endIndex
         }
         return result
+    }
+}
+
+extension String {
+    func removingRegexMatches(pattern: String, replaceWith: String = "") -> String {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+            let range = NSMakeRange(0, count)
+            return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replaceWith)
+        } catch { return self}
     }
 }

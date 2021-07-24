@@ -973,8 +973,8 @@
 		62E05F6F2639C5A200B609E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				621F5C9C266AA82A006EBE8F /* CalendarView */,
 				626A226A260035F100903C39 /* ContentView.swift */,
+				621F5C9C266AA82A006EBE8F /* CalendarView */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				623A7F16264EEBE000FF3F28 /* SearchView */,
 				62D321012649D8C800C99C42 /* NewsView */,
