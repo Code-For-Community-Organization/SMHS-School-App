@@ -77,8 +77,7 @@ struct ScheduleDateHelper {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         let date = formatter.date(from: dateString)!
-        let currentDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: mockDate)!
-        return (date, currentDate)
+        return (date, mockDate.eraseTime())
     }
     
     func scheduleLineParser(line: Substring, rawText: String, stringIndex: Int, date: Date) -> ScheduleDay? {
