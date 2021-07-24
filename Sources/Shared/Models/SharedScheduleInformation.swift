@@ -44,30 +44,35 @@ final class SharedScheduleInformation: ObservableObject {
         self.dateHelper = scheduleDateHelper
         self.urlString = urlString
         self.downloader = downloader
-        fetchData()
+        print("Called fetch data from initializer...")
+        //FIXME: Rando
+        //fetchData()
     } 
     
     func reloadData() {
         if let time = lastReloadTime { 
             if abs(Date().timeIntervalSince(time)) > TimeInterval(120) {
+                print("Reload valid, fetching data")
                 fetchData()
                 lastReloadTime = Date()
-                
             }
+            print("Reload invalid")
         }
         else {
+            print("Reload 1st time, fetching data")
             lastReloadTime = Date()
             fetchData()
         }
         
     }
     func fetchData(completion: ((Bool) -> Void)? = nil) {
+        print("Fetching schedule data....")
         //Load ICS calendar data from network
         downloader(urlString){data, error in
             guard let data = data else {
                 #if DEBUG
                 completion?(false)
-                print("Error occurred while fetching iCS: \(error!)")
+                //print("Error occurred while fetching iCS: \(error!)")
                 #endif
                 return
             }

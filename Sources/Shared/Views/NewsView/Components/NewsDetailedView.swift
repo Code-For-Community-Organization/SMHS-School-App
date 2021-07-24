@@ -33,7 +33,6 @@ struct NewsDetailedView: View {
                             .frame(maxHeight: imageHeight)
                             .clipped()
                     }
-
                     Group {
                         Text(newsEntry.title)
                             .font(.system(.title, design: .serif))

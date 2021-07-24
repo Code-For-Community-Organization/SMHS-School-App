@@ -18,10 +18,20 @@ final class NetworkLoadViewModel: ObservableObject {
     var dataReload: Reloader
     init(dataReload: @escaping Reloader) {
         self.dataReload = dataReload 
-        anyCancellable = $isNetworkAvailable.sink {[weak self] isAvailable in
-            if isAvailable {
-                self?.reloadDataNow()
+        anyCancellable = $isNetworkAvailable
+            .removeDuplicates {prev, current in
+                
+                //Consider available
+                prev == true || prev == current
             }
+            .sink {[weak self] isAvailable in
+                print("Network available: \(isAvailable)")
+                if isAvailable {
+                    print("Reload now from network load viewmodel")
+                    #warning("Fix me major bug!")
+                    //FIXME: Reloading crazy, removeDuplicates not working
+                    //self?.reloadDataNow()
+                }
         }
         startNetworkMonitorer()
         
