@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
 
@@ -23,7 +23,8 @@ struct ContentView: View {
                         Text("Today")
                     }
                 }
-            
+            GradesView()
+                .tabItem{Label("Grades", systemSymbol: .graduationcapFill)}
             ScheduleView(networkLoadingViewModel: networkLoadViewModel,
                          scheduleViewModel: sharedScheduleInformation)
                 .tabItem{

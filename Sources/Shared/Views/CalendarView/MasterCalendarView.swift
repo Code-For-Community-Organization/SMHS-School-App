@@ -37,6 +37,7 @@ struct MasterCalendarView: View {
             .padding(.bottom, 30)
         }
         .onAppear {
+            calendarManager.datasource = self
             DispatchQueue.main.async {
                 calendarManager.datasource = self
                 AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
