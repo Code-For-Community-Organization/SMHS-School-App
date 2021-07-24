@@ -39,6 +39,7 @@ struct MasterCalendarView: View {
         .onAppear {
             calendarManager.datasource = self
             DispatchQueue.main.async {
+                calendarManager.datasource = self
                 AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
                 orientationValue = UIDevice.current.orientation.rawValue
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
