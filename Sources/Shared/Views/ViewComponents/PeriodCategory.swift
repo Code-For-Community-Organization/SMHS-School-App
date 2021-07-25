@@ -9,7 +9,7 @@ import Foundation
 
 infix operator ~=~
 enum PeriodCategory: String, Codable {
-    case firstLunch, secondLunch, period, singleLunch, officeHour, firstLunchPeriod, secondLunchPeriod, custom
+    case firstLunch, secondLunch, period, singleLunch, officeHour, firstLunchPeriod, secondLunchPeriod, unnumberedPeriod
     var isLunch: Bool {
         [PeriodCategory.firstLunch, PeriodCategory.secondLunch, PeriodCategory.singleLunch].contains(self) //Match self for any of 3 specified cases
     }

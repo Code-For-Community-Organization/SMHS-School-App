@@ -22,23 +22,23 @@ final class ScheduleCustomViewModel: ObservableObject {
         dateComponent.second = 0
         return Calendar.current.date(from: dateComponent)!
     }
-    
-    func validateAndCreate(scheduleDay: ScheduleDay) -> (validated: Bool, block: ClassPeriod?) {
-        //Verify existing periods time don't overlap with custom block's time
-        guard let first = scheduleDay.periods.first,
-              let last = scheduleDay.periods.last else {return (false, nil)}
-        let existingDayRange = first.startTime...last.endTime
-        
-        if !title.isEmpty &&
-            endTime > startTime &&
-            !existingDayRange.contains(startTime.convertToReferenceDateLocalTime()) &&
-            !existingDayRange.contains(endTime.convertToReferenceDateLocalTime())
-        {
-            let customBlock = ClassPeriod(customTitle: title,
-                                          startTime: startTime.convertToReferenceDateLocalTime(),
-                                          endTime: endTime.convertToReferenceDateLocalTime())
-            return (true, customBlock) 
-        }
-        return (false, nil)
-    } 
+//    
+//    func validateAndCreate(scheduleDay: ScheduleDay) -> (validated: Bool, block: ClassPeriod?) {
+//        //Verify existing periods time don't overlap with custom block's time
+//        guard let first = scheduleDay.periods.first,
+//              let last = scheduleDay.periods.last else {return (false, nil)}
+//        let existingDayRange = first.startTime...last.endTime
+//        
+//        if !title.isEmpty &&
+//            endTime > startTime &&
+//            !existingDayRange.contains(startTime.convertToReferenceDateLocalTime()) &&
+//            !existingDayRange.contains(endTime.convertToReferenceDateLocalTime())
+//        {
+//            let customBlock = ClassPeriod(customTitle: title,
+//                                          startTime: startTime.convertToReferenceDateLocalTime(),
+//                                          endTime: endTime.convertToReferenceDateLocalTime())
+//            return (true, customBlock) 
+//        }
+//        return (false, nil)
+//    } 
 }
