@@ -41,6 +41,10 @@ extension Date {
     func months(from date: Date) -> Int {
         return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
     }
+    
+    func eraseTime() -> Date {
+         Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
+    }
 }
 
 extension TimeInterval {

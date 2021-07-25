@@ -23,8 +23,8 @@ final class SharedScheduleInformation: ObservableObject {
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
     private var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
-        let weekday = Date.currentWeekday(for: dateHelper.mockDate ?? Date())  //Get current weekday represented by integer
-        return (weekday != 0 && weekday != 6) ? scheduleWeeks.first?.scheduleDays.first : nil  //Return today `ScheduleDay` if not weekend, otherwise return nil
+        let targetDay = scheduleWeeks.compactMap{$0.getDayByDate(Date())}
+        return targetDay.first
     }
     
     
