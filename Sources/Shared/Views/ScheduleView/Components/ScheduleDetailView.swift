@@ -7,12 +7,10 @@
 
 import SwiftUI
 import SFSafeSymbols
-import AlertKit
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
     var scheduleDay: ScheduleDay?
-    @StateObject var alertManager = AlertManager()
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving} //First index found of 1st/2nd type block
@@ -43,69 +41,53 @@ struct ScheduleDetailView: View {
     }
     var body: some View {
         ScrollView {
-            if userSettings.preferLegacySchedule {
+            //FIXME: Period block parsing broken for 21-22 schedule
+            //if userSettings.preferLegacySchedule {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
+            //}
+//            else {
+//                LazyVStack(spacing: 10) {
+//                    PeriodBlockSubview(periods: preLunchPeriods)
+//
+//                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
+//                       let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
+//                       let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
+//                       let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
+//                        HStack {
+//                            VStack {
+//                                Text("1st Nutrition Schedule")
+//                                    .font(.footnote, weight: .semibold)
+//                                    .padding(.bottom, 2)
+//                                    .foregroundColor(.platformSecondaryLabel)
+//                                    .textAlign(.leading)
+//                                PeriodBlockItem(block: firstLunch,
+//                                                scheduleTitle: "1st Lunch",
+//                                                twoLine: true)
+//                                PeriodBlockItem(block: firstLunchPeriod,
+//                                                scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
+//                                                twoLine: true)
+//                            }
+//                            .padding(.trailing, 5)
+//                            VStack {
+//                                Text("2nd Nutrition Schedule")
+//                                    .font(.footnote, weight: .semibold)
+//                                    .padding(.bottom, 2)
+//                                    .foregroundColor(.platformSecondaryLabel)
+//                                    .textAlign(.leading)
+//                                PeriodBlockItem(block: secondLunchPeriod,
+//                                                scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
+//                                                twoLine: true)
+//                                PeriodBlockItem(block: secondLunch,
+//                                                scheduleTitle: "2nd Lunch",
+//                                                twoLine: true)
+//                            }
+//                        }
+//                       }
+//                    PeriodBlockSubview(periods: postLunchPeriods)
+//                }
+//                .padding(.horizontal)
             }
-            else {
-                LazyVStack(spacing: 10) {
-                    PeriodBlockSubview(periods: preLunchPeriods)
-                    
-                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                       let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                       let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                       let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                        HStack {
-                            VStack {
-                                Text("1st Nutrition Schedule")
-                                    .font(.footnote, weight: .semibold)
-                                    .padding(.bottom, 2)
-                                    .foregroundColor(.platformSecondaryLabel)
-                                    .textAlign(.leading)
-                                PeriodBlockItem(block: firstLunch,
-                                                scheduleTitle: "1st Lunch",
-                                                twoLine: true)
-                                PeriodBlockItem(block: firstLunchPeriod,
-                                                scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                                twoLine: true)
-                            }
-                            .padding(.trailing, 5)
-                            VStack {
-                                Text("2nd Nutrition Schedule")
-                                    .font(.footnote, weight: .semibold)
-                                    .padding(.bottom, 2)
-                                    .foregroundColor(.platformSecondaryLabel)
-                                    .textAlign(.leading)
-                                PeriodBlockItem(block: secondLunchPeriod,
-                                                scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                                twoLine: true)
-                                PeriodBlockItem(block: secondLunch,
-                                                scheduleTitle: "2nd Lunch",
-                                                twoLine: true)
-                            }
-                        }
-                       }
-                    PeriodBlockSubview(periods: postLunchPeriods)
-                }
-                .padding(.horizontal)
-            }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-//        .onAppear {
-//            let onboardingStatus = OnboardingWrapperViewModel.getVersionStatus()
-//            if onboardingStatus != .stable {
-//                alertManager.show(dismiss: .info(title: "Redesigned Schedule Blocks", message: "The redesigned schedule block presents your class schedules even better."))
-//            }
 //        }
-//        .uses(alertManager)
-        
-        
-        
+        .navigationBarTitleDisplayMode(.inline)
     }
-    
 }
-
-//struct ScheduleCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UIElementPreview(ClassScheduleView.previewClassScheduleView)
-//    }
-//}

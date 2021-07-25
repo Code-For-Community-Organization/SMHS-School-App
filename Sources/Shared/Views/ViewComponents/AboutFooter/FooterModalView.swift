@@ -17,10 +17,11 @@ struct FooterModalView: View {
                 Section(header: Text("\(dateHelper.todayDateDescription), Welcome!")
                                 .textCase(nil)
                                 .font(.title2, weight: .black)) {EmptyView()}
-                Section(header: Label("Settings", systemSymbol: .gearshapeFill),
-                        footer: Text(legacyDescriptionText).padding(.bottom)) {
-                    Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
-                }
+                //FIXME: Should be uncommented once the schedule parsing bug is fixed. Currently droping down to plain text schedule style, aka, legacy schedule.
+//                Section(header: Label("Settings", systemSymbol: .gearshapeFill),
+//                        footer: Text(legacyDescriptionText).padding(.bottom)) {
+//                    Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
+//                }
                 
                 Section(header: Text("Period settings").textCase(nil),
                         footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")

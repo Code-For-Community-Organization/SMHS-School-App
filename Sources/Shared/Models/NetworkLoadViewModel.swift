@@ -44,8 +44,7 @@ final class NetworkLoadViewModel: ObservableObject {
     func startNetworkMonitorer() {
         let monitor = NWPathMonitor()
         monitor.pathUpdateHandler = {path in
-            DispatchQueue.main.async {
-                
+            DispatchQueue.main.async {                
 //                if self.lastStatus != .satisfied {
 //                    self.isLoading = false
 //                    //Condition where there was previously no connectivity,

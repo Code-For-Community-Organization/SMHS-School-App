@@ -79,3 +79,4 @@
 //        CustomScheduleView(scheduleViewModel: .mockScheduleView, showModal: .constant(true))
 //    }
 //}
+
