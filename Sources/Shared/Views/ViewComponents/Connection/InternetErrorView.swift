@@ -46,6 +46,7 @@ struct InternetErrorView: View {
         }
         .font(.callout, weight: .semibold)
         .foregroundColor(.platformSecondaryLabel)
-        .frame(maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.platformBackground.edgesIgnoringSafeArea(.all))
     }
 }

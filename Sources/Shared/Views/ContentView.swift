@@ -6,48 +6,42 @@
 //
 
 import SwiftUI
-import AlertKit
 
 struct ContentView: View {
-    @StateObject var scheduleViewViewModel = ScheduleViewModel()
-    @StateObject var alertManager = AlertManager()
-    @StateObject var newsViewViewModel = NewsViewViewModel()
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
-    @AppStorage("didShowGradAlert") var didShowGradAlert = false
 
     var body: some View {
         TabView {
-            TodayView(scheduleViewViewModel: scheduleViewViewModel)
+            let networkLoadViewModel = NetworkLoadViewModel(dataReload: sharedScheduleInformation.fetchData)
+            TodayView(networkLoadViewModel: networkLoadViewModel,
+                      scheduleViewViewModel: sharedScheduleInformation)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .squareGrid2x2Fill)
                         Text("Today")
                     }
                 }
-                .onAppear {
-                    if !didShowGradAlert {
-                        alertManager.show(dismiss: .info(title: "Congratulations!", message: "Congradulations to graduating the Class of 2021.",
-                                                         dismissButton: .cancel(Text("Don't Show Again"))))
-                        didShowGradAlert.toggle()
-                    }
-                }
-            
-            ScheduleView(scheduleViewModel: scheduleViewViewModel)
+            //FIXME: Fix grades API, reload always
+//            GradesView()
+//                .tabItem{Label("Grades", systemSymbol: .graduationcapFill)}
+            ScheduleView(networkLoadingViewModel: networkLoadViewModel,
+                         scheduleViewModel: sharedScheduleInformation)
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .calendar)
                         Text("Schedule")
                     }
                 }
-            NewsView(newsViewViewModel: newsViewViewModel, scheduleViewModel: scheduleViewViewModel)
+            NewsView()
                 .tabItem{
                     VStack{
                         Image(systemSymbol: .newspaperFill)
                         Text("News")
                     }
                 }
-            SearchView(scheduleViewModel: scheduleViewViewModel, newsViewViewModel: newsViewViewModel)
+            SearchView()
                 .tabItem {
                     Label("Search", systemSymbol: .magnifyingglass)
                 }
@@ -67,7 +61,7 @@ struct ContentView: View {
         .onChange(of: scenePhase) { newScenePhase in
               switch newScenePhase {
               case .active:
-                scheduleViewViewModel.objectWillChange.send()
+                sharedScheduleInformation.objectWillChange.send()
                 let activeCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
                 UserDefaults.standard.set(activeCount+1, forKey:"activeSceneCount")
               case .inactive:
@@ -78,7 +72,6 @@ struct ContentView: View {
                 ()
               }
             }
-        .uses(alertManager)
     }
 }
 

@@ -10,8 +10,8 @@ import Combine
 import SwiftyXMLParser
 import SwiftSoup
 
-class NewsViewViewModel: ObservableObject {
-    var cancellable: AnyCancellable?
+final class NewsViewViewModel: ObservableObject {
+    private var cancellable: AnyCancellable?
     @Published(key: "bookmarkedEntries") var bookMarkedEntries = [NewsEntry]()
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
@@ -31,7 +31,7 @@ class NewsViewViewModel: ObservableObject {
 
     }
     
-    func parseXML(for rawText: String) -> [NewsEntry] {
+    private func parseXML(for rawText: String) -> [NewsEntry] {
         do {
             let xml = try XML.parse(rawText)
             var newsEntries = [NewsEntry]()
@@ -45,13 +45,15 @@ class NewsViewViewModel: ObservableObject {
             return newsEntries
         }
         catch {
+            #if DEBUG
             print("Parse XML failed with error: \(error)")
+            #endif
             return []
         }
    
     }
     
-    func parseHTMLImgTag(for html: String) -> URL? {
+    private func parseHTMLImgTag(for html: String) -> URL? {
         do {
             let parsed = try SwiftSoup.parse(html)
             let img = try parsed.select("img").first()
@@ -59,7 +61,9 @@ class NewsViewViewModel: ObservableObject {
             return URL(string: urlString ?? "")
         }
         catch Exception.Error(let type, Message: let message) {
+            #if DEBUG
             print("Error of type \(type), \(message)")
+            #endif
         }
         catch {
             print(error)

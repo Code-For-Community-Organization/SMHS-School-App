@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScheduleListView: View {
-    var scheduleViewModel: ScheduleViewModel
+    var scheduleViewModel: SharedScheduleInformation
     @State var presentCalendar = false
     @StateObject var masterCalendarViewModel = MasterCalendarViewModel()
     
