@@ -45,8 +45,7 @@ final class SharedScheduleInformation: ObservableObject {
         self.urlString = urlString
         self.downloader = downloader
         print("Called fetch data from initializer...")
-        //FIXME: Rando
-        //fetchData()
+        fetchData()
     } 
     
     func reloadData() {
