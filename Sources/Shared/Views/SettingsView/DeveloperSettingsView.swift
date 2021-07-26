@@ -12,11 +12,7 @@ struct DeveloperSettingsView: View {  //Developer-only settings for debug scheme
     
     var body: some View {
         SettingsView {
-            Section(header: Label("Developer Settings", systemSymbol: .hammerFill)){
-                Toggle(isOn: $userSettings.developerSettings.alwaysLoadingState, label: {
-                    Text("Always show loading")
-                })
-                
+            Section(header: Label("Developer", systemSymbol: .hammerFill)){
                 Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
                     Text("Always show onboarding")
                 })
@@ -25,14 +21,28 @@ struct DeveloperSettingsView: View {  //Developer-only settings for debug scheme
                     Text("Cache data")
                 })
                 
-                Toggle(isOn: $userSettings.developerSettings.overrideNetworkStatus) {
-                    Text("Override network status")
+                HStack {
+                    Text("Version")
+                    Spacer()
+                    if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                        Text(text)
+                            .foregroundColor(.secondaryLabel)
+                    }
                 }
                 
-                Picker("Network Status", selection: $userSettings.developerSettings.networkStatus) {
-                    ForEach(DeveloperSettings.networkStatus.allCases, id: \.self) {
-                        Text($0.rawValue)
+                HStack {
+                    Text("Build")
+                    Spacer()
+                    if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                        Text(text)
+                            .foregroundColor(.secondaryLabel)
                     }
+                }
+                
+                HStack {
+                    Text("OS")
+                    Spacer()
+                    Text(UIDevice.current.systemVersion)
                 }
             }
         }

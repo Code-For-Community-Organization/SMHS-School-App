@@ -88,8 +88,8 @@ class MasterCalendarViewModel: ObservableObject {
                 guard let data = data else {
                     #if DEBUG
                     print("\(error!)")
-                    return
                     #endif
+                    return
                 }
                 guard let htmlText = String(data: data, encoding: .ascii) else {
                     #if DEBUG

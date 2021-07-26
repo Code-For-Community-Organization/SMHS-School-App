@@ -12,44 +12,69 @@ extension ScheduleDay {
     //Regular expression patterns for start time, end time, and period number
     static let startTimePattern: Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
     static let endTimePattern: Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
-    static let periodPattern: Regex = #"Period \d"#.r! 
+    static let periodPattern: Regex = #"(per|period) \d+"#.r!
+    static let officeHour = "office hours"
+    static let lunch = "lunch"
+    static let distribution = "distribution"
     
     func parseClassPeriods() -> [ClassPeriod] {
         //Will be returned for value of this variable
         var classPeriods: [ClassPeriod] = [ClassPeriod]()
-        let textLines: [Substring] = scheduleText.lines
         
-        for (line, lineNum) in zip(textLines, 0..<textLines.count) { //Iterate over the line text itself and its index
-            guard !line.contains(String(repeating: "-", count: 20)) else {return classPeriods}   //Stop parsing garbage information (sports, after school.etc)
+        //Lowercase all line characters for ease of parsing
+        let textLines: [Substring] = scheduleText.lines.map{Substring($0.lowercased())}
+        
+        //Iterate over the line text itself and its index
+        for (var line, lineNum) in zip(textLines, 0..<textLines.count) {
+            
+            //Stop parsing garbage information (sports, after school.etc)
+            guard !line.contains(String(repeating: "-", count: 20)) else {return classPeriods}
+            
             //Normal period case
-            if let startTime: Substring = Self.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule i
+            guard let startTime: Substring = Self.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule
                let endTime: Substring = Self.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
-               "[a-zA-Z]".r!.matches(String(line))
+               "[a-zA-Z]".r!.matches(String(line)) else
             {
+                if let nutritionIndex: Substring.Index = line.range(of: "Nutrition")?.lowerBound, //Handle 1st/2nd nutrition schedule case
+                        let period: Match = Self.periodPattern.findFirst(in: String(line)) {
+                    
+                    let block = parseNutritionPeriodLines(textLines,
+                                              lineNum: lineNum,
+                                              nutritionIndex: nutritionIndex,
+                                              period: period)
+                    classPeriods.append(contentsOf: block)
+                }
+                continue
+            }
+            
+            guard let timeIndex = line.index(of: startTime) else {
+                continue
+            }
+            line.removeSubrange(timeIndex..<line.endIndex)
+            //Normal lunch
+            guard line.contains(Self.lunch) else {
+                //Regular period
                 classPeriods.append(parseRegularPeriodLine(line, startTime: startTime, endTime: endTime))
+                continue
             }
-            else if let nutritionIndex: Substring.Index = line.range(of: "Nutrition")?.lowerBound, //Handle 1st/2nd nutrition schedule case
-                    let period: Match = Self.periodPattern.findFirst(in: String(line)) {
-                let block = parseNutritionPeriodLines(textLines,
-                                          lineNum: lineNum,
-                                          nutritionIndex: nutritionIndex,
-                                          period: period)
-                classPeriods.append(contentsOf: block) 
-            }
+            classPeriods.append(parseRegularLunchPeriodLine(line, startTime: startTime, endTime: endTime))
+            
         }
         return classPeriods
     }
     
+    func parseRegularLunchPeriodLine(_ line: Substring, startTime: Substring, endTime:Substring) -> ClassPeriod {
+        return ClassPeriod(nutritionBlock: .singleLunch,
+                                        startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
+                                        endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
+    }
+    
     func parseRegularPeriodLine(_ line: Substring, startTime: Substring, endTime:Substring) -> ClassPeriod {
-        guard !line.contains("Office Hours") else {
-            return ClassPeriod(nutritionBlock: .officeHour,
-                                            startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
-        }
         guard let period: Character = Self.periodPattern.findFirst(in: String(line))?.matched.last else {
-            return ClassPeriod(nutritionBlock: .singleLunch,
-                                            startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
+            let periodTitle = line.trimmingCharacters(in: .whitespaces)
+            return ClassPeriod(periodTitle,
+                               startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
+                               endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
         }
         return ClassPeriod(nutritionBlock: .period,
                                         periodNumber: Int(String(period)),
