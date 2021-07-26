@@ -13,7 +13,8 @@ struct FooterModalView: View {
     let legacyDescriptionText = """
         Toggling on will display schedules in a plain text style
         instead of formated blocks. Legacy schedule style sometimes
-        might be more reliable and detailed (eg. sports)."""
+        might be more reliable and detailed (eg. sports).
+"""
     
     var body: some View {
         NavigationView {

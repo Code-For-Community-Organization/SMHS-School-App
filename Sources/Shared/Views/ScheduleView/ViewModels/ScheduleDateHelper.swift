@@ -66,14 +66,29 @@ struct ScheduleDateHelper {
                 
                 //Parse the line of schedule text, stripping unwanted characters and words
                 guard let scheduleDay = self.scheduleLineParser(line: line,
-                                                             rawText: rawText,
-                                                             stringIndex: stringIndex,
+                                                                rawText: rawText,
+                                                                stringIndex: stringIndex,
                                                                 date: dateChecker.0) else { continue }
-                //If id equals to 1, means Monday, so append a new week
-                if scheduleDay.dayOfTheWeek == 1 || scheduleWeeks.isEmpty {
+                
+                //Get first day of this week, if anything is nil
+                //then it must be first day of a new week, so append
+                guard let firstDate = scheduleWeeks.last?.scheduleDays.first?.date else {
+                    scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
+                    continue
+                }
+                
+                //Use number of days between this day, and 1st day
+                //of week to know if append to existing week, or start new week
+                let calendar = Calendar.current
+                let dayNum = calendar.dateComponents([.day], from: firstDate, to: scheduleDay.date).day
+                guard let dayNum = dayNum else {
+                    continue
+                }
+                
+                //Greater than 5 implies more than 5 days (a week)
+                if dayNum > 5 {
                     scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
                 }
-                //If not Friday, append the `ScheduleDay` to last week in array
                 else {
                     scheduleWeeks.last?.scheduleDays.append(scheduleDay)
                 }
