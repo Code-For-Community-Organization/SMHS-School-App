@@ -9,9 +9,8 @@ import Combine
 import Foundation
 
 struct GradesNetworkModel {
-    func fetch<T: Codable>(with url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
-        print("URL is: \(url)")
-        return URLSession.shared.dataTaskPublisher(for: url)
+    func fetch<T: Codable>(with request: URLRequest, type: T.Type) -> AnyPublisher<T, RequestError> {
+        return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap{data, response in
                 guard let response = response as? HTTPURLResponse else {
                     preconditionFailure("Cannot cast response into HTTPURLResponse")

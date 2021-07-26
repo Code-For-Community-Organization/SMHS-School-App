@@ -35,7 +35,7 @@ final class GradesViewModel: ObservableObject {
         }
         isLoading = true
         let endpoint = Endpoint.studentLogin(email: email, password: password)
-        gradesNetworkModel.fetch(with: endpoint.url, type: [CourseGrade].self)
+        gradesNetworkModel.fetch(with: endpoint.request, type: [CourseGrade].self)
             .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {[weak self] error in
