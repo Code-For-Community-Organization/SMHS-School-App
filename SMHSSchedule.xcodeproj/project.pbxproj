@@ -84,6 +84,7 @@
 		627752FA266603B8000BAD0B /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		627752FC26660433000BAD0B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752FB26660433000BAD0B /* UIDevice.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62863BAB26AF3DFB00084C28 /* LoginButton.swift */; };
 		6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
 		6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */; };
@@ -351,6 +352,7 @@
 		627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOverlayLabel.swift; sourceTree = "<group>"; };
 		627752FB26660433000BAD0B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = "../../../../../../../Desktop/iPhone Commercial/UIDevice.swift"; sourceTree = "<group>"; };
 		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		62863BAB26AF3DFB00084C28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListBanner.swift; sourceTree = "<group>"; };
 		6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderText.swift; sourceTree = "<group>"; };
 		6287EA6926558081007B41CB /* CustomScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScheduleView.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 			children = (
 				625F18A1268A984B000B71B4 /* CourseGradeItem.swift */,
 				625F18A3268A98C5000B71B4 /* GradesLoginView.swift */,
+				62863BAB26AF3DFB00084C28 /* LoginButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1493,6 +1496,7 @@
 				62F43CC8268902380009CD34 /* Endpoint.swift in Sources */,
 				62B227CA265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
 				625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */,
+				62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */,
 				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
 				62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */,
 				62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */,

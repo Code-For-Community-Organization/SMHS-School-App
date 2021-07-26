@@ -14,7 +14,10 @@ struct GradesLoginView: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Aeries Gradebook Login")) {
+                Section(header: Text("Aeries Gradebook Login"),
+                        footer: Text(gradesViewModel.errorMessage)
+                                    .lineLimit(nil)
+                                    .foregroundColor(.red)) {
                     TextField("School email", text: $gradesViewModel.email)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
@@ -31,30 +34,8 @@ struct GradesLoginView: View {
                         }
                 }
             }
-            Button(action: {
-                withAnimation {
-                    gradesViewModel.loginAndFetch()
-                }
-            }){
-                ZStack {
-                    if gradesViewModel.isLoading {
-                        ProgressView().progressViewStyle(CircularProgressViewStyle())
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    else {
-                        Text("Log In")
-                            .fontWeight(.semibold)
-                            .padding()
-                    }
-                }
-                .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
-                .background(.primary)
-                .foregroundColor(.platformBackground)
-                .roundedCorners(cornerRadius: 10)
-         
-            }
-            .disabled(gradesViewModel.isLoading)
+            LoginButton(gradesViewModel: gradesViewModel)
+            
         }
     }
 }

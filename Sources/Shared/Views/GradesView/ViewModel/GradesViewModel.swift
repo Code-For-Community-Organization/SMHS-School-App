@@ -13,8 +13,7 @@ final class GradesViewModel: ObservableObject {
     @Published(keychain: "email") var email: String = "Jingwen.mao@smhsstudents.org"
     @Published(keychain: "password") var password: String = "Mao511969"
     @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
-    @Published var error: RequestError?
-    
+    @Published var errorMessage = ""
     //Whether isLoading to determine showing loading animation
     @Published var isLoading = false
     
@@ -43,7 +42,12 @@ final class GradesViewModel: ObservableObject {
                 self?.isLoading = false
                 switch error {
                 case let .failure(requestError):
-                    self?.error = requestError
+                    switch requestError {
+                    case .validationError(error: let error):
+                        self?.errorMessage = error
+                    default:
+                        self?.errorMessage = "Unknown error occured."
+                    }
                 case .finished:
                     break
                 }

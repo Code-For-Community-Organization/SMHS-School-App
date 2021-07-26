@@ -19,7 +19,7 @@ struct GradesNetworkModel {
                 guard 200..<300 ~= response.statusCode else {
                       switch response.statusCode {
                       case 401:
-                          throw RequestError.validationError(error: "The Username and Password entered are incorrect.")
+                          throw RequestError.validationError(error: "The username and password entered are incorrect.")
                       case 429:
                           throw RequestError.failedAttempts(error: "Too many failed login attempts, try again after 5 minutes.")
                       case 408:
@@ -34,7 +34,12 @@ struct GradesNetworkModel {
             }
             .decode(type: type, decoder: JSONDecoder())
             .mapError {error -> RequestError in
-                RequestError.serverError(error: error)
+                switch error {
+                case RequestError.validationError(let error):
+                    return .validationError(error: error)
+                default:
+                    return .unknownError(error: "")
+                }
             }
             .retry(3)
             .eraseToAnyPublisher()
