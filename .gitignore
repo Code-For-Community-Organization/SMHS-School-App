@@ -1,9 +1,9 @@
 .DS_Store
 /.build
 /build
+xcuserdata/
 *xcuserdata/
 xcschememanagement.plist
-xcuserdata/
 *.xcuserstate
 *.moved-aside
 *.xccheckout

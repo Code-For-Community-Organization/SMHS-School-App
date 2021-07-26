@@ -23,8 +23,9 @@ struct ContentView: View {
                         Text("Today")
                     }
                 }
-            GradesView()
-                .tabItem{Label("Grades", systemSymbol: .graduationcapFill)}
+            //FIXME: Fix grades API, reload always
+//            GradesView()
+//                .tabItem{Label("Grades", systemSymbol: .graduationcapFill)}
             ScheduleView(networkLoadingViewModel: networkLoadViewModel,
                          scheduleViewModel: sharedScheduleInformation)
                 .tabItem{

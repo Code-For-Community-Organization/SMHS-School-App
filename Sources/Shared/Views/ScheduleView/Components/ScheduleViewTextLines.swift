@@ -22,6 +22,7 @@ struct ScheduleViewTextLines: View {
                 }
             }
         }
+        .padding(.horizontal)
     }
 }
 

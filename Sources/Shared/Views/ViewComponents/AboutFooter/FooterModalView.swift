@@ -10,18 +10,23 @@ import SwiftUI
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
     var dateHelper = ScheduleDateHelper()
-    let legacyDescriptionText = "Toggling on will display schedules in a plain text style instead of formated blocks. Legacy schedule style sometimes might be more reliable and detailed (eg. sports)."
+    let legacyDescriptionText = """
+        Toggling on will display schedules in a plain text style
+        instead of formated blocks. Legacy schedule style sometimes
+        might be more reliable and detailed (eg. sports).
+"""
+    
     var body: some View {
         NavigationView {
             SettingsView {
                 Section(header: Text("\(dateHelper.todayDateDescription), Welcome!")
                                 .textCase(nil)
                                 .font(.title2, weight: .black)) {EmptyView()}
-                //FIXME: Should be uncommented once the schedule parsing bug is fixed. Currently droping down to plain text schedule style, aka, legacy schedule.
-//                Section(header: Label("Settings", systemSymbol: .gearshapeFill),
-//                        footer: Text(legacyDescriptionText).padding(.bottom)) {
-//                    Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
-//                }
+
+                Section(header: Label("Settings", systemSymbol: .gearshapeFill),
+                        footer: Text(legacyDescriptionText).padding(.bottom)) {
+                    Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
+                }
                 
                 Section(header: Text("Period settings").textCase(nil),
                         footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
@@ -44,6 +49,41 @@ struct FooterModalView: View {
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
                 .foregroundColor(.secondary)
+                
+                Section(header: Label("Developer", systemSymbol: .hammerFill)){
+                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
+                        Text("Always show onboarding")
+                    })
+                    
+                    Toggle(isOn: $userSettings.developerSettings.shouldCacheData, label: {
+                        Text("Cache data")
+                    })
+                    
+                    HStack {
+                        Text("Version")
+                        Spacer()
+                        if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                            Text(text)
+                                .foregroundColor(.secondaryLabel)
+                        }
+                    }
+                    
+                    HStack {
+                        Text("Build")
+                        Spacer()
+                        if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                            Text(text)
+                                .foregroundColor(.secondaryLabel)
+                        }
+                    }
+                    
+                    HStack {
+                        Text("OS")
+                        Spacer()
+                        Text(UIDevice.current.systemVersion)
+                            .foregroundColor(.secondaryLabel)
+                    }
+                }
             }
             .navigationBarTitle("Settings")
         }

@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import SwiftUIVisualEffects
+import SFSafeSymbols
 
 struct Provider: TimelineProvider {
     let viewModel: SharedScheduleInformation = SharedScheduleInformation()
@@ -22,13 +23,20 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-        guard let week = viewModel.scheduleWeeks.first else {return}
-        for day in week.scheduleDays {
-            entries.append(.init(date: day.date, scheduleDay: day))
+        if viewModel.currentDaySchedule == nil {
+            let timeline = Timeline(entries: [SimpleEntry(date: Date(), scheduleDay: nil)], policy: .atEnd)
+            completion(timeline)
         }
+        else {
+            guard let week = viewModel.scheduleWeeks.first else {return}
+            for day in week.scheduleDays {
+                entries.append(.init(date: day.date, scheduleDay: day))
+            }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
+        }
+ 
     }
 }
 
@@ -42,9 +50,25 @@ struct WidgetsEntryView : View {
 
     var body: some View {
         VStack {
-            Text(entry.scheduleDay?.scheduleText ?? "")
-                .foregroundColor(Color.white)
-                .padding()
+            if let scheduleText = entry.scheduleDay?.scheduleText {
+                Text(scheduleText)
+                    .foregroundColor(Color.white)
+                    .padding()
+            }
+            else {
+                VStack {
+                    Image(systemSymbol: .exclamationmarkTriangleFill)
+                        .foregroundColor(.systemYellow)
+                        .font(.largeTitle)
+                    Text("Schedule Unavailable")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+
+                }
+                
+            }
+         
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
