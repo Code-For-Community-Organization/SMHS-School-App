@@ -18,28 +18,23 @@ struct ContentView: View {
             TodayView(networkLoadViewModel: networkLoadViewModel,
                       scheduleViewViewModel: sharedScheduleInformation)
                 .tabItem{
-                    VStack{
-                        Image(systemSymbol: .squareGrid2x2Fill)
-                        Text("Today")
-                    }
+                    Label("Today", systemSymbol: .squareGrid2x2Fill)
                 }
             //FIXME: Fix grades API, reload always
-//            GradesView()
-//                .tabItem{Label("Grades", systemSymbol: .graduationcapFill)}
+            GradesView()
+                .tabItem{
+                    Label("Grades", systemSymbol: .graduationcapFill)
+                    
+                }
             ScheduleView(networkLoadingViewModel: networkLoadViewModel,
                          scheduleViewModel: sharedScheduleInformation)
                 .tabItem{
-                    VStack{
-                        Image(systemSymbol: .calendar)
-                        Text("Schedule")
-                    }
+                    Label("Schedule", systemSymbol: .calendar)
                 }
+            
             NewsView()
                 .tabItem{
-                    VStack{
-                        Image(systemSymbol: .newspaperFill)
-                        Text("News")
-                    }
+                    Label("News", systemSymbol: .newspaperFill)
                 }
             SearchView()
                 .tabItem {
@@ -48,10 +43,7 @@ struct ContentView: View {
             #if DEBUG
             DeveloperSettingsView()
                 .tabItem {
-                    VStack {
-                        Image(systemSymbol: .gearshapeFill)
-                        Text("Settings")
-                    }
+                    Label("Settings", systemSymbol: .gearshapeFill)
                 }
             #endif
         }

@@ -14,7 +14,6 @@ struct TodayView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-
     
     var body: some View { 
         ZStack(alignment: .top) {
@@ -54,25 +53,30 @@ struct TodayViewHeader: View {
     var body: some View {
         HStack {
             VStack {
-                Text(viewModel.dateHelper.currentWeekday)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .textAlign(.leading)
                 Text(viewModel.dateHelper.todayDateDescription)
                     .fontWeight(.semibold)
-                    .font(.title2)
                     .textAlign(.leading)
+                    .textCase(.uppercase)
                     .vibrancyEffect()
+                
+                Text(viewModel.dateHelper.currentWeekday)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .textAlign(.leading)
                 //.foregroundColor(.platformSecondaryLabel)
                 
             }
-            Spacer()
             Button(action: {todayViewModel.showEditModal = true}, label: {
-                Image(systemSymbol: .ellipsisCircle)
-                    .font(.title3)
-                    .imageScale(.large)
-                    .padding(5)
-                    .foregroundColor(.secondary)
+                HStack {
+                    Image(systemSymbol: .pencil)
+                        .font(Font.subheadline.weight(.semibold))
+                        .imageScale(.large)
+                        .padding(.trailing, -1)
+                    
+                    Text("Edit")
+                        .font(Font.subheadline.weight(.semibold))
+                }
+                .foregroundColor(.secondary)
             })
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
