@@ -16,8 +16,9 @@ struct CourseGradeItem: View {
                 Group {
                     Text("PERIOD \(course.periodNum)")
                         .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundColor(.platformSecondaryLabel)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.secondary)
+                    
                     Text(course.periodName)
                         .font(.title2)
                         .lineLimit(1)
@@ -34,15 +35,13 @@ struct CourseGradeItem: View {
             Text(course.currentMark)
                 .font(.title2)
                 .fontWeight(.bold)
-                .foregroundColor(.primary)
+                .foregroundColor(.platformSecondaryLabel)
             
             Text("\(course.gradePercent)%")
                 .font(.title2)
                 .fontWeight(.bold)
-                .foregroundColor(.primary)
-            
         }
-        .padding()
+        .padding(12)
         .background(.platformSecondaryBackground)
         .roundedCorners(cornerRadius: 10)
     }
