@@ -10,7 +10,6 @@ import Introspect
 
 struct GradesLoginView: View {
     @ObservedObject var gradesViewModel: GradesViewModel
-    var animation: Namespace.ID
     
     var body: some View {
         ZStack {
