@@ -9,11 +9,12 @@ import Foundation
 
 struct Endpoint {
     var path: String
-    var queryItems: [URLQueryItem]
+    var queryItems: [URLQueryItem] = []
+    var requestHeaders: [String: String] = [:]
 }
 
 extension Endpoint {
-    var url: URL {
+    private var url: URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "aeries-student.herokuapp.com"
@@ -25,9 +26,29 @@ extension Endpoint {
         return url
     }
     
-    static func studentLogin(email: String, password: String) -> Endpoint {
-        Endpoint(path: "/grades",
-                 queryItems: [.init(name: "email", value: email),
-                              .init(name: "password", value: password)])
+    var request: URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = requestHeaders
+        request.httpBody = requestHeaders.percentEncoded()
+        return request
     }
+    
+    static func studentLogin(email: String,
+                             password: String,
+                             debugMode: Bool = false) -> Endpoint {
+        let headers = ["email": email, "password": password]
+        if debugMode {
+            return Endpoint(path: "/grades/",
+                     queryItems: [.init(name: "reload", value: "false")],
+                     requestHeaders: headers)
+        }
+        else {
+            return Endpoint(path: "/grades/",
+                     requestHeaders: headers)
+        }
+            
+  
+    }
+    
 }

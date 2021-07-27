@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct TodayHeroView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
@@ -15,14 +16,32 @@ struct TodayHeroView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Picker("", selection: $todayViewViewModel.selectionMode){
-                    Text("1st Lunch")
-                        .tag(PeriodCategory.firstLunch)
-                    Text("2nd Lunch")
-                        .tag(PeriodCategory.secondLunch)
-                    
+//                Picker("", selection: $todayViewViewModel.selectionMode){
+//                    Text("1st Lunch")
+//                        .tag(PeriodCategory.firstLunch)
+//                    Text("2nd Lunch")
+//                        .tag(PeriodCategory.secondLunch)
+//
+//                }
+//                .pickerStyle(SegmentedPickerStyle())
+         
+                Label(title: {
+                    Text("InClass™")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }) {
+                    Image(systemSymbol: .studentdesk)
+                        .foregroundColor(.white)
+                        .padding(3)
+                        .background(.primary)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 }
-                .pickerStyle(SegmentedPickerStyle())
+                .padding(.bottom, 2)
+                
+                Text("Effortlessly see time left in current period.")
+                    .font(.footnote)
+                    .foregroundColor(.platformSecondaryLabel)
+                
                 ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
                     .padding(.vertical, 10)
                 if scheduleViewViewModel.currentDaySchedule != nil {
@@ -34,7 +53,7 @@ struct TodayHeroView: View {
                     ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                 }
             }
-            .padding(EdgeInsets(top: 110, leading: 7, bottom: 0, trailing: 7))
+            .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
             .padding(.horizontal)
         }
         .background(Color.platformBackground)

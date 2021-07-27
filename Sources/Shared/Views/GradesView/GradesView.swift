@@ -14,27 +14,29 @@ struct GradesView: View {
     
     var body: some View {
         NavigationView {
-            if gradesViewModel.isLoggedIn {
+            if !gradesViewModel.gradesResponse.isEmpty {
                 ScrollView {
-                    LazyVStack(spacing: 10) {
+                    LazyVStack(spacing: 20) {
                         ForEach(gradesViewModel.gradesResponse.filter{!$0.isPrior}, id: \.self){
                             CourseGradeItem(course: $0)
                         }
-                        Button(action: {
+                        ActionButton(label: "Log Out") {
                             withAnimation {
-                                gradesViewModel.signoutAndRemove()
+                                gradesViewModel.showLogoutAlert = true
                             }
-                        }) {
-                            Text("Log out")
-                                .fontWeight(.semibold)
                         }
-                        .padding(.top, 20)
-                        
+                        .padding(.vertical, 20)
+                        .alert(isPresented: $gradesViewModel.showLogoutAlert) {
+                            Alert(title: Text("Confirm Log out?"),
+                                  message: Text(GradesViewModel.logoutDescription),
+                                  primaryButton: .destructive(Text("Log Out"),
+                                                              action: {gradesViewModel.signoutAndRemove()}),
+                                  secondaryButton: .cancel())
+                        }
                     }
                     .padding(.horizontal)
                     .padding(.vertical)
                 }
-                .background(.platformSecondaryBackground)
                 .navigationBarTitle("Grades")
 
             }
@@ -53,3 +55,4 @@ struct GradesView_Previews: PreviewProvider {
         GradesView()
     }
 }
+

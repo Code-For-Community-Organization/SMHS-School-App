@@ -24,12 +24,7 @@ struct ProgressCountDown: View {
         }
         else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory,
                 nutritionSchedule.isLunch {
-            if selectionMode ~=~ .firstLunch {
-                return "1st NUTRITION"
-            }
-            else {
-                return "2nd NUTRITION"
-            }
+            return "NUTRITION"
         }
         else if scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory == .officeHour {
             return "Office Hours"
@@ -43,6 +38,7 @@ struct ProgressCountDown: View {
     }
     var body: some View {
         VStack {
+            
             Text(text)
                 .font(.title3)
                 .fontWeight(.semibold)

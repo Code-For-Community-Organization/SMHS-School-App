@@ -9,9 +9,9 @@ import Combine
 import Foundation
 
 struct GradesNetworkModel {
-    func fetch<T: Codable>(with url: URL, type: T.Type) -> AnyPublisher<T, RequestError> {
-        print("URL is: \(url)")
-        return URLSession.shared.dataTaskPublisher(for: url)
+    func fetch<T: Codable>(with request: URLRequest, type: T.Type) -> AnyPublisher<T, RequestError> {
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .retry(3)
             .tryMap{data, response in
                 guard let response = response as? HTTPURLResponse else {
                     preconditionFailure("Cannot cast response into HTTPURLResponse")
@@ -19,7 +19,7 @@ struct GradesNetworkModel {
                 guard 200..<300 ~= response.statusCode else {
                       switch response.statusCode {
                       case 401:
-                          throw RequestError.validationError(error: "The Username and Password entered are incorrect.")
+                          throw RequestError.validationError(error: "The username and password entered are incorrect.")
                       case 429:
                           throw RequestError.failedAttempts(error: "Too many failed login attempts, try again after 5 minutes.")
                       case 408:
@@ -34,9 +34,13 @@ struct GradesNetworkModel {
             }
             .decode(type: type, decoder: JSONDecoder())
             .mapError {error -> RequestError in
-                RequestError.serverError(error: error)
+                switch error {
+                case RequestError.validationError(let error):
+                    return .validationError(error: error)
+                default:
+                    return .unknownError(error: "")
+                }
             }
-            .retry(3)
             .eraseToAnyPublisher()
     }
 }
