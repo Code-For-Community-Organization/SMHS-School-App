@@ -17,7 +17,7 @@ final class GradesViewModel: ObservableObject {
     //Logout
     @Published var showLogoutAlert = false
     static var logoutDescription = """
-        Logging out will clear cache of your email, password, and grades data.
+        Logging out will clear cache of your password and grades data.
         """
     
     //Email, password, gradebook data
@@ -152,7 +152,6 @@ extension GradesViewModel {
     }
     
     func signoutAndRemove() {
-        email = ""
         password = ""
         gradesResponse = []
     }

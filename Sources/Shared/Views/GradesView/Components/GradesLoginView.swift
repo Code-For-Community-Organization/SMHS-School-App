@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct GradesLoginView: View {
     @ObservedObject var gradesViewModel: GradesViewModel
@@ -23,6 +24,9 @@ struct GradesLoginView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
                             .keyboardType(.emailAddress)
+                            .introspectTextField { textfield in
+                                textfield.returnKeyType = .go
+                            }
                         
                     }
                     Section(header: Text("Aeries Gradebook Password"),
@@ -30,10 +34,15 @@ struct GradesLoginView: View {
                                         .lineLimit(nil)
                                         .foregroundColor(.red)) {
                         SecureField("Password", text: $gradesViewModel.password)
+                            .introspectTextField { textfield in
+                                textfield.returnKeyType = .go
+                            }
                     }
                 }
                 LoginButton(gradesViewModel: gradesViewModel)
                     .animation(nil)
+                    .opacity(gradesViewModel.isValid ? 1 : 0.3)
+                    .disabled(gradesViewModel.isValid ? false : true)
                 
             }
             .blur(radius: gradesViewModel.isLoading ? 20 : 0)
@@ -42,10 +51,10 @@ struct GradesLoginView: View {
                 ProgressView().progressViewStyle(CircularProgressViewStyle())
                     .foregroundColor(.white)
                     .padding(50)
-                    .background(.platformBackground)
+                    .background(.platformSecondaryFill)
                     .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
-                    .transition(AnyTransition.opacity.combined(with: .scale))
+                    .transition(AnyTransition.opacity.combined(with: .slide))
             }
          
         }
@@ -55,6 +64,7 @@ struct GradesLoginView: View {
                   message: Text(gradesViewModel.networkErrorMsg),
                   dismissButton: .cancel())
         }
+        .disabled(gradesViewModel.isLoading ? true : false)
     }
 }
 
