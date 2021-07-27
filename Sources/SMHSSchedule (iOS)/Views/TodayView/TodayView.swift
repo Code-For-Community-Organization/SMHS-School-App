@@ -14,7 +14,6 @@ struct TodayView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-
     
     var body: some View { 
         ZStack(alignment: .top) {

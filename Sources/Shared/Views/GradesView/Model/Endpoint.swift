@@ -34,16 +34,21 @@ extension Endpoint {
         return request
     }
     
-    static func studentLogin(email: String, password: String) -> Endpoint {
+    static func studentLogin(email: String,
+                             password: String,
+                             debugMode: Bool = false) -> Endpoint {
         let headers = ["email": email, "password": password]
-        #if DEBUG
+        if debugMode {
             return Endpoint(path: "/grades/",
                      queryItems: [.init(name: "reload", value: "false")],
                      requestHeaders: headers)
-        #else
+        }
+        else {
             return Endpoint(path: "/grades/",
                      requestHeaders: headers)
-        #endif
+        }
+            
+  
     }
     
 }

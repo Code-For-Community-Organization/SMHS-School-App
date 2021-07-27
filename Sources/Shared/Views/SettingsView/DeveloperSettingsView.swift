@@ -21,6 +21,10 @@ struct DeveloperSettingsView: View {  //Developer-only settings for debug scheme
                     Text("Cache data")
                 })
                 
+                Toggle(isOn: $userSettings.developerSettings.debugNetworking, label: {
+                    Text("Debug Networking Mode")
+                })
+                
                 HStack {
                     Text("Version")
                     Spacer()
