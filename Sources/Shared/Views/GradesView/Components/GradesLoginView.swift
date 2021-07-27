@@ -12,30 +12,48 @@ struct GradesLoginView: View {
     var animation: Namespace.ID
     
     var body: some View {
-        VStack {
-            Form {
-                Section(header: Text("Aeries Gradebook Login"),
-                        footer: Text(gradesViewModel.errorMessage)
-                                    .lineLimit(nil)
-                                    .foregroundColor(.red)) {
-                    TextField("School email", text: $gradesViewModel.email)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .keyboardType(.emailAddress)
-                        .onTapGesture {
-                            gradesViewModel.passwordFieldFocused = false
-                            gradesViewModel.emailFieldFocused = true
-                        }
-                    
-                    SecureField("Password", text: $gradesViewModel.password)
-                        .onTapGesture {
-                            gradesViewModel.passwordFieldFocused = true
-                            gradesViewModel.emailFieldFocused = false
-                        }
+        ZStack {
+            VStack {
+                Form {
+                    Section(header: Text("Aeries Gradebook Email"),
+                            footer: Text(gradesViewModel.emailErrorMsg)
+                                        .lineLimit(nil)
+                                        .foregroundColor(.red)) {
+                        TextField("School email", text: $gradesViewModel.email)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .keyboardType(.emailAddress)
+                        
+                    }
+                    Section(header: Text("Aeries Gradebook Password"),
+                            footer: Text(gradesViewModel.passwordErrorMsg)
+                                        .lineLimit(nil)
+                                        .foregroundColor(.red)) {
+                        SecureField("Password", text: $gradesViewModel.password)
+                    }
                 }
+                LoginButton(gradesViewModel: gradesViewModel)
+                    .animation(nil)
+                
             }
-            LoginButton(gradesViewModel: gradesViewModel)
+            .blur(radius: gradesViewModel.isLoading ? 20 : 0)
             
+            if gradesViewModel.isLoading {
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+                    .foregroundColor(.white)
+                    .padding(50)
+                    .background(.platformBackground)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                    .transition(AnyTransition.opacity.combined(with: .scale))
+            }
+         
+        }
+        .animation(.easeInOut)
+        .alert(isPresented: $gradesViewModel.showNetworkError) {
+            Alert(title: Text(gradesViewModel.networkErrorTitle),
+                  message: Text(gradesViewModel.networkErrorMsg),
+                  dismissButton: .cancel())
         }
     }
 }

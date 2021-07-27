@@ -66,6 +66,7 @@ struct DeveloperSettings: Codable {
     }
     var alwaysLoadingState: Bool = false
     var alwaysShowOnboarding: Bool = false
+    var debugNetworking: Bool = false
     var shouldCacheData: Bool = true
     var overrideNetworkStatus: Bool = false
     var networkStatus: networkStatus = .unsatisfied

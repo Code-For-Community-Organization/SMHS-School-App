@@ -17,16 +17,9 @@ struct LoginButton: View {
             }
         }){
             ZStack {
-                if gradesViewModel.isLoading {
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                else {
-                    Text("Log In")
-                        .fontWeight(.semibold)
-                        .padding(10)
-                }
+                Text("Log In")
+                    .fontWeight(.semibold)
+                    .padding(10)
             }
             .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
             .background(.primary)
