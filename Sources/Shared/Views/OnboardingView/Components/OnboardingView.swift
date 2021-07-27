@@ -29,29 +29,15 @@ struct OnboardingView: View {
             .padding(.top, 50)
             .padding(.bottom, 50)
             VStack(spacing: 35) {
-                if versionStatus == .new {
-                    OnboardingRowItem(title: "Info Cards",
-                                      description: "Tap on the vibrantly colored information cards to quickly link to a SMCHS web page, in app.",
-                                      symbolImage: Image(systemSymbol: .squareGrid3x1FillBelowLineGrid1x2).foregroundColor(.secondary).font(.system(size: 50)))
-                    OnboardingRowItem(title: "Redesigned Schedule",
-                                      description: "Vibrantly colored, redesigned schedule blocks that makes SMHS app even better.",
-                                      symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.primary).font(.system(size: 50)))
-                    OnboardingRowItem(title: "School Information",
-                                      description: "Follow SMCHS on social medias! Find basic school directions and contacts in the bottom of search tab.",
-                                      symbolImage: Image(systemSymbol: .infoCircleFill).foregroundColor(.secondary).font(.system(size: 50)))
-                }
-                else {
-                    OnboardingRowItem(title: "Widgets",
-                                      description: "Your daily schedule at a glance with iOS 14 Widgets.",
-                                      symbolImage: Image(systemSymbol: .squareDashedInsetFill).foregroundColor(.primary).font(.system(size: 50)))
-                    OnboardingRowItem(title: "Nutrition Schedule",
-                                      description: "Use a segmented toggle to easily switch between 1st or 2nd lunch.",
-                                      symbolImage: Image(systemSymbol: .calendarCircleFill).foregroundColor(.secondary).font(.system(size: 50)))
-                    OnboardingRowItem(title: "Campus News",
-                                      description: "Get updated on the newest campus news stories, in a supercharged experience.",
-                                      symbolImage: Image(systemSymbol: .newspaperFill).foregroundColor(.primary).font(.system(size: 40)))
-                }
-
+                OnboardingRowItem(title: "Grades",
+                                  description: "View student grades from Aeries Gradebook.",
+                                  symbolImage: Image(systemSymbol: .graduationcapFill).foregroundColor(.primary).font(.system(size: 50)))
+                OnboardingRowItem(title: "Calendar",
+                                  description: "Glance at school events in the new calendar.",
+                                  symbolImage: Image(systemSymbol: .calendar).foregroundColor(.secondary).font(.system(size: 50)))
+                OnboardingRowItem(title: "Redesigned Schedule",
+                                  description: "Vibrantly colored, redesigned schedule blocks that makes SMHS app even better.",
+                                  symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.primary).font(.system(size: 50)))
             }
 
             Spacer()
