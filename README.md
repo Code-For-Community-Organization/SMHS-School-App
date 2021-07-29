@@ -12,6 +12,9 @@ DOWNLOAD NOW on the App Store 👇
 <img src="./Assets/Icons/AppStore-badge-cn.svg" height="60x">
     </a>
 </p>
+
+The backend serverside code for this app -> https://github.com/jevonmao/SMHS-Schedule-Backend
+
 <p align="center">
     <img src="./Assets/Screenshots/Combined-screenshot.png" style="display: block; margin: auto;"/ width="85%">
 </p>
