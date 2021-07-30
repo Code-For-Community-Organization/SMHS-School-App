@@ -45,7 +45,7 @@ struct NewsView: View {
             newsViewViewModel.fetchXML()
         }
         .navigationBarTitleDisplayMode(.automatic)
-        .navigationViewStyle() 
+        .navigationViewStyle()
     }
     
     var subHeader: some View {
@@ -63,7 +63,7 @@ struct NewsView: View {
                 .foregroundColor(.primary)
                 .textAlign(.leading)
         }
-        .padding(EdgeInsets(top: 35, leading: 3, bottom: 10, trailing: 3))
+        .padding(EdgeInsets(top: 20, leading: 3, bottom: 10, trailing: 3))
 
     }
 }
