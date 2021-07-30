@@ -9,11 +9,17 @@ import SwiftUI
 import SwiftUIVisualEffects
 
 extension View {
-    func loadingAnimatable(reload: @escaping () -> Void, isLoading: Binding<Bool>) -> some View {
+    func loadingAnimatable(reload: @escaping () -> Void,
+                           isLoading: Binding<Bool>,
+                           shouldReload: Binding<Bool> = .constant(true)) -> some View {
         ZStack {
             self
                 .animation(nil)
-                .onAppear(perform: reload)
+                .onAppear {
+                    if shouldReload.wrappedValue {
+                        reload()
+                    }
+                }
                 .blur(radius: isLoading.wrappedValue ? 20 : 0)
                 .disabled(isLoading.wrappedValue ? true : false)
                 .animation(.easeInOut)

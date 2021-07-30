@@ -38,14 +38,17 @@ struct GradesView: View {
                 }
                 .navigationBarTitle("Grades")
                 .loadingAnimatable(reload: gradesViewModel.reloadData,
-                                   isLoading: $gradesViewModel.isLoading)
+                                   isLoading: $gradesViewModel.isLoading,
+                                   shouldReload: !$gradesViewModel.userInitiatedLogin)
+                .onDisappear {gradesViewModel.userInitiatedLogin = false}
                 
             }
             else {
                 GradesLoginView(gradesViewModel: gradesViewModel)
                     .navigationBarTitle("Grades")
                     .loadingAnimatable(reload: gradesViewModel.reloadData,
-                                       isLoading: $gradesViewModel.isLoading)
+                                       isLoading: $gradesViewModel.isLoading,
+                                       shouldReload: .constant(false))
             }
             
             

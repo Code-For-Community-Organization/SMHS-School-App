@@ -13,3 +13,10 @@ extension Binding where Value == Bool{
         return self.wrappedValue && value2.wrappedValue ? .constant(true) : .constant(false)
     }
 }
+
+prefix func ! (value: Binding<Bool>) -> Binding<Bool> {
+    Binding<Bool>(
+        get: { !value.wrappedValue },
+        set: { value.wrappedValue = !$0 }
+    )
+}

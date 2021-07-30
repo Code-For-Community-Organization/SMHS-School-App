@@ -14,8 +14,10 @@ final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
     var gradesNetworkModel = GradesNetworkModel()
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
+    
     //Logout
     @Published var showLogoutAlert = false
+    
     static var logoutDescription = """
         Logging out will clear cache of your password and grades data.
         """
@@ -37,7 +39,8 @@ final class GradesViewModel: ObservableObject {
     
     //Whether isLoading to determine showing loading animation
     @Published var isLoading = false
-
+    @Published var userInitiatedLogin = false
+    
     @Published var userSettings: UserSettings?
     private var anyCancellables: Set<AnyCancellable> = []
     
@@ -137,7 +140,6 @@ extension GradesViewModel {
     }
     
     func loginAndFetch() {
-        print("Login and fetch called")
         guard !email.isEmpty && !password.isEmpty else {
             return
         }
