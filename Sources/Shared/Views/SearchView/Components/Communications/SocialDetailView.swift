@@ -53,8 +53,6 @@ struct SocialDetailView: View {
                 .frame(maxWidth: .infinity)
                 .blurEffectStyle(.systemUltraThinMaterial),
             alignment: .top)
-        .navigationSearchBarHiddenWhenScrolling(true)
-        //.navigationBarTransparent(true)
         .edgesIgnoringSafeArea(.top)
     }
     

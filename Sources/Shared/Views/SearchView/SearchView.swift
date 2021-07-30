@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUIX
-import SwiftUIVisualEffects
 import SwiftlySearch
 
 struct SearchView: View {

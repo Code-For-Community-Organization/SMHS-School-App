@@ -79,7 +79,7 @@ struct TodayViewHeader: View {
                 .foregroundColor(.secondary)
             })
         }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 7, trailing: 20))
         .vibrancyEffectStyle(.secondaryLabel)
         .background(BlurEffect().edgesIgnoringSafeArea(.all))
         .blurEffectStyle(.systemThinMaterial)

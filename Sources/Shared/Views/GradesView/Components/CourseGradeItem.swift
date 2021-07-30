@@ -42,7 +42,7 @@ struct CourseGradeItem: View {
                 .fontWeight(.bold)
         }
         .padding(12)
-        .background(.platformSecondaryBackground)
+        .background(Color.platformSecondaryBackground)
         .roundedCorners(cornerRadius: 10)
     }
 }
