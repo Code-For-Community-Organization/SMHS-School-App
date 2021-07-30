@@ -20,7 +20,7 @@ struct AboutFooterView: View {
             }
             Button(action: {showModal = true}) {
                 HStack {
-                    Text("About SMHS Schedule")
+                    Text("Settings & About")
                         .font(.footnote, weight: .semibold)
                     Image(systemSymbol: .chevronRight)
                         .font(.caption, weight: .medium)
