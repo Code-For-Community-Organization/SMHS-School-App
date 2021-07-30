@@ -606,7 +606,6 @@
 		624ABFFC260079D4000FE7BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				62F30D002649A64C008EDD31 /* PeriodCategory.swift */,
 				626183DE263718CA001C4AD4 /* ScheduleDay.swift */,
 				629BE8BC2636444400BC49AD /* ScheduleWeek.swift */,
 				62D32120264A4C6700C99C42 /* ClassPeriod.swift */,
@@ -704,6 +703,7 @@
 				621F5C882669F374006EBE8F /* Connection */,
 				62C48DA9265C6C8B0032301E /* AboutFooter */,
 				62E05F6C2639C4AC00B609E3 /* SettingsView.swift */,
+				62F30D002649A64C008EDD31 /* PeriodCategory.swift */,
 				62B0D96A2692776200AA6CF4 /* ActionButton.swift */,
 			);
 			path = ViewComponents;
