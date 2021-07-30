@@ -39,18 +39,22 @@ struct NewsEntryListItem: View {
             }
 
         }
-        .contextMenu {
+        .contextMenu(menuItems: {
             if newsViewViewModel.bookMarkedEntries.contains(where: {$0.id == newsEntry.id}) {
-                Button("Unbookmark", systemImage: .bookmarkFill) {
+                Button(action: {
                     newsViewViewModel.toggleEntryBookmarked(newsEntry)
+                }) {
+                    Label("Unbookmark", systemSymbol: .bookmarkSlash)
                 }
             }
             else {
-                Button("Bookmark", systemImage: .bookmark) {
+                Button(action: {
                     newsViewViewModel.toggleEntryBookmarked(newsEntry)
+                }) {
+                    Label("Bookmark", systemSymbol: .bookmark)
                 }
             }
-        }
+        })
         .padding(.vertical, 6)
     }
         var authorAndTitle: some View {

@@ -22,7 +22,7 @@ struct LoginButton: View {
                     .padding(10)
             }
             .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
-            .background(.primary)
+            .background(Color.primary)
             .foregroundColor(.platformBackground)
             .roundedCorners(cornerRadius: 10)
      

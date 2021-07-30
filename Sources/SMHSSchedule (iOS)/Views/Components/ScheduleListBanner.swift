@@ -36,7 +36,7 @@ struct ScheduleListBanner: View {
             }
             .frame(width: geometryProxy.size.width)
             .fixedSize(horizontal: true, vertical: true)
-            .background(.primary)
+            .background(Color.primary)
             .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
             .animation(Animation.easeInOut)
             .onAppear {animate = true}

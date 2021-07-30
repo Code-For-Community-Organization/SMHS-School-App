@@ -33,7 +33,7 @@ struct TodayHeroView: View {
                     Image(systemSymbol: .studentdesk)
                         .foregroundColor(.white)
                         .padding(3)
-                        .background(.primary)
+                        .background(Color.primary)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 }
                 .padding(.bottom, 2)

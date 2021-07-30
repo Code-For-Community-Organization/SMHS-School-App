@@ -30,7 +30,10 @@ struct InternetErrorView: View {
                         .foregroundColor(.primary)
                         .padding(.horizontal)
                         .padding(.vertical, 3)
-                        .border(Color.primary, width: 1, cornerRadius: 2, style: .continuous)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                                .stroke(Color.primary, lineWidth: 1)
+                        )
                 }
                 Button(action: {
                     show = false
