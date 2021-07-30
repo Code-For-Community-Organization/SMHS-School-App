@@ -13,7 +13,7 @@ import SwiftUI
 final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
     var gradesNetworkModel = GradesNetworkModel()
-    
+    @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     //Logout
     @Published var showLogoutAlert = false
     static var logoutDescription = """
@@ -118,7 +118,26 @@ extension GradesViewModel {
 }
 //MARK: - Login & Logout methods
 extension GradesViewModel {
+    
+    func reloadData() {
+        #if DEBUG
+        loginAndFetch()
+        #else
+        if let time = lastReloadTime {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
+                loginAndFetch()
+                lastReloadTime = Date()
+            }
+        }
+        else {
+            lastReloadTime = Date()
+            loginAndFetch()
+        }
+        #endif
+    }
+    
     func loginAndFetch() {
+        print("Login and fetch called")
         guard !email.isEmpty && !password.isEmpty else {
             return
         }
