@@ -13,13 +13,14 @@ struct LoginButton: View {
     var body: some View {
         Button(action: {
             withAnimation {
+                gradesViewModel.userInitiatedLogin = true
                 gradesViewModel.loginAndFetch()
             }
         }){
             ZStack {
                 Text("Log In")
                     .fontWeight(.semibold)
-                    .padding(10)
+                    .padding()
             }
             .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
             .background(Color.primary)
