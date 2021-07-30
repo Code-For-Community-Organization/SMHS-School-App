@@ -50,7 +50,7 @@ struct NewsDetailedView: View {
                         
                         if let text = newsEntry.bodyText {
                             Text(text)
-                                .font(.system(.body, design: .serif))
+                                .font(.system(.subheadline, design: .serif))
                                 .fontWeight(.light)
                                 .lineLimit(nil)
 
