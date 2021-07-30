@@ -248,6 +248,7 @@
 		62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */; };
 		62F43CC8268902380009CD34 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC7268902380009CD34 /* Endpoint.swift */; };
 		62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesResponse.swift */; };
+		62F5FCFF26B4876600E821D5 /* LoadingAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */; };
 		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 		62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
@@ -428,6 +429,7 @@
 		62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesNetworkModel.swift; sourceTree = "<group>"; };
 		62F43CC7268902380009CD34 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		62F43CCB2689028A0009CD34 /* GradesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesResponse.swift; sourceTree = "<group>"; };
+		62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimatable.swift; sourceTree = "<group>"; };
 		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -643,6 +645,7 @@
 				625F18A1268A984B000B71B4 /* CourseGradeItem.swift */,
 				625F18A3268A98C5000B71B4 /* GradesLoginView.swift */,
 				62863BAB26AF3DFB00084C28 /* LoginButton.swift */,
+				62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1416,6 +1419,7 @@
 				62E05F6E2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				62626396264DD21D004146CE /* PeriodEditItem.swift in Sources */,
 				62F30D022649A64C008EDD31 /* PeriodCategory.swift in Sources */,
+				62F5FCFF26B4876600E821D5 /* LoadingAnimatable.swift in Sources */,
 				621F5C9E266AA85F006EBE8F /* MasterCalendarViewModel.swift in Sources */,
 				62E3BF012642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				626A226B260035F100903C39 /* ContentView.swift in Sources */,
