@@ -21,6 +21,7 @@ struct CourseGradeItem: View {
                     
                     Text(course.periodName)
                         .font(.title2)
+                        .fontWeight(.medium)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                         .padding(.bottom, 1)

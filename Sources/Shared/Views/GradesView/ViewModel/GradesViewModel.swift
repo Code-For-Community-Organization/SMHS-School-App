@@ -177,3 +177,7 @@ extension GradesViewModel {
         gradesResponse = []
     }
 }
+
+extension GradesViewModel {
+    
+}

@@ -70,4 +70,5 @@ struct DeveloperSettings: Codable {
     var shouldCacheData: Bool = true
     var overrideNetworkStatus: Bool = false
     var networkStatus: networkStatus = .unsatisfied
+    var dummyGrades: Bool = false
 }
