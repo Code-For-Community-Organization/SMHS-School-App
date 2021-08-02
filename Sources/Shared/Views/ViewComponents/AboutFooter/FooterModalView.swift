@@ -59,6 +59,10 @@ struct FooterModalView: View {
                         Text("Cache data")
                     })
                     
+                    Toggle(isOn: $userSettings.developerSettings.dummyGrades, label: {
+                        Text("Dummy grades")
+                    })
+                    
                     HStack {
                         Text("Version")
                         Spacer()

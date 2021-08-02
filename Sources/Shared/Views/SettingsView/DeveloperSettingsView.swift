@@ -25,6 +25,10 @@ struct DeveloperSettingsView: View {  //Developer-only settings for debug scheme
                     Text("Debug Networking Mode")
                 })
                 
+                Toggle(isOn: $userSettings.developerSettings.dummyGrades, label: {
+                    Text("Dummy grades")
+                })
+                
                 HStack {
                     Text("Version")
                     Spacer()

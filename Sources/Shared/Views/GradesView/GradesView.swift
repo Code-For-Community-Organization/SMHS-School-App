@@ -10,13 +10,14 @@ import SwiftUIVisualEffects
 
 struct GradesView: View {
     @StateObject var gradesViewModel = GradesViewModel()
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         NavigationView {
             if !gradesViewModel.gradesResponse.isEmpty {
                 ScrollView {
                     LazyVStack(spacing: 20) {
-                        ForEach(gradesViewModel.gradesResponse.filter{!$0.isPrior}, id: \.self){
+                        ForEach(getCoursesList(), id: \.self){
                             CourseGradeItem(course: $0)
                         }
                         ActionButton(label: "Log Out") {
@@ -50,12 +51,17 @@ struct GradesView: View {
                                        isLoading: $gradesViewModel.isLoading,
                                        shouldReload: .constant(false))
             }
-            
-            
         }
     }
     
-    
+    func getCoursesList() -> [CourseGrade] {
+        if userSettings.developerSettings.dummyGrades {
+            return CourseGrade.dummyGrades
+        }
+        else {
+            return gradesViewModel.gradesResponse.filter{!$0.isPrior}
+        }
+    }
 }
 
 struct GradesView_Previews: PreviewProvider {
