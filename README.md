@@ -37,9 +37,7 @@ The backend serverside code for this app -> https://github.com/jevonmao/SMHS-Sch
 - [x] [Beautiful in-app reader for school news browsing](https://github.com/jevonmao/SMHS-Schedule/issues/6)
 - [x] Streaming Eagle TV 2.0 in app
 - [x] [School master calendar](https://github.com/jevonmao/SMHS-Schedule/issues/29)
-- [ ] [Custom before/after school schedule](https://github.com/jevonmao/SMHS-Schedule/issues/28)
-- [ ] [Quickly access tomorrow's schedule on today screen](https://github.com/jevonmao/SMHS-Schedule/issues/30)
-- [ ] Before class start notification reminder
+- [x] [Check Aeries grade book grades](https://github.com/jevonmao/SMHS-Schedule/issues/47)
 - [ ] Customizable app icon
 - [ ] School announcements in app & announcement notifications
 
@@ -58,6 +56,7 @@ https://github.com/jevonmao/SMHS-Schedule.git
 2. Open the `SMHSSchedule.xcodeproj` file to load project
 3. On the upper left corner, select approriate scheme for iOS or macOS
 4. Swift Package Manager should automatically install all dependencies, and you can now build or run the app!
+5. Note: Select SMHSSchedule(iOS) Release for release build, or SMHSSchedule(iOS) Debug for debug build. Ignore other schemes.
 To learn more about SPM, click [here](https://swift.org/package-manager/)
 
 ## ✨ Features
