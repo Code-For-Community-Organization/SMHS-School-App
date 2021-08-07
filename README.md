@@ -91,9 +91,15 @@ This is a project of Jevon Mao, a class of 2024 student at SMHS. SMHS Schedule i
 
 ## ❓ Why
 
-The reasons for building this project, SMHS Schedule, are private and public. On a private level, the creator is a SMHS student and need to see the class schedule several times a day. The official SMHS app is poorly built and while acheiving the function of class schedules, left plenty of room for improvements. And since Jevon had some knowledge of Swift and iOS development, he decided to make a better app for himself. 
+### Mission Statement
+The SMHS app project's mission is to inspire the next generation of student coders and dreamers. SMHS app leads the way as a student created app by providing an enhanced experience to thousands of Santa Margarita Catholic High School students, teachers, and parents.
 
-But at the same time, SMHS Schedule has a purpose on the public level. For the 1600 students attending SMHS, this app will greatly enhance students' school experience by providing a one-stop app that offers a variety of features. When compared to the official SMHS app, SMHS Schedule is designed and built better to specifically solve the issues that the official app failed on. The creator wanted to use his software skills to produce something meaningful for his school and his fellow students.
+### About the app
+My original motivation was that me as a SMCHS student needed to see the class schedule several times a day. With the official SMHS app as my only option, I quickly noticed issues and nuances where the app left plenty of room for improvements. With my skills of Swift and iOS development, I decided to make a better app from scratch.
+
+For the 1600 students attending SMHS, this app will greatly enhance students' school experience by providing a one-stop app that offers a variety of features. 
+
+When compared to the official SMHS app, SMHS Schedule is designed and built to specifically tackle areas that the official app lacked. For example, the official app had the problem of slow loading. Viewing the schedule would required multiple taps to reveal deeply nested navigation menu, and each menu took several seconds of loading. This resulted in a problematic user experience. In my SMHS app, all the schedule information is cached locally to device. Users can easily view schedule that instantly load and is easily accessible on the home screen. 
 
 ## 💪 Contribute
 
