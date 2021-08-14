@@ -210,10 +210,10 @@ extension Color {
     }
     
     static var primary: Color {
-        Color(hexadecimal: "#3498db")
+        SMBlue
     }
     static var secondary: Color {
-        Color(hexadecimal: "12C4A1")
+        Color(hexadecimal: "B3A369")
     }
     static var SMBlue: Color {
         Color(hexadecimal: "0736A4")
