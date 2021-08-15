@@ -50,8 +50,8 @@ struct NewsEntryListItem: View {
             }
         }
         .background(colorScheme == .dark ?
-                        Color.platformSecondaryBackground :
-                        Color.platformBackground)
+            Color.platformSecondaryBackground :
+            Color.platformBackground)
         .contextMenu(menuItems: {
             if newsViewViewModel.bookMarkedEntries.contains(where: { $0.id == newsEntry.id }) {
                 Button(action: {

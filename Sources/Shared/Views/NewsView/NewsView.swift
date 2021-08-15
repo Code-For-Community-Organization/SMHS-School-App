@@ -14,7 +14,7 @@ struct NewsView: View {
     @EnvironmentObject var userSettings: UserSettings
     @Environment(\.colorScheme) var colorScheme
     @State var selection = 1
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
