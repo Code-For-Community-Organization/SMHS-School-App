@@ -5,6 +5,7 @@
 //  Created by Jevon Mao on 3/15/21.
 //
 
+import PermissionsSwiftUINotification
 import SFSafeSymbols
 import SwiftUI
 import SwiftUIVisualEffects
@@ -17,7 +18,8 @@ struct TodayView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
+            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel,
+                          todayViewViewModel: todayViewViewModel)
                 .overlay(
                     Group {
                         if !networkLoadViewModel.isNetworkAvailable &&
@@ -30,11 +32,16 @@ struct TodayView: View {
                         }
                     }
                 )
-            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
+            TodayViewHeader(viewModel: scheduleViewViewModel,
+                            todayViewModel: todayViewViewModel)
         }
-        .sheet(isPresented: $todayViewViewModel.showEditModal) { PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings) }
+        .sheet(isPresented: $todayViewViewModel.showEditModal) {
+            PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal)
+                .environmentObject(userSettings)
+        }
 
         .onAppear {
+            todayViewViewModel.showPermission = true
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
@@ -42,6 +49,8 @@ struct TodayView: View {
         .onDisappear {
             todayViewViewModel.showNetworkError = true
         }
+        .JMAlert(showModal: $todayViewViewModel.showPermission,
+                 for: [.notification])
     }
 }
 

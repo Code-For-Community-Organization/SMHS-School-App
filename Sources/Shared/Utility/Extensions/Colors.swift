@@ -228,6 +228,10 @@ public extension Color {
     internal static var SMBlue: Color {
         Color(hexadecimal: "0736A4")
     }
+
+    internal static var complement: Color {
+        Color("Complement")
+    }
 }
 
 /// Foreground colors for static text and related elements.

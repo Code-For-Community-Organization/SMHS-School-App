@@ -8,16 +8,17 @@
 import Combine
 import Foundation
 import SwiftUI
+import UserNotifications
 
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
-
+    @Published var showNotificationError = false
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     // @Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
 
     private var currentWeekday: Int?
-
+    private var anyCancellables: Set<AnyCancellable> = []
     private var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper = ScheduleDateHelper()
     private var downloader: (String, @escaping (Data?, Error?) -> Void) -> Void = Downloader.load
@@ -42,27 +43,29 @@ final class SharedScheduleInformation: ObservableObject {
         dateHelper = scheduleDateHelper
         self.urlString = urlString
         self.downloader = downloader
-        print("Called fetch data from initializer...")
+        $scheduleWeeks
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.scheduleNotifications()
+            }
+            .store(in: &anyCancellables)
+
         fetchData()
     }
 
     func reloadData() {
         if let time = lastReloadTime {
             if abs(Date().timeIntervalSince(time)) > TimeInterval(120) {
-                print("Reload valid, fetching data")
                 fetchData()
                 lastReloadTime = Date()
             }
-            print("Reload invalid")
         } else {
-            print("Reload 1st time, fetching data")
             lastReloadTime = Date()
             fetchData()
         }
     }
 
     func fetchData(completion: ((Bool) -> Void)? = nil) {
-        print("Fetching schedule data....")
         // Load ICS calendar data from network
         downloader(urlString) { data, _ in
             guard let data = data else {
@@ -102,6 +105,46 @@ final class SharedScheduleInformation: ObservableObject {
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         ICSText = nil; scheduleWeeks = []
+    }
+
+    func scheduleNotifications() {
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "en_US_POSIX")
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+
+        // CPU performance intensive operation,
+        // use background thread to avoid blocking UI
+        DispatchQueue.global(qos: .utility).async {
+            for week in self.scheduleWeeks {
+                for day in week.scheduleDays {
+                    for period in day.periods {
+                        let content = UNMutableNotificationContent()
+                        content.title = "Class Starts in 5 Minutes"
+                        content.body = "\(period.title?.capitalized ?? "Next period") will start soon in 5 minutes."
+                        content.sound = .defaultCritical
+                        guard let remindTime = calendar.date(byAdding: .minute,
+                                                             value: -5,
+                                                             to: period.startDate)
+                        else {
+                            preconditionFailure("Cannot compute remind time before period starts.")
+                        }
+                        let date = calendar.dateComponents([.year, .month, .day, .hour, .minute],
+                                                           from: remindTime)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: date,
+                                                                    repeats: false)
+                        // Create the request
+                        let uuidString = UUID().uuidString
+                        let request = UNNotificationRequest(identifier: uuidString,
+                                                            content: content,
+                                                            trigger: trigger)
+
+                        // Schedule the request with the system.
+                        let notificationCenter = UNUserNotificationCenter.current()
+                        notificationCenter.add(request)
+                    }
+                }
+            }
+        }
     }
 }
 

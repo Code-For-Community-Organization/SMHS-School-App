@@ -8,16 +8,43 @@
 import StoreKit
 import SwiftUI
 
-final class AppDelegate: NSObject, UIApplicationDelegate {
+// Require AppDelegate for some additional configurations
+final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     static var orientationLock = UIInterfaceOrientationMask.portrait
 
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        return true
+    }
+
+    // Lock application to portrait mode only
+    // TODO: Some UI views not optimized for landscape yet
     func application(_: UIApplication, supportedInterfaceOrientationsFor _: UIWindow?) -> UIInterfaceOrientationMask {
         AppDelegate.orientationLock
+    }
+
+    // Handle notification when the app is in background
+    func userNotificationCenter(_: UNUserNotificationCenter, didReceive response:
+        UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+    {
+        print("Notification tapped: \(response.notification.request.identifier)")
+        completionHandler()
+    }
+
+    // Handle notification when the app is in foreground
+    func userNotificationCenter(_: UNUserNotificationCenter,
+                                willPresent _: UNNotification,
+                                withCompletionHandler completionHandler:
+                                @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        print("Notification send in foreground")
+        completionHandler([.banner, .list])
     }
 }
 
 @main
 struct SMHS_ScheduleApp: App {
+    // AppDelegate running side by side in SwiftUI App Cycle
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
         // get current number of times app has been launched (https://stackoverflow.com/questions/31966810/count-number-of-times-app-has-been-launched-using-swift)

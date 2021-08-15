@@ -12,4 +12,5 @@ class TodayViewViewModel: ObservableObject {
     @Published var showEditModal = false
     @Published var showNetworkError = true
     @Published var selectionMode: PeriodCategory = .firstLunch
+    @Published var showPermission = false
 }
