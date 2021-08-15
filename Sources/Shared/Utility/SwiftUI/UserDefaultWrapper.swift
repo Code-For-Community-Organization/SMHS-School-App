@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 4/25/21.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 private var cancellableSet: Set<AnyCancellable> = []
 
@@ -18,7 +18,7 @@ extension Published where Value: Codable {
                 self.init(initialValue: value)
             } catch {
                 #if DEBUG
-                print("Error while decoding data")
+                    print("Error while decoding data")
                 #endif
                 self.init(initialValue: defaultValue)
             }
@@ -33,7 +33,7 @@ extension Published where Value: Codable {
                     UserDefaults.standard.set(data, forKey: key)
                 } catch {
                     #if DEBUG
-                    print("Error while decoding data")
+                        print("Error while decoding data")
                     #endif
                 }
             }
@@ -66,7 +66,7 @@ struct Storage<T: Codable> {
         set {
             // Convert newValue to data
             let data = try? JSONEncoder().encode(newValue)
-            
+
             // Set value to UserDefaults
             UserDefaults.standard.set(data, forKey: key)
         }

@@ -11,7 +11,8 @@ import SwiftUIVisualEffects
 extension View {
     func loadingAnimatable(reload: @escaping () -> Void,
                            isLoading: Binding<Bool>,
-                           shouldReload: Binding<Bool> = .constant(true)) -> some View {
+                           shouldReload: Binding<Bool> = .constant(true)) -> some View
+    {
         ZStack {
             self
                 .animation(nil)
@@ -24,7 +25,6 @@ extension View {
                 .disabled(isLoading.wrappedValue ? true : false)
                 .animation(.easeInOut)
 
-            
             if isLoading.wrappedValue {
                 ProgressView().progressViewStyle(CircularProgressViewStyle())
                     .foregroundColor(.white)

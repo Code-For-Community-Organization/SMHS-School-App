@@ -14,7 +14,7 @@ struct CourseGrade: Codable, Hashable {
     var gradePercent: String
     var currentMark: String
     var isPrior: Bool = false
-    
+
     static let dummyGrades: [CourseGrade] = [.init(periodNum: 1,
                                                    periodName: "Precalculus H AI IB",
                                                    teacherName: "CookT",

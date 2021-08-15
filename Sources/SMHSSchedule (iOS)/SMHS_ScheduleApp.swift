@@ -5,14 +5,14 @@
 //  Created by Jevon Mao on 3/15/21.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
     static var orientationLock = UIInterfaceOrientationMask.portrait
 
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return AppDelegate.orientationLock
+    func application(_: UIApplication, supportedInterfaceOrientationsFor _: UIWindow?) -> UIInterfaceOrientationMask {
+        AppDelegate.orientationLock
     }
 }
 
@@ -24,11 +24,12 @@ struct SMHS_ScheduleApp: App {
         let currentCount = UserDefaults.standard.integer(forKey: "launchCount")
         let activeSceneCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
         // increment received number by one
-        UserDefaults.standard.set(currentCount+1, forKey:"launchCount")
+        UserDefaults.standard.set(currentCount + 1, forKey: "launchCount")
         if currentCount > 8 ||
-            activeSceneCount > 20 {
-            DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene { 
+            activeSceneCount > 20
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                     SKStoreReviewController.requestReview(in: scene)
                 }
                 UserDefaults.standard.setValue(0, forKey: "launchCount")
@@ -36,11 +37,10 @@ struct SMHS_ScheduleApp: App {
             }
         }
     }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-
-
     }
 }

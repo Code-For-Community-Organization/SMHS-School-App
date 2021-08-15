@@ -16,6 +16,7 @@ struct ActionButton: View {
     var autoWidth: CGFloat {
         min(CGFloat(400), UIScreen.screenWidth - horizontalPadding)
     }
+
     var body: some View {
         Button(action: action) {
             Text(label)

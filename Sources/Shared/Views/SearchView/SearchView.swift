@@ -5,21 +5,20 @@
 //  Created by Jevon Mao on 5/14/21.
 //
 
-import SwiftUI
 import SwiftlySearch
+import SwiftUI
 
 struct SearchView: View {
     @StateObject var newsViewViewModel = NewsViewViewModel()
     @State var searchText: String = ""
-    
+
     var body: some View {
         NavigationView {
             ZStack {
                 if searchText.isEmpty {
                     InformationCardsView()
                         .aboutFooter(showDivider: false)
-                }
-                else {
+                } else {
                     SearchResultView(searchText: $searchText,
                                      newsEntries: newsViewViewModel.newsEntries,
                                      informationCards: InformationCard.informationCards)
@@ -31,18 +30,10 @@ struct SearchView: View {
                                  hidesNavigationBarDuringPresentation: false,
                                  hidesSearchBarWhenScrolling: false,
                                  cancelClicked: {
-                                    searchText = ""
+                                     searchText = ""
                                  },
-                                 searchClicked: {
-                                    
-                                 })
-            
-
+                                 searchClicked: {})
         }
         .navigationViewStyle(StackNavigationViewStyle())
-
-        
-        
     }
 }
-

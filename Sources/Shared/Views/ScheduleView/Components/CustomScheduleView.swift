@@ -5,10 +5,10 @@
 //  Created by Jevon Mao on 5/19/21.
 //
 
-//import SwiftUI
-//import Introspect
+// import SwiftUI
+// import Introspect
 //
-//struct CustomScheduleView: View {
+// struct CustomScheduleView: View {
 //    @StateObject var scheduleViewModel: ScheduleViewModel
 //    @StateObject var scheduleCustomViewModel = ScheduleCustomViewModel()
 //    var scheduleDays: [ScheduleDay] {
@@ -33,7 +33,7 @@
 //                    Section {
 //                        TextField("Title", text: $scheduleCustomViewModel.title)
 //                    }
-//                    
+//
 //                }
 //            }
 //            .navigationBarTitleDisplayMode(.inline)
@@ -53,7 +53,7 @@
 //            Alert(title: "Cannot Add Schedule", message: "One or more information provided is invalid.", dismissButtonTitle: "OK")
 //        }
 //    }
-//    
+//
 //    func addCustomSchedule() {
 //        let result = scheduleCustomViewModel.validateAndCreate(scheduleDay: scheduleCustomViewModel.selection)
 //        if  result.validated {
@@ -63,7 +63,7 @@
 //                }),
 //               let indexJ = scheduleViewModel.scheduleWeeks[indexI].scheduleDays.firstIndex(  //Index for getting nested array scheduleDays
 //                where: {$0.id == scheduleCustomViewModel.selection.id
-//                    
+//
 //                }) {
 //                guard let block = result.block else {return}
 //                scheduleViewModel.scheduleWeeks[indexI][indexJ].customPeriods.append(block)
@@ -71,12 +71,11 @@
 //        }
 //        else {scheduleCustomViewModel.showAlert = true}
 //    }
-//}
+// }
 //
 //
-//struct CustomScheduleView_Previews: PreviewProvider {
+// struct CustomScheduleView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CustomScheduleView(scheduleViewModel: .mockScheduleView, showModal: .constant(true))
 //    }
-//}
-
+// }

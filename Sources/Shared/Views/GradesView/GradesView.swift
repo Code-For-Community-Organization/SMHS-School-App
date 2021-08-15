@@ -11,13 +11,13 @@ import SwiftUIVisualEffects
 struct GradesView: View {
     @StateObject var gradesViewModel = GradesViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    
+
     var body: some View {
         NavigationView {
             if !gradesViewModel.gradesResponse.isEmpty {
                 ScrollView {
                     LazyVStack(spacing: 20) {
-                        ForEach(getCoursesList(), id: \.self){
+                        ForEach(getCoursesList(), id: \.self) {
                             CourseGradeItem(course: $0)
                         }
                         ActionButton(label: "Log Out") {
@@ -30,7 +30,7 @@ struct GradesView: View {
                             Alert(title: Text("Confirm Log out?"),
                                   message: Text(GradesViewModel.logoutDescription),
                                   primaryButton: .destructive(Text("Log Out"),
-                                                              action: {gradesViewModel.signoutAndRemove()}),
+                                                              action: { gradesViewModel.signoutAndRemove() }),
                                   secondaryButton: .cancel())
                         }
                     }
@@ -41,10 +41,8 @@ struct GradesView: View {
                 .loadingAnimatable(reload: gradesViewModel.reloadData,
                                    isLoading: $gradesViewModel.isLoading,
                                    shouldReload: !$gradesViewModel.userInitiatedLogin)
-                .onDisappear {gradesViewModel.userInitiatedLogin = false}
-                
-            }
-            else {
+                .onDisappear { gradesViewModel.userInitiatedLogin = false }
+            } else {
                 GradesLoginView(gradesViewModel: gradesViewModel)
                     .navigationBarTitle("Grades")
                     .loadingAnimatable(reload: gradesViewModel.reloadData,
@@ -53,15 +51,13 @@ struct GradesView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-
     }
-    
+
     func getCoursesList() -> [CourseGrade] {
         if userSettings.developerSettings.dummyGrades {
             return CourseGrade.dummyGrades
-        }
-        else {
-            return gradesViewModel.gradesResponse.filter{!$0.isPrior}
+        } else {
+            return gradesViewModel.gradesResponse.filter { !$0.isPrior }
         }
     }
 }
@@ -71,4 +67,3 @@ struct GradesView_Previews: PreviewProvider {
         GradesView()
     }
 }
-

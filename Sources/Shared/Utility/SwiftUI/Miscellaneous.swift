@@ -8,19 +8,19 @@
 import SwiftUI
 
 extension View {
-    func typeErased() -> AnyView {AnyView(self)}
-    
-    //Easily align text to left or right of frame
+    func typeErased() -> AnyView { AnyView(self) }
+
+    // Easily align text to left or right of frame
     @ViewBuilder
     func textAlign(_ align: Alignment) -> some View {
         switch align {
         case .leading:
-            HStack{
+            HStack {
                 self
                 Spacer()
             }
         case .trailing:
-            HStack{
+            HStack {
                 Spacer()
                 self
             }

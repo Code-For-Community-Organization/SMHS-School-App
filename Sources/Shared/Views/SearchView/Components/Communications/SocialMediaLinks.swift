@@ -9,25 +9,25 @@ import SwiftUI
 
 struct SocialMediaLinks: View {
     var body: some View {
-            VStack {
-                Group {
-                    HStack {
-                        Text("Follow SMCHS")
-                            .font(.title3, weight: .semibold)
-                        Spacer()
-                        NavigationLink(destination: SocialDetailView()) {
-                            Text("See More")
-                                .foregroundColor(.primary)
-                                .font(.callout, weight: .medium)
-                        }
+        VStack {
+            Group {
+                HStack {
+                    Text("Follow SMCHS")
+                        .font(.title3, weight: .semibold)
+                    Spacer()
+                    NavigationLink(destination: SocialDetailView()) {
+                        Text("See More")
+                            .foregroundColor(.primary)
+                            .font(.callout, weight: .medium)
                     }
                 }
-                .padding(.horizontal)
-                Divider()
-                SocialMediaIcons()
             }
-            .edgesIgnoringSafeArea(.horizontal)
-            .padding(.vertical)
+            .padding(.horizontal)
+            Divider()
+            SocialMediaIcons()
+        }
+        .edgesIgnoringSafeArea(.horizontal)
+        .padding(.vertical)
     }
 }
 

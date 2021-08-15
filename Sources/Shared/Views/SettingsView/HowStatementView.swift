@@ -5,24 +5,23 @@
 //  Created by Jevon Mao on 5/24/21.
 //
 
-import SwiftUI
 import func AVFoundation.AVMakeRect
+import SwiftUI
 
 struct HowStatementView: View {
-    
     @State var imageCache = NSCache<NSString, UIImage>()
     var body: some View {
         ScrollView {
             VStack {
-                GeometryReader {geo in
+                GeometryReader { geo in
                     resizedImage(image: UIImage(named: "Developer_thumbs")!, size: geo.size)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: geo.size.width)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geo.size.width)
                 }
                 .frame(height: 250)
                 .edgesIgnoringSafeArea(.top)
-                
+
                 Text("HOW DOES\nSMHS WORK?")
                     .font(.largeTitle, weight: .bold)
                     .padding(.bottom)
@@ -38,7 +37,7 @@ struct HowStatementView: View {
                         .padding(.bottom, 2)
 
                     Text("The SMHS app will always be just as trustworthy as SMCHS's official website and app. We fetch information directly from the website, and constantly gets the newest schedule information everytime you open the app.")
-                    
+
                     Text("SMHS on a Technical Level")
                         .font(.title2, weight: .bold)
                         .padding(.top)
@@ -55,26 +54,24 @@ struct HowStatementView: View {
                         .foregroundColor(.platformLabel)
                         .textAlign(.leading)
                         .padding(.bottom, 2)
-                    
+
                     Text("For fetching the campus news, SMHS Schedule uses a 2 step process.\n\nFirst, the app uses networking functions to download an XML file from SMHS website. This XML file is structured similarly to a json file while using HTML style tag syntax, and contains important meta information for news article entries. For each of the new article entry contained in the XML file, it records the title, author, date, image url, and article url. The app will parse and extract those information into models for further logics and rendering into SwiftUI views.\n\nHowever, the XML file does not contain any body text, so the 2nd step is to use the article url provided, and scrap the SMHS news website. This scraping feature still has lots of room for improvement, because the SMHS website structure is rather random for different news entries. Although the body content is usually contained in a specific <div>, the content inside this <div> can include text, images, videos, even tables. Thus when finding all text recursively in the <div>, the app HTML parser will sometimes get garbage text that is not part of the article, but instead image captions, website labels.etc.")
 //                    Text("InClass™ View Computations")
 //                        .font(.title2, weight: .bold)
 //                        .padding(.top)
 //                        .textAlign(.leading)
-
                 }
                 .font(.headline, weight: .medium)
                 .foregroundColor(.platformSecondaryLabel)
-                
             }
             .padding()
         }
     }
-    
+
     func resizedImage(image: UIImage, size: CGSize) -> Image {
         guard let cachedImage = imageCache.object(forKey: "mainImage") else {
             let renderer = UIGraphicsImageRenderer(size: size)
-            let renderedImage = renderer.image {context in
+            let renderedImage = renderer.image { _ in
                 let rect = AVMakeRect(aspectRatio: image.size,
                                       insideRect: CGRect(origin: .zero,
                                                          size: size))

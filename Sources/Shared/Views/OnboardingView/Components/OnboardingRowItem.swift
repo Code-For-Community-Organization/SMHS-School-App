@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 4/30/21.
 //
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 struct OnboardingRowItem<Content: View>: View {
     var title: String
@@ -45,4 +45,3 @@ struct OnboardingRowItem_Previews: PreviewProvider {
         OnboardingRowItem(title: "View Schedules", description: "Schedule for future dates, beautifully grouped by week, easily accesible on your fingle tips.", symbolImage: Image(systemSymbol: .calendar))
     }
 }
- 

@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 6/3/21.
 //
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 struct TodayHeroView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
@@ -24,7 +24,7 @@ struct TodayHeroView: View {
 //
 //                }
 //                .pickerStyle(SegmentedPickerStyle())
-         
+
                 Label(title: {
                     Text("InClass™")
                         .font(.title3)
@@ -37,11 +37,11 @@ struct TodayHeroView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 }
                 .padding(.bottom, 2)
-                
+
                 Text("Effortlessly see time left in current period.")
                     .font(.footnote)
                     .foregroundColor(.platformSecondaryLabel)
-                
+
                 ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
                     .padding(.vertical, 10)
                 if scheduleViewViewModel.currentDaySchedule != nil {
@@ -58,7 +58,7 @@ struct TodayHeroView: View {
         }
         .background(Color.platformBackground)
         .onboardingModal()
-        .onAppear{
+        .onAppear {
             scheduleViewViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewViewModel.reset()

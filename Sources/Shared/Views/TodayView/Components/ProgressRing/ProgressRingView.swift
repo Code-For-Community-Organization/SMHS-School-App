@@ -14,51 +14,48 @@ struct ProgressRingView: View {
     @State var percent: Double?
     @State var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     var animation: Bool = true
-    init(scheduleDay: ScheduleDay?, selectionMode: Binding<PeriodCategory>, countDown: TimeInterval? = nil, percent: Double? = nil, animation: Bool = true) {
+    init(scheduleDay: ScheduleDay?, selectionMode: Binding<PeriodCategory>, countDown _: TimeInterval? = nil, percent _: Double? = nil, animation: Bool = true) {
         self.scheduleDay = scheduleDay
         self.selectionMode = selectionMode
-        self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
-        self.percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue)
+        countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
+        percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue)
         self.animation = animation
     }
+
     var body: some View {
         ZStack {
             Circle()
                 .stroke(Color.platformSecondaryFill,
                         style: .init(lineWidth: CGFloat(30), lineCap: .round))
                 .frame(width: CGFloat(260), height: CGFloat(260))
-            
+
             percentCircle
             ProgressCountDown(scheduleDay: scheduleDay,
                               selectionMode: selectionMode,
                               countDown: $countDown)
-            
         }
-        .onReceive(timer){_ in
+        .onReceive(timer) { _ in
             self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
             percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue) ?? 0
         }
         .padding(.vertical, 20)
-        
     }
-    
+
     @ViewBuilder
-    var percentCircle: some View { 
+    var percentCircle: some View {
         if let percent = percent {
             Circle()
-                .trim(from: CGFloat(0) , to: CGFloat(percent))
-                .stroke(AngularGradient(gradient: Gradient.init(colors: [Color.primary, Color.secondary]),
+                .trim(from: CGFloat(0), to: CGFloat(percent))
+                .stroke(AngularGradient(gradient: Gradient(colors: [Color.primary, Color.secondary]),
                                         center: UnitPoint.center,
                                         startAngle: Angle.degrees(0.0),
-                                        endAngle: Angle.degrees(percent*360.0)),
-                                        style: StrokeStyle.init(lineWidth: 30, lineCap: .round))
+                                        endAngle: Angle.degrees(percent * 360.0)),
+                        style: StrokeStyle(lineWidth: 30, lineCap: .round))
                 .frame(width: CGFloat(260), height: CGFloat(260))
                 .rotationEffect(Angle.degrees(-90))
                 .animation(animation ? Animation.easeInOut : nil)
         }
-        
     }
- 
 }
 
 struct ProgressRingView_Previews: PreviewProvider {

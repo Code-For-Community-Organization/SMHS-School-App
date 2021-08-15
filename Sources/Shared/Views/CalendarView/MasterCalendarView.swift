@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 6/4/21.
 //
 
-import SwiftUI
 import ElegantCalendar
+import SwiftUI
 
 struct MasterCalendarView: View {
     @State private var orientationValue: Int?
@@ -15,11 +15,13 @@ struct MasterCalendarView: View {
     @StateObject private var calendarManager = ElegantCalendarManager(
         configuration: CalendarConfiguration(startDate: startDate(),
                                              endDate: endDate()),
-        initialMonth: Date())
+        initialMonth: Date()
+    )
     @ObservedObject private var calendarViewModel: MasterCalendarViewModel
     init(calendarViewModel: MasterCalendarViewModel) {
         self.calendarViewModel = calendarViewModel
     }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ElegantCalendarView(calendarManager: calendarManager)
@@ -34,7 +36,7 @@ struct MasterCalendarView: View {
                     .background(Color.platformSecondaryBackground)
                     .clipShape(Circle())
             })
-            .padding(.bottom, 30)
+                .padding(.bottom, 30)
         }
         .onAppear {
             calendarManager.datasource = self
@@ -48,20 +50,20 @@ struct MasterCalendarView: View {
         }
         .onDisappear {
             DispatchQueue.main.async {
-                    AppDelegate.orientationLock = UIInterfaceOrientationMask.all
-                    UIDevice.current.setValue(orientationValue, forKey: "orientation")
-                    UINavigationController.attemptRotationToDeviceOrientation()
+                AppDelegate.orientationLock = UIInterfaceOrientationMask.all
+                UIDevice.current.setValue(orientationValue, forKey: "orientation")
+                UINavigationController.attemptRotationToDeviceOrientation()
             }
         }
     }
-    
+
     private static func startDate() -> Date {
         var components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         components.month = 1
         components.day = 1
         return Calendar.current.date(from: components)!
     }
-    
+
     private static func endDate() -> Date {
         var components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         components.year = components.year?.advanced(by: 1)
@@ -76,10 +78,9 @@ extension MasterCalendarView: ElegantCalendarDataSource {
         calendarViewModel.calendarManager.getOpacity(forDay: date)
     }
 
-    func calendar(canSelectDate date: Date) -> Bool {true}
+    func calendar(canSelectDate _: Date) -> Bool { true }
 
-    func calendar(viewForSelectedDate date: Date, dimensions size: CGSize) -> AnyView
-    {
+    func calendar(viewForSelectedDate date: Date, dimensions _: CGSize) -> AnyView {
         SelectedDateView(events: calendarViewModel.calendarManager.days[date]?.events ?? [])
             .typeErased()
     }
