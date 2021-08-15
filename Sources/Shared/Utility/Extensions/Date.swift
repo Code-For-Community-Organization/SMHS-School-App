@@ -47,6 +47,4 @@ extension Date {
     }
 }
 
-extension TimeInterval {
-    func secondsToHoursMinutesSeconds() -> (Int, Int, Int) { (Int(self) / 3600, (Int(self) % 3600) / 60, (Int(self) % 3600) % 60) }
-}
+
