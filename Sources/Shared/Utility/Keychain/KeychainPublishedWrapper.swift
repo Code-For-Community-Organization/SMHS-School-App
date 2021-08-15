@@ -18,7 +18,7 @@ extension Published where Value: Codable {
                 self.init(initialValue: value)
             } catch {
                 #if DEBUG
-                print("Error while decoding data")
+                    print("Error while decoding data")
                 #endif
                 self.init(initialValue: defaultValue)
             }
@@ -28,12 +28,12 @@ extension Published where Value: Codable {
 
         projectedValue
             .sink { val in
-                do { 
+                do {
                     let data = try JSONEncoder().encode(val)
                     KeychainWrapper.standard.set(data, forKey: keychain)
                 } catch {
                     #if DEBUG
-                    print("Error while decoding data")
+                        print("Error while decoding data")
                     #endif
                 }
             }

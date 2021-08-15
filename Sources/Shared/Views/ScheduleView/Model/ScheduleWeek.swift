@@ -8,8 +8,8 @@
 import Foundation
 
 struct ScheduleWeek: Hashable, Codable {
-    var startDate: Date? {scheduleDays.first?.date ?? nil}
-    var endDate: Date? {scheduleDays.last?.date ?? nil}
+    var startDate: Date? { scheduleDays.first?.date ?? nil }
+    var endDate: Date? { scheduleDays.last?.date ?? nil }
     var weekText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd"
@@ -17,13 +17,13 @@ struct ScheduleWeek: Hashable, Codable {
             let startDate = dateFormatter.string(from: startDate)
             let endDate = dateFormatter.string(from: endDate)
             return "Week of \(startDate) to \(endDate)"
-        }
-        else {
+        } else {
             return ""
         }
     }
+
     var scheduleDays: [ScheduleDay]
-    
+
     subscript(dayIndex: Int) -> ScheduleDay {
         get {
             scheduleDays[dayIndex]
@@ -32,10 +32,11 @@ struct ScheduleWeek: Hashable, Codable {
             scheduleDays[dayIndex] = newValue
         }
     }
-    
+
     func getDayByDate(_ date: Date) -> ScheduleDay? {
-        scheduleDays.first{$0.date == date.eraseTime()}
+        scheduleDays.first { $0.date == date.eraseTime() }
     }
+
 //
 //    func contains(_ date: Date) -> Bool {
 //        guard let startDate = startDate, let endDate = endDate else {

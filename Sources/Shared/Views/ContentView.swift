@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var userSettings: UserSettings
 
@@ -17,23 +17,22 @@ struct ContentView: View {
             let networkLoadViewModel = NetworkLoadViewModel(dataReload: sharedScheduleInformation.fetchData)
             TodayView(networkLoadViewModel: networkLoadViewModel,
                       scheduleViewViewModel: sharedScheduleInformation)
-                .tabItem{
+                .tabItem {
                     Label("Today", systemSymbol: .squareGrid2x2Fill)
                 }
-            //FIXME: Fix grades API, reload always
+            // FIXME: Fix grades API, reload always
             GradesView()
-                .tabItem{
+                .tabItem {
                     Label("Grades", systemSymbol: .graduationcapFill)
-                    
                 }
             ScheduleView(networkLoadingViewModel: networkLoadViewModel,
                          scheduleViewModel: sharedScheduleInformation)
-                .tabItem{
+                .tabItem {
                     Label("Schedule", systemSymbol: .calendar)
                 }
-            
+
             NewsView()
-                .tabItem{
+                .tabItem {
                     Label("News", systemSymbol: .newspaperFill)
                 }
             SearchView()
@@ -41,29 +40,29 @@ struct ContentView: View {
                     Label("Search", systemSymbol: .magnifyingglass)
                 }
             #if DEBUG
-            DeveloperSettingsView()
-                .tabItem {
-                    Label("Settings", systemSymbol: .gearshapeFill)
-                }
+                DeveloperSettingsView()
+                    .tabItem {
+                        Label("Settings", systemSymbol: .gearshapeFill)
+                    }
             #endif
         }
         .onboardingModal()
         .environmentObject(UserSettings())
         .accentColor(Color.primary)
         .onChange(of: scenePhase) { newScenePhase in
-              switch newScenePhase {
-              case .active:
+            switch newScenePhase {
+            case .active:
                 sharedScheduleInformation.objectWillChange.send()
                 let activeCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
-                UserDefaults.standard.set(activeCount+1, forKey:"activeSceneCount")
-              case .inactive:
+                UserDefaults.standard.set(activeCount + 1, forKey: "activeSceneCount")
+            case .inactive:
                 ()
-              case .background:
+            case .background:
                 OnboardingWrapperViewModel.setCurrentVersionStatus()
-              @unknown default:
+            @unknown default:
                 ()
-              }
             }
+        }
     }
 }
 

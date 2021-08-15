@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CourseGradeItem: View {
     var course: CourseGrade
-    
+
     var body: some View {
         HStack {
             VStack {
@@ -18,7 +18,7 @@ struct CourseGradeItem: View {
                         .font(.caption)
                         .fontWeight(.semibold)
                         .foregroundColor(.secondary)
-                    
+
                     Text(course.periodName)
                         .font(.title2)
                         .fontWeight(.medium)
@@ -37,7 +37,7 @@ struct CourseGradeItem: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.platformSecondaryLabel)
-            
+
             Text("\(course.gradePercent)%")
                 .font(.title2)
                 .fontWeight(.bold)

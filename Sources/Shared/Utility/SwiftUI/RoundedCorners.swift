@@ -10,6 +10,6 @@ import SwiftUI
 
 extension View {
     func roundedCorners(cornerRadius: CGFloat) -> some View {
-        self.clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
 }

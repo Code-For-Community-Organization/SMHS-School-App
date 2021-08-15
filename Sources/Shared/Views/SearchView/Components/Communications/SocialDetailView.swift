@@ -41,7 +41,6 @@ struct SocialDetailView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                     SchoolMapDirections()
-
                 }
                 .padding(.horizontal)
                 Spacer()
@@ -49,14 +48,13 @@ struct SocialDetailView: View {
         }
         .overlay(
             BlurEffect()
-                .frame(height: UIDevice.hasTopNotch ? 35 : 20) 
+                .frame(height: UIDevice.hasTopNotch ? 35 : 20)
                 .frame(maxWidth: .infinity)
                 .blurEffectStyle(.systemUltraThinMaterial),
-            alignment: .top)
+            alignment: .top
+        )
         .edgesIgnoringSafeArea(.top)
     }
-    
-
 }
 
 struct SocialDetailView_Previews: PreviewProvider {

@@ -18,7 +18,7 @@ struct AboutFooterView: View {
                     .padding(.horizontal)
                     .padding(.top)
             }
-            Button(action: {showModal = true}) {
+            Button(action: { showModal = true }) {
                 HStack {
                     Text("Settings & About")
                         .font(.footnote, weight: .semibold)
@@ -30,7 +30,7 @@ struct AboutFooterView: View {
             .padding(EdgeInsets(top: 5, leading: 18, bottom: 30, trailing: 18))
             .textAlign(.leading)
         }
-        .sheet(isPresented: $showModal) {FooterModalView().environmentObject(userSettings)}
+        .sheet(isPresented: $showModal) { FooterModalView().environmentObject(userSettings) }
     }
 }
 

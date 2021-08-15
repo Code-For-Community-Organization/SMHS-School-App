@@ -11,13 +11,13 @@ struct ScheduleListView: View {
     var scheduleViewModel: ScheduleViewModel
     @State var selected: ScheduleDay?
     var body: some View {
-        List{
-            ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
+        List {
+            ForEach(scheduleViewModel.scheduleWeeks, id: \.self) { scheduleWeek in
                 Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)
                 ) {
-                    ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
+                    ForEach(scheduleWeek.scheduleDays, id: \.self) { day in
                         NavigationLink(
-                            destination: VStack{
+                            destination: VStack {
                                 Spacer()
                                 ClassScheduleView(scheduleText: day.scheduleText)
                             },
@@ -25,12 +25,11 @@ struct ScheduleListView: View {
                             selection: $selected,
                             label: {
                                 Text(day.title).textAlign(.leading)
-                                    .onTapGesture{
+                                    .onTapGesture {
                                         self.selected = day
                                     }
-                                
-                            })
-
+                            }
+                        )
                     }
                 }
                 .textCase(nil)
@@ -38,7 +37,7 @@ struct ScheduleListView: View {
             .listItemTint(Color.secondary)
         }
         .listStyle(SidebarListStyle())
-        .onAppear{
+        .onAppear {
             selected = scheduleViewModel.scheduleWeeks.first?.scheduleDays.first
         }
     }

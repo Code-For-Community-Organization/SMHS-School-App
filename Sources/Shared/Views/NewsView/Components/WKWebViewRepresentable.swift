@@ -11,13 +11,11 @@ import WebKit
 struct WKWebViewRepresentable: UIViewRepresentable {
     typealias UIViewType = WKWebView
     var HTMLString: String
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+    func makeUIView(context _: Context) -> WKWebView {
+        WKWebView()
     }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.loadHTMLString(HTMLString, baseURL: nil)
 
+    func updateUIView(_ uiView: WKWebView, context _: Context) {
+        uiView.loadHTMLString(HTMLString, baseURL: nil)
     }
-    
 }

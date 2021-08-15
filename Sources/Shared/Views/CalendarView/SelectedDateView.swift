@@ -12,13 +12,13 @@ struct SelectedDateView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 5) {
-                ForEach(events, id: \.self){day in
+                ForEach(events, id: \.self) { day in
                     HStack {
                         Rectangle()
                             .fill(Color.primary)
                             .frame(width: 3, height: 35)
                             .padding(.trailing, 5)
-                        
+
                         VStack(alignment: .leading) {
                             Text(day.title)
                                 .font(.headline, weight: .medium)
@@ -27,8 +27,7 @@ struct SelectedDateView: View {
                                 Text("Full Day")
                                     .font(.caption)
                                     .foregroundColor(.platformSecondaryLabel)
-                            }
-                            else {
+                            } else {
                                 HStack {
                                     Text(day.startTimeText)
                                     Image(systemSymbol: .arrowRightSquare)
@@ -42,7 +41,6 @@ struct SelectedDateView: View {
                         .foregroundColor(.platformLabel)
                         Spacer()
                     }
-                    
                 }
             }
             .padding(.horizontal, 10)

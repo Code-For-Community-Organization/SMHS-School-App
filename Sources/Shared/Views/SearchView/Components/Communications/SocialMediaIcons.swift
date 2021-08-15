@@ -15,12 +15,12 @@ struct SocialMediaIcons: View {
                                                .init(imageName: "Linkedin", url: "https://www.linkedin.com/school/smchseagles/"),
                                                .init(imageName: "Twitter", url: "https://twitter.com/SMCHSEagles")]
     var body: some View {
-        GeometryReader {geo in
+        GeometryReader { geo in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center) {
-                    ForEach(socialMediaIcons, id: \.self) {icon in 
+                    ForEach(socialMediaIcons, id: \.self) { icon in
                         Spacer()
-                        Button(action: {openURL(icon.url)}) {
+                        Button(action: { openURL(icon.url) }) {
                             ZStack {
                                 Circle()
                                     .fill(Color.white)

@@ -48,15 +48,15 @@ struct FeaturesStatementView: View {
                                       linkTitle: "Learn more.",
                                       linkURL: "https://github.com/jevonmao/SMHS-Schedule")
                 }
-                
+
                 Spacer()
-                Button(action: {presentationMode.wrappedValue.dismiss()}, label: {
+                Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
                     Text("Close")
                         .font(.body)
                         .fontWeight(.semibold)
                 })
-                .buttonStyle(HighlightButtonStyle())
-                .padding(.vertical)
+                    .buttonStyle(HighlightButtonStyle())
+                    .padding(.vertical)
             }
         }
     }

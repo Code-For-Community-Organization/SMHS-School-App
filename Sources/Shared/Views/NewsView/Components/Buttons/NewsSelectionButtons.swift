@@ -22,7 +22,6 @@ struct NewsSelectionButtons: View {
                     }
             }
             .padding(.horizontal, 20)
-   
         }
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 25, trailing: 0))
         .edgesIgnoringSafeArea(.horizontal)

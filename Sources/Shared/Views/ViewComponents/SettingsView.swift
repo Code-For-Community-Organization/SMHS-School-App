@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SettingsView<Content: View>: View {
     var content: Content
-    init(@ViewBuilder content: () -> Content){
+    init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
+
     var body: some View {
         List {
             content
@@ -22,6 +23,6 @@ struct SettingsView<Content: View>: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(content: {EmptyView()})
+        SettingsView(content: { EmptyView() })
     }
 }

@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 5/14/21.
 //
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 struct HorizontalLabelButton: View {
     var label: String
@@ -24,7 +24,6 @@ struct HorizontalLabelButton: View {
                     .fontWeight(.bold)
                     .foregroundColor(tag == selected ? Color.platformBackground : Color.platformLabel)
             }
-
         }
         .padding()
         .background(tag == selected ? Color.platformLabel : Color.platformSecondaryFill)
@@ -32,4 +31,3 @@ struct HorizontalLabelButton: View {
         .animation(Animation.easeInOut.speed(1.25))
     }
 }
-

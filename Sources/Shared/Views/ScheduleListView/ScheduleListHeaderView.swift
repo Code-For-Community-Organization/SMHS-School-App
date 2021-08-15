@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ScheduleListHeaderView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var scheduleWeek: ScheduleWeek
     var body: some View {
         HStack {
@@ -22,7 +23,7 @@ struct ScheduleListHeaderView: View {
                         .font(.system(size: 16))
                 }
             )
-            .foregroundColor(Color.primary)
+            .foregroundColor(.primary)
             Spacer()
         }
         .padding(.top, 10)
@@ -33,6 +34,6 @@ struct ScheduleListHeaderView: View {
 struct ScheduleListHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleListHeaderView(scheduleWeek: ScheduleWeek(scheduleDays: [ScheduleDay(date: Date(),
-                                                                                    scheduleText: "")]))
+                                                                                     scheduleText: "")]))
     }
 }
