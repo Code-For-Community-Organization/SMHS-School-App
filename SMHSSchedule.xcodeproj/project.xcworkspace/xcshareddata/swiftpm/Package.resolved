@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "PermissionsSwiftUI",
+        "repositoryURL": "https://github.com/jevonmao/PermissionsSwiftUI.git",
+        "state": {
+          "branch": null,
+          "revision": "2f3c429b14241c61b1e4d3de7252d9acd2e0aae9",
+          "version": "1.5.3"
+        }
+      },
+      {
         "package": "Regex",
         "repositoryURL": "https://github.com/crossroadlabs/Regex.git",
         "state": {
