@@ -10,8 +10,7 @@ import SwiftUI
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
     var dateHelper = ScheduleDateHelper()
-    let legacyDescriptionText = """Toggling on will display schedules in a plain text style instead of formated blocks. Legacy schedule style sometimes might be more reliable and detailed (eg. sports).
-    """
+    let legacyDescriptionText = "Toggling on will display schedules in a plain text style instead of formated blocks. Legacy schedule style sometimes might be more reliable and detailed (eg. sports)."
 
     var body: some View {
         NavigationView {
@@ -24,7 +23,6 @@ struct FooterModalView: View {
                         footer: Text(legacyDescriptionText).padding(.bottom)) {
                     Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
                 }
-
                 Section(header: Text("Period settings").textCase(nil),
                         footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
                             .textCase(nil)

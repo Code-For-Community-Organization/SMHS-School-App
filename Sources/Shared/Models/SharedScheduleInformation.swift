@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import SwiftUI
+import UserNotifications
 
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
@@ -17,7 +18,7 @@ final class SharedScheduleInformation: ObservableObject {
     // @Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
 
     private var currentWeekday: Int?
-
+    private var anyCancellables: Set<AnyCancellable> = []
     private var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
     var dateHelper = ScheduleDateHelper()
     private var downloader: (String, @escaping (Data?, Error?) -> Void) -> Void = Downloader.load
@@ -42,6 +43,13 @@ final class SharedScheduleInformation: ObservableObject {
         dateHelper = scheduleDateHelper
         self.urlString = urlString
         self.downloader = downloader
+        $scheduleWeeks
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.scheduleNotifications()
+            }
+            .store(in: &anyCancellables)
+
         fetchData()
     }
 
@@ -100,38 +108,40 @@ final class SharedScheduleInformation: ObservableObject {
     }
 
     func scheduleNotifications() {
-        let calendar = Calendar.current
-        for week in scheduleWeeks {
-            for day in week.scheduleDays {
-                for period in day.periods {
-                    let content = UNMutableNotificationContent()
-                    content.title = "Class Starts in 5 minutes"
-                    content.body = "\(period.title ?? "Next period") will start soon in 5 minutes."
-                    content.sound = .defaultCritical
-                    guard let remindTime = calendar.date(byAdding: .minute,
-                                                   value: -5,
-                                                   to: period.startTime) else {
-                        preconditionFailure("Cannot compute remind time before period starts.")
-                    }
-                    let date = calendar.dateComponents([.year, .month, .day, .hour, .minute],
-                                                       from: remindTime)
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: date,
-                                                                repeats: false)
-                    // Create the request
-                    let uuidString = UUID().uuidString
-                    let request = UNNotificationRequest(identifier: uuidString,
-                                                        content: content,
-                                                        trigger: trigger)
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "en_US_POSIX")
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
 
-                    // Schedule the request with the system.
-                    let notificationCenter = UNUserNotificationCenter.current()
-                    notificationCenter.add(request) { [weak self] error in
-                        if error != nil {
-                            debugPrint(error!)
-                            self?.showNotificationError = true
+        // CPU performance intensive operation,
+        // use background thread to avoid blocking UI
+        DispatchQueue.global(qos: .utility).async {
+            for week in self.scheduleWeeks {
+                for day in week.scheduleDays {
+                    for period in day.periods {
+                        let content = UNMutableNotificationContent()
+                        content.title = "Class Starts in 5 Minutes"
+                        content.body = "\(period.title?.capitalized ?? "Next period") will start soon in 5 minutes."
+                        content.sound = .defaultCritical
+                        guard let remindTime = calendar.date(byAdding: .minute,
+                                                             value: -5,
+                                                             to: period.startDate)
+                        else {
+                            preconditionFailure("Cannot compute remind time before period starts.")
                         }
+                        let date = calendar.dateComponents([.year, .month, .day, .hour, .minute],
+                                                           from: remindTime)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: date,
+                                                                    repeats: false)
+                        // Create the request
+                        let uuidString = UUID().uuidString
+                        let request = UNNotificationRequest(identifier: uuidString,
+                                                            content: content,
+                                                            trigger: trigger)
+
+                        // Schedule the request with the system.
+                        let notificationCenter = UNUserNotificationCenter.current()
+                        notificationCenter.add(request)
                     }
-                    
                 }
             }
         }

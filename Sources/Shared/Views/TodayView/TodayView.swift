@@ -41,6 +41,7 @@ struct TodayView: View {
         }
 
         .onAppear {
+            todayViewViewModel.showPermission = true
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
@@ -48,7 +49,7 @@ struct TodayView: View {
         .onDisappear {
             todayViewViewModel.showNetworkError = true
         }
-        .JMModal(showModal: $todayViewViewModel.showPermission,
+        .JMAlert(showModal: $todayViewViewModel.showPermission,
                  for: [.notification])
     }
 }

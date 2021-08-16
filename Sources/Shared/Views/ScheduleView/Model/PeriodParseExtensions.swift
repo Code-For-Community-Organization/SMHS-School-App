@@ -50,13 +50,16 @@ extension ScheduleDay {
                 continue
             }
             line.removeSubrange(timeIndex ..< line.endIndex)
+            var parser: (Substring, Substring, Substring) -> ClassPeriod
             // Normal lunch
-            guard line.contains(Self.lunch) else {
+            if !line.contains(Self.lunch) {
                 // Regular period
-                classPeriods.append(parseRegularPeriodLine(line, startTime: startTime, endTime: endTime))
-                continue
+                parser = parseRegularPeriodLine
+            } else {
+                parser = parseRegularLunchPeriodLine
             }
-            classPeriods.append(parseRegularLunchPeriodLine(line, startTime: startTime, endTime: endTime))
+            let period = parser(line, startTime, endTime)
+            classPeriods.append(period)
         }
         return classPeriods
     }
@@ -64,7 +67,8 @@ extension ScheduleDay {
     func parseRegularLunchPeriodLine(_: Substring, startTime: Substring, endTime: Substring) -> ClassPeriod {
         ClassPeriod(nutritionBlock: .singleLunch,
                     startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
-                    endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
+                    endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate,
+                    date: date)
     }
 
     func parseRegularPeriodLine(_ line: Substring, startTime: Substring, endTime: Substring) -> ClassPeriod {
@@ -72,12 +76,14 @@ extension ScheduleDay {
             let periodTitle = line.trimmingCharacters(in: .whitespaces)
             return ClassPeriod(periodTitle,
                                startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
-                               endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
+                               endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate,
+                               date: date)
         }
         return ClassPeriod(nutritionBlock: .period,
                            periodNumber: Int(String(period)),
                            startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
-                           endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
+                           endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate,
+                           date: date)
     }
 
     func parseNutritionPeriodLines(_ textLines: [Substring], lineNum: Int, nutritionIndex: String.Index, period: Match) -> [ClassPeriod]? {
@@ -100,13 +106,15 @@ extension ScheduleDay {
         if nutritionIndex < textLines[lineNum].range(of: period.matched)!.lowerBound {
             classPeriods.append(ClassPeriod(nutritionBlock: .firstLunch,
                                             startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate))
+                                            endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate,
+                                            date: date))
 
             guard period.matched.last != nil, let periodNumber = Int(String(period.matched.last!)) else { return nil }
             classPeriods.append(ClassPeriod(nutritionBlock: .secondLunchPeriod,
                                             periodNumber: periodNumber,
                                             startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate))
+                                            endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate,
+                                            date: date))
         }
 
         // Handles case where period # comes before nutrition
@@ -114,13 +122,15 @@ extension ScheduleDay {
         else {
             classPeriods.append(ClassPeriod(nutritionBlock: .secondLunch,
                                             startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate))
+                                            endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate,
+                                            date: date))
 
             guard period.matched.last != nil, let periodNumber = Int(String(period.matched.last!)) else { return nil }
             classPeriods.append(ClassPeriod(nutritionBlock: .firstLunchPeriod,
                                             periodNumber: periodNumber,
                                             startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
-                                            endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate))
+                                            endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate,
+                                            date: date))
         }
         return classPeriods
     }
