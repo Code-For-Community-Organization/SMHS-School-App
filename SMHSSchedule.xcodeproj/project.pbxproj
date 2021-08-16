@@ -220,7 +220,6 @@
 		62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA726741BDD0019D87E /* SFSafeSymbols */; };
 		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
 		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
-		62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBF2674230A0019D87E /* SwiftUIX */; };
 		62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8737626BE19B9003DE95B /* UIDevice.swift */; };
 		62DE61EC2602525400B86555 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -482,7 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62E2E0942685A62F009608FB /* SwiftUI.framework in Frameworks */,
-				62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
 				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
@@ -1201,7 +1199,6 @@
 				629EC83C2645E14F00E236DC /* Regex */,
 				621F5C97266A95E6006EBE8F /* ElegantCalendar */,
 				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
-				62D3EEBF2674230A0019D87E /* SwiftUIX */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1255,7 +1252,6 @@
 				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -2133,14 +2129,6 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.7;
-			};
-		};
 		62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
@@ -2221,11 +2209,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		62D3EEBF2674230A0019D87E /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3EEBC267422FB0019D87E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
 		};
 		62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;
