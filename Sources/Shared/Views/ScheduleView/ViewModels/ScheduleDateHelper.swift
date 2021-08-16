@@ -81,12 +81,12 @@ struct ScheduleDateHelper {
                 //of week to know if append to existing week, or start new week
                 let calendar = Calendar.current
                 let dayNum = calendar.dateComponents([.day], from: firstDate, to: scheduleDay.date).day
-                guard let dayNum = dayNum else {
+                guard let _dayNum = dayNum else {
                     continue
                 }
                 
                 //Greater than 5 implies more than 5 days (a week)
-                if dayNum > 5 {
+                if _dayNum > 5 {
                     scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
                 }
                 else {

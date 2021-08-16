@@ -66,6 +66,9 @@
 		62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
 		62626395264DD21D004146CE /* PeriodEditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626394264DD21D004146CE /* PeriodEditItem.swift */; };
 		62626396264DD21D004146CE /* PeriodEditItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626394264DD21D004146CE /* PeriodEditItem.swift */; };
+		6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
+		6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
+		6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
 		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
 		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
 		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
@@ -82,7 +85,6 @@
 		627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
 		627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
 		627752FA266603B8000BAD0B /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
-		627752FC26660433000BAD0B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752FB26660433000BAD0B /* UIDevice.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
 		62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62863BAB26AF3DFB00084C28 /* LoginButton.swift */; };
 		62863BAE26AF461100084C28 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62863BAD26AF461100084C28 /* Dictionary.swift */; };
@@ -219,6 +221,7 @@
 		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
 		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
 		62D3EEC02674230A0019D87E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEBF2674230A0019D87E /* SwiftUIX */; };
+		62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8737626BE19B9003DE95B /* UIDevice.swift */; };
 		62DE61EC2602525400B86555 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -251,9 +254,6 @@
 		62F5FD0126B49A2D00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
 		62F5FD0226B49B8B00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
 		62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
-		62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
-		62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
-		62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +335,7 @@
 		6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditSettingsView.swift; sourceTree = "<group>"; };
 		62626394264DD21D004146CE /* PeriodEditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditItem.swift; sourceTree = "<group>"; };
+		6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ElegantCalendar.xcassets; sourceTree = SOURCE_ROOT; };
 		626A2265260035F100903C39 /* SMHSSchedule (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
 		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -354,7 +355,6 @@
 		62763AA2264A6DEE006162EA /* ProgressCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCountdown.swift; sourceTree = "<group>"; };
 		6276B5F4264C643F00FE8DA2 /* NewsViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewViewModel.swift; sourceTree = "<group>"; };
 		627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOverlayLabel.swift; sourceTree = "<group>"; };
-		627752FB26660433000BAD0B /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = "../../../../../../../Desktop/iPhone Commercial/UIDevice.swift"; sourceTree = "<group>"; };
 		6279EACF2630F6EE00CF3870 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		62863BAB26AF3DFB00084C28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		62863BAD26AF461100084C28 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -418,6 +418,7 @@
 		62D3211A2649F2BD00C99C42 /* NewsDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailedView.swift; sourceTree = "<group>"; };
 		62D32120264A4C6700C99C42 /* ClassPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPeriod.swift; sourceTree = "<group>"; };
 		62D32127264A53B200C99C42 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
+		62D8737626BE19B9003DE95B /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedScheduleInformation.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F6C2639C4AC00B609E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -433,7 +434,6 @@
 		62F43CCB2689028A0009CD34 /* GradesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesResponse.swift; sourceTree = "<group>"; };
 		62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimatable.swift; sourceTree = "<group>"; };
 		62F5FD0026B49A2D00E821D5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../../../SourcePackages/checkouts/ElegantCalendar/ElegantCalendar.xcassets; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -717,7 +717,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				62FBFC6E2673D2AA00F2FAF1 /* ElegantCalendar.xcassets */,
+				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
 				626183D02637179A001C4AD4 /* Sources */,
@@ -859,6 +859,7 @@
 		6279EAB02630EB5E00CF3870 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				62D8737626BE19B9003DE95B /* UIDevice.swift */,
 				62CFAA40264756F9003B2EA0 /* TimeInterval.swift */,
 				626183E8263718E0001C4AD4 /* String.swift */,
 				626A229E260039BC00903C39 /* Colors.swift */,
@@ -866,7 +867,6 @@
 				629BE8BE2636489600BC49AD /* Array.swift */,
 				62D1E507263DD41C004DBFAD /* Date.swift */,
 				62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */,
-				627752FB26660433000BAD0B /* UIDevice.swift */,
 				62863BAD26AF461100084C28 /* Dictionary.swift */,
 				62F5FD0026B49A2D00E821D5 /* Font.swift */,
 			);
@@ -1279,7 +1279,7 @@
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
-				62FBFC6F2673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
+				6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,7 +1289,7 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
-				62FBFC702673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
+				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1312,7 +1312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62FBFC712673D2AA00F2FAF1 /* ElegantCalendar.xcassets in Resources */,
+				6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1415,6 +1415,7 @@
 				623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */,
 				62B227C6265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */,
+				62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
@@ -1482,7 +1483,6 @@
 				6287EA6A26558081007B41CB /* CustomScheduleView.swift in Sources */,
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
-				627752FC26660433000BAD0B /* UIDevice.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
 				621F5C8D2669FBA0006EBE8F /* SchoolMapDirections.swift in Sources */,
 				621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */,
@@ -1957,7 +1957,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1742;
+				CURRENT_PROJECT_VERSION = 1756;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1981,7 +1981,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1742;
+				CURRENT_PROJECT_VERSION = 1756;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
