@@ -60,10 +60,10 @@ class MasterCalendarViewModel: ObservableObject {
                 dateComponents.month = dateComponents.month?.advanced(by: i)
                 dateComponents.day = 1
                 let date = Calendar.current.date(from: dateComponents)
-                guard let date = date else { return nil }
+                guard let _date = date else { return nil }
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                let formattedDate = dateFormatter.string(from: date)
+                let formattedDate = dateFormatter.string(from: _date)
                 inBetweenMonths.append(formattedDate)
             }
             return inBetweenMonths
@@ -126,13 +126,14 @@ class MasterCalendarViewModel: ObservableObject {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                         guard !eventTitle.isEmpty else { return nil }
-                        guard let startTime = dateFormatter.date(from: startTime),
-                              let endTime = dateFormatter.date(from: endTime) else {
+                        
+                        guard let _startTime = dateFormatter.date(from: startTime),
+                              let _endTime = dateFormatter.date(from: endTime) else {
                             return .init(title: eventTitle, isFullDay: true)
                         }
                         return .init(title: eventTitle,
-                                            startTime: startTime,
-                                            endTime: endTime)
+                                            startTime: _startTime,
+                                            endTime: _endTime)
                     }
                 
                 let day = CalendarDay(date: formattedDate, events: events)

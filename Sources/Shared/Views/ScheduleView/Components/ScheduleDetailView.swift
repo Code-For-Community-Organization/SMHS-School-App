@@ -13,32 +13,36 @@ struct ScheduleDetailView: View {
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving} //First index found of 1st/2nd type block
-        guard let firstIndex = firstIndex,
-              let scheduleDay = scheduleDay else
-        {
-            return scheduleDay?.periods ?? [] //Fallback on all periods, assuming no lunch or single lunch
-            
+        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
+        if let firstIndex = firstIndex,
+           let scheduleDay = scheduleDay {
+            return Array(scheduleDay.periods[0..<firstIndex])
         }
-        return Array(scheduleDay.periods[0..<firstIndex])
+        
+        return scheduleDay?.periods ?? [] //Fallback on all periods, assuming no lunch or single lunch
     }
     
     //1st or 2nd lunch revolving periods, 2nd out of 3 UI sections
     var lunchPeriods: [ClassPeriod] {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
         let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
-        guard let firstIndex = firstIndex,
+        if let firstIndex = firstIndex,
               let lastIndex = lastIndex,
-              let scheduleDay = scheduleDay else {return []}
-        return Array(scheduleDay.periods[firstIndex...lastIndex])
+              let scheduleDay = scheduleDay {
+            return Array(scheduleDay.periods[firstIndex...lastIndex])
+        }
+        return []
     }
     
     //Periods after lunch, 3rd out of 3 UI sections
     var postLunchPeriods: [ClassPeriod] {
         let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving}
-        guard let lastIndex = lastIndex, let scheduleDay = scheduleDay else {return []}
-        return Array(scheduleDay.periods.suffix(from: lastIndex + 1)) //lastIndex + 1 to shorten array, remove unwanted
+        if let lastIndex = lastIndex, let scheduleDay = scheduleDay  {
+            return Array(scheduleDay.periods.suffix(from: lastIndex + 1)) //lastIndex + 1 to shorten array, remove unwanted
+        }
+        return []
     }
+    
     var body: some View {
         ScrollView {
             if userSettings.preferLegacySchedule {
