@@ -5,46 +5,44 @@
 //  Created by Jevon Mao on 6/24/21.
 //
 
+import Combine
 import Foundation
 import Network
-import Combine
 
-//Class that manages monitoring the network status with
-//NWPathMonitor, and automatically refetches data whenever
-//the user's device's connection changes from bad to good
+// Class that manages monitoring the network status with
+// NWPathMonitor, and automatically refetches data whenever
+// the user's device's connection changes from bad to good
 final class NetworkLoadViewModel: ObservableObject {
-
     @Published var isLoading = false
     @Published var lastStatus: NWPath.Status = .satisfied
-    
+
     var didReload = false
     var isNetworkAvailable: Bool {
         lastStatus == .satisfied
     }
-    
+
     typealias Reloader = (@escaping (Bool) -> Void) -> Void
     var dataReload: Reloader
-    
+
     init(dataReload: @escaping Reloader) {
         self.dataReload = dataReload
         startNetworkMonitorer()
-        
     }
-    
+
     func reloadDataNow() {
-        //Show indicator while loading
+        // Show indicator while loading
         isLoading = true
-        dataReload {success in
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+        dataReload { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.isLoading = false
             }
         }
     }
-    
+
     func startNetworkMonitorer() {
         let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = {path in
-            DispatchQueue.main.async {                
+        monitor.pathUpdateHandler = { path in
+            DispatchQueue.main.async {
 //                if self.lastStatus != .satisfied {
 //                    self.isLoading = false
 //                    //Condition where there was previously no connectivity,

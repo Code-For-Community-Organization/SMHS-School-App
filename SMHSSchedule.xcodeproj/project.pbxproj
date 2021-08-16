@@ -30,6 +30,8 @@
 		623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F1A264EED2700FF3F28 /* InformationCard.swift */; };
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
+		623C6EAC26C8A35E00B86605 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
+		623C6ECD26CABC4100B86605 /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = 623C6ECC26CABC4100B86605 /* PermissionsSwiftUINotification */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EC264F875900B93C63 /* InformationCardsView.swift */; };
 		624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EE264F87BE00B93C63 /* SearchResultView.swift */; };
@@ -449,6 +451,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623C6ECD26CABC4100B86605 /* PermissionsSwiftUINotification in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
@@ -742,7 +745,6 @@
 		626A2267260035F100903C39 /* SMHSSchedule (iOS) */ = {
 			isa = PBXGroup;
 			children = (
-				626A2293260037C400903C39 /* Views */,
 				626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */,
 				626A226C260035F200903C39 /* Assets.xcassets */,
 				626A2271260035F200903C39 /* Info.plist */,
@@ -778,16 +780,6 @@
 			path = "SMHS ScheduleUITests";
 			sourceTree = "<group>";
 		};
-		626A2293260037C400903C39 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6287EA6226548BA7007B41CB /* Components */,
-				629BE8B8263642BC00BC49AD /* ScheduleListView.swift */,
-				626A2294260037D000903C39 /* TodayView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		626A2294260037D000903C39 /* TodayView */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,6 +797,7 @@
 				624ABFFC260079D4000FE7BD /* Model */,
 				626A229A2600399400903C39 /* Components */,
 				626A22982600381700903C39 /* ScheduleView.swift */,
+				629BE8B8263642BC00BC49AD /* ScheduleListView.swift */,
 			);
 			path = ScheduleView;
 			sourceTree = "<group>";
@@ -818,6 +811,8 @@
 				6287EA702657783A007B41CB /* PeriodBlockItem.swift */,
 				6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */,
 				6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */,
+				6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */,
+				6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -869,15 +864,6 @@
 				62F5FD0026B49A2D00E821D5 /* Font.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		6287EA6226548BA7007B41CB /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */,
-				6287EA662654D6D3007B41CB /* ScheduleListHeaderText.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		6287EA6B265584C8007B41CB /* ViewModels */ = {
@@ -1025,6 +1011,7 @@
 			isa = PBXGroup;
 			children = (
 				626A226A260035F100903C39 /* ContentView.swift */,
+				626A2294260037D000903C39 /* TodayView */,
 				6261842926373D40001C4AD4 /* ViewComponents */,
 				62F43CBE2688F2960009CD34 /* GradesView */,
 				621F5C9C266AA82A006EBE8F /* CalendarView */,
@@ -1114,6 +1101,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSSchedule (iOS)" */;
 			buildPhases = (
+				623C6EAB26C893F600B86605 /* ShellScript */,
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
@@ -1136,6 +1124,7 @@
 				621F5C8F266A9479006EBE8F /* ElegantCalendar */,
 				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
 				62D3EEB826741DE20019D87E /* Kingfisher */,
+				623C6ECC26CABC4100B86605 /* PermissionsSwiftUINotification */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -1252,6 +1241,7 @@
 				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				623C6ECB26CABC4100B86605 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1316,6 +1306,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		623C6EAB26C893F600B86605 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftformat --verbose . --swiftversion 5.2\n";
+		};
 		62E05F7A263A1BBC00B609E3 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1357,6 +1364,7 @@
 				62E3BF002642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				62E2E091268598AA009608FB /* NetworkLoadViewModel.swift in Sources */,
 				62B0D9652692638700AA6CF4 /* KeychainWrapper.swift in Sources */,
+				623C6EAC26C8A35E00B86605 /* ScheduleListView.swift in Sources */,
 				6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */,
 				6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */,
 				62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */,
@@ -1813,7 +1821,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1800;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
@@ -1825,7 +1833,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=75 -Xfrontend -warn-long-expression-type-checking=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
@@ -1843,7 +1851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1800;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHSSchedule (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				ENABLE_PREVIEWS = YES;
@@ -1854,7 +1862,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHSSchedule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1955,7 +1963,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1767;
+				CURRENT_PROJECT_VERSION = 1800;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1964,7 +1972,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1979,7 +1987,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1767;
+				CURRENT_PROJECT_VERSION = 1800;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1988,7 +1996,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2073,6 +2081,14 @@
 				minimumVersion = 1.2.4;
 			};
 		};
+		623C6ECB26CABC4100B86605 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.3;
+			};
+		};
 		629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/crossroadlabs/Regex.git";
@@ -2154,6 +2170,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
 			productName = SwiftlySearch;
+		};
+		623C6ECC26CABC4100B86605 /* PermissionsSwiftUINotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 623C6ECB26CABC4100B86605 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			productName = PermissionsSwiftUINotification;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;

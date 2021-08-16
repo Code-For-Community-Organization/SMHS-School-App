@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-
 struct LoadingIndicatorView: View {
     var style: LoadingProgressStyle
     var body: some View {
         if style == .loading {
-            VStack{
+            VStack {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .transition(.opacity)
@@ -20,13 +19,11 @@ struct LoadingIndicatorView: View {
                     .font(.caption)
                     .fontWeight(.medium)
                     .opacity(0.5)
-                    
             }
             .animation(.default)
             .transition(.opacity)
-        }
-        else if style == .unavailable {
-            VStack{
+        } else if style == .unavailable {
+            VStack {
                 Image(systemSymbol: .exclamationmarkTriangleFill)
                     .padding(.vertical, 5)
                 Text("Today schedule is unavailable")
@@ -37,6 +34,7 @@ struct LoadingIndicatorView: View {
             .transition(.opacity)
         }
     }
+
     enum LoadingProgressStyle {
         case loading
         case unavailable

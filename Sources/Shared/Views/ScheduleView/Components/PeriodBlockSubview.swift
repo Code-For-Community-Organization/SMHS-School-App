@@ -10,12 +10,12 @@ import SwiftUI
 struct PeriodBlockSubview: View {
     var periods: [ClassPeriod]
     var body: some View {
-        ForEach(periods, id: \.self){period in
+        ForEach(periods, id: \.self) { period in
             PeriodBlockItem(block: period,
                             scheduleTitle: getTitle(period))
         }
     }
-    
+
     func getTitle(_ period: ClassPeriod) -> String {
         switch period.periodCategory {
         case .singleLunch:
@@ -28,4 +28,3 @@ struct PeriodBlockSubview: View {
         }
     }
 }
-

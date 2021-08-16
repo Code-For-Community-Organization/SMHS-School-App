@@ -7,10 +7,10 @@
 
 import Foundation
 
-//https://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method
+// https://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method
 extension Dictionary {
     func percentEncoded() -> Data? {
-        return map { key, value in
+        map { key, value in
             let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
             let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
             return escapedKey + "=" + escapedValue

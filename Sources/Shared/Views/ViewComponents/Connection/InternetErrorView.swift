@@ -10,13 +10,12 @@ import SwiftUI
 struct InternetErrorView: View {
     @Binding var shouldShowLoading: Bool
     @Binding var show: Bool
-    var reloadData: () -> ()
+    var reloadData: () -> Void
     var body: some View {
         VStack {
             if shouldShowLoading {
                 LoadingIndicatorView(style: .loading)
-            }
-            else {
+            } else {
                 Image(systemSymbol: .wifiExclamationmark)
                     .imageScale(.large)
                     .padding(.bottom, 5)
@@ -45,7 +44,6 @@ struct InternetErrorView: View {
                         .padding(.top, 10)
                 }
             }
-
         }
         .font(.callout, weight: .semibold)
         .foregroundColor(.platformSecondaryLabel)

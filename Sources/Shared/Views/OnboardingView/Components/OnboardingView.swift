@@ -18,8 +18,7 @@ struct OnboardingView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                }
-                else {
+                } else {
                     Text("What's New in\nSMHS Schedule")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -41,13 +40,13 @@ struct OnboardingView: View {
             }
 
             Spacer()
-            Button(action: {stayInPresentation = false}, label: {
+            Button(action: { stayInPresentation = false }, label: {
                 Text("Continue")
                     .font(.body)
                     .fontWeight(.semibold)
             })
-            .buttonStyle(HighlightButtonStyle())
-            .padding(.bottom)
+                .buttonStyle(HighlightButtonStyle())
+                .padding(.bottom)
         }
     }
 }

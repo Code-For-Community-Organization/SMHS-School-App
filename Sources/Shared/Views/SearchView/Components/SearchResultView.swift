@@ -14,54 +14,60 @@ struct SearchResultView: View {
     @State var informationCards: [InformationCard]
     @State var informationCard: InformationCard?
     @EnvironmentObject var newsViewViewModel: NewsViewViewModel
-    //MARK: - Search Results Filter
+
+    // MARK: - Search Results Filter
+
     var campusNewsResults: [NewsEntry] {
         newsEntries
-                .filter{$0.title.lowercased()
-                    .contains(searchText.lowercased()
-                                .trimmingCharacters(in: .whitespacesAndNewlines))}
+            .filter { $0.title.lowercased()
+                .contains(searchText.lowercased()
+                    .trimmingCharacters(in: .whitespacesAndNewlines))
+            }
     }
+
     var body: some View {
         List {
-            //if !searchText.isEmpty
+            // if !searchText.isEmpty
             scheduleDays
             campusNews
             quickInformation
         }
         .listStyle(GroupedListStyle())
     }
-    
-    //MARK: - SwiftUI View Components
+
+    // MARK: - SwiftUI View Components
+
     var scheduleDays: some View {
         Section(header: Text("Schedule Days")) {
             ForEach(sharedScheduleInformation.scheduleWeeks
-                        .mapAndFilter(searchText: searchText), id: \.self){day in
+                .mapAndFilter(searchText: searchText), id: \.self) { day in
                 NavigationLink(day.title, destination: ScheduleDetailView(scheduleDay: day))
             }
         }
     }
-    
+
     var campusNews: some View {
         Section(header: Text("Campus News")) {
-            ForEach(campusNewsResults, id: \.self){news in
-                let bindingNews = Binding(get: {news}, set: {
-                    guard let index = newsEntries.firstIndex(where: {$0.id == news.id}) else {return}
+            ForEach(campusNewsResults, id: \.self) { news in
+                let bindingNews = Binding(get: { news }, set: {
+                    guard let index = newsEntries.firstIndex(where: { $0.id == news.id }) else { return }
                     newsEntries[index] = $0
-                     
+
                 })
                 NavigationLink(news.title,
                                destination: NewsDetailedView(newsEntry: bindingNews)
-                                                .environmentObject(newsViewViewModel))
+                                   .environmentObject(newsViewViewModel))
             }
         }
     }
-    
+
     var quickInformation: some View {
         Section(header: Text("Quick Information")) {
             ForEach(informationCards
-                        .filter{$0.title.lowercased()
-                            .contains(searchText.lowercased()
-                                        .trimmingCharacters(in: .whitespacesAndNewlines))}){card in
+                .filter { $0.title.lowercased()
+                    .contains(searchText.lowercased()
+                        .trimmingCharacters(in: .whitespacesAndNewlines))
+                }) { card in
                 Button(card.title) {
                     informationCard = card
                 }
@@ -73,14 +79,13 @@ struct SearchResultView: View {
     }
 }
 
-fileprivate extension Array where Element == ScheduleWeek {
+private extension Array where Element == ScheduleWeek {
     func mapAndFilter(searchText: String) -> [ScheduleDay] {
-        self
-            .flatMap({$0.scheduleDays})
-            .filter{$0.title
+        flatMap(\.scheduleDays)
+            .filter { $0.title
                 .lowercased()
                 .contains(searchText.lowercased()
-                            .trimmingCharacters(in: .whitespacesAndNewlines))}
+                    .trimmingCharacters(in: .whitespacesAndNewlines))
+            }
     }
 }
- 

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct LoginButton: View {
     @ObservedObject var gradesViewModel: GradesViewModel
-    
+
     var body: some View {
         Button(action: {
             withAnimation {
                 gradesViewModel.userInitiatedLogin = true
                 gradesViewModel.loginAndFetch()
             }
-        }){
+        }) {
             ZStack {
                 Text("Log In")
                     .fontWeight(.semibold)
@@ -26,10 +26,8 @@ struct LoginButton: View {
             .background(Color.primary)
             .foregroundColor(.platformBackground)
             .roundedCorners(cornerRadius: 10)
-     
         }
         .disabled(gradesViewModel.isLoading)
         .padding(.bottom)
     }
 }
-

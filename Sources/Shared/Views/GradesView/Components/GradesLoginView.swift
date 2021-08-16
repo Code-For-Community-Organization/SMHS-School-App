@@ -5,12 +5,12 @@
 //  Created by Jevon Mao on 6/28/21.
 //
 
-import SwiftUI
 import Introspect
+import SwiftUI
 
 struct GradesLoginView: View {
     @ObservedObject var gradesViewModel: GradesViewModel
-    
+
     var body: some View {
         VStack {
             Form {
@@ -25,7 +25,6 @@ struct GradesLoginView: View {
                         .introspectTextField { textfield in
                             textfield.returnKeyType = .go
                         }
-                    
                 }
                 Section(header: Text("Aeries Gradebook Password"),
                         footer: Text(gradesViewModel.passwordErrorMsg)
@@ -41,7 +40,6 @@ struct GradesLoginView: View {
                 .animation(nil)
                 .opacity(gradesViewModel.isValid ? 1 : 0.3)
                 .disabled(gradesViewModel.isValid ? false : true)
-            
         }
         .alert(isPresented: $gradesViewModel.showNetworkError) {
             Alert(title: Text(gradesViewModel.networkErrorTitle),
@@ -53,7 +51,7 @@ struct GradesLoginView: View {
 
 struct LoginTextFieldRoundedStyle: TextFieldStyle {
     @Binding var focused: Bool
-    
+
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(.horizontal, 20)

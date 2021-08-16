@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct UIElementPreview<Value: View>: View {
-
     private let dynamicTypeSizes: [ContentSizeCategory] = [.extraSmall, .large, .extraExtraExtraLarge]
 
     /// Filter out "base" to prevent a duplicate preview.
@@ -50,7 +49,6 @@ struct UIElementPreview<Value: View>: View {
                     .environment(\.sizeCategory, sizeCategory)
                     .previewDisplayName("\(sizeCategory)")
             }
-
         }
     }
 }

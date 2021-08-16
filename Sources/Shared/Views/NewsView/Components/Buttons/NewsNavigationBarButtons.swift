@@ -13,8 +13,9 @@ struct NewsNavigationBarButtons: View {
     @State var animate = false
     let animationDuration: Double = 0.1
     var isBookMarked: Bool {
-        newsViewViewModel.bookMarkedEntries.contains{$0.id == newsEntry.id}
+        newsViewViewModel.bookMarkedEntries.contains { $0.id == newsEntry.id }
     }
+
     @State var showIsBookmarked = false
     var body: some View {
         HStack {
@@ -41,11 +42,12 @@ extension NewsNavigationBarButtons {
         showIsBookmarked.toggle()
         hapticsManager.UIFeedbackImpact()
         animate = true
-        DispatchQueue.main.asyncAfter(deadline: .now()+animationDuration) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
             animate = false
         }
     }
 }
+
 struct NewsNavigationBarButtons_Previews: PreviewProvider {
     static var previews: some View {
         NewsNavigationBarButtons(newsEntry: .sampleEntry)

@@ -5,8 +5,8 @@
 //  Created by Jevon Mao on 6/3/21.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct Marker: Identifiable {
     let id = UUID()
@@ -35,9 +35,9 @@ struct SchoolMapDirections: View {
                 Label("Get Directions", systemSymbol: .locationFill)
                     .font(.body, weight: .semibold)
             })
-            .buttonStyle(HighlightButtonStyle())
-            .padding(.bottom)
-            Map(coordinateRegion: $region, interactionModes: MapInteractionModes.all, showsUserLocation: false, annotationItems: markers) {marker in
+                .buttonStyle(HighlightButtonStyle())
+                .padding(.bottom)
+            Map(coordinateRegion: $region, interactionModes: MapInteractionModes.all, showsUserLocation: false, annotationItems: markers) { marker in
                 marker.location
             }
             .frame(height: CGFloat(200))
@@ -45,12 +45,12 @@ struct SchoolMapDirections: View {
             .roundedCorners(cornerRadius: CGFloat(10))
         }
     }
-    
+
     func openDirectionsInMap() {
         let coordinate = CLLocationCoordinate2DMake(33.64304533631487, -117.58231905977404)
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary: nil))
         mapItem.name = "Santa Margarita Catholic High School"
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
 }
 

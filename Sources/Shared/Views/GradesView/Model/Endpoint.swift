@@ -25,7 +25,7 @@ extension Endpoint {
         }
         return url
     }
-    
+
     var request: URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -33,22 +33,19 @@ extension Endpoint {
         request.httpBody = requestHeaders.percentEncoded()
         return request
     }
-    
+
     static func studentLogin(email: String,
                              password: String,
-                             debugMode: Bool = false) -> Endpoint {
+                             debugMode: Bool = false) -> Endpoint
+    {
         let headers = ["email": email, "password": password]
         if debugMode {
             return Endpoint(path: "/grades/",
-                     queryItems: [.init(name: "reload", value: "false")],
-                     requestHeaders: headers)
-        }
-        else {
+                            queryItems: [.init(name: "reload", value: "false")],
+                            requestHeaders: headers)
+        } else {
             return Endpoint(path: "/grades/",
-                     requestHeaders: headers)
+                            requestHeaders: headers)
         }
-            
-  
     }
-    
 }

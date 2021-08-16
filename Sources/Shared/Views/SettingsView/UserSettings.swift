@@ -10,43 +10,43 @@ import Foundation
 import Network
 
 final class UserSettings: ObservableObject {
-    //Developer-only settings for debug scheme
+    // Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
-    
-    init(){
+
+    init() {
         if editableSettings.isEmpty {
             resetEditableSettings()
         }
         #if DEBUG
         #else
-        resetDeveloperSettings()
+            resetDeveloperSettings()
         #endif
-
     }
-    func resetEditableSettings()
-    {
-        let periods = 1...7
+
+    func resetEditableSettings() {
+        let periods = 1 ... 7
         var settings = [EditableSetting]()
         for period in periods {
             settings.append(.init(periodNumber: period, textContent: ""))
         }
-        self.editableSettings = settings
+        editableSettings = settings
     }
-    
-    func resetDeveloperSettings()
-    {
-        self.developerSettings = DeveloperSettings()
+
+    func resetDeveloperSettings() {
+        developerSettings = DeveloperSettings()
     }
 }
+
 struct EditableSetting: Codable, Hashable {
     var periodNumber: Int
     var title: String {
         "Period \(periodNumber)"
     }
+
     var textContent: String
-    
+
     static let sampleSetting = EditableSetting(periodNumber: 1, textContent: "")
 }
 
@@ -64,6 +64,7 @@ struct DeveloperSettings: Codable {
             }
         }
     }
+
     var alwaysLoadingState: Bool = false
     var alwaysShowOnboarding: Bool = false
     var debugNetworking: Bool = false

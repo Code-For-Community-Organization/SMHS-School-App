@@ -13,7 +13,7 @@ struct ScheduleViewTextLines: View {
     var body: some View {
         VStack {
             if let scheduleLines = scheduleLines {
-                ForEach(scheduleLines, id: \.self){
+                ForEach(scheduleLines, id: \.self) {
                     Text($0)
                         .textAlign(.leading)
                         .padding(.vertical, lineSpacing)

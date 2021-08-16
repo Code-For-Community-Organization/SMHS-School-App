@@ -16,8 +16,7 @@ struct PeriodBlockItem: View {
             VStack {
                 if twoLine {
                     doubleLineView
-                }
-                else {
+                } else {
                     singleLineView
                         .padding(.bottom, 8)
                 }
@@ -29,15 +28,14 @@ struct PeriodBlockItem: View {
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .foregroundColor(.platformTertiaryBackground)
-            
+            .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity)
         .background(Color.primary)
         .roundedCorners(cornerRadius: 12)
         .padding(.vertical, 5)
     }
-    
+
     var doubleLineView: some View {
         VStack {
             Text("START: \(formatDate(block.startTime))")
@@ -54,9 +52,9 @@ struct PeriodBlockItem: View {
                 .minimumScaleFactor(0.5)
         }
     }
-    
+
     var singleLineView: some View {
-        GeometryReader {geo in
+        GeometryReader { geo in
             HStack {
                 HStack {
                     Text("START:")
@@ -65,7 +63,7 @@ struct PeriodBlockItem: View {
                     Text(formatDate(block.startTime))
                         .fontWeight(.medium)
                 }
-                .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
+                .frame(width: geo.size.width / CGFloat(2), alignment: .leading)
                 HStack {
                     Text("END:")
                         .fontWeight(.medium)
@@ -78,6 +76,7 @@ struct PeriodBlockItem: View {
             .font(.footnote)
         }
     }
+
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
@@ -85,4 +84,3 @@ struct PeriodBlockItem: View {
         return formatter.string(from: date)
     }
 }
-

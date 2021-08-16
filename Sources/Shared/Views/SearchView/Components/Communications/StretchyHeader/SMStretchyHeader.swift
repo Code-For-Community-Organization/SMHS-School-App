@@ -5,15 +5,15 @@
 //  Created by Jevon Mao on 5/25/21.
 //
 
+import func AVFoundation.AVMakeRect
 import SwiftUI
 import SwiftUIVisualEffects
 import UIKit
-import func AVFoundation.AVMakeRect
 
 struct SMStretchyHeader: View {
     @State var imageCache = NSCache<NSString, UIImage>()
     var body: some View {
-        GeometryReader {geo in
+        GeometryReader { geo in
             Group {
                 if UIScreen.idiom == .phone {
                     Image("SM-Field-HiRes")
@@ -22,8 +22,7 @@ struct SMStretchyHeader: View {
                         .frame(width: geo.size.width, height: getHeightForHeaderImage(geo))
                         .offset(x: CGFloat(0), y: Self.getOffsetForHeaderImage(geo))
                         .overlay(HeaderOverlayLabel(geo: geo, stretchy: true))
-                }
-                else {
+                } else {
                     Image("SM-Field-HiRes")
                         .resizable()
                         .scaledToFill()
@@ -34,11 +33,11 @@ struct SMStretchyHeader: View {
             }
         }
         .frame(height: 350)
-
     }
-    
-    //MARK: Stretchy Scroll Header (https://medium.com/swlh/swiftui-create-a-stretchable-header-with-parallax-scrolling-4a98faeeb262)
-    static func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {geometry.frame(in: .global).minY}
+
+    // MARK: Stretchy Scroll Header (https://medium.com/swlh/swiftui-create-a-stretchable-header-with-parallax-scrolling-4a98faeeb262)
+
+    static func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat { geometry.frame(in: .global).minY }
 
     static func getOffsetForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
         let offset: CGFloat = Self.getScrollOffset(geometry)
@@ -46,9 +45,10 @@ struct SMStretchyHeader: View {
         if offset > CGFloat(0) {
             return -offset
         }
-        
+
         return CGFloat(0)
     }
+
     private func getHeightForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
         let offset = Self.getScrollOffset(geometry)
         let imageHeight = geometry.size.height
@@ -59,11 +59,11 @@ struct SMStretchyHeader: View {
 
         return imageHeight
     }
-    
+
     func resizedImage(image: UIImage, size: CGSize) -> Image {
         guard let cachedImage = imageCache.object(forKey: "mainImage") else {
             let renderer = UIGraphicsImageRenderer(size: size)
-            let renderedImage = renderer.image {context in
+            let renderedImage = renderer.image { _ in
                 let rect = AVMakeRect(aspectRatio: image.size,
                                       insideRect: CGRect(origin: .zero,
                                                          size: size))

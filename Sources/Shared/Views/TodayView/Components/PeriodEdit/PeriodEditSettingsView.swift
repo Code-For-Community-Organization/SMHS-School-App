@@ -22,26 +22,24 @@ struct PeriodEditSettingsView: View {
                     .padding(.horizontal, 20)
                 SettingsView {
                     Section(header: Text("Period settings")) {
-                        ForEach(userSettings.editableSettings.indices, id: \.self){
+                        ForEach(userSettings.editableSettings.indices, id: \.self) {
                             PeriodEditItem(setting: $userSettings.editableSettings[$0])
                         }
                     }
                 }
-                
             }
             .navigationBarTitle("Period Names")
-            .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
-                                trailing: Button("Done", action: {presentationMode.wrappedValue.dismiss()}))
-    
+            .navigationBarItems(leading: Button("Clear", action: { showActionSheet = true }),
+                                trailing: Button("Done", action: { presentationMode.wrappedValue.dismiss() }))
         }
         .navigationBarTitleDisplayMode(.inline)
         .actionSheet(isPresented: $showActionSheet) {
             ActionSheet(title: Text("Clear all Periods"),
-                                 message: Text("Are you sure you want to clear all periods names?"),
-                                 buttons: [.destructive(Text("Discard Changes"), action: {userSettings.resetEditableSettings()}),
-                                           .cancel(Text("Keep Editing"), action: {showActionSheet = false})])
-                }
-        .introspectViewController{viewController in
+                        message: Text("Are you sure you want to clear all periods names?"),
+                        buttons: [.destructive(Text("Discard Changes"), action: { userSettings.resetEditableSettings() }),
+                                  .cancel(Text("Keep Editing"), action: { showActionSheet = false })])
+        }
+        .introspectViewController { viewController in
             viewController.isModalInPresentation = true
         }
     }

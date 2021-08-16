@@ -16,10 +16,12 @@ struct HapticsManager {
         impactFeedbackGenerator = UIImpactFeedbackGenerator(style: impactStyle)
         impactFeedbackGenerator?.prepare()
     }
-    mutating func notificationImpact(_ type: UINotificationFeedbackGenerator.FeedbackType){
+
+    mutating func notificationImpact(_ type: UINotificationFeedbackGenerator.FeedbackType) {
         notificationFeedbackGenerator?.notificationOccurred(type)
         notificationFeedbackGenerator = nil
     }
+
     mutating func UIFeedbackImpact() {
         impactFeedbackGenerator?.impactOccurred()
         impactFeedbackGenerator = nil

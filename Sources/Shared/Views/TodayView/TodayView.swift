@@ -5,8 +5,9 @@
 //  Created by Jevon Mao on 3/15/21.
 //
 
-import SwiftUI
+import PermissionsSwiftUINotification
 import SFSafeSymbols
+import SwiftUI
 import SwiftUIVisualEffects
 
 struct TodayView: View {
@@ -14,28 +15,33 @@ struct TodayView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel = TodayViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    
-    var body: some View { 
+
+    var body: some View {
         ZStack(alignment: .top) {
-            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel, todayViewViewModel: todayViewViewModel)
+            TodayHeroView(scheduleViewViewModel: scheduleViewViewModel,
+                          todayViewViewModel: todayViewViewModel)
                 .overlay(
                     Group {
-                    if !networkLoadViewModel.isNetworkAvailable &&
-                        scheduleViewViewModel.currentDaySchedule == nil &&
-                        todayViewViewModel.showNetworkError
+                        if !networkLoadViewModel.isNetworkAvailable &&
+                            scheduleViewViewModel.currentDaySchedule == nil &&
+                            todayViewViewModel.showNetworkError
                         {
-                        InternetErrorView(shouldShowLoading: $networkLoadViewModel.isLoading,
-                                          show: $todayViewViewModel.showNetworkError,
-                                          reloadData: networkLoadViewModel.reloadDataNow)
+                            InternetErrorView(shouldShowLoading: $networkLoadViewModel.isLoading,
+                                              show: $todayViewViewModel.showNetworkError,
+                                              reloadData: networkLoadViewModel.reloadDataNow)
+                        }
                     }
-                }
                 )
-            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
-            
+            TodayViewHeader(viewModel: scheduleViewViewModel,
+                            todayViewModel: todayViewViewModel)
         }
-        .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
-    
+        .sheet(isPresented: $todayViewViewModel.showEditModal) {
+            PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal)
+                .environmentObject(userSettings)
+        }
+
         .onAppear {
+            todayViewViewModel.showPermission = true
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
@@ -43,9 +49,10 @@ struct TodayView: View {
         .onDisappear {
             todayViewViewModel.showNetworkError = true
         }
+        .JMAlert(showModal: $todayViewViewModel.showPermission,
+                 for: [.notification])
     }
 }
-
 
 struct TodayViewHeader: View {
     @StateObject var viewModel: SharedScheduleInformation
@@ -58,21 +65,20 @@ struct TodayViewHeader: View {
                     .textAlign(.leading)
                     .textCase(.uppercase)
                     .vibrancyEffect()
-                
+
                 Text(viewModel.dateHelper.currentWeekday)
                     .font(.title)
                     .fontWeight(.bold)
                     .textAlign(.leading)
-                //.foregroundColor(.platformSecondaryLabel)
-                
+                // .foregroundColor(.platformSecondaryLabel)
             }
-            Button(action: {todayViewModel.showEditModal = true}, label: {
+            Button(action: { todayViewModel.showEditModal = true }, label: {
                 HStack {
                     Image(systemSymbol: .pencil)
                         .font(Font.subheadline.weight(.semibold))
                         .imageScale(.large)
                         .padding(.trailing, -1)
-                    
+
                     Text("Edit")
                         .font(Font.subheadline.weight(.semibold))
                 }
@@ -83,11 +89,11 @@ struct TodayViewHeader: View {
         .vibrancyEffectStyle(.secondaryLabel)
         .background(BlurEffect().edgesIgnoringSafeArea(.all))
         .blurEffectStyle(.systemThinMaterial)
-        
     }
 }
-//struct TodayView_Previews: PreviewProvider {
+
+// struct TodayView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        TodayView(scheduleViewViewModel: SharedScheduleInformation())
 //    }
-//}
+// }

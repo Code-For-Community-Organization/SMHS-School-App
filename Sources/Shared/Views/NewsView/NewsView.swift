@@ -5,14 +5,16 @@
 //  Created by Jevon Mao on 5/10/21.
 //
 
+import Kingfisher
 import SwiftUI
-import Kingfisher 
 
 struct NewsView: View {
-    var todayDateDescription: String {ScheduleDateHelper().todayDateDescription}
+    var todayDateDescription: String { ScheduleDateHelper().todayDateDescription }
     @StateObject var newsViewViewModel = NewsViewViewModel()
     @EnvironmentObject var userSettings: UserSettings
+    @Environment(\.colorScheme) var colorScheme
     @State var selection = 1
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -21,13 +23,12 @@ struct NewsView: View {
                     LazyVStack {
                         subHeader
                         if selection == 1 {
-                            ForEach(newsViewViewModel.newsEntries, id:\.self){
+                            ForEach(newsViewViewModel.newsEntries, id: \.self) {
                                 NewsEntryListItem(newsEntry: $0)
                                     .environmentObject(newsViewViewModel)
                             }
-                        }
-                        else {
-                            ForEach(newsViewViewModel.bookMarkedEntries, id:\.self){
+                        } else {
+                            ForEach(newsViewViewModel.bookMarkedEntries, id: \.self) {
                                 NewsEntryListItem(newsEntry: $0)
                                     .environmentObject(newsViewViewModel)
                             }
@@ -35,19 +36,17 @@ struct NewsView: View {
                     }
                     .padding(.horizontal)
                 }
-
             }
             .navigationBarTitle(todayDateDescription)
             .aboutFooter()
-
         }
-        .onAppear{
+        .onAppear {
             newsViewViewModel.fetchXML()
         }
         .navigationBarTitleDisplayMode(.automatic)
         .navigationViewStyle()
     }
-    
+
     var subHeader: some View {
         VStack {
             Text("Campus News")
@@ -56,7 +55,7 @@ struct NewsView: View {
                 .foregroundColor(Color.platformSecondaryLabel)
                 .textCase(.uppercase)
                 .textAlign(.leading)
-            
+
             Text(selection == 1 ? "Top Stories" : "Your Stories")
                 .fontWeight(.black)
                 .font(.title)
@@ -64,19 +63,16 @@ struct NewsView: View {
                 .textAlign(.leading)
         }
         .padding(EdgeInsets(top: 20, leading: 3, bottom: 10, trailing: 3))
-
     }
 }
 
-fileprivate extension View {
-    
+private extension View {
     @ViewBuilder
     func navigationViewStyle() -> some View {
         if UIScreen.idiom == .pad {
-            self.navigationViewStyle(DefaultNavigationViewStyle())
-        }
-        else {
-            self.navigationViewStyle(StackNavigationViewStyle())
+            navigationViewStyle(DefaultNavigationViewStyle())
+        } else {
+            navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

@@ -14,23 +14,21 @@ struct HighlightButtonStyle: ButtonStyle {
     var autoWidth: CGFloat {
         min(CGFloat(400), UIScreen.screenWidth - horizontalPadding)
     }
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: autoWidth)
             .padding()
-            .background(backgroundColor) 
+            .background(backgroundColor)
             .foregroundColor(foregroundColor)
             .clipShape(Capsule(style: .continuous))
             .animatedEffects(configuration)
     }
-    
-    
 }
 
-fileprivate extension View {
+private extension View {
     func animatedEffects(_ configuration: ButtonStyleConfiguration) -> some View {
-        self
-            .brightness(configuration.isPressed ? Double(-0.1) : Double(0))
+        brightness(configuration.isPressed ? Double(-0.1) : Double(0))
             .scaleEffect(configuration.isPressed ? CGFloat(0.97) : CGFloat(1))
             .animation(Animation.easeInOut)
     }
