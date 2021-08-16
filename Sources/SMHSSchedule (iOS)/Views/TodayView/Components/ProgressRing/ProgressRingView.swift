@@ -22,23 +22,33 @@ struct ProgressRingView: View {
         self.animation = animation
     }
     var body: some View {
-        ZStack {
-            Circle()
-                .stroke(Color.platformSecondaryFill,
-                        style: .init(lineWidth: CGFloat(30), lineCap: .round))
-                .frame(width: CGFloat(260), height: CGFloat(260))
-            
-            percentCircle
-            ProgressCountDown(scheduleDay: scheduleDay,
-                              selectionMode: selectionMode,
-                              countDown: $countDown)
+        VStack {
+            Text("See time left in current period.")
+                .font(.footnote)
+                .fontWeight(.medium)
+                .foregroundColor(.platformSecondaryLabel)
+                .padding(.top, 20)
+            ZStack {
+                Circle()
+                    .stroke(Color.platformSecondaryFill,
+                            style: .init(lineWidth: CGFloat(30), lineCap: .round))
+                    .frame(width: CGFloat(260), height: CGFloat(260))
+                
+                percentCircle
+                ProgressCountDown(scheduleDay: scheduleDay,
+                                  selectionMode: selectionMode,
+                                  countDown: $countDown)
+                
+            }
+            .onReceive(timer){_ in
+                self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
+                percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue) ?? 0
+            }
+            .padding(.top, 10)
+            .padding(.bottom, 30)
             
         }
-        .onReceive(timer){_ in
-            self.countDown = scheduleDay?.getCurrentPeriodRemainingTime(selectionMode: selectionMode.wrappedValue)
-            percent = scheduleDay?.getCurrentPeriodRemainingPercent(selectionMode: selectionMode.wrappedValue) ?? 0
-        }
-        .padding(.vertical, 20)
+        
         
     }
     

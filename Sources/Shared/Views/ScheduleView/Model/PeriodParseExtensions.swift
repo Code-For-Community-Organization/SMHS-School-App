@@ -35,8 +35,12 @@ extension ScheduleDay {
                let endTime: Substring = Self.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
                "[a-zA-Z]".r!.matches(String(line)) else
             {
-                if let nutritionIndex: Substring.Index = line.range(of: "Nutrition")?.lowerBound, //Handle 1st/2nd nutrition schedule case
-                        let period: Match = Self.periodPattern.findFirst(in: String(line)) {
+                var firstLunchCharIndex: Substring.Index?
+                let nutritionIndex = line.range(of: "nutrition")?.lowerBound
+                let alternate = line.range(of: "lunch")?.lowerBound
+                firstLunchCharIndex = nutritionIndex ?? alternate
+                if let nutritionIndex: Substring.Index = firstLunchCharIndex, //Handle 1st/2nd nutrition schedule case
+                   let period: Match = Self.periodPattern.findFirst(in: String(line)) {
                     
                     let block = parseNutritionPeriodLines(textLines,
                                               lineNum: lineNum,

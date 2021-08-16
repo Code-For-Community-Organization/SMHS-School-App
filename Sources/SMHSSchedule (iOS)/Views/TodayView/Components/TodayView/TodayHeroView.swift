@@ -16,34 +16,32 @@ struct TodayHeroView: View {
     var body: some View {
         ScrollView {
             VStack {
-//                Picker("", selection: $todayViewViewModel.selectionMode){
-//                    Text("1st Lunch")
-//                        .tag(PeriodCategory.firstLunch)
-//                    Text("2nd Lunch")
-//                        .tag(PeriodCategory.secondLunch)
-//
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-         
-                Label(title: {
-                    Text("InClass™")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                }) {
-                    Image(systemSymbol: .studentdesk)
-                        .foregroundColor(.white)
-                        .padding(3)
-                        .background(Color.primary)
-                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                Picker("", selection: $todayViewViewModel.selectionMode){
+                    Text("1st Lunch")
+                        .tag(PeriodCategory.firstLunch)
+                    Text("2nd Lunch")
+                        .tag(PeriodCategory.secondLunch)
+
                 }
-                .padding(.bottom, 2)
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.top, -10)
                 
-                Text("Effortlessly see time left in current period.")
-                    .font(.footnote)
-                    .foregroundColor(.platformSecondaryLabel)
+//                Label(title: {
+//                    Text("InClass™")
+//                        .font(.title3)
+//                        .fontWeight(.bold)
+//                }) {
+//                    Image(systemSymbol: .studentdesk)
+//                        .foregroundColor(.white)
+//                        .padding(3)
+//                        .background(Color.primary)
+//                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+//                }
+//                .padding(.bottom, 2)
+//
+                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                 selectionMode: $todayViewViewModel.selectionMode)
                 
-                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule, selectionMode: $todayViewViewModel.selectionMode)
-                    .padding(.vertical, 10)
                 if scheduleViewViewModel.currentDaySchedule != nil {
                     Text("Detailed Schedule")
                         .fontWeight(.semibold)
