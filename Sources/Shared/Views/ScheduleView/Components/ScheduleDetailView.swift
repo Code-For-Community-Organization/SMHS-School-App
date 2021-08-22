@@ -10,7 +10,11 @@ import SFSafeSymbols
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
+    
     var scheduleDay: ScheduleDay?
+    
+    @Binding var scheduleNavigationTitle: String
+
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
@@ -41,6 +45,14 @@ struct ScheduleDetailView: View {
             return Array(scheduleDay.periods.suffix(from: lastIndex + 1)) //lastIndex + 1 to shorten array, remove unwanted
         }
         return []
+    }
+    
+    var scheduleDateDescription: String {
+        let date = scheduleDay?.date ?? Date()
+        let format = DateFormatter()
+        format.dateFormat = "EEEE, MMM d"
+        let formattedDate = format.string(from: date)
+        return formattedDate
     }
     
     var body: some View {
@@ -91,6 +103,13 @@ struct ScheduleDetailView: View {
                 .padding(.horizontal)
             }
         }
+        .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            withAnimation {
+                scheduleNavigationTitle = "Schedule"
+            }
+        }
+        
     }
 }

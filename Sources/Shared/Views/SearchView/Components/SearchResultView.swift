@@ -36,7 +36,8 @@ struct SearchResultView: View {
         Section(header: Text("Schedule Days")) {
             ForEach(sharedScheduleInformation.scheduleWeeks
                         .mapAndFilter(searchText: searchText), id: \.self){day in
-                NavigationLink(day.title, destination: ScheduleDetailView(scheduleDay: day))
+                NavigationLink(day.title, destination: ScheduleDetailView(scheduleDay: day,
+                                                                          scheduleNavigationTitle: $sharedScheduleInformation.scheduleNavigationTitle))
             }
         }
     }

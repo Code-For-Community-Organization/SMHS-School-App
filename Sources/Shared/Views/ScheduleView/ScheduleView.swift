@@ -10,7 +10,7 @@ import SwiftUIVisualEffects
 
 struct ScheduleView: View {
     @StateObject var networkLoadingViewModel: NetworkLoadViewModel
-    @StateObject var scheduleViewModel: SharedScheduleInformation
+    @StateObject var viewModel: SharedScheduleInformation
     @EnvironmentObject var userSettings: UserSettings
     @State var navigationSelection: Int?
     @State var presentModal = false
@@ -18,9 +18,14 @@ struct ScheduleView: View {
     
     var body: some View {
         NavigationView {
-            ScheduleListView(scheduleViewModel: scheduleViewModel)
+            ScheduleListView(scheduleViewModel: viewModel)
             .edgesIgnoringSafeArea(.bottom)
-            .platformNavigationBarTitle("\(scheduleViewModel.dateHelper.todayDateDescription)")
+            .platformNavigationBarTitle("\(viewModel.scheduleNavigationTitle)")
+            .onAppear {
+                withAnimation {
+                    viewModel.scheduleNavigationTitle = viewModel.dateHelper.todayDateDescription
+                }
+            }
             .navigationBarItems(trailing: HStack {
                 Button(action: {presentModal = true}) {
                     Image(systemSymbol: .infoCircleFill)
@@ -34,7 +39,7 @@ struct ScheduleView: View {
             .overlay(
                 Group {
                 if !networkLoadingViewModel.isNetworkAvailable &&  //Network disconnected and not available
-                    scheduleViewModel.scheduleWeeks.isEmpty &&  //No cached schedule weeks to show
+                    viewModel.scheduleWeeks.isEmpty &&  //No cached schedule weeks to show
                     showNetworkError {  //User have not dismissed the error view
                     InternetErrorView(shouldShowLoading: $networkLoadingViewModel.isLoading,
                                       show: $showNetworkError,
@@ -45,9 +50,9 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
-            scheduleViewModel.objectWillChange.send()
+            viewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
-                scheduleViewModel.reset()
+                viewModel.reset()
             }
         }
         .onDisappear {
@@ -61,7 +66,7 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     
     static var previews: some View {
-        UIElementPreview(ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: SharedScheduleInformation.mockScheduleView.fetchData), scheduleViewModel: SharedScheduleInformation.mockScheduleView))
+        UIElementPreview(ScheduleView(networkLoadingViewModel: NetworkLoadViewModel(dataReload: SharedScheduleInformation.mockScheduleView.fetchData), viewModel: SharedScheduleInformation.mockScheduleView))
     }
     
 }

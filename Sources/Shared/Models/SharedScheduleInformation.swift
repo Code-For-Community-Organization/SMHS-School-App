@@ -12,7 +12,7 @@ import Foundation
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
-    
+    @Published var scheduleNavigationTitle: String
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
     
@@ -35,6 +35,8 @@ final class SharedScheduleInformation: ObservableObject {
          urlString: String = "https://www.smhs.org/calendar/calendar_379.ics",
          semaphore: DispatchSemaphore? = nil) {
         
+        self.scheduleNavigationTitle = dateHelper.todayDateDescription
+
         //Handle preview instance with mock placeholder text
         if placeholderText != nil {
             self.ICSText = placeholderText
