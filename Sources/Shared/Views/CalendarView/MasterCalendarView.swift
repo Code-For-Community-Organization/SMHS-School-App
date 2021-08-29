@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ElegantCalendar
+import Firebase
 
 struct MasterCalendarView: View {
     @State private var orientationValue: Int?
@@ -37,7 +38,9 @@ struct MasterCalendarView: View {
             .padding(.bottom, 30)
         }
         .onAppear {
+            Analytics.logEvent("opened_calendar", parameters: nil)
             calendarManager.datasource = self
+            calendarManager.delegate = self
             DispatchQueue.main.async {
                 calendarManager.datasource = self
                 AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
@@ -82,5 +85,30 @@ extension MasterCalendarView: ElegantCalendarDataSource {
     {
         SelectedDateView(events: calendarViewModel.calendarManager.days[date]?.events ?? [])
             .typeErased()
+    }
+}
+
+extension MasterCalendarView: ElegantCalendarDelegate {
+    
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    func formatMonth(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMN"
+        return dateFormatter.string(from: date)
+    }
+    
+    func calendar(didSelectDay date: Date) {
+        Analytics.logEvent("selected_calendar_day",
+                           parameters: ["selected_date": formatDate(date)])
+    }
+    
+    func calendar(willDisplayMonth date: Date) {
+        Analytics.logEvent("swiped_calendar_month",
+                           parameters: ["display_month": formatMonth(date)])
     }
 }

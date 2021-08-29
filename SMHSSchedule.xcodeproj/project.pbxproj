@@ -31,6 +31,14 @@
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
+		624B06D526D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
+		624B06D626D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
+		624B06D726D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
+		624B06D826D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
+		624B06D926D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
+		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
+		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
+		624B06E026D357B4001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DF26D357B4001C2EAE /* FirebaseAnalytics */; };
 		624F79ED264F875900B93C63 /* InformationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EC264F875900B93C63 /* InformationCardsView.swift */; };
 		624F79EF264F87BE00B93C63 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79EE264F87BE00B93C63 /* SearchResultView.swift */; };
 		624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F3264FA13500B93C63 /* NewsSelectionButtons.swift */; };
@@ -55,7 +63,6 @@
 		6261840B26371A6C001C4AD4 /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183DE263718CA001C4AD4 /* ScheduleDay.swift */; };
 		6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
-		6261841226371A93001C4AD4 /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A229B260039AB00903C39 /* ScheduleDetailView.swift */; };
 		6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A22982600381700903C39 /* ScheduleView.swift */; };
 		6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
@@ -312,6 +319,7 @@
 		623A7F1A264EED2700FF3F28 /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
+		624B06D426D339F1001C2EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		624F79EC264F875900B93C63 /* InformationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardsView.swift; sourceTree = "<group>"; };
 		624F79EE264F87BE00B93C63 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		624F79F3264FA13500B93C63 /* NewsSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSelectionButtons.swift; sourceTree = "<group>"; };
@@ -442,6 +450,7 @@
 			files = (
 				62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */,
 				62E3BF06264270AE00E1FF88 /* SwiftUIVisualEffects in Frameworks */,
+				624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +466,7 @@
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */,
 				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +492,7 @@
 			files = (
 				62E2E0942685A62F009608FB /* SwiftUI.framework in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
+				624B06E026D357B4001C2EAE /* FirebaseAnalytics in Frameworks */,
 				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
@@ -715,6 +726,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				624B06D426D339F1001C2EAE /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
@@ -1105,6 +1117,7 @@
 			packageProductDependencies = (
 				62C9E8B3263D2A1300CCA5C5 /* Introspect */,
 				62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */,
+				624B06DB26D3521B001C2EAE /* FirebaseAnalytics */,
 			);
 			productName = "SMHSSchedule (macOS)";
 			productReference = 626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */;
@@ -1136,6 +1149,7 @@
 				621F5C8F266A9479006EBE8F /* ElegantCalendar */,
 				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
 				62D3EEB826741DE20019D87E /* Kingfisher */,
+				624B06DD26D3526A001C2EAE /* FirebaseAnalytics */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHSSchedule (iOS).app */;
@@ -1199,6 +1213,7 @@
 				629EC83C2645E14F00E236DC /* Regex */,
 				621F5C97266A95E6006EBE8F /* ElegantCalendar */,
 				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
+				624B06DF26D357B4001C2EAE /* FirebaseAnalytics */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1252,6 +1267,7 @@
 				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1276,6 +1292,7 @@
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
 				6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
+				624B06D526D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,6 +1302,7 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
+				624B06D626D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 			);
@@ -1294,6 +1312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624B06D726D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,6 +1320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624B06D826D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1310,6 +1330,7 @@
 			files = (
 				6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
+				624B06D926D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,7 +1371,6 @@
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
 				62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */,
-				6261841226371A93001C4AD4 /* ScheduleDetailView.swift in Sources */,
 				62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
 				62B227C9265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
@@ -2073,6 +2093,14 @@
 				minimumVersion = 1.2.4;
 			};
 		};
+		624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.0;
+			};
+		};
 		629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/crossroadlabs/Regex.git";
@@ -2154,6 +2182,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
 			productName = SwiftlySearch;
+		};
+		624B06DB26D3521B001C2EAE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		624B06DD26D3526A001C2EAE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		624B06DF26D357B4001C2EAE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;

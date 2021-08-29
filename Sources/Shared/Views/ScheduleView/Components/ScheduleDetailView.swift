@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SFSafeSymbols
+import Firebase
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
@@ -106,10 +107,20 @@ struct ScheduleDetailView: View {
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            Analytics.logEvent("tapped_date_item",
+                               parameters: ["date": scheduleDay?.date.debugDescription as Any,
+                                            "time_stamp": Date().debugDescription,
+                                            "time_of_day": formatTime(Date())])
             withAnimation {
                 scheduleNavigationTitle = "Schedule"
             }
         }
         
+    }
+    
+    func formatTime(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date)
     }
 }

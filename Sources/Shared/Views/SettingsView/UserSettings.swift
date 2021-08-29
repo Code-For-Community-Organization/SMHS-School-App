@@ -8,17 +8,38 @@
 import Combine
 import Foundation
 import Network
+import FirebaseAnalytics
 
 final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
+    var anyCancellable: Set<AnyCancellable> = []
     
     init(){
         if editableSettings.isEmpty {
             resetEditableSettings()
         }
+        
+        $editableSettings
+            .removeDuplicates()
+            .sink{[weak self] newValue in
+                let settingsParameters = self?.editableSettings
+                Analytics.logEvent("updated_periods", parameters: ["old_values": settingsParameters.debugDescription,
+                                                                   "new_values": newValue.debugDescription])
+            }
+            .store(in: &anyCancellable)
+        
+        $preferLegacySchedule
+            .removeDuplicates()
+            .sink{newValue in
+                Analytics.logEvent("updated_legacy_schedule",
+                                   parameters: ["old_values": self.preferLegacySchedule.description,
+                                                "new_values": newValue.description])
+            }
+            .store(in: &anyCancellable)
+        
         #if DEBUG
         #else
         resetDeveloperSettings()

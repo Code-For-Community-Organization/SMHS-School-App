@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
@@ -90,6 +91,10 @@ struct FooterModalView: View {
                 }
             }
             .navigationBarTitle("Settings")
+            .onAppear {
+                Analytics.logEvent("settings&about_opened",
+                                   parameters: nil)
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
     }

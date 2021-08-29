@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import Regex
 import SwiftUI
+import Firebase
 
 final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
@@ -140,6 +141,7 @@ extension GradesViewModel {
     }
     
     func loginAndFetch() {
+        registerAnalyticEvent()
         guard !email.isEmpty && !password.isEmpty else {
             return
         }
@@ -170,6 +172,11 @@ extension GradesViewModel {
                 self?.gradesResponse = $0
             }
             .store(in: &anyCancellables)
+    }
+    
+    func registerAnalyticEvent() {
+        Analytics.logEvent(AnalyticsEventLogin,
+                           parameters: ["method": "email"])
     }
     
     func signoutAndRemove() {
