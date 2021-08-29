@@ -27,7 +27,7 @@ struct ContentView: View {
                     
                 }
             ScheduleView(networkLoadingViewModel: networkLoadViewModel,
-                         viewModel: sharedScheduleInformation)
+                         scheduleViewModel: sharedScheduleInformation)
                 .tabItem{
                     Label("Schedule", systemSymbol: .calendar)
                 }

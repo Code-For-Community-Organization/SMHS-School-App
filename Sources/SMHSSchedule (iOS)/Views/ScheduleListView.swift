@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScheduleListView: View {
-    @ObservedObject var scheduleViewModel: SharedScheduleInformation
+    var scheduleViewModel: SharedScheduleInformation
     @State var presentCalendar = false
     @StateObject var masterCalendarViewModel = MasterCalendarViewModel()
     
@@ -28,8 +28,7 @@ struct ScheduleListView: View {
                     Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
                         ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
                             NavigationLink(
-                                destination: ScrollView {ScheduleDetailView(scheduleDay: day,
-                                                                            scheduleNavigationTitle: $scheduleViewModel.scheduleNavigationTitle).padding(.top, 40)}
+                                destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
                                 ,
                                 label: {
                                     Text(day.title)

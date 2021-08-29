@@ -48,8 +48,7 @@ struct TodayHeroView: View {
                         .font(.title2)
                         .textAlign(.leading)
                         .padding(.bottom, 10)
-                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                       scheduleNavigationTitle: $scheduleViewViewModel.scheduleNavigationTitle)
+                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                 }
             }
             .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
