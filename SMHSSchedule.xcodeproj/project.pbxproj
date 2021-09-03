@@ -31,11 +31,6 @@
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
-		624B06D526D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
-		624B06D626D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
-		624B06D726D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
-		624B06D826D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
-		624B06D926D339F1001C2EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 624B06D426D339F1001C2EAE /* GoogleService-Info.plist */; };
 		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
 		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
 		624B06E026D357B4001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DF26D357B4001C2EAE /* FirebaseAnalytics */; };
@@ -228,6 +223,9 @@
 		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
 		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
 		62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8737626BE19B9003DE95B /* UIDevice.swift */; };
+		62D8CB6D26E2C576004DD19B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62D8CB6C26E2C576004DD19B /* GoogleService-Info.plist */; };
+		62D8CB6E26E2C576004DD19B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62D8CB6C26E2C576004DD19B /* GoogleService-Info.plist */; };
+		62D8CB6F26E2C576004DD19B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62D8CB6C26E2C576004DD19B /* GoogleService-Info.plist */; };
 		62DE61EC2602525400B86555 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		62E05F6626391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
 		62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -319,7 +317,6 @@
 		623A7F1A264EED2700FF3F28 /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
-		624B06D426D339F1001C2EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		624F79EC264F875900B93C63 /* InformationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardsView.swift; sourceTree = "<group>"; };
 		624F79EE264F87BE00B93C63 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		624F79F3264FA13500B93C63 /* NewsSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSelectionButtons.swift; sourceTree = "<group>"; };
@@ -426,6 +423,7 @@
 		62D32120264A4C6700C99C42 /* ClassPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPeriod.swift; sourceTree = "<group>"; };
 		62D32127264A53B200C99C42 /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
 		62D8737626BE19B9003DE95B /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		62D8CB6C26E2C576004DD19B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedScheduleInformation.swift; sourceTree = "<group>"; };
 		62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeaderView.swift; sourceTree = "<group>"; };
 		62E05F6C2639C4AC00B609E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -726,7 +724,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				624B06D426D339F1001C2EAE /* GoogleService-Info.plist */,
+				62D8CB6C26E2C576004DD19B /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
@@ -1292,7 +1290,7 @@
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
 				6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
-				624B06D526D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
+				62D8CB6D26E2C576004DD19B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,9 +1300,9 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
-				624B06D626D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
+				62D8CB6E26E2C576004DD19B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1312,7 +1310,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				624B06D726D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,7 +1317,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				624B06D826D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,8 +1325,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
+				62D8CB6F26E2C576004DD19B /* GoogleService-Info.plist in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
-				624B06D926D339F1001C2EAE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

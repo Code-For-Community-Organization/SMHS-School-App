@@ -8,3 +8,4 @@ xcschememanagement.plist
 *.moved-aside
 *.xccheckout
 DerivedData/
+GoogleService-Info.plist
