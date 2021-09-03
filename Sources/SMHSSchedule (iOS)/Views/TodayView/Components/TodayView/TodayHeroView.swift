@@ -26,19 +26,6 @@ struct TodayHeroView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.top, -10)
                 
-                //                Label(title: {
-                //                    Text("InClass™")
-                //                        .font(.title3)
-                //                        .fontWeight(.bold)
-                //                }) {
-                //                    Image(systemSymbol: .studentdesk)
-                //                        .foregroundColor(.white)
-                //                        .padding(3)
-                //                        .background(Color.primary)
-                //                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                //                }
-                //                .padding(.bottom, 2)
-                //
                 ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                  selectionMode: $todayViewViewModel.selectionMode)
                 

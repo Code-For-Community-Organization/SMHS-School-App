@@ -86,8 +86,10 @@ struct TodayViewHeader: View {
         
     }
 }
-//struct TodayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayView(scheduleViewViewModel: SharedScheduleInformation())
-//    }
-//}
+
+struct TodayView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in }),
+                  scheduleViewViewModel: SharedScheduleInformation())
+    }
+}
