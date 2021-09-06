@@ -43,7 +43,15 @@ struct ScheduleDetailView: View {
         }
         return []
     }
-    
+
+    var scheduleDateDescription: String {
+         let date = scheduleDay?.date ?? Date()
+         let format = DateFormatter()
+         format.dateFormat = "EEEE, MMM d"
+         let formattedDate = format.string(from: date)
+         return formattedDate
+    }
+
     var body: some View {
         ScrollView {
             if userSettings.preferLegacySchedule {
@@ -92,6 +100,7 @@ struct ScheduleDetailView: View {
                 .padding(.horizontal)
             }
         }
+        .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             Analytics.logEvent("tapped_date_item",
