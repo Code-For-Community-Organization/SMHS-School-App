@@ -22,7 +22,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var scheduleText: String
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
     var periods: [ClassPeriod] {
-        parseClassPeriods()
+        appendOptionalPeriod8(periods: parseClassPeriods())
     }
 
     var currentDate: Date {

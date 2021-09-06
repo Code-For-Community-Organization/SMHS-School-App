@@ -14,15 +14,16 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     static var orientationLock = UIInterfaceOrientationMask.portrait
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
-
-        let remoteConfig = RemoteConfig.remoteConfig()
+        globalRemoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
+        
         settings.minimumFetchInterval = 0
-        remoteConfig.configSettings = settings
-        remoteConfig.fetch {status, error in
+        globalRemoteConfig.configSettings = settings
+        globalRemoteConfig.fetch {status, error in
             if status == .success {
-                remoteConfig.activate {_, _ in}
+                globalRemoteConfig.activate {_, _ in}
             } else {
                 #if DEBUG
                 debugPrint("Config not fetched")

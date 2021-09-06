@@ -8,12 +8,16 @@
 import Foundation
 
 extension DateFormatter {
-    static func formatTime12to24<Time: StringProtocol>(_ time: Time) -> Date? {
-        //DateFormatter for 12hr time `String` to `Date`
+    static func getLocalTimeFormatter(withFormat dateFormat: String) -> DateFormatter {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "h:mm"
+        formatter.dateFormat = dateFormat
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }
+    static func formatTime12to24<Time: StringProtocol>(_ time: Time) -> Date? {
+        //DateFormatter for 12hr time `String` to `Date`
+        let formatter = getLocalTimeFormatter(withFormat: "h:mm")
         guard var date = formatter.date(from: String(time)) else {return nil}
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
@@ -33,5 +37,10 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return formatter.string(from: date)
+    }
+
+    static func hourTimeFormat(_ time: String) -> Date? {
+        let formatter = getLocalTimeFormatter(withFormat: "h:mma")
+        return formatter.date(from: time)
     }
 }
