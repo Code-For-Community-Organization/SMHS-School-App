@@ -21,7 +21,10 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var date: Date  //Date of the schedule
     var scheduleText: String
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
-    var periods = [ClassPeriod]()
+    var periods: [ClassPeriod] {
+        parseClassPeriods()
+    }
+
     var currentDate: Date {
         return mockDate ?? Date()
     }
