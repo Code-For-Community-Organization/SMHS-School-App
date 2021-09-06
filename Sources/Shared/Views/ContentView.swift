@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
     @Environment(\.scenePhase) var scenePhase
-    @EnvironmentObject var userSettings: UserSettings
-
+    
     var body: some View {
         TabView {
             let networkLoadViewModel = NetworkLoadViewModel(dataReload: sharedScheduleInformation.fetchData)

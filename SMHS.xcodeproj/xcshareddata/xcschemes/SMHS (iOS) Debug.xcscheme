@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "626A2264260035F100903C39"
-               BuildableName = "SMHSSchedule.app"
+               BuildableName = "SMHS.app"
                BlueprintName = "SMHSSchedule (iOS)"
                ReferencedContainer = "container:SMHS.xcodeproj">
             </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "626A2264260035F100903C39"
-            BuildableName = "SMHSSchedule.app"
+            BuildableName = "SMHS.app"
             BlueprintName = "SMHSSchedule (iOS)"
             ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
@@ -90,7 +90,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "626A2264260035F100903C39"
-            BuildableName = "SMHSSchedule.app"
+            BuildableName = "SMHS.app"
             BlueprintName = "SMHSSchedule (iOS)"
             ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
