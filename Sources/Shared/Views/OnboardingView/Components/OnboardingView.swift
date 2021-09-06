@@ -34,7 +34,7 @@ struct OnboardingView: View {
                                   symbolImage: Image(systemSymbol: .graduationcapFill).foregroundColor(.appPrimary).font(.system(size: 50)))
                 OnboardingRowItem(title: "Calendar",
                                   description: "Glance at school events in the new calendar.",
-                                  symbolImage: Image(systemSymbol: .calendar).foregroundColor(.secondary).font(.system(size: 50)))
+                                  symbolImage: Image(systemSymbol: .calendar).foregroundColor(.appSecondary).font(.system(size: 50)))
                 OnboardingRowItem(title: "Redesigned Schedule",
                                   description: "Vibrantly colored, redesigned schedule blocks that makes SMHS app even better.",
                                   symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.appPrimary).font(.system(size: 50)))

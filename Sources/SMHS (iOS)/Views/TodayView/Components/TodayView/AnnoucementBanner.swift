@@ -29,23 +29,30 @@ struct AnnoucementBanner: View {
                 }
                 else {
                     if viewModel.isAnnoucementAvailable {
-                        if let updateTime = viewModel.lastUpdateTime?.description {
-                            Text("Last Updated: \(updateTime)")
-                                .font(.caption)
-                                .foregroundColor(.secondaryLabel)
-                                .padding(.top, 2)
-                        }
-                        else {
-                            Text("Last Updated: Unknown")
-                                .font(.caption)
-                                .foregroundColor(.secondaryLabel)
-                                .padding(.top, 2)
-                        }
+                        Group {
+                            if let updateTime = viewModel.lastUpdateTime?.description {
+                                Text("Last Updated: \(updateTime)")
+                            }
+                            else {
+                                Text("Last Updated: Unknown")
 
+                            }
+                        }
+                        .font(.caption)
+                        .foregroundColor(.secondaryLabel)
+                        .padding(.top, 2)
                     }
                     else {
-                        Image(systemSymbol: .exclamationmarkTriangleFill)
-                        Text("Daily Annoucement unavailable at this time.")
+                        Label(
+                            title: { Text("Unavailable at this time.")
+                                .font(Font.footnote.weight(.medium))
+                                .foregroundColor(.secondaryLabel)
+                            },
+                            icon: { Image(systemSymbol: .exclamationmarkTriangleFill)
+                                .foregroundColor(.systemYellow)
+                            }
+                        )
+                        .padding(.top, 2)
                     }
                 }
 
