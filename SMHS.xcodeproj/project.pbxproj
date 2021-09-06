@@ -112,8 +112,6 @@
 		629EC8392645D7C900E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC8382645D7C900E236DC /* Regex */; };
 		629EC83D2645E14F00E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC83C2645E14F00E236DC /* Regex */; };
 		62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
-		62A11A7C26E6A106007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
-		62A11A7D26E6A106007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
 		62B0D961269260FB00AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
 		62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */; };
 		62B0D9642692638600AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
@@ -383,6 +381,7 @@
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
 		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		629EC8342645D50900E236DC /* TodayViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewViewModel.swift; sourceTree = "<group>"; };
+		62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
 		62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPublishedWrapper.swift; sourceTree = "<group>"; };
