@@ -25,20 +25,7 @@ struct TodayHeroView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.top, -10)
-                
-                //                Label(title: {
-                //                    Text("InClass™")
-                //                        .font(.title3)
-                //                        .fontWeight(.bold)
-                //                }) {
-                //                    Image(systemSymbol: .studentdesk)
-                //                        .foregroundColor(.white)
-                //                        .padding(3)
-                //                        .background(Color.primary)
-                //                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                //                }
-                //                .padding(.bottom, 2)
-                //
+
                 ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                  selectionMode: $todayViewViewModel.selectionMode)
                 
@@ -50,6 +37,9 @@ struct TodayHeroView: View {
                         .padding(.bottom, 10)
                     ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                 }
+
+                AnnoucementBanner(viewModel: todayViewViewModel)
+
             }
             .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
             .padding(.horizontal)
@@ -57,11 +47,28 @@ struct TodayHeroView: View {
         .background(Color.platformBackground)
         .onboardingModal()
         .onAppear{
+            todayViewViewModel.updateAnnoucements()
             scheduleViewViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewViewModel.reset()
             }
         }
         .aboutFooter()
+        .sheet(isPresented: $todayViewViewModel.showAnnoucement,
+               content: {
+            VStack {
+                if let html = todayViewViewModel.todayAnnoucementHTML {
+                    WKWebViewRepresentable(HTMLString: html)
+                }
+
+            }
+        })
+    }
+}
+
+struct TodayHeroView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in}), scheduleViewViewModel: .mockScheduleView, todayViewViewModel: .mockViewModel)
+            .environmentObject(UserSettings())
     }
 }

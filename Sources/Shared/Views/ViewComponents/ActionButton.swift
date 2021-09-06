@@ -10,7 +10,7 @@ import SwiftUI
 struct ActionButton: View {
     var label: String
     var foregroundColor: Color = .white
-    var backgroundColor: Color = .primary
+    var backgroundColor: Color = .appPrimary
     var horizontalPadding: CGFloat = 100
     var action: () -> Void = {}
     var autoWidth: CGFloat {

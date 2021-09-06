@@ -11,6 +11,7 @@ struct Endpoint {
     var path: String
     var queryItems: [URLQueryItem] = []
     var requestHeaders: [String: String] = [:]
+    var httpMethod = "POST"
 }
 
 extension Endpoint {
@@ -28,7 +29,7 @@ extension Endpoint {
     
     var request: URLRequest {
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = httpMethod
         request.allHTTPHeaderFields = requestHeaders
         request.httpBody = requestHeaders.percentEncoded()
         return request
@@ -47,8 +48,20 @@ extension Endpoint {
             return Endpoint(path: "/grades/",
                      requestHeaders: headers)
         }
-            
-  
+    }
+
+    static func getAnnoucements(daysFromToday: Int) -> Endpoint {
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .day, value: -daysFromToday, to: Date()) ?? Date()
+        return getAnnoucements(date: date)
+    }
+
+    static func getAnnoucements(date: Date) -> Endpoint {
+        let formatter = DateFormatter()
+        return Endpoint(path: "/annoucements",
+                        queryItems: [.init(name: "date",
+                                           value: formatter.serverTimeFormat(date))],
+                        httpMethod: "GET")
     }
     
 }

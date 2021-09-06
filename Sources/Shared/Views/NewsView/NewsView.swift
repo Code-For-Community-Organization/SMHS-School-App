@@ -60,7 +60,7 @@ struct NewsView: View {
             Text(selection == 1 ? "Top Stories" : "Your Stories")
                 .fontWeight(.black)
                 .font(.title)
-                .foregroundColor(.primary)
+                .foregroundColor(.appPrimary)
                 .textAlign(.leading)
         }
         .padding(EdgeInsets(top: 20, leading: 3, bottom: 10, trailing: 3))

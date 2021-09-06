@@ -18,7 +18,7 @@ struct HorizontalLabelButton: View {
             Group {
                 Image(systemSymbol: symbol)
                     .font(.system(size: 20))
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(.appSecondary)
                 Text(label)
                     .font(.subheadline)
                     .fontWeight(.bold)

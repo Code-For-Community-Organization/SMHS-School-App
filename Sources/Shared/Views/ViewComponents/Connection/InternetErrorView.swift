@@ -27,12 +27,12 @@ struct InternetErrorView: View {
                     .padding(.bottom, 30)
                 Button(action: reloadData) {
                     Text("Retry")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appPrimary)
                         .padding(.horizontal)
                         .padding(.vertical, 3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 2, style: .continuous)
-                                .stroke(Color.primary, lineWidth: 1)
+                                .stroke(Color.appPrimary, lineWidth: 1)
                         )
                 }
                 Button(action: {
@@ -41,7 +41,7 @@ struct InternetErrorView: View {
                     Text("IGNORE")
                         .font(.caption)
                         .fontWeight(.medium)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appPrimary)
                         .padding(.top, 10)
                 }
             }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseAnalytics
 
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
@@ -49,7 +49,7 @@ struct FooterModalView: View {
                     NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
-                .foregroundColor(.secondary)
+                .foregroundColor(.appSecondary)
                 
                 Section(header: Label("Developer", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {

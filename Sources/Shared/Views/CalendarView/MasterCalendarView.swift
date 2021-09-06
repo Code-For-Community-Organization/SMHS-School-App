@@ -7,7 +7,7 @@
 
 import SwiftUI
 import ElegantCalendar
-import Firebase
+import FirebaseAnalytics
 
 struct MasterCalendarView: View {
     @State private var orientationValue: Int?
@@ -24,7 +24,7 @@ struct MasterCalendarView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ElegantCalendarView(calendarManager: calendarManager)
-                .theme(.init(primary: .primary))
+                .theme(.init(primary: .appPrimary))
             Button(action: {
                 hapticsManager.UIFeedbackImpact()
                 presentationMode.wrappedValue.dismiss()
@@ -103,6 +103,7 @@ extension MasterCalendarView: ElegantCalendarDelegate {
     }
     
     func calendar(didSelectDay date: Date) {
+        
         Analytics.logEvent("selected_calendar_day",
                            parameters: ["selected_date": formatDate(date)])
     }

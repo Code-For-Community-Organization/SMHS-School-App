@@ -21,34 +21,18 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var date: Date  //Date of the schedule
     var scheduleText: String
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
-    var periods: [ClassPeriod] {
-        //var schoolPeriods = parseClassPeriods()
-//        let preStarts = customPeriods.filter{ //Get all custom blocks before school start time
-//            if let periodStartTime = schoolPeriods.first?.startTime {
-//                return $0.startTime < periodStartTime
-//            }
-//            return false
-//        }
-//        let postEnds = customPeriods.filter{ //Get all custom blocks after school end time
-//            if let periodEndTime = schoolPeriods.last?.endTime {
-//                return $0.startTime > periodEndTime
-//            }
-//            return false
-//        }
-//        schoolPeriods.insert(contentsOf: postEnds, at: schoolPeriods.count)
-//        schoolPeriods.insert(contentsOf: preStarts, at: 0)
-        return parseClassPeriods()
-    }
+    var periods = [ClassPeriod]()
     var currentDate: Date {
         return mockDate ?? Date()
     }
     private var currentDateReferenceTime: Date? {currentDate.convertToReferenceDateLocalTime()}
     var title: String {
+
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d"
         return formatter.string(from: date)
     }
-    
+
     func getCurrentPeriodRemainingTime(selectionMode: PeriodCategory) -> TimeInterval? {
         if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime, 
            let reference = currentDateReferenceTime {

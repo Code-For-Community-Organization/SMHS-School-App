@@ -35,7 +35,7 @@ struct ScheduleListView: View {
                 }
                 .textCase(nil)
             }
-            .listItemTint(Color.secondary)
+            .listItemTint(Color.appSecondary)
         }
         .listStyle(SidebarListStyle())
         .onAppear{

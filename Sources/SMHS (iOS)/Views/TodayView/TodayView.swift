@@ -36,9 +36,9 @@ struct TodayView: View {
         .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
     
         .onAppear {
-            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.primary)
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.secondary)], for: .normal)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.appSecondary)], for: .normal)
         }
         .onDisappear {
             todayViewViewModel.showNetworkError = true
@@ -76,7 +76,7 @@ struct TodayViewHeader: View {
                     Text("Edit")
                         .font(Font.subheadline.weight(.semibold))
                 }
-                .foregroundColor(.secondary)
+                .foregroundColor(.appSecondary)
             })
         }
         .padding(EdgeInsets(top: -3, leading: 20, bottom: 7, trailing: 20))
@@ -86,8 +86,11 @@ struct TodayViewHeader: View {
         
     }
 }
-//struct TodayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayView(scheduleViewViewModel: SharedScheduleInformation())
-//    }
-//}
+
+struct TodayView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in }),
+                  scheduleViewViewModel: SharedScheduleInformation())
+            .environmentObject(UserSettings())
+    }
+}

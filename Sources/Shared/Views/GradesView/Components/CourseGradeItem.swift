@@ -17,7 +17,7 @@ struct CourseGradeItem: View {
                     Text("PERIOD \(course.periodNum)")
                         .font(.caption)
                         .fontWeight(.semibold)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.appSecondary)
                     
                     Text(course.periodName)
                         .font(.title2)

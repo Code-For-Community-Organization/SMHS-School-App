@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import Regex
 import SwiftUI
-import Firebase
+import FirebaseAnalytics
 
 final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
