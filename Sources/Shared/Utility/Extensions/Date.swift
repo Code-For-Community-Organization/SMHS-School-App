@@ -24,7 +24,17 @@ extension Date {
         
         return localDate
     }
-    
+
+    func convertToReferenceTime() -> Date {
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: self)
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+        dateComponents.second = 0
+        let newDate = calendar.date(from: dateComponents)!
+        return newDate
+    }
+
     func convertToReferenceDateLocalTime(convert: Bool = true) -> Date {
         let localDate = convert ? self.localDate() : self
         var calendar = Calendar.current

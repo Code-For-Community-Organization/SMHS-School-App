@@ -25,7 +25,7 @@ struct TodayHeroView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.top, -10)
-                
+
                 ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                  selectionMode: $todayViewViewModel.selectionMode)
                 
@@ -36,6 +36,16 @@ struct TodayHeroView: View {
                         .textAlign(.leading)
                         .padding(.bottom, 10)
                     ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                }
+
+                if let annoucement = todayViewViewModel.annoucements.first?.value {
+                    Text("Daily Annoucement")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .textAlign(.leading)
+                        .padding(.bottom, 10)
+                    let html = annoucement.fullHtml.replacingOccurrences(of: "\"", with: "")
+                    WKWebViewRepresentable(HTMLString: html)
                 }
             }
             .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))

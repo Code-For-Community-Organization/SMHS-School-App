@@ -22,4 +22,16 @@ extension DateFormatter {
         }
         return date
     }
+
+    func serverTimeFormat(_ time: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter.date(from: time)
+    }
+
+    func serverTimeFormat(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter.string(from: date)
+    }
 }
