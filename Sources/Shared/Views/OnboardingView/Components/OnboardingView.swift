@@ -29,15 +29,15 @@ struct OnboardingView: View {
             .padding(.top, 50)
             .padding(.bottom, 50)
             VStack(spacing: 35) {
-                OnboardingRowItem(title: "Grades",
-                                  description: "View student grades from Aeries Gradebook.",
-                                  symbolImage: Image(systemSymbol: .graduationcapFill).foregroundColor(.appPrimary).font(.system(size: 50)))
-                OnboardingRowItem(title: "Calendar",
-                                  description: "Glance at school events in the new calendar.",
+                OnboardingRowItem(title: "Daily Annoucements",
+                                  description: "Get updated on daily annoucements, from today tab.",
+                                  symbolImage: Image(systemSymbol: .megaphoneFill).foregroundColor(.appPrimary).font(.system(size: 50)))
+                OnboardingRowItem(title: "Period 8",
+                                  description: "Added period 8 for its days and time, just for you guys.",
+                                  symbolImage: Image(systemSymbol: ._8SquareFill).foregroundColor(.appSecondary).font(.system(size: 50)))
+                OnboardingRowItem(title: "New Details",
+                                  description: "New yet long requested, you can now see which day's schedule you are glancing at.",
                                   symbolImage: Image(systemSymbol: .calendar).foregroundColor(.appSecondary).font(.system(size: 50)))
-                OnboardingRowItem(title: "Redesigned Schedule",
-                                  description: "Vibrantly colored, redesigned schedule blocks that makes SMHS app even better.",
-                                  symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.appPrimary).font(.system(size: 50)))
             }
 
             Spacer()

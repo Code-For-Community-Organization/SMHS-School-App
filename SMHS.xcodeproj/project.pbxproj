@@ -27,6 +27,7 @@
 		62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62328C9526476E42000F26ED /* ProgressRingView.swift */; };
 		62353A522638894500207C15 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353A512638894500207C15 /* ScheduleListView.swift */; };
 		62382B5526E6994D00BF8918 /* AnnoucementBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62382B5426E6994D00BF8918 /* AnnoucementBanner.swift */; };
+		62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */; };
 		623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F17264EEBF700FF3F28 /* SearchView.swift */; };
 		623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F1A264EED2700FF3F28 /* InformationCard.swift */; };
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
@@ -110,9 +111,13 @@
 		629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
 		629EC8392645D7C900E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC8382645D7C900E236DC /* Regex */; };
 		629EC83D2645E14F00E236DC /* Regex in Frameworks */ = {isa = PBXBuildFile; productRef = 629EC83C2645E14F00E236DC /* Regex */; };
-		62A11A8526E6D36B007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */; };
-		62A11A8626E6D36B007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */; };
-		62A11A8726E6D36B007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */; };
+		62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
+		62A11A7C26E6A106007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
+		62A11A7D26E6A106007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
+		62A11A7F26E6CBDE007F7241 /* GlobalObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */; };
+		62A11A8026E6CBDE007F7241 /* GlobalObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */; };
+		62A11A8126E6CBDE007F7241 /* GlobalObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */; };
+		62A11A8326E6CD4A007F7241 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */; };
 		62B0D961269260FB00AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
 		62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */; };
 		62B0D9642692638600AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
@@ -317,6 +322,7 @@
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		62382B5426E6994D00BF8918 /* AnnoucementBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementBanner.swift; sourceTree = "<group>"; };
+		62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		623A7F1A264EED2700FF3F28 /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -381,7 +387,7 @@
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
 		629BE8BE2636489600BC49AD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		629EC8342645D50900E236DC /* TodayViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewViewModel.swift; sourceTree = "<group>"; };
-		62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObjects.swift; sourceTree = "<group>"; };
 		62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
 		62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPublishedWrapper.swift; sourceTree = "<group>"; };
@@ -462,6 +468,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
@@ -494,6 +501,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A11A8326E6CD4A007F7241 /* FirebaseRemoteConfig in Frameworks */,
 				62E2E0942685A62F009608FB /* SwiftUI.framework in Frameworks */,
 				629EC83D2645E14F00E236DC /* Regex in Frameworks */,
 				624B06E026D357B4001C2EAE /* FirebaseAnalytics in Frameworks */,
@@ -731,7 +739,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				62A11A8426E6D36A007F7241 /* GoogleService-Info.plist */,
+				62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
@@ -1070,6 +1078,7 @@
 			children = (
 				62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */,
 				62E2E090268598AA009608FB /* NetworkLoadViewModel.swift */,
+				62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1165,6 +1174,7 @@
 				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
 				62D3EEB826741DE20019D87E /* Kingfisher */,
 				624B06DD26D3526A001C2EAE /* FirebaseAnalytics */,
+				62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1229,6 +1239,7 @@
 				621F5C97266A95E6006EBE8F /* ElegantCalendar */,
 				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
 				624B06DF26D357B4001C2EAE /* FirebaseAnalytics */,
+				62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1307,7 +1318,7 @@
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
 				6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
-				62A11A8526E6D36B007F7241 /* GoogleService-Info.plist in Resources */,
+				62A11A7C26E6A106007F7241 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,7 +1328,7 @@
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
-				62A11A8626E6D36B007F7241 /* GoogleService-Info.plist in Resources */,
+				62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 			);
@@ -1343,7 +1354,7 @@
 			files = (
 				6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				62D1E51A263DF779004DBFAD /* Assets.xcassets in Resources */,
-				62A11A8726E6D36B007F7241 /* GoogleService-Info.plist in Resources */,
+				62A11A7D26E6A106007F7241 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1416,6 +1427,7 @@
 				62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */,
 				62B227D1265D63270023A7E6 /* SocialMediaIcons.swift in Sources */,
 				62D8CB7A26E2CFB5004DD19B /* Endpoint.swift in Sources */,
+				62A11A7F26E6CBDE007F7241 /* GlobalObjects.swift in Sources */,
 				6276B5F5264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */,
@@ -1544,6 +1556,7 @@
 				62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */,
 				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
 				62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */,
+				62A11A8026E6CBDE007F7241 /* GlobalObjects.swift in Sources */,
 				62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */,
 				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
 				6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */,
@@ -1600,6 +1613,7 @@
 				62B227C7265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62B227DF265DADC70023A7E6 /* PeriodBlockSubview.swift in Sources */,
 				62D1E53B263DF859004DBFAD /* RoundedCorners.swift in Sources */,
+				62A11A8126E6CBDE007F7241 /* GlobalObjects.swift in Sources */,
 				62D1E53D263DF859004DBFAD /* Bindings.swift in Sources */,
 				62B227BF265CC03A0023A7E6 /* Acknowledgements.swift in Sources */,
 				6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */,
@@ -1861,7 +1875,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=75 -Xfrontend -warn-long-expression-type-checking=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
@@ -1890,7 +1904,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHS;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1991,7 +2005,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1774;
+				CURRENT_PROJECT_VERSION = 1905;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2000,7 +2014,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2015,7 +2029,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1774;
+				CURRENT_PROJECT_VERSION = 1905;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2024,7 +2038,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2194,6 +2208,11 @@
 			package = 621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */;
 			productName = ElegantCalendar;
 		};
+		62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		623A7F20264F3B3100FF3F28 /* SwiftlySearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
@@ -2223,6 +2242,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 629EC8372645D7C900E236DC /* XCRemoteSwiftPackageReference "Regex" */;
 			productName = Regex;
+		};
+		62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 		62C9E8A7263D1D4E00CCA5C5 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;

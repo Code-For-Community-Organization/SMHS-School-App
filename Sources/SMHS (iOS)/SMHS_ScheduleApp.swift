@@ -8,15 +8,32 @@
 import SwiftUI
 import StoreKit
 import Firebase
+import FirebaseRemoteConfig
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
     static var orientationLock = UIInterfaceOrientationMask.portrait
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
+        globalRemoteConfig = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        
+        settings.minimumFetchInterval = 0
+        globalRemoteConfig.configSettings = settings
+        globalRemoteConfig.fetch {status, error in
+            if status == .success {
+                globalRemoteConfig.activate {_, _ in}
+            } else {
+                #if DEBUG
+                debugPrint("Config not fetched")
+                debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
+                #endif
+            }
+        }
         return true
     }
-    
+
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return AppDelegate.orientationLock
     }
@@ -34,7 +51,7 @@ struct SMHS_ScheduleApp: App {
         if currentCount > 8 ||
             activeSceneCount > 20 {
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene { 
+                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                     SKStoreReviewController.requestReview(in: scene)
                 }
                 UserDefaults.standard.setValue(0, forKey: "launchCount")
