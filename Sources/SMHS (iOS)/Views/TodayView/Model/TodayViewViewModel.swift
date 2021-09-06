@@ -9,22 +9,39 @@ import Combine
 import Foundation
 
 class TodayViewViewModel: ObservableObject {
+    @Published var showAnnoucement = false
+    @Published var loadingAnnoucements = false
     @Published var showEditModal = false
     @Published var showNetworkError = true
     @Published var selectionMode: PeriodCategory = .firstLunch
-    @Published var annoucements: [Date: AnnoucementResponse] = [:]
-    var todayAnnoucement: AnnoucementResponse? {
-        annoucements[Date().convertToReferenceTime()]
+    @Published(key: "annoucements") var annoucements: [Date: AnnoucementResponse] = [:]
+
+    var mockDate: Date?
+    var isAnnoucementAvailable: Bool {
+        todayAnnoucement != nil
     }
+    
+    var todayAnnoucement: AnnoucementResponse? {
+        annoucements[(mockDate ?? Date()).convertToReferenceTime()]
+    }
+
+    var todayAnnoucementHTML: String? {
+        todayAnnoucement?.getIncreasedFontSizeHTML()
+    }
+
     @Published var lastUpdateTime: Date?
     @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
     var anyCancellable: Set<AnyCancellable> = []
 
-    init () {
+    init (mockDate: Date? = nil) {
+        self.mockDate = mockDate
         fetchAnnoucements()
     }
 
     func updateAnnoucements() {
+        #if DEBUG
+        fetchAnnoucements()
+        #else
         if let time = lastReloadTime {
             //Auto reload every hour
             if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 60) {
@@ -36,14 +53,17 @@ class TodayViewViewModel: ObservableObject {
             lastReloadTime = Date()
             fetchAnnoucements()
         }
+        #endif
     }
 
     private func fetchAnnoucements() {
-        let endpoint = Endpoint.getAnnoucements(daysFromToday: 1)
+        loadingAnnoucements = true
+        let endpoint = Endpoint.getAnnoucements(date: mockDate ?? Date())
         TodayNetworkModel.fetch(with: endpoint.request, type: AnnoucementResponse.self)
             .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {[weak self] error in
+                self?.loadingAnnoucements = false
                 switch error {
                     case .finished:
                         self?.lastUpdateTime = Date().convertToReferenceTime()
@@ -60,4 +80,13 @@ class TodayViewViewModel: ObservableObject {
             })
             .store(in: &anyCancellable)
     }
+}
+
+extension TodayViewViewModel {
+    static let mockViewModel: TodayViewViewModel = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let sampleDate = formatter.date(from: "2021/9/3")!
+        return TodayViewViewModel(mockDate: sampleDate)
+    }()
 }

@@ -209,10 +209,10 @@ extension Color {
         }
     }
     
-    static var primary: Color {
+    static var appPrimary: Color {
         Color(hexadecimal: "#3498db")
     }
-    static var secondary: Color {
+    static var appSecondary: Color {
         Color(hexadecimal: "12C4A1")
     }
     static var SMBlue: Color {

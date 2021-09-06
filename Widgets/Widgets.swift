@@ -73,7 +73,7 @@ struct WidgetsEntryView : View {
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
         .background(
-            LinearGradient(gradient: .init(colors: [.primary, Color.primary.opacity(0.3)]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: .init(colors: [.appPrimary, Color.appPrimary.opacity(0.3)]), startPoint: .top, endPoint: .bottom)
         )
     }
 }

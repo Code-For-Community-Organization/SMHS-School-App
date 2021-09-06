@@ -31,13 +31,13 @@ struct OnboardingView: View {
             VStack(spacing: 35) {
                 OnboardingRowItem(title: "Grades",
                                   description: "View student grades from Aeries Gradebook.",
-                                  symbolImage: Image(systemSymbol: .graduationcapFill).foregroundColor(.primary).font(.system(size: 50)))
+                                  symbolImage: Image(systemSymbol: .graduationcapFill).foregroundColor(.appPrimary).font(.system(size: 50)))
                 OnboardingRowItem(title: "Calendar",
                                   description: "Glance at school events in the new calendar.",
                                   symbolImage: Image(systemSymbol: .calendar).foregroundColor(.secondary).font(.system(size: 50)))
                 OnboardingRowItem(title: "Redesigned Schedule",
                                   description: "Vibrantly colored, redesigned schedule blocks that makes SMHS app even better.",
-                                  symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.primary).font(.system(size: 50)))
+                                  symbolImage: Image(systemSymbol: .sparkles).foregroundColor(.appPrimary).font(.system(size: 50)))
             }
 
             Spacer()

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "626A2264260035F100903C39"
                BuildableName = "SMHSSchedule.app"
                BlueprintName = "SMHSSchedule (iOS)"
-               ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+               ReferencedContainer = "container:SMHS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "626A2275260035F200903C39"
                BuildableName = "SMHSScheduleTests.xctest"
                BlueprintName = "SMHSScheduleTests"
-               ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+               ReferencedContainer = "container:SMHS.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,7 +47,7 @@
                BlueprintIdentifier = "626A2280260035F200903C39"
                BuildableName = "SMHSScheduleUITests.xctest"
                BlueprintName = "SMHSScheduleUITests"
-               ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+               ReferencedContainer = "container:SMHS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,7 +69,7 @@
             BlueprintIdentifier = "626A2264260035F100903C39"
             BuildableName = "SMHSSchedule.app"
             BlueprintName = "SMHSSchedule (iOS)"
-            ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+            ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -92,7 +92,7 @@
             BlueprintIdentifier = "626A2264260035F100903C39"
             BuildableName = "SMHSSchedule.app"
             BlueprintName = "SMHSSchedule (iOS)"
-            ReferencedContainer = "container:SMHSSchedule.xcodeproj">
+            ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

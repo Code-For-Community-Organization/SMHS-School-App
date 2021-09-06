@@ -34,8 +34,8 @@ struct InformationCardsView: View {
         }
         .navigationBarTitle("Search")
         .introspectNavigationController{
-            $0.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(Color.primary)]
-            $0.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(Color.primary)]
+            $0.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(Color.appPrimary)]
+            $0.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(Color.appPrimary)]
         }
         .fullScreenCover(item: $informationCard){
             SafariView(url: $0.link).edgesIgnoringSafeArea(.all)

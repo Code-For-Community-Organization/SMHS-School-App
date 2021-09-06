@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SFSafeSymbols
-import Firebase
+import FirebaseAnalytics
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings

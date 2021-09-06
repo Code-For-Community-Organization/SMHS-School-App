@@ -17,7 +17,7 @@ struct SocialMediaLinks: View {
                         Spacer()
                         NavigationLink(destination: SocialDetailView()) {
                             Text("See More")
-                                .foregroundColor(.primary)
+                                .foregroundColor(.appPrimary)
                                 .font(.callout, weight: .medium)
                         }
                     }

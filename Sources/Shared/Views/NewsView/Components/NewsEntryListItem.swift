@@ -41,7 +41,7 @@ struct NewsEntryListItem: View {
                     .padding(.top)
                     Spacer()
                     ZStack(alignment: .top) {
-                        Color.secondary
+                        Color.appSecondary
                             .frame(height: 20)
                         Divider()
                     }

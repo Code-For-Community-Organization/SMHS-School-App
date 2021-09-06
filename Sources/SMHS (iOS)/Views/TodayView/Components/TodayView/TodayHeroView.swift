@@ -38,15 +38,8 @@ struct TodayHeroView: View {
                     ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
                 }
 
-                if let annoucement = todayViewViewModel.annoucements.first?.value {
-                    Text("Daily Annoucement")
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .padding(.bottom, 10)
-                    let html = annoucement.fullHtml.replacingOccurrences(of: "\"", with: "")
-                    WKWebViewRepresentable(HTMLString: html)
-                }
+                AnnoucementBanner(viewModel: todayViewViewModel)
+
             }
             .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
             .padding(.horizontal)
@@ -54,11 +47,28 @@ struct TodayHeroView: View {
         .background(Color.platformBackground)
         .onboardingModal()
         .onAppear{
+            todayViewViewModel.updateAnnoucements()
             scheduleViewViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewViewModel.reset()
             }
         }
         .aboutFooter()
+        .sheet(isPresented: $todayViewViewModel.showAnnoucement,
+               content: {
+            VStack {
+                if let html = todayViewViewModel.todayAnnoucementHTML {
+                    WKWebViewRepresentable(HTMLString: html)
+                }
+
+            }
+        })
+    }
+}
+
+struct TodayHeroView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in}), scheduleViewViewModel: .mockScheduleView, todayViewViewModel: .mockViewModel)
+            .environmentObject(UserSettings())
     }
 }
