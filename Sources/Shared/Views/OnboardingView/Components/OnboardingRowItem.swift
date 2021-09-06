@@ -15,18 +15,18 @@ struct OnboardingRowItem<Content: View>: View {
     var linkTitle: String?
     var linkURL: String?
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
             symbolImage
-                .frame(minWidth: 70)
+                .frame(maxWidth: 60)
             VStack {
                 Text(title)
-                    .font(.headline)
+                    .font(.title3)
                     .fontWeight(.semibold)
                     .textAlign(.leading)
                     .padding(.bottom, 0.5)
 
                 Text(description)
-                    .font(.footnote)
+                    .font(.subheadline)
                     .foregroundColor(.platformSecondaryLabel)
                     .textAlign(.leading)
                 if let linkTitle = linkTitle, let linkURL = linkURL {
