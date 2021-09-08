@@ -18,8 +18,11 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         globalRemoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
-        
+
+        #if DEBUG
         settings.minimumFetchInterval = 0
+        #endif
+
         globalRemoteConfig.configSettings = settings
         globalRemoteConfig.fetch {status, error in
             if status == .success {

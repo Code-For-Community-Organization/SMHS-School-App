@@ -8,11 +8,12 @@
 import Combine
 import SwiftUI
 import Foundation
+import FirebaseRemoteConfig
 
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
-    
+
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
     
@@ -27,7 +28,8 @@ final class SharedScheduleInformation: ObservableObject {
         return targetDay.first
     }
     
-    
+    var appVersionViewModel = OnboardingWrapperViewModel()
+
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
          downloader: @escaping (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load,
@@ -46,6 +48,14 @@ final class SharedScheduleInformation: ObservableObject {
         self.downloader = downloader
         print("Called fetch data from initializer...")
         fetchData()
+
+        let shouldPurge = globalRemoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
+        // Purge all data when app update applied
+        // Allow Remote Config override
+        if appVersionViewModel.versionStatus == .updated &&
+            shouldPurge {
+            reset()
+        }
     } 
     
     func reloadData() {
