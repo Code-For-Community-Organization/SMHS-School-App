@@ -58,11 +58,18 @@ struct ScheduleDateHelper {
                 
                 //For each day of schedule found, check if the date
                 //is a date equal to or after current date
-                let dateChecker: (Date, Date) = self.scheduleDateChecker(dateString: dateString,
+                let dateChecker: (scheduleDate: Date,
+                                  currentDate: Date) = self.scheduleDateChecker(dateString: dateString,
                                                                          mockDate: mockDate)
+
+                //Make sure date not already exist in schedule weeks
+                guard scheduleWeeks.last?.getDayByDate(dateChecker.scheduleDate) == nil
+                else { continue }
+
                 //Verify that the schedule's date is later than
                 //today's date because no point in showing old schedule.
-                guard dateChecker.0 >= dateChecker.1 else { continue }
+                guard dateChecker.scheduleDate >= dateChecker.currentDate else
+                { continue }
                 
                 //Parse the line of schedule text, stripping unwanted characters and words
                 guard let scheduleDay = self.scheduleLineParser(line: line,
