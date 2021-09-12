@@ -12,37 +12,52 @@ struct TodayHeroView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel: TodayViewViewModel
     @EnvironmentObject var userSettings: UserSettings
-    
+    @Environment(\.openURL) var openURL
+
     var body: some View {
         ScrollView {
             VStack {
-                Picker("", selection: $todayViewViewModel.selectionMode){
-                    Text("1st Lunch")
-                        .tag(PeriodCategory.firstLunch)
-                    Text("2nd Lunch")
-                        .tag(PeriodCategory.secondLunch)
-                    
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.top, -10)
+                if let url = todayViewViewModel.getJoinTeamsURL(),
+                   todayViewViewModel.shouldShowTeams {
+                    TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
+                            openURL(url)
 
-                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                 selectionMode: $todayViewViewModel.selectionMode)
-                
-                if scheduleViewViewModel.currentDaySchedule != nil {
-                    Text("Detailed Schedule")
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .padding(.bottom, 10)
-                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                        })
+                        .onAppear {
+                            todayViewViewModel.showTeamsBanner = true
+                        }
                 }
 
-                AnnoucementBanner(viewModel: todayViewViewModel)
+                VStack {
+                    Picker("", selection: $todayViewViewModel.selectionMode){
+                        Text("1st Lunch")
+                            .tag(PeriodCategory.firstLunch)
+                        Text("2nd Lunch")
+                            .tag(PeriodCategory.secondLunch)
 
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.top, -10)
+
+                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                     selectionMode: $todayViewViewModel.selectionMode)
+
+                    if scheduleViewViewModel.currentDaySchedule != nil {
+                        Text("Detailed Schedule")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .textAlign(.leading)
+                            .padding(.bottom, 10)
+                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                    }
+
+                    AnnoucementBanner(viewModel: todayViewViewModel)
+
+                }
+                .padding(.horizontal, 23)
             }
-            .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
-            .padding(.horizontal)
+            .padding(.top, todayViewViewModel.showTeamsBanner ? 54 : 80)
+
         }
         .background(Color.platformBackground)
         .onboardingModal()

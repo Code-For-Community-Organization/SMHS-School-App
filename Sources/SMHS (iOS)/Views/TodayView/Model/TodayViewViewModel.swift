@@ -7,12 +7,14 @@
 
 import Combine
 import Foundation
+import FirebaseRemoteConfig
 
 class TodayViewViewModel: ObservableObject {
     @Published var showAnnoucement = false
     @Published var loadingAnnoucements = false
     @Published var showEditModal = false
     @Published var showNetworkError = true
+    @Published var showTeamsBanner = true
     @Published var selectionMode: PeriodCategory = .firstLunch
     @Published(key: "annoucements") var annoucements: [Date: AnnoucementResponse] = [:]
 
@@ -29,6 +31,11 @@ class TodayViewViewModel: ObservableObject {
         todayAnnoucement?.getIncreasedFontSizeHTML()
     }
 
+    var shouldShowTeams: Bool {
+        let shouldShow = globalRemoteConfig.configValue(forKey: "show_join_teams_banner")
+        return shouldShow.boolValue
+    }
+    
     @Published var lastUpdateTime: Date?
     @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
     var anyCancellable: Set<AnyCancellable> = []
@@ -79,6 +86,16 @@ class TodayViewViewModel: ObservableObject {
                 }
             })
             .store(in: &anyCancellable)
+    }
+
+    func getJoinTeamsURL() -> URL? {
+        guard let link = globalRemoteConfig.configValue(forKey: "teams_link").stringValue
+        else { return nil }
+
+        guard let url = URL(string: link)
+        else { return nil }
+
+        return url
     }
 }
 

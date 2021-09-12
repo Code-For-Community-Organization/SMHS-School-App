@@ -51,34 +51,37 @@ struct TodayViewHeader: View {
     @StateObject var viewModel: SharedScheduleInformation
     @StateObject var todayViewModel: TodayViewViewModel
     var body: some View {
-        HStack {
-            VStack {
-                Text(viewModel.dateHelper.todayDateDescription)
-                    .fontWeight(.semibold)
-                    .textAlign(.leading)
-                    .textCase(.uppercase)
-                    .vibrancyEffect()
-                
-                Text(viewModel.dateHelper.currentWeekday)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .textAlign(.leading)
-                //.foregroundColor(.platformSecondaryLabel)
-                
-            }
-            Button(action: {todayViewModel.showEditModal = true}, label: {
-                HStack {
-                    Image(systemSymbol: .pencil)
-                        .font(Font.subheadline.weight(.semibold))
-                        .imageScale(.large)
-                        .padding(.trailing, -1)
-                    
-                    Text("Edit")
-                        .font(Font.subheadline.weight(.semibold))
+        VStack {
+            HStack {
+                VStack {
+                    Text(viewModel.dateHelper.todayDateDescription)
+                        .fontWeight(.semibold)
+                        .textAlign(.leading)
+                        .textCase(.uppercase)
+                        .vibrancyEffect()
+
+                    Text(viewModel.dateHelper.currentWeekday)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .textAlign(.leading)
+                    //.foregroundColor(.platformSecondaryLabel)
+
                 }
-                .foregroundColor(.appSecondary)
-            })
+                Button(action: {todayViewModel.showEditModal = true}, label: {
+                    HStack {
+                        Image(systemSymbol: .pencil)
+                            .font(Font.subheadline.weight(.semibold))
+                            .imageScale(.large)
+                            .padding(.trailing, -1)
+
+                        Text("Edit")
+                            .font(Font.subheadline.weight(.semibold))
+                    }
+                    .foregroundColor(.appSecondary)
+                })
+            }
         }
+
         .padding(EdgeInsets(top: -3, leading: 20, bottom: 7, trailing: 20))
         .vibrancyEffectStyle(.secondaryLabel)
         .background(BlurEffect().edgesIgnoringSafeArea(.all))
