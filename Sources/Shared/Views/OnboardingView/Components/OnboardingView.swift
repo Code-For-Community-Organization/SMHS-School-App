@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    var versionStatus: AppVersionStatus
+    var versionStatus = AppVersionStatus.getVersionStatus()
     @Binding var stayInPresentation: Bool
     var body: some View {
         VStack {

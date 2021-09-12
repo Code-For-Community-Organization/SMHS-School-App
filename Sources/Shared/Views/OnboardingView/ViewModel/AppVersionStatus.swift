@@ -7,6 +7,3 @@
 
 import Foundation
 
-enum AppVersionStatus {
-    case new, updated, stable
-}
