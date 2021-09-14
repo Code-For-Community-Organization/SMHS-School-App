@@ -10,7 +10,7 @@ import SwiftUI
 struct TeamsJoinBanner: View {
     @State var animate = false
     @Binding var showBanner: Bool
-
+    
     var action: () -> ()
     var body: some View {
         if showBanner {
@@ -29,7 +29,10 @@ struct TeamsJoinBanner: View {
                         .minimumScaleFactor(0.5)
                         .padding(.top, 0.5)
 
-                    Button(action: action) {
+                    Button(action: {
+                        showBanner = false
+                        action()
+                    }) {
                         Text("Join Team")
                             .font(.body)
                             .fontWeight(.semibold)

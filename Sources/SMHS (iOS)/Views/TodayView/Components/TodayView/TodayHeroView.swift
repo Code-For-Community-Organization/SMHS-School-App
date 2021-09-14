@@ -26,6 +26,7 @@ struct TodayHeroView: View {
                         .onAppear {
                             todayViewViewModel.showTeamsBanner = true
                         }
+                        .padding(.bottom, 5)
                 }
 
                 VStack {
