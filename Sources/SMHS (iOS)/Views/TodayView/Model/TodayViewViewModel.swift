@@ -10,6 +10,8 @@ import Foundation
 import FirebaseRemoteConfig
 
 class TodayViewViewModel: ObservableObject {
+    @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
+
     @Published var showAnnoucement = false
     @Published var loadingAnnoucements = false
     @Published var showEditModal = false
@@ -17,8 +19,10 @@ class TodayViewViewModel: ObservableObject {
     @Published var showTeamsBanner = true
     @Published var selectionMode: PeriodCategory = .firstLunch
     @Published(key: "annoucements") var annoucements: [Date: AnnoucementResponse] = [:]
+    @Published var lastUpdateTime: Date?
 
     var mockDate: Date?
+    
     var isAnnoucementAvailable: Bool {
         todayAnnoucement != nil
     }
@@ -30,14 +34,7 @@ class TodayViewViewModel: ObservableObject {
     var todayAnnoucementHTML: String? {
         todayAnnoucement?.getIncreasedFontSizeHTML()
     }
-
-    var shouldShowTeams: Bool {
-        let shouldShow = globalRemoteConfig.configValue(forKey: "show_join_teams_banner")
-        return shouldShow.boolValue
-    }
     
-    @Published var lastUpdateTime: Date?
-    @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
     var anyCancellable: Set<AnyCancellable> = []
 
     init (mockDate: Date? = nil) {

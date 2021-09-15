@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var userSettings: UserSettings
 
     var versionStatus = AppVersionStatus.getVersionStatus()
 
@@ -77,17 +78,20 @@ struct OnboardingView: View {
             Alert(title: Text("Join SMHS Teams"),
                   message: Text("Recommend joining our official forum on Teams."),
                   primaryButton: .default(Text("Join"),
-                                          action: {
-                                            if let url = getJoinTeamsURL() {
-                                                openURL(url)
-                                            }
-                                            stayInPresentation = false
-                                          }),
+                                          action: handleJoinTeamsButton),
                   secondaryButton: .cancel(Text("Nah")) {
                     stayInPresentation = false
                   })
 
         })
+    }
+
+    func handleJoinTeamsButton() {
+        if let url = getJoinTeamsURL() {
+            openURL(url)
+        }
+        userSettings.didJoinTeams = true
+        stayInPresentation = false
     }
 }
 

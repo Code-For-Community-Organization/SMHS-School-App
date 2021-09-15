@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TeamsJoinBanner: View {
+    @EnvironmentObject var userSettings: UserSettings
+
     @State var animate = false
     @Binding var showBanner: Bool
     
@@ -31,6 +33,7 @@ struct TeamsJoinBanner: View {
 
                     Button(action: {
                         showBanner = false
+                        userSettings.didJoinTeams = true
                         action()
                     }) {
                         Text("Join Team")
