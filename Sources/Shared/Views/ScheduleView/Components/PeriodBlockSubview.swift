@@ -11,21 +11,9 @@ struct PeriodBlockSubview: View {
     var periods: [ClassPeriod]
     var body: some View {
         ForEach(periods, id: \.self){period in
-            PeriodBlockItem(block: period,
-                            scheduleTitle: getTitle(period))
+            PeriodBlockItem(block: period)
         }
     }
-    
-    func getTitle(_ period: ClassPeriod) -> String {
-        switch period.periodCategory {
-        case .singleLunch:
-            return "Nutrition"
-        case .period:
-            let text = "Period \(String(period.periodNumber ?? -1))"
-            return text.autoCapitalized
-        default:
-            return "\(period.title ?? "Period Block")".autoCapitalized
-        }
-    }
+
 }
 

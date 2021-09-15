@@ -16,7 +16,7 @@ final class UserSettings: ObservableObject {
 
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
-    @Published(key: "isPeriod8On") var isPeriod8On = false
+    @Published(key: "isPeriod8On") var isPeriod8On = true
     @Published(key: "didJoinTeams") var didJoinTeams = false
     
     var anyCancellable: Set<AnyCancellable> = []

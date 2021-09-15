@@ -39,9 +39,15 @@ struct ScheduleDetailView: View {
     var postLunchPeriods: [ClassPeriod] {
         let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving}
         if let lastIndex = lastIndex, let scheduleDay = scheduleDay  {
-            return Array(scheduleDay.periods.suffix(from: lastIndex + 1)) //lastIndex + 1 to shorten array, remove unwanted
+            let removingPeriod8 = scheduleDay.periods.filter {$0.periodNumber != 8}
+            //lastIndex + 1 to shorten array, remove unwanted
+            return Array(removingPeriod8.suffix(from: lastIndex + 1))
         }
         return []
+    }
+
+    var period8: ClassPeriod? {
+        scheduleDay?.periods.filter {$0.periodNumber == 8}.first
     }
 
     var scheduleDateDescription: String {
@@ -96,6 +102,15 @@ struct ScheduleDetailView: View {
                         }
                        }
                     PeriodBlockSubview(periods: postLunchPeriods)
+                    if let period8 = period8,
+                       userSettings.isPeriod8On {
+                        Divider()
+                        Text("Most students don't have period 8, you can turn it off in settings.")
+                            .font(.caption)
+                            .foregroundColor(.platformSecondaryLabel)
+                            .padding(.bottom, 1)
+                        PeriodBlockItem(block: period8)
+                    }
                 }
                 .padding(.horizontal)
             }
@@ -110,7 +125,7 @@ struct ScheduleDetailView: View {
         }
 
     }
-    
+
     func formatTime(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"

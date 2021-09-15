@@ -12,9 +12,7 @@ struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
     var dateHelper = ScheduleDateHelper()
     let legacyDescriptionText = """
-        Toggling on will display schedules in a plain text style
-        instead of formated blocks. Legacy schedule style sometimes
-        might be more reliable and detailed (eg. sports).
+        Display schedules in a plain text style instead of prettified blocks.
 """
     
     var body: some View {
@@ -28,7 +26,10 @@ struct FooterModalView: View {
                         footer: Text(legacyDescriptionText).padding(.bottom)) {
                     Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
                 }
-                
+                Section(footer: Text("Whether to show period 8 in schedules. Most students don't have period 8").padding(.bottom)) {
+                    Toggle("Period 8", isOn: $userSettings.isPeriod8On)
+                }
+
                 Section(header: Text("Period settings").textCase(nil),
                         footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
                             .textCase(nil)
