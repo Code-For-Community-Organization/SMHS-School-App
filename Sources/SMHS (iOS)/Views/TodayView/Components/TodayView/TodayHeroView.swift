@@ -17,7 +17,7 @@ struct TodayHeroView: View {
     var body: some View {
         ScrollView {
             VStack {
-                if let url = todayViewViewModel.getJoinTeamsURL(),
+                if let url = getJoinTeamsURL(),
                    todayViewViewModel.shouldShowTeams {
                     TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
                             openURL(url)

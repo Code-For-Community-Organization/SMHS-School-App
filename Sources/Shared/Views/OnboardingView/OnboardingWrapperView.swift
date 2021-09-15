@@ -10,7 +10,7 @@ import Introspect
 
 struct OnboardingWrapperView<Content: View>: View {
     @EnvironmentObject var userSettings: UserSettings
-    @State var stayInPresentation = false
+    @State var stayInPresentation = true
     var contentView: Content
     var body: some View {
         let versionStatus = AppVersionStatus.getVersionStatus()
@@ -19,12 +19,15 @@ struct OnboardingWrapperView<Content: View>: View {
                                                         fatalError("Should not be setting this value.")
                                                    })
         contentView
-            .sheet(isPresented: shouldPresent.combine(with: $stayInPresentation), content: {
-                OnboardingView(versionStatus: versionStatus, stayInPresentation: $stayInPresentation)
-                    .introspectViewController{viewController in
-                        viewController.isModalInPresentation = stayInPresentation
-                    }
-            })
+            .background(
+                EmptyView()
+                    .sheet(isPresented: shouldPresent.combine(with: $stayInPresentation), content: {
+                        OnboardingView(versionStatus: versionStatus, stayInPresentation: $stayInPresentation)
+                            .introspectViewController {viewController in
+                                viewController.isModalInPresentation = stayInPresentation
+                            }
+                    }))
+
     }
 
 }

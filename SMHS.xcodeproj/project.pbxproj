@@ -165,8 +165,6 @@
 		62C9E8A4263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */; };
 		62C9E8A5263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */; };
 		62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 62C9E8A7263D1D4E00CCA5C5 /* Introspect */; };
-		62C9E8AB263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
-		62C9E8AC263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
 		62C9E8AE263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */; };
 		62C9E8AF263D1DBE00CCA5C5 /* AppVersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */; };
 		62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
@@ -192,7 +190,6 @@
 		62D1E526263DF833004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
 		62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F702639C5D000B609E3 /* UserSettings.swift */; };
 		62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6C2639C4AC00B609E3 /* SettingsView.swift */; };
-		62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */; };
 		62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */; };
 		62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E89F263D110100CCA5C5 /* OnboardingRowItem.swift */; };
 		62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E05F6526391CFA00B609E3 /* ScheduleListHeaderView.swift */; };
@@ -414,7 +411,6 @@
 		62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		62C9E89F263D110100CCA5C5 /* OnboardingRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRowItem.swift; sourceTree = "<group>"; };
 		62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButtonStyle.swift; sourceTree = "<group>"; };
-		62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWrapperViewModel.swift; sourceTree = "<group>"; };
 		62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionStatus.swift; sourceTree = "<group>"; };
 		62C9E8B0263D212E00CCA5C5 /* Bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindings.swift; sourceTree = "<group>"; };
 		62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -1015,7 +1011,6 @@
 		62C9E8A9263D1DA200CCA5C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				62C9E8AA263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift */,
 				62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */,
 			);
 			path = ViewModel;
@@ -1392,7 +1387,6 @@
 				62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */,
-				62C9E8AB263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */,
 				62C9E8A4263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
@@ -1502,7 +1496,6 @@
 				625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */,
 				62F5FD0126B49A2D00E821D5 /* Font.swift in Sources */,
 				62B0D96C2692776200AA6CF4 /* ActionButton.swift in Sources */,
-				62C9E8AC263D1DB200CCA5C5 /* OnboardingWrapperViewModel.swift in Sources */,
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
 				62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */,
 				62B227D2265D63270023A7E6 /* SocialMediaIcons.swift in Sources */,
@@ -1600,7 +1593,6 @@
 				62E3BF022642583100E1FF88 /* UIElementPreview.swift in Sources */,
 				62D1E52D263DF859004DBFAD /* UserSettings.swift in Sources */,
 				62D1E52E263DF859004DBFAD /* SettingsView.swift in Sources */,
-				62D1E52F263DF859004DBFAD /* OnboardingWrapperViewModel.swift in Sources */,
 				62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */,
 				62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */,
 				6287EA682654D776007B41CB /* ScheduleListHeaderText.swift in Sources */,
@@ -1879,7 +1871,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=75 -Xfrontend -warn-long-expression-type-checking=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
@@ -1908,7 +1900,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHS;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -2018,7 +2010,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2042,7 +2034,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

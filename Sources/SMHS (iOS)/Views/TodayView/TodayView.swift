@@ -33,7 +33,13 @@ struct TodayView: View {
             TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
             
         }
-        .sheet(isPresented: $todayViewViewModel.showEditModal){PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)}
+        .background(
+            EmptyView()
+                .sheet(isPresented: $todayViewViewModel.showEditModal) {
+                    PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)
+                }
+        )
+
     
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.appPrimary)

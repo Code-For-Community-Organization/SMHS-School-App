@@ -42,6 +42,9 @@ struct FeaturesStatementView: View {
                     OnboardingRowItem(title: "School Information",
                                       description: "Follow SMCHS on social medias! Find basic school directions and contacts in the bottom of search tab.",
                                       symbolImage: Image(systemSymbol: .infoCircleFill).foregroundColor(.appSecondary).font(.system(size: 50)))
+                    OnboardingRowItem(title: "Daily Annoucements",
+                                      description: "Get updated on daily annoucements, from today tab.",
+                                      symbolImage: Image(systemSymbol: .megaphoneFill).foregroundColor(.appPrimary).font(.system(size: 50)))
                     OnboardingRowItem(title: "Open Source",
                                       description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
                                       symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight).foregroundColor(.appPrimary).font(.system(size: 40)),

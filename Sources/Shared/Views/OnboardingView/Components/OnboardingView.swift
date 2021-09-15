@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @Environment(\.openURL) var openURL
+
     var versionStatus = AppVersionStatus.getVersionStatus()
+
+    @State var showAlert = false
     @Binding var stayInPresentation: Bool
+
     var body: some View {
         VStack {
             Group {
+                let name = AppVersionStatus.appDisplayName
                 if versionStatus == .new {
-                    Text("Welcome to\nSMHS Schedule")
+                    Text("Welcome to \(name)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                 }
                 else {
-                    Text("What's New in\nSMHS Schedule")
+                    Text("What's New in \(name)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
@@ -28,20 +34,38 @@ struct OnboardingView: View {
             }
             .padding(.top, 50)
             .padding(.bottom, 50)
-            VStack(spacing: 35) {
-                OnboardingRowItem(title: "Daily Annoucements",
-                                  description: "Get updated on daily annoucements, from today tab.",
-                                  symbolImage: Image(systemSymbol: .megaphoneFill).foregroundColor(.appPrimary).font(.system(size: 50)))
+
+            VStack(spacing: 50) {
+                OnboardingRowItem(title: "Join Our Teams!",
+                                  description: "The SMHS app's Teams forum is now available for SMCHS students, using your school email.",
+                                  symbolImage: Image(systemSymbol: .bubbleLeftFill)
+                                    .foregroundColor(.appPrimary)
+                                    .font(.largeTitle)
+                                    .imageScale(.large))
+
                 OnboardingRowItem(title: "Period 8",
-                                  description: "Added period 8 for its days and time, just for you guys.",
-                                  symbolImage: Image(systemSymbol: ._8SquareFill).foregroundColor(.appSecondary).font(.system(size: 50)))
-                OnboardingRowItem(title: "New Details",
-                                  description: "New yet long requested, you can now see which day's schedule you are glancing at.",
-                                  symbolImage: Image(systemSymbol: .calendar).foregroundColor(.appSecondary).font(.system(size: 50)))
+                                  description: "Optionally turned off period 8 in settings.",
+                                  symbolImage: Image(systemSymbol: ._8SquareFill)
+                                    .foregroundColor(.appSecondary)
+                                    .font(.largeTitle)
+                                    .imageScale(.large))
+
+                OnboardingRowItem(title: "Open Source",
+                                  description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
+                                  symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight)
+                                    .foregroundColor(.appPrimary)
+                                    .font(.largeTitle)
+                                    .imageScale(.large),
+                                  linkTitle: "Learn more.",
+                                  linkURL: "https://github.com/jevonmao/SMHS-Schedule")
             }
 
             Spacer()
-            Button(action: {stayInPresentation = false}, label: {
+            Button(action: {
+                if AppVersionStatus.currentVersion == "1.2.6" {
+                    showAlert = true
+                }
+            }, label: {
                 Text("Continue")
                     .font(.body)
                     .fontWeight(.semibold)
@@ -49,6 +73,21 @@ struct OnboardingView: View {
             .buttonStyle(HighlightButtonStyle())
             .padding(.bottom)
         }
+        .alert(isPresented: $showAlert, content: {
+            Alert(title: Text("Join SMHS Teams"),
+                  message: Text("Recommend joining our official forum on Teams."),
+                  primaryButton: .default(Text("Join"),
+                                          action: {
+                                            if let url = getJoinTeamsURL() {
+                                                openURL(url)
+                                            }
+                                            stayInPresentation = false
+                                          }),
+                  secondaryButton: .cancel(Text("Nah")) {
+                    stayInPresentation = false
+                  })
+
+        })
     }
 }
 

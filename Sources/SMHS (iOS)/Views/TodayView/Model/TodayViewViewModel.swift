@@ -88,15 +88,6 @@ class TodayViewViewModel: ObservableObject {
             .store(in: &anyCancellable)
     }
 
-    func getJoinTeamsURL() -> URL? {
-        guard let link = globalRemoteConfig.configValue(forKey: "teams_link").stringValue
-        else { return nil }
-
-        guard let url = URL(string: link)
-        else { return nil }
-
-        return url
-    }
 }
 
 extension TodayViewViewModel {
