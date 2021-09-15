@@ -7,16 +7,22 @@
 
 import Combine
 import Foundation
+import FirebaseRemoteConfig
 
 class TodayViewViewModel: ObservableObject {
+    @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
+
     @Published var showAnnoucement = false
     @Published var loadingAnnoucements = false
     @Published var showEditModal = false
     @Published var showNetworkError = true
+    @Published var showTeamsBanner = true
     @Published var selectionMode: PeriodCategory = .firstLunch
     @Published(key: "annoucements") var annoucements: [Date: AnnoucementResponse] = [:]
+    @Published var lastUpdateTime: Date?
 
     var mockDate: Date?
+    
     var isAnnoucementAvailable: Bool {
         todayAnnoucement != nil
     }
@@ -28,9 +34,7 @@ class TodayViewViewModel: ObservableObject {
     var todayAnnoucementHTML: String? {
         todayAnnoucement?.getIncreasedFontSizeHTML()
     }
-
-    @Published var lastUpdateTime: Date?
-    @Storage(key: "lastAnnoucementTime", defaultValue: nil) private var lastReloadTime: Date?
+    
     var anyCancellable: Set<AnyCancellable> = []
 
     init (mockDate: Date? = nil) {
@@ -80,6 +84,7 @@ class TodayViewViewModel: ObservableObject {
             })
             .store(in: &anyCancellable)
     }
+
 }
 
 extension TodayViewViewModel {

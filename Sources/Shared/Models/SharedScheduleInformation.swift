@@ -27,8 +27,6 @@ final class SharedScheduleInformation: ObservableObject {
         let targetDay = scheduleWeeks.compactMap{$0.getDayByDate(Date())}
         return targetDay.first
     }
-    
-    var appVersionViewModel = OnboardingWrapperViewModel()
 
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
@@ -52,7 +50,7 @@ final class SharedScheduleInformation: ObservableObject {
         let shouldPurge = globalRemoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
         // Purge all data when app update applied
         // Allow Remote Config override
-        if appVersionViewModel.versionStatus == .updated &&
+        if AppVersionStatus.getVersionStatus() == .updated &&
             shouldPurge {
             reset()
         }

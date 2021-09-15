@@ -8,15 +8,14 @@
 import Foundation
 import Combine
 
-final class OnboardingWrapperViewModel: ObservableObject {
-    @Published var stayInPresentation = true
-    var versionStatus: AppVersionStatus
-    
-    init() {
-        versionStatus = OnboardingWrapperViewModel.getVersionStatus()
-    }
-    
-    static func getVersionStatus() -> AppVersionStatus {
+enum VersionStatus {
+    case new, updated, stable
+}
+
+struct AppVersionStatus {
+    //@Published var stayInPresentation = true
+
+    static func getVersionStatus() -> VersionStatus {
         let defaults = UserDefaults(suiteName: "AppVersion")
         guard let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, let previousVersion = defaults?.string(forKey: "appVersion") else {
             // Key does not exist in UserDefaults, must be a fresh install

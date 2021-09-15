@@ -58,7 +58,7 @@ struct ContentView: View {
               case .inactive:
                 ()
               case .background:
-                OnboardingWrapperViewModel.setCurrentVersionStatus()
+                AppVersionStatus.setCurrentVersionStatus()
               @unknown default:
                 ()
               }

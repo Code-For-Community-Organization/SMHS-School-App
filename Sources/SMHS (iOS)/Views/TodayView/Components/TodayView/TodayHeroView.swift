@@ -12,37 +12,61 @@ struct TodayHeroView: View {
     @StateObject var scheduleViewViewModel: SharedScheduleInformation
     @StateObject var todayViewViewModel: TodayViewViewModel
     @EnvironmentObject var userSettings: UserSettings
-    
+    @Environment(\.openURL) var openURL
+
+    var shouldShowTeams: Bool {
+        // Get cloud config value for whether should show
+        let shouldShow = globalRemoteConfig.configValue(forKey: "show_join_teams_banner")
+        // Only show if user did not already
+        // join teams from onboarding prompt
+        return shouldShow.boolValue && !userSettings.didJoinTeams
+    }
+
     var body: some View {
         ScrollView {
             VStack {
-                Picker("", selection: $todayViewViewModel.selectionMode){
-                    Text("1st Lunch")
-                        .tag(PeriodCategory.firstLunch)
-                    Text("2nd Lunch")
-                        .tag(PeriodCategory.secondLunch)
-                    
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.top, -10)
+                if let url = getJoinTeamsURL(),
+                   shouldShowTeams {
+                    TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
+                            openURL(url)
 
-                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                 selectionMode: $todayViewViewModel.selectionMode)
-                
-                if scheduleViewViewModel.currentDaySchedule != nil {
-                    Text("Detailed Schedule")
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .padding(.bottom, 10)
-                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                        })
+                        .onAppear {
+                            todayViewViewModel.showTeamsBanner = true
+                        }
+                        .padding(.bottom, 5)
                 }
 
-                AnnoucementBanner(viewModel: todayViewViewModel)
+                VStack {
+                    Picker("", selection: $todayViewViewModel.selectionMode){
+                        Text("1st Lunch")
+                            .tag(PeriodCategory.firstLunch)
+                        Text("2nd Lunch")
+                            .tag(PeriodCategory.secondLunch)
 
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.top, -10)
+
+                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                     selectionMode: $todayViewViewModel.selectionMode)
+
+                    if scheduleViewViewModel.currentDaySchedule != nil {
+                        Text("Detailed Schedule")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .textAlign(.leading)
+                            .padding(.bottom, 10)
+                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                    }
+
+                    AnnoucementBanner(viewModel: todayViewViewModel)
+
+                }
+                .padding(.horizontal, 23)
             }
-            .padding(EdgeInsets(top: 80, leading: 7, bottom: 0, trailing: 7))
-            .padding(.horizontal)
+            .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
+
         }
         .background(Color.platformBackground)
         .onboardingModal()
