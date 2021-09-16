@@ -13,7 +13,7 @@ import FirebaseRemoteConfig
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
-
+    @Published var todaySchedule: ScheduleDay?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
     
@@ -24,6 +24,9 @@ final class SharedScheduleInformation: ObservableObject {
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
     private var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
+        if let today = todaySchedule {
+            return today
+        }
         let targetDay = scheduleWeeks.compactMap{$0.getDayByDate(Date())}
         return targetDay.first
     }
@@ -57,8 +60,9 @@ final class SharedScheduleInformation: ObservableObject {
     } 
     
     func reloadData() {
-        if let time = lastReloadTime { 
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(120) {
+        if let time = lastReloadTime {
+            // minimum reload interval is 6 hours
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(21600) {
                 print("Reload valid, fetching data")
                 fetchData()
                 lastReloadTime = Date()
@@ -85,10 +89,19 @@ final class SharedScheduleInformation: ObservableObject {
             }
             //Publish changes on main thread
             DispatchQueue.main.async {
+                // Decode iCS calendar into raw string
                 let rawText = String(data: data, encoding: .utf8) ?? ""
+                #if DEBUG
+                #else
+                // Only reload if the downloaded data is different
                 guard self.ICSText != rawText else {return}
+                #endif
                 self.ICSText = rawText
-                //Parse data with fetched result only if ICSText is empty (which likely means 1st time app is opened)
+                self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
+                    DispatchQueue.main.async {
+                        self.todaySchedule = day
+                    }
+                }
                 self.dateHelper.parseScheduleData(withRawText: rawText){result in
                     DispatchQueue.main.async {
                         self.scheduleWeeks = result
@@ -96,14 +109,6 @@ final class SharedScheduleInformation: ObservableObject {
                         completion?(true)
                     }
                 }
-            }
-        }
-        //1st attempt at parsing, before networking
-        //If ICSText is nil the parsing will fail silently, and fallback on 2nd parsing above
-        dateHelper.parseScheduleData(withRawText: ICSText){result in
-            DispatchQueue.main.async {
-                self.scheduleWeeks = result
-                self.objectWillChange.send()
             }
         }
     }
