@@ -16,7 +16,7 @@ struct SettingsView<Content: View>: View {
         List {
             content
         }
-        .listStyle(GroupedListStyle())
+        .listStyle(InsetGroupedListStyle())
     }
 }
 

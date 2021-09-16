@@ -9,8 +9,17 @@ import SwiftUI
 
 struct PeriodBlockItem: View {
     var block: ClassPeriod
-    var scheduleTitle: String
+    var scheduleTitle: String?
     var twoLine: Bool = false
+
+    var displayedTitle: String {
+        if let title = scheduleTitle {
+            return title
+        }
+        else {
+            return getTitle(block)
+        }
+    }
     var body: some View {
         VStack(spacing: 5) {
             VStack {
@@ -22,7 +31,8 @@ struct PeriodBlockItem: View {
                         .padding(.bottom, 8)
                 }
                 Spacer()
-                Text(scheduleTitle)
+
+                Text(displayedTitle)
                     .fontWeight(.medium)
                     .textAlign(.leading)
                     .font(.title3)
@@ -78,11 +88,24 @@ struct PeriodBlockItem: View {
             .font(.footnote)
         }
     }
+
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: date)
+    }
+
+    func getTitle(_ period: ClassPeriod) -> String {
+        switch period.periodCategory {
+        case .singleLunch:
+            return "Nutrition"
+        case .period:
+            let text = "Period \(String(period.periodNumber ?? -1))"
+            return text.autoCapitalized
+        default:
+            return "\(period.title ?? "Period Block")".autoCapitalized
+        }
     }
 }
 
