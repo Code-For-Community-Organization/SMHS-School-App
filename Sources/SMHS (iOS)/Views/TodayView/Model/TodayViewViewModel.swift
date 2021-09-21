@@ -47,8 +47,8 @@ class TodayViewViewModel: ObservableObject {
         fetchAnnoucements()
         #else
         if let time = lastReloadTime {
-            //Auto reload every hour
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 60) {
+            //Auto reload every half hour
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 30) {
                 fetchAnnoucements()
                 lastReloadTime = Date()
             }
@@ -70,7 +70,7 @@ class TodayViewViewModel: ObservableObject {
                 self?.loadingAnnoucements = false
                 switch error {
                     case .finished:
-                        self?.lastUpdateTime = Date().convertToReferenceTime()
+                        self?.lastUpdateTime = Date()
                     case .failure(_):
                         return
                 }
