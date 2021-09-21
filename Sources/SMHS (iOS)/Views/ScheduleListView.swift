@@ -39,7 +39,7 @@ struct ScheduleListView: View {
                     }
                     .textCase(nil)
                 }
-                .listItemTint(Color.appSecondary)
+                .listItemTint(appSecondary)
             }
             .listStyle(InsetGroupedListStyle())
             .fullScreenCover(isPresented: $presentCalendar) {

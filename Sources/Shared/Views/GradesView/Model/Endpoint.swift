@@ -58,7 +58,7 @@ extension Endpoint {
 
     static func getAnnoucements(date: Date) -> Endpoint {
         let formatter = DateFormatter()
-        return Endpoint(path: "/annoucements",
+        return Endpoint(path: "/announcements",
                         queryItems: [.init(name: "date",
                                            value: formatter.serverTimeFormat(date))],
                         httpMethod: "GET")

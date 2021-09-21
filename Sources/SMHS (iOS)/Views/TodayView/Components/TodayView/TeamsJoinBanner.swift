@@ -43,7 +43,7 @@ struct TeamsJoinBanner: View {
                             .padding(EdgeInsets(top: 8, leading: 30, bottom: 8, trailing: 30))
                     }
                     .background(Color.platformBackground)
-                    .foregroundColor(.appPrimary)
+                    .foregroundColor(appPrimary)
                     .clipShape(Capsule(style: .continuous))
                     .padding(.top, 5)
 
@@ -51,7 +51,7 @@ struct TeamsJoinBanner: View {
                 .padding(EdgeInsets(top: 20, leading: 15, bottom: 20, trailing: 15))
             }
             .frame(maxWidth: .infinity)
-            .background(LinearGradient(gradient: .init(colors: [.appPrimary, .appSecondary]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .background(LinearGradient(gradient: .init(colors: [appPrimary, appSecondary]), startPoint: .topLeading, endPoint: .bottomTrailing))
             .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
             .transition(.opacity)
             .onAppear {animate = true}

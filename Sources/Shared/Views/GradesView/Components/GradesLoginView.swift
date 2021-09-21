@@ -60,7 +60,7 @@ struct LoginTextFieldRoundedStyle: TextFieldStyle {
             .padding(.vertical, 15)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .stroke(focused ? Color.appPrimary : .gray, lineWidth: 3)
+                    .stroke(focused ? appPrimary : .gray, lineWidth: 3)
             ).padding()
     }
 }

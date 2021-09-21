@@ -11,9 +11,7 @@ import FirebaseAnalytics
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
     var dateHelper = ScheduleDateHelper()
-    let legacyDescriptionText = """
-        Display schedules in a plain text style instead of prettified blocks.
-"""
+    let legacyDescriptionText = "Display schedules in a plain text style instead of prettified blocks. (Try temporarily turning this on if schedule seems wrong)."
     
     var body: some View {
         NavigationView {
@@ -50,7 +48,7 @@ struct FooterModalView: View {
                     NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
-                .foregroundColor(.appSecondary)
+                .foregroundColor(appSecondary)
                 
                 Section(header: Label("Developer", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {

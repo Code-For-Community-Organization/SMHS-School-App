@@ -21,6 +21,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
         #if DEBUG
         settings.minimumFetchInterval = 0
+        #else
+        let sixHours = 60 * 60 * 6
+        settings.minimumFetchInterval = sixHours
         #endif
 
         globalRemoteConfig.configSettings = settings
@@ -43,7 +46,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct SMHS_ScheduleApp: App {
+struct SMHSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
         // get current number of times app has been launched (https://stackoverflow.com/questions/31966810/count-number-of-times-app-has-been-launched-using-swift)
