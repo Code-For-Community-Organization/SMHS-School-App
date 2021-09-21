@@ -14,7 +14,7 @@ struct AnnoucementBanner: View {
         Button(action: {viewModel.showAnnoucement = true}, label: {
             VStack {
                 HStack(alignment: .top) {
-                        Label("Daily Annoucement", systemSymbol: .megaphoneFill)
+                        Label("Daily Announcement", systemSymbol: .megaphoneFill)
                             .font(Font.title3.weight(.semibold))
                             .textAlign(.leading)
                             .padding(.bottom, 10)

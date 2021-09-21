@@ -42,8 +42,8 @@ struct FeaturesStatementView: View {
                     OnboardingRowItemLegacy(title: "School Information",
                                       description: "Follow SMCHS on social medias! Find basic school directions and contacts in the bottom of search tab.",
                                       symbolImage: Image(systemSymbol: .infoCircleFill).foregroundColor(appSecondary).font(.system(size: 50)))
-                    OnboardingRowItemLegacy(title: "Daily Annoucements",
-                                      description: "Get updated on daily annoucements, from today tab.",
+                    OnboardingRowItemLegacy(title: "Daily Announcement",
+                                      description: "Get updated on daily announcements, from today tab.",
                                       symbolImage: Image(systemSymbol: .megaphoneFill).foregroundColor(appPrimary).font(.system(size: 50)))
                     OnboardingRowItemLegacy(title: "Open Source",
                                       description: "SMHS Schedule is fully open source, contributions are welcome on Github.",

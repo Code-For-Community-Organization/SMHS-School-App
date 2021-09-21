@@ -18,7 +18,7 @@ class TodayViewViewModel: ObservableObject {
     @Published var showNetworkError = true
     @Published var showTeamsBanner = true
     @Published var selectionMode: PeriodCategory = .firstLunch
-    @Published(key: "annoucements") var annoucements: [Date: AnnoucementResponse] = [:]
+    @Published(key: "announcements") var announcements: [Date: AnnoucementResponse] = [:]
     @Published var lastUpdateTime: Date?
 
     var mockDate: Date?
@@ -28,7 +28,7 @@ class TodayViewViewModel: ObservableObject {
     }
     
     var todayAnnoucement: AnnoucementResponse? {
-        annoucements[(mockDate ?? Date()).convertToReferenceTime()]
+        announcements[(mockDate ?? Date()).convertToReferenceTime()]
     }
 
     var todayAnnoucementHTML: String? {
@@ -74,12 +74,12 @@ class TodayViewViewModel: ObservableObject {
                     case .failure(_):
                         return
                 }
-            }, receiveValue: {[weak self] annoucement in
-                let date = DateFormatter().serverTimeFormat(annoucement.date)?.convertToReferenceTime()
-                guard let annoucements = self?.annoucements,
+            }, receiveValue: {[weak self] announcement in
+                let date = DateFormatter().serverTimeFormat(announcement.date)?.convertToReferenceTime()
+                guard let announcements = self?.announcements,
                       let date = date else { return }
-                if annoucements[date] == nil {
-                    self?.annoucements[date] = annoucement
+                if announcements[date] == nil {
+                    self?.announcements[date] = announcement
                 }
             })
             .store(in: &anyCancellable)

@@ -28,12 +28,14 @@ var appSecondary: Color {
     return Color(hexadecimal: "12C4A1")
 }
 
-func getJoinTeamsURL() -> URL? {
-    guard let link = globalRemoteConfig.configValue(forKey: "teams_link").stringValue
-    else { return nil }
+extension RemoteConfig {
+    var getJoinTeamsURL: URL? {
+        guard let link = globalRemoteConfig.configValue(forKey: "teams_link").stringValue
+        else { return nil }
 
-    guard let url = URL(string: link)
-    else { return nil }
+        guard let url = URL(string: link)
+        else { return nil }
 
-    return url
+        return url
+    }
 }
