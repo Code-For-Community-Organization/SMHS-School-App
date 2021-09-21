@@ -37,28 +37,10 @@ struct OnboardingView: View {
             .padding(.bottom, 50)
 
             VStack(spacing: 50) {
-                OnboardingRowItem(title: "Join Our Teams!",
-                                  description: "The SMHS app's Teams forum is now available for SMCHS students, using your school email.",
-                                  symbolImage: Image(systemSymbol: .bubbleLeftFill)
-                                    .foregroundColor(.appPrimary)
-                                    .font(.largeTitle)
-                                    .imageScale(.large))
-
-                OnboardingRowItem(title: "Period 8",
-                                  description: "Optionally turned off period 8 in settings.",
-                                  symbolImage: Image(systemSymbol: ._8SquareFill)
-                                    .foregroundColor(.appSecondary)
-                                    .font(.largeTitle)
-                                    .imageScale(.large))
-
-                OnboardingRowItem(title: "Open Source",
-                                  description: "SMHS Schedule is fully open source, contributions are welcome on Github.",
-                                  symbolImage: Image(systemSymbol: .chevronLeftSlashChevronRight)
-                                    .foregroundColor(.appPrimary)
-                                    .font(.largeTitle)
-                                    .imageScale(.large),
-                                  linkTitle: "Learn more.",
-                                  linkURL: "https://github.com/jevonmao/SMHS-Schedule")
+                ForEach(OnboardingFeature.newVersionFeatures.indices) {index in
+                    OnboardingRowItem(featureDetails: OnboardingFeature.newVersionFeatures[index],
+                                      isPrimary: (index % 2 == 0) ? true : false)
+                }
             }
 
             Spacer()

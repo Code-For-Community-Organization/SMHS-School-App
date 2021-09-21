@@ -119,6 +119,12 @@
 		62A11A8126E6CBDE007F7241 /* GlobalObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */; };
 		62A11A8326E6CD4A007F7241 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */; };
 		62A11A8926EE9F4A007F7241 /* TeamsJoinBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8826EE9F4A007F7241 /* TeamsJoinBanner.swift */; };
+		62A11A8E26F99FA4007F7241 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */; };
+		62A11A8F26F9A0B4007F7241 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */; };
+		62A11A9026F9A0BC007F7241 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */; };
+		62A11A9226F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A9126F9A2A0007F7241 /* OnboardingRowItemLegacy.swift */; };
+		62A11A9326F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A9126F9A2A0007F7241 /* OnboardingRowItemLegacy.swift */; };
+		62A11A9426F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A9126F9A2A0007F7241 /* OnboardingRowItemLegacy.swift */; };
 		62B0D961269260FB00AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
 		62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */; };
 		62B0D9642692638600AA6CF4 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */; };
@@ -387,6 +393,8 @@
 		629EC8342645D50900E236DC /* TodayViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewViewModel.swift; sourceTree = "<group>"; };
 		62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObjects.swift; sourceTree = "<group>"; };
 		62A11A8826EE9F4A007F7241 /* TeamsJoinBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsJoinBanner.swift; sourceTree = "<group>"; };
+		62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		62A11A9126F9A2A0007F7241 /* OnboardingRowItemLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRowItemLegacy.swift; sourceTree = "<group>"; };
 		62B0D960269260FB00AA6CF4 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		62B0D9622692611500AA6CF4 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
 		62B0D968269263A800AA6CF4 /* KeychainPublishedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPublishedWrapper.swift; sourceTree = "<group>"; };
@@ -913,6 +921,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		62A11A8C26F99F93007F7241 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		62B0D95F269260E700AA6CF4 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,6 +994,7 @@
 		62C9E899263D0B0500CCA5C5 /* OnboardingView */ = {
 			isa = PBXGroup;
 			children = (
+				62A11A8C26F99F93007F7241 /* Model */,
 				62C9E8A9263D1DA200CCA5C5 /* ViewModel */,
 				62C9E89A263D0D8400CCA5C5 /* Components */,
 				62C9E896263D0AB700CCA5C5 /* OnboardingWrapperView.swift */,
@@ -990,6 +1007,7 @@
 			children = (
 				62C9E89B263D0D9600CCA5C5 /* OnboardingView.swift */,
 				62C9E89F263D110100CCA5C5 /* OnboardingRowItem.swift */,
+				62A11A9126F9A2A0007F7241 /* OnboardingRowItemLegacy.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1407,6 +1425,7 @@
 				62C9E8A0263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				62C9E897263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
 				62B227D9265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
+				62A11A9226F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */,
 				62C9E89C263D0D9600CCA5C5 /* OnboardingView.swift in Sources */,
 				627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
@@ -1429,6 +1448,7 @@
 				62B227D5265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62D3210F2649E11800C99C42 /* NewsEntry.swift in Sources */,
 				62C48DAC265C6CB10032301E /* FooterModalView.swift in Sources */,
+				62A11A9026F9A0BC007F7241 /* OnboardingFeature.swift in Sources */,
 				6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				621F5C96266A95C2006EBE8F /* MasterCalendarView.swift in Sources */,
 				62D321182649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
@@ -1456,6 +1476,7 @@
 				62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
+				62A11A9326F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */,
 				627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				626183E9263718E0001C4AD4 /* String.swift in Sources */,
@@ -1548,6 +1569,7 @@
 				6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */,
 				62F43CC8268902380009CD34 /* Endpoint.swift in Sources */,
 				62B227CA265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
+				62A11A8E26F99FA4007F7241 /* OnboardingFeature.swift in Sources */,
 				625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */,
 				62863BAE26AF461100084C28 /* Dictionary.swift in Sources */,
 				62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */,
@@ -1625,10 +1647,12 @@
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* SharedScheduleInformation.swift in Sources */,
+				62A11A9426F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */,
 				6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
 				62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				62D1E518263DF778004DBFAD /* Widgets.swift in Sources */,
+				62A11A8F26F9A0B4007F7241 /* OnboardingFeature.swift in Sources */,
 				62B0D9642692638600AA6CF4 /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

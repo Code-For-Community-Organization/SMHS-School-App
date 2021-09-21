@@ -8,28 +8,31 @@
 import SwiftUI
 import SFSafeSymbols
 
-struct OnboardingRowItem<Content: View>: View {
-    var title: String
-    var description: String
-    var symbolImage: Content
-    var linkTitle: String?
-    var linkURL: String?
+struct OnboardingRowItem: View {
+    var featureDetails: OnboardingFeature
+    var isPrimary: Bool
+
     var body: some View {
         HStack(spacing: 20) {
-            symbolImage
+            featureDetails.symbolImage
+                .foregroundColor(isPrimary ? .appPrimary : .appSecondary)
+                .font(.largeTitle)
+                .imageScale(.large)
                 .frame(maxWidth: 60)
+
             VStack {
-                Text(title)
+                Text(featureDetails.title)
                     .font(.title3)
                     .fontWeight(.semibold)
                     .textAlign(.leading)
                     .padding(.bottom, 0.5)
 
-                Text(description)
+                Text(featureDetails.description)
                     .font(.subheadline)
                     .foregroundColor(.platformSecondaryLabel)
                     .textAlign(.leading)
-                if let linkTitle = linkTitle, let linkURL = linkURL {
+                if let linkTitle = featureDetails.linkTitle,
+                   let linkURL = featureDetails.linkURL {
                     Link(linkTitle, destination: URL(string: linkURL)!)
                         .font(.footnote)
                         .textAlign(.leading)
@@ -42,7 +45,7 @@ struct OnboardingRowItem<Content: View>: View {
 
 struct OnboardingRowItem_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingRowItem(title: "View Schedules", description: "Schedule for future dates, beautifully grouped by week, easily accesible on your fingle tips.", symbolImage: Image(systemSymbol: .calendar))
+        OnboardingRowItem(featureDetails: OnboardingFeature.sampleFeature, isPrimary: true)
     }
 }
  
