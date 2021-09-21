@@ -21,7 +21,7 @@ struct Provider: TimelineProvider {
         settings.minimumFetchInterval = 0
         #else
         let sixHours = 60 * 60 * 6
-        settings.minimumFetchInterval = sixHours
+        settings.minimumFetchInterval = TimeInterval(sixHours)
         #endif
 
         globalRemoteConfig.configSettings = settings
