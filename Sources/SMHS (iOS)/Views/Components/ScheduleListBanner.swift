@@ -24,7 +24,7 @@ struct ScheduleListBanner: View {
                             .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     }
                     .background(Color.platformBackground)
-                    .foregroundColor(.appPrimary)
+                    .foregroundColor(appPrimary)
                     .clipShape(Capsule(style: .continuous))
                     Text("View calendar for all school events.")
                         .font(.caption)
@@ -36,7 +36,7 @@ struct ScheduleListBanner: View {
             }
             .frame(width: geometryProxy.size.width)
             .fixedSize(horizontal: true, vertical: true)
-            .background(Color.appPrimary)
+            .background(appPrimary)
             .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
             .animation(Animation.easeInOut)
             .onAppear {animate = true}

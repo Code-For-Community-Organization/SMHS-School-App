@@ -15,7 +15,7 @@ struct SelectedDateView: View {
                 ForEach(events, id: \.self){day in
                     HStack {
                         Rectangle()
-                            .fill(Color.appPrimary)
+                            .fill(appSecondary)
                             .frame(width: 3, height: 35)
                             .padding(.trailing, 5)
                         

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HighlightButtonStyle: ButtonStyle {
     var foregroundColor: Color = .white
-    var backgroundColor: Color = .appPrimary
+    var backgroundColor: Color = appPrimary
     var horizontalPadding: CGFloat = 100
     var autoWidth: CGFloat {
         min(CGFloat(400), UIScreen.screenWidth - horizontalPadding)

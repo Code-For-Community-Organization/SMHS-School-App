@@ -73,7 +73,7 @@
 		6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
 		6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
 		6263E83326BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */; };
-		626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */; };
+		626A2269260035F100903C39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A2268260035F100903C39 /* AppDelegate.swift */; };
 		626A226B260035F100903C39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A226A260035F100903C39 /* ContentView.swift */; };
 		626A226D260035F200903C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226C260035F200903C39 /* Assets.xcassets */; };
 		626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626A226F260035F200903C39 /* Preview Assets.xcassets */; };
@@ -355,7 +355,7 @@
 		62626394264DD21D004146CE /* PeriodEditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditItem.swift; sourceTree = "<group>"; };
 		6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ElegantCalendar.xcassets; sourceTree = SOURCE_ROOT; };
 		626A2265260035F100903C39 /* SMHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHS_ScheduleApp.swift; sourceTree = "<group>"; };
+		626A2268260035F100903C39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		626A226A260035F100903C39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		626A226C260035F200903C39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		626A226F260035F200903C39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -775,7 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				626A2293260037C400903C39 /* Views */,
-				626A2268260035F100903C39 /* SMHS_ScheduleApp.swift */,
+				626A2268260035F100903C39 /* AppDelegate.swift */,
 				626A226C260035F200903C39 /* Assets.xcassets */,
 				626A2271260035F200903C39 /* Info.plist */,
 				626A226E260035F200903C39 /* Preview Content */,
@@ -1577,7 +1577,7 @@
 				62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */,
 				62A11A8026E6CBDE007F7241 /* GlobalObjects.swift in Sources */,
 				62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */,
-				626A2269260035F100903C39 /* SMHS_ScheduleApp.swift in Sources */,
+				626A2269260035F100903C39 /* AppDelegate.swift in Sources */,
 				6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */,
 				629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */,
 				624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */,

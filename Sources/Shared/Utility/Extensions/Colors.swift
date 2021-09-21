@@ -208,13 +208,7 @@ extension Color {
             return nil
         }
     }
-    
-    static var appPrimary: Color {
-        Color(hexadecimal: "#3498db")
-    }
-    static var appSecondary: Color {
-        Color(hexadecimal: "12C4A1")
-    }
+
     static var SMBlue: Color {
         Color(hexadecimal: "0736A4")
     }

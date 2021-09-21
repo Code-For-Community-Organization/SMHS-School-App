@@ -15,7 +15,7 @@ struct OnboardingRowItem: View {
     var body: some View {
         HStack(spacing: 20) {
             featureDetails.symbolImage
-                .foregroundColor(isPrimary ? .appPrimary : .appSecondary)
+                .foregroundColor(isPrimary ? appPrimary : appSecondary)
                 .font(.largeTitle)
                 .imageScale(.large)
                 .frame(maxWidth: 60)
