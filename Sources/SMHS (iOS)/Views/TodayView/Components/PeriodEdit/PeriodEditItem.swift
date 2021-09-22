@@ -11,6 +11,7 @@ struct PeriodEditItem: View {
     @Binding var setting: EditableSetting
     var body: some View {
         TextField(setting.title, text: $setting.textContent)
+            .disableAutocorrection(true)
     }
 }
 

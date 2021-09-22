@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PeriodBlockItem: View {
+    @EnvironmentObject var userSettings: UserSettings
     var block: ClassPeriod
     var scheduleTitle: String?
     var twoLine: Bool = false
@@ -20,6 +21,16 @@ struct PeriodBlockItem: View {
             return getTitle(block)
         }
     }
+
+    var className: String? {
+        let periodNumber = block.periodNumber
+        guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
+              matchingPeriod.textContent != "" else {
+            return nil
+        }
+        return matchingPeriod.textContent
+    }
+
     var body: some View {
         VStack(spacing: 5) {
             VStack {
@@ -32,10 +43,22 @@ struct PeriodBlockItem: View {
                 }
                 Spacer()
 
-                Text(displayedTitle)
-                    .fontWeight(.medium)
-                    .textAlign(.leading)
-                    .font(.title3)
+                if let className = className {
+                    Text(className)
+                        .fontWeight(.semibold)
+                        .textAlign(.leading)
+                        .font(.title3)
+                    Text(displayedTitle)
+                        .font(.subheadline)
+                        .textAlign(.leading)
+                        .foregroundColor(.platformSecondaryBackground)
+                }
+                else {
+                    Text(displayedTitle)
+                        .fontWeight(.medium)
+                        .textAlign(.leading)
+                        .font(.title3)
+                }
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
