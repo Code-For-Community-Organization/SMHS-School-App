@@ -8,7 +8,6 @@
 import Foundation
 
 struct ClassPeriod: Hashable, Codable  {
-    
     internal init(nutritionBlock: PeriodCategory, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
         self.periodCategory = nutritionBlock
         self.periodNumber = periodNumber
@@ -32,7 +31,5 @@ struct ClassPeriod: Hashable, Codable  {
     var periodNumber: Int?
     var startTime: Date
     var endTime: Date
-    
-    
 }
 

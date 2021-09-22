@@ -103,7 +103,6 @@
 		6287EA712657783A007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
 		6287EA7226577D05007B41CB /* PeriodBlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA702657783A007B41CB /* PeriodBlockItem.swift */; };
 		6287EA97265854C8007B41CB /* PeriodBlockSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */; };
-		6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */; };
 		629BE8B9263642BC00BC49AD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8B8263642BC00BC49AD /* ScheduleListView.swift */; };
 		629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BA2636430A00BC49AD /* MockScheduleView.swift */; };
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
@@ -385,7 +384,6 @@
 		6287EA7426578C13007B41CB /* AppStore-badge-cn.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AppStore-badge-cn.svg"; sourceTree = "<group>"; };
 		6287EA7526580CC5007B41CB /* AboutFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutFooterView.swift; sourceTree = "<group>"; };
 		6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockSubview.swift; sourceTree = "<group>"; };
-		6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBlockGrid.swift; sourceTree = "<group>"; };
 		629BE8B8263642BC00BC49AD /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		629BE8BA2636430A00BC49AD /* MockScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleView.swift; sourceTree = "<group>"; };
 		629BE8BC2636444400BC49AD /* ScheduleWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeek.swift; sourceTree = "<group>"; };
@@ -849,7 +847,6 @@
 				6287EA6926558081007B41CB /* CustomScheduleView.swift */,
 				6287EA702657783A007B41CB /* PeriodBlockItem.swift */,
 				6287EA96265854C8007B41CB /* PeriodBlockSubview.swift */,
-				6287EA99265854D4007B41CB /* PeriodBlockGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1495,7 +1492,6 @@
 				62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
-				6287EA9A265854D4007B41CB /* PeriodBlockGrid.swift in Sources */,
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
 				6287EA6D265584E0007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D8CB8026E2D1CB004DD19B /* AnnoucementResponse.swift in Sources */,
