@@ -8,43 +8,58 @@
 import SwiftUI
 
 struct CourseGradeItem: View {
+    @State var showDetailView = false
     var course: CourseGrade
-    
+
     var body: some View {
-        HStack {
-            VStack {
-                Group {
-                    Text("PERIOD \(course.periodNum)")
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .foregroundColor(appSecondary)
-                    
-                    Text(course.periodName)
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .padding(.bottom, 1)
-                    Text(course.teacherName)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.platformSecondaryLabel)
+        Button(action: {
+            showDetailView = true
+        }) {
+            HStack {
+                NavigationLink(isActive: $showDetailView,
+                               destination: {Text("detail view")},
+                               label: {EmptyView()})
+                VStack {
+                    Group {
+                        Text("PERIOD \(course.periodNum)")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundColor(appSecondary)
+
+                        Text(course.periodName)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                            .padding(.bottom, 1)
+                        Text(course.teacherName)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.platformSecondaryLabel)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                Text(course.currentMark)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.platformSecondaryLabel)
+
+                Text("\(course.gradePercent)%")
+                    .font(.title2)
+                    .fontWeight(.bold)
+
+                Image(systemSymbol: .chevronRight)
+                    .font(Font.title2.weight(.semibold))
+                    .foregroundColor(.secondaryLabel)
+                
             }
-            Spacer()
-            Text(course.currentMark)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.platformSecondaryLabel)
-            
-            Text("\(course.gradePercent)%")
-                .font(.title2)
-                .fontWeight(.bold)
+            .foregroundColor(.label)
+            .padding(12)
+            .background(Color.platformSecondaryBackground)
+            .roundedCorners(cornerRadius: 10)
         }
-        .padding(12)
-        .background(Color.platformSecondaryBackground)
-        .roundedCorners(cornerRadius: 10)
+
     }
 }
 
