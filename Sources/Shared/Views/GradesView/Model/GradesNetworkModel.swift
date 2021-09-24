@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 struct GradesNetworkModel {
-    func fetch<T: Codable>(with request: URLRequest, type: T.Type) -> AnyPublisher<T, RequestError> {
+    func fetch<T: Decodable>(with request: URLRequest, type: T.Type) -> AnyPublisher<T, RequestError> {
         return URLSession.shared.dataTaskPublisher(for: request)
             .retry(3)
             .tryMap{data, response in

@@ -34,6 +34,12 @@
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
 		623D595526FAF3C4001D05F7 /* GradesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595426FAF3C4001D05F7 /* GradesDetailView.swift */; };
 		623D595726FAF3D9001D05F7 /* GradesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */; };
+		623D595926FDA056001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
+		623D595B26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595C26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595D26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595E26FDA074001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
+		623D595F26FDA075001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
 		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
@@ -333,6 +339,8 @@
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		623D595426FAF3C4001D05F7 /* GradesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailView.swift; sourceTree = "<group>"; };
 		623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailViewModel.swift; sourceTree = "<group>"; };
+		623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailedRawResponse.swift; sourceTree = "<group>"; };
+		623D595A26FDA06F001D05F7 /* GradesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetail.swift; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
 		624F79EC264F875900B93C63 /* InformationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardsView.swift; sourceTree = "<group>"; };
 		624F79EE264F87BE00B93C63 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -1137,6 +1145,8 @@
 				62F43CC7268902380009CD34 /* Endpoint.swift */,
 				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
 				625F189E268A9256000B71B4 /* RequestError.swift */,
+				623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */,
+				623D595A26FDA06F001D05F7 /* GradesDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1408,6 +1418,7 @@
 				62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				623D595B26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */,
 				62C9E8A4263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
@@ -1437,6 +1448,7 @@
 				62B0D96B2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
+				623D595F26FDA075001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				62B227C5265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62E05F6B2639C47C00B609E3 /* ContentView.swift in Sources */,
 				62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
@@ -1513,6 +1525,7 @@
 				623D595526FAF3C4001D05F7 /* GradesDetailView.swift in Sources */,
 				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
 				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
+				623D595C26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62B0D961269260FB00AA6CF4 /* KeychainWrapper.swift in Sources */,
 				62382B5526E6994D00BF8918 /* AnnoucementBanner.swift in Sources */,
@@ -1543,6 +1556,7 @@
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				623D595926FDA056001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */,
@@ -1622,12 +1636,14 @@
 				62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */,
 				62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */,
 				6287EA682654D776007B41CB /* ScheduleListHeaderText.swift in Sources */,
+				623D595D26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				62E2E093268598AA009608FB /* NetworkLoadViewModel.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
 				62D8CB8526E422B6004DD19B /* PeriodParseExtensions.swift in Sources */,
+				623D595E26FDA074001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */,
 				62F5FD0226B49B8B00E821D5 /* Font.swift in Sources */,
 				62B0D96D2692776200AA6CF4 /* ActionButton.swift in Sources */,
