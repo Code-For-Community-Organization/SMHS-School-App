@@ -19,7 +19,7 @@ struct GradesDetailRawResponse: Decodable {
         let gradebookNumber, assignmentNumber: Int
         let resultDescription, type: String
         let isGraded, isScoreVisibleToParents, isScoreValueACheckMark: Bool
-        let numberCorrect, numberPossible: Int
+        let numberCorrect, numberPossible: Double
         let mark: String
         let score, maxScore: Int
         let percent: Double
