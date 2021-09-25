@@ -10,7 +10,7 @@ import Foundation
 struct GradesDetail: Decodable {
     var assignments: [Assignment]
 
-    struct Assignment {
+    struct Assignment: Hashable {
         // MARK: Name & Description
         var description: String
         var category: String
@@ -22,7 +22,7 @@ struct GradesDetail: Decodable {
 
         // MARK: Other Information
         // Whether is missing
-        var dateCompleted: String
+        var dateCompleted: String?
         var isGraded: Bool
     }
 

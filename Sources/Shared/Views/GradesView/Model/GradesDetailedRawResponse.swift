@@ -17,13 +17,14 @@ struct GradesDetailRawResponse: Decodable {
 
     struct GradesDetailContent: Codable {
         let gradebookNumber, assignmentNumber: Int
-            let resultDescription, type: String
-            let isGraded, isScoreVisibleToParents, isScoreValueACheckMark: Bool
-            let numberCorrect, numberPossible: Int
-            let mark: String
-            let score, maxScore: Int
-            let percent: Double
-            let dateAssigned, dateDue, dateCompleted, rubricAssignment: String
+        let resultDescription, type: String
+        let isGraded, isScoreVisibleToParents, isScoreValueACheckMark: Bool
+        let numberCorrect, numberPossible: Int
+        let mark: String
+        let score, maxScore: Int
+        let percent: Double
+        let dateAssigned, dateDue, rubricAssignment: String
+        let dateCompleted: String?
 
             enum CodingKeys: String, CodingKey {
                 case gradebookNumber, assignmentNumber

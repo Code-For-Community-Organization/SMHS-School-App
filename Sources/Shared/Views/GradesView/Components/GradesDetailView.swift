@@ -11,7 +11,9 @@ struct GradesDetailView: View {
     @StateObject var viewModel: GradesDetailViewModel
 
     var body: some View {
-        Text("Hello, World!")
+        ForEach(viewModel.detailedAssignments, id: \.self) {assignmentGrade in
+            Text(assignmentGrade.description)
+        }
     }
 }
 
