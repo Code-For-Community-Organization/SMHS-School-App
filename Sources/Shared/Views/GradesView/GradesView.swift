@@ -56,12 +56,12 @@ struct GradesView: View {
 
     }
     
-    func getCoursesList() -> [CourseGrade] {
+    func getCoursesList() -> [CourseGrade.GradeSummary] {
         if userSettings.developerSettings.dummyGrades {
-            return CourseGrade.dummyGrades
+            return CourseGrade.dummyGrades.courses
         }
         else {
-            return gradesViewModel.gradesResponse.filter{!$0.isPrior}
+            return gradesViewModel.gradesResponse
         }
     }
 }

@@ -26,7 +26,7 @@ final class GradesViewModel: ObservableObject {
     //Email, password, gradebook data
     @Published(keychain: "email") var email: String = ""
     @Published(keychain: "password") var password: String = ""
-    @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
+    @Published(key: "gradesResponse") var gradesResponse = [CourseGrade.GradeSummary]()
     
     //Form validation errors
     @Published var emailErrorMsg = ""
@@ -142,12 +142,20 @@ extension GradesViewModel {
             return
         }
         isLoading = true
-        let endpoint = Endpoint.studentLogin(email: email,
+        let loginEndpoint = Endpoint.studentLogin(email: email,
                                              password: password,
                                              debugMode: userSettings?.developerSettings.debugNetworking ?? false)
-        
-        gradesNetworkModel.fetch(with: endpoint.request, type: [CourseGrade].self)
+
+        let getSummaryEndpoint = Endpoint.getGradesSummary()
+        gradesNetworkModel.fetch(with: loginEndpoint.request)
             .removeDuplicates()
+            .receive(on: RunLoop.main)
+            .flatMap {[unowned self] (success) -> AnyPublisher<CourseGrade, RequestError> in
+                let cookies = HTTPCookieStorage.shared
+                print(cookies.cookies)
+                return self.gradesNetworkModel.fetch(with: getSummaryEndpoint.request, type: CourseGrade.self)
+
+            }
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {[weak self] error in
                 self?.isLoading = false
@@ -164,8 +172,10 @@ extension GradesViewModel {
                 case .finished:
                     break
                 }
-            }) {[weak self] in
-                self?.gradesResponse = $0
+            }) {[weak self] rawResponse in
+                self?.gradesResponse = rawResponse.courses
+                // Ensure displayed courses are not dropped
+                    .filter {$0.code != .dropped}
             }
             .store(in: &anyCancellables)
     }

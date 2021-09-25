@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate struct GradesDetailRawResponse: Decodable {
+struct GradesDetailRawResponse: Decodable {
     let d: D
 
     struct D: Codable {

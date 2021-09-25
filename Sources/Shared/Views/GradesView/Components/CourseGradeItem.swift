@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CourseGradeItem: View {
     @State var showDetailView = false
-    var course: CourseGrade
+    var course: CourseGrade.GradeSummary
 
     var body: some View {
         Button(action: {
@@ -17,7 +17,10 @@ struct CourseGradeItem: View {
         }) {
             HStack {
                 NavigationLink(isActive: $showDetailView,
-                               destination: {Text("detail view")},
+                               destination: {
+                    GradesDetailView(viewModel: .init(gradebookNumber: course.gradebookNumber,
+                                                      term: course.term))
+                },
                                label: {EmptyView()})
                 VStack {
                     Group {
@@ -32,10 +35,10 @@ struct CourseGradeItem: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                             .padding(.bottom, 1)
-                        Text(course.teacherName)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.platformSecondaryLabel)
+//                        Text(course.teacherName)
+//                            .font(.subheadline)
+//                            .fontWeight(.semibold)
+//                            .foregroundColor(.platformSecondaryLabel)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -63,8 +66,8 @@ struct CourseGradeItem: View {
     }
 }
 
-struct CourseGradeItem_Previews: PreviewProvider {
-    static var previews: some View {
-        CourseGradeItem(course: CourseGrade(periodNum: 1, periodName: "English", teacherName: "John Cena", gradePercent: "100%", currentMark: "A+", isPrior: false))
-    }
-}
+//struct CourseGradeItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CourseGradeItem(course: CourseGrade.GradeSummary(periodNum: 1, periodName: "English", gradePercent: "100%", currentMark: "A+"))
+//    }
+//}

@@ -11,19 +11,22 @@ import Foundation
 class GradesDetailViewModel: ObservableObject {
     @Published var detailedAssignments = [GradesDetail.Assignment]()
 
-    var gradebookNumber: String
+    var gradebookNumber: Int
     var term: String
     var anyCancellable: Set<AnyCancellable> = []
     let networkingModel = GradesNetworkModel()
 
-    init(gradebookNumber: String, term: String) {
+    init(gradebookNumber: Int, term: String) {
         self.gradebookNumber = gradebookNumber
         self.term = term
         fetchDetailedGrades()
     }
 
     func fetchDetailedGrades() {
-        let gradesRequest = Endpoint.getDetailedGrades(term: "", gradebookNumber: "")
+        let gradesRequest = Endpoint.getDetailedGrades(term: term,
+                                                       gradebookNumber: String(gradebookNumber))
+        let cookies = HTTPCookieStorage.shared
+        print(cookies.cookies)
         networkingModel.fetch(with: gradesRequest.request, type: GradesDetail.self)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {requestError in

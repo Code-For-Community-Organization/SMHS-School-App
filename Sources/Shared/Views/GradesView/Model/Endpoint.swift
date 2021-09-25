@@ -14,6 +14,7 @@ struct Endpoint {
     var requestHeaders: [String: String] = [:]
     var requestBody: [String: String] = [:]
     var httpMethod = "POST"
+    var isApplicationJson = false
 }
 
 extension Endpoint {
@@ -34,45 +35,61 @@ extension Endpoint {
         request.httpMethod = httpMethod
         request.allHTTPHeaderFields = requestHeaders
         request.httpBody = requestBody.percentEncoded()
+//        if let bodyData = try? JSONSerialization.data(withJSONObject: requestBody, options: []),
+//        httpMethod == "POST" {
+//            request.httpBody = bodyData
+//        }
+        if isApplicationJson {
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        }
         return request
     }
 
     static let SMHS_API_HOST = "api.smhs.app"
-    static let SMHS_API_MAIN_PATH = "api/v1"
+    static let SMHS_API_MAIN_PATH = "/api/v1"
 
     static let AERIES_API_HOST = "aeries.smhs.org"
-    static let AERIES_API_MAIN_PATH = "parent/m/api/MobileWebAPI.asmx"
+    static let AERIES_API_MAIN_PATH = "/parent/m/api/MobileWebAPI.asmx"
+    static let AERIES_API_LOGIN_PATH = "/parent/LoginParent.aspx"
 
     static func studentLogin(email: String,
                              password: String,
                              debugMode: Bool = false) -> Endpoint {
-        let headers = ["email": email, "password": password]
-        if debugMode {
-            return Endpoint(host: SMHS_API_HOST,
-                            path: SMHS_API_MAIN_PATH + "/grades/",
-                     queryItems: [.init(name: "reload", value: "false")],
-                     requestBody: headers)
-        }
-        else {
-            return Endpoint(host: SMHS_API_HOST,
-                            path: SMHS_API_MAIN_PATH + "/grades/",
-                     requestHeaders: headers)
-        }
+        let form = ["checkCookiesEnabled":"true",
+                      "checkMobileDevice":"false",
+                      "checkStandaloneMode":"false",
+                      "checkTabletDevice":"false",
+                    "portalAccountUsername": email,
+                    "portalAccountPassword": password]
+        
+        return Endpoint(host: AERIES_API_HOST,
+                        path: AERIES_API_LOGIN_PATH,
+                        requestBody: form,
+                        httpMethod: "POST")
+
+    }
+
+    static func getGradesSummary() -> Endpoint {
+        Endpoint(host: AERIES_API_HOST,
+                 path: AERIES_API_MAIN_PATH + "/GetGradebookSummaryData",
+                 httpMethod: "GET",
+                 isApplicationJson: true)
     }
 
     static func getDetailedGrades(term: String,
                                   gradebookNumber: String) -> Endpoint {
-        let body = ["checkCookiesEnabled":"true",
-                      "checkMobileDevice":"false",
-                      "checkStandaloneMode":"false",
-                      "checkTabletDevice":"false",
-                      "portalAccountPassword":"Mao511969",
-                      "portalAccountUsername":"jingwen.mao@smhsstudents.org"]
+        let body = [
+            "requestedPage": "1",
+            "term": "F",
+            "pageSize": "200",
+            "gradebookNumber": gradebookNumber
+        ]
 
         return Endpoint(host: AERIES_API_HOST,
-                        path: AERIES_API_MAIN_PATH + "/GetStudentsOfCurrentAccount",
+                        path: AERIES_API_MAIN_PATH + "/GetGradebookDetailsData",
                         requestBody: body,
-                        httpMethod: "POST")
+                        httpMethod: "POST",
+                        isApplicationJson: true)
     }
 
     static func getAnnoucements(daysFromToday: Int) -> Endpoint {
