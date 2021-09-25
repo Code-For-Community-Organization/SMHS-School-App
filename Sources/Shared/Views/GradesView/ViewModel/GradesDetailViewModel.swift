@@ -27,21 +27,10 @@ class GradesDetailViewModel: ObservableObject {
     func fetchDetailedGrades() {
         let gradesRequest = Endpoint.getDetailedGrades(term: term,
                                                        gradebookNumber: String(gradebookNumber))
-        let cookies = HTTPCookieStorage.shared
-        print(cookies.cookies)
-        let body = [
-            "requestedPage": "1",
-            "term": "F",
-            "pageSize": "200",
-            "gradebookNumber": String(gradebookNumber)
-        ]
-
-        let header: HTTPHeaders = ["Content-Type": "application/json; charset=utf-8"]
-
-        AF.request("https://aeries.smhs.org/parent/m/api/MobileWebAPI.asmx/GetGradebookDetailsData",
+        AF.request(gradesRequest.request.url!,
                    method: .post,
-                   parameters: body,
-                   encoder: JSONParameterEncoder.default, headers: header)
+                   parameters: gradesRequest.requestBody,
+                   encoder: JSONParameterEncoder.default)
             .publishDecodable(type: GradesDetail.self)
             .value()
             .receive(on: RunLoop.main)
