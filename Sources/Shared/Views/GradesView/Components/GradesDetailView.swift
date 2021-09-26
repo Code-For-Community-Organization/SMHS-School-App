@@ -74,6 +74,15 @@ struct GradesDetailView: View {
                 .background(Color.platformBackground)
             }
             .navigationTitle(className)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemSymbol: .sliderVertical3)
+                    }
+                }
+            }
         }
 
     }
