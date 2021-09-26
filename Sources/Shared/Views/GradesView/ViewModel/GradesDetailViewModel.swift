@@ -21,16 +21,20 @@ class GradesDetailViewModel: ObservableObject {
     init(gradebookNumber: Int, term: String) {
         self.gradebookNumber = gradebookNumber
         self.term = term
+        let userDefault = UserDefaults.standard
+        let decoder = JSONDecoder()
+        if let cached = userDefault.object(forKey: String(gradebookNumber)) as? Data,
+           let decoded = try? decoder.decode([GradesDetail.Assignment].self, from: cached){
+            detailedAssignments = decoded
+        }
         fetchDetailedGrades()
     }
 
     func fetchDetailedGrades() {
         let gradesRequest = Endpoint.getDetailedGrades(term: term,
                                                        gradebookNumber: String(gradebookNumber))
-        AF.request(gradesRequest.request.url!,
-                   method: .post,
-                   parameters: gradesRequest.requestBody,
-                   encoder: JSONParameterEncoder.default)
+
+        AF.request(gradesRequest.request)
             .publishDecodable(type: GradesDetail.self)
             .value()
             .receive(on: RunLoop.main)
@@ -41,8 +45,13 @@ class GradesDetailViewModel: ObservableObject {
                 case .failure(let error):
                     print(error)
                 }
-            }, receiveValue: {[weak self] receivedGradesDetail in
-                self?.detailedAssignments = receivedGradesDetail.assignments
+            }, receiveValue: {[unowned self] receivedGradesDetail in
+                let encoder = JSONEncoder()
+                let userDefault = UserDefaults.standard
+                if let encoded = try? encoder.encode(receivedGradesDetail) {
+                    userDefault.setValue(encoded, forKey: "\(self.gradebookNumber)")
+                }
+                self.detailedAssignments = receivedGradesDetail.assignments
             })
             .store(in: &anyCancellable)
     }

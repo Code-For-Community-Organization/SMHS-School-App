@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct GradesDetail: Decodable {
+struct GradesDetail: Codable, Hashable {
     var assignments: [Assignment]
 
-    struct Assignment: Hashable {
+    struct Assignment: Hashable, Codable {
         // MARK: Name & Description
         var description: String
         var category: String
 
         // MARK: Scores
-        var numberCorrect: Int
-        var numberPossible: Int
+        var numberCorrect: Double
+        var numberPossible: Double
         var percent: Double
 
         // MARK: Other Information

@@ -10,6 +10,7 @@ import Foundation
 import Regex
 import SwiftUI
 import FirebaseAnalytics
+import Alamofire
 
 final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
@@ -124,17 +125,16 @@ extension GradesViewModel {
 extension GradesViewModel {
     
     func reloadData() {
-        loginAndFetch()
-//        if let time = lastReloadTime {
-//            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
-//                loginAndFetch()
-//                lastReloadTime = Date()
-//            }
-//        }
-//        else {
-//            lastReloadTime = Date()
-//            loginAndFetch()
-//        }
+        if let time = lastReloadTime {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
+                loginAndFetch()
+                lastReloadTime = Date()
+            }
+        }
+        else {
+            lastReloadTime = Date()
+            loginAndFetch()
+        }
     }
     
     func loginAndFetch() {
@@ -149,7 +149,6 @@ extension GradesViewModel {
 
         let getSummaryEndpoint = Endpoint.getGradesSummary()
         gradesNetworkModel.fetch(with: loginEndpoint.request)
-            .removeDuplicates()
             .receive(on: RunLoop.main)
             .flatMap {[unowned self] (success) -> AnyPublisher<CourseGrade, RequestError> in
                 let cookies = HTTPCookieStorage.shared
@@ -158,6 +157,7 @@ extension GradesViewModel {
 
             }
             .receive(on: RunLoop.main)
+            .retry(2)
             .sink(receiveCompletion: {[weak self] error in
                 self?.isLoading = false
                 switch error {
@@ -178,6 +178,7 @@ extension GradesViewModel {
                 // Ensure displayed courses are not dropped
                     .filter {$0.code != .dropped}
             }
+
             .store(in: &anyCancellables)
     }
     

@@ -15,6 +15,7 @@ struct Endpoint {
     var requestBody: [String: String] = [:]
     var httpMethod = "POST"
     var isApplicationJson = false
+    var jsonEncode = false
 }
 
 extension Endpoint {
@@ -32,13 +33,17 @@ extension Endpoint {
     
     var request: URLRequest {
         var request = URLRequest(url: url)
+        request.cachePolicy = .returnCacheDataElseLoad
         request.httpMethod = httpMethod
         request.allHTTPHeaderFields = requestHeaders
-        request.httpBody = requestBody.percentEncoded()
-//        if let bodyData = try? JSONSerialization.data(withJSONObject: requestBody, options: []),
-//        httpMethod == "POST" {
-//            request.httpBody = bodyData
-//        }
+        if httpMethod == "POST" {
+            if jsonEncode {
+                request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: [])
+            }
+            else {
+                request.httpBody = requestBody.percentEncoded()
+            }
+        }
         if isApplicationJson {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         }
@@ -80,7 +85,7 @@ extension Endpoint {
                                   gradebookNumber: String) -> Endpoint {
         let body = [
             "requestedPage": "1",
-            "term": "F",
+            "term": term,
             "pageSize": "200",
             "gradebookNumber": gradebookNumber
         ]
@@ -89,7 +94,8 @@ extension Endpoint {
                         path: AERIES_API_MAIN_PATH + "/GetGradebookDetailsData",
                         requestBody: body,
                         httpMethod: "POST",
-                        isApplicationJson: true)
+                        isApplicationJson: true,
+                        jsonEncode: true)
     }
 
     static func getAnnoucements(daysFromToday: Int) -> Endpoint {

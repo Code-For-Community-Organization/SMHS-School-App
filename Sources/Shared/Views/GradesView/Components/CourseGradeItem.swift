@@ -11,6 +11,8 @@ struct CourseGradeItem: View {
     @State var showDetailView = false
     var course: CourseGrade.GradeSummary
 
+    // Remove term annotation (... - Fall) from end of period name
+    let termAnnotationRemoval = #"(- \w+)$"#
     var body: some View {
         Button(action: {
             showDetailView = true
@@ -28,8 +30,9 @@ struct CourseGradeItem: View {
                             .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(appSecondary)
+                            .padding(.bottom, 2)
 
-                        Text(course.periodName)
+                        Text(course.periodName.removingRegexMatches(pattern: termAnnotationRemoval))
                             .font(.title2)
                             .fontWeight(.medium)
                             .lineLimit(1)

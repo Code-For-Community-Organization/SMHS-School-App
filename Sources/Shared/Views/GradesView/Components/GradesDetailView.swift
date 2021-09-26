@@ -23,15 +23,15 @@ struct GradesDetailView: View {
                                 .textAlign(.leading)
                             Text(assignmentGrade.category)
                                 .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.secondaryLabel)
+                                .textAlign(.leading)
+                            Text("Finished Grading: \(assignmentGrade.isGraded ? "YES" : "NO")")
+                                .font(.footnote)
                                 .fontWeight(.medium)
                                 .foregroundColor(.secondaryLabel)
                                 .textAlign(.leading)
                                 .padding(.top, 1)
-                            Text("Finished Grading: \(assignmentGrade.isGraded ? "YES" : "NO")")
-                                .font(.footnote)
-                                .foregroundColor(.secondaryLabel)
-                                .textAlign(.leading)
-
                         }
 
                         Spacer()
@@ -41,11 +41,15 @@ struct GradesDetailView: View {
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .textAlign(.trailing)
+                                .foregroundColor(appPrimary)
 
-                            Text("\(assignmentGrade.numberCorrect)/\(assignmentGrade.numberPossible)")
+                            let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
+                            let numbersPossible = String(format: "%g", assignmentGrade.numberPossible)
+
+                            Text("\(numbersCorrect)/\(numbersPossible)")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(appSecondary)
                                 .textAlign(.trailing)
                                 .padding(.top, 1)
                         }
