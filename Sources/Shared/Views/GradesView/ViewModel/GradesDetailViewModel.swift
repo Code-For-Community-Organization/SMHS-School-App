@@ -48,7 +48,7 @@ class GradesDetailViewModel: ObservableObject {
             }, receiveValue: {[unowned self] receivedGradesDetail in
                 let encoder = JSONEncoder()
                 let userDefault = UserDefaults.standard
-                if let encoded = try? encoder.encode(receivedGradesDetail) {
+                if let encoded = try? encoder.encode(receivedGradesDetail.assignments) {
                     userDefault.setValue(encoded, forKey: "\(self.gradebookNumber)")
                 }
                 self.detailedAssignments = receivedGradesDetail.assignments

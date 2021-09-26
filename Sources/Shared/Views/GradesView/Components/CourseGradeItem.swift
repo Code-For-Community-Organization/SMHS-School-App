@@ -13,6 +13,10 @@ struct CourseGradeItem: View {
 
     // Remove term annotation (... - Fall) from end of period name
     let termAnnotationRemoval = #"(- \w+)$"#
+    var periodName: String {
+        course.periodName.removingRegexMatches(pattern: termAnnotationRemoval)
+    }
+
     var body: some View {
         Button(action: {
             showDetailView = true
@@ -20,7 +24,9 @@ struct CourseGradeItem: View {
             HStack {
                 NavigationLink(isActive: $showDetailView,
                                destination: {
-                    GradesDetailView(viewModel: .init(gradebookNumber: course.gradebookNumber,
+                    GradesDetailView(className: periodName,
+                                     overAll: course.gradePercent,
+                                     viewModel: .init(gradebookNumber: course.gradebookNumber,
                                                       term: course.term))
                 },
                                label: {EmptyView()})
@@ -32,7 +38,7 @@ struct CourseGradeItem: View {
                             .foregroundColor(appSecondary)
                             .padding(.bottom, 2)
 
-                        Text(course.periodName.removingRegexMatches(pattern: termAnnotationRemoval))
+                        Text(periodName)
                             .font(.title2)
                             .fontWeight(.medium)
                             .lineLimit(1)

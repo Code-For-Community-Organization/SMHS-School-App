@@ -21,7 +21,7 @@ struct GradesDetailRawResponse: Decodable {
         let isGraded, isScoreVisibleToParents, isScoreValueACheckMark: Bool
         let numberCorrect, numberPossible: Double
         let mark: String
-        let score, maxScore: Int
+        let score, maxScore: Double
         let percent: Double
         let dateAssigned, dateDue, rubricAssignment: String
         let dateCompleted: String?
