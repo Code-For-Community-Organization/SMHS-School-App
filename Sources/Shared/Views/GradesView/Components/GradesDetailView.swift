@@ -9,14 +9,14 @@ import SwiftUI
 
 struct GradesDetailView: View {
     var className: String
-    var overAll: Double
+    var overAll: String
     @StateObject var viewModel: GradesDetailViewModel
 
     var body: some View {
         ZStack {
             Color.platformSecondaryBackground.ignoresSafeArea()
             VStack {
-                Text("\(overAll)%")
+                Text(overAll)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(appSecondary)
@@ -38,45 +38,51 @@ struct GradesDetailView: View {
                                         .roundedCorners(cornerRadius: 10)
                                         .textAlign(.leading)
                                     Spacer()
-                                    if let dateDigits = assignmentGrade.dateCompleted?.digits {
-                                        Text("Date Completed: \(viewModel.formatUnixDate(dateDigits))")
+                                    Group {
+                                        if let dateDigits = assignmentGrade.dateCompleted?.digits {
+                                            Text("Date Completed: \(viewModel.formatUnixDate(dateDigits))")
+                                        }
+                                        else {
+                                            Text("Date Completed: Unknown")
+                                        }
                                     }
-                                    else {
-                                        Text("Date Completed: Unknown")
+                                    .font(Font.caption.weight(.semibold))
+                                    .foregroundColor(Color.tertiaryLabel)
+
+                                }
+
+                                HStack {
+                                    VStack {
+                                        Text(assignmentGrade.description.localizedCapitalized)
+                                            .font(.title3)
+                                            .fontWeight(.semibold)
+                                            .textAlign(.leading)
+                                        Text(assignmentGrade.category)
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.secondaryLabel)
+                                            .textAlign(.leading)
                                     }
-                                }
-                            }
-                            HStack {
-                                VStack {
-                                    Text(assignmentGrade.description.localizedCapitalized)
-                                        .font(.title3)
-                                        .fontWeight(.semibold)
-                                        .textAlign(.leading)
-                                    Text(assignmentGrade.category)
-                                        .font(.subheadline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.secondaryLabel)
-                                        .textAlign(.leading)
-                                }
-                                Spacer()
+                                    Spacer()
 
-                                VStack {
-                                    Text("\(String(format: "%.1f", assignmentGrade.percent))%")
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .textAlign(.trailing)
-                                        .foregroundColor(appPrimary)
+                                    VStack {
+                                        Text("\(String(format: "%.1f", assignmentGrade.percent))%")
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .textAlign(.trailing)
+                                            .foregroundColor(appPrimary)
 
-                                    let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
-                                    let numbersPossible = String(format: "%g", assignmentGrade.numberPossible)
+                                        let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
+                                        let numbersPossible = String(format: "%g", assignmentGrade.numberPossible)
 
-                                    Text("\(numbersCorrect)/\(numbersPossible)")
-                                        .font(.headline)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.secondaryLabel)
-                                        .textAlign(.trailing)
-                                        .padding(.top, 0.5)
-                                    
+                                        Text("\(numbersCorrect)/\(numbersPossible)")
+                                            .font(.headline)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(.secondaryLabel)
+                                            .textAlign(.trailing)
+                                            .padding(.top, 0.5)
+
+                                    }
                                 }
                             }
                         }

@@ -14,7 +14,9 @@ struct CourseGradeItem: View {
     // Remove term annotation (... - Fall) from end of period name
     let termAnnotationRemoval = #"(- \w+)$"#
     var periodName: String {
-        course.periodName.removingRegexMatches(pattern: termAnnotationRemoval)
+        course.periodName
+            .removingRegexMatches(pattern: termAnnotationRemoval)
+            .trimmingCharacters(in: .whitespaces)
     }
 
     var body: some View {
@@ -25,40 +27,48 @@ struct CourseGradeItem: View {
                 NavigationLink(isActive: $showDetailView,
                                destination: {
                     GradesDetailView(className: periodName,
-                                     overAll: course.gradePercent,
+                                     overAll: course.gradePercentText,
                                      viewModel: .init(gradebookNumber: course.gradebookNumber,
                                                       term: course.term))
                 },
                                label: {EmptyView()})
                 VStack {
                     Group {
-                        Text("PERIOD \(course.periodNum)")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .foregroundColor(appSecondary)
-                            .padding(.bottom, 2)
-
                         Text(periodName)
                             .font(.title2)
-                            .fontWeight(.medium)
+                            .fontWeight(.semibold)
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                             .padding(.bottom, 1)
 
-                        Text(course.teacherName)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.platformSecondaryLabel)
+                        HStack {
+                            Text("Period \(course.periodNum)")
+                                .font(.headline)
+                                .fontWeight(.medium)
+                                .foregroundColor(appSecondary)
+                                .minimumScaleFactor(0.5)
+                                .frame(width: 70)
+
+                            Text(course.teacherName)
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.platformSecondaryLabel)
+                            
+                            Spacer()
+                        }
+
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(.trailing, 5)
+
                 Spacer()
                 Text(course.currentMark)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.platformSecondaryLabel)
 
-                Text("\(course.gradePercent)%")
+                Text(course.gradePercentText)
                     .font(.title2)
                     .fontWeight(.bold)
 
@@ -68,7 +78,7 @@ struct CourseGradeItem: View {
                 
             }
             .foregroundColor(.label)
-            .padding(12)
+            .padding(15)
             .background(Color.platformSecondaryBackground)
             .roundedCorners(cornerRadius: 10)
         }

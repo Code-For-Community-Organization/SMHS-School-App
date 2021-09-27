@@ -30,10 +30,10 @@ class GradesDetailViewModel: ObservableObject {
         fetchDetailedGrades()
     }
 
-    func formatUnixDate(_ rawDate: Int) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(rawDate))
+    func formatUnixDate(_ miliseconds: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(miliseconds / 1000))
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/dd/yyyy"
+        formatter.dateFormat = "MMM d, yyyy"
         return formatter.string(from: date)
     }
     func fetchDetailedGrades() {

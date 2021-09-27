@@ -51,6 +51,10 @@ struct CourseGrade: Codable, Hashable {
         var term: String
         var teacherName: String = ""
         var lastUpdated: String = ""
+
+        var gradePercentText: String {
+            String(format: "%g", gradePercent) + "%"
+        }
     }
 
     init(_ courses: [CourseGrade.GradeSummary]) {

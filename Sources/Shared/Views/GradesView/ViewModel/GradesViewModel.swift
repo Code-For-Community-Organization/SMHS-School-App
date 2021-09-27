@@ -152,9 +152,6 @@ extension GradesViewModel {
         let getSummarySupplementPubilsher = AF.request(getSummarySupplementEndpoint.request)
             .publishDecodable(type: [GradesSupplementSummary].self)
             .value()
-//            .mapError {AFError in
-//                RequestError.unknownError(error: AFError.localizedDescription)
-//            }
 
         AF.request(loginEndpoint.request)
             .publishUnserialized()
@@ -163,8 +160,7 @@ extension GradesViewModel {
                 AF.request(getSummaryEndpoint.request)
                     .publishDecodable(type: CourseGrade.self)
                     .value()
-                    //.breakpointOnError()
-                    //.combineLatest(getSummarySupplementPubilsher)
+                    .combineLatest(getSummarySupplementPubilsher)
             }
             .retry(2)
             .receive(on: RunLoop.main)
@@ -178,30 +174,34 @@ extension GradesViewModel {
                 case .finished:
                     break
                 }
-            }) {[weak self] courseGrades in
+            }) {[weak self] (courseGrades, supplementSummary) in
                 let courses = courseGrades.courses
                 // Ensure displayed courses are not dropped
                     .filter {$0.code != .dropped}
-                self?.gradesResponse = courses
-//                let supplementSummaryCourses = supplementSummary
-//                    .filter {$0.termGrouping == .currentTerms}
-//
-//                guard supplementSummaryCourses.count == courses.count
-//                else {
-//                    self?.gradesResponse = courses
-//                    return
-//                }
-//
-//                self?.gradesResponse = zip(courses, supplementSummaryCourses)
-//                    .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
-//                        var mutableCourse = course
-//                        if let precisePercent = Double(supplementSummaryCourse.percent) {
-//                            mutableCourse.gradePercent = precisePercent
-//                        }
-//                        mutableCourse.teacherName = supplementSummaryCourse.teacherName
-//                        mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
-//                        return mutableCourse
-//                    }
+                //self?.gradesResponse = courses
+                let supplementSummaryCourses = supplementSummary
+                    .filter {$0.termGrouping == .currentTerms}
+                    .filter {summary in
+                        let referencePeriods = courses.compactMap{Int($0.periodNum)}
+                        return referencePeriods.contains(summary.period)
+                    }
+
+                guard supplementSummaryCourses.count == courses.count
+                else {
+                    self?.gradesResponse = courses
+                    return
+                }
+
+                self?.gradesResponse = zip(courses, supplementSummaryCourses)
+                    .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
+                        var mutableCourse = course
+                        if let precisePercent = Double(supplementSummaryCourse.percent) {
+                            mutableCourse.gradePercent = precisePercent
+                        }
+                        mutableCourse.teacherName = supplementSummaryCourse.teacherName
+                        mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
+                        return mutableCourse
+                    }
             }
 
             .store(in: &anyCancellables)

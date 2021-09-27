@@ -16,7 +16,7 @@ struct GradesView: View {
         NavigationView {
             if !gradesViewModel.gradesResponse.isEmpty {
                 ScrollView {
-                    LazyVStack(spacing: 20) {
+                    LazyVStack(spacing: 17) {
                         ForEach(getCoursesList(), id: \.self){
                             CourseGradeItem(course: $0)
                         }
