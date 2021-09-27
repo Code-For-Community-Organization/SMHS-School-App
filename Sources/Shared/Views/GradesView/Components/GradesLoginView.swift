@@ -14,7 +14,24 @@ struct GradesLoginView: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Aeries Gradebook Email"),
+                Section {
+                    HStack {
+                        LinearGradient(colors: [appPrimary, appSecondary],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing)
+                            .mask(Image(systemName: "network.badge.shield.half.filled")
+                                    .imageScale(.large))
+                            .frame(width: 50, height: 50)
+
+                        Spacer()
+                        Text("Your email and password can never be tracked. Industry standard technology such as HTTPS and AES-256 military grade encryption is used to protect your data.")
+                            .foregroundColor(.secondaryLabel)
+                            .padding()
+                    }
+                    .font(Font.system(.callout, design: .rounded).weight(.medium))
+
+                }
+                Section(header: Text("Aeries Email").textCase(nil),
                         footer: Text(gradesViewModel.emailErrorMsg)
                             .lineLimit(nil)
                             .foregroundColor(.red)) {
@@ -27,7 +44,7 @@ struct GradesLoginView: View {
                         }
                     
                 }
-                Section(header: Text("Aeries Gradebook Password"),
+                Section(header: Text("Aeries Password").textCase(nil),
                         footer: Text(gradesViewModel.passwordErrorMsg)
                             .lineLimit(nil)
                             .foregroundColor(.red)) {
