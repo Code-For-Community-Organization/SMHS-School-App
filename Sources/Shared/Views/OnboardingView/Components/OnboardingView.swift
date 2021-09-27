@@ -48,6 +48,7 @@ struct OnboardingView: View {
                 if AppVersionStatus.currentVersion == "1.2.6" {
                     showAlert = true
                 }
+                stayInPresentation = false
             }, label: {
                 Text("Continue")
                     .font(.body)
