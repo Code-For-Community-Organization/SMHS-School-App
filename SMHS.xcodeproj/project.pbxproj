@@ -44,6 +44,7 @@
 		623D59662701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
 		623D59672701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
 		623D59682701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
+		623D596B27024D43001D05F7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 623D596A27024D43001D05F7 /* Kingfisher */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
 		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
@@ -241,7 +242,6 @@
 		62D32128264A53B200C99C42 /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = 62D32127264A53B200C99C42 /* __Snapshots__ */; };
 		62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA726741BDD0019D87E /* SFSafeSymbols */; };
 		62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEA926741C1B0019D87E /* SFSafeSymbols */; };
-		62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62D3EEB826741DE20019D87E /* Kingfisher */; };
 		62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8737626BE19B9003DE95B /* UIDevice.swift */; };
 		62D8CB7A26E2CFB5004DD19B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC7268902380009CD34 /* Endpoint.swift */; };
 		62D8CB7F26E2D136004DD19B /* TodayNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8CB7726E2CD1E004DD19B /* TodayNetworkModel.swift */; };
@@ -489,6 +489,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623D596B27024D43001D05F7 /* Kingfisher in Frameworks */,
 				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
@@ -496,7 +497,6 @@
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
-				62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
 				623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */,
 				624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */,
@@ -1208,10 +1208,10 @@
 				623A7F20264F3B3100FF3F28 /* SwiftlySearch */,
 				621F5C8F266A9479006EBE8F /* ElegantCalendar */,
 				62D3EEA726741BDD0019D87E /* SFSafeSymbols */,
-				62D3EEB826741DE20019D87E /* Kingfisher */,
 				624B06DD26D3526A001C2EAE /* FirebaseAnalytics */,
 				62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */,
 				623D596326FFCFC1001D05F7 /* Alamofire */,
+				623D596A27024D43001D05F7 /* Kingfisher */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1329,9 +1329,9 @@
 				623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */,
 				621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
-				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				623D596927024D43001D05F7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -2183,6 +2183,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		623D596927024D43001D05F7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -2239,14 +2247,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 		62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
@@ -2282,6 +2282,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		623D596A27024D43001D05F7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 623D596927024D43001D05F7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		624B06DB26D3521B001C2EAE /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2352,11 +2357,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
-		};
-		62D3EEB826741DE20019D87E /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		62E3BF05264270AE00E1FF88 /* SwiftUIVisualEffects */ = {
 			isa = XCSwiftPackageProductDependency;
