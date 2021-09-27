@@ -10,6 +10,7 @@ import Foundation
 import Regex
 import SwiftUI
 import FirebaseAnalytics
+import Alamofire
 
 final class GradesViewModel: ObservableObject {
     //Networking manager, contains actual HTTPS request methods
@@ -26,7 +27,7 @@ final class GradesViewModel: ObservableObject {
     //Email, password, gradebook data
     @Published(keychain: "email") var email: String = ""
     @Published(keychain: "password") var password: String = ""
-    @Published(key: "gradesResponse") var gradesResponse = [CourseGrade]()
+    @Published(key: "gradesResponse") var gradesResponse = [CourseGrade.GradeSummary]()
     
     //Form validation errors
     @Published var emailErrorMsg = ""
@@ -124,9 +125,6 @@ extension GradesViewModel {
 extension GradesViewModel {
     
     func reloadData() {
-        #if DEBUG
-        loginAndFetch()
-        #else
         if let time = lastReloadTime {
             if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
                 loginAndFetch()
@@ -137,7 +135,6 @@ extension GradesViewModel {
             lastReloadTime = Date()
             loginAndFetch()
         }
-        #endif
     }
     
     func loginAndFetch() {
@@ -146,32 +143,69 @@ extension GradesViewModel {
             return
         }
         isLoading = true
-        let endpoint = Endpoint.studentLogin(email: email,
+        let loginEndpoint = Endpoint.studentLogin(email: email,
                                              password: password,
                                              debugMode: userSettings?.developerSettings.debugNetworking ?? false)
-        
-        gradesNetworkModel.fetch(with: endpoint.request, type: [CourseGrade].self)
-            .removeDuplicates()
+        let getSummaryEndpoint = Endpoint.getGradesSummary()
+        let getSummarySupplementEndpoint = Endpoint.getGradesSummarySupplement()
+
+        let getSummarySupplementPubilsher = AF.request(getSummarySupplementEndpoint.request)
+            .publishDecodable(type: [GradesSupplementSummary].self)
+            .value()
+
+        AF.request(loginEndpoint.request)
+            .publishUnserialized()
+            .value()
+            .flatMap {_ in
+                AF.request(getSummaryEndpoint.request)
+                    .publishDecodable(type: CourseGrade.self)
+                    .value()
+                    .combineLatest(getSummarySupplementPubilsher)
+            }
+            .retry(2)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: {[weak self] error in
+            .sink(receiveCompletion: {[weak self] completion in
                 self?.isLoading = false
-                switch error {
+                switch completion {
                 case let .failure(requestError):
-                    switch requestError {
-                    case .validationError(error: let error):
-                        self?.networkErrorTitle = "Validation Error"
-                        self?.networkErrorMsg = error
-                    default:
-                        self?.networkErrorTitle = "Unknown error occured."
-                    }
+                    self?.networkErrorTitle = "Login Failed"
+                    self?.networkErrorMsg = requestError.localizedDescription
                     self?.showNetworkError = true
                 case .finished:
                     break
                 }
-            }) {[weak self] in
-                self?.gradesResponse = $0
+            }) {[weak self] (courseGrades, supplementSummary) in
+                let courses = courseGrades.courses
+                // Ensure displayed courses are not dropped
+                    .filter {$0.code != .dropped}
+                //self?.gradesResponse = courses
+                let supplementSummaryCourses = supplementSummary
+                    .filter {$0.termGrouping == .currentTerms}
+                    .filter {summary in
+                        let referencePeriods = courses.compactMap{Int($0.periodNum)}
+                        return referencePeriods.contains(summary.period)
+                    }
+
+                guard supplementSummaryCourses.count == courses.count
+                else {
+                    self?.gradesResponse = courses
+                    return
+                }
+
+                self?.gradesResponse = zip(courses, supplementSummaryCourses)
+                    .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
+                        var mutableCourse = course
+                        if let precisePercent = Double(supplementSummaryCourse.percent) {
+                            mutableCourse.gradePercent = precisePercent
+                        }
+                        mutableCourse.teacherName = supplementSummaryCourse.teacherName
+                        mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
+                        return mutableCourse
+                    }
             }
+
             .store(in: &anyCancellables)
+
     }
     
     func registerAnalyticEvent() {

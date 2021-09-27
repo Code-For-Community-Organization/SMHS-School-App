@@ -32,6 +32,18 @@
 		623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F1A264EED2700FF3F28 /* InformationCard.swift */; };
 		623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */ = {isa = PBXBuildFile; productRef = 623A7F20264F3B3100FF3F28 /* SwiftlySearch */; };
 		623A7F23264F595400FF3F28 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A7F22264F595400FF3F28 /* SafariView.swift */; };
+		623D595526FAF3C4001D05F7 /* GradesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595426FAF3C4001D05F7 /* GradesDetailView.swift */; };
+		623D595726FAF3D9001D05F7 /* GradesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */; };
+		623D595926FDA056001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
+		623D595B26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595C26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595D26FDA06F001D05F7 /* GradesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595A26FDA06F001D05F7 /* GradesDetail.swift */; };
+		623D595F26FDA075001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
+		623D596126FDA650001D05F7 /* GradesDetailedRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */; };
+		623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 623D596326FFCFC1001D05F7 /* Alamofire */; };
+		623D59662701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
+		623D59672701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
+		623D59682701944F001D05F7 /* GradesSupplementSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D59652701944F001D05F7 /* GradesSupplementSummary.swift */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
 		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
@@ -329,6 +341,11 @@
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		623A7F1A264EED2700FF3F28 /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		623D595426FAF3C4001D05F7 /* GradesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailView.swift; sourceTree = "<group>"; };
+		623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailViewModel.swift; sourceTree = "<group>"; };
+		623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailedRawResponse.swift; sourceTree = "<group>"; };
+		623D595A26FDA06F001D05F7 /* GradesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetail.swift; sourceTree = "<group>"; };
+		623D59652701944F001D05F7 /* GradesSupplementSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSupplementSummary.swift; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
 		624F79EC264F875900B93C63 /* InformationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardsView.swift; sourceTree = "<group>"; };
 		624F79EE264F87BE00B93C63 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -481,6 +498,7 @@
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D3EEB926741DE20019D87E /* Kingfisher in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */,
 				624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */,
 				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
 			);
@@ -675,6 +693,7 @@
 				625F18A3268A98C5000B71B4 /* GradesLoginView.swift */,
 				62863BAB26AF3DFB00084C28 /* LoginButton.swift */,
 				62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */,
+				623D595426FAF3C4001D05F7 /* GradesDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1120,6 +1139,7 @@
 			isa = PBXGroup;
 			children = (
 				62F43CC12688F3440009CD34 /* GradesViewModel.swift */,
+				623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1131,6 +1151,9 @@
 				62F43CC7268902380009CD34 /* Endpoint.swift */,
 				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
 				625F189E268A9256000B71B4 /* RequestError.swift */,
+				623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */,
+				623D595A26FDA06F001D05F7 /* GradesDetail.swift */,
+				623D59652701944F001D05F7 /* GradesSupplementSummary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1188,6 +1211,7 @@
 				62D3EEB826741DE20019D87E /* Kingfisher */,
 				624B06DD26D3526A001C2EAE /* FirebaseAnalytics */,
 				62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */,
+				623D596326FFCFC1001D05F7 /* Alamofire */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1307,6 +1331,7 @@
 				62D3EEA626741BDD0019D87E /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				62D3EEB726741DE20019D87E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1402,11 +1427,13 @@
 				62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				623D595B26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				6261841026371A92001C4AD4 /* ScheduleDay.swift in Sources */,
 				62C9E8A4263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
 				62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */,
+				623D59662701944F001D05F7 /* GradesSupplementSummary.swift in Sources */,
 				62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
 				62B227C9265CD06E0023A7E6 /* AboutDevView.swift in Sources */,
@@ -1431,6 +1458,7 @@
 				62B0D96B2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				6261840726371A6C001C4AD4 /* String.swift in Sources */,
 				62E05F712639C5D000B609E3 /* UserSettings.swift in Sources */,
+				623D595F26FDA075001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				62B227C5265CC1E00023A7E6 /* HowStatementView.swift in Sources */,
 				62E05F6B2639C47C00B609E3 /* ContentView.swift in Sources */,
 				62B227BC265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
@@ -1474,6 +1502,7 @@
 				62D8737826BE19B9003DE95B /* UIDevice.swift in Sources */,
 				62C9E8A1263D110100CCA5C5 /* OnboardingRowItem.swift in Sources */,
 				62A11A9326F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */,
+				623D59672701944F001D05F7 /* GradesSupplementSummary.swift in Sources */,
 				627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62D1E54F263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				626183E9263718E0001C4AD4 /* String.swift in Sources */,
@@ -1499,12 +1528,15 @@
 				62B0D969269263A800AA6CF4 /* KeychainPublishedWrapper.swift in Sources */,
 				621F5C8B2669F7FF006EBE8F /* SMHSInformation.swift in Sources */,
 				62C48DB0265C7A6D0032301E /* SocialMediaLinks.swift in Sources */,
+				623D595726FAF3D9001D05F7 /* GradesDetailViewModel.swift in Sources */,
 				62B227DA265D9A430023A7E6 /* FeaturesStatementView.swift in Sources */,
 				62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */,
 				624F79F4264FA13500B93C63 /* NewsSelectionButtons.swift in Sources */,
 				625F189F268A9256000B71B4 /* RequestError.swift in Sources */,
+				623D595526FAF3C4001D05F7 /* GradesDetailView.swift in Sources */,
 				6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */,
 				62B227BD265CBE530023A7E6 /* Acknowledgements.swift in Sources */,
+				623D595C26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				62B227CE265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62B0D961269260FB00AA6CF4 /* KeychainWrapper.swift in Sources */,
 				62382B5526E6994D00BF8918 /* AnnoucementBanner.swift in Sources */,
@@ -1535,6 +1567,7 @@
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
+				623D595926FDA056001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */,
@@ -1614,12 +1647,14 @@
 				62D1E530263DF859004DBFAD /* AppVersionStatus.swift in Sources */,
 				62D1E532263DF859004DBFAD /* OnboardingRowItem.swift in Sources */,
 				6287EA682654D776007B41CB /* ScheduleListHeaderText.swift in Sources */,
+				623D595D26FDA06F001D05F7 /* GradesDetail.swift in Sources */,
 				62E2E093268598AA009608FB /* NetworkLoadViewModel.swift in Sources */,
 				62D1E537263DF859004DBFAD /* ScheduleListHeaderView.swift in Sources */,
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
 				62D8CB8526E422B6004DD19B /* PeriodParseExtensions.swift in Sources */,
+				623D596126FDA650001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */,
 				62F5FD0226B49B8B00E821D5 /* Font.swift in Sources */,
 				62B0D96D2692776200AA6CF4 /* ActionButton.swift in Sources */,
@@ -1640,6 +1675,7 @@
 				62D1E542263DF859004DBFAD /* MockScheduleView.swift in Sources */,
 				621F5C892669F58D006EBE8F /* LoadingIndicatorView.swift in Sources */,
 				6287EA6E265587C1007B41CB /* CustomScheduleView.swift in Sources */,
+				623D59682701944F001D05F7 /* GradesSupplementSummary.swift in Sources */,
 				62D1E523263DF7E5004DBFAD /* ScheduleDetailView.swift in Sources */,
 				62D1E526263DF833004DBFAD /* Date.swift in Sources */,
 				62D1E524263DF7FB004DBFAD /* SharedScheduleInformation.swift in Sources */,
@@ -2139,6 +2175,14 @@
 				minimumVersion = 1.2.4;
 			};
 		};
+		623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -2233,6 +2277,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 623A7F1F264F3B3100FF3F28 /* XCRemoteSwiftPackageReference "SwiftlySearch" */;
 			productName = SwiftlySearch;
+		};
+		623D596326FFCFC1001D05F7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		624B06DB26D3521B001C2EAE /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
