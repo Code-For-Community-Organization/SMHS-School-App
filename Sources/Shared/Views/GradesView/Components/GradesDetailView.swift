@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GradesDetailView: View {
     var className: String
-    var overAll: Int
+    var overAll: Double
     @StateObject var viewModel: GradesDetailViewModel
 
     var body: some View {
@@ -27,17 +27,8 @@ struct GradesDetailView: View {
                     LazyVStack(spacing: 15) {
                         ForEach(viewModel.detailedAssignments, id: \.self) {assignmentGrade in
                             Divider()
-                            HStack {
-                                VStack {
-                                    Text(assignmentGrade.description)
-                                        .font(.title3)
-                                        .fontWeight(.semibold)
-                                        .textAlign(.leading)
-                                    Text(assignmentGrade.category)
-                                        .font(.subheadline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.secondaryLabel)
-                                        .textAlign(.leading)
+                            VStack {
+                                HStack {
                                     Text("Finished Grading: \(assignmentGrade.isGraded ? "YES" : "NO")")
                                         .font(.footnote)
                                         .fontWeight(.medium)
@@ -45,6 +36,26 @@ struct GradesDetailView: View {
                                         .padding(5)
                                         .background(Color.platformSecondaryBackground)
                                         .roundedCorners(cornerRadius: 10)
+                                        .textAlign(.leading)
+                                    Spacer()
+                                    if let dateDigits = assignmentGrade.dateCompleted?.digits {
+                                        Text("Date Completed: \(viewModel.formatUnixDate(dateDigits))")
+                                    }
+                                    else {
+                                        Text("Date Completed: Unknown")
+                                    }
+                                }
+                            }
+                            HStack {
+                                VStack {
+                                    Text(assignmentGrade.description.localizedCapitalized)
+                                        .font(.title3)
+                                        .fontWeight(.semibold)
+                                        .textAlign(.leading)
+                                    Text(assignmentGrade.category)
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondaryLabel)
                                         .textAlign(.leading)
                                 }
                                 Spacer()
@@ -65,6 +76,7 @@ struct GradesDetailView: View {
                                         .foregroundColor(.secondaryLabel)
                                         .textAlign(.trailing)
                                         .padding(.top, 0.5)
+                                    
                                 }
                             }
                         }
@@ -77,7 +89,7 @@ struct GradesDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        
+
                     }) {
                         Image(systemSymbol: .sliderVertical3)
                     }

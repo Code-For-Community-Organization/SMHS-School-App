@@ -44,11 +44,13 @@ struct CourseGrade: Codable, Hashable {
     struct GradeSummary: Hashable, Codable {
         var periodNum: String
         var periodName: String
-        var gradePercent: Int
+        var gradePercent: Double
         var currentMark: String
         var gradebookNumber: Int
         var code: GradesSummaryRawResponse.Code
         var term: String
+        var teacherName: String = ""
+        var lastUpdated: String = ""
     }
 
     init(_ courses: [CourseGrade.GradeSummary]) {
@@ -67,7 +69,7 @@ struct CourseGrade: Codable, Hashable {
         courses = decoder.d.results.map {
             GradeSummary(periodNum: $0.period,
                          periodName: $0.className,
-                         gradePercent: $0.percentGrade,
+                         gradePercent: Double($0.percentGrade),
                          currentMark: $0.mark,
                          gradebookNumber: $0.gradebookNumber,
                          code: $0.code,

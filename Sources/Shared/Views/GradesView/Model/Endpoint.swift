@@ -56,6 +56,7 @@ extension Endpoint {
     static let AERIES_API_HOST = "aeries.smhs.org"
     static let AERIES_API_MAIN_PATH = "/parent/m/api/MobileWebAPI.asmx"
     static let AERIES_API_LOGIN_PATH = "/parent/LoginParent.aspx"
+    static let AERIES_API_ALT_GRADES_PATH = "/Parent/Widgets/ClassSummary/GetClassSummary"
 
     static func studentLogin(email: String,
                              password: String,
@@ -74,11 +75,22 @@ extension Endpoint {
 
     }
 
+    // This grades summary API used for getting
+    // gradebook number which is critical for detailed grades
     static func getGradesSummary() -> Endpoint {
         Endpoint(host: AERIES_API_HOST,
                  path: AERIES_API_MAIN_PATH + "/GetGradebookSummaryData",
                  httpMethod: "GET",
                  isApplicationJson: true)
+    }
+
+    // This grades summary API is supplement to
+    // other one, for more precise percentage and teacher name
+    static func getGradesSummarySupplement() -> Endpoint {
+        Endpoint(host: AERIES_API_HOST,
+                 path: AERIES_API_ALT_GRADES_PATH,
+                 queryItems: [.init(name: "IsProfile", value: "true")],
+                 httpMethod: "GET")
     }
 
     static func getDetailedGrades(term: String,

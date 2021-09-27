@@ -44,10 +44,11 @@ struct CourseGradeItem: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                             .padding(.bottom, 1)
-//                        Text(course.teacherName)
-//                            .font(.subheadline)
-//                            .fontWeight(.semibold)
-//                            .foregroundColor(.platformSecondaryLabel)
+
+                        Text(course.teacherName)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.platformSecondaryLabel)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }

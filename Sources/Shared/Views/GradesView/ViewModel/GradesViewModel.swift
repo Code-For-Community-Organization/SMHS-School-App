@@ -146,40 +146,66 @@ extension GradesViewModel {
         let loginEndpoint = Endpoint.studentLogin(email: email,
                                              password: password,
                                              debugMode: userSettings?.developerSettings.debugNetworking ?? false)
-
         let getSummaryEndpoint = Endpoint.getGradesSummary()
-        gradesNetworkModel.fetch(with: loginEndpoint.request)
-            .receive(on: RunLoop.main)
-            .flatMap {[unowned self] (success) -> AnyPublisher<CourseGrade, RequestError> in
-                let cookies = HTTPCookieStorage.shared
-                print(cookies.cookies)
-                return self.gradesNetworkModel.fetch(with: getSummaryEndpoint.request, type: CourseGrade.self)
+        let getSummarySupplementEndpoint = Endpoint.getGradesSummarySupplement()
 
+        let getSummarySupplementPubilsher = AF.request(getSummarySupplementEndpoint.request)
+            .publishDecodable(type: [GradesSupplementSummary].self)
+            .value()
+//            .mapError {AFError in
+//                RequestError.unknownError(error: AFError.localizedDescription)
+//            }
+
+        AF.request(loginEndpoint.request)
+            .publishUnserialized()
+            .value()
+            .flatMap {_ in
+                AF.request(getSummaryEndpoint.request)
+                    .publishDecodable(type: CourseGrade.self)
+                    .value()
+                    //.breakpointOnError()
+                    //.combineLatest(getSummarySupplementPubilsher)
             }
-            .receive(on: RunLoop.main)
             .retry(2)
-            .sink(receiveCompletion: {[weak self] error in
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: {[weak self] completion in
                 self?.isLoading = false
-                switch error {
+                switch completion {
                 case let .failure(requestError):
-                    switch requestError {
-                    case .validationError(error: let error):
-                        self?.networkErrorTitle = "Validation Error"
-                        self?.networkErrorMsg = error
-                    default:
-                        self?.networkErrorTitle = "Unknown error occured."
-                    }
+                    self?.networkErrorTitle = "Login Failed"
+                    self?.networkErrorMsg = requestError.localizedDescription
                     self?.showNetworkError = true
                 case .finished:
                     break
                 }
-            }) {[weak self] rawResponse in
-                self?.gradesResponse = rawResponse.courses
+            }) {[weak self] courseGrades in
+                let courses = courseGrades.courses
                 // Ensure displayed courses are not dropped
                     .filter {$0.code != .dropped}
+                self?.gradesResponse = courses
+//                let supplementSummaryCourses = supplementSummary
+//                    .filter {$0.termGrouping == .currentTerms}
+//
+//                guard supplementSummaryCourses.count == courses.count
+//                else {
+//                    self?.gradesResponse = courses
+//                    return
+//                }
+//
+//                self?.gradesResponse = zip(courses, supplementSummaryCourses)
+//                    .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
+//                        var mutableCourse = course
+//                        if let precisePercent = Double(supplementSummaryCourse.percent) {
+//                            mutableCourse.gradePercent = precisePercent
+//                        }
+//                        mutableCourse.teacherName = supplementSummaryCourse.teacherName
+//                        mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
+//                        return mutableCourse
+//                    }
             }
 
             .store(in: &anyCancellables)
+
     }
     
     func registerAnalyticEvent() {

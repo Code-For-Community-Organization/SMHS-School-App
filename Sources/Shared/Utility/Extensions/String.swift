@@ -9,7 +9,12 @@ import Foundation
 
 extension StringProtocol {
     var lines: [SubSequence] { split(whereSeparator: \.isNewline) }
-    
+
+    var digits: Int? {
+        Int(self
+            .components(separatedBy:CharacterSet.decimalDigits.inverted)
+            .joined())
+    }
     var autoCapitalized: String {
         if self.contains(" ") {
             return self.capitalized

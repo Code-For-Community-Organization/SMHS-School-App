@@ -30,6 +30,12 @@ class GradesDetailViewModel: ObservableObject {
         fetchDetailedGrades()
     }
 
+    func formatUnixDate(_ rawDate: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(rawDate))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/dd/yyyy"
+        return formatter.string(from: date)
+    }
     func fetchDetailedGrades() {
         let gradesRequest = Endpoint.getDetailedGrades(term: term,
                                                        gradebookNumber: String(gradebookNumber))
@@ -43,7 +49,9 @@ class GradesDetailViewModel: ObservableObject {
                 case .finished:
                     return
                 case .failure(let error):
+                    #if DEBUG
                     print(error)
+                    #endif
                 }
             }, receiveValue: {[unowned self] receivedGradesDetail in
                 let encoder = JSONEncoder()
