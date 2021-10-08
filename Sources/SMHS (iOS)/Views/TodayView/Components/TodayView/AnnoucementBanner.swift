@@ -29,15 +29,7 @@ struct AnnoucementBanner: View {
                 }
                 else {
                     if viewModel.isAnnoucementAvailable {
-                        Group {
-                            if let updateTime = viewModel.lastUpdateTime?.description {
-                                Text("Last Updated: \(updateTime)")
-                            }
-                            else {
-                                Text("Last Updated: Unknown")
-
-                            }
-                        }
+                        Text("Last Updated: \(viewModel.lastUpdateDisplay)")
                         .font(.caption)
                         .foregroundColor(.secondaryLabel)
                         .padding(.top, 2)
