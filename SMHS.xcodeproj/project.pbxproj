@@ -77,6 +77,8 @@
 		6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
+		6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF20271124DF009F6234 /* FirebaseCrashlytics */; };
+		6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF22271124E5009F6234 /* FirebaseCrashlytics */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
@@ -498,6 +500,7 @@
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */,
 				623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */,
 				624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */,
 				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
@@ -530,6 +533,7 @@
 				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
+				6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */,
 				62D1E513263DF778004DBFAD /* WidgetKit.framework in Frameworks */,
 				62E3BF0A2642715200E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
@@ -1190,8 +1194,9 @@
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
-				62E05F7A263A1BBC00B609E3 /* Run Script */,
 				62D1E51F263DF779004DBFAD /* Embed App Extensions */,
+				62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */,
+				6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */,
 			);
 			buildRules = (
 			);
@@ -1212,6 +1217,7 @@
 				62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */,
 				623D596326FFCFC1001D05F7 /* Alamofire */,
 				623D596A27024D43001D05F7 /* Kingfisher */,
+				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1277,6 +1283,7 @@
 				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
 				624B06DF26D357B4001C2EAE /* FirebaseAnalytics */,
 				62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */,
+				6261DF22271124E5009F6234 /* FirebaseCrashlytics */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1399,7 +1406,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62E05F7A263A1BBC00B609E3 /* Run Script */ = {
+		6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script (Firebase Crashlytics)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1408,7 +1435,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Run Script (Bump build)";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -2302,6 +2329,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		6261DF20271124DF009F6234 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		6261DF22271124E5009F6234 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;
