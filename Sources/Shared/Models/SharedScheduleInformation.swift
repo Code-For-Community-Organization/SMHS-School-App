@@ -24,7 +24,8 @@ final class SharedScheduleInformation: ObservableObject {
     var dateHelper: ScheduleDateHelper = ScheduleDateHelper()
     private var downloader: (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load
     var currentDaySchedule: ScheduleDay? {
-        if let today = todaySchedule {
+        if let today = todaySchedule,
+           scheduleWeeks.isEmpty {
             return today
         }
         let targetDay = scheduleWeeks.compactMap{$0.getDayByDate(Date())}
@@ -76,6 +77,7 @@ final class SharedScheduleInformation: ObservableObject {
         }
         
     }
+
     func fetchData(completion: ((Bool) -> Void)? = nil) {
         print("Fetching schedule data....")
         //Load ICS calendar data from network
