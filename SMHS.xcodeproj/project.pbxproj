@@ -55,6 +55,7 @@
 		624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */; };
 		624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */; };
 		624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FF2651A4E600B93C63 /* HapticsManager.swift */; };
+		6255035B271A42A00090F62A /* SMHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6255035A271A42A00090F62A /* SMHSApp.swift */; };
 		625F189F268A9256000B71B4 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F189E268A9256000B71B4 /* RequestError.swift */; };
 		625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A1268A984B000B71B4 /* CourseGradeItem.swift */; };
 		625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A3268A98C5000B71B4 /* GradesLoginView.swift */; };
@@ -77,6 +78,10 @@
 		6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */; };
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
+		6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF20271124DF009F6234 /* FirebaseCrashlytics */; };
+		6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF22271124E5009F6234 /* FirebaseCrashlytics */; };
+		6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2427121E3D009F6234 /* FirebaseMessaging */; };
+		6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2627121E42009F6234 /* FirebaseMessaging */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
@@ -353,6 +358,7 @@
 		624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelButton.swift; sourceTree = "<group>"; };
 		624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNavigationBarButtons.swift; sourceTree = "<group>"; };
 		624F79FF2651A4E600B93C63 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		6255035A271A42A00090F62A /* SMHSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSApp.swift; sourceTree = "<group>"; };
 		625F189E268A9256000B71B4 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		625F18A1268A984B000B71B4 /* CourseGradeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGradeItem.swift; sourceTree = "<group>"; };
 		625F18A3268A98C5000B71B4 /* GradesLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesLoginView.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 		626183E8263718E0001C4AD4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		626184222637384E001C4AD4 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SMHSSchedule (iOS).entitlements"; sourceTree = "<group>"; };
 		6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditSettingsView.swift; sourceTree = "<group>"; };
 		62626394264DD21D004146CE /* PeriodEditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditItem.swift; sourceTree = "<group>"; };
@@ -491,6 +498,7 @@
 			files = (
 				623D596B27024D43001D05F7 /* Kingfisher in Frameworks */,
 				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
+				6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
@@ -498,6 +506,7 @@
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
+				6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */,
 				623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */,
 				624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */,
 				62D3EEA826741BDD0019D87E /* SFSafeSymbols in Frameworks */,
@@ -530,7 +539,9 @@
 				62D3EEAA26741C1B0019D87E /* SFSafeSymbols in Frameworks */,
 				62D1E548263DF8BE004DBFAD /* Introspect in Frameworks */,
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
+				6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */,
 				62D1E513263DF778004DBFAD /* WidgetKit.framework in Frameworks */,
+				6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */,
 				62E3BF0A2642715200E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +697,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		6255035C271A42DD0090F62A /* AppCycle */ = {
+			isa = PBXGroup;
+			children = (
+				626A2268260035F100903C39 /* AppDelegate.swift */,
+				6255035A271A42A00090F62A /* SMHSApp.swift */,
+			);
+			path = AppCycle;
+			sourceTree = "<group>";
+		};
 		625F18A0268A9823000B71B4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,6 +783,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */,
 				62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
@@ -791,8 +812,8 @@
 		626A2267260035F100903C39 /* SMHS (iOS) */ = {
 			isa = PBXGroup;
 			children = (
+				6255035C271A42DD0090F62A /* AppCycle */,
 				626A2293260037C400903C39 /* Views */,
-				626A2268260035F100903C39 /* AppDelegate.swift */,
 				626A226C260035F200903C39 /* Assets.xcassets */,
 				626A2271260035F200903C39 /* Info.plist */,
 				626A226E260035F200903C39 /* Preview Content */,
@@ -1190,8 +1211,9 @@
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
-				62E05F7A263A1BBC00B609E3 /* Run Script */,
 				62D1E51F263DF779004DBFAD /* Embed App Extensions */,
+				62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */,
+				6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */,
 			);
 			buildRules = (
 			);
@@ -1212,6 +1234,8 @@
 				62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */,
 				623D596326FFCFC1001D05F7 /* Alamofire */,
 				623D596A27024D43001D05F7 /* Kingfisher */,
+				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
+				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1277,6 +1301,8 @@
 				62D3EEA926741C1B0019D87E /* SFSafeSymbols */,
 				624B06DF26D357B4001C2EAE /* FirebaseAnalytics */,
 				62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */,
+				6261DF22271124E5009F6234 /* FirebaseCrashlytics */,
+				6261DF2627121E42009F6234 /* FirebaseMessaging */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1399,7 +1425,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62E05F7A263A1BBC00B609E3 /* Run Script */ = {
+		6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script (Firebase Crashlytics)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1408,7 +1454,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Run Script (Bump build)";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1564,6 +1610,7 @@
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
 				62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */,
 				621F5C872669F368006EBE8F /* InternetErrorView.swift in Sources */,
+				6255035B271A42A00090F62A /* SMHSApp.swift in Sources */,
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,
@@ -1914,6 +1961,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2470;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1944,6 +1992,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2470;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
@@ -2302,6 +2351,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		6261DF20271124DF009F6234 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		6261DF22271124E5009F6234 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		6261DF2427121E3D009F6234 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		6261DF2627121E42009F6234 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;
