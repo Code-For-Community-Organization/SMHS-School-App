@@ -79,6 +79,8 @@
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF20271124DF009F6234 /* FirebaseCrashlytics */; };
 		6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF22271124E5009F6234 /* FirebaseCrashlytics */; };
+		6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2427121E3D009F6234 /* FirebaseMessaging */; };
+		6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2627121E42009F6234 /* FirebaseMessaging */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
@@ -368,6 +370,7 @@
 		626183E8263718E0001C4AD4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		626184222637384E001C4AD4 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SMHSSchedule (iOS).entitlements"; sourceTree = "<group>"; };
 		6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperSettingsView.swift; sourceTree = "<group>"; };
 		62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditSettingsView.swift; sourceTree = "<group>"; };
 		62626394264DD21D004146CE /* PeriodEditItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodEditItem.swift; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 			files = (
 				623D596B27024D43001D05F7 /* Kingfisher in Frameworks */,
 				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
+				6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */,
 				629EC8392645D7C900E236DC /* Regex in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
@@ -535,6 +539,7 @@
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
 				6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */,
 				62D1E513263DF778004DBFAD /* WidgetKit.framework in Frameworks */,
+				6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */,
 				62E3BF0A2642715200E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,6 +772,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */,
 				62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
@@ -1218,6 +1224,7 @@
 				623D596326FFCFC1001D05F7 /* Alamofire */,
 				623D596A27024D43001D05F7 /* Kingfisher */,
 				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
+				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1284,6 +1291,7 @@
 				624B06DF26D357B4001C2EAE /* FirebaseAnalytics */,
 				62A11A8226E6CD4A007F7241 /* FirebaseRemoteConfig */,
 				6261DF22271124E5009F6234 /* FirebaseCrashlytics */,
+				6261DF2627121E42009F6234 /* FirebaseMessaging */,
 			);
 			productName = WidgetsExtension;
 			productReference = 62D1E511263DF778004DBFAD /* WidgetsExtension.appex */;
@@ -1941,6 +1949,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2470;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1971,6 +1980,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2470;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
@@ -2339,6 +2349,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		6261DF2427121E3D009F6234 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		6261DF2627121E42009F6234 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		629EC8382645D7C900E236DC /* Regex */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,33 +9,45 @@ import SwiftUI
 import StoreKit
 import Firebase
 import FirebaseRemoteConfig
+import FirebaseMessaging
 
-final class AppDelegate: NSObject, UIApplicationDelegate {
+final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     static var orientationLock = UIInterfaceOrientationMask.portrait
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
         globalRemoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
 
-        #if DEBUG
+#if DEBUG
         settings.minimumFetchInterval = 0
-        #else
+#else
         let sixHours = 60 * 60 * 6
         settings.minimumFetchInterval = TimeInterval(sixHours)
-        #endif
+#endif
 
         globalRemoteConfig.configSettings = settings
         globalRemoteConfig.fetch {status, error in
             if status == .success {
                 globalRemoteConfig.activate {_, _ in}
             } else {
-                #if DEBUG
+#if DEBUG
                 debugPrint("Config not fetched")
                 debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
-                #endif
+#endif
             }
+        }
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+        )
+        DispatchQueue.main.async {
+            application.registerForRemoteNotifications()
         }
         return true
     }
@@ -43,6 +55,41 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return AppDelegate.orientationLock
     }
+
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
+                                -> Void) {
+        // Change this to your preferred presentation option
+        completionHandler([[.alert, .banner, .sound]])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // 1. Convert device token to string
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        // 2. Print device token to use for PNs payloads
+        print("Device Token: \(token)")
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // 1. Print out error if PNs registration not successful
+        print("Failed to register for remote notifications with error: \(error)")
+    }
+
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        debugPrint("FCM Token: \(fcmToken ?? "")")
+    }
+
 }
 
 @main
@@ -72,4 +119,14 @@ struct SMHSApp: App {
 
 
     }
+}
+
+// MARK: UNUserNotification Delegate Methods
+extension AppDelegate {
+
+}
+
+// MARK: Firebase Messaging Delegate Methods
+extension AppDelegate {
+
 }
