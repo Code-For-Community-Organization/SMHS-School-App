@@ -144,7 +144,6 @@ extension ScheduleDay {
     }
 
     func appendOptionalPeriod8(periods: [ClassPeriod]) -> [ClassPeriod] {
-        debugPrint("Appending optional period 8")
         // Make sure remote config enabled period 8
         let p8Enabled = globalRemoteConfig.configValue(forKey: "eighth_period_enabled").boolValue
         guard p8Enabled else { return periods }
