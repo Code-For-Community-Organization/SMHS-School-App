@@ -58,6 +58,8 @@ struct ScheduleDetailView: View {
          return formattedDate
     }
 
+    var horizontalPadding = true
+
     var body: some View {
         ScrollView {
             if userSettings.preferLegacySchedule {
@@ -118,7 +120,7 @@ struct ScheduleDetailView: View {
                         PeriodBlockItem(block: period8)
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, horizontalPadding ? 16 : 0)
             }
         }
         .navigationTitle(scheduleDateDescription)

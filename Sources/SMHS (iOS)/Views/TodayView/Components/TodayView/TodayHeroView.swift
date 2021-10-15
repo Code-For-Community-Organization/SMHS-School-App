@@ -57,13 +57,14 @@ struct TodayHeroView: View {
                             .font(.title2)
                             .textAlign(.leading)
                             .padding(.bottom, 10)
-                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule)
+                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                           horizontalPadding: false)
                     }
 
                     AnnoucementBanner(viewModel: todayViewViewModel)
 
                 }
-                .padding(.horizontal, 23)
+                .padding(.horizontal)
             }
             .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
 
