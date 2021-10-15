@@ -34,7 +34,16 @@ class TodayViewViewModel: ObservableObject {
     var todayAnnoucementHTML: String? {
         todayAnnoucement?.getIncreasedFontSizeHTML()
     }
-    
+
+    var lastUpdateDisplay: String {
+        if let lastUpdateTime = lastUpdateTime {
+            return lastUpdateTime.timeAgoDisplay()
+        }
+        else {
+            return "unknown"
+        }
+    }
+
     var anyCancellable: Set<AnyCancellable> = []
 
     init (mockDate: Date? = nil) {
@@ -47,8 +56,8 @@ class TodayViewViewModel: ObservableObject {
         fetchAnnoucements()
         #else
         if let time = lastReloadTime {
-            //Auto reload every half hour
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 30) {
+            //Auto reload every 5 minutes
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 5) {
                 fetchAnnoucements()
                 lastReloadTime = Date()
             }
@@ -70,7 +79,7 @@ class TodayViewViewModel: ObservableObject {
                 self?.loadingAnnoucements = false
                 switch error {
                     case .finished:
-                        self?.lastUpdateTime = Date()
+                    self?.lastUpdateTime = Date()
                     case .failure(_):
                         return
                 }
