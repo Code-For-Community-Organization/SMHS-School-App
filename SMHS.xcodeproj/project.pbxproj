@@ -55,6 +55,7 @@
 		624F79F6264FA1A000B93C63 /* HorizontalLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */; };
 		624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */; };
 		624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F79FF2651A4E600B93C63 /* HapticsManager.swift */; };
+		6255035B271A42A00090F62A /* SMHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6255035A271A42A00090F62A /* SMHSApp.swift */; };
 		625F189F268A9256000B71B4 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F189E268A9256000B71B4 /* RequestError.swift */; };
 		625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A1268A984B000B71B4 /* CourseGradeItem.swift */; };
 		625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A3268A98C5000B71B4 /* GradesLoginView.swift */; };
@@ -357,6 +358,7 @@
 		624F79F5264FA1A000B93C63 /* HorizontalLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelButton.swift; sourceTree = "<group>"; };
 		624F79FD2651A48400B93C63 /* NewsNavigationBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNavigationBarButtons.swift; sourceTree = "<group>"; };
 		624F79FF2651A4E600B93C63 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		6255035A271A42A00090F62A /* SMHSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSApp.swift; sourceTree = "<group>"; };
 		625F189E268A9256000B71B4 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		625F18A1268A984B000B71B4 /* CourseGradeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGradeItem.swift; sourceTree = "<group>"; };
 		625F18A3268A98C5000B71B4 /* GradesLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesLoginView.swift; sourceTree = "<group>"; };
@@ -695,6 +697,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		6255035C271A42DD0090F62A /* AppCycle */ = {
+			isa = PBXGroup;
+			children = (
+				626A2268260035F100903C39 /* AppDelegate.swift */,
+				6255035A271A42A00090F62A /* SMHSApp.swift */,
+			);
+			path = AppCycle;
+			sourceTree = "<group>";
+		};
 		625F18A0268A9823000B71B4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,8 +812,8 @@
 		626A2267260035F100903C39 /* SMHS (iOS) */ = {
 			isa = PBXGroup;
 			children = (
+				6255035C271A42DD0090F62A /* AppCycle */,
 				626A2293260037C400903C39 /* Views */,
-				626A2268260035F100903C39 /* AppDelegate.swift */,
 				626A226C260035F200903C39 /* Assets.xcassets */,
 				626A2271260035F200903C39 /* Info.plist */,
 				626A226E260035F200903C39 /* Preview Content */,
@@ -1599,6 +1610,7 @@
 				62D1E509263DD41C004DBFAD /* Date.swift in Sources */,
 				62C48DB3265CA88A0032301E /* SocialDetailView.swift in Sources */,
 				621F5C872669F368006EBE8F /* InternetErrorView.swift in Sources */,
+				6255035B271A42A00090F62A /* SMHSApp.swift in Sources */,
 				62E05F6726391CFA00B609E3 /* ScheduleListHeaderView.swift in Sources */,
 				626A2296260037E800903C39 /* TodayView.swift in Sources */,
 				62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */,

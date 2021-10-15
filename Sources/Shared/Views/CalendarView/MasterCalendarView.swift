@@ -43,7 +43,7 @@ struct MasterCalendarView: View {
             calendarManager.delegate = self
             DispatchQueue.main.async {
                 calendarManager.datasource = self
-                AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
+                //AppDelegate.orientationLock = UIInterfaceOrientationMask.portrait
                 orientationValue = UIDevice.current.orientation.rawValue
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
                 UINavigationController.attemptRotationToDeviceOrientation()
@@ -51,7 +51,7 @@ struct MasterCalendarView: View {
         }
         .onDisappear {
             DispatchQueue.main.async {
-                    AppDelegate.orientationLock = UIInterfaceOrientationMask.all
+                    //AppDelegate.orientationLock = UIInterfaceOrientationMask.all
                     UIDevice.current.setValue(orientationValue, forKey: "orientation")
                     UINavigationController.attemptRotationToDeviceOrientation()
             }
