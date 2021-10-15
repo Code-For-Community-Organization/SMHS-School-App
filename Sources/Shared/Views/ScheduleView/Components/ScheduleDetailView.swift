@@ -73,11 +73,14 @@ struct ScheduleDetailView: View {
                        let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
                         HStack {
                             VStack {
-                                Text("1st Nutrition Schedule")
+                                Text("1st Lunch Schedule")
                                     .font(.footnote, weight: .semibold)
                                     .padding(.bottom, 2)
                                     .foregroundColor(.platformSecondaryLabel)
                                     .textAlign(.leading)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+
                                 PeriodBlockItem(block: firstLunch,
                                                 scheduleTitle: "1st Lunch",
                                                 twoLine: true)
@@ -87,11 +90,14 @@ struct ScheduleDetailView: View {
                             }
                             .padding(.trailing, 5)
                             VStack {
-                                Text("2nd Nutrition Schedule")
+                                Text("2nd Lunch Schedule")
                                     .font(.footnote, weight: .semibold)
                                     .padding(.bottom, 2)
                                     .foregroundColor(.platformSecondaryLabel)
                                     .textAlign(.leading)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                
                                 PeriodBlockItem(block: secondLunchPeriod,
                                                 scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
                                                 twoLine: true)
