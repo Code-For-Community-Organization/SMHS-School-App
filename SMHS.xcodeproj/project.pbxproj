@@ -81,7 +81,6 @@
 		6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF20271124DF009F6234 /* FirebaseCrashlytics */; };
 		6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF22271124E5009F6234 /* FirebaseCrashlytics */; };
 		6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2427121E3D009F6234 /* FirebaseMessaging */; };
-		6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2627121E42009F6234 /* FirebaseMessaging */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
