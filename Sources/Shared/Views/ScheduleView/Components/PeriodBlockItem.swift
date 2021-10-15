@@ -74,18 +74,15 @@ struct PeriodBlockItem: View {
     var doubleLineView: some View {
         VStack {
             Text("START: \(formatDate(block.startTime))")
-                .fontWeight(.medium)
                 .textAlign(.leading)
-                .font(.footnote)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
+
             Text("END: \(formatDate(block.endTime))")
-                .fontWeight(.medium)
                 .textAlign(.leading)
-                .font(.footnote)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
+
         }
+        .font(Font.caption.weight(.medium))
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
     }
     
     var singleLineView: some View {
@@ -93,22 +90,20 @@ struct PeriodBlockItem: View {
             HStack {
                 HStack {
                     Text("START:")
-                        .fontWeight(.medium)
                         .opacity(0.5)
+
                     Text(formatDate(block.startTime))
-                        .fontWeight(.medium)
                 }
                 .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
                 HStack {
                     Text("END:")
-                        .fontWeight(.medium)
                         .opacity(0.5)
+
                     Text(formatDate(block.endTime))
-                        .fontWeight(.medium)
                 }
                 Spacer()
             }
-            .font(.footnote)
+            .font(Font.caption.weight(.medium))
         }
     }
 

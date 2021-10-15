@@ -97,7 +97,7 @@ struct ScheduleDetailView: View {
                                     .textAlign(.leading)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.5)
-                                
+
                                 PeriodBlockItem(block: secondLunchPeriod,
                                                 scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
                                                 twoLine: true)
