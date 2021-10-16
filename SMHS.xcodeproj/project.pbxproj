@@ -1441,7 +1441,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\" \n";
+			shellScript = "
+";
 		};
 		6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1963,7 +1964,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2598;
+				CURRENT_PROJECT_VERSION = 2600;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
@@ -1994,7 +1995,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2598;
+				CURRENT_PROJECT_VERSION = 2600;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				ENABLE_PREVIEWS = YES;
@@ -2106,7 +2107,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2598;
+				CURRENT_PROJECT_VERSION = 2600;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2130,7 +2131,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2598;
+				CURRENT_PROJECT_VERSION = 2600;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
