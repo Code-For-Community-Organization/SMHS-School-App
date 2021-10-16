@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 
 struct HapticsManager {
     var notificationFeedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
@@ -23,5 +24,9 @@ struct HapticsManager {
     mutating func UIFeedbackImpact() {
         impactFeedbackGenerator?.impactOccurred()
         impactFeedbackGenerator = nil
+    }
+
+    func oldSchoolVibrate() {
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
 }

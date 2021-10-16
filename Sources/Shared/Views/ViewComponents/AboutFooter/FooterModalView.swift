@@ -16,9 +16,9 @@ struct FooterModalView: View {
     var body: some View {
         NavigationView {
             SettingsView {
-                Section(header: Text("\(dateHelper.todayDateDescription), Welcome!")
-                                .textCase(nil)
-                                .font(.title2, weight: .black)) {EmptyView()}
+//                Section(header: Text("\(dateHelper.todayDateDescription), Welcome!")
+//                                .textCase(nil)
+//                                .font(.title2, weight: .black)) {EmptyView()}
 
                 Section(header: Label("Settings", systemSymbol: .gearshapeFill),
                         footer: Text(legacyDescriptionText).padding(.bottom)) {
@@ -50,45 +50,9 @@ struct FooterModalView: View {
                 }
                 .foregroundColor(appSecondary)
                 
-                Section(header: Label("Developer", systemSymbol: .hammerFill)){
-                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
-                        Text("Always show onboarding")
-                    })
-                    
-                    Toggle(isOn: $userSettings.developerSettings.shouldCacheData, label: {
-                        Text("Cache data")
-                    })
-                    
-                    Toggle(isOn: $userSettings.developerSettings.dummyGrades, label: {
-                        Text("Dummy grades")
-                    })
-                    
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                            Text(text)
-                                .foregroundColor(.secondaryLabel)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("Build")
-                        Spacer()
-                        if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                            Text(text)
-                                .foregroundColor(.secondaryLabel)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("OS")
-                        Spacer()
-                        Text(UIDevice.current.systemVersion)
-                            .foregroundColor(.secondaryLabel)
-                    }
-                }
+                DeveloperSettingsView()
             }
+            //.font(Font.body.weight(.))
             .navigationBarTitle("Settings")
             .onAppear {
                 Analytics.logEvent("settings&about_opened",

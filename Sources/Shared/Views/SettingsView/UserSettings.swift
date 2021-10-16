@@ -18,6 +18,8 @@ final class UserSettings: ObservableObject {
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
     @Published(key: "isPeriod8On") var isPeriod8On = true
     @Published(key: "didJoinTeams") var didJoinTeams = false
+    @Published(key: "isToyboxOn") var isToyboxOn = false
+    @Published var vibratorOn = false
     
     var anyCancellable: Set<AnyCancellable> = []
     

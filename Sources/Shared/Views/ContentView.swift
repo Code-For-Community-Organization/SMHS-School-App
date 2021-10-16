@@ -40,10 +40,12 @@ struct ContentView: View {
                     Label("Search", systemSymbol: .magnifyingglass)
                 }
             #if DEBUG
-            DeveloperSettingsView()
-                .tabItem {
-                    Label("Settings", systemSymbol: .gearshapeFill)
-                }
+            SettingsView {
+                DeveloperSettingsView()
+                    .tabItem {
+                        Label("Settings", systemSymbol: .gearshapeFill)
+                    }
+            }
             #endif
         }
         .onboardingModal()
