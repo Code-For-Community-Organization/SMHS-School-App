@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62102F81271A4A7900C81F68 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2627121E42009F6234 /* FirebaseMessaging */; };
 		621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385EE265C60D500F4806C /* InformationCardItem.swift */; };
 		621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
 		621F5C842669F2D5006EBE8F /* TodayHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C822669F2D5006EBE8F /* TodayHeroView.swift */; };
@@ -540,7 +541,7 @@
 				621F5C98266A95E6006EBE8F /* ElegantCalendar in Frameworks */,
 				6261DF23271124E5009F6234 /* FirebaseCrashlytics in Frameworks */,
 				62D1E513263DF778004DBFAD /* WidgetKit.framework in Frameworks */,
-				6261DF2727121E42009F6234 /* FirebaseMessaging in Frameworks */,
+				62102F81271A4A7900C81F68 /* FirebaseMessaging in Frameworks */,
 				62E3BF0A2642715200E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1207,11 +1208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 626A228A260035F200903C39 /* Build configuration list for PBXNativeTarget "SMHSSchedule (iOS)" */;
 			buildPhases = (
+				62102F82271A4D6000C81F68 /* Run Script (Bump Build) */,
 				626A2261260035F100903C39 /* Sources */,
 				626A2262260035F100903C39 /* Frameworks */,
 				626A2263260035F100903C39 /* Resources */,
 				62D1E51F263DF779004DBFAD /* Embed App Extensions */,
-				62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */,
 				6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */,
 			);
 			buildRules = (
@@ -1424,6 +1425,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		62102F82271A4D6000C81F68 /* Run Script (Bump Build) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Bump Build)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\" \n";
+		};
 		6261DF1F2711242C009F6234 /* Run Script (Firebase Crashlytics) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1443,24 +1462,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
-		62E05F7A263A1BBC00B609E3 /* Run Script (Bump build) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script (Bump build)";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1962,7 +1963,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2470;
+				CURRENT_PROJECT_VERSION = 2598;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
@@ -1974,7 +1975,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=75 -Xfrontend -warn-long-expression-type-checking=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
@@ -1993,7 +1994,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2470;
+				CURRENT_PROJECT_VERSION = 2598;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				ENABLE_PREVIEWS = YES;
@@ -2004,7 +2005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHS;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -2105,7 +2106,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2470;
+				CURRENT_PROJECT_VERSION = 2598;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2114,7 +2115,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2129,7 +2130,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2470;
+				CURRENT_PROJECT_VERSION = 2598;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2138,7 +2139,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
