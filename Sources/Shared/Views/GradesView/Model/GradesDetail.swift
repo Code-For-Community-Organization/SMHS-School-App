@@ -24,6 +24,8 @@ struct GradesDetail: Codable, Hashable {
         // Whether is missing
         var dateCompleted: String?
         var isGraded: Bool
+
+        var editModeDropped = false
     }
 
     init(from decoder: Decoder) throws {

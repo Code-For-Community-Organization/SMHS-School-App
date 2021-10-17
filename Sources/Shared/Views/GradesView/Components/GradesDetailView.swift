@@ -26,65 +26,8 @@ struct GradesDetailView: View {
                 ScrollView {
                     LazyVStack(spacing: 15) {
                         ForEach(viewModel.detailedAssignments, id: \.self) {assignmentGrade in
-                            Divider()
-                            VStack {
-                                HStack {
-                                    Text("Finished Grading: \(assignmentGrade.isGraded ? "YES" : "NO")")
-                                        .font(.footnote)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.secondaryLabel)
-                                        .padding(5)
-                                        .background(Color.platformSecondaryBackground)
-                                        .roundedCorners(cornerRadius: 10)
-                                        .textAlign(.leading)
-                                    Spacer()
-                                    Group {
-                                        if let dateDigits = assignmentGrade.dateCompleted?.digits {
-                                            Text("Date Completed: \(viewModel.formatUnixDate(dateDigits))")
-                                        }
-                                        else {
-                                            Text("Date Completed: Unknown")
-                                        }
-                                    }
-                                    .font(Font.caption.weight(.semibold))
-                                    .foregroundColor(Color.tertiaryLabel)
-
-                                }
-
-                                HStack {
-                                    VStack {
-                                        Text(assignmentGrade.description.localizedCapitalized)
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .textAlign(.leading)
-                                        Text(assignmentGrade.category)
-                                            .font(.subheadline)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.secondaryLabel)
-                                            .textAlign(.leading)
-                                    }
-                                    Spacer()
-
-                                    VStack {
-                                        Text("\(String(format: "%.1f", assignmentGrade.percent))%")
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .textAlign(.trailing)
-                                            .foregroundColor(appPrimary)
-
-                                        let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
-                                        let numbersPossible = String(format: "%g", assignmentGrade.numberPossible)
-
-                                        Text("\(numbersCorrect)/\(numbersPossible)")
-                                            .font(.headline)
-                                            .fontWeight(.medium)
-                                            .foregroundColor(.secondaryLabel)
-                                            .textAlign(.trailing)
-                                            .padding(.top, 0.5)
-
-                                    }
-                                }
-                            }
+                            GradesDetailRow(viewModel: viewModel,
+                                            assignmentGrade: assignmentGrade)
                         }
                     }
                     .padding()
@@ -95,12 +38,13 @@ struct GradesDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-
+                        viewModel.isEditModeOn.toggle()
                     }) {
                         Image(systemSymbol: .sliderVertical3)
                     }
                 }
             }
+            
         }
 
     }

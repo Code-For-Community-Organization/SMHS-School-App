@@ -12,11 +12,19 @@ import SwiftUI
 
 class GradesDetailViewModel: ObservableObject {
     @Published var detailedAssignments = [GradesDetail.Assignment]()
-
+    @Published var isEditModeOn = false
+    
     var gradebookNumber: Int
     var term: String
     var anyCancellable: Set<AnyCancellable> = []
     let networkingModel = GradesNetworkModel()
+
+//    var overAllPercentage: Double {
+//        let total = detailedAssignments.reduce(0.0, {
+//            $0 + $1.percent
+//        })
+//        return 
+//    }
 
     init(gradebookNumber: Int, term: String) {
         self.gradebookNumber = gradebookNumber
@@ -36,6 +44,7 @@ class GradesDetailViewModel: ObservableObject {
         formatter.dateFormat = "MMM d, yyyy"
         return formatter.string(from: date)
     }
+    
     func fetchDetailedGrades() {
         let gradesRequest = Endpoint.getDetailedGrades(term: term,
                                                        gradebookNumber: String(gradebookNumber))
