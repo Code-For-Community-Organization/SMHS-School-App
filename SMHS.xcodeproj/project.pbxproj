@@ -282,11 +282,22 @@
 		62F43CC22688F3440009CD34 /* GradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC12688F3440009CD34 /* GradesViewModel.swift */; };
 		62F43CC42688F3780009CD34 /* GradesNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */; };
 		62F43CC8268902380009CD34 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CC7268902380009CD34 /* Endpoint.swift */; };
-		62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesResponse.swift */; };
+		62F43CCC2689028A0009CD34 /* GradesSummaryRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesSummaryRawResponse.swift */; };
 		62F5FCFF26B4876600E821D5 /* LoadingAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */; };
 		62F5FD0126B49A2D00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
 		62F5FD0226B49B8B00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
 		62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5FD0026B49A2D00E821D5 /* Font.swift */; };
+		62FE7F2727515D3C0015889C /* CourseGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2627515D3C0015889C /* CourseGrade.swift */; };
+		62FE7F2827515D3C0015889C /* CourseGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2627515D3C0015889C /* CourseGrade.swift */; };
+		62FE7F2927515D3C0015889C /* CourseGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2627515D3C0015889C /* CourseGrade.swift */; };
+		62FE7F2B27515DE30015889C /* GradesRubricRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2A27515DE30015889C /* GradesRubricRawResponse.swift */; };
+		62FE7F2C27515DE30015889C /* GradesRubricRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2A27515DE30015889C /* GradesRubricRawResponse.swift */; };
+		62FE7F2D27515DE30015889C /* GradesRubricRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2A27515DE30015889C /* GradesRubricRawResponse.swift */; };
+		62FE7F2F275161240015889C /* GradesRubric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2E275161240015889C /* GradesRubric.swift */; };
+		62FE7F30275161240015889C /* GradesRubric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2E275161240015889C /* GradesRubric.swift */; };
+		62FE7F31275161240015889C /* GradesRubric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FE7F2E275161240015889C /* GradesRubric.swift */; };
+		62FE7F32275162600015889C /* GradesSummaryRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesSummaryRawResponse.swift */; };
+		62FE7F33275162610015889C /* GradesSummaryRawResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F43CCB2689028A0009CD34 /* GradesSummaryRawResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,9 +489,12 @@
 		62F43CC12688F3440009CD34 /* GradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewModel.swift; sourceTree = "<group>"; };
 		62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesNetworkModel.swift; sourceTree = "<group>"; };
 		62F43CC7268902380009CD34 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		62F43CCB2689028A0009CD34 /* GradesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesResponse.swift; sourceTree = "<group>"; };
+		62F43CCB2689028A0009CD34 /* GradesSummaryRawResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSummaryRawResponse.swift; sourceTree = "<group>"; };
 		62F5FCFE26B4876600E821D5 /* LoadingAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimatable.swift; sourceTree = "<group>"; };
 		62F5FD0026B49A2D00E821D5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		62FE7F2627515D3C0015889C /* CourseGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGrade.swift; sourceTree = "<group>"; };
+		62FE7F2A27515DE30015889C /* GradesRubricRawResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesRubricRawResponse.swift; sourceTree = "<group>"; };
+		62FE7F2E275161240015889C /* GradesRubric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesRubric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1132,6 +1146,7 @@
 		62E2E08B2685957F009608FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				62F43CC7268902380009CD34 /* Endpoint.swift */,
 				62DE61EB2602525400B86555 /* SharedScheduleInformation.swift */,
 				62E2E090268598AA009608FB /* NetworkLoadViewModel.swift */,
 				62A11A7E26E6CBDE007F7241 /* GlobalObjects.swift */,
@@ -1171,15 +1186,25 @@
 		62F43CC6268902230009CD34 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62FE7F2427515CD70015889C /* JSON */,
 				62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */,
-				62F43CC7268902380009CD34 /* Endpoint.swift */,
-				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
 				625F189E268A9256000B71B4 /* RequestError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		62FE7F2427515CD70015889C /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				62F43CCB2689028A0009CD34 /* GradesSummaryRawResponse.swift */,
+				62FE7F2627515D3C0015889C /* CourseGrade.swift */,
 				623D595826FDA056001D05F7 /* GradesDetailedRawResponse.swift */,
 				623D595A26FDA06F001D05F7 /* GradesDetail.swift */,
 				623D59652701944F001D05F7 /* GradesSupplementSummary.swift */,
+				62FE7F2A27515DE30015889C /* GradesRubricRawResponse.swift */,
+				62FE7F2E275161240015889C /* GradesRubric.swift */,
 			);
-			path = Model;
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1474,6 +1499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FE7F2827515D3C0015889C /* CourseGrade.swift in Sources */,
 				62F30D012649A64C008EDD31 /* PeriodCategory.swift in Sources */,
 				62B227CD265D61A10023A7E6 /* SMStretchyHeader.swift in Sources */,
 				62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */,
@@ -1483,6 +1509,8 @@
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
 				62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */,
+				62FE7F30275161240015889C /* GradesRubric.swift in Sources */,
+				62FE7F2C27515DE30015889C /* GradesRubricRawResponse.swift in Sources */,
 				623D59662701944F001D05F7 /* GradesSupplementSummary.swift in Sources */,
 				62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
 				62B227C1265CC1D20023A7E6 /* WhyStatementView.swift in Sources */,
@@ -1492,6 +1520,7 @@
 				62B0D9652692638700AA6CF4 /* KeychainWrapper.swift in Sources */,
 				6261841526371A93001C4AD4 /* ScheduleView.swift in Sources */,
 				6261841626371A93001C4AD4 /* SharedScheduleInformation.swift in Sources */,
+				62FE7F33275162610015889C /* GradesSummaryRawResponse.swift in Sources */,
 				62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */,
 				62D1E54E263DFD46004DBFAD /* ScheduleViewTextLines.swift in Sources */,
 				62626395264DD21D004146CE /* PeriodEditItem.swift in Sources */,
@@ -1568,7 +1597,7 @@
 				629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */,
 				621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */,
 				629BE8BB2636430A00BC49AD /* MockScheduleView.swift in Sources */,
-				62F43CCC2689028A0009CD34 /* GradesResponse.swift in Sources */,
+				62F43CCC2689028A0009CD34 /* GradesSummaryRawResponse.swift in Sources */,
 				6287EA672654D6D3007B41CB /* ScheduleListHeaderText.swift in Sources */,
 				626A229F260039BC00903C39 /* Colors.swift in Sources */,
 				62C48DAB265C6CA70032301E /* FooterModalView.swift in Sources */,
@@ -1598,6 +1627,7 @@
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
 				62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */,
 				62B227D2265D63270023A7E6 /* SocialMediaIcons.swift in Sources */,
+				62FE7F2F275161240015889C /* GradesRubric.swift in Sources */,
 				62C9E8B2263D212E00CCA5C5 /* Bindings.swift in Sources */,
 				626A22992600381700903C39 /* ScheduleView.swift in Sources */,
 				62C9E898263D0AB700CCA5C5 /* OnboardingWrapperView.swift in Sources */,
@@ -1622,6 +1652,7 @@
 				62B227D6265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62763AA3264A6DEE006162EA /* ProgressCountdown.swift in Sources */,
 				624F7A002651A4E600B93C63 /* HapticsManager.swift in Sources */,
+				62FE7F2727515D3C0015889C /* CourseGrade.swift in Sources */,
 				6287EA6A26558081007B41CB /* CustomScheduleView.swift in Sources */,
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
@@ -1653,6 +1684,7 @@
 				625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */,
 				62863BAE26AF461100084C28 /* Dictionary.swift in Sources */,
 				62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */,
+				62FE7F2B27515DE30015889C /* GradesRubricRawResponse.swift in Sources */,
 				626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */,
 				62B0D9632692611500AA6CF4 /* KeychainAccessibility.swift in Sources */,
 				62A11A8026E6CBDE007F7241 /* GlobalObjects.swift in Sources */,
@@ -1705,6 +1737,7 @@
 				62D1E538263DF859004DBFAD /* UserDefaultWrapper.swift in Sources */,
 				62D1E53A263DF859004DBFAD /* Miscellaneous.swift in Sources */,
 				62B227C3265CC1D60023A7E6 /* WhyStatementView.swift in Sources */,
+				62FE7F2927515D3C0015889C /* CourseGrade.swift in Sources */,
 				62D8CB8526E422B6004DD19B /* PeriodParseExtensions.swift in Sources */,
 				623D596126FDA650001D05F7 /* GradesDetailedRawResponse.swift in Sources */,
 				621F5C99266A9830006EBE8F /* HapticsManager.swift in Sources */,
@@ -1734,8 +1767,11 @@
 				62A11A9426F9A2A0007F7241 /* OnboardingRowItemLegacy.swift in Sources */,
 				6287EA6F265587CD007B41CB /* ScheduleCustomViewModel.swift in Sources */,
 				62D1E525263DF82B004DBFAD /* ScheduleWeek.swift in Sources */,
+				62FE7F31275161240015889C /* GradesRubric.swift in Sources */,
+				62FE7F2D27515DE30015889C /* GradesRubricRawResponse.swift in Sources */,
 				62D32123264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				62D1E518263DF778004DBFAD /* Widgets.swift in Sources */,
+				62FE7F32275162600015889C /* GradesSummaryRawResponse.swift in Sources */,
 				62A11A8F26F9A0B4007F7241 /* OnboardingFeature.swift in Sources */,
 				62B0D9642692638600AA6CF4 /* KeychainWrapper.swift in Sources */,
 			);
