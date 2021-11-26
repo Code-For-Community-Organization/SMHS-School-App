@@ -110,6 +110,23 @@ extension Endpoint {
                         jsonEncode: true)
     }
 
+    // API for getting rubrics - weights and
+    // categories of assessments and assignments.etc
+    static func getGradesRubric(term: String,
+                                gradebookNumber: String) -> Endpoint {
+        let body = [
+            "term": term,
+            "gradebookNumber": gradebookNumber
+        ]
+
+        return Endpoint(host: AERIES_API_HOST,
+                        path: AERIES_API_MAIN_PATH + "/GetGradebookDetailedSummaryData",
+                        requestBody: body,
+                        httpMethod: "POST",
+                        isApplicationJson: true,
+                        jsonEncode: true)
+    }
+
     static func getAnnoucements(daysFromToday: Int) -> Endpoint {
         let calendar = Calendar.current
         let date = calendar.date(byAdding: .day, value: -daysFromToday, to: Date()) ?? Date()

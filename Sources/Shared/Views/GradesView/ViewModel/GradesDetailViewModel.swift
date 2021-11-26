@@ -71,6 +71,26 @@ class GradesDetailViewModel: ObservableObject {
                 self.detailedAssignments = receivedGradesDetail.assignments
             })
             .store(in: &anyCancellable)
+
+        let rubricRequest = Endpoint.getGradesRubric(term: term,
+                                                     gradebookNumber: String(gradebookNumber))
+        AF.request(rubricRequest.request)
+            .publishString()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: {requestError in
+                switch requestError {
+                case .finished:
+                    return
+                case .failure(let error):
+                    #if DEBUG
+                    print(error)
+                    #endif
+                }
+
+            }, receiveValue: {raw in
+                debugPrint(raw)
+            })
+            .store(in: &anyCancellable)
     }
 }
 
