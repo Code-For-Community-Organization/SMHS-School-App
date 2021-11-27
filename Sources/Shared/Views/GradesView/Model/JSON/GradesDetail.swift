@@ -26,6 +26,7 @@ struct GradesDetail: Codable, Hashable {
         var isGraded: Bool
 
         var editModeDropped = false
+
     }
 
     init(from decoder: Decoder) throws {

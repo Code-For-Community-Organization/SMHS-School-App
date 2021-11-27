@@ -9,7 +9,9 @@ import SwiftUI
 
 struct GradesDetailRow: View {
     @StateObject var viewModel: GradesDetailViewModel
+    @State var slider = 0.0
     var assignmentGrade: GradesDetail.Assignment
+    var arrayIndex: Int
 
     var body: some View {
         Divider()
@@ -80,10 +82,7 @@ struct GradesDetailRow: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        if let index = viewModel.detailedAssignments.firstIndex(of: assignmentGrade) {
-                            viewModel.detailedAssignments[index].editModeDropped.toggle()
-                        }
-
+                        viewModel.detailedAssignments[arrayIndex].editModeDropped.toggle()
                     }, label: {
                         Text(assignmentGrade.editModeDropped ? "Undrop" : "Drop")
                             .font(.footnote)
@@ -96,8 +95,25 @@ struct GradesDetailRow: View {
                     })
                 }
                 .transition(.move(edge: .bottom))
+                if assignmentGrade.numberPossible > 0 {
+                    Slider(value: Binding(get: {self.slider},
+                                          set: {value in
+                        viewModel.detailedAssignments[arrayIndex].numberCorrect = value
+                    }),
+                           in: 0...assignmentGrade.numberPossible,
+                           step: 0.5)
+                }
+
+
+
             }
         }
         .opacity(assignmentGrade.editModeDropped ? 0.3 : 1)
+        .onAppear {
+            slider = assignmentGrade.numberCorrect
+        }
+//        .onChange(of: slider) {value in
+//            viewModel.detailedAssignments[arrayIndex].numberCorrect = value
+//        }
     }
 }

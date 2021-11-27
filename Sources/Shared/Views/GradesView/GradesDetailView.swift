@@ -31,9 +31,10 @@ struct GradesDetailView: View {
 
                 ScrollView {
                     LazyVStack(spacing: 15) {
-                        ForEach(viewModel.detailedAssignments, id: \.self) {assignmentGrade in
+                        ForEach(Array(viewModel.detailedAssignments.enumerated()), id: \.element) {index, assignmentGrade in
                             GradesDetailRow(viewModel: viewModel,
-                                            assignmentGrade: assignmentGrade)
+                                            assignmentGrade: assignmentGrade,
+                                            arrayIndex: index)
                         }
                     }
                     .padding()

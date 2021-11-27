@@ -53,13 +53,14 @@ class GradesDetailViewModel: ObservableObject {
                 if !isOn {
                     let targets = self.detailedAssignments.indices
                         .filter {self.detailedAssignments[$0].editModeDropped}
+                    
                     for i in targets {
                         self.detailedAssignments[i].editModeDropped = false
                     }
                 }
             }
             .store(in: &anyCancellable)
-        
+
         fetchDetailedGrades()
     }
 
