@@ -35,23 +35,22 @@ struct CourseGradeItem: View {
                     Group {
                         Text(periodName)
                             .font(.title2)
-                            .fontWeight(.semibold)
+                            .fontWeight(.medium)
                             .lineLimit(1)
-                            .minimumScaleFactor(0.7)
                             .padding(.bottom, 1)
 
                         HStack {
                             Text("Period \(course.periodNum)")
                                 .font(.headline)
-                                .fontWeight(.medium)
                                 .foregroundColor(appSecondary)
                                 .minimumScaleFactor(0.5)
                                 .frame(width: 70)
-
+                            Text("•")
+                                .foregroundColor(.platformSecondaryLabel)
                             Text(course.teacherName)
                                 .font(.headline)
-                                .fontWeight(.semibold)
                                 .foregroundColor(.platformSecondaryLabel)
+
                             
                             Spacer()
                         }
