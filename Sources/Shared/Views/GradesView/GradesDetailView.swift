@@ -15,7 +15,7 @@ struct GradesDetailView: View {
         ZStack {
             Color.platformSecondaryBackground.ignoresSafeArea()
             VStack {
-                Text("\(viewModel.overallPercent)")
+                Text("\(viewModel.overallPercent, specifier: "%g")%")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(appSecondary)

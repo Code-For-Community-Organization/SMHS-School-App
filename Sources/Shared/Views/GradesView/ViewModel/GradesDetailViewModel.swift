@@ -93,14 +93,8 @@ class GradesDetailViewModel: ObservableObject {
             }, receiveValue: {[weak self] gradesRubric in
                 var totalGrade = 0.0
                 var totalWeight = 0.0
-                #warning("Need to check for weight is valid and weighted grading on")
                 for category in gradesRubric.categories {
-                    // Get percent value of assignments in the category
-//                    let assignments = self?.detailedAssignments
-//                        .filter {$0.category == category.category}
-//                        .filter {$0.dateCompleted != nil}
-//                        .map {$0.percent}
-//                        .map {$0 * (Double(category.percentOfGrade) / 100.0)}
+                    guard category.isDoingWeight else { continue }
                     let correctScore = self?.detailedAssignments
                         .filter {$0.category == category.category}
                         .filter {$0.dateCompleted != nil}
@@ -115,7 +109,7 @@ class GradesDetailViewModel: ObservableObject {
 
                     guard let _correctScore = correctScore,
                           let _possibleScore = possibleScore
-                    else { return }
+                    else { continue }
                     //guard let _assignments = assignments else { return }
                     let weight = Double(category.percentOfGrade) / 100
                     if _possibleScore > 0 {
@@ -123,8 +117,8 @@ class GradesDetailViewModel: ObservableObject {
                         totalWeight += weight
                     }
                 }
-
-                self?.overallPercent = (totalGrade / totalWeight).truncate(places: 1)
+                let percent = (totalGrade / totalWeight) * 100
+                self?.overallPercent = percent.truncate(places: 2)
             })
             .store(in: &anyCancellable)
     }
