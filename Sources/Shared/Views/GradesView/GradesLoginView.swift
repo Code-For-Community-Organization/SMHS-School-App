@@ -65,6 +65,7 @@ struct GradesLoginView: View {
                   message: Text(gradesViewModel.networkErrorMsg),
                   dismissButton: .cancel())
         }
+        .disabled(gradesViewModel.isLoading)
     }
 }
 
