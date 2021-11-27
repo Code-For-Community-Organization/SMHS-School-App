@@ -13,8 +13,20 @@ import SwiftUI
 class GradesDetailViewModel: ObservableObject {
     @Published var detailedAssignments = [GradesDetail.Assignment]()
     @Published var isEditModeOn = false
-    @Published var overallPercent = 0.0
+    var overallPercent: Double {
+        let userDefault = UserDefaults.standard
+        let key = "rubric\(self.gradebookNumber)"
+        if let data = userDefault.data(forKey: key),
+           let decodedRubric = try? JSONDecoder().decode([GradesRubricRawResponse.Category].self,
+                                                         from: data) {
+            return computeOverallPercentage(with: decodedRubric)
+        }
+        else {
+            return computeOverallPercentage(with: gradesRubric)
+        }
+    }
 
+    @Published var gradesRubric = [GradesRubricRawResponse.Category]()
     var gradebookNumber: Int
     var term: String
     var anyCancellable: Set<AnyCancellable> = []
@@ -90,37 +102,44 @@ class GradesDetailViewModel: ObservableObject {
                     #endif
                 }
 
-            }, receiveValue: {[weak self] gradesRubric in
-                var totalGrade = 0.0
-                var totalWeight = 0.0
-                for category in gradesRubric.categories {
-                    guard category.isDoingWeight else { continue }
-                    let correctScore = self?.detailedAssignments
-                        .filter {$0.category == category.category}
-                        .filter {$0.dateCompleted != nil}
-                        .map {$0.numberCorrect}
-                        .reduce(0, {$0 + $1})
-
-                    let possibleScore = self?.detailedAssignments
-                        .filter {$0.category == category.category}
-                        .filter {$0.dateCompleted != nil}
-                        .map {$0.numberPossible}
-                        .reduce(0, {$0 + $1})
-
-                    guard let _correctScore = correctScore,
-                          let _possibleScore = possibleScore
-                    else { continue }
-                    //guard let _assignments = assignments else { return }
-                    let weight = Double(category.percentOfGrade) / 100
-                    if _possibleScore > 0 {
-                        totalGrade += (_correctScore / _possibleScore) * weight
-                        totalWeight += weight
-                    }
+            }, receiveValue: {[unowned self] gradesRubric in
+                let encoder = JSONEncoder()
+                let userDefault = UserDefaults.standard
+                if let encoded = try? encoder.encode(gradesRubric.categories) {
+                    userDefault.setValue(encoded, forKey: "rubric\(self.gradebookNumber)")
                 }
-                let percent = (totalGrade / totalWeight) * 100
-                self?.overallPercent = percent.truncate(places: 2)
+                self.gradesRubric = gradesRubric.categories
+
             })
             .store(in: &anyCancellable)
+    }
+
+    func computeOverallPercentage(with gradesRubric: [GradesRubricRawResponse.Category]) -> Double {
+        var totalGrade = 0.0
+        var totalWeight = 0.0
+        for category in gradesRubric {
+            guard category.isDoingWeight else { continue }
+            let correctScore = self.detailedAssignments
+                .filter {$0.category == category.category}
+                .filter {$0.dateCompleted != nil}
+                .map {$0.numberCorrect}
+                .reduce(0, {$0 + $1})
+
+            let possibleScore = self.detailedAssignments
+                .filter {$0.category == category.category}
+                .filter {$0.dateCompleted != nil}
+                .map {$0.numberPossible}
+                .reduce(0, {$0 + $1})
+
+            //guard let _assignments = assignments else { return }
+            let weight = Double(category.percentOfGrade) / 100
+            if possibleScore > 0 {
+                totalGrade += (correctScore / possibleScore) * weight
+                totalWeight += weight
+            }
+        }
+        let percent = (totalGrade / totalWeight) * 100
+        return percent.truncate(places: 2)
     }
 }
 
