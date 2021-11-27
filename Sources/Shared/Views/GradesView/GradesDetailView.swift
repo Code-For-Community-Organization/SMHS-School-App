@@ -9,14 +9,13 @@ import SwiftUI
 
 struct GradesDetailView: View {
     var className: String
-    var overAll: String
     @StateObject var viewModel: GradesDetailViewModel
 
     var body: some View {
         ZStack {
             Color.platformSecondaryBackground.ignoresSafeArea()
             VStack {
-                Text(overAll)
+                Text("\(viewModel.overallPercent)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(appSecondary)

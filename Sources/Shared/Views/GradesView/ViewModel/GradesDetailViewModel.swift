@@ -13,7 +13,8 @@ import SwiftUI
 class GradesDetailViewModel: ObservableObject {
     @Published var detailedAssignments = [GradesDetail.Assignment]()
     @Published var isEditModeOn = false
-    
+    @Published var overallPercent = 0.0
+
     var gradebookNumber: Int
     var term: String
     var anyCancellable: Set<AnyCancellable> = []
@@ -78,6 +79,7 @@ class GradesDetailViewModel: ObservableObject {
             .publishDecodable(type: GradesRubric.self)
             .value()
             .receive(on: RunLoop.main)
+            .retry(3)
             .sink(receiveCompletion: {requestError in
                 switch requestError {
                 case .finished:
@@ -88,8 +90,41 @@ class GradesDetailViewModel: ObservableObject {
                     #endif
                 }
 
-            }, receiveValue: {gradesRubric in
-                debugPrint(gradesRubric.categories)
+            }, receiveValue: {[weak self] gradesRubric in
+                var totalGrade = 0.0
+                var totalWeight = 0.0
+                #warning("Need to check for weight is valid and weighted grading on")
+                for category in gradesRubric.categories {
+                    // Get percent value of assignments in the category
+//                    let assignments = self?.detailedAssignments
+//                        .filter {$0.category == category.category}
+//                        .filter {$0.dateCompleted != nil}
+//                        .map {$0.percent}
+//                        .map {$0 * (Double(category.percentOfGrade) / 100.0)}
+                    let correctScore = self?.detailedAssignments
+                        .filter {$0.category == category.category}
+                        .filter {$0.dateCompleted != nil}
+                        .map {$0.numberCorrect}
+                        .reduce(0, {$0 + $1})
+
+                    let possibleScore = self?.detailedAssignments
+                        .filter {$0.category == category.category}
+                        .filter {$0.dateCompleted != nil}
+                        .map {$0.numberPossible}
+                        .reduce(0, {$0 + $1})
+
+                    guard let _correctScore = correctScore,
+                          let _possibleScore = possibleScore
+                    else { return }
+                    //guard let _assignments = assignments else { return }
+                    let weight = Double(category.percentOfGrade) / 100
+                    if _possibleScore > 0 {
+                        totalGrade += (_correctScore / _possibleScore) * weight
+                        totalWeight += weight
+                    }
+                }
+
+                self?.overallPercent = (totalGrade / totalWeight).truncate(places: 1)
             })
             .store(in: &anyCancellable)
     }

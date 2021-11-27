@@ -125,6 +125,9 @@ extension GradesViewModel {
 extension GradesViewModel {
     
     func reloadData() {
+        #if DEBUG
+        loginAndFetch()
+        #else
         if let time = lastReloadTime {
             if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
                 loginAndFetch()
@@ -135,6 +138,7 @@ extension GradesViewModel {
             lastReloadTime = Date()
             loginAndFetch()
         }
+        #endif
     }
     
     func loginAndFetch() {

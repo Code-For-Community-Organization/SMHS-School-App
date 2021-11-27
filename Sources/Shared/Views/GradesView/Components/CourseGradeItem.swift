@@ -27,7 +27,6 @@ struct CourseGradeItem: View {
                 NavigationLink(isActive: $showDetailView,
                                destination: {
                     GradesDetailView(className: periodName,
-                                     overAll: course.gradePercentText,
                                      viewModel: .init(gradebookNumber: course.gradebookNumber,
                                                       term: course.term))
                 },
