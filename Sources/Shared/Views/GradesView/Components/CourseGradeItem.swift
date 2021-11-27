@@ -43,8 +43,6 @@ struct CourseGradeItem: View {
                             Text("Period \(course.periodNum)")
                                 .font(.headline)
                                 .foregroundColor(appSecondary)
-                                .minimumScaleFactor(0.5)
-                                .frame(width: 70)
                             Text("•")
                                 .foregroundColor(.platformSecondaryLabel)
                             Text(course.teacherName)
@@ -54,6 +52,8 @@ struct CourseGradeItem: View {
                             
                             Spacer()
                         }
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
 
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

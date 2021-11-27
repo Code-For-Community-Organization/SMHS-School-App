@@ -48,6 +48,18 @@ class GradesDetailViewModel: ObservableObject {
            let decoded = try? decoder.decode([GradesDetail.Assignment].self, from: cached){
             detailedAssignments = decoded
         }
+        $isEditModeOn
+            .sink {[unowned self] isOn in
+                if !isOn {
+                    let targets = self.detailedAssignments.indices
+                        .filter {self.detailedAssignments[$0].editModeDropped}
+                    for i in targets {
+                        self.detailedAssignments[i].editModeDropped = false
+                    }
+                }
+            }
+            .store(in: &anyCancellable)
+        
         fetchDetailedGrades()
     }
 
@@ -122,12 +134,24 @@ class GradesDetailViewModel: ObservableObject {
             let correctScore = self.detailedAssignments
                 .filter {$0.category == category.category}
                 .filter {$0.dateCompleted != nil}
+                .filter {
+                    if isEditModeOn {
+                        return !$0.editModeDropped
+                    }
+                    return true
+                }
                 .map {$0.numberCorrect}
                 .reduce(0, {$0 + $1})
 
             let possibleScore = self.detailedAssignments
                 .filter {$0.category == category.category}
                 .filter {$0.dateCompleted != nil}
+                .filter {
+                    if isEditModeOn {
+                        return !$0.editModeDropped
+                    }
+                    return true
+                }
                 .map {$0.numberPossible}
                 .reduce(0, {$0 + $1})
 

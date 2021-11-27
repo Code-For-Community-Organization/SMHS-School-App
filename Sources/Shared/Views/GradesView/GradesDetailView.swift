@@ -46,7 +46,13 @@ struct GradesDetailView: View {
                     Button(action: {
                         viewModel.isEditModeOn.toggle()
                     }) {
-                        Image(systemSymbol: .sliderVertical3)
+                        HStack {
+                            Text("What-If")
+                            Image(systemSymbol: .sliderVertical3)
+                        }
+                        .foregroundColor(appPrimary)
+                        //Label("What-If", systemSymbol: .sliderVertical3)
+
                     }
                 }
             }

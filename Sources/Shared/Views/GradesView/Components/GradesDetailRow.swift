@@ -57,8 +57,10 @@ struct GradesDetailRow: View {
                     Text("\(String(format: "%.1f", assignmentGrade.percent))%")
                         .font(.title)
                         .fontWeight(.bold)
+                        .strikethrough(assignmentGrade.editModeDropped)
                         .textAlign(.trailing)
                         .foregroundColor(appPrimary)
+
 
                     let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
                     let numbersPossible = String(format: "%g", assignmentGrade.numberPossible)
@@ -66,6 +68,7 @@ struct GradesDetailRow: View {
                     Text("\(numbersCorrect)/\(numbersPossible)")
                         .font(.headline)
                         .fontWeight(.medium)
+                        .strikethrough(assignmentGrade.editModeDropped)
                         .foregroundColor(.secondaryLabel)
                         .textAlign(.trailing)
                         .padding(.top, 0.5)
@@ -78,21 +81,23 @@ struct GradesDetailRow: View {
                     Spacer()
                     Button(action: {
                         if let index = viewModel.detailedAssignments.firstIndex(of: assignmentGrade) {
-                            viewModel.detailedAssignments[index].editModeDropped = true
+                            viewModel.detailedAssignments[index].editModeDropped.toggle()
                         }
 
                     }, label: {
-                        Text("Drop")
+                        Text(assignmentGrade.editModeDropped ? "Undrop" : "Drop")
+                            .font(.footnote)
                             .fontWeight(.semibold)
-                            .foregroundColor(appPrimary)
-                            .padding(3)
-                            .background(Color.white)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 3)
+                            .padding(.horizontal, 6)
+                            .background(appPrimary)
                             .clipShape(Capsule())
                     })
                 }
                 .transition(.move(edge: .bottom))
             }
         }
-        .opacity(assignmentGrade.editModeDropped ? 0.5 : 1)
+        .opacity(assignmentGrade.editModeDropped ? 0.3 : 1)
     }
 }
