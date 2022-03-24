@@ -39,8 +39,6 @@ struct TodayView: View {
                     PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)
                 }
         )
-
-    
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
