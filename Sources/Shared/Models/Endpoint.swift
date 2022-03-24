@@ -58,6 +58,9 @@ extension Endpoint {
     static let AERIES_API_LOGIN_PATH = "/parent/LoginParent.aspx"
     static let AERIES_API_ALT_GRADES_PATH = "/Parent/Widgets/ClassSummary/GetClassSummary"
 
+    static let APPSERV_API_HOST = "appserv.u360mobile.com"
+    static let APPSERV_API_SCHEDULE_PATH = "/354/calendarfeed.php"
+
     static func studentLogin(email: String,
                              password: String,
                              debugMode: Bool = false) -> Endpoint {
@@ -110,6 +113,23 @@ extension Endpoint {
                         jsonEncode: true)
     }
 
+    // API for getting rubrics - weights and
+    // categories of assessments and assignments.etc
+    static func getGradesRubric(term: String,
+                                gradebookNumber: String) -> Endpoint {
+        let body = [
+            "term": term,
+            "gradebookNumber": gradebookNumber
+        ]
+
+        return Endpoint(host: AERIES_API_HOST,
+                        path: AERIES_API_MAIN_PATH + "/GetGradebookDetailedSummaryData",
+                        requestBody: body,
+                        httpMethod: "POST",
+                        isApplicationJson: true,
+                        jsonEncode: true)
+    }
+
     static func getAnnoucements(daysFromToday: Int) -> Endpoint {
         let calendar = Calendar.current
         let date = calendar.date(byAdding: .day, value: -daysFromToday, to: Date()) ?? Date()
@@ -122,6 +142,21 @@ extension Endpoint {
                         path: SMHS_API_MAIN_PATH + "/announcements",
                         queryItems: [.init(name: "date",
                                            value: formatter.serverTimeFormat(date))],
+                        httpMethod: "GET")
+    }
+
+    static func getSchedule(date: Date) -> Endpoint {
+        let formatter = DateFormatter()
+        return Endpoint(host: APPSERV_API_HOST,
+                        path: APPSERV_API_SCHEDULE_PATH,
+                        queryItems: [.init(name: "i", value: "santamargaritahs"),
+                                     .init(name: "pageSize", value: "25"),
+                                     .init(name: "pageNumber", value: "1"),
+                                     .init(name: "dateStart", value: formatter.yearMonthDayFormat(date)),
+                                     .init(name: "categoryId", value: "0"),
+                                     .init(name: "tz", value: "America%2FLos_Angeles"),
+                                     .init(name: "mid", value: "1422"),
+                                     .init(name: "smid", value: "46492")],
                         httpMethod: "GET")
     }
     

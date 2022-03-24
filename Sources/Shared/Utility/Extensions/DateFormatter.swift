@@ -35,12 +35,18 @@ extension DateFormatter {
 
     func serverTimeFormat(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatter.string(from: date)
     }
 
     static func hourTimeFormat(_ time: String) -> Date? {
         let formatter = getLocalTimeFormatter(withFormat: "h:mma")
         return formatter.date(from: time)
+    }
+
+    func yearMonthDayFormat(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
     }
 }

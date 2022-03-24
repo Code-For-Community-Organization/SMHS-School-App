@@ -9,6 +9,8 @@ import Combine
 import SwiftUI
 import Foundation
 import FirebaseRemoteConfig
+import Alamofire
+import SwiftyXMLParser
 
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
@@ -77,42 +79,68 @@ final class SharedScheduleInformation: ObservableObject {
         }
         
     }
-
+    // Two data sources for schedule:
+    // 1. AppServ API (Used by SMHS official app)
+    // Preferred because it's more stable and stil
+    // works even if smhs.org is down, and it's also
+    // more performant as it loads in batches and don't
+    // require intensive parsing
+    //
+    // 2. smhs.org ICS calendar feed, used as a
+    // redundency to fallback on if above fails
     func fetchData(completion: ((Bool) -> Void)? = nil) {
-        print("Fetching schedule data....")
-        //Load ICS calendar data from network
-        downloader(urlString){data, error in
-            guard let data = data else {
-                #if DEBUG
+        // AppServ API
+        let endpoint = Endpoint.getSchedule(date: Date())
+        AF.request(endpoint.request).response {[weak self] response in
+            guard let data = response.data
+            else {
                 completion?(false)
-                //print("Error occurred while fetching iCS: \(error!)")
-                #endif
                 return
             }
-            //Publish changes on main thread
-            DispatchQueue.main.async {
-                // Decode iCS calendar into raw string
-                let rawText = String(data: data, encoding: .utf8) ?? ""
-                #if DEBUG
-                #else
-                // Only reload if the downloaded data is different
-                guard self.ICSText != rawText else {return}
-                #endif
-                self.ICSText = rawText
-                self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
-                    DispatchQueue.main.async {
-                        self.todaySchedule = day
-                    }
-                }
-                self.dateHelper.parseScheduleData(withRawText: rawText){result in
-                    DispatchQueue.main.async {
-                        self.scheduleWeeks = result
-                        self.objectWillChange.send()
-                        completion?(true)
-                    }
+            let xml = XML.parse(data)
+
+            var scheduleDays = [(String, String)]()
+            for day in xml["CALENDAR", "EVENT"] {
+                if let scheduleText = day["DESCRIPTION"].text,
+                   let date = day["EVENTDATE"].text {
+                    scheduleDays.append((date, scheduleText))
                 }
             }
+            self?.scheduleWeeks = self?.dateHelper.parseScheduleXML(forDays: scheduleDays) ?? []
         }
+        //Load ICS calendar data from network
+//        downloader(urlString){data, error in
+//            guard let data = data else {
+//                #if DEBUG
+//                completion?(false)
+//                //print("Error occurred while fetching iCS: \(error!)")
+//                #endif
+//                return
+//            }
+//            //Publish changes on main thread
+//            DispatchQueue.main.async {
+//                // Decode iCS calendar into raw string
+//                let rawText = String(data: data, encoding: .utf8) ?? ""
+//                #if DEBUG
+//                #else
+//                // Only reload if the downloaded data is different
+//                guard self.ICSText != rawText else {return}
+//                #endif
+//                self.ICSText = rawText
+//                self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
+//                    DispatchQueue.main.async {
+//                        self.todaySchedule = day
+//                    }
+//                }
+//                self.dateHelper.parseScheduleData(withRawText: rawText){result in
+//                    DispatchQueue.main.async {
+//                        self.scheduleWeeks = result
+//                        self.objectWillChange.send()
+//                        completion?(true)
+//                    }
+//                }
+//            }
+        //}
     }
     
     func reset() {
