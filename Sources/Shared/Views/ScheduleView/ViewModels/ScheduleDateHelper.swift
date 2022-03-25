@@ -156,6 +156,7 @@ struct ScheduleDateHelper {
             weeks.append(ScheduleWeek(scheduleDays: [newDay]))
             return weeks
         }
+        let calendar = Calendar.current
         let weekOfYear = calendar.component(.weekOfYear, from: newDay.date)
         let previousWeekOfYear = calendar.component(.weekOfYear, from: previousDay.date)
 

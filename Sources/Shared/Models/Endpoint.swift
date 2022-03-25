@@ -141,7 +141,7 @@ extension Endpoint {
         return Endpoint(host: SMHS_API_HOST,
                         path: SMHS_API_MAIN_PATH + "/announcements",
                         queryItems: [.init(name: "date",
-                                           value: formatter.serverTimeFormat(date))],
+                                           value: formatter.yearMonthDayFormat(date))],
                         httpMethod: "GET")
     }
 
