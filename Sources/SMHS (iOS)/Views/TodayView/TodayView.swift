@@ -96,7 +96,7 @@ struct TodayViewHeader: View {
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in }),
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_,_  in }),
                   scheduleViewViewModel: SharedScheduleInformation())
             .environmentObject(UserSettings())
     }

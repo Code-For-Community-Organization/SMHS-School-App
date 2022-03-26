@@ -93,7 +93,7 @@ struct TodayHeroView: View {
 
 struct TodayHeroView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in}), scheduleViewViewModel: .mockScheduleView, todayViewViewModel: .mockViewModel)
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_,_ in}), scheduleViewViewModel: .mockScheduleView, todayViewViewModel: .mockViewModel)
             .environmentObject(UserSettings())
     }
 }
