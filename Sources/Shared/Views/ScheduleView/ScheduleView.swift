@@ -49,6 +49,7 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
+            scheduleViewModel.reloadData()
             scheduleViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewModel.reset()
