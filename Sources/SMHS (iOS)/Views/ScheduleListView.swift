@@ -16,13 +16,14 @@ struct ScheduleListView: View {
         GeometryReader {geo in
             ScrollView {
                 LazyVStack {
-                    Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
-                    Section(header: ScheduleListBanner(present: $presentCalendar, action: {
+                    ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)
+                        .padding(.horizontal, 16)
+                    ScheduleListBanner(present: $presentCalendar, action: {
                         masterCalendarViewModel.reloadData {
                             presentCalendar = true
                         }
 
-                    }, geometryProxy: geo)){EmptyView()}
+                    }, geometryProxy: geo)
 
                     ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
                         VStack(spacing: 0) {
