@@ -12,7 +12,7 @@ struct ScheduleWeek: Hashable, Codable {
     var endDate: Date? {scheduleDays.last?.date ?? nil}
     var weekText: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd"
+        dateFormatter.dateFormat = "M/dd"
         if let startDate = startDate, let endDate = endDate {
             let startDate = dateFormatter.string(from: startDate)
             let endDate = dateFormatter.string(from: endDate)
@@ -36,6 +36,10 @@ struct ScheduleWeek: Hashable, Codable {
     func getDayByDate(_ date: Date) -> ScheduleDay? {
         scheduleDays.first{$0.date == date.eraseTime()}
     }
+
+    func isLast(day: ScheduleDay) -> Bool {
+        return day == scheduleDays.last
+    }
 //
 //    func contains(_ date: Date) -> Bool {
 //        guard let startDate = startDate, let endDate = endDate else {
@@ -43,4 +47,11 @@ struct ScheduleWeek: Hashable, Codable {
 //        }
 //        return date > startDate && date < endDate
 //    }
+}
+
+extension ScheduleWeek: Equatable {
+    static func == (lhs: ScheduleWeek, rhs: ScheduleWeek) -> Bool {
+        return lhs.startDate == rhs.startDate
+            && lhs.endDate == rhs.endDate
+    }
 }

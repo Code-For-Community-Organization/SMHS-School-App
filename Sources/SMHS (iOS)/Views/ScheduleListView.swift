@@ -14,7 +14,7 @@ struct ScheduleListView: View {
     
     var body: some View {
         GeometryReader {geo in
-            ScrollView{
+            ScrollView {
                 LazyVStack {
                     Section(header: ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)){EmptyView()}
                     Section(header: ScheduleListBanner(present: $presentCalendar, action: {
@@ -23,27 +23,52 @@ struct ScheduleListView: View {
                         }
 
                     }, geometryProxy: geo)){EmptyView()}
-                    //Section(header: ScheduleListBanner(presentModal: $presentModal, geometryProxy: geo)){EmptyView()}
-                    ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
-                        Section(header: ScheduleListHeaderView(scheduleWeek: scheduleWeek)) {
-                            ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
-                                NavigationLink(
-                                    destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
-                                    ,
-                                    label: {
-                                        Text(day.title)
-                                            .textAlign(.leading)
 
-                                    })
+                    ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
+                        VStack(spacing: 0) {
+                            ScheduleListHeaderView(scheduleWeek: scheduleWeek)
+                                .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                            VStack(spacing: 0) {
+                                ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
+                                    NavigationLink(
+                                        destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
+                                        ,
+                                        label: {
+                                            HStack {
+                                                Text(day.title)
+                                                    .textAlign(.leading)
+                                                    .foregroundColor(.platformLabel)
+                                                Spacer()
+                                                Image(systemSymbol: .chevronRight)
+                                                    .font(Font.footnote.weight(.heavy))
+                                                    .foregroundColor(Color.platformSecondaryLabel)
+                                            }
+                                            .font(Font.body.weight(.semibold))
+
+                                        })
+                                        .padding(12)
+                                        .padding(.horizontal, 2)
+
+                                    if !scheduleWeek.isLast(day: day) {
+                                        Divider()
+                                            .padding(.leading, 14)
+                                    }
+                                }
+
                             }
+                            .background(Color.platformBackground)
+                            .roundedCorners(cornerRadius: 10)
                         }
+                        .padding(EdgeInsets(top: 16, leading: 20, bottom: 16, trailing: 20))
                         .textCase(nil)
                         .onAppear {
                             scheduleViewModel.reloadScrollList(currentWeek: scheduleWeek)
                         }
                     }
                     .listItemTint(appSecondary)
+
                     Spacer()
+
                     if scheduleViewModel.isLoading {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
@@ -51,7 +76,6 @@ struct ScheduleListView: View {
 
                 }
             }
-            .listStyle(InsetGroupedListStyle())
             .fullScreenCover(isPresented: $presentCalendar) {
                 MasterCalendarView(calendarViewModel: masterCalendarViewModel)
             }
