@@ -33,6 +33,11 @@ final class SharedScheduleInformation: ObservableObject {
         return targetDay.first
     }
 
+    // Fetched through API metadata
+    // Represents the start and end of school year
+    private var minDate: Date?
+    private var maxDate: Date?
+
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
          downloader: @escaping (String, @escaping (Data?, Error?) -> ()) -> () = Downloader.load,
@@ -104,6 +109,10 @@ final class SharedScheduleInformation: ObservableObject {
                         scheduleDays.append((date, scheduleText))
                     }
                 }
+                let formatter = DateFormatter()
+                let metadata = xml["CALENDAR", "METADATA"]
+                self?.minDate = formatter.serverTimeFormat(metadata["MINDATE"].text)
+                self?.maxDate = formatter.serverTimeFormat(metadata["MAXDATE"].text)
                 let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
                 self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
                 self?.isLoading = false
@@ -176,13 +185,23 @@ final class SharedScheduleInformation: ObservableObject {
         UserDefaults.standard.synchronize()
         ICSText = nil; scheduleWeeks = [];
     }
+
     func reloadScrollList(currentWeek: ScheduleWeek) {
         if currentWeek == scheduleWeeks.last {
             guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date
             else {
                 return
             }
-            fetchData(startDate: lastDay)
+
+            guard let minDate = minDate, let maxDate = maxDate
+            else {
+                fetchData(startDate: lastDay)
+                return
+            }
+
+            if lastDay < maxDate && lastDay > minDate {
+                fetchData(startDate: lastDay)
+            }
         }
     }
 }
