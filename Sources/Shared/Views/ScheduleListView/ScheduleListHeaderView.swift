@@ -15,7 +15,7 @@ struct ScheduleListHeaderView: View {
                 title: {
                     Text(scheduleWeek.weekText)
                         .font(.headline)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                 },
                 icon: {
                     Image(systemSymbol: .calendar)

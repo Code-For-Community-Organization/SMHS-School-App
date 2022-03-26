@@ -16,7 +16,7 @@ final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
     @Published var todaySchedule: ScheduleDay?
-    @Published var scheduleWeeks = [ScheduleWeek]()
+    @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     @Published var isLoading = false
 
     private var currentWeekday: Int?

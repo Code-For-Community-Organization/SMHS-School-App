@@ -44,7 +44,7 @@ struct ScheduleListView: View {
                                                     .font(Font.footnote.weight(.heavy))
                                                     .foregroundColor(Color.platformSecondaryLabel)
                                             }
-                                            .font(Font.body.weight(.semibold))
+                                            .font(Font.body.weight(.medium))
 
                                         })
                                         .padding(12)
