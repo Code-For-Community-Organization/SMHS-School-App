@@ -8,8 +8,12 @@
 import Foundation
 
 struct ScheduleDateHelper {
+    // Using iso8601 instead of Gregorian
+    // so that Monday counts as 1st day of week
+    let calendar = Calendar.iso8601
+
     var subHeaderText: String {
-        if Calendar.current.isDateInWeekend(mockDate ?? Date()) {
+        if calendar.isDateInWeekend(mockDate ?? Date()) {
             return "School Holiday"
         }
         else {
@@ -152,7 +156,6 @@ struct ScheduleDateHelper {
             weeks.append(ScheduleWeek(scheduleDays: [newDay]))
             return weeks
         }
-        let calendar = Calendar.current
         let weekOfYear = calendar.component(.weekOfYear, from: newDay.date)
         let previousWeekOfYear = calendar.component(.weekOfYear, from: previousDay.date)
 

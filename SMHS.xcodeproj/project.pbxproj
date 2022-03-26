@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		62102F81271A4A7900C81F68 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2627121E42009F6234 /* FirebaseMessaging */; };
+		6211915F27EEF144008BD312 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211915E27EEF144008BD312 /* Calendar.swift */; };
+		6211916027EEF144008BD312 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211915E27EEF144008BD312 /* Calendar.swift */; };
+		6211916127EEF144008BD312 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211915E27EEF144008BD312 /* Calendar.swift */; };
 		621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385EE265C60D500F4806C /* InformationCardItem.swift */; };
 		621385F1265C630B00F4806C /* PeriodParseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621385F0265C630B00F4806C /* PeriodParseExtensions.swift */; };
 		621F5C842669F2D5006EBE8F /* TodayHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5C822669F2D5006EBE8F /* TodayHeroView.swift */; };
@@ -328,6 +331,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6211915E27EEF144008BD312 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		621385EE265C60D500F4806C /* InformationCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardItem.swift; sourceTree = "<group>"; };
 		621385F0265C630B00F4806C /* PeriodParseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodParseExtensions.swift; sourceTree = "<group>"; };
 		621F5C822669F2D5006EBE8F /* TodayHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeroView.swift; sourceTree = "<group>"; };
@@ -937,6 +941,7 @@
 				62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */,
 				62863BAD26AF461100084C28 /* Dictionary.swift */,
 				62F5FD0026B49A2D00E821D5 /* Font.swift */,
+				6211915E27EEF144008BD312 /* Calendar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1481,6 +1486,7 @@
 				62C9E8A4263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				62E05F6D2639C4AC00B609E3 /* SettingsView.swift in Sources */,
 				6261841126371A92001C4AD4 /* ScheduleWeek.swift in Sources */,
+				6211916027EEF144008BD312 /* Calendar.swift in Sources */,
 				62F5FD0326B49B8C00E821D5 /* Font.swift in Sources */,
 				623D59662701944F001D05F7 /* GradesSupplementSummary.swift in Sources */,
 				62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */,
@@ -1630,6 +1636,7 @@
 				62626393264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				623A7F18264EEBF700FF3F28 /* SearchView.swift in Sources */,
 				62328C9826476ED9000F26ED /* ProgressRingView.swift in Sources */,
+				6211915F27EEF144008BD312 /* Calendar.swift in Sources */,
 				624F79FE2651A48400B93C63 /* NewsNavigationBarButtons.swift in Sources */,
 				6276B5F6264C643F00FE8DA2 /* NewsViewViewModel.swift in Sources */,
 				62D321192649F25F00C99C42 /* NewsEntryListItem.swift in Sources */,
@@ -1720,6 +1727,7 @@
 				6287EA6526548DCF007B41CB /* ScheduleListBanner.swift in Sources */,
 				62D1E53E263DF859004DBFAD /* String.swift in Sources */,
 				62D1E53F263DF859004DBFAD /* Colors.swift in Sources */,
+				6211916127EEF144008BD312 /* Calendar.swift in Sources */,
 				62B227D7265D82C40023A7E6 /* WKWebViewRepresentable.swift in Sources */,
 				62CFAA3F264756ED003B2EA0 /* DateFormatter.swift in Sources */,
 				62D1E541263DF859004DBFAD /* Array.swift in Sources */,
