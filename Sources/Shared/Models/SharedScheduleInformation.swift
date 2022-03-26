@@ -91,60 +91,81 @@ final class SharedScheduleInformation: ObservableObject {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
         isLoading = true
-        AF.request(endpoint.request).response {[weak self] response in
-            guard let data = response.data
-            else {
-                self?.isLoading = false
-                completion?(false)
-                return
-            }
-            let xml = XML.parse(data)
+        AF.request(endpoint.request)
+            .response {[weak self] response in
+            if let data = response.data {
+                let xml = XML.parse(data)
 
-            var scheduleDays = [(String, String)]()
-            for day in xml["CALENDAR", "EVENT"] {
-                if let scheduleText = day["DESCRIPTION"].text,
-                   let date = day["EVENTDATE"].text {
-                    scheduleDays.append((date, scheduleText))
+                var scheduleDays = [(String, String)]()
+                for day in xml["CALENDAR", "EVENT"] {
+                    if let scheduleText = day["DESCRIPTION"].text,
+                       let date = day["EVENTDATE"].text {
+                        scheduleDays.append((date, scheduleText))
+                    }
+                }
+                let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
+                self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
+                self?.isLoading = false
+                #if DEBUG
+                debugPrint("✅ Successfully fetched from main AppServ API.")
+                #endif
+                completion?(true)
+            }
+            else {
+                #if DEBUG
+                debugPrint("⚠️ Main API failed, fallback on smhs.org ICS calendar feed.")
+                #endif
+                self?.fetchBackupData() {success in
+                    self?.isLoading = false
+                    #if DEBUG
+                    if !success {
+                        debugPrint("🚨 Main schedule API and fallback API both failed. ")
+                    }
+                    else {
+                        debugPrint("✅ Main API failed, but successfully fetched from backup.")
+                    }
+                    #endif
+                    completion?(success)
+                    return
                 }
             }
-            let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
-            self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
-            self?.isLoading = false
-            completion?(true)
         }
-        //Load ICS calendar data from network
-//        downloader(urlString){data, error in
-//            guard let data = data else {
-//                #if DEBUG
-//                completion?(false)
-//                //print("Error occurred while fetching iCS: \(error!)")
-//                #endif
-//                return
-//            }
-//            //Publish changes on main thread
-//            DispatchQueue.main.async {
-//                // Decode iCS calendar into raw string
-//                let rawText = String(data: data, encoding: .utf8) ?? ""
-//                #if DEBUG
-//                #else
-//                // Only reload if the downloaded data is different
-//                guard self.ICSText != rawText else {return}
-//                #endif
-//                self.ICSText = rawText
-//                self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
-//                    DispatchQueue.main.async {
-//                        self.todaySchedule = day
-//                    }
-//                }
-//                self.dateHelper.parseScheduleData(withRawText: rawText){result in
-//                    DispatchQueue.main.async {
-//                        self.scheduleWeeks = result
-//                        self.objectWillChange.send()
-//                        completion?(true)
-//                    }
-//                }
-//            }
-        //}
+    }
+
+    func fetchBackupData(startDate: Date = Date(), completion: ((Bool) -> Void)? = nil) {
+        // Load ICS calendar data from network
+        downloader(urlString){data, error in
+            guard let data = data else {
+                #if DEBUG
+                completion?(false)
+                //print("Error occurred while fetching iCS: \(error!)")
+                #endif
+                return
+            }
+            //Publish changes on main thread
+            DispatchQueue.main.async {
+                // Decode iCS calendar into raw string
+                let rawText = String(data: data, encoding: .utf8) ?? ""
+                #if DEBUG
+                #else
+                // Only reload if the downloaded data is different
+                guard self.ICSText != rawText else {return}
+                #endif
+                self.ICSText = rawText
+                self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
+                    DispatchQueue.main.async {
+                        self.todaySchedule = day
+                    }
+                }
+                self.dateHelper.parseScheduleData(withRawText: rawText){result in
+                    DispatchQueue.main.async {
+                        self.scheduleWeeks.appendUnion(contentsOf: result)
+                        self.objectWillChange.send()
+                        completion?(true)
+                    }
+                }
+            }
+        }
     }
 
     func reset() {
