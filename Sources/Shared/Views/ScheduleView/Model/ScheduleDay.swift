@@ -24,7 +24,27 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var periods: [ClassPeriod] {
         appendOptionalPeriod8(periods: parseClassPeriods())
     }
+    var atheleticsInfo: String {
+        guard dayOfTheWeek != 6 && dayOfTheWeek != 7
+        else {
+            return scheduleText
+        }
 
+        let config = globalRemoteConfig.configValue(forKey: "schedule_seperator")
+        var seperator: String
+        if let s = config.stringValue {
+            seperator = s
+        }
+        else {
+            seperator = String("-------")
+        }
+        if let index = scheduleText.index(of: seperator) {
+            return String(scheduleText[index...])
+        }
+
+        return ""
+    }
+    
     var currentDate: Date {
         return mockDate ?? Date()
     }
