@@ -31,7 +31,7 @@ struct MasterCalendarView: View {
             }, label: {
                 Image(systemSymbol: .xmark)
                     .foregroundColor(Color.platformSecondaryLabel)
-                    .padding(20)
+                    .padding(10)
                     .background(Color.platformSecondaryBackground)
                     .clipShape(Circle())
             })

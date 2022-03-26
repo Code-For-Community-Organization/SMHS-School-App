@@ -23,6 +23,7 @@ class MasterCalendarViewModel: ObservableObject {
                 lastReloadTime = Date()
                 fetchData{completion()}
             }
+            completion()
         }
         else {
             lastReloadTime = Date()
