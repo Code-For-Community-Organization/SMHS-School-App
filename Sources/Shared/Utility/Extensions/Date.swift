@@ -84,6 +84,11 @@ extension Date {
             let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
             return "\(diff) weeks ago"
         }
+
+    // https://stackoverflow.com/questions/35687411/how-do-i-find-the-beginning-of-the-week-from-an-nsdate
+    func startOfWeek(using calendar: Calendar = .iso8601) -> Date {
+            calendar.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: self).date!
+        }
 }
 
 extension TimeInterval {

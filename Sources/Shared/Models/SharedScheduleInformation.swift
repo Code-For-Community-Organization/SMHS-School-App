@@ -87,7 +87,8 @@ final class SharedScheduleInformation: ObservableObject {
     //
     // 2. smhs.org ICS calendar feed, used as a
     // redundency to fallback on if above fails
-    func fetchData(startDate: Date = Date(), completion: ((Bool) -> Void)? = nil) {
+    func fetchData(startDate: Date = Date().startOfWeek(),
+                   completion: ((Bool) -> Void)? = nil) {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
         isLoading = true
@@ -132,7 +133,8 @@ final class SharedScheduleInformation: ObservableObject {
         }
     }
 
-    func fetchBackupData(startDate: Date = Date(), completion: ((Bool) -> Void)? = nil) {
+    func fetchBackupData(startDate: Date = Date().startOfWeek(),
+                         completion: ((Bool) -> Void)? = nil) {
         // Load ICS calendar data from network
         downloader(urlString){data, error in
             guard let data = data else {
