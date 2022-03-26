@@ -16,10 +16,9 @@ final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
     @Published var todaySchedule: ScheduleDay?
-    @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
-    //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
-    
-    
+    @Published var scheduleWeeks = [ScheduleWeek]()
+    @Published var isLoading = false
+
     private var currentWeekday: Int?
     
     private var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
@@ -88,12 +87,14 @@ final class SharedScheduleInformation: ObservableObject {
     //
     // 2. smhs.org ICS calendar feed, used as a
     // redundency to fallback on if above fails
-    func fetchData(completion: ((Bool) -> Void)? = nil) {
+    func fetchData(startDate: Date = Date(), completion: ((Bool) -> Void)? = nil) {
         // AppServ API
-        let endpoint = Endpoint.getSchedule(date: Date())
+        let endpoint = Endpoint.getSchedule(date: startDate)
+        isLoading = true
         AF.request(endpoint.request).response {[weak self] response in
             guard let data = response.data
             else {
+                self?.isLoading = false
                 completion?(false)
                 return
             }
@@ -106,7 +107,10 @@ final class SharedScheduleInformation: ObservableObject {
                     scheduleDays.append((date, scheduleText))
                 }
             }
-            self?.scheduleWeeks = self?.dateHelper.parseScheduleXML(forDays: scheduleDays) ?? []
+            let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
+            self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
+            self?.isLoading = false
+            completion?(true)
         }
         //Load ICS calendar data from network
 //        downloader(urlString){data, error in
@@ -142,12 +146,21 @@ final class SharedScheduleInformation: ObservableObject {
 //            }
         //}
     }
-    
+
     func reset() {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         ICSText = nil; scheduleWeeks = [];
+    }
+    func reloadScrollList(currentWeek: ScheduleWeek) {
+        if currentWeek == scheduleWeeks.last {
+            guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date
+            else {
+                return
+            }
+            fetchData(startDate: lastDay)
+        }
     }
 }
 
