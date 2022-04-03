@@ -11,7 +11,7 @@ extension Date {
     
     static func currentWeekday(for date: Date = Date()) -> Int {Calendar.current.component(.weekday, from: date)-1}
     
-    static func getDayOfTheWeek(for date: Date = Date()) -> Int {Calendar.current.component(.weekday, from: date)-1}
+    static func getDayOfTheWeek(for date: Date = Date()) -> Int {Calendar.iso8601.component(.weekday, from: date)-1}
     
     func isBetween(_ date1: Date, and date2: Date) -> Bool {(min(date1, date2) ... max(date1, date2)).contains(self)}
     
@@ -83,6 +83,11 @@ extension Date {
             }
             let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
             return "\(diff) weeks ago"
+        }
+
+    // https://stackoverflow.com/questions/35687411/how-do-i-find-the-beginning-of-the-week-from-an-nsdate
+    func startOfWeek(using calendar: Calendar = .iso8601) -> Date {
+            calendar.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: self).date!
         }
 }
 

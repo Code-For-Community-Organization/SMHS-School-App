@@ -9,15 +9,16 @@ import Combine
 import SwiftUI
 import Foundation
 import FirebaseRemoteConfig
+import Alamofire
+import SwiftyXMLParser
 
 final class SharedScheduleInformation: ObservableObject {
     @Storage(key: "lastReloadTime", defaultValue: nil) private var lastReloadTime: Date?
     @AppStorage("ICSText") private var ICSText: String?
     @Published var todaySchedule: ScheduleDay?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
-    //@Published(key: "customSchedules") var customSchedules = [ClassPeriod]()
-    
-    
+    @Published var isLoading = false
+
     private var currentWeekday: Int?
     
     private var urlString: String = "https://www.smhs.org/calendar/calendar_379.ics"
@@ -31,6 +32,11 @@ final class SharedScheduleInformation: ObservableObject {
         let targetDay = scheduleWeeks.compactMap{$0.getDayByDate(Date())}
         return targetDay.first
     }
+
+    // Fetched through API metadata
+    // Represents the start and end of school year
+    private var minDate: Date?
+    private var maxDate: Date?
 
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
@@ -77,10 +83,68 @@ final class SharedScheduleInformation: ObservableObject {
         }
         
     }
+    // Two data sources for schedule:
+    // 1. AppServ API (Used by SMHS official app)
+    // Preferred because it's more stable and stil
+    // works even if smhs.org is down, and it's also
+    // more performant as it loads in batches and don't
+    // require intensive parsing
+    //
+    // 2. smhs.org ICS calendar feed, used as a
+    // redundency to fallback on if above fails
+    func fetchData(startDate: Date = Date().startOfWeek(),
+                   completion: ((Bool) -> Void)? = nil) {
+        // AppServ API
+        let endpoint = Endpoint.getSchedule(date: startDate)
+        isLoading = true
+        AF.request(endpoint.request)
+            .response {[weak self] response in
+            if let data = response.data {
+                let xml = XML.parse(data)
 
-    func fetchData(completion: ((Bool) -> Void)? = nil) {
-        print("Fetching schedule data....")
-        //Load ICS calendar data from network
+                var scheduleDays = [(String, String)]()
+                for day in xml["CALENDAR", "EVENT"] {
+                    if let scheduleText = day["DESCRIPTION"].text,
+                       let date = day["EVENTDATE"].text {
+                        scheduleDays.append((date, scheduleText))
+                    }
+                }
+                let formatter = DateFormatter()
+                let metadata = xml["CALENDAR", "METADATA"]
+                self?.minDate = formatter.serverTimeFormat(metadata["MINDATE"].text)
+                self?.maxDate = formatter.serverTimeFormat(metadata["MAXDATE"].text)
+                let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
+                self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
+                self?.isLoading = false
+                #if DEBUG
+                debugPrint("✅ Successfully fetched from main AppServ API.")
+                #endif
+                completion?(true)
+            }
+            else {
+                #if DEBUG
+                debugPrint("⚠️ Main API failed, fallback on smhs.org ICS calendar feed.")
+                #endif
+                self?.fetchBackupData() {success in
+                    self?.isLoading = false
+                    #if DEBUG
+                    if !success {
+                        debugPrint("🚨 Main schedule API and fallback API both failed. ")
+                    }
+                    else {
+                        debugPrint("✅ Main API failed, but successfully fetched from backup.")
+                    }
+                    #endif
+                    completion?(success)
+                    return
+                }
+            }
+        }
+    }
+
+    func fetchBackupData(startDate: Date = Date().startOfWeek(),
+                         completion: ((Bool) -> Void)? = nil) {
+        // Load ICS calendar data from network
         downloader(urlString){data, error in
             guard let data = data else {
                 #if DEBUG
@@ -106,7 +170,7 @@ final class SharedScheduleInformation: ObservableObject {
                 }
                 self.dateHelper.parseScheduleData(withRawText: rawText){result in
                     DispatchQueue.main.async {
-                        self.scheduleWeeks = result
+                        self.scheduleWeeks.appendUnion(contentsOf: result)
                         self.objectWillChange.send()
                         completion?(true)
                     }
@@ -114,12 +178,31 @@ final class SharedScheduleInformation: ObservableObject {
             }
         }
     }
-    
+
     func reset() {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         ICSText = nil; scheduleWeeks = [];
+    }
+
+    func reloadScrollList(currentWeek: ScheduleWeek) {
+        if currentWeek == scheduleWeeks.last {
+            guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date
+            else {
+                return
+            }
+
+            guard let minDate = minDate, let maxDate = maxDate
+            else {
+                fetchData(startDate: lastDay)
+                return
+            }
+
+            if lastDay < maxDate && lastDay > minDate {
+                fetchData(startDate: lastDay)
+            }
+        }
     }
 }
 

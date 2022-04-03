@@ -18,11 +18,12 @@ class MasterCalendarViewModel: ObservableObject {
     //this make sure that reload is not too frequent
     func reloadData(completion: @escaping () -> ()) {
         if let time = lastReloadTime, !calendarManager.days.isEmpty {
-            completion()
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(0) {
+            // Minimum reload interval - 24 hours
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(86400) {
                 lastReloadTime = Date()
                 fetchData{completion()}
             }
+            completion()
         }
         else {
             lastReloadTime = Date()

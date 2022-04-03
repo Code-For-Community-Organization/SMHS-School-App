@@ -19,6 +19,9 @@ extension Color {
     static var platformSecondaryBackground: Color {
         Color(UIColor.secondarySystemBackground)
     }
+    static var platformFill: Color {
+        Color(UIColor.systemFill)
+    }
     static var platformSecondaryFill: Color {
         Color(UIColor.secondarySystemFill)
     }

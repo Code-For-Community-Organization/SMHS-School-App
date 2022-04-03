@@ -8,8 +8,12 @@
 import Foundation
 
 struct ScheduleDateHelper {
+    // Using iso8601 instead of Gregorian
+    // so that Monday counts as 1st day of week
+    let calendar = Calendar.iso8601
+
     var subHeaderText: String {
-        if Calendar.current.isDateInWeekend(mockDate ?? Date()) {
+        if calendar.isDateInWeekend(mockDate ?? Date()) {
             return "School Holiday"
         }
         else {
@@ -113,34 +117,69 @@ struct ScheduleDateHelper {
                                                                 rawText: rawText,
                                                                 stringIndex: stringIndex,
                                                                 date: dateChecker.0) else { continue }
+                scheduleWeeks = getScheduleWeekWithNewDay(weeks: scheduleWeeks,
+                                                          newDay: scheduleDay)
                 
-                //Get first day of this week, if anything is nil
-                //then it must be first day of a new week, so append
-                guard let firstDate = scheduleWeeks.last?.scheduleDays.first?.date else {
-                    scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
-                    continue
-                }
-                
-                //Use number of days between this day, and 1st day
-                //of week to know if append to existing week, or start new week
-                let calendar = Calendar.current
-                let dayNum = calendar.dateComponents([.day], from: firstDate, to: scheduleDay.date).day
-                guard let _dayNum = dayNum else {
-                    continue
-                }
-                
-                //Greater than 5 implies more than 5 days (a week)
-                if _dayNum > 5 {
-                    scheduleWeeks.append(ScheduleWeek(scheduleDays: [scheduleDay]))
-                }
-                else {
-                    scheduleWeeks.last?.scheduleDays.append(scheduleDay)
-                }
+
             }
             completion(scheduleWeeks)
         }
         
     }
+
+    func parseScheduleXML(forDays days: [(date: String, schedule: String)]) -> [ScheduleWeek] {
+        // Sort dates into weeks
+        // Same week number of year means same week
+        var scheduleWeek = [ScheduleWeek]()
+
+        for day in days {
+            guard let date = DateFormatter().serverTimeFormat(day.date)
+            else {
+                #if DEBUG
+                debugPrint("⚠️ Date format failed in parseScheduleXML")
+                #endif
+                continue
+            }
+            let newDay = ScheduleDay(date: date, scheduleText: day.schedule)
+            scheduleWeek = getScheduleWeekWithNewDay(weeks: scheduleWeek,
+                                        newDay: newDay)
+        }
+        return scheduleWeek
+    }
+
+    //Appends a ScheduleDay to a ScheduleWeek
+    //Determines whether the day is a new week or part of old week
+    private func getScheduleWeekWithNewDay(weeks: [ScheduleWeek],
+                                           newDay: ScheduleDay) -> [ScheduleWeek] {
+        var weeks = weeks
+        guard let previousDay = weeks.last?.scheduleDays.last else {
+            weeks.append(ScheduleWeek(scheduleDays: [newDay]))
+            return weeks
+        }
+        let calendar = Calendar.current
+        let weekOfYear = calendar.component(.weekOfYear, from: newDay.date)
+        let previousWeekOfYear = calendar.component(.weekOfYear, from: previousDay.date)
+
+        //Equal week number of the year means same week
+        if weekOfYear == previousWeekOfYear {
+            //Append to existing last week
+            guard weeks.last != nil else {
+                weeks.append(ScheduleWeek(scheduleDays: [newDay]))
+                return weeks
+            }
+            weeks.last!.scheduleDays.append(newDay)
+        }
+        else if weekOfYear > previousWeekOfYear {
+            weeks.append(ScheduleWeek(scheduleDays: [newDay]))
+        }
+        else {
+            #if DEBUG
+            debugPrint("⚠️ Method addDayToWeek DID NOT append a new day to the week and failed silently.")
+            #endif
+        }
+        return weeks
+    }
+
     //Returns a Date created from given date string, at 0:00:00;
     //Also returns the current Date, at 0:00:00 time
     private func scheduleDateChecker(dateString: String, mockDate: Date = Date()) -> (Date, Date) {

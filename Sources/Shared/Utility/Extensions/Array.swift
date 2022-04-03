@@ -42,4 +42,12 @@ extension Array {
         guard let newElements = newElements else {return}
         self.append(contentsOf: newElements)
     }
+
+    mutating func appendUnion<S>(contentsOf newElements: S?) where Element == S.Element,
+                                                                   S: Sequence,
+                                                                   Element: Equatable
+    {
+        guard let newElements = newElements else {return}
+        self.append(contentsOf: newElements.filter {!self.contains($0)})
+    }
 }

@@ -27,20 +27,28 @@ extension DateFormatter {
         return date
     }
 
-    func serverTimeFormat(_ time: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter.date(from: time)
+    func serverTimeFormat(_ time: String?) -> Date? {
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let time = time
+        else {
+            return nil
+        }
+        return self.date(from: time)
     }
 
     func serverTimeFormat(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return formatter.string(from: date)
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return self.string(from: date)
     }
 
     static func hourTimeFormat(_ time: String) -> Date? {
         let formatter = getLocalTimeFormatter(withFormat: "h:mma")
         return formatter.date(from: time)
+    }
+
+    func yearMonthDayFormat(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
     }
 }

@@ -39,8 +39,6 @@ struct TodayView: View {
                     PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)
                 }
         )
-
-    
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -98,7 +96,7 @@ struct TodayViewHeader: View {
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_ in }),
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_,_  in }),
                   scheduleViewViewModel: SharedScheduleInformation())
             .environmentObject(UserSettings())
     }
