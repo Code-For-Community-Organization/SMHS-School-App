@@ -21,7 +21,7 @@ struct CourseGrade: Codable, Hashable {
         var currentMark: String
         var gradebookNumber: Int
         var code: GradesSummaryRawResponse.Code
-        var term: String
+        var term: GradesSummaryRawResponse.Term
         var teacherName: String = ""
         var lastUpdated: String = ""
 
@@ -59,8 +59,8 @@ struct CourseGrade: Codable, Hashable {
                                                 gradePercent: 98,
                                                 currentMark: "A+",
                                                 gradebookNumber: 69696969,
-                                                code: .none,
-                                                term: "F")])
+                                                code: .current,
+                                                term: .spring)])
 //    static let dummyGrades: CourseGrade = .init(periodNum: 1,
 //                                                   periodName: "Precalculus H AI IB",
 //                                                   teacherName: "CookT",

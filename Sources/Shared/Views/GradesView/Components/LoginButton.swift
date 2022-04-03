@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginButton: View {
-    @ObservedObject var gradesViewModel: GradesViewModel
+    @StateObject var gradesViewModel: GradesViewModel
     
     var body: some View {
         Button(action: {

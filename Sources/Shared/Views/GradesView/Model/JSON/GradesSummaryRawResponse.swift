@@ -14,22 +14,36 @@ struct GradesSummaryRawResponse: Decodable {
         let results: [Result]
     }
 
+    enum Term: String, Codable {
+        case fall = "F"
+        case spring = "S"
+    }
+
+    enum TrendDirection: String, Codable {
+        case down = "DOWN"
+        case same = "SAME"
+        case up = "UP"
+    }
+
     enum Code: String, Codable {
         case dropped = "D"
-        case none = ""
+        case prior = "P"
+        case current = ""
+
     }
 
     struct Result: Codable {
         let gradebookNumberTerm: String
         let gradebookNumber: Int
-        let term: String
+        let term: Term
         let code: Code
         let period, mark, className: String
         let missingAssignments: Int
         let updated: String
-        let trendDirection: String?
+        let trendDirection: TrendDirection?
         let percentGrade: Int
         let comment: String
         let isUsingCheckMarks, hideOverallScore, showFinalMark, doingRubric: Bool
     }
 }
+

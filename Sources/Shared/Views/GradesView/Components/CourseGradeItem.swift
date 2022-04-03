@@ -28,7 +28,7 @@ struct CourseGradeItem: View {
                                destination: {
                     GradesDetailView(className: periodName,
                                      viewModel: .init(gradebookNumber: course.gradebookNumber,
-                                                      term: course.term))
+                                                      term: course.term.rawValue))
                 },
                                label: {EmptyView()})
                 VStack {

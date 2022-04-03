@@ -9,7 +9,7 @@ import SwiftUI
 import Introspect
 
 struct GradesLoginView: View {
-    @ObservedObject var gradesViewModel: GradesViewModel
+    @StateObject var gradesViewModel: GradesViewModel
     
     var body: some View {
         VStack {

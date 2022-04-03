@@ -151,20 +151,17 @@ extension GradesViewModel {
                                              password: password,
                                              debugMode: userSettings?.developerSettings.debugNetworking ?? false)
         let getSummaryEndpoint = Endpoint.getGradesSummary()
-        let getSummarySupplementEndpoint = Endpoint.getGradesSummarySupplement()
+        let summarySupplementEndpoint = Endpoint.getGradesSummarySupplement()
 
-        let getSummarySupplementPubilsher = AF.request(getSummarySupplementEndpoint.request)
-            .publishDecodable(type: [GradesSupplementSummary].self)
-            .value()
+        let getSummarySupplementPublisher = gradesNetworkModel.fetch(with: summarySupplementEndpoint.request,
+                                                                     type: [GradesSupplementSummary].self)
 
-        AF.request(loginEndpoint.request)
-            .publishUnserialized()
-            .value()
-            .flatMap {_ in
-                AF.request(getSummaryEndpoint.request)
-                    .publishDecodable(type: CourseGrade.self)
-                    .value()
-                    .combineLatest(getSummarySupplementPubilsher)
+        gradesNetworkModel.fetch(with: loginEndpoint.request)
+            .flatMap {[unowned self] _ in
+                self.gradesNetworkModel.fetch(with: getSummaryEndpoint.request,
+                                              type: CourseGrade.self)
+                    .combineLatest(getSummarySupplementPublisher)
+
             }
             .retry(2)
             .receive(on: RunLoop.main)
@@ -179,12 +176,13 @@ extension GradesViewModel {
                     break
                 }
             }) {[weak self] (courseGrades, supplementSummary) in
+
                 let courses = courseGrades.courses
                 // Ensure displayed courses are not dropped
-                    .filter {$0.code != .dropped}
+                    .filter {$0.code == .current}
                 //self?.gradesResponse = courses
                 let supplementSummaryCourses = supplementSummary
-                    .filter {$0.termGrouping == .currentTerms}
+                    .filter {$0.termGrouping == .current}
                     .filter {summary in
                         let referencePeriods = courses.compactMap{Int($0.periodNum)}
                         return referencePeriods.contains(summary.period)
@@ -207,7 +205,6 @@ extension GradesViewModel {
                         return mutableCourse
                     }
             }
-
             .store(in: &anyCancellables)
 
     }

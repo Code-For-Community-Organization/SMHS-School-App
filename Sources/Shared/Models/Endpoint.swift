@@ -10,12 +10,13 @@ import Foundation
 struct Endpoint {
     var host: String
     var path: String
-    var queryItems: [URLQueryItem] = []
+    var queryItems: [URLQueryItem]? = nil
     var requestHeaders: [String: String] = [:]
     var requestBody: [String: String] = [:]
     var httpMethod = "POST"
     var isApplicationJson = false
     var jsonEncode = false
+    var isLogin = false
 }
 
 extension Endpoint {
@@ -35,7 +36,6 @@ extension Endpoint {
         var request = URLRequest(url: url)
         request.cachePolicy = .returnCacheDataElseLoad
         request.httpMethod = httpMethod
-        request.allHTTPHeaderFields = requestHeaders
         if httpMethod == "POST" {
             if jsonEncode {
                 request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: [])
@@ -44,8 +44,12 @@ extension Endpoint {
                 request.httpBody = requestBody.percentEncoded()
             }
         }
+        request.setValue("br;q=1.0, gzip;q=0.9, deflate;q=0.8", forHTTPHeaderField: "Accept-Encoding")
         if isApplicationJson {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        }
+        if isLogin {
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         }
         return request
     }
@@ -62,16 +66,19 @@ extension Endpoint {
                              password: String,
                              debugMode: Bool = false) -> Endpoint {
         let form = ["checkCookiesEnabled":"true",
-                      "checkMobileDevice":"false",
-                      "checkStandaloneMode":"false",
-                      "checkTabletDevice":"false",
+                    "checkMobileDevice":"false",
+                    "checkStandaloneMode":"false",
+                    "checkTabletDevice":"false",
                     "portalAccountUsername": email,
-                    "portalAccountPassword": password]
+                    "portalAccountPassword": password,
+                    "portalAccountUsernameLabel": "",
+                    "submit": ""]
         
         return Endpoint(host: AERIES_API_HOST,
                         path: AERIES_API_LOGIN_PATH,
                         requestBody: form,
-                        httpMethod: "POST")
+                        httpMethod: "POST",
+                        isLogin: true)
 
     }
 
