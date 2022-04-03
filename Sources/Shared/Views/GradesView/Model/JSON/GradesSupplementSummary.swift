@@ -21,10 +21,10 @@ struct GradesSupplementSummary: Codable {
     let accessCode, source, term: String
     let termGrouping: TermGrouping
     let schoolNumber: Int
-    let schoolName: Name
+    let schoolName: String
     let schoolSort: SchoolSort
     let districtCDS: String
-    let districtName: Name
+    let districtName: String
     let editable, block: Int
     let doingRubric: Bool
     let termCode: JSONNull?
@@ -84,10 +84,6 @@ struct GradesSupplementSummary: Codable {
     }
 }
 
-enum Name: String, Codable {
-    case santaMargaritaCatholicHS = "Santa Margarita Catholic H.S."
-}
-
 enum FlexPeriodTime: String, Codable {
     case date62135568000000 = "/Date(-62135568000000)/"
 }
@@ -97,8 +93,9 @@ enum SchoolSort: String, Codable {
 }
 
 enum TermGrouping: String, Codable {
-    case currentTerms = "Current Terms"
-    case droppedGradebooks = "Dropped Gradebooks"
+    case current = "Current Terms"
+    case dropped = "Dropped Gradebooks"
+    case prior = "Prior Terms"
 }
 
 typealias Welcome = [GradesSupplementSummary]

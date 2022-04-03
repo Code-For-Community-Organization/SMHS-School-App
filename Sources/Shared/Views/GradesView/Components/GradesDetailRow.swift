@@ -96,12 +96,13 @@ struct GradesDetailRow: View {
                 }
                 .transition(.move(edge: .bottom))
                 if assignmentGrade.numberPossible > 0 {
-                    Slider(value: Binding(get: {self.slider},
-                                          set: {value in
-                        viewModel.detailedAssignments[arrayIndex].numberCorrect = value
-                    }),
-                           in: 0...assignmentGrade.numberPossible,
-                           step: 0.5)
+                    Stepper(value: Binding(get: {self.slider},
+                                           set: {value in
+                         viewModel.detailedAssignments[arrayIndex].numberCorrect = value
+                     }),
+                            in: 0...assignmentGrade.numberPossible,
+                            step: 1,
+                            label: {EmptyView()})
                 }
 
 
