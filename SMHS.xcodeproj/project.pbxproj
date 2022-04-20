@@ -1202,7 +1202,7 @@
 			children = (
 				62FE7F2427515CD70015889C /* JSON */,
 				62F43CC32688F3780009CD34 /* GradesNetworkModel.swift */,
-				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,=
+				62F43CCB2689028A0009CD34 /* GradesResponse.swift */,
 				625F189E268A9256000B71B4 /* RequestError.swift */,
 			);
 			path = Model;
