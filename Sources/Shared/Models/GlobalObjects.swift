@@ -54,4 +54,15 @@ extension RemoteConfig {
         globalRemoteConfig.configValue(forKey: "reload_interval_schedule").numberValue.doubleValue
         #endif
     }
+
+    var NO_SCHOOL_IDENTIFIERS: [String] {
+        let data = globalRemoteConfig.configValue(forKey: "no_school_identifier").jsonValue
+        if let values = (data as? [String: [String]]),
+           let identifiers = values["contains"] {
+            return identifiers
+        }
+        else {
+            return ["SMCHS Events", "Holiday"]
+        }
+    }
 }

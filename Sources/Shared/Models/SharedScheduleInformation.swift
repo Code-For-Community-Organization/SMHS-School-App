@@ -102,11 +102,12 @@ final class SharedScheduleInformation: ObservableObject {
             if let data = response.data {
                 let xml = XML.parse(data)
 
-                var scheduleDays = [(date: String, schedule: String)]()
+                var scheduleDays = [(date: String, schedule: String, title: String)]()
                 for day in xml["CALENDAR", "EVENT"] {
                     if let scheduleText = day["DESCRIPTION"].text,
-                       let date = day["EVENTDATE"].text {
-                        scheduleDays.append((date, scheduleText))
+                       let date = day["EVENTDATE"].text,
+                       let title = day["TITLE"].text {
+                        scheduleDays.append((date, scheduleText, title))
                     }
                 }
                 let formatter = DateFormatter()
