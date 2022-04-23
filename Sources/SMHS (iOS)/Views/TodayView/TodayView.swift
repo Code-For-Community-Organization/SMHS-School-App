@@ -43,6 +43,7 @@ struct TodayView: View {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(appSecondary)], for: .normal)
+            scheduleViewViewModel.reloadData()
         }
         .onDisappear {
             todayViewViewModel.showNetworkError = true
@@ -96,7 +97,7 @@ struct TodayViewHeader: View {
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_,_  in }),
+        TodayView(networkLoadViewModel: NetworkLoadViewModel(dataReload: {_,_,_ in }),
                   scheduleViewViewModel: SharedScheduleInformation())
             .environmentObject(UserSettings())
     }

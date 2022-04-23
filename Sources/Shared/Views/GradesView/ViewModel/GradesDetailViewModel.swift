@@ -128,11 +128,11 @@ class GradesDetailViewModel: ObservableObject {
     }
 
     func computeOverallPercentage(with gradesRubric: [GradesRubricRawResponse.Category]) -> Double {
-        var totalGrade = 0.0
-        var totalWeight = 0.0
+        var totalGrade: Double = 0.0
+        var totalWeight: Double = 0.0
         for category in gradesRubric {
             guard category.isDoingWeight else { continue }
-            let correctScore = self.detailedAssignments
+            let correctScore: Double = self.detailedAssignments
                 .filter {$0.category == category.category}
                 .filter {$0.dateCompleted != nil}
                 .filter {
@@ -144,7 +144,7 @@ class GradesDetailViewModel: ObservableObject {
                 .map {$0.numberCorrect}
                 .reduce(0, {$0 + $1})
 
-            let possibleScore = self.detailedAssignments
+            let possibleScore: Double = self.detailedAssignments
                 .filter {$0.category == category.category}
                 .filter {$0.dateCompleted != nil}
                 .filter {
@@ -157,13 +157,13 @@ class GradesDetailViewModel: ObservableObject {
                 .reduce(0, {$0 + $1})
 
             //guard let _assignments = assignments else { return }
-            let weight = Double(category.percentOfGrade) / 100
+            let weight: Double = Double(category.percentOfGrade) / 100
             if possibleScore > 0 {
-                totalGrade += (correctScore / possibleScore) * weight
+                totalGrade  += (correctScore / possibleScore) * weight
                 totalWeight += weight
             }
         }
-        let percent = (totalGrade / totalWeight) * 100
+        let percent: Double = (totalGrade / totalWeight) * 100
         return percent.truncate(places: 2)
     }
 }

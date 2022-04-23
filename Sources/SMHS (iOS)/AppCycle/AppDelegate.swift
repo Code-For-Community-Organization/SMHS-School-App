@@ -15,10 +15,10 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Configure Firebase Suite
         FirebaseApp.configure()
+        setupFirebaseRemoteConfig()
         setupPushNotifications()
         setupFirebaseMessaging()
-        setupFirebaseRemoteConfig()
-        
+
         return true
     }
 
@@ -53,7 +53,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
                                 -> Void) {
         // Change this to your preferred presentation option
-        completionHandler([[.alert, .banner, .sound]])
+        completionHandler([.banner, .sound, .list])
     }
 
     // Receive notification for when app is in foreground

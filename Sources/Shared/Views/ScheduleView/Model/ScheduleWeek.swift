@@ -52,6 +52,8 @@ struct ScheduleWeek: Hashable, Codable {
 extension ScheduleWeek: Equatable {
     static func == (lhs: ScheduleWeek, rhs: ScheduleWeek) -> Bool {
         return lhs.startDate == rhs.startDate
-            && lhs.endDate == rhs.endDate
+        && lhs.endDate == rhs.endDate
+        && lhs.weekText == rhs.weekText
+        && lhs.scheduleDays == rhs.scheduleDays
     }
 }

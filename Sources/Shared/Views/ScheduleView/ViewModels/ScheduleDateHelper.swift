@@ -127,7 +127,9 @@ struct ScheduleDateHelper {
         
     }
 
-    func parseScheduleXML(forDays days: [(date: String, schedule: String)]) -> [ScheduleWeek] {
+    func parseScheduleXML(forDays days: [(date: String,
+                                          schedule: String,
+                                          title: String)]) -> [ScheduleWeek] {
         // Sort dates into weeks
         // Same week number of year means same week
         var scheduleWeek = [ScheduleWeek]()
@@ -140,7 +142,9 @@ struct ScheduleDateHelper {
                 #endif
                 continue
             }
-            let newDay = ScheduleDay(date: date, scheduleText: day.schedule)
+            let newDay = ScheduleDay(date: date,
+                                     scheduleText: day.schedule,
+                                     dayTitle: day.title)
             scheduleWeek = getScheduleWeekWithNewDay(weeks: scheduleWeek,
                                         newDay: newDay)
         }

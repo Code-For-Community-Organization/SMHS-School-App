@@ -13,19 +13,35 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         self.scheduleText = scheduleText
         self.mockDate = mockDate
     }
+
+    internal init(date: Date, scheduleText: String, dayTitle: String) {
+        self.date = date
+        self.scheduleText = scheduleText
+        self.dayTitle = dayTitle
+    }
+
+    internal init(date: Date, scheduleText: String) {
+        self.date = date
+        self.scheduleText = scheduleText
+    }
+
     var mockDate: Date?  //Mock representation of current date, for testing
-    var id = UUID()
+    var id: Int {
+        return date.hashValue
+    }
     var dayOfTheWeek: Int {
         Date.getDayOfTheWeek(for: date)
     }
     var date: Date  //Date of the schedule
     var scheduleText: String
+    var dayTitle: String?
+
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
     var periods: [ClassPeriod] {
         appendOptionalPeriod8(periods: parseClassPeriods())
     }
     var atheleticsInfo: String {
-        guard dayOfTheWeek != 6 && dayOfTheWeek != 7
+        guard dayOfTheWeek != 6 && dayOfTheWeek != 0
         else {
             return scheduleText
         }
@@ -55,6 +71,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         formatter.dateFormat = "E, MMM d"
         return formatter.string(from: date)
     }
+
 
     func getCurrentPeriodRemainingTime(selectionMode: PeriodCategory) -> TimeInterval? {
         if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime, 
@@ -102,3 +119,4 @@ extension ScheduleDay {
     
     static let sampleScheduleDay = ScheduleDay(date: Date(), scheduleText: "Period 6 8:00-9:05\nPeriod 7 9:12-10:22\n(5 minutes for announcements)\nNutrition                      Period 1\n10:22-11:02                10:29-11:34\nPeriod 1                        Nutrition\n11:09-12:14                 11:34-12:14\nPeriod 2 12:21-1:26\nOffice Hours 1:33-2:30\n-------------------------------\nAP French Lang/Culture & Modern World Hist 8:00\nAP Macroeconomics 12:00\nB FS Golf vs MD 3:30\nB JV Golf @ JSerra 3:00\nB JV Tennis vs Servite 3:15\nB JV/V LAX @ JSerra 7:00/5:30\nB V Tennis @ Servite 2:30\nB V Vball @ JSerra 3:00\nG JV/V LAX @ Orange Luth 7:00/5:30\nG V Golf vs Rosary 4:30\nPossible G Soccer CIF\nSenior Graduation Ticket Distribution\n\nV Wrestling vs Aliso Niguel 1:30\n")
 }
+

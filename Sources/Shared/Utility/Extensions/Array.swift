@@ -50,4 +50,11 @@ extension Array {
         guard let newElements = newElements else {return}
         self.append(contentsOf: newElements.filter {!self.contains($0)})
     }
+
+    func isNotLast(for element: Self.Element) -> Bool where Element: Equatable {
+        if let index = self.firstIndex(of: element) {
+            return index < self.count - 1
+        }
+        return true
+    }
 }

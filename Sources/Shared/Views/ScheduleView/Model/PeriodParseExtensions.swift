@@ -168,6 +168,9 @@ extension ScheduleDay {
             guard p8DayIntArray.contains(Double(self.dayOfTheWeek))
             else { return periods }
 
+            guard !globalRemoteConfig.NO_SCHOOL_IDENTIFIERS.contains(dayTitle ?? "")
+            else {return periods}
+
             //Get periods's start and end times from remote config
             let timesConfig = globalRemoteConfig.configValue(forKey: "period_eight_time").jsonValue
             guard let times = timesConfig as? [String: String]
