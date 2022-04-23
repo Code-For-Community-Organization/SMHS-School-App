@@ -22,7 +22,7 @@ final class NetworkLoadViewModel: ObservableObject {
         lastStatus == .satisfied
     }
     
-    typealias Reloader = (Date, @escaping (Bool) -> Void) -> Void
+    typealias Reloader = (Date, Bool, @escaping (Bool) -> Void) -> Void
     var dataReload: Reloader
     
     init(dataReload: @escaping Reloader) {
@@ -34,7 +34,7 @@ final class NetworkLoadViewModel: ObservableObject {
     func reloadDataNow() {
         //Show indicator while loading
         isLoading = true
-        dataReload(Date()) {success in
+        dataReload(Date(), true) {success in
             DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                 self.isLoading = false
             }

@@ -129,7 +129,7 @@ extension GradesViewModel {
         loginAndFetch()
         #else
         if let time = lastReloadTime {
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(60 * 10) {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(globalRemoteConfig.RELOAD_INTERVAL_GRADE) {
                 loginAndFetch()
                 lastReloadTime = Date()
             }

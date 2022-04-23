@@ -44,6 +44,12 @@ extension Endpoint {
                 request.httpBody = requestBody.percentEncoded()
             }
         }
+        let userAgent = AppVersionStatus.appDisplayName
+        + "/"
+        + AppVersionStatus.currentVersion!
+        + " "
+        + "Developer email/maoj@smhs.app"
+        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
         request.setValue("br;q=1.0, gzip;q=0.9, deflate;q=0.8", forHTTPHeaderField: "Accept-Encoding")
         if isApplicationJson {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

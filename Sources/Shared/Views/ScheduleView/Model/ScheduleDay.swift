@@ -14,7 +14,9 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         self.mockDate = mockDate
     }
     var mockDate: Date?  //Mock representation of current date, for testing
-    var id = UUID()
+    var id: Int {
+        return date.hashValue
+    }
     var dayOfTheWeek: Int {
         Date.getDayOfTheWeek(for: date)
     }

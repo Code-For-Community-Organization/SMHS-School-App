@@ -55,7 +55,7 @@ final class SharedScheduleInformation: ObservableObject {
         self.urlString = urlString
         self.downloader = downloader
         print("Called fetch data from initializer...")
-        fetchData()
+        fetchData(purgeExisting: true)
 
         let shouldPurge = globalRemoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
         // Purge all data when app update applied
@@ -69,17 +69,16 @@ final class SharedScheduleInformation: ObservableObject {
     func reloadData() {
         if let time = lastReloadTime {
             // minimum reload interval is 6 hours
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(21600) {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(globalRemoteConfig.RELOAD_INTERVAL_SCHEDULE) {
                 print("Reload valid, fetching data")
-                fetchData()
+                fetchData(purgeExisting: true)
                 lastReloadTime = Date()
             }
-            print("Reload invalid")
         }
         else {
             print("Reload 1st time, fetching data")
             lastReloadTime = Date()
-            fetchData()
+            fetchData(purgeExisting: true)
         }
         
     }
@@ -93,6 +92,7 @@ final class SharedScheduleInformation: ObservableObject {
     // 2. smhs.org ICS calendar feed, used as a
     // redundency to fallback on if above fails
     func fetchData(startDate: Date = Date().startOfWeek(),
+                   purgeExisting: Bool = false,
                    completion: ((Bool) -> Void)? = nil) {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
@@ -102,7 +102,7 @@ final class SharedScheduleInformation: ObservableObject {
             if let data = response.data {
                 let xml = XML.parse(data)
 
-                var scheduleDays = [(String, String)]()
+                var scheduleDays = [(date: String, schedule: String)]()
                 for day in xml["CALENDAR", "EVENT"] {
                     if let scheduleText = day["DESCRIPTION"].text,
                        let date = day["EVENTDATE"].text {
@@ -114,7 +114,13 @@ final class SharedScheduleInformation: ObservableObject {
                 self?.minDate = formatter.serverTimeFormat(metadata["MINDATE"].text)
                 self?.maxDate = formatter.serverTimeFormat(metadata["MAXDATE"].text)
                 let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
-                self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
+                if purgeExisting {
+                    self?.scheduleWeeks = fetchedSchedule ?? []
+                }
+                else {
+                    self?.scheduleWeeks.appendUnion(contentsOf: fetchedSchedule)
+                }
+
                 self?.isLoading = false
                 #if DEBUG
                 debugPrint("✅ Successfully fetched from main AppServ API.")
@@ -186,23 +192,24 @@ final class SharedScheduleInformation: ObservableObject {
         ICSText = nil; scheduleWeeks = [];
     }
 
+    // Reloads the infinite scroll as needed
     func reloadScrollList(currentWeek: ScheduleWeek) {
         if currentWeek == scheduleWeeks.last {
-            guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date
+            guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date,
+                    let minDate = minDate,
+                  let maxDate = maxDate
             else {
                 return
             }
 
-            guard let minDate = minDate, let maxDate = maxDate
-            else {
+            if (lastDay < maxDate && lastDay > minDate)
+                && scheduleWeeks.isNotLast(for: currentWeek){
+                debugPrint("✅ Reloaded infinite scroll list successfully")
                 fetchData(startDate: lastDay)
                 return
-            }
-
-            if lastDay < maxDate && lastDay > minDate {
-                fetchData(startDate: lastDay)
             }
         }
+        debugPrint("⚠️ reloadScrollList() called, but did not realod.")
     }
 }
 
