@@ -9,10 +9,7 @@ import Foundation
 
 extension Date {
 
-    static func currentWeekday(for date: Date = Date()) -> Int {
-        Calendar.current.component(.weekday, from: date) - 1
-    }
-    
+    // 0 is Sunday, week starts on Monday (1), end on Saturday (6)
     static func getDayOfTheWeek(for date: Date = Date()) -> Int {
         Calendar.iso8601.component(.weekday, from: date) - 1
     }

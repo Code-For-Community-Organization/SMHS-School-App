@@ -27,7 +27,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         appendOptionalPeriod8(periods: parseClassPeriods())
     }
     var atheleticsInfo: String {
-        guard dayOfTheWeek != 6 && dayOfTheWeek != 7
+        guard dayOfTheWeek != 6 && dayOfTheWeek != 0
         else {
             return scheduleText
         }
