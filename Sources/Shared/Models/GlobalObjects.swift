@@ -38,4 +38,20 @@ extension RemoteConfig {
 
         return url
     }
+    
+    var RELOAD_INTERVAL_GRADE: TimeInterval {
+        #if DEBUG
+        0
+        #else
+        globalRemoteConfig.configValue(forKey: "reload_interval_grade").numberValue.doubleValue
+        #endif
+    }
+
+    var RELOAD_INTERVAL_SCHEDULE: TimeInterval {
+        #if DEBUG
+        0
+        #else
+        globalRemoteConfig.configValue(forKey: "reload_interval_schedule").numberValue.doubleValue
+        #endif
+    }
 }
