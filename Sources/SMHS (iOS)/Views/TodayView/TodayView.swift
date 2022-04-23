@@ -43,6 +43,7 @@ struct TodayView: View {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(appSecondary)], for: .normal)
+            scheduleViewViewModel.reloadData()
         }
         .onDisappear {
             todayViewViewModel.showNetworkError = true
