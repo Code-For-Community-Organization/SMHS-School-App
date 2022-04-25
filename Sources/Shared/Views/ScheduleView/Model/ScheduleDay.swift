@@ -46,15 +46,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
             return scheduleText
         }
 
-        let config = Constants.remoteConfig.configValue(forKey: "schedule_seperator")
-        var seperator: String
-        if let s = config.stringValue {
-            seperator = s
-        }
-        else {
-            seperator = String("-------")
-        }
-        if let index = scheduleText.index(of: seperator) {
+        if let index = scheduleText.index(of:  Constants.scheduleSeperator) {
             return String(scheduleText[index...])
         }
 

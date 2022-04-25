@@ -57,11 +57,10 @@ final class SharedScheduleInformation: ObservableObject {
         print("Called fetch data from initializer...")
         fetchData(purgeExisting: true)
 
-        let shouldPurge = Constants.remoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
         // Purge all data when app update applied
         // Allow Remote Config override
         if AppVersionStatus.getVersionStatus() == .updated &&
-            shouldPurge {
+            Constants.shouldPurgeOnUpdate {
             reset()
         }
     } 

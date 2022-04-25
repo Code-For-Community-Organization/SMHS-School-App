@@ -258,18 +258,10 @@ extension Color {
 
 extension Color {
     static var appPrimary: Color {
-        if Constants.remoteConfig.lastFetchStatus == .success {
-            let colorHex = Constants.remoteConfig.configValue(forKey: "primary_color").stringValue
-            return Color(hexadecimal: colorHex ?? "3498DB")
-        }
-        return Color(hexadecimal: "3498DB")
+        Color(hexadecimal: Constants.primaryColor ?? Constants.primaryColorHex)
     }
 
     static var appSecondary: Color {
-        if Constants.remoteConfig.lastFetchStatus == .success {
-            let colorHex = Constants.remoteConfig.configValue(forKey: "secondary_color").stringValue
-            return Color(hexadecimal: colorHex ?? "12C4A1")
-        }
-        return Color(hexadecimal: "12C4A1")
+        Color(hexadecimal: Constants.secondaryColor ?? Constants.secondaryColorHex)
     }
 }

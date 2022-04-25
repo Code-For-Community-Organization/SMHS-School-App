@@ -29,32 +29,32 @@ extension ScheduleDay {
             
             //Stop parsing garbage information (sports, after school.etc)
             guard !line.contains(String(repeating: "-", count: 20))
-            
-            // This is the main, most used return route!!!
+
+                    // This is the main, most used return route!!!
             else {return classPeriods}
             
             //Normal period case
             guard let startTime: Substring = Self.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule
                   let endTime: Substring = Self.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
                   "[a-zA-Z]".r!.matches(String(line)) else
-            {
-                var firstLunchCharIndex: Substring.Index?
-                let nutritionIndex = line.range(of: "nutrition")?.lowerBound
-                let alternate = line.range(of: "lunch")?.lowerBound
-                firstLunchCharIndex = nutritionIndex ?? alternate
+                  {
+                      var firstLunchCharIndex: Substring.Index?
+                      let nutritionIndex = line.range(of: "nutrition")?.lowerBound
+                      let alternate = line.range(of: "lunch")?.lowerBound
+                      firstLunchCharIndex = nutritionIndex ?? alternate
 
-                //Handle 1st/2nd nutrition schedule case
-                if let nutritionIndex: Substring.Index = firstLunchCharIndex,
-                   let period: Match = Self.periodPattern.findFirst(in: String(line)) {
-                    
-                    let block = parseNutritionPeriodLines(textLines,
-                                                          lineNum: lineNum,
-                                                          nutritionIndex: nutritionIndex,
-                                                          period: period)
-                    classPeriods.append(contentsOf: block)
-                }
-                continue
-            }
+                      //Handle 1st/2nd nutrition schedule case
+                      if let nutritionIndex: Substring.Index = firstLunchCharIndex,
+                         let period: Match = Self.periodPattern.findFirst(in: String(line)) {
+
+                          let block = parseNutritionPeriodLines(textLines,
+                                                                lineNum: lineNum,
+                                                                nutritionIndex: nutritionIndex,
+                                                                period: period)
+                          classPeriods.append(contentsOf: block)
+                      }
+                      continue
+                  }
             
             guard let timeIndex = line.index(of: startTime) else {
                 continue
@@ -145,50 +145,21 @@ extension ScheduleDay {
 
     func appendOptionalPeriod8(periods: [ClassPeriod]) -> [ClassPeriod] {
         // Make sure remote config enabled period 8
-        let p8Enabled = Constants.remoteConfig.configValue(forKey: "eighth_period_enabled").boolValue
-        guard p8Enabled else { return periods }
+        guard Constants.isPeriod8Enabled,
+              let p8Days = Constants.period8Days,
+              p8Days.contains(self.dayOfTheWeek),
 
-        // Get period 8 days of week from remote config
-        let p8DaysConfig = Constants.remoteConfig.configValue(forKey: "period_eight_days").jsonValue
+              // Make sure is not school holiday
+              !Constants.noSchoolIdentifier.contains(dayTitle ?? ""),
 
-        // Expect JSON:
-        // ex. {"days": [1,3,5]} for mon, wed, fri
-        // Get first of dictionary, and get its period 8 days
-        if let p8DaysConfig = p8DaysConfig as? [String: Any],
-           let p8Days = p8DaysConfig.first?.value {
-            //Cast as dictionary, with values as days
-            guard let p8DayArray = p8Days as? NSArray
-            else { return periods }
+              let times = Constants.period8Times
+        else { return periods }
 
-            let p8DayIntArray = p8DayArray
-                    .compactMap({$0 as? NSString})
-                    .compactMap({$0.doubleValue})
-
-            //Make sure today's schedule date is correct
-            guard p8DayIntArray.contains(Double(self.dayOfTheWeek))
-            else { return periods }
-
-            guard !Constants.noSchoolIdentifier.contains(dayTitle ?? "")
-            else {return periods}
-
-            //Get periods's start and end times from remote config
-            let timesConfig = Constants.remoteConfig.configValue(forKey: "period_eight_time").jsonValue
-            guard let times = timesConfig as? [String: String]
-            else { return periods }
-
-            // Get start/end values from dictionary
-            // Format into Date objects
-            guard let startTime = DateFormatter.hourTimeFormat(times["start"] ?? ""),
-                  let endTime = DateFormatter.hourTimeFormat(times["end"] ?? "")
-            else { return periods }
-
-            var periods = periods
-            periods.append(.init(nutritionBlock: .period,
-                                 periodNumber: 8,
-                                 startTime: startTime,
-                                 endTime: endTime))
-            return periods
-        }
+        var periods = periods
+        periods.append(.init(nutritionBlock: .period,
+                             periodNumber: 8,
+                             startTime: times.start,
+                             endTime: times.end))
         return periods
     }
 }
