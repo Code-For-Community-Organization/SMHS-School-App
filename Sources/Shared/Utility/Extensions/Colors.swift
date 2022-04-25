@@ -255,3 +255,21 @@ extension Color {
         #endif
     }
 }
+
+extension Color {
+    static var appPrimary: Color {
+        if Constants.remoteConfig.lastFetchStatus == .success {
+            let colorHex = Constants.remoteConfig.configValue(forKey: "primary_color").stringValue
+            return Color(hexadecimal: colorHex ?? "3498DB")
+        }
+        return Color(hexadecimal: "3498DB")
+    }
+
+    static var appSecondary: Color {
+        if Constants.remoteConfig.lastFetchStatus == .success {
+            let colorHex = Constants.remoteConfig.configValue(forKey: "secondary_color").stringValue
+            return Color(hexadecimal: colorHex ?? "12C4A1")
+        }
+        return Color(hexadecimal: "12C4A1")
+    }
+}

@@ -61,7 +61,7 @@ struct GradesDetailRow: View {
                         .fontWeight(.bold)
                         .strikethrough(assignmentGrade.editModeDropped)
                         .textAlign(.trailing)
-                        .foregroundColor(appPrimary)
+                        .foregroundColor(Color.appPrimary)
 
 
                     let numbersCorrect = String(format: "%g", assignmentGrade.numberCorrect)
@@ -90,7 +90,7 @@ struct GradesDetailRow: View {
                             .foregroundColor(Color.white)
                             .padding(.vertical, 3)
                             .padding(.horizontal, 6)
-                            .background(appPrimary)
+                            .background(Color.appPrimary)
                             .clipShape(Capsule())
                     })
                 }

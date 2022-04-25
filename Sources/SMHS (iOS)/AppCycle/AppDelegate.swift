@@ -76,7 +76,7 @@ extension AppDelegate: MessagingDelegate {
         // Remote config fetch
         // Allows developer to remotely update small
         // pieces of data that will change app behavior
-        globalRemoteConfig = RemoteConfig.remoteConfig()
+        let config = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         #if DEBUG
         settings.minimumFetchInterval = 0
@@ -85,10 +85,10 @@ extension AppDelegate: MessagingDelegate {
         settings.minimumFetchInterval = TimeInterval(sixHours)
         #endif
 
-        globalRemoteConfig.configSettings = settings
-        globalRemoteConfig.fetch {status, error in
+        config.configSettings = settings
+        config.fetch {status, error in
             if status == .success {
-                globalRemoteConfig.activate {_, _ in}
+                config.activate {_, _ in}
             } else {
         #if DEBUG
                 debugPrint("Config not fetched")
@@ -96,6 +96,7 @@ extension AppDelegate: MessagingDelegate {
         #endif
             }
         }
+        Constants.remoteConfig = config
     }
 
     // MARK: Delegate methods

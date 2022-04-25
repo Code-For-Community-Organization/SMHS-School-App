@@ -48,7 +48,7 @@ struct FooterModalView: View {
                     NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
-                .foregroundColor(appSecondary)
+                .foregroundColor(.appSecondary)
                 
                 Section(header: Label("Developer", systemSymbol: .hammerFill)){
                     Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {

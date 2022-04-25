@@ -24,7 +24,7 @@ struct MasterCalendarView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ElegantCalendarView(calendarManager: calendarManager)
-                .theme(.init(primary: appPrimary))
+                .theme(.init(primary: .appPrimary))
             Button(action: {
                 hapticsManager.UIFeedbackImpact()
                 presentationMode.wrappedValue.dismiss()

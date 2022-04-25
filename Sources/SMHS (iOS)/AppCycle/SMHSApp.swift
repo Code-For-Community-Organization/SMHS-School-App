@@ -8,7 +8,7 @@
 import SwiftUI
 import StoreKit
 
-@main
+@main 
 struct SMHSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {

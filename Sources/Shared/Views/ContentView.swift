@@ -48,7 +48,7 @@ struct ContentView: View {
         }
         .onboardingModal()
         .environmentObject(UserSettings())
-        .accentColor(appPrimary)
+        .accentColor(.appPrimary)
         .onChange(of: scenePhase) { newScenePhase in
               switch newScenePhase {
               case .active:

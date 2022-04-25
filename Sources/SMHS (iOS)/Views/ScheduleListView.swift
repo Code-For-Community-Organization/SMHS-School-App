@@ -66,7 +66,7 @@ struct ScheduleListView: View {
                             scheduleViewModel.reloadScrollList(currentWeek: scheduleWeek)
                         }
                     }
-                    .listItemTint(appSecondary)
+                    .listItemTint(.appSecondary)
 
                     Spacer()
 

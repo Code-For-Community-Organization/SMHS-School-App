@@ -147,6 +147,7 @@ extension GradesViewModel {
             return
         }
         isLoading = true
+        
         let loginEndpoint = Endpoint.studentLogin(email: email,
                                              password: password,
                                              debugMode: userSettings?.developerSettings.debugNetworking ?? false)

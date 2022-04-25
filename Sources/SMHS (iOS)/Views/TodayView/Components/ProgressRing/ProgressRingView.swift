@@ -54,7 +54,7 @@ struct ProgressRingView: View {
             if let percent = percent {
                 Circle()
                     .trim(from: CGFloat(0) , to: CGFloat(percent))
-                    .stroke(AngularGradient(gradient: Gradient.init(colors: [appPrimary, appSecondary]),
+                    .stroke(AngularGradient(gradient: Gradient.init(colors: [.appPrimary, .appSecondary]),
                                             center: UnitPoint.center,
                                             startAngle: Angle.degrees(0.0),
                                             endAngle: Angle.degrees(percent*360.0)),

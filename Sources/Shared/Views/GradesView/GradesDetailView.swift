@@ -24,7 +24,7 @@ struct GradesDetailView: View {
                     Text("\(viewModel.overallPercent, specifier: "%g")%")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(appSecondary)
+                        .foregroundColor(.appSecondary)
                         .textAlign(.leading)
                         .padding(.horizontal, 20)
                 }
@@ -51,7 +51,7 @@ struct GradesDetailView: View {
                             Text("What-If")
                             Image(systemSymbol: .sliderVertical3)
                         }
-                        .foregroundColor(appPrimary)
+                        .foregroundColor(.appPrimary)
                         //Label("What-If", systemSymbol: .sliderVertical3)
 
                     }

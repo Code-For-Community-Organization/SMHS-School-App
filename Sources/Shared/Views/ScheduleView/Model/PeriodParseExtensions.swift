@@ -145,11 +145,11 @@ extension ScheduleDay {
 
     func appendOptionalPeriod8(periods: [ClassPeriod]) -> [ClassPeriod] {
         // Make sure remote config enabled period 8
-        let p8Enabled = globalRemoteConfig.configValue(forKey: "eighth_period_enabled").boolValue
+        let p8Enabled = Constants.remoteConfig.configValue(forKey: "eighth_period_enabled").boolValue
         guard p8Enabled else { return periods }
 
         // Get period 8 days of week from remote config
-        let p8DaysConfig = globalRemoteConfig.configValue(forKey: "period_eight_days").jsonValue
+        let p8DaysConfig = Constants.remoteConfig.configValue(forKey: "period_eight_days").jsonValue
 
         // Expect JSON:
         // ex. {"days": [1,3,5]} for mon, wed, fri
@@ -168,11 +168,11 @@ extension ScheduleDay {
             guard p8DayIntArray.contains(Double(self.dayOfTheWeek))
             else { return periods }
 
-            guard !globalRemoteConfig.NO_SCHOOL_IDENTIFIERS.contains(dayTitle ?? "")
+            guard !Constants.noSchoolIdentifier.contains(dayTitle ?? "")
             else {return periods}
 
             //Get periods's start and end times from remote config
-            let timesConfig = globalRemoteConfig.configValue(forKey: "period_eight_time").jsonValue
+            let timesConfig = Constants.remoteConfig.configValue(forKey: "period_eight_time").jsonValue
             guard let times = timesConfig as? [String: String]
             else { return periods }
 

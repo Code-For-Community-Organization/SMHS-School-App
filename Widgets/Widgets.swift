@@ -99,7 +99,7 @@
 //        .frame(maxWidth: .infinity)
 //        .frame(maxHeight: .infinity)
 //        .background(
-//            LinearGradient(gradient: .init(colors: [appPrimary, appPrimary.opacity(0.3)]), startPoint: .top, endPoint: .bottom)
+//            LinearGradient(gradient: .init(colors: [.appPrimary, .appPrimary.opacity(0.3)]), startPoint: .top, endPoint: .bottom)
 //        )
 //    }
 //}

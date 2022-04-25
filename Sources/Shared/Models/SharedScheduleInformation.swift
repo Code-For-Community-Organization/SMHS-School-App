@@ -57,7 +57,7 @@ final class SharedScheduleInformation: ObservableObject {
         print("Called fetch data from initializer...")
         fetchData(purgeExisting: true)
 
-        let shouldPurge = globalRemoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
+        let shouldPurge = Constants.remoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
         // Purge all data when app update applied
         // Allow Remote Config override
         if AppVersionStatus.getVersionStatus() == .updated &&
@@ -69,7 +69,7 @@ final class SharedScheduleInformation: ObservableObject {
     func reloadData() {
         if let time = lastReloadTime {
             // minimum reload interval is 6 hours
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(globalRemoteConfig.RELOAD_INTERVAL_SCHEDULE) {
+            if abs(Date().timeIntervalSince(time)) > Constants.scheduleReloadInterval {
                 print("Reload valid, fetching data")
                 fetchData(purgeExisting: true)
                 lastReloadTime = Date()
