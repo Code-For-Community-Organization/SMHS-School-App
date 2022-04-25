@@ -13,10 +13,14 @@ struct Endpoint {
     var queryItems: [URLQueryItem]? = nil
     var requestHeaders: [String: String] = [:]
     var requestBody: [String: String] = [:]
-    var httpMethod = "POST"
+    var httpMethod: RequestMethod
     var isApplicationJson = false
     var jsonEncode = false
     var isLogin = false
+
+    enum RequestMethod: String {
+        case POST, GET
+    }
 }
 
 extension Endpoint {
@@ -35,8 +39,8 @@ extension Endpoint {
     var request: URLRequest {
         var request = URLRequest(url: url)
         request.cachePolicy = .returnCacheDataElseLoad
-        request.httpMethod = httpMethod
-        if httpMethod == "POST" {
+        request.httpMethod = httpMethod.rawValue
+        if httpMethod == .POST {
             if jsonEncode {
                 request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: [])
             }
@@ -86,7 +90,7 @@ extension Endpoint {
         return Endpoint(host: AERIES_API_HOST,
                         path: AERIES_API_LOGIN_PATH,
                         requestBody: form,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isLogin: true)
 
     }
@@ -96,7 +100,7 @@ extension Endpoint {
     static func getGradesSummary() -> Endpoint {
         Endpoint(host: AERIES_API_HOST,
                  path: AERIES_API_MAIN_PATH + "/GetGradebookSummaryData",
-                 httpMethod: "GET",
+                 httpMethod: .GET,
                  isApplicationJson: true)
     }
 
@@ -106,7 +110,7 @@ extension Endpoint {
         Endpoint(host: AERIES_API_HOST,
                  path: AERIES_API_ALT_GRADES_PATH,
                  queryItems: [.init(name: "IsProfile", value: "true")],
-                 httpMethod: "GET")
+                 httpMethod: .GET)
     }
 
     static func getDetailedGrades(term: String,
@@ -121,7 +125,7 @@ extension Endpoint {
         return Endpoint(host: AERIES_API_HOST,
                         path: AERIES_API_MAIN_PATH + "/GetGradebookDetailsData",
                         requestBody: body,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isApplicationJson: true,
                         jsonEncode: true)
     }
@@ -138,7 +142,7 @@ extension Endpoint {
         return Endpoint(host: AERIES_API_HOST,
                         path: AERIES_API_MAIN_PATH + "/GetGradebookDetailedSummaryData",
                         requestBody: body,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isApplicationJson: true,
                         jsonEncode: true)
     }
@@ -155,7 +159,7 @@ extension Endpoint {
                         path: SMHS_API_MAIN_PATH + "/announcements",
                         queryItems: [.init(name: "date",
                                            value: formatter.serverTimeFormat(date))],
-                        httpMethod: "GET")
+                        httpMethod: .GET)
     }
 
     static func getSchedule(date: Date) -> Endpoint {
@@ -170,7 +174,7 @@ extension Endpoint {
                                       .init(name: "tz", value: "America%2FLos_Angeles"),
                                       .init(name: "mid", value: "1422"),
                                       .init(name: "smid", value: "46492")],
-                         httpMethod: "GET")
+                         httpMethod: .GET)
      }
     
 }
