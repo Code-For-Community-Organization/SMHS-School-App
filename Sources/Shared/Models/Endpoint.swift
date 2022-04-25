@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias c = Constants
+fileprivate typealias c = Constants
 
 struct Endpoint {
     var host: String

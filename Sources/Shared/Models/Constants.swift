@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseRemoteConfig
 import SwiftUI
+import Regex
 
 //MARK: This file contains global, pre-defined constants
 struct Constants {
@@ -164,6 +165,15 @@ extension Constants {
         static let categoryId = "0"
         static let mid = "1422"
         static let smid = "46492"
+    }
+
+    struct Schedule {
+        static let startTimePattern: Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
+        static let endTimePattern: Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
+        static let periodPattern: Regex = #"(per|period) \d+"#.r!
+        static let officeHour = "office hours"
+        static let lunch = "lunch"
+        static let distribution = "distribution"
     }
 
 }

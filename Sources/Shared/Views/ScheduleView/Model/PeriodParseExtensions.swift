@@ -8,15 +8,9 @@
 import Foundation
 import Regex
 
+fileprivate typealias c = Constants.Schedule
+
 extension ScheduleDay {
-    //Regular expression patterns for start time, end time, and period number
-    static let startTimePattern: Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
-    static let endTimePattern: Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
-    static let periodPattern: Regex = #"(per|period) \d+"#.r!
-    static let officeHour = "office hours"
-    static let lunch = "lunch"
-    static let distribution = "distribution"
-    
     func parseClassPeriods() -> [ClassPeriod] {
         //Will be returned for value of this variable
         var classPeriods: [ClassPeriod] = [ClassPeriod]()
@@ -34,8 +28,8 @@ extension ScheduleDay {
             else {return classPeriods}
             
             //Normal period case
-            guard let startTime: Substring = Self.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule
-                  let endTime: Substring = Self.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
+            guard let startTime: Substring = c.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule
+                  let endTime: Substring = c.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
                   "[a-zA-Z]".r!.matches(String(line)) else
                   {
                       var firstLunchCharIndex: Substring.Index?
@@ -45,7 +39,7 @@ extension ScheduleDay {
 
                       //Handle 1st/2nd nutrition schedule case
                       if let nutritionIndex: Substring.Index = firstLunchCharIndex,
-                         let period: Match = Self.periodPattern.findFirst(in: String(line)) {
+                         let period: Match = c.periodPattern.findFirst(in: String(line)) {
 
                           let block = parseNutritionPeriodLines(textLines,
                                                                 lineNum: lineNum,
@@ -61,7 +55,7 @@ extension ScheduleDay {
             }
             line.removeSubrange(timeIndex..<line.endIndex)
             //Normal lunch
-            guard line.contains(Self.lunch) else {
+            guard line.contains(c.lunch) else {
                 //Regular period
                 classPeriods.append(parseRegularPeriodLine(line, startTime: startTime, endTime: endTime))
                 continue
@@ -81,7 +75,7 @@ extension ScheduleDay {
     }
     
     func parseRegularPeriodLine(_ line: Substring, startTime: Substring, endTime:Substring) -> ClassPeriod {
-        guard let period: Character = Self.periodPattern.findFirst(in: String(line))?.matched.last else {
+        guard let period: Character = c.periodPattern.findFirst(in: String(line))?.matched.last else {
             let periodTitle = line.trimmingCharacters(in: .whitespaces)
             return ClassPeriod(periodTitle,
                                startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
@@ -102,8 +96,8 @@ extension ScheduleDay {
         let nextLine = String(textLines[lineNum+1])
         
         //Regex find start times and end times, convert them to array of string, dropping the dash character
-        let startTimes: [String] = Array(Self.startTimePattern.findAll(in: nextLine)).map{String($0.matched.dropLast())}
-        let endTimes: [String] = Array(Self.endTimePattern.findAll(in: nextLine)).map{String($0.matched.dropFirst())}
+        let startTimes: [String] = Array(c.startTimePattern.findAll(in: nextLine)).map{String($0.matched.dropLast())}
+        let endTimes: [String] = Array(c.endTimePattern.findAll(in: nextLine)).map{String($0.matched.dropFirst())}
         
         //Total of 4 start/end times for nutrition and period revolving it
         guard let startTimeFirst: String = startTimes.first,
