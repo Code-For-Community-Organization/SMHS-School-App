@@ -148,11 +148,22 @@ extension Constants {
         static let summaryGrades = "/GetGradebookSummaryData"
         static let detailGrades = "/GetGradebookDetailsData"
         static let detailedSummary = "/GetGradebookDetailedSummaryData"
+
+
+        static let pageSize = "200"
+        static let requestedPage = "1"
     }
 
     struct AppServApiPath {
         static let host = "appserv.u360mobile.com"
         static let schedule = "/354/calendarfeed.php"
+
+
+        static let pageSize = "25"
+        static let pageNumber = "1"
+        static let categoryId = "0"
+        static let mid = "1422"
+        static let smid = "46492"
     }
 
 }

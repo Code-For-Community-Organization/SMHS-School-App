@@ -107,9 +107,9 @@ extension Endpoint {
     static func getDetailedGrades(term: String,
                                   gradebookNumber: String) -> Endpoint {
         let body = [
-            "requestedPage": "1",
+            "requestedPage": c.AeriesApiPath.requestedPage,
             "term": term,
-            "pageSize": "200",
+            "pageSize": c.AeriesApiPath.pageSize,
             "gradebookNumber": gradebookNumber
         ]
 
@@ -154,17 +154,19 @@ extension Endpoint {
     }
 
     static func getSchedule(date: Date) -> Endpoint {
-         let formatter = DateFormatter()
-        return Endpoint(host: c.AppServApiPath.host,
-                        path: c.AppServApiPath.schedule,
+        let formatter = DateFormatter()
+        let c = c.AppServApiPath.self
+
+        return Endpoint(host: c.host,
+                        path: c.schedule,
                          queryItems: [.init(name: "i", value: "santamargaritahs"),
-                                      .init(name: "pageSize", value: "25"),
-                                      .init(name: "pageNumber", value: "1"),
+                                      .init(name: "pageSize", value: c.pageSize),
+                                      .init(name: "pageNumber", value: c.pageNumber),
                                       .init(name: "dateStart", value: formatter.yearMonthDayFormat(date)),
-                                      .init(name: "categoryId", value: "0"),
+                                      .init(name: "categoryId", value: c.categoryId),
                                       .init(name: "tz", value: "America%2FLos_Angeles"),
-                                      .init(name: "mid", value: "1422"),
-                                      .init(name: "smid", value: "46492")],
+                                      .init(name: "mid", value: c.mid),
+                                      .init(name: "smid", value: c.smid)],
                          httpMethod: .GET)
      }
     
