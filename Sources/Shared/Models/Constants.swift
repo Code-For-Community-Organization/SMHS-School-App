@@ -114,22 +114,45 @@ struct Constants {
 
         return nil
     }
-
-    static var primaryColor: String? {
-        Constants.remoteConfig.configValue(forKey: Constants.primaryColorKey).stringValue
-    }
-
-    static var secondaryColor: String? {
-        Constants.remoteConfig.configValue(forKey: Constants.secondaryColorKey).stringValue
-    }
 }
 
 extension Constants {
 
-    //MARK: - App-wide Constant Values
-    fileprivate static let primaryColorKey = "primary_color"
-    static let primaryColorHex = "3498DB"
+    struct Color {
+        //MARK: - App-wide Constant Values
+        private static let primaryKey = "primary_color"
+        static let primaryHex = "3498DB"
+        private static let secondaryKey = "secondary_color"
+        static let secondaryHex = "12C4A1"
 
-    fileprivate static let secondaryColorKey = "secondary_color"
-    static let secondaryColorHex = "12C4A1"
+        static var fetchedPrimary: String? {
+            Constants.remoteConfig.configValue(forKey: primaryKey).stringValue
+        }
+
+        static var fetchedSecondary: String? {
+            Constants.remoteConfig.configValue(forKey: secondaryKey).stringValue
+        }
+    }
+
+    struct SmhsApiPath {
+        static let host = "api.smhs.app"
+        static let main = "/api/v1"
+        static let annoucements = "/announcements"
+    }
+
+    struct AeriesApiPath {
+        static let host = "aeries.smhs.org"
+        static let main = "/parent/m/api/MobileWebAPI.asmx"
+        static let login = "/parent/LoginParent.aspx"
+        static let altGrades = "/Parent/Widgets/ClassSummary/GetClassSummary"
+        static let summaryGrades = "/GetGradebookSummaryData"
+        static let detailGrades = "/GetGradebookDetailsData"
+        static let detailedSummary = "/GetGradebookDetailedSummaryData"
+    }
+
+    struct AppServApiPath {
+        static let host = "appserv.u360mobile.com"
+        static let schedule = "/354/calendarfeed.php"
+    }
+
 }

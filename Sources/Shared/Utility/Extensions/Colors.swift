@@ -258,10 +258,12 @@ extension Color {
 
 extension Color {
     static var appPrimary: Color {
-        Color(hexadecimal: Constants.primaryColor ?? Constants.primaryColorHex)
+        Color(hexadecimal: Constants.Color.fetchedPrimary
+              ?? Constants.Color.primaryHex)
     }
 
     static var appSecondary: Color {
-        Color(hexadecimal: Constants.secondaryColor ?? Constants.secondaryColorHex)
+        Color(hexadecimal: Constants.Color.fetchedSecondary
+              ?? Constants.Color.secondaryHex)
     }
 }
