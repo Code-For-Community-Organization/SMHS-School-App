@@ -61,6 +61,9 @@ struct AnnoucementBanner: View {
             .roundedCorners(cornerRadius: 10)
             .padding(.vertical)
         })
+            .contextMenu {
+                Button("Reload", action: viewModel.fetchAnnoucements)
+            }
     }
 }
 

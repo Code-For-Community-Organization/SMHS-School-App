@@ -86,6 +86,7 @@ struct TodayHeroView: View {
                 }
 
             }
+            .animation(.easeInOut, value: todayViewViewModel.loadingAnnoucements)
         })
     }
 }

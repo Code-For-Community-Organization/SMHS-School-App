@@ -136,7 +136,7 @@ struct ScheduleDetailView: View {
                                             "time_stamp": Date().debugDescription,
                                             "time_of_day": formatTime(Date())])
         }
-        .onTapGesture(count: 5) {
+        .onDeveloperTap(userSettings) {
             if userSettings.developerSettings.developerOn {
                 developerScheduleOn.toggle()
             }
