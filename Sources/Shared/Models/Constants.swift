@@ -127,11 +127,21 @@ extension Constants {
         static let secondaryHex = "12C4A1"
 
         static var fetchedPrimary: String? {
-            Constants.remoteConfig.configValue(forKey: primaryKey).stringValue
+            let value = Constants.remoteConfig.configValue(forKey: primaryKey).stringValue
+            guard !(value?.isEmpty ?? true)
+            else {
+                return primaryHex
+            }
+            return value
         }
 
         static var fetchedSecondary: String? {
-            Constants.remoteConfig.configValue(forKey: secondaryKey).stringValue
+            let value = Constants.remoteConfig.configValue(forKey: secondaryKey).stringValue
+            guard !(value?.isEmpty ?? true)
+            else {
+                return secondaryHex
+            }
+            return value
         }
     }
 

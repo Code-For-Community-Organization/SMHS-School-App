@@ -37,7 +37,7 @@ extension DateFormatter {
     }
 
     func serverTimeFormat(_ date: Date) -> String {
-        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return self.string(from: date)
     }
 

@@ -13,7 +13,6 @@ import FirebaseAnalytics
 final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
-
     @Published(key: "userSettings") var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
     @Published(key: "isPeriod8On") var isPeriod8On = true
@@ -78,4 +77,5 @@ struct DeveloperSettings: Codable {
     var overrideNetworkStatus: Bool = false
     var networkStatus: networkStatus = .unsatisfied
     var dummyGrades: Bool = false
+    var developerOn = false
 }

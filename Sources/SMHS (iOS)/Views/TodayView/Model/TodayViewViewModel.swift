@@ -86,7 +86,7 @@ class TodayViewViewModel: ObservableObject {
                 switch error {
                     case .finished:
                     self?.lastUpdateTime = Date()
-                    case .failure(_):
+                    case .failure(let error):
                         return
                 }
             }, receiveValue: {[weak self] announcement in

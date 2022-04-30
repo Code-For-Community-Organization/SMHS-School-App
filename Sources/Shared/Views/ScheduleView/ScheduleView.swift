@@ -48,6 +48,11 @@ struct ScheduleView: View {
 
         }
         .navigationBarTitleDisplayMode(.automatic)
+        .onTapGesture(count: 5) {
+            if userSettings.developerSettings.developerOn {
+                scheduleViewModel.fetchData(purgeExisting: true)
+            }
+        }
         .onAppear{
             scheduleViewModel.reloadData()
             scheduleViewModel.objectWillChange.send()

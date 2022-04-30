@@ -86,7 +86,8 @@ extension AppDelegate: MessagingDelegate {
         #endif
 
         config.configSettings = settings
-        config.fetch {status, error in
+        Constants.remoteConfig = config
+        Constants.remoteConfig.fetch {status, error in
             if status == .success {
                 config.activate {_, _ in}
             } else {
@@ -95,8 +96,9 @@ extension AppDelegate: MessagingDelegate {
                 debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
         #endif
             }
+
         }
-        Constants.remoteConfig = config
+
     }
 
     // MARK: Delegate methods

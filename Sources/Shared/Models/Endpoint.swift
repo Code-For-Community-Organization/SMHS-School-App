@@ -79,7 +79,7 @@ extension Endpoint {
                     "submit": ""]
         
         return Endpoint(host: c.AeriesApiPath.host,
-                        path: c.AeriesApiPath.main,
+                        path: c.AeriesApiPath.login,
                         requestBody: form,
                         httpMethod: .POST,
                         isLogin: true)

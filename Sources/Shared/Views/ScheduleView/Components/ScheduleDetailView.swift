@@ -59,10 +59,11 @@ struct ScheduleDetailView: View {
     }
 
     var horizontalPadding = true
+    @State private var developerScheduleOn = false
 
     var body: some View {
         ScrollView {
-            if userSettings.preferLegacySchedule {
+            if userSettings.preferLegacySchedule || developerScheduleOn {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
             }
             else {
@@ -134,6 +135,11 @@ struct ScheduleDetailView: View {
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
                                             "time_stamp": Date().debugDescription,
                                             "time_of_day": formatTime(Date())])
+        }
+        .onTapGesture(count: 5) {
+            if userSettings.developerSettings.developerOn {
+                developerScheduleOn.toggle()
+            }
         }
 
     }
