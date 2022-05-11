@@ -1872,7 +1872,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
-				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				INFOPLIST_FILE = "SMHS Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1894,7 +1894,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
-				INFOPLIST_FILE = "SMHS ScheduleTests/Info.plist";
+				INFOPLIST_FILE = "SMHS Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1915,7 +1915,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
-				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				INFOPLIST_FILE = "SMHS Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1936,7 +1936,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TNL6P3HKQQ;
-				INFOPLIST_FILE = "SMHS ScheduleUITests/Info.plist";
+				INFOPLIST_FILE = "SMHS Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

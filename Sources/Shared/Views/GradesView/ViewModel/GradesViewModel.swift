@@ -177,39 +177,42 @@ extension GradesViewModel {
                     break
                 }
             }) {[weak self] (courseGrades, supplementSummary) in
-
-                let courses = courseGrades.courses
-                // Ensure displayed courses are not dropped
-                    .filter {$0.code == .current}
-                //self?.gradesResponse = courses
-                let supplementSummaryCourses = supplementSummary
-                    .filter {$0.termGrouping == .current}
-                    .filter {summary in
-                        let referencePeriods = courses.compactMap{Int($0.periodNum)}
-                        return referencePeriods.contains(summary.period)
-                    }
-
-                guard supplementSummaryCourses.count == courses.count
-                else {
-                    self?.gradesResponse = courses
-                    return
-                }
-
-                self?.gradesResponse = zip(courses, supplementSummaryCourses)
-                    .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
-                        var mutableCourse = course
-                        if let precisePercent = Double(supplementSummaryCourse.percent) {
-                            mutableCourse.gradePercent = precisePercent
-                        }
-                        mutableCourse.teacherName = supplementSummaryCourse.teacherName
-                        mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
-                        return mutableCourse
-                    }
+                self?.gradesResponse = self?.parseGrades(grades: courseGrades, supplement: supplementSummary) ?? []
             }
             .store(in: &anyCancellables)
 
     }
-    
+
+    func parseGrades(grades: CourseGrade,
+                     supplement: [GradesSupplementSummary]) -> [CourseGrade.GradeSummary] {
+        let courses = grades.courses
+        // Ensure displayed courses are not dropped
+            .filter {$0.code == .current}
+        //self?.gradesResponse = courses
+        let supplementSummaryCourses = supplement
+            .filter {$0.termGrouping == .current}
+            .filter {summary in
+                let referencePeriods = courses.compactMap{Int($0.periodNum)}
+                return referencePeriods.contains(summary.period)
+            }
+
+        guard supplementSummaryCourses.count == courses.count
+        else {
+            return courses
+        }
+
+        return zip(courses, supplementSummaryCourses)
+              .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
+                    var mutableCourse = course
+                    if let precisePercent = Double(supplementSummaryCourse.percent) {
+                        mutableCourse.gradePercent = precisePercent
+                    }
+                    mutableCourse.teacherName = supplementSummaryCourse.teacherName
+                    mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
+                    return mutableCourse
+                }
+    }
+
     func registerAnalyticEvent() {
         Analytics.logEvent(AnalyticsEventLogin,
                            parameters: ["method": "email"])

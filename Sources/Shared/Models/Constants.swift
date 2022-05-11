@@ -180,9 +180,10 @@ extension Constants {
     struct Schedule {
         static let startTimePattern: Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
         static let endTimePattern: Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
-        static let periodPattern: Regex = #"(per|period) \d+"#.r!
-        static let officeHour = "office hours"
-        static let lunch = "lunch"
+        static let periodPattern = try! Regex(pattern: #"(per|period) \d+"#, options: [.caseInsensitive])
+        static let officeHourPattern = try! Regex(pattern: #"(academic *per\w*)|(office *hours?)"#,
+                                                  options: [.caseInsensitive])
+        static let lunchPattern = try! Regex(pattern: #"^.*(lunch|nutrition).*$"#, options: [.caseInsensitive])
         static let distribution = "distribution"
     }
 
