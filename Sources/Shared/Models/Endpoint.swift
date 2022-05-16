@@ -114,7 +114,7 @@ extension Endpoint {
         ]
 
         return Endpoint(host: c.AeriesApiPath.host,
-                        path: c.AeriesApiPath.main + c.AeriesApiPath.detailedSummary,
+                        path: c.AeriesApiPath.main + c.AeriesApiPath.detailedGrades,
                         requestBody: body,
                         httpMethod: .POST,
                         isApplicationJson: true,
@@ -131,7 +131,7 @@ extension Endpoint {
         ]
 
         return Endpoint(host: c.AeriesApiPath.host,
-                        path: c.AeriesApiPath.main + "/GetGradebookDetailedSummaryData",
+                        path: c.AeriesApiPath.main + c.AeriesApiPath.detailedSummary,
                         requestBody: body,
                         httpMethod: .POST,
                         isApplicationJson: true,

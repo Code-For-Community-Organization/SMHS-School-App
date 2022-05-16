@@ -157,7 +157,7 @@ extension Constants {
         static let login = "/parent/LoginParent.aspx"
         static let altGrades = "/Parent/Widgets/ClassSummary/GetClassSummary"
         static let summaryGrades = "/GetGradebookSummaryData"
-        static let detailGrades = "/GetGradebookDetailsData"
+        static let detailedGrades = "/GetGradebookDetailsData"
         static let detailedSummary = "/GetGradebookDetailedSummaryData"
 
 
