@@ -82,6 +82,15 @@ struct GradesSupplementSummary: Codable {
         case flexPeriodEndTime = "FlexPeriodEndTime"
         case students = "Students"
     }
+
+    
+//    init(period: Int, teacherName: String, percent: String, lastUpdated: String) {
+//        self.period = period
+//        self.teacherName = teacherName
+//        self.percent = percent
+//        self.lastUpdated = lastUpdated
+//
+//    }
 }
 
 enum FlexPeriodTime: String, Codable {

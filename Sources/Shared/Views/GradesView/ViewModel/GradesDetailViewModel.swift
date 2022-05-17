@@ -17,7 +17,7 @@ class GradesDetailViewModel: ObservableObject {
         let userDefault = UserDefaults.standard
         let key = "rubric\(self.gradebookNumber)"
         if let data = userDefault.data(forKey: key),
-           let decodedRubric = try? JSONDecoder().decode([GradesRubricRawResponse.Category].self,
+           let decodedRubric = try? JSONDecoder().decode([GradesRubric.Rubric].self,
                                                          from: data) {
             return computeOverallPercentage(with: decodedRubric)
         }
@@ -26,7 +26,7 @@ class GradesDetailViewModel: ObservableObject {
         }
     }
 
-    @Published var gradesRubric = [GradesRubricRawResponse.Category]()
+    @Published var gradesRubric = [GradesRubric.Rubric]()
     var gradebookNumber: Int
     var term: String
     var anyCancellable: Set<AnyCancellable> = []
@@ -39,9 +39,12 @@ class GradesDetailViewModel: ObservableObject {
 //        return 
 //    }
 
-    init(gradebookNumber: Int, term: String) {
+    init(gradebookNumber: Int,
+         term: String,
+         detailedAssignment: [GradesDetail.Assignment]? = nil) {
         self.gradebookNumber = gradebookNumber
         self.term = term
+        self.detailedAssignments = detailedAssignment ?? []
         let userDefault = UserDefaults.standard
         let decoder = JSONDecoder()
         if let cached = userDefault.object(forKey: String(gradebookNumber)) as? Data,
@@ -118,16 +121,16 @@ class GradesDetailViewModel: ObservableObject {
             }, receiveValue: {[unowned self] gradesRubric in
                 let encoder = JSONEncoder()
                 let userDefault = UserDefaults.standard
-                if let encoded = try? encoder.encode(gradesRubric.categories) {
+                if let encoded = try? encoder.encode(gradesRubric) {
                     userDefault.setValue(encoded, forKey: "rubric\(self.gradebookNumber)")
                 }
-                self.gradesRubric = gradesRubric.categories
+                self.gradesRubric = gradesRubric.rubrics
 
             })
             .store(in: &anyCancellable)
     }
 
-    func computeOverallPercentage(with gradesRubric: [GradesRubricRawResponse.Category]) -> Double {
+    func computeOverallPercentage(with gradesRubric: [GradesRubric.Rubric]) -> Double {
         var totalGrade: Double = 0.0
         var totalWeight: Double = 0.0
         for category in gradesRubric {

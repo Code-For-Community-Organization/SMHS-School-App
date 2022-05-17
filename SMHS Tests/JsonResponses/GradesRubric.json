@@ -1,0 +1,123 @@
+{
+    "d": {
+        "results": [
+            {
+                "type": "0",
+                "category": "Homework",
+                "percentOfGrade": 10,
+                "numberOfPoints": 14,
+                "maxPoints": 15,
+                "percentEarned": 93.33,
+                "mark": "A",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "1",
+                "category": "Quizzes and Tests",
+                "percentOfGrade": 10,
+                "numberOfPoints": 152.5,
+                "maxPoints": 169,
+                "percentEarned": 90.23,
+                "mark": "A-",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "2",
+                "category": "Executive Producer",
+                "percentOfGrade": 10,
+                "numberOfPoints": 50,
+                "maxPoints": 50,
+                "percentEarned": 100,
+                "mark": "A+",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "3",
+                "category": "Individual Video Productions",
+                "percentOfGrade": 15,
+                "numberOfPoints": 105,
+                "maxPoints": 120,
+                "percentEarned": 87.5,
+                "mark": "B+",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "4",
+                "category": "Eagle TV 2.0 Live Show",
+                "percentOfGrade": 15,
+                "numberOfPoints": 85,
+                "maxPoints": 100,
+                "percentEarned": 85,
+                "mark": "B",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "5",
+                "category": "After School Productions",
+                "percentOfGrade": 10,
+                "numberOfPoints": 50,
+                "maxPoints": 50,
+                "percentEarned": 100,
+                "mark": "A+",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "6",
+                "category": "Conduct and Participation",
+                "percentOfGrade": 10,
+                "numberOfPoints": 120,
+                "maxPoints": 120,
+                "percentEarned": 100,
+                "mark": "A+",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "7",
+                "category": "Final",
+                "percentOfGrade": 20,
+                "numberOfPoints": 0,
+                "maxPoints": 0,
+                "percentEarned": 0,
+                "mark": "",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            },
+            {
+                "type": "TOTAL",
+                "category": "Total",
+                "percentOfGrade": 0,
+                "numberOfPoints": 0,
+                "maxPoints": 0,
+                "percentEarned": 92.79,
+                "mark": "A",
+                "isShowingFinalMark": true,
+                "isHidingOverallScore": false,
+                "isDoingWeight": true,
+                "doingRubric": "False"
+            }
+        ]
+    }
+}

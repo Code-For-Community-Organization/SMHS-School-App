@@ -160,6 +160,18 @@ class SMHS_ScheduleTests: XCTestCase {
         assertSnapshot(matching: view, as: .image)
     }
 
+    func testParseGrades() {
+        let model = GradesViewModel()
+        let grades = CourseGrade([
+            .init(periodNum: "1", periodName: "English", gradePercent: 96, currentMark: "A+", gradebookNumber: 6969, code: .current, term: .spring),
+            .init(periodNum: "2", periodName: "PE", gradePercent: 90, currentMark: "A-", gradebookNumber: 6965, code: .dropped, term: .spring)])
+
+//        GradesSupplementSummary(period: <#T##Int#>, roomNumber: <#T##String#>, courseNumber: <#T##String#>, courseName: <#T##String#>, courseNumberAndName: <#T##String#>, sectionNumber: <#T##String#>, gradebookName: <#T##JSONNull?#>, gradebookNumber: <#T##JSONNull?#>, teacherName: <#T##String#>, gradebook: <#T##String#>, percent: <#T##String#>, average: <#T##String#>, currentMark: <#T##String#>, currentMarkAndScore: <#T##String#>, currentPercentOrAverage: <#T##String#>, doingMinMax: <#T##Bool#>, trend: <#T##String#>, missingAssignments: <#T##String#>, numMissingAssignments: <#T##Int#>, lastATT: <#T##String#>, lastUpdated: <#T##String#>, totalStudents: <#T##String#>, website: <#T##String#>, accessCode: <#T##String#>, source: <#T##String#>, term: <#T##String#>, termGrouping: <#T##TermGrouping#>, schoolNumber: <#T##Int#>, schoolName: <#T##String#>, schoolSort: <#T##SchoolSort#>, districtCDS: <#T##String#>, districtName: <#T##String#>, editable: <#T##Int#>, block: <#T##Int#>, doingRubric: <#T##Bool#>, termCode: <#T##JSONNull?#>, onlineMeetingURL: <#T##String#>, onlineMeetingAccessCode: <#T##String#>, onlineMeetingSource: <#T##String#>, onlineMeetingPhoneNumber: <#T##String#>, onlineMeetingNote: <#T##String#>, periodTitle: <#T##String#>, flexShortTitle: <#T##JSONNull?#>, flexPeriodStartTime: <#T##FlexPeriodTime#>, flexPeriodEndTime: <#T##FlexPeriodTime#>, students: <#T##JSONNull?#>)
+//        let supplement = [GradesSupplementSummary(period: 1, roomNumber: "", courseNumber: "", courseName: "", courseNumberAndName: "", sectionNumber: "", teacherName: "Teacher1", gradebook: "", percent: "96.32", average: "", currentMark: "", currentMarkAndScore: "", currentPercentOrAverage: "", doingMinMax: false, trend: "", missingAssignments: "", numMissingAssignments: 0, lastATT: "", lastUpdated: "May 1", totalStudents: "", website: "", accessCode: "", source: "", term: "", termGrouping: .current, schoolNumber: 0, schoolName: "", schoolSort: .the1, districtCDS: "", districtName: "", editable: 0, block: 0, doingRubric: false, onlineMeetingURL: "", onlineMeetingAccessCode: "", onlineMeetingSource: "", onlineMeetingPhoneNumber: "", onlineMeetingNote: "", periodTitle: "", flexPeriodStartTime: .date62135568000000, flexPeriodEndTime: .date62135568000000),
+//
+//            GradesSupplementSummary(period: 2, roomNumber: "", courseNumber: "", courseName: "", courseNumberAndName: "", sectionNumber: "", teacherName: "Teacher 2", gradebook: "", percent: "90.2", average: "", currentMark: "", currentMarkAndScore: "", currentPercentOrAverage: "", doingMinMax: false, trend: "", missingAssignments: "", numMissingAssignments: 0, lastATT: "", lastUpdated: "May 2", totalStudents: "", website: "", accessCode: "", source: "", term: "", termGrouping: .current, schoolNumber: 0, schoolName: "", schoolSort: .the1, districtCDS: "", districtName: "", editable: 0, block: 0, doingRubric: false, onlineMeetingURL: "", onlineMeetingAccessCode: "", onlineMeetingSource: "", onlineMeetingPhoneNumber: "", onlineMeetingNote: "", periodTitle: "", flexPeriodStartTime: .date62135568000000, flexPeriodEndTime: .date62135568000000)]
+//        model.parseGrades(grades: grades, supplement: supplement)
+    }
 //    func testTodayView() {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -436,6 +448,84 @@ class SMHS_ScheduleTests: XCTestCase {
     func testProgressRingNutrition() {
         
     }
+
+    func testComputeOverallPercentage() {
+        let assignments: [GradesDetail.Assignment] = [.init(description: "Worksheet #1",
+                                                            category: "Assignment",
+                                                            numberCorrect: 19,
+                                                            numberPossible: 20,
+                                                            percent: 19 / 20,
+                                                            dateCompleted: "10/12/2022",
+                                                            isGraded: true),
+                                                      .init(description: "Chapter 1 quiz",
+                                                            category: "Test",
+                                                            numberCorrect: 28,
+                                                            numberPossible: 30,
+                                                            percent: 28 / 30,
+                                                            dateCompleted: "10/12/2022",
+                                                            isGraded: true)]
+        let rubric: [GradesRubric] = [.init(category: "Assignment", percentOfGrade: 20, isDoingWeight: true),
+                                      .init(category: "Test", percentOfGrade: 80, isDoingWeight: true)]
+        let model = GradesDetailViewModel(gradebookNumber: 0, term: "", detailedAssignment: assignments)
+        let percentage = model.computeOverallPercentage(with: rubric)
+        let mockPercentage = ((19.0 / 20.0) * 20.0 + (28.0 / 30.0) * 80.0)
+        XCTAssertEqual(percentage, mockPercentage.truncate(places: 2))
+
+    }
+
+    func testCourseGrade() throws {
+        let result = try getDecodedResult(fileName: "GradesSummary", model: CourseGrade.self)
+        let courseGrades = result.courses
+        XCTAssertEqual(courseGrades[0].periodName, "Broadcast JourH - Spring")
+        XCTAssertEqual(courseGrades[1].gradePercentText, "92%")
+    }
+
+    func testGradesDetail() throws {
+        let result = try getDecodedResult(fileName: "GradesDetail", model: GradesDetail.self)
+        let details = result.assignments
+        XCTAssertEqual(details[0].description, "Chapter 10 Quiz")
+        XCTAssertEqual(details[1].percent, 100.0)
+    }
+
+    func testGradesSupplementSummary() throws {
+        let result = try getDecodedResult(fileName: "GradesSupplementSummary",
+                                          model: [GradesSupplementSummary].self)
+        XCTAssertEqual(result[0].teacherName, "KmettK")
+        XCTAssertEqual(result[2].teacherName, "FoxG")
+    }
+
+    func testGradesRubric() throws {
+        let result = try getDecodedResult(fileName: "GradesRubric", model: GradesRubric.Rubric.self)
+        let rubrics = result.rubrics
+        XCTAssertEqual(rubrics[0].category, "Homework")
+        XCTAssertEqual(rubrics[1].percentOfGrade, 10)
+    }
+    
+    func getDecodedResult<T>(fileName: String, model: T.Type)
+    throws -> T
+    where T: Codable {
+        let response = getJSONResponse(for: fileName)
+        let decoder = JSONDecoder()
+        let result = try decoder.decode(model.self, from: response)
+        return result
+    }
+
+    func getJSONResponse(for fileName: String) -> Data {
+        guard let bundlePath = Bundle(for: type(of: self)).resourcePath
+        else {
+            preconditionFailure("Cannot find Bundle resource path")
+        }
+        let url = URL(fileURLWithPath: bundlePath)
+                    .appendingPathComponent("JsonResponses")
+                    .appendingPathComponent(fileName, isDirectory: false)
+                    .appendingPathExtension("json")
+        guard let data = try? Data(contentsOf: url)
+        else {
+            preconditionFailure("Failed to get data from URL \(url)")
+        }
+        return data
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

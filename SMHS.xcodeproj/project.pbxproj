@@ -66,6 +66,10 @@
 		625F189F268A9256000B71B4 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F189E268A9256000B71B4 /* RequestError.swift */; };
 		625F18A2268A984B000B71B4 /* CourseGradeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A1268A984B000B71B4 /* CourseGradeItem.swift */; };
 		625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F18A3268A98C5000B71B4 /* GradesLoginView.swift */; };
+		6260B0FD2832D85F007DBD3E /* JsonResponses in Resources */ = {isa = PBXBuildFile; fileRef = 6260B0FC2832D85F007DBD3E /* JsonResponses */; };
+		6260B0FE2832D85F007DBD3E /* JsonResponses in Resources */ = {isa = PBXBuildFile; fileRef = 6260B0FC2832D85F007DBD3E /* JsonResponses */; };
+		6260B0FF2832D85F007DBD3E /* JsonResponses in Resources */ = {isa = PBXBuildFile; fileRef = 6260B0FC2832D85F007DBD3E /* JsonResponses */; };
+		6260B1002832D85F007DBD3E /* JsonResponses in Resources */ = {isa = PBXBuildFile; fileRef = 6260B0FC2832D85F007DBD3E /* JsonResponses */; };
 		626183A72637168D001C4AD4 /* SMHSSchedule__macOS_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */; };
 		626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AA2637168E001C4AD4 /* Assets.xcassets */; };
 		626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626183AD2637168E001C4AD4 /* Preview Assets.xcassets */; };
@@ -308,6 +312,7 @@
 		625F189E268A9256000B71B4 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		625F18A1268A984B000B71B4 /* CourseGradeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseGradeItem.swift; sourceTree = "<group>"; };
 		625F18A3268A98C5000B71B4 /* GradesLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesLoginView.swift; sourceTree = "<group>"; };
+		6260B0FC2832D85F007DBD3E /* JsonResponses */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JsonResponses; sourceTree = "<group>"; };
 		626183A42637168D001C4AD4 /* SMHSSchedule (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMHSSchedule (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626183A62637168D001C4AD4 /* SMHSSchedule__macOS_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSSchedule__macOS_App.swift; sourceTree = "<group>"; };
 		626183AA2637168E001C4AD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -757,6 +762,7 @@
 		626A2279260035F200903C39 /* SMHS Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6260B0FC2832D85F007DBD3E /* JsonResponses */,
 				62D32127264A53B200C99C42 /* __Snapshots__ */,
 				626A227A260035F200903C39 /* SMHS_ScheduleTests.swift */,
 				626A227C260035F200903C39 /* Info.plist */,
@@ -1285,6 +1291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6260B1002832D85F007DBD3E /* JsonResponses in Resources */,
 				62D32128264A53B200C99C42 /* __Snapshots__ in Resources */,
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
@@ -1299,6 +1306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
+				6260B0FD2832D85F007DBD3E /* JsonResponses in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
 				62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
@@ -1310,6 +1318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6260B0FE2832D85F007DBD3E /* JsonResponses in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,6 +1326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6260B0FF2832D85F007DBD3E /* JsonResponses in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
