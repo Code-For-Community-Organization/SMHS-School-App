@@ -187,4 +187,7 @@ extension Constants {
         static let distribution = "distribution"
     }
 
+    static let gradesEmailErrorMsg = "Invalid email address, please use your SMHS email."
+
+    static let gradesPasswordErrorMsg = "Password must not be empty."
 }

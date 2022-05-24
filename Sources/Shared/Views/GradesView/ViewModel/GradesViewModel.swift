@@ -30,9 +30,9 @@ final class GradesViewModel: ObservableObject {
     @Published(key: "gradesResponse") var gradesResponse = [CourseGrade.GradeSummary]()
     
     //Form validation errors
-    @Published var emailErrorMsg = ""
-    @Published var passwordErrorMsg = ""
-    @Published var isValid = false
+    @Published private(set) var emailErrorMsg = ""
+    @Published private(set) var passwordErrorMsg = ""
+    @Published private(set) var isValid = false
     
     //Networking errors
     @Published var networkErrorTitle = ""
@@ -53,36 +53,36 @@ final class GradesViewModel: ObservableObject {
             .assign(to: \.isValid, on: self)
             .store(in: &anyCancellables)
         
-        isEmailValidPublisher
+
+        validateEmail()
             .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink {
-                if !$0 {
-                    self.emailErrorMsg = "Invalid email address, please use your SMHS email."
-                }
-                else {
-                    self.emailErrorMsg = ""
-                }
-            }
-            .store(in: &anyCancellables)
-        
-        isPasswordValidPublisher
+            .assign(to: &$emailErrorMsg)
+
+        validatePassword()
             .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink {
-                if !$0 {
-                    self.passwordErrorMsg = "Password must not be empty."
-                }
-                else {
-                    self.passwordErrorMsg = ""
-                }
-            }
-            .store(in: &anyCancellables)
+            .assign(to: &$passwordErrorMsg)
     }
 }
 
 //MARK: Validation
 extension GradesViewModel {
+    func validateEmail() -> AnyPublisher<String, Never> {
+        isEmailValidPublisher
+            .receive(on: RunLoop.main)
+            .map {isValid in
+                isValid ? "" : Constants.gradesEmailErrorMsg
+            }
+            .eraseToAnyPublisher()
+    }
+
+    func validatePassword() -> AnyPublisher<String, Never> {
+        isPasswordValidPublisher
+            .receive(on: RunLoop.main)
+            .map {isValid in
+                isValid ? "" : Constants.gradesPasswordErrorMsg
+            }
+            .eraseToAnyPublisher()
+    }
     private func isNotEmptyPublisher(_ publisher: Published<String>.Publisher) -> AnyPublisher<Bool, Never> {
         publisher
             .map{!$0.isEmpty}
@@ -92,13 +92,13 @@ extension GradesViewModel {
     private var isEmailValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(isNotEmptyPublisher($email),
                                  isEmailFormattedPublisher)
-            .map{$0 && $1}
-            .eraseToAnyPublisher()
+        .map{$0 && $1}
+        .eraseToAnyPublisher()
     }
     
     private var isEmailFormattedPublisher: AnyPublisher<Bool, Never> {
         $email
-            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .debounce(for: .seconds(0.1), scheduler: RunLoop.main)
             .removeDuplicates()
             .map{email in
                 let emailRegex = #"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"#.r!
@@ -125,9 +125,9 @@ extension GradesViewModel {
 extension GradesViewModel {
     
     func reloadData() {
-        #if DEBUG
+#if DEBUG
         loginAndFetch()
-        #else
+#else
         if let time = lastReloadTime {
             if abs(Date().timeIntervalSince(time)) > TimeInterval(globalRemoteConfig.RELOAD_INTERVAL_GRADE) {
                 loginAndFetch()
@@ -138,7 +138,7 @@ extension GradesViewModel {
             lastReloadTime = Date()
             loginAndFetch()
         }
-        #endif
+#endif
     }
     
     func loginAndFetch() {
@@ -149,8 +149,8 @@ extension GradesViewModel {
         isLoading = true
         
         let loginEndpoint = Endpoint.studentLogin(email: email,
-                                             password: password,
-                                             debugMode: userSettings?.developerSettings.debugNetworking ?? false)
+                                                  password: password,
+                                                  debugMode: userSettings?.developerSettings.debugNetworking ?? false)
         let getSummaryEndpoint = Endpoint.getGradesSummary()
         let summarySupplementEndpoint = Endpoint.getGradesSummarySupplement()
 
@@ -161,7 +161,7 @@ extension GradesViewModel {
             .flatMap {[unowned self] _ in
                 self.gradesNetworkModel.fetch(with: getSummaryEndpoint.request,
                                               type: CourseGrade.self)
-                    .combineLatest(getSummarySupplementPublisher)
+                .combineLatest(getSummarySupplementPublisher)
 
             }
             .retry(2)
@@ -202,15 +202,15 @@ extension GradesViewModel {
         }
 
         return zip(courses, supplementSummaryCourses)
-              .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
-                    var mutableCourse = course
-                    if let precisePercent = Double(supplementSummaryCourse.percent) {
-                        mutableCourse.gradePercent = precisePercent
-                    }
-                    mutableCourse.teacherName = supplementSummaryCourse.teacherName
-                    mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
-                    return mutableCourse
+            .map {(course, supplementSummaryCourse) -> CourseGrade.GradeSummary in
+                var mutableCourse = course
+                if let precisePercent = Double(supplementSummaryCourse.percent) {
+                    mutableCourse.gradePercent = precisePercent
                 }
+                mutableCourse.teacherName = supplementSummaryCourse.teacherName
+                mutableCourse.lastUpdated = supplementSummaryCourse.lastUpdated
+                return mutableCourse
+            }
     }
 
     func registerAnalyticEvent() {
@@ -222,8 +222,4 @@ extension GradesViewModel {
         password = ""
         gradesResponse = []
     }
-}
-
-extension GradesViewModel {
-    
 }

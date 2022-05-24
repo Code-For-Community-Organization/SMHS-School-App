@@ -8,6 +8,8 @@
 import XCTest
 import SwiftUI
 import SnapshotTesting
+import Combine
+
 @testable import SMHS
 
 struct HighlightButtonStyleTestView: View {
@@ -19,6 +21,8 @@ struct HighlightButtonStyleTestView: View {
     }
 }
 class SMHS_ScheduleTests: XCTestCase {
+    var anyCancellable = Set<AnyCancellable>()
+    let model = GradesViewModel()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -464,7 +468,7 @@ class SMHS_ScheduleTests: XCTestCase {
                                                             percent: 28 / 30,
                                                             dateCompleted: "10/12/2022",
                                                             isGraded: true)]
-        let rubric: [GradesRubric] = [.init(category: "Assignment", percentOfGrade: 20, isDoingWeight: true),
+        let rubric: [GradesRubric.Rubric] = [.init(category: "Assignment", percentOfGrade: 20, isDoingWeight: true),
                                       .init(category: "Test", percentOfGrade: 80, isDoingWeight: true)]
         let model = GradesDetailViewModel(gradebookNumber: 0, term: "", detailedAssignment: assignments)
         let percentage = model.computeOverallPercentage(with: rubric)
@@ -495,7 +499,7 @@ class SMHS_ScheduleTests: XCTestCase {
     }
 
     func testGradesRubric() throws {
-        let result = try getDecodedResult(fileName: "GradesRubric", model: GradesRubric.Rubric.self)
+        let result = try getDecodedResult(fileName: "GradesRubric", model: GradesRubric.self)
         let rubrics = result.rubrics
         XCTAssertEqual(rubrics[0].category, "Homework")
         XCTAssertEqual(rubrics[1].percentOfGrade, 10)
@@ -525,7 +529,113 @@ class SMHS_ScheduleTests: XCTestCase {
         }
         return data
     }
-    
+
+    func testGrdaesViewModelIsValid() {
+        let model = GradesViewModel()
+        model.email = "abc@gmail.com"
+        model.password = "12345"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertTrue(model.isValid)
+        }
+
+        model.email = "abcd@g"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertFalse(model.isValid)
+        }
+
+        model.password = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertFalse(model.isValid)
+        }
+    }
+
+    func testGradesViewModelPasswordErrorMessage() {
+        let model = GradesViewModel()
+        let expectation = self.expectation(description: "passwordErrorMsg")
+        model.email = "abc@gmail.com"
+        model.password = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(model.passwordErrorMsg, Constants.gradesPasswordErrorMsg)
+        XCTAssertEqual(model.emailErrorMsg, "")
+
+    }
+
+    func testGradesViewModelEmailError() {
+        let testEmails = ["abc", "123", "&%^$*-a", "i((3@cds.", "@@aab.zz"]
+        for email in testEmails {
+            gradesViewModelEmailHelper(email: email) {
+                XCTAssertEqual($0, Constants.gradesEmailErrorMsg)
+
+            }
+        }
+    }
+
+    func testGradesViewModelEmailNoError() {
+        let testEmails = ["!#$%&'*+-/=.?^_`{|}~@[1.0.0.127]",
+                          "name+tag@example.com",
+                          #"spaces\ are\ allowed@example.com"#,
+                          "trump@smhs.org"]
+        for email in testEmails {
+            gradesViewModelEmailHelper(email: email) {
+                XCTAssertTrue($0.isEmpty)
+
+            }
+        }
+    }
+
+    func gradesViewModelEmailHelper(email: String, assert: (String) -> Void) {
+        let expectationError = XCTestExpectation(description: "validateEmailError")
+        var errorMessage = ""
+
+        model.validateEmail()
+            .sink {
+                errorMessage = $0
+                expectationError.fulfill()
+            }
+            .store(in: &anyCancellable)
+
+        model.email = email
+        wait(for: [expectationError], timeout: 5)
+
+        assert(errorMessage)
+        anyCancellable.removeAll()
+    }
+
+    func testGradesViewModelPasswordError() {
+        gradesViewModelPasswordHelper(password: "") {
+            XCTAssertEqual($0, Constants.gradesPasswordErrorMsg)
+        }
+    }
+
+    func testGradesViewModelPasswordNoError() {
+        let testPasswords = ["abc", "123", "|#$&#@*(&%"]
+        for password in testPasswords {
+            gradesViewModelPasswordHelper(password: password) {
+                XCTAssertTrue($0.isEmpty)
+            }
+        }
+    }
+
+    func gradesViewModelPasswordHelper(password: String, assert: (String) -> Void) {
+        let expectationError = XCTestExpectation(description: "validateEmailError")
+        var errorMessage = ""
+
+        model.validatePassword()
+            .sink {
+                errorMessage = $0
+                expectationError.fulfill()
+            }
+            .store(in: &anyCancellable)
+        model.password = password
+        wait(for: [expectationError], timeout: 5)
+
+        assert(errorMessage)
+        anyCancellable.removeAll()
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
