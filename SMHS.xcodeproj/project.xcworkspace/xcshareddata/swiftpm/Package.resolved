@@ -1,223 +1,212 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "abseil",
-        "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
-        "state": {
-          "branch": null,
-          "revision": "fffc3c2729be5747390ad02d5100291a0d9ad26a",
-          "version": "0.20200225.4"
-        }
-      },
-      {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire",
-        "state": {
-          "branch": null,
-          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
-          "version": "5.4.4"
-        }
-      },
-      {
-        "package": "BoringSSL-GRPC",
-        "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
-        "state": {
-          "branch": null,
-          "revision": "734a8247442fde37df4364c21f6a0085b6a36728",
-          "version": "0.7.2"
-        }
-      },
-      {
-        "package": "ElegantCalendar",
-        "repositoryURL": "https://github.com/ThasianX/ElegantCalendar",
-        "state": {
-          "branch": null,
-          "revision": "d446234f27e60f5bef15f91c35d384f388ff2c7d",
-          "version": "4.3.2"
-        }
-      },
-      {
-        "package": "ElegantPages",
-        "repositoryURL": "https://github.com/ThasianX/ElegantPages",
-        "state": {
-          "branch": null,
-          "revision": "d598ce4824c40296decc84eae5b3c042d3dff842",
-          "version": "1.4.2"
-        }
-      },
-      {
-        "package": "Firebase",
-        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
-        "state": {
-          "branch": null,
-          "revision": "2f972249c520cbf87ac8856f176ebc994cb1c9a6",
-          "version": "8.7.0"
-        }
-      },
-      {
-        "package": "GoogleAppMeasurement",
-        "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
-        "state": {
-          "branch": null,
-          "revision": "4901bde146b0269da35470d261f741f0e910d8df",
-          "version": "8.7.0"
-        }
-      },
-      {
-        "package": "GoogleDataTransport",
-        "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
-        "state": {
-          "branch": null,
-          "revision": "7fb27ea49414b9c5483503cd06baa821c8654d1e",
-          "version": "9.1.1"
-        }
-      },
-      {
-        "package": "GoogleUtilities",
-        "repositoryURL": "https://github.com/google/GoogleUtilities.git",
-        "state": {
-          "branch": null,
-          "revision": "616fac2626b6b2d1424d79a6f786b4e2ed1cfb49",
-          "version": "7.5.2"
-        }
-      },
-      {
-        "package": "gRPC",
-        "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
-        "state": {
-          "branch": null,
-          "revision": "fb405dd2c7901485f7e158b24e3a0a47e4efd8b5",
-          "version": "1.28.4"
-        }
-      },
-      {
-        "package": "GTMSessionFetcher",
-        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
-        "state": {
-          "branch": null,
-          "revision": "bc6a19702ac76ac4e488b68148710eb815f9bc56",
-          "version": "1.7.0"
-        }
-      },
-      {
-        "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher",
-        "state": {
-          "branch": null,
-          "revision": "8c65ddf756c633d01d9ae01092bf72f0c66dfc60",
-          "version": "7.0.0"
-        }
-      },
-      {
-        "package": "leveldb",
-        "repositoryURL": "https://github.com/firebase/leveldb.git",
-        "state": {
-          "branch": null,
-          "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
-          "version": "1.22.2"
-        }
-      },
-      {
-        "package": "nanopb",
-        "repositoryURL": "https://github.com/firebase/nanopb.git",
-        "state": {
-          "branch": null,
-          "revision": "7ee9ef9f627d85cbe1b8c4f49a3ed26eed216c77",
-          "version": "2.30908.0"
-        }
-      },
-      {
-        "package": "Promises",
-        "repositoryURL": "https://github.com/google/promises.git",
-        "state": {
-          "branch": null,
-          "revision": "611337c330350c9c1823ad6d671e7f936af5ee13",
-          "version": "2.0.0"
-        }
-      },
-      {
-        "package": "Regex",
-        "repositoryURL": "https://github.com/crossroadlabs/Regex.git",
-        "state": {
-          "branch": null,
-          "revision": "166728756082a9cac6e4aed3ebbce8e41cb3a945",
-          "version": "1.2.0"
-        }
-      },
-      {
-        "package": "SFSafeSymbols",
-        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
-        "state": {
-          "branch": null,
-          "revision": "c61de7a6e9eb1520d32316b06d5932accd974e70",
-          "version": "2.1.3"
-        }
-      },
-      {
-        "package": "SwiftProtobuf",
-        "repositoryURL": "https://github.com/apple/swift-protobuf.git",
-        "state": {
-          "branch": null,
-          "revision": "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
-          "version": "1.18.0"
-        }
-      },
-      {
-        "package": "SnapshotTesting",
-        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
-        "state": {
-          "branch": null,
-          "revision": "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
-          "version": "1.9.0"
-        }
-      },
-      {
-        "package": "SwiftlySearch",
-        "repositoryURL": "https://github.com/thislooksfun/SwiftlySearch",
-        "state": {
-          "branch": null,
-          "revision": "a7184413250a91f012d5d26eed874b5b2fdaeaac",
-          "version": "1.2.5"
-        }
-      },
-      {
-        "package": "SwiftSoup",
-        "repositoryURL": "https://github.com/scinfu/SwiftSoup",
-        "state": {
-          "branch": null,
-          "revision": "02c63b7be50bda384f22c56c64d347231754a07e",
-          "version": "2.3.3"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
-        "state": {
-          "branch": null,
-          "revision": "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-          "version": "0.1.3"
-        }
-      },
-      {
-        "package": "SwiftUIVisualEffects",
-        "repositoryURL": "https://github.com/lucasbrown/swiftui-visual-effects",
-        "state": {
-          "branch": null,
-          "revision": "b26f8cebd55ff60ed8953768aa818dfb005b5838",
-          "version": "1.0.3"
-        }
-      },
-      {
-        "package": "SwiftyXMLParser",
-        "repositoryURL": "https://github.com/yahoojapan/SwiftyXMLParser",
-        "state": {
-          "branch": null,
-          "revision": "ad5eeeaf7797f69e26943aaa53c81c6a9fdaa516",
-          "version": "5.5.0"
-        }
+  "pins" : [
+    {
+      "identity" : "abseil-cpp-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/abseil-cpp-SwiftPM.git",
+      "state" : {
+        "revision" : "fffc3c2729be5747390ad02d5100291a0d9ad26a",
+        "version" : "0.20200225.4"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+        "version" : "5.4.4"
+      }
+    },
+    {
+      "identity" : "boringssl-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
+      "state" : {
+        "revision" : "734a8247442fde37df4364c21f6a0085b6a36728",
+        "version" : "0.7.2"
+      }
+    },
+    {
+      "identity" : "elegantcalendar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ThasianX/ElegantCalendar",
+      "state" : {
+        "revision" : "d446234f27e60f5bef15f91c35d384f388ff2c7d",
+        "version" : "4.3.2"
+      }
+    },
+    {
+      "identity" : "elegantpages",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ThasianX/ElegantPages",
+      "state" : {
+        "revision" : "d598ce4824c40296decc84eae5b3c042d3dff842",
+        "version" : "1.4.2"
+      }
+    },
+    {
+      "identity" : "firebase-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/firebase-ios-sdk.git",
+      "state" : {
+        "revision" : "2f972249c520cbf87ac8856f176ebc994cb1c9a6",
+        "version" : "8.7.0"
+      }
+    },
+    {
+      "identity" : "googleappmeasurement",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleAppMeasurement.git",
+      "state" : {
+        "revision" : "4901bde146b0269da35470d261f741f0e910d8df",
+        "version" : "8.7.0"
+      }
+    },
+    {
+      "identity" : "googledatatransport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleDataTransport.git",
+      "state" : {
+        "revision" : "7fb27ea49414b9c5483503cd06baa821c8654d1e",
+        "version" : "9.1.1"
+      }
+    },
+    {
+      "identity" : "googleutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleUtilities.git",
+      "state" : {
+        "revision" : "616fac2626b6b2d1424d79a6f786b4e2ed1cfb49",
+        "version" : "7.5.2"
+      }
+    },
+    {
+      "identity" : "grpc-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/grpc-SwiftPM.git",
+      "state" : {
+        "revision" : "fb405dd2c7901485f7e158b24e3a0a47e4efd8b5",
+        "version" : "1.28.4"
+      }
+    },
+    {
+      "identity" : "gtm-session-fetcher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/gtm-session-fetcher.git",
+      "state" : {
+        "revision" : "bc6a19702ac76ac4e488b68148710eb815f9bc56",
+        "version" : "1.7.0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "8c65ddf756c633d01d9ae01092bf72f0c66dfc60",
+        "version" : "7.0.0"
+      }
+    },
+    {
+      "identity" : "leveldb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/leveldb.git",
+      "state" : {
+        "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
+        "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "nanopb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/nanopb.git",
+      "state" : {
+        "revision" : "7ee9ef9f627d85cbe1b8c4f49a3ed26eed216c77",
+        "version" : "2.30908.0"
+      }
+    },
+    {
+      "identity" : "promises",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/promises.git",
+      "state" : {
+        "revision" : "611337c330350c9c1823ad6d671e7f936af5ee13",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/piknotech/SFSafeSymbols",
+      "state" : {
+        "revision" : "c61de7a6e9eb1520d32316b06d5932accd974e70",
+        "version" : "2.1.3"
+      }
+    },
+    {
+      "identity" : "swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-protobuf.git",
+      "state" : {
+        "revision" : "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
+        "version" : "1.18.0"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
+        "version" : "1.9.0"
+      }
+    },
+    {
+      "identity" : "swiftlysearch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thislooksfun/SwiftlySearch",
+      "state" : {
+        "revision" : "a7184413250a91f012d5d26eed874b5b2fdaeaac",
+        "version" : "1.2.5"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup",
+      "state" : {
+        "revision" : "02c63b7be50bda384f22c56c64d347231754a07e",
+        "version" : "2.3.3"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
+        "version" : "0.1.3"
+      }
+    },
+    {
+      "identity" : "swiftui-visual-effects",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lucasbrown/swiftui-visual-effects",
+      "state" : {
+        "revision" : "b26f8cebd55ff60ed8953768aa818dfb005b5838",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "swiftyxmlparser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yahoojapan/SwiftyXMLParser",
+      "state" : {
+        "revision" : "ad5eeeaf7797f69e26943aaa53c81c6a9fdaa516",
+        "version" : "5.5.0"
+      }
+    }
+  ],
+  "version" : 2
 }

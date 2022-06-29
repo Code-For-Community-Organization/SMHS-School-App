@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseRemoteConfig
 import SwiftUI
-import Regex
+import RegexLegacy
 
 //MARK: This file contains global, pre-defined constants
 struct Constants {
@@ -178,12 +178,12 @@ extension Constants {
     }
 
     struct Schedule {
-        static let startTimePattern: Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
-        static let endTimePattern: Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
-        static let periodPattern = try! Regex(pattern: #"(per|period) \d+"#, options: [.caseInsensitive])
-        static let officeHourPattern = try! Regex(pattern: #"(academic *per\w*)|(office *hours?)"#,
+        static let startTimePattern: _Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
+        static let endTimePattern: _Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
+        static let periodPattern = try! _Regex(pattern: #"(per|period) \d+"#, options: [.caseInsensitive])
+        static let officeHourPattern = try! _Regex(pattern: #"(academic *per\w*)|(office *hours?)"#,
                                                   options: [.caseInsensitive])
-        static let lunchPattern = try! Regex(pattern: #"^.*(lunch|nutrition).*$"#, options: [.caseInsensitive])
+        static let lunchPattern = try! _Regex(pattern: #"^.*(lunch|nutrition).*$"#, options: [.caseInsensitive])
         static let distribution = "distribution"
     }
 

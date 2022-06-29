@@ -636,6 +636,32 @@ class SMHS_ScheduleTests: XCTestCase {
         anyCancellable.removeAll()
     }
 
+    func testGradesViewModelReloadDataTrue() throws {
+        let oneDayAgo = try XCTUnwrap(Calendar.current.date(byAdding: .day, value: -1, to: Date()))
+        gradesViewModelReloadDataHelper(lastReload: oneDayAgo) {
+            XCTAssertTrue($0)
+        }
+    }
+
+    func testGradesViewModelReloadDataFalse() throws {
+        let oneHourAgo = try XCTUnwrap(Calendar.current.date(byAdding: .hour, value: -1, to: Date()))
+        gradesViewModelReloadDataHelper(lastReload: oneHourAgo) {
+            XCTAssertTrue($0)
+        }
+    }
+
+    func gradesViewModelReloadDataHelper(lastReload: Date, assert: (Bool) -> Void) {
+        let model = GradesViewModel()
+        let twoHours: Double = 60 * 60 * 2
+        let expecation = XCTestExpectation(description: "waitForReloadData")
+        var executed = false
+        model.reloadData(lastReload: lastReload, interval: twoHours) {
+            executed = true
+            expecation.fulfill()
+        }
+        wait(for: [expecation], timeout: 5)
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

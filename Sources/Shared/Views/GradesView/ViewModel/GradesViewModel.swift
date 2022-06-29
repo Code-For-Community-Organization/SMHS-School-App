@@ -123,22 +123,32 @@ extension GradesViewModel {
 }
 //MARK: - Login & Logout methods
 extension GradesViewModel {
-    
+
     func reloadData() {
-#if DEBUG
+        #if DEBUG
         loginAndFetch()
-#else
-        if let time = lastReloadTime {
-            if abs(Date().timeIntervalSince(time)) > TimeInterval(globalRemoteConfig.RELOAD_INTERVAL_GRADE) {
-                loginAndFetch()
+        #else
+        reloadData(lastReload: nil, reloader: nil)
+        #endif
+    }
+
+    func reloadData(lastReload: Date? = nil,
+                    interval: Double? = nil,
+                    reloader: (() -> Void)? = nil) {
+        let _reloader = reloader ?? loginAndFetch
+        let _lastReload = lastReload ?? lastReloadTime
+        let _interval = interval ?? Constants.gradeReloadInterval
+
+        if let time = _lastReload {
+            if abs(Date().timeIntervalSince(time)) > TimeInterval(_interval) {
+                _reloader()
                 lastReloadTime = Date()
             }
         }
         else {
             lastReloadTime = Date()
-            loginAndFetch()
+            _reloader()
         }
-#endif
     }
     
     func loginAndFetch() {
@@ -223,3 +233,4 @@ extension GradesViewModel {
         gradesResponse = []
     }
 }
+
