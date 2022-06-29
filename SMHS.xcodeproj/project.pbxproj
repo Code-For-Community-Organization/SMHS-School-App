@@ -62,6 +62,10 @@
 		623D595726FAF3D9001D05F7 /* GradesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */; };
 		623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 623D596326FFCFC1001D05F7 /* Alamofire */; };
 		623D596B27024D43001D05F7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 623D596A27024D43001D05F7 /* Kingfisher */; };
+		6243910B286CF74700625818 /* Regex in Resources */ = {isa = PBXBuildFile; fileRef = 6243910A286CF70A00625818 /* Regex */; };
+		6243910C286CF74B00625818 /* Regex in Resources */ = {isa = PBXBuildFile; fileRef = 6243910A286CF70A00625818 /* Regex */; };
+		6243910D286CF74C00625818 /* Regex in Resources */ = {isa = PBXBuildFile; fileRef = 6243910A286CF70A00625818 /* Regex */; };
+		6243910E286CF74D00625818 /* Regex in Resources */ = {isa = PBXBuildFile; fileRef = 6243910A286CF70A00625818 /* Regex */; };
 		624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624ABFF226004949000FE7BD /* Miscellaneous.swift */; };
 		624B06DC26D3521B001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DB26D3521B001C2EAE /* FirebaseAnalytics */; };
 		624B06DE26D3526A001C2EAE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624B06DD26D3526A001C2EAE /* FirebaseAnalytics */; };
@@ -317,7 +321,7 @@
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		623D595426FAF3C4001D05F7 /* GradesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailView.swift; sourceTree = "<group>"; };
 		623D595626FAF3D9001D05F7 /* GradesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesDetailViewModel.swift; sourceTree = "<group>"; };
-		62439109286CF65A00625818 /* Regex */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Regex; path = ../Regex; sourceTree = "<group>"; };
+		6243910A286CF70A00625818 /* Regex */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Regex; sourceTree = "<group>"; };
 		624ABFF226004949000FE7BD /* Miscellaneous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Miscellaneous.swift; sourceTree = "<group>"; };
 		624F79EC264F875900B93C63 /* InformationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardsView.swift; sourceTree = "<group>"; };
 		624F79EE264F87BE00B93C63 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -756,7 +760,7 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
-				62439109286CF65A00625818 /* Regex */,
+				6243910A286CF70A00625818 /* Regex */,
 				6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */,
 				62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
@@ -1364,6 +1368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6243910D286CF74C00625818 /* Regex in Resources */,
 				622CC3972851613F003F33D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1372,6 +1377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6243910E286CF74D00625818 /* Regex in Resources */,
 				622CC3A52851614A003F33D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1380,6 +1386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6243910C286CF74B00625818 /* Regex in Resources */,
 				6260B1002832D85F007DBD3E /* JsonResponses in Resources */,
 				62D32128264A53B200C99C42 /* __Snapshots__ in Resources */,
 				626183AE2637168E001C4AD4 /* Preview Assets.xcassets in Resources */,
@@ -1394,6 +1401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6243910B286CF74700625818 /* Regex in Resources */,
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				6260B0FD2832D85F007DBD3E /* JsonResponses in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
