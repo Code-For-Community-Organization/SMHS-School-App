@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 import FirebaseRemoteConfig
 import SwiftUI
-import RegexLegacy
 
 //MARK: This file contains global, pre-defined constants
 struct Constants {

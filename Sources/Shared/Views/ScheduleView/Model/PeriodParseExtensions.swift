@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Regex
 
 fileprivate typealias c = Constants.Schedule
 
