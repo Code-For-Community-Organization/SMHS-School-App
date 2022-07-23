@@ -114,6 +114,15 @@ struct Constants {
 
         return nil
     }
+
+    static var isIOS15: Bool {
+        if #available(iOS 15, *) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }
 
 extension Constants {
