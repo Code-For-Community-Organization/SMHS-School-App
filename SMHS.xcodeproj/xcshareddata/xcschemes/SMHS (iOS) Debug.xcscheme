@@ -24,16 +24,10 @@
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
-      shouldUseLaunchSchemeArgsEnv = "NO"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-FIRDebugEnabled"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -47,7 +41,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "626A2280260035F200903C39"

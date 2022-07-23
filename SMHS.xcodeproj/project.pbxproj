@@ -38,8 +38,6 @@
 		621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */; };
 		621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA4266AAB35006EBE8F /* CalendarManager.swift */; };
 		621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */; };
-		622C8D79288C78BD001A94D3 /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C8D78288C78BD001A94D3 /* ConditionalModifier.swift */; };
-		622C8D7A288C78BD001A94D3 /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C8D78288C78BD001A94D3 /* ConditionalModifier.swift */; };
 		622CC3902851613D003F33D6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62D1E512263DF778004DBFAD /* WidgetKit.framework */; };
 		622CC3912851613D003F33D6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62D1E514263DF778004DBFAD /* SwiftUI.framework */; };
 		622CC3942851613D003F33D6 /* SMHSWidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CC3932851613D003F33D6 /* SMHSWidgetExtension.swift */; };
@@ -310,7 +308,6 @@
 		621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		621F5CA4266AAB35006EBE8F /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateView.swift; sourceTree = "<group>"; };
-		622C8D78288C78BD001A94D3 /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
 		622CC38F2851613D003F33D6 /* SMHSWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SMHSWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		622CC3932851613D003F33D6 /* SMHSWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMHSWidgetExtension.swift; sourceTree = "<group>"; };
 		622CC3952851613D003F33D6 /* SMHSWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SMHSWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -929,7 +926,6 @@
 				626183EE263718FC001C4AD4 /* UserDefaultWrapper.swift */,
 				62C9E8B0263D212E00CCA5C5 /* Bindings.swift */,
 				62FCFFF2281CCF5600D3E1CA /* DeveloperTapGesture.swift */,
-				622C8D78288C78BD001A94D3 /* ConditionalModifier.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1551,7 +1547,6 @@
 				627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */,
 				62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */,
 				6201D9EB2810C89B00EBC375 /* GradesDetailedRawResponse.swift in Sources */,
-				622C8D7A288C78BD001A94D3 /* ConditionalModifier.swift in Sources */,
 				6261840626371A6C001C4AD4 /* Miscellaneous.swift in Sources */,
 				622EEF872751CB71009C1D1C /* Double.swift in Sources */,
 				62D1E508263DD41C004DBFAD /* Date.swift in Sources */,
@@ -1651,7 +1646,6 @@
 				622EEF862751CB71009C1D1C /* Double.swift in Sources */,
 				625F18A4268A98C5000B71B4 /* GradesLoginView.swift in Sources */,
 				62F5FD0126B49A2D00E821D5 /* Font.swift in Sources */,
-				622C8D79288C78BD001A94D3 /* ConditionalModifier.swift in Sources */,
 				62B0D96C2692776200AA6CF4 /* ActionButton.swift in Sources */,
 				624ABFF326004949000FE7BD /* Miscellaneous.swift in Sources */,
 				62B227E0265DAE4C0023A7E6 /* AboutFooterView.swift in Sources */,

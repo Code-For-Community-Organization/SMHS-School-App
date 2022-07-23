@@ -58,12 +58,18 @@ struct ScheduleDetailView: View {
          return formattedDate
     }
 
+    var shouldFallback: Bool {
+        return scheduleDay?.periods.isEmpty ?? true
+    }
+
     var horizontalPadding = true
     @State private var developerScheduleOn = false
 
     var body: some View {
         ScrollView {
-            if userSettings.preferLegacySchedule || developerScheduleOn {
+            if userSettings.preferLegacySchedule ||
+                developerScheduleOn ||
+                shouldFallback {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
             }
             else {
