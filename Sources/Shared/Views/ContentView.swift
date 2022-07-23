@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var sharedScheduleInformation = SharedScheduleInformation() 
+    @StateObject var sharedScheduleInformation = SharedScheduleInformation()
+    @EnvironmentObject var userSettings: UserSettings
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -47,8 +48,21 @@ struct ContentView: View {
             #endif
         }
         .onboardingModal()
-        .environmentObject(UserSettings())
-        .accentColor(appPrimary)
+        .environmentObject(userSettings)
+        .accentColor(.appPrimary)
+        .overlay(
+            VStack {
+                if userSettings.developerSettings.developerOn {
+                    Text("DEVELOPER MODE")
+                        .font(.system(size: 500), weight: .black)
+                        .minimumScaleFactor(0.001)
+                        .aspectRatio(1, contentMode: .fit)
+                        .lineLimit(1)
+                        .foregroundColor(.red)
+                        .opacity(0.2)
+                }
+            }
+        )
         .onChange(of: scenePhase) { newScenePhase in
               switch newScenePhase {
               case .active:

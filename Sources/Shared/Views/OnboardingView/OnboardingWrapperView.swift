@@ -16,7 +16,7 @@ struct OnboardingWrapperView<Content: View>: View {
         let versionStatus = AppVersionStatus.getVersionStatus()
         let shouldPresent: Binding<Bool> = Binding(get: {
             let shouldShow = versionStatus != .stable || userSettings.developerSettings.alwaysShowOnboarding
-            let remoteOverride = globalRemoteConfig.configValue(forKey: "show_onboarding").boolValue
+            let remoteOverride = Constants.shouldShowOnboarding
             return shouldShow && remoteOverride
         },
                                                    set: {_ in

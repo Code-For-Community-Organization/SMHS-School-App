@@ -7,16 +7,22 @@
 
 import Foundation
 
+fileprivate typealias c = Constants
+
 struct Endpoint {
     var host: String
     var path: String
     var queryItems: [URLQueryItem]? = nil
     var requestHeaders: [String: String] = [:]
     var requestBody: [String: String] = [:]
-    var httpMethod = "POST"
+    var httpMethod: RequestMethod
     var isApplicationJson = false
     var jsonEncode = false
     var isLogin = false
+
+    enum RequestMethod: String {
+        case POST, GET
+    }
 }
 
 extension Endpoint {
@@ -35,8 +41,8 @@ extension Endpoint {
     var request: URLRequest {
         var request = URLRequest(url: url)
         request.cachePolicy = .returnCacheDataElseLoad
-        request.httpMethod = httpMethod
-        if httpMethod == "POST" {
+        request.httpMethod = httpMethod.rawValue
+        if httpMethod == .POST {
             if jsonEncode {
                 request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: [])
             }
@@ -60,17 +66,6 @@ extension Endpoint {
         return request
     }
 
-    static let SMHS_API_HOST = "api.smhs.app"
-    static let SMHS_API_MAIN_PATH = "/api/v1"
-
-    static let AERIES_API_HOST = "aeries.smhs.org"
-    static let AERIES_API_MAIN_PATH = "/parent/m/api/MobileWebAPI.asmx"
-    static let AERIES_API_LOGIN_PATH = "/parent/LoginParent.aspx"
-    static let AERIES_API_ALT_GRADES_PATH = "/Parent/Widgets/ClassSummary/GetClassSummary"
-
-    static let APPSERV_API_HOST = "appserv.u360mobile.com"
-    static let APPSERV_API_SCHEDULE_PATH = "/354/calendarfeed.php"
-
     static func studentLogin(email: String,
                              password: String,
                              debugMode: Bool = false) -> Endpoint {
@@ -83,10 +78,10 @@ extension Endpoint {
                     "portalAccountUsernameLabel": "",
                     "submit": ""]
         
-        return Endpoint(host: AERIES_API_HOST,
-                        path: AERIES_API_LOGIN_PATH,
+        return Endpoint(host: c.AeriesApiPath.host,
+                        path: c.AeriesApiPath.login,
                         requestBody: form,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isLogin: true)
 
     }
@@ -94,34 +89,34 @@ extension Endpoint {
     // This grades summary API used for getting
     // gradebook number which is critical for detailed grades
     static func getGradesSummary() -> Endpoint {
-        Endpoint(host: AERIES_API_HOST,
-                 path: AERIES_API_MAIN_PATH + "/GetGradebookSummaryData",
-                 httpMethod: "GET",
+        Endpoint(host: c.AeriesApiPath.host,
+                 path: c.AeriesApiPath.main + c.AeriesApiPath.summaryGrades,
+                 httpMethod: .GET,
                  isApplicationJson: true)
     }
 
     // This grades summary API is supplement to
     // other one, for more precise percentage and teacher name
     static func getGradesSummarySupplement() -> Endpoint {
-        Endpoint(host: AERIES_API_HOST,
-                 path: AERIES_API_ALT_GRADES_PATH,
+        Endpoint(host: c.AeriesApiPath.host,
+                 path: c.AeriesApiPath.altGrades,
                  queryItems: [.init(name: "IsProfile", value: "true")],
-                 httpMethod: "GET")
+                 httpMethod: .GET)
     }
 
     static func getDetailedGrades(term: String,
                                   gradebookNumber: String) -> Endpoint {
         let body = [
-            "requestedPage": "1",
+            "requestedPage": c.AeriesApiPath.requestedPage,
             "term": term,
-            "pageSize": "200",
+            "pageSize": c.AeriesApiPath.pageSize,
             "gradebookNumber": gradebookNumber
         ]
 
-        return Endpoint(host: AERIES_API_HOST,
-                        path: AERIES_API_MAIN_PATH + "/GetGradebookDetailsData",
+        return Endpoint(host: c.AeriesApiPath.host,
+                        path: c.AeriesApiPath.main + c.AeriesApiPath.detailedGrades,
                         requestBody: body,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isApplicationJson: true,
                         jsonEncode: true)
     }
@@ -135,10 +130,10 @@ extension Endpoint {
             "gradebookNumber": gradebookNumber
         ]
 
-        return Endpoint(host: AERIES_API_HOST,
-                        path: AERIES_API_MAIN_PATH + "/GetGradebookDetailedSummaryData",
+        return Endpoint(host: c.AeriesApiPath.host,
+                        path: c.AeriesApiPath.main + c.AeriesApiPath.detailedSummary,
                         requestBody: body,
-                        httpMethod: "POST",
+                        httpMethod: .POST,
                         isApplicationJson: true,
                         jsonEncode: true)
     }
@@ -151,26 +146,28 @@ extension Endpoint {
 
     static func getAnnoucements(date: Date) -> Endpoint {
         let formatter = DateFormatter()
-        return Endpoint(host: SMHS_API_HOST,
-                        path: SMHS_API_MAIN_PATH + "/announcements",
+        return Endpoint(host: c.SmhsApiPath.host,
+                        path: c.SmhsApiPath.main + c.SmhsApiPath.annoucements,
                         queryItems: [.init(name: "date",
                                            value: formatter.serverTimeFormat(date))],
-                        httpMethod: "GET")
+                        httpMethod: .GET)
     }
 
     static func getSchedule(date: Date) -> Endpoint {
-         let formatter = DateFormatter()
-         return Endpoint(host: APPSERV_API_HOST,
-                         path: APPSERV_API_SCHEDULE_PATH,
+        let formatter = DateFormatter()
+        let c = c.AppServApiPath.self
+
+        return Endpoint(host: c.host,
+                        path: c.schedule,
                          queryItems: [.init(name: "i", value: "santamargaritahs"),
-                                      .init(name: "pageSize", value: "25"),
-                                      .init(name: "pageNumber", value: "1"),
+                                      .init(name: "pageSize", value: c.pageSize),
+                                      .init(name: "pageNumber", value: c.pageNumber),
                                       .init(name: "dateStart", value: formatter.yearMonthDayFormat(date)),
-                                      .init(name: "categoryId", value: "0"),
+                                      .init(name: "categoryId", value: c.categoryId),
                                       .init(name: "tz", value: "America%2FLos_Angeles"),
-                                      .init(name: "mid", value: "1422"),
-                                      .init(name: "smid", value: "46492")],
-                         httpMethod: "GET")
+                                      .init(name: "mid", value: c.mid),
+                                      .init(name: "smid", value: c.smid)],
+                         httpMethod: .GET)
      }
     
 }

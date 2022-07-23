@@ -7,11 +7,27 @@
 
 import Foundation
 
-struct GradesRubric: Codable, Hashable {
-    var categories: [GradesRubricRawResponse.Category]
+struct GradesRubric: Hashable, Codable {
+    let rubrics: [Rubric]
+
+    struct Rubric: Hashable, Codable {
+        let category: String
+        let percentOfGrade: Int
+        let isDoingWeight: Bool
+    }
 
     init(from decoder: Decoder) throws {
         let rawResponse = try GradesRubricRawResponse(from: decoder)
-        self.categories = rawResponse.d.results
+        self.rubrics = rawResponse.d.results
+            .map {
+                .init(category: $0.category,
+                             percentOfGrade: $0.percentOfGrade,
+                             isDoingWeight: $0.isDoingWeight)
+            }
     }
 }
+
+
+
+
+

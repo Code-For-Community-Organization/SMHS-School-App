@@ -8,7 +8,7 @@
 import SwiftUI
 import StoreKit
 
-@main
+@main 
 struct SMHSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
@@ -31,6 +31,7 @@ struct SMHSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(UserSettings())
         }
 
 

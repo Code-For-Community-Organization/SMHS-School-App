@@ -48,46 +48,9 @@ struct FooterModalView: View {
                     NavigationLink(destination: FeaturesStatementView()) {Label("Features", systemSymbol: .sparkles)}
                     //NavigationLink(destination: Text("")) {Label("The Developer", systemSymbol: .personCropCircle)}
                 }
-                .foregroundColor(appSecondary)
+                .foregroundColor(.appSecondary)
                 
-                Section(header: Label("Developer", systemSymbol: .hammerFill)){
-                    Toggle(isOn: $userSettings.developerSettings.alwaysShowOnboarding, label: {
-                        Text("Always show onboarding")
-                    })
-                    
-                    Toggle(isOn: $userSettings.developerSettings.shouldCacheData, label: {
-                        Text("Cache data")
-                    })
-                    
-                    Toggle(isOn: $userSettings.developerSettings.dummyGrades, label: {
-                        Text("Dummy grades")
-                    })
-                    
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        if let text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                            Text(text)
-                                .foregroundColor(.secondaryLabel)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("Build")
-                        Spacer()
-                        if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                            Text(text)
-                                .foregroundColor(.secondaryLabel)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("OS")
-                        Spacer()
-                        Text(UIDevice.current.systemVersion)
-                            .foregroundColor(.secondaryLabel)
-                    }
-                }
+                DeveloperSettingsView()
             }
             .navigationBarTitle("Settings")
             .onAppear {

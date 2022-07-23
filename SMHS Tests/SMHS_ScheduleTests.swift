@@ -8,7 +8,9 @@
 import XCTest
 import SwiftUI
 import SnapshotTesting
-@testable import SMHSSchedule__iOS_
+import Combine
+
+@testable import SMHS
 
 struct HighlightButtonStyleTestView: View {
     var body: some View{
@@ -19,6 +21,8 @@ struct HighlightButtonStyleTestView: View {
     }
 }
 class SMHS_ScheduleTests: XCTestCase {
+    var anyCancellable = Set<AnyCancellable>()
+    let model = GradesViewModel()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,7 +32,7 @@ class SMHS_ScheduleTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testArrayLastExtension() { 
+    func testArrayLastExtension() {
         var intArray = [1,2,3,0]
         var stringArray = ["a", "c", "b"]
         let emptyArray: [Double] = []
@@ -62,7 +66,7 @@ class SMHS_ScheduleTests: XCTestCase {
     func testCurrentWeekDayExtension() {
         let date = Date()
         let currentWeekday = Calendar.current.component(.weekday, from: date)-1
-        XCTAssertEqual(Date.currentWeekday(for: date), currentWeekday)
+        XCTAssertEqual(Date.getDayOfTheWeek(for: date), currentWeekday)
     }
     
     func testGetDayOfTheWeekExtension() {
@@ -154,11 +158,24 @@ class SMHS_ScheduleTests: XCTestCase {
         let unwrappedScheduleWeeks = try XCTUnwrap(scheduleWeeks)
         XCTAssertTrue(unwrappedScheduleWeeks.isEmpty)
     }
+
     func testHighlightButtonStyle() {
         let view = HighlightButtonStyleTestView()
         assertSnapshot(matching: view, as: .image)
     }
 
+    func testParseGrades() {
+        let model = GradesViewModel()
+        let grades = CourseGrade([
+            .init(periodNum: "1", periodName: "English", gradePercent: 96, currentMark: "A+", gradebookNumber: 6969, code: .current, term: .spring),
+            .init(periodNum: "2", periodName: "PE", gradePercent: 90, currentMark: "A-", gradebookNumber: 6965, code: .dropped, term: .spring)])
+
+//        GradesSupplementSummary(period: <#T##Int#>, roomNumber: <#T##String#>, courseNumber: <#T##String#>, courseName: <#T##String#>, courseNumberAndName: <#T##String#>, sectionNumber: <#T##String#>, gradebookName: <#T##JSONNull?#>, gradebookNumber: <#T##JSONNull?#>, teacherName: <#T##String#>, gradebook: <#T##String#>, percent: <#T##String#>, average: <#T##String#>, currentMark: <#T##String#>, currentMarkAndScore: <#T##String#>, currentPercentOrAverage: <#T##String#>, doingMinMax: <#T##Bool#>, trend: <#T##String#>, missingAssignments: <#T##String#>, numMissingAssignments: <#T##Int#>, lastATT: <#T##String#>, lastUpdated: <#T##String#>, totalStudents: <#T##String#>, website: <#T##String#>, accessCode: <#T##String#>, source: <#T##String#>, term: <#T##String#>, termGrouping: <#T##TermGrouping#>, schoolNumber: <#T##Int#>, schoolName: <#T##String#>, schoolSort: <#T##SchoolSort#>, districtCDS: <#T##String#>, districtName: <#T##String#>, editable: <#T##Int#>, block: <#T##Int#>, doingRubric: <#T##Bool#>, termCode: <#T##JSONNull?#>, onlineMeetingURL: <#T##String#>, onlineMeetingAccessCode: <#T##String#>, onlineMeetingSource: <#T##String#>, onlineMeetingPhoneNumber: <#T##String#>, onlineMeetingNote: <#T##String#>, periodTitle: <#T##String#>, flexShortTitle: <#T##JSONNull?#>, flexPeriodStartTime: <#T##FlexPeriodTime#>, flexPeriodEndTime: <#T##FlexPeriodTime#>, students: <#T##JSONNull?#>)
+//        let supplement = [GradesSupplementSummary(period: 1, roomNumber: "", courseNumber: "", courseName: "", courseNumberAndName: "", sectionNumber: "", teacherName: "Teacher1", gradebook: "", percent: "96.32", average: "", currentMark: "", currentMarkAndScore: "", currentPercentOrAverage: "", doingMinMax: false, trend: "", missingAssignments: "", numMissingAssignments: 0, lastATT: "", lastUpdated: "May 1", totalStudents: "", website: "", accessCode: "", source: "", term: "", termGrouping: .current, schoolNumber: 0, schoolName: "", schoolSort: .the1, districtCDS: "", districtName: "", editable: 0, block: 0, doingRubric: false, onlineMeetingURL: "", onlineMeetingAccessCode: "", onlineMeetingSource: "", onlineMeetingPhoneNumber: "", onlineMeetingNote: "", periodTitle: "", flexPeriodStartTime: .date62135568000000, flexPeriodEndTime: .date62135568000000),
+//
+//            GradesSupplementSummary(period: 2, roomNumber: "", courseNumber: "", courseName: "", courseNumberAndName: "", sectionNumber: "", teacherName: "Teacher 2", gradebook: "", percent: "90.2", average: "", currentMark: "", currentMarkAndScore: "", currentPercentOrAverage: "", doingMinMax: false, trend: "", missingAssignments: "", numMissingAssignments: 0, lastATT: "", lastUpdated: "May 2", totalStudents: "", website: "", accessCode: "", source: "", term: "", termGrouping: .current, schoolNumber: 0, schoolName: "", schoolSort: .the1, districtCDS: "", districtName: "", editable: 0, block: 0, doingRubric: false, onlineMeetingURL: "", onlineMeetingAccessCode: "", onlineMeetingSource: "", onlineMeetingPhoneNumber: "", onlineMeetingNote: "", periodTitle: "", flexPeriodStartTime: .date62135568000000, flexPeriodEndTime: .date62135568000000)]
+//        model.parseGrades(grades: grades, supplement: supplement)
+    }
 //    func testTodayView() {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -280,7 +297,7 @@ class SMHS_ScheduleTests: XCTestCase {
     }
     
     func testParseClassPeriodSingleLunch() {
-        var testScheduleText = #"Wednesday\, April 21 \nSpecial Virtual Day 2 \n(40 minute classes) \n\nPeriod 2                         8:00-8:40 \n\nPeriod 3                         8:45-9:25 \n(10 minute break) \n\nPeriod 4                         9:35-10:15 \n\nPeriod 5                         10:20-11:40 \n(40 minute DIVE Presentation) \n\nNutrition                      11:40-12:10 \n\nPeriod 6                         12:15-12:55 \n\nPeriod 7                         1:00-1:40 \n\nPeriod 1                         1:45-2:25 \n-------------------------------\n\n\nClasses 8:00-2:25\n\nDive Presentation\n\nB JV Tennis vs JSerra 5:30\n\nB JV/V LAX vs JSerra 7:30/5:30\n\nB JV/V Vball vs Bosco 3:00/3:00\n\nB V Basketball vs Bosco 7:00\n\nB V Golf @ Hunt Beach 3:00\n\nG JV Tennis vs Orange Luth 3:15\n\nG V LAX @ JSerra 5:30\n\nG V Tennis @ Orange Luth 2:30\n\nJV Gold Baseball vs JSerra 3:30\n\nJV/V Baseball @ South Hills 2:30/3:15\n\n\n\nV Sball vs Mission Viejo 3:30\n"#
+        var testScheduleText = #"Wednesday\, April 21 \nSpecial Virtual Day 2 \n(40 minute classes) \n\nPeriod 2                         8:00-8:40 \n\nPeriod 3 8:45-9:25 \n(10 minute break) \n\nPeriod 4 9:35-10:15 \n\nPeriod 5                         10:20-11:40 \n(40 minute DIVE Presentation) \n\nNutrition 11:40-12:10 \n\nPeriod 6 12:15-12:55 \n\nPeriod 7 1:00-1:40 \n\nPeriod 1 1:45-2:25"#
         
         testScheduleText = testScheduleText.removingRegexMatches(pattern: #"\\(?!n)"#).removingRegexMatches(pattern: #"\\n"#, replaceWith: "\n").removingRegexMatches(pattern: #"\n\n"#, replaceWith: "\n")
         let scheduleDay = ScheduleDay(date: Date(), scheduleText: testScheduleText)
@@ -290,7 +307,7 @@ class SMHS_ScheduleTests: XCTestCase {
         XCTAssertEqual(periods[0].periodNumber, 2)
         XCTAssertEqual(periods[0].startTime, DateFormatter.formatTime12to24("8:00"))
         XCTAssertEqual(periods[0].endTime, DateFormatter.formatTime12to24("8:40"))
-        
+        print(periods)
         XCTAssertEqual(periods[4].periodCategory, .singleLunch)
         XCTAssertEqual(periods[4].periodNumber, nil)
         XCTAssertEqual(periods[4].startTime, DateFormatter.formatTime12to24("11:40"))
@@ -314,20 +331,20 @@ class SMHS_ScheduleTests: XCTestCase {
         }
     }
     
-    func testPeriodEditSettingsViewEmpty() {
-        let view = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(UserSettings())
-        assertSnapshot(matching: view, as: .image)
-      
-    }
-    func testPeriodEditSettingsViewFilled() {
-        let userSettings = UserSettings()
-        userSettings.editableSettings[0].textContent = "English"
-        userSettings.editableSettings[6].textContent = "P.E."
-        userSettings.editableSettings[3].textContent = "Spanish"
-        let view2 = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(userSettings)
-        assertSnapshot(matching: view2, as: .image)
-        userSettings.resetEditableSettings()
-    }
+//    func testPeriodEditSettingsViewEmpty() {
+//        let view = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(UserSettings())
+//        assertSnapshot(matching: view, as: .image)
+//
+//    }
+//    func testPeriodEditSettingsViewFilled() {
+//        let userSettings = UserSettings()
+//        userSettings.editableSettings[0].textContent = "English"
+//        userSettings.editableSettings[6].textContent = "P.E."
+//        userSettings.editableSettings[3].textContent = "Spanish"
+//        let view2 = PeriodEditSettingsView(showModal: .constant(true)).fullFrame().environmentObject(userSettings)
+//        assertSnapshot(matching: view2, as: .image)
+//        userSettings.resetEditableSettings()
+//    }
     func testPeriodEditableReset() {
         let userSettings = UserSettings()
         userSettings.resetEditableSettings()
@@ -431,9 +448,220 @@ class SMHS_ScheduleTests: XCTestCase {
         XCTAssertEqual(scheduleDateHelper3.currentWeekday, "Wednesday")
         XCTAssertEqual(scheduleDateHelper4.currentWeekday, "Saturday")
     }
+
     func testProgressRingNutrition() {
         
     }
+
+    func testComputeOverallPercentage() {
+        let assignments: [GradesDetail.Assignment] = [.init(description: "Worksheet #1",
+                                                            category: "Assignment",
+                                                            numberCorrect: 19,
+                                                            numberPossible: 20,
+                                                            percent: 19 / 20,
+                                                            dateCompleted: "10/12/2022",
+                                                            isGraded: true),
+                                                      .init(description: "Chapter 1 quiz",
+                                                            category: "Test",
+                                                            numberCorrect: 28,
+                                                            numberPossible: 30,
+                                                            percent: 28 / 30,
+                                                            dateCompleted: "10/12/2022",
+                                                            isGraded: true)]
+        let rubric: [GradesRubric.Rubric] = [.init(category: "Assignment", percentOfGrade: 20, isDoingWeight: true),
+                                      .init(category: "Test", percentOfGrade: 80, isDoingWeight: true)]
+        let model = GradesDetailViewModel(gradebookNumber: 0, term: "", detailedAssignment: assignments)
+        let percentage = model.computeOverallPercentage(with: rubric)
+        let mockPercentage = ((19.0 / 20.0) * 20.0 + (28.0 / 30.0) * 80.0)
+        XCTAssertEqual(percentage, mockPercentage.truncate(places: 2))
+
+    }
+
+    func testCourseGrade() throws {
+        let result = try getDecodedResult(fileName: "GradesSummary", model: CourseGrade.self)
+        let courseGrades = result.courses
+        XCTAssertEqual(courseGrades[0].periodName, "Broadcast JourH - Spring")
+        XCTAssertEqual(courseGrades[1].gradePercentText, "92%")
+    }
+
+    func testGradesDetail() throws {
+        let result = try getDecodedResult(fileName: "GradesDetail", model: GradesDetail.self)
+        let details = result.assignments
+        XCTAssertEqual(details[0].description, "Chapter 10 Quiz")
+        XCTAssertEqual(details[1].percent, 100.0)
+    }
+
+    func testGradesSupplementSummary() throws {
+        let result = try getDecodedResult(fileName: "GradesSupplementSummary",
+                                          model: [GradesSupplementSummary].self)
+        XCTAssertEqual(result[0].teacherName, "KmettK")
+        XCTAssertEqual(result[2].teacherName, "FoxG")
+    }
+
+    func testGradesRubric() throws {
+        let result = try getDecodedResult(fileName: "GradesRubric", model: GradesRubric.self)
+        let rubrics = result.rubrics
+        XCTAssertEqual(rubrics[0].category, "Homework")
+        XCTAssertEqual(rubrics[1].percentOfGrade, 10)
+    }
+    
+    func getDecodedResult<T>(fileName: String, model: T.Type)
+    throws -> T
+    where T: Codable {
+        let response = getJSONResponse(for: fileName)
+        let decoder = JSONDecoder()
+        let result = try decoder.decode(model.self, from: response)
+        return result
+    }
+
+    func getJSONResponse(for fileName: String) -> Data {
+        guard let bundlePath = Bundle(for: type(of: self)).resourcePath
+        else {
+            preconditionFailure("Cannot find Bundle resource path")
+        }
+        let url = URL(fileURLWithPath: bundlePath)
+                    .appendingPathComponent("JsonResponses")
+                    .appendingPathComponent(fileName, isDirectory: false)
+                    .appendingPathExtension("json")
+        guard let data = try? Data(contentsOf: url)
+        else {
+            preconditionFailure("Failed to get data from URL \(url)")
+        }
+        return data
+    }
+
+    func testGrdaesViewModelIsValid() {
+        let model = GradesViewModel()
+        model.email = "abc@gmail.com"
+        model.password = "12345"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertTrue(model.isValid)
+        }
+
+        model.email = "abcd@g"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertFalse(model.isValid)
+        }
+
+        model.password = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertFalse(model.isValid)
+        }
+    }
+
+    func testGradesViewModelPasswordErrorMessage() {
+        let model = GradesViewModel()
+        let expectation = self.expectation(description: "passwordErrorMsg")
+        model.email = "abc@gmail.com"
+        model.password = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(model.passwordErrorMsg, Constants.gradesPasswordErrorMsg)
+        XCTAssertEqual(model.emailErrorMsg, "")
+
+    }
+
+    func testGradesViewModelEmailError() {
+        let testEmails = ["abc", "123", "&%^$*-a", "i((3@cds.", "@@aab.zz"]
+        for email in testEmails {
+            gradesViewModelEmailHelper(email: email) {
+                XCTAssertEqual($0, Constants.gradesEmailErrorMsg)
+
+            }
+        }
+    }
+
+    func testGradesViewModelEmailNoError() {
+        let testEmails = ["!#$%&'*+-/=.?^_`{|}~@[1.0.0.127]",
+                          "name+tag@example.com",
+                          #"spaces\ are\ allowed@example.com"#,
+                          "trump@smhs.org"]
+        for email in testEmails {
+            gradesViewModelEmailHelper(email: email) {
+                XCTAssertTrue($0.isEmpty)
+
+            }
+        }
+    }
+
+    func gradesViewModelEmailHelper(email: String, assert: (String) -> Void) {
+        let expectationError = XCTestExpectation(description: "validateEmailError")
+        var errorMessage = ""
+
+        model.validateEmail()
+            .sink {
+                errorMessage = $0
+                expectationError.fulfill()
+            }
+            .store(in: &anyCancellable)
+
+        model.email = email
+        wait(for: [expectationError], timeout: 5)
+
+        assert(errorMessage)
+        anyCancellable.removeAll()
+    }
+
+    func testGradesViewModelPasswordError() {
+        gradesViewModelPasswordHelper(password: "") {
+            XCTAssertEqual($0, Constants.gradesPasswordErrorMsg)
+        }
+    }
+
+    func testGradesViewModelPasswordNoError() {
+        let testPasswords = ["abc", "123", "|#$&#@*(&%"]
+        for password in testPasswords {
+            gradesViewModelPasswordHelper(password: password) {
+                XCTAssertTrue($0.isEmpty)
+            }
+        }
+    }
+
+    func gradesViewModelPasswordHelper(password: String, assert: (String) -> Void) {
+        let expectationError = XCTestExpectation(description: "validateEmailError")
+        var errorMessage = ""
+
+        model.validatePassword()
+            .sink {
+                errorMessage = $0
+                expectationError.fulfill()
+            }
+            .store(in: &anyCancellable)
+        model.password = password
+        wait(for: [expectationError], timeout: 5)
+
+        assert(errorMessage)
+        anyCancellable.removeAll()
+    }
+
+    func testGradesViewModelReloadDataTrue() throws {
+        let oneDayAgo = try XCTUnwrap(Calendar.current.date(byAdding: .day, value: -1, to: Date()))
+        gradesViewModelReloadDataHelper(lastReload: oneDayAgo) {
+            XCTAssertTrue($0)
+        }
+    }
+
+    func testGradesViewModelReloadDataFalse() throws {
+        let oneHourAgo = try XCTUnwrap(Calendar.current.date(byAdding: .hour, value: -1, to: Date()))
+        gradesViewModelReloadDataHelper(lastReload: oneHourAgo) {
+            XCTAssertTrue($0)
+        }
+    }
+
+    func gradesViewModelReloadDataHelper(lastReload: Date, assert: (Bool) -> Void) {
+        let model = GradesViewModel()
+        let twoHours: Double = 60 * 60 * 2
+        let expecation = XCTestExpectation(description: "waitForReloadData")
+        var executed = false
+        model.reloadData(lastReload: lastReload, interval: twoHours) {
+            executed = true
+            expecation.fulfill()
+        }
+        wait(for: [expecation], timeout: 5)
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

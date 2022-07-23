@@ -63,6 +63,8 @@ struct ProgressCountDown: View {
             }
             .fixedSize()
             .font(.title)
+            .availableMonospacedDigit()
+
             Text("REMAINING")
                 .font(.body)
                 .foregroundColor(.platformSecondaryLabel)
@@ -79,5 +81,19 @@ struct ProgressCountdown_Previews: PreviewProvider {
     static var previews: some View {
         ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .constant(.firstLunch), countDown: .constant(TimeInterval(10)))
         ProgressCountDown(scheduleDay: ScheduleDay.sampleScheduleDay, selectionMode: .constant(.firstLunch), countDown: .constant(TimeInterval(10)))
+    }
+}
+
+fileprivate extension View {
+    func availableMonospacedDigit() -> some View {
+        if #available(iOS 15, *) {
+            return self
+                .monospacedDigit()
+                .typeErased()
+        }
+        else {
+            return self.font(Font.system(.title, design: .default))
+                .typeErased()
+        }
     }
 }

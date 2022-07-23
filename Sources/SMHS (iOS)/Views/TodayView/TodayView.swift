@@ -40,9 +40,9 @@ struct TodayView: View {
                 }
         )
         .onAppear {
-            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(appPrimary)
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(appSecondary)], for: .normal)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.appSecondary)], for: .normal)
             scheduleViewViewModel.reloadData()
         }
         .onDisappear {
@@ -82,7 +82,7 @@ struct TodayViewHeader: View {
                         Text("Edit")
                             .font(Font.subheadline.weight(.semibold))
                     }
-                    .foregroundColor(appSecondary)
+                    .foregroundColor(.appSecondary)
                 })
             }
         }

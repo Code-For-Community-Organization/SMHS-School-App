@@ -82,6 +82,15 @@ struct GradesSupplementSummary: Codable {
         case flexPeriodEndTime = "FlexPeriodEndTime"
         case students = "Students"
     }
+
+    
+//    init(period: Int, teacherName: String, percent: String, lastUpdated: String) {
+//        self.period = period
+//        self.teacherName = teacherName
+//        self.percent = percent
+//        self.lastUpdated = lastUpdated
+//
+//    }
 }
 
 enum FlexPeriodTime: String, Codable {
@@ -102,7 +111,7 @@ typealias Welcome = [GradesSupplementSummary]
 
 // MARK: - Encode/decode helpers
 
-class JSONNull: Codable, Hashable {
+struct JSONNull: Codable, Hashable {
 
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
@@ -112,7 +121,7 @@ class JSONNull: Codable, Hashable {
 
     public init() {}
 
-    public required init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
             throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))

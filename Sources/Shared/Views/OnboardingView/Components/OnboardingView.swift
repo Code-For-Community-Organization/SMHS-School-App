@@ -70,7 +70,7 @@ struct OnboardingView: View {
     }
 
     func handleJoinTeamsButton() {
-        if let url = globalRemoteConfig.getJoinTeamsURL {
+        if let url = Constants.joinTeamsURL {
             openURL(url)
         }
         userSettings.didJoinTeams = true

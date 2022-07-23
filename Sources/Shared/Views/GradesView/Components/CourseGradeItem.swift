@@ -42,7 +42,7 @@ struct CourseGradeItem: View {
                         HStack {
                             Text("Period \(course.periodNum)")
                                 .font(.headline)
-                                .foregroundColor(appSecondary)
+                                .foregroundColor(.appSecondary)
                             Text("•")
                                 .foregroundColor(.platformSecondaryLabel)
                             Text(course.teacherName)

@@ -16,16 +16,15 @@ struct TodayHeroView: View {
 
     var shouldShowTeams: Bool {
         // Get cloud config value for whether should show
-        let shouldShow = globalRemoteConfig.configValue(forKey: "show_join_teams_banner")
         // Only show if user did not already
         // join teams from onboarding prompt
-        return shouldShow.boolValue && !userSettings.didJoinTeams
+        return Constants.shouldShowJoinTeamsBanner && !userSettings.didJoinTeams
     }
 
     var body: some View {
         ScrollView {
             VStack {
-                if let url = globalRemoteConfig.getJoinTeamsURL,
+                if let url = Constants.joinTeamsURL,
                    shouldShowTeams {
                     TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
                             openURL(url)
@@ -87,6 +86,7 @@ struct TodayHeroView: View {
                 }
 
             }
+            .animation(.easeInOut, value: todayViewViewModel.loadingAnnoucements)
         })
     }
 }

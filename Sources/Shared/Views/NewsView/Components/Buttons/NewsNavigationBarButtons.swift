@@ -22,7 +22,7 @@ struct NewsNavigationBarButtons: View {
                 Button(action: handleButtonPress) {
                     Image(systemSymbol: showIsBookmarked ? .bookmarkFill : .bookmark)
                         .font(.system(size: 25))
-                        .foregroundColor(showIsBookmarked ? appSecondary : .platformLabel)
+                        .foregroundColor(showIsBookmarked ? .appSecondary : .platformLabel)
                         .scaleEffect(animate ? CGFloat(1.1) : CGFloat(1))
                 }
             }

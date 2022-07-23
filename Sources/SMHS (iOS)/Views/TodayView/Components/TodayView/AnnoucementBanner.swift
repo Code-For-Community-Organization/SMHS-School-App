@@ -57,10 +57,13 @@ struct AnnoucementBanner: View {
             }
             .padding(12)
             .foregroundColor(Color.platformBackground)
-            .background(appPrimary)
+            .background(Color.appPrimary)
             .roundedCorners(cornerRadius: 10)
             .padding(.vertical)
         })
+            .contextMenu {
+                Button("Reload", action: viewModel.fetchAnnoucements)
+            }
     }
 }
 

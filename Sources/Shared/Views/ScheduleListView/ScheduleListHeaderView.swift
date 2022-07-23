@@ -22,7 +22,7 @@ struct ScheduleListHeaderView: View {
                         .font(.system(size: 16))
                 }
             )
-            .foregroundColor(appPrimary)
+            .foregroundColor(.appPrimary)
             Spacer()
         }
         

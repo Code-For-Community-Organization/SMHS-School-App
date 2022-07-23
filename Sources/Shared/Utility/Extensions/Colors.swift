@@ -255,3 +255,15 @@ extension Color {
         #endif
     }
 }
+
+extension Color {
+    static var appPrimary: Color {
+        Color(hexadecimal: Constants.Color.fetchedPrimary
+              ?? Constants.Color.primaryHex)
+    }
+
+    static var appSecondary: Color {
+        Color(hexadecimal: Constants.Color.fetchedSecondary
+              ?? Constants.Color.secondaryHex)
+    }
+}

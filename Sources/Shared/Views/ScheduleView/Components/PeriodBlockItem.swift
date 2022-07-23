@@ -66,7 +66,7 @@ struct PeriodBlockItem: View {
             
         }
         .frame(maxWidth: .infinity)
-        .background(appPrimary)
+        .background(Color.appPrimary)
         .roundedCorners(cornerRadius: 12)
         .padding(.vertical, 5)
     }

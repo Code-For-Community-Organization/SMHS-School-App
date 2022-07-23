@@ -16,7 +16,7 @@ struct GradesLoginView: View {
             Form {
                 Section {
                     HStack {
-                        LinearGradient(colors: [appPrimary, appSecondary],
+                        LinearGradient(colors: [Color.appPrimary, Color.appSecondary],
                                                         startPoint: .topLeading,
                                                         endPoint: .bottomTrailing)
                             .mask(Image(systemName: "network.badge.shield.half.filled")
@@ -78,7 +78,7 @@ struct LoginTextFieldRoundedStyle: TextFieldStyle {
             .padding(.vertical, 15)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .stroke(focused ? appPrimary : .gray, lineWidth: 3)
+                    .stroke(focused ? Color.appPrimary : .gray, lineWidth: 3)
             ).padding()
     }
 }

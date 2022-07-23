@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "626A2264260035F100903C39"
                BuildableName = "SMHS.app"
-               BlueprintName = "SMHSSchedule (iOS)"
+               BlueprintName = "SMHS (iOS)"
                ReferencedContainer = "container:SMHS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -24,10 +24,16 @@
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      shouldUseLaunchSchemeArgsEnv = "NO"
       codeCoverageEnabled = "YES">
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -41,7 +47,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "626A2280260035F200903C39"
@@ -68,7 +74,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "626A2264260035F100903C39"
             BuildableName = "SMHS.app"
-            BlueprintName = "SMHSSchedule (iOS)"
+            BlueprintName = "SMHS (iOS)"
             ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,7 +101,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "626A2264260035F100903C39"
             BuildableName = "SMHS.app"
-            BlueprintName = "SMHSSchedule (iOS)"
+            BlueprintName = "SMHS (iOS)"
             ReferencedContainer = "container:SMHS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

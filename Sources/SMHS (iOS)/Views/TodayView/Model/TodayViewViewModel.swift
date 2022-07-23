@@ -75,7 +75,7 @@ class TodayViewViewModel: ObservableObject {
         #endif
     }
 
-    private func fetchAnnoucements() {
+    func fetchAnnoucements() {
         loadingAnnoucements = true
         let endpoint = Endpoint.getAnnoucements(date: mockDate ?? Date())
         TodayNetworkModel.fetch(with: endpoint.request, type: AnnoucementResponse.self)
@@ -86,7 +86,7 @@ class TodayViewViewModel: ObservableObject {
                 switch error {
                     case .finished:
                     self?.lastUpdateTime = Date()
-                    case .failure(_):
+                    case .failure(let error):
                         return
                 }
             }, receiveValue: {[weak self] announcement in
