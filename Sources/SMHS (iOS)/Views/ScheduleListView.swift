@@ -32,7 +32,7 @@ struct ScheduleListView: View {
                             VStack(spacing: 0) {
                                 ForEach(scheduleWeek.scheduleDays, id: \.self) {day in
                                     NavigationLink(
-                                        destination: ScrollView {ScheduleDetailView(scheduleDay: day).padding(.top, 40)}
+                                        destination: ScheduleDetailView(scheduleDay: .sampleScheduleDay)
                                         ,
                                         label: {
                                             HStack {

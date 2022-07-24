@@ -11,6 +11,19 @@ import FirebaseAnalytics
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
+    @State var bottomTextScreenRatio: Double = 0
+    @State var enableVisualEffects = true
+
+    var gradientTopLocation: CGFloat {
+        print("Top: \(bottomTextScreenRatio - 0.05.clamped(to: 0...1))")
+        return bottomTextScreenRatio - 0.05.clamped(to: 0...1)
+    }
+
+    var gradientBottomLocation: CGFloat {
+        print("bottom: \(bottomTextScreenRatio + 0.05.clamped(to: 0...1))")
+        return bottomTextScreenRatio + 0.05.clamped(to: 0...1)
+    }
+
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
@@ -63,6 +76,8 @@ struct ScheduleDetailView: View {
     }
 
     var horizontalPadding = true
+    //var showBackgroundImage = true
+
     @State private var developerScheduleOn = false
 
     var body: some View {
@@ -73,69 +88,115 @@ struct ScheduleDetailView: View {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
             }
             else {
-                LazyVStack(spacing: 10) {
-                    PeriodBlockSubview(periods: preLunchPeriods)
+                ZStack {
+//                    GeometryReader {geo in
+//                        Image("SM-Field-HiRes")
+//                            .resizable()
+//                            .scaledToFill()
+//                            .frame(width: geo.size.width, height: geo.size.height)
+//                            .clipped()
+//                            .edgesIgnoringSafeArea(.all)
+//
+//                    }
 
-                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                       let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                       let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                       let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                        HStack {
-                            VStack {
-                                Text("1st Lunch Schedule")
-                                    .font(.footnote, weight: .semibold)
-                                    .padding(.bottom, 2)
-                                    .foregroundColor(.platformSecondaryLabel)
-                                    .textAlign(.leading)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.5)
+                    VStack(spacing: 10) {
+                        PeriodBlockSubview(periods: preLunchPeriods)
 
-                                PeriodBlockItem(block: firstLunch,
-                                                scheduleTitle: "1st Lunch",
-                                                twoLine: true)
-                                PeriodBlockItem(block: firstLunchPeriod,
-                                                scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                                twoLine: true)
+                        if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
+                           let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
+                           let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
+                           let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
+                            HStack {
+                                VStack {
+                                    makeLunchTitle(content: "1st Lunch Times")
+                                    PeriodBlockItem(block: firstLunch,
+                                                    scheduleTitle: "1st Lunch",
+                                                    twoLine: true)
+                                    PeriodBlockItem(block: firstLunchPeriod,
+                                                    scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
+                                                    twoLine: true)
+                                }
+                                .padding(.trailing, 5)
+                                VStack {
+                                    makeLunchTitle(content: "2nd Lunch Times")
+                                    PeriodBlockItem(block: secondLunchPeriod,
+                                                    scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
+                                                    twoLine: true)
+                                    PeriodBlockItem(block: secondLunch,
+                                                    scheduleTitle: "2nd Lunch",
+                                                    twoLine: true)
+                                }
                             }
-                            .padding(.trailing, 5)
-                            VStack {
-                                Text("2nd Lunch Schedule")
-                                    .font(.footnote, weight: .semibold)
-                                    .padding(.bottom, 2)
-                                    .foregroundColor(.platformSecondaryLabel)
-                                    .textAlign(.leading)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.5)
-
-                                PeriodBlockItem(block: secondLunchPeriod,
-                                                scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                                twoLine: true)
-                                PeriodBlockItem(block: secondLunch,
-                                                scheduleTitle: "2nd Lunch",
-                                                twoLine: true)
-                            }
+                           }
+                        PeriodBlockSubview(periods: postLunchPeriods)
+                        if let period8 = period8,
+                           userSettings.isPeriod8On {
+                            Divider()
+                            Text("Most students don't have period 8, you can turn it off in settings.")
+                                .font(.caption)
+                                .foregroundColor(.platformSecondaryLabel)
+                                .padding(.bottom, 1)
+                            PeriodBlockItem(block: period8)
                         }
-                       }
-                    PeriodBlockSubview(periods: postLunchPeriods)
-                    if let period8 = period8,
-                       userSettings.isPeriod8On {
-                        Divider()
-                        Text("Most students don't have period 8, you can turn it off in settings.")
-                            .font(.caption)
-                            .foregroundColor(.platformSecondaryLabel)
-                            .padding(.bottom, 1)
-                        PeriodBlockItem(block: period8)
+                        if let atheleticsInfo = scheduleDay?.atheleticsInfo {
+                                Text(atheleticsInfo)
+                                    .vibrancyEffect()
+                                    .vibrancyEffectStyle(.label)
+                                    .colorScheme(.dark)
+                                    .overlay(
+                                        GeometryReader {geo -> Color in
+                                           DispatchQueue.main.async {
+                                                bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+                                            }
+                                            return Color.clear
+                                        }
+                                    )
+                        }
+
                     }
-                    if let atheleticsInfo = scheduleDay?.atheleticsInfo {
-                        Text(atheleticsInfo)
-                    }
+                    .padding(.horizontal, horizontalPadding ? 16 : 0)
 
                 }
-                .padding(.horizontal, horizontalPadding ? 16 : 0)
             }
         }
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(false)
+        .background (
+            GeometryReader {geo in
+                ZStack {
+                    Image("SM-Field-HiRes")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .clipped()
+
+                    Image("SM-Field-HiRes")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .clipped()
+                        .blur(radius: 40, opaque: true)
+                        .mask (
+                            LinearGradient(stops: [.init(color: .clear, location: 0),
+                                                   .init(color: .clear, location: gradientTopLocation),
+                                                   .init(color: .black, location: gradientBottomLocation),
+                                                   .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
+                          )
+
+                }
+
+            }
+            .edgesIgnoringSafeArea(.all)
+
+//            .blurEffect()
+//            .blurEffectStyle(.systemUltraThinMaterial)
+
+
+        )
+        //.edgesIgnoringSafeArea(.bottom)
+//        .blur(radius: 30)
+//        .mask (LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .clear, location: 0.8), .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom))
         .onAppear {
             Analytics.logEvent("tapped_date_item",
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
@@ -154,5 +215,29 @@ struct ScheduleDetailView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date)
+    }
+
+    func makeLunchTitle(content: String) -> some View {
+        Text(content)
+            .font(.footnote, weight: .bold)
+            .padding(.bottom, 2)
+            .shadow(color: Color.black.opacity(0.85), radius: 1, x: 0, y: 0.8)
+            .foregroundColor(Color.white)
+            .textAlign(.leading)
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+    }
+}
+
+struct ScheduleDetailView_Previews: PreviewProvider {
+    static var settings: UserSettings = {
+        let settings = UserSettings()
+        settings.editableSettings = [.init(periodNumber: 6, textContent: "AP Calculus BC")]
+        return settings
+    }()
+
+    static var previews: some View {
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay)
+            .environmentObject(settings)
     }
 }

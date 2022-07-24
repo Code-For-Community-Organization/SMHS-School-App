@@ -32,42 +32,50 @@ struct PeriodBlockItem: View {
     }
 
     var body: some View {
-        VStack(spacing: 5) {
+        VStack {
             VStack {
-                if twoLine {
-                    doubleLineView
+                Group {
+                    if twoLine {
+                        doubleLineView
+                    }
+                    else {
+                        singleLineView
+                            .padding(.bottom, 4)
+                    }
                 }
-                else {
-                    singleLineView
-                        .padding(.bottom, 8)
-                }
+                .vibrancyEffectStyle(.tertiaryLabel)
+
                 Spacer()
 
                 if let className = className {
                     Text(className)
                         .fontWeight(.semibold)
                         .textAlign(.leading)
-                        .font(.title3)
+                        .font(.headline)
+                        .vibrancyEffectStyle(.label)
+
                     Text(displayedTitle)
                         .font(.subheadline)
                         .textAlign(.leading)
                         .foregroundColor(.platformSecondaryBackground)
+                        .vibrancyEffectStyle(.tertiaryLabel)
                 }
                 else {
                     Text(displayedTitle)
                         .fontWeight(.medium)
                         .textAlign(.leading)
-                        .font(.title3)
+                        .font(.headline)
+                        .vibrancyEffectStyle(.label)
                 }
             }
             .padding(.horizontal)
-            .padding(.vertical, 5)
-            .foregroundColor(.platformTertiaryBackground)
-            
+            .padding(.vertical, 4)
+
         }
         .frame(maxWidth: .infinity)
-        .background(Color.appPrimary)
-        .roundedCorners(cornerRadius: 12)
+        .vibrancyEffect()
+        .availableBackgroundBlur()
+        .roundedCorners(cornerRadius: 10)
         .padding(.vertical, 5)
     }
     
@@ -90,14 +98,14 @@ struct PeriodBlockItem: View {
             HStack {
                 HStack {
                     Text("START:")
-                        .opacity(0.5)
+                        .vibrancyEffectStyle(.quaternaryLabel)
 
                     Text(formatDate(block.startTime))
                 }
                 .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
                 HStack {
                     Text("END:")
-                        .opacity(0.5)
+                        .vibrancyEffectStyle(.quaternaryLabel)
 
                     Text(formatDate(block.endTime))
                 }
@@ -127,3 +135,45 @@ struct PeriodBlockItem: View {
     }
 }
 
+fileprivate extension View {
+
+    @ViewBuilder
+    func availableBackgroundBlur() -> some View {
+        if #available(iOS 15, *) {
+            self.background(.regularMaterial)
+        }
+        else {
+            self
+                .background(
+                    Color.clear
+                    .blurEffect()
+                    .blurEffectStyle(.regular)
+                )
+
+        }
+    }
+
+    @ViewBuilder
+    func availablePrimaryVibrancy() -> some View {
+        if #available(iOS 15, *) {
+            self.foregroundColor(.secondary)
+        }
+        else {
+            self
+            .vibrancyEffect()
+            .vibrancyEffectStyle(.secondaryLabel)
+        }
+    }
+
+    @ViewBuilder
+    func availableSecondaryVibrancy() -> some View {
+        if #available(iOS 15, *) {
+            self.foregroundColor(.secondaryLabel)
+        }
+        else {
+            self
+            .vibrancyEffect()
+            .vibrancyEffectStyle(.tertiaryLabel)
+        }
+    }
+}
