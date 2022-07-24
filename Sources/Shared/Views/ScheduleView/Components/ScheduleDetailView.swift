@@ -41,8 +41,8 @@ struct ScheduleDetailView: View {
         let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
         let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
         if let firstIndex = firstIndex,
-              let lastIndex = lastIndex,
-              let scheduleDay = scheduleDay {
+           let lastIndex = lastIndex,
+           let scheduleDay = scheduleDay {
             return Array(scheduleDay.periods[firstIndex...lastIndex])
         }
         return []
@@ -64,11 +64,11 @@ struct ScheduleDetailView: View {
     }
 
     var scheduleDateDescription: String {
-         let date = scheduleDay?.date ?? Date()
-         let format = DateFormatter()
-         format.dateFormat = "EEEE, MMM d"
-         let formattedDate = format.string(from: date)
-         return formattedDate
+        let date = scheduleDay?.date ?? Date()
+        let format = DateFormatter()
+        format.dateFormat = "EEEE, MMM d"
+        let formattedDate = format.string(from: date)
+        return formattedDate
     }
 
     var shouldFallback: Bool {
@@ -89,45 +89,35 @@ struct ScheduleDetailView: View {
             }
             else {
                 ZStack {
-//                    GeometryReader {geo in
-//                        Image("SM-Field-HiRes")
-//                            .resizable()
-//                            .scaledToFill()
-//                            .frame(width: geo.size.width, height: geo.size.height)
-//                            .clipped()
-//                            .edgesIgnoringSafeArea(.all)
-//
-//                    }
-
                     VStack(spacing: 10) {
                         PeriodBlockSubview(periods: preLunchPeriods)
 
                         if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                           let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                           let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                           let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                            HStack {
-                                VStack {
-                                    makeLunchTitle(content: "1st Lunch Times")
-                                    PeriodBlockItem(block: firstLunch,
-                                                    scheduleTitle: "1st Lunch",
-                                                    twoLine: true)
-                                    PeriodBlockItem(block: firstLunchPeriod,
-                                                    scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                                    twoLine: true)
-                                }
-                                .padding(.trailing, 5)
-                                VStack {
-                                    makeLunchTitle(content: "2nd Lunch Times")
-                                    PeriodBlockItem(block: secondLunchPeriod,
-                                                    scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                                    twoLine: true)
-                                    PeriodBlockItem(block: secondLunch,
-                                                    scheduleTitle: "2nd Lunch",
-                                                    twoLine: true)
+                        let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
+                            let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
+                            let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
+                                HStack {
+                                    VStack {
+                                        makeLunchTitle(content: "1st Lunch Times")
+                                        PeriodBlockItem(block: firstLunch,
+                                                        scheduleTitle: "1st Lunch",
+                                                        twoLine: true)
+                                        PeriodBlockItem(block: firstLunchPeriod,
+                                                        scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
+                                                        twoLine: true)
+                                    }
+                                    .padding(.trailing, 5)
+                                    VStack {
+                                        makeLunchTitle(content: "2nd Lunch Times")
+                                        PeriodBlockItem(block: secondLunchPeriod,
+                                                        scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
+                                                        twoLine: true)
+                                        PeriodBlockItem(block: secondLunch,
+                                                        scheduleTitle: "2nd Lunch",
+                                                        twoLine: true)
+                                    }
                                 }
                             }
-                           }
                         PeriodBlockSubview(periods: postLunchPeriods)
                         if let period8 = period8,
                            userSettings.isPeriod8On {
@@ -139,18 +129,18 @@ struct ScheduleDetailView: View {
                             PeriodBlockItem(block: period8)
                         }
                         if let atheleticsInfo = scheduleDay?.atheleticsInfo {
-                                Text(atheleticsInfo)
-                                    .vibrancyEffect()
-                                    .vibrancyEffectStyle(.label)
-                                    .colorScheme(.dark)
-                                    .overlay(
-                                        GeometryReader {geo -> Color in
-                                           DispatchQueue.main.async {
-                                                bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
-                                            }
-                                            return Color.clear
+                            Text(atheleticsInfo)
+                                .vibrancyEffect()
+                                .vibrancyEffectStyle(.label)
+                                .colorScheme(.dark)
+                                .overlay(
+                                    GeometryReader {geo -> Color in
+                                        DispatchQueue.main.async {
+                                            bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
                                         }
-                                    )
+                                        return Color.clear
+                                    }
+                                )
                         }
 
                     }
@@ -182,21 +172,21 @@ struct ScheduleDetailView: View {
                                                    .init(color: .clear, location: gradientTopLocation),
                                                    .init(color: .black, location: gradientBottomLocation),
                                                    .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
-                          )
+                        )
 
                 }
 
             }
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
 
-//            .blurEffect()
-//            .blurEffectStyle(.systemUltraThinMaterial)
+            //            .blurEffect()
+            //            .blurEffectStyle(.systemUltraThinMaterial)
 
 
         )
         //.edgesIgnoringSafeArea(.bottom)
-//        .blur(radius: 30)
-//        .mask (LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .clear, location: 0.8), .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom))
+        //        .blur(radius: 30)
+        //        .mask (LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .clear, location: 0.8), .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom))
         .onAppear {
             Analytics.logEvent("tapped_date_item",
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
