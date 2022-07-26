@@ -8,6 +8,7 @@
 import SwiftUI
 import SFSafeSymbols
 import FirebaseAnalytics
+import SwiftUIX
 
 struct ScheduleDetailView: View {
     @EnvironmentObject var userSettings: UserSettings
@@ -76,7 +77,7 @@ struct ScheduleDetailView: View {
     }
 
     var horizontalPadding = true
-    //var showBackgroundImage = true
+    var showBackgroundImage = true
 
     @State private var developerScheduleOn = false
 
@@ -158,46 +159,51 @@ struct ScheduleDetailView: View {
                     Image("SM-Field-HiRes")
                         .resizable()
                         .scaledToFill()
+                        .scaleEffect(1.4, anchor: .bottom)
                         .frame(width: geo.size.width, height: geo.size.height)
                         .clipped()
+                        .blur(radius: 3, opaque: true)
+
+                        .saturation(0.6)
 
                     Image("SM-Field-HiRes")
                         .resizable()
                         .scaledToFill()
+                        .scaleEffect(1.4, anchor: .bottom)
                         .frame(width: geo.size.width, height: geo.size.height)
                         .clipped()
-                        .blur(radius: 40, opaque: true)
+                        .saturation(0.6)
+                        .blur(radius: 60, opaque: true)
                         .mask (
                             LinearGradient(stops: [.init(color: .clear, location: 0),
                                                    .init(color: .clear, location: gradientTopLocation),
                                                    .init(color: .black, location: gradientBottomLocation),
-                                                   .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
+                                                  .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
                         )
+
+
 
                 }
 
             }
-                .edgesIgnoringSafeArea(.all)
-
-            //            .blurEffect()
-            //            .blurEffectStyle(.systemUltraThinMaterial)
-
-
+            .drawingGroup()
+            .edgesIgnoringSafeArea(.all)
         )
-        //.edgesIgnoringSafeArea(.bottom)
-        //        .blur(radius: 30)
-        //        .mask (LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .clear, location: 0.8), .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom))
+
         .onAppear {
             Analytics.logEvent("tapped_date_item",
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
                                             "time_stamp": Date().debugDescription,
                                             "time_of_day": formatTime(Date())])
+
         }
+        
         .onDeveloperTap(userSettings) {
             if userSettings.developerSettings.developerOn {
                 developerScheduleOn.toggle()
             }
         }
+
 
     }
 
@@ -209,7 +215,8 @@ struct ScheduleDetailView: View {
 
     func makeLunchTitle(content: String) -> some View {
         Text(content)
-            .font(.footnote, weight: .bold)
+            .font(.footnote)
+            .fontWeight(.bold)
             .padding(.bottom, 2)
             .shadow(color: Color.black.opacity(0.85), radius: 1, x: 0, y: 0.8)
             .foregroundColor(Color.white)

@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject var sharedScheduleInformation = SharedScheduleInformation()
     @EnvironmentObject var userSettings: UserSettings
     @Environment(\.scenePhase) var scenePhase
-    
+
     var body: some View {
         TabView {
             let networkLoadViewModel = NetworkLoadViewModel(dataReload: sharedScheduleInformation.fetchData)

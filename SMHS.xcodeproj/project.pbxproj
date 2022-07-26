@@ -198,6 +198,8 @@
 		62C9E8B1263D212E00CCA5C5 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
 		62C9E8B2263D212E00CCA5C5 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C9E8B0263D212E00CCA5C5 /* Bindings.swift */; };
 		62C9E8B4263D2A1300CCA5C5 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 62C9E8B3263D2A1300CCA5C5 /* Introspect */; };
+		62CCF9D5288F1C0400FA85C7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 62CCF9D4288F1C0400FA85C7 /* SwiftUIX */; };
+		62CCF9D7288F1FAB00FA85C7 /* TestSwiftUIX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCF9D6288F1FAB00FA85C7 /* TestSwiftUIX.swift */; };
 		62CFAA3D264756ED003B2EA0 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */; };
 		62CFAA3E264756ED003B2EA0 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */; };
 		62CFAA41264756F9003B2EA0 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFAA40264756F9003B2EA0 /* TimeInterval.swift */; };
@@ -429,6 +431,7 @@
 		62C9E8A3263D13CB00CCA5C5 /* HighlightButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButtonStyle.swift; sourceTree = "<group>"; };
 		62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionStatus.swift; sourceTree = "<group>"; };
 		62C9E8B0263D212E00CCA5C5 /* Bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindings.swift; sourceTree = "<group>"; };
+		62CCF9D6288F1FAB00FA85C7 /* TestSwiftUIX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwiftUIX.swift; sourceTree = "<group>"; };
 		62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		62CFAA40264756F9003B2EA0 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		62D1E507263DD41C004DBFAD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -503,6 +506,7 @@
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
+				62CCF9D5288F1C0400FA85C7 /* SwiftUIX in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
 				6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */,
@@ -874,6 +878,7 @@
 				62D8CB7626E2CD0E004DD19B /* Model */,
 				62328C9426476E3A000F26ED /* Components */,
 				626A2295260037E800903C39 /* TodayView.swift */,
+				62CCF9D6288F1FAB00FA85C7 /* TestSwiftUIX.swift */,
 			);
 			path = TodayView;
 			sourceTree = "<group>";
@@ -1285,6 +1290,7 @@
 				623D596A27024D43001D05F7 /* Kingfisher */,
 				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
 				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
+				62CCF9D4288F1C0400FA85C7 /* SwiftUIX */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1378,6 +1384,7 @@
 				624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				623D596927024D43001D05F7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				62CCF9D3288F1C0300FA85C7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1689,6 +1696,7 @@
 				62D3211C2649F2BD00C99C42 /* NewsDetailedView.swift in Sources */,
 				62D32122264A4C6700C99C42 /* ClassPeriod.swift in Sources */,
 				626183EF263718FC001C4AD4 /* UserDefaultWrapper.swift in Sources */,
+				62CCF9D7288F1FAB00FA85C7 /* TestSwiftUIX.swift in Sources */,
 				621F5C8D2669FBA0006EBE8F /* SchoolMapDirections.swift in Sources */,
 				621385EF265C60D500F4806C /* InformationCardItem.swift in Sources */,
 				62583EA4286D214700349962 /* Utils.swift in Sources */,
@@ -2353,6 +2361,14 @@
 				minimumVersion = 0.1.3;
 			};
 		};
+		62CCF9D3288F1C0300FA85C7 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yahoojapan/SwiftyXMLParser";
@@ -2450,6 +2466,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62C9E8A6263D1D4E00CCA5C5 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		62CCF9D4288F1C0400FA85C7 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62CCF9D3288F1C0300FA85C7 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		62D321062649D9BA00C99C42 /* SwiftyXMLParser */ = {
 			isa = XCSwiftPackageProductDependency;

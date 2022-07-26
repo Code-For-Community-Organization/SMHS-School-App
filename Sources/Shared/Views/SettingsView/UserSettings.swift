@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import Network
 import FirebaseAnalytics
+import UIKit
 
 final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
