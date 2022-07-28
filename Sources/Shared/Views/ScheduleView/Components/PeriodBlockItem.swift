@@ -12,7 +12,7 @@ struct PeriodBlockItem: View {
     var block: ClassPeriod
     var scheduleTitle: String?
     var twoLine: Bool = false
-
+    var isBlurred = true
     var displayedTitle: String {
         if let title = scheduleTitle {
             return title
@@ -52,29 +52,46 @@ struct PeriodBlockItem: View {
                         .fontWeight(.semibold)
                         .textAlign(.leading)
                         .font(.headline)
-                        .vibrancyEffectStyle(.label)
+                        .if(isBlurred) {
+                            $0.vibrancyEffectStyle(.label)
+                        }
+
 
                     Text(displayedTitle)
                         .font(.subheadline)
                         .textAlign(.leading)
                         .foregroundColor(.platformSecondaryBackground)
-                        .vibrancyEffectStyle(.tertiaryLabel)
+                        .if(isBlurred) {
+                            $0.vibrancyEffectStyle(.tertiaryLabel)
+                        }
                 }
                 else {
                     Text(displayedTitle)
                         .fontWeight(.medium)
                         .textAlign(.leading)
                         .font(.headline)
-                        .vibrancyEffectStyle(.label)
+                        .if(isBlurred) {
+                            $0.vibrancyEffectStyle(.label)
+                        }
                 }
             }
             .padding(.horizontal)
             .padding(.vertical, 4)
+            .if(!isBlurred) {
+                $0.foregroundColor(.platformTertiaryBackground)
+            }
 
         }
         .frame(maxWidth: .infinity)
-        .vibrancyEffect()
-        .availableBackgroundBlur()
+        .if(isBlurred, transform: {
+            $0
+                .vibrancyEffect()
+                .availableBackgroundBlur(isBlurred: isBlurred)
+        }, elseThen: {
+            $0
+                .background(Color.appPrimary)
+        })
+
         .roundedCorners(cornerRadius: 10)
         .padding(.vertical, 5)
     }
@@ -92,20 +109,33 @@ struct PeriodBlockItem: View {
         .lineLimit(1)
         .minimumScaleFactor(0.5)
     }
-    
+
     var singleLineView: some View {
         GeometryReader {geo in
             HStack {
                 HStack {
                     Text("START:")
-                        .vibrancyEffectStyle(.quaternaryLabel)
+                        .if(isBlurred, transform: {
+                            $0
+                                .vibrancyEffectStyle(.quaternaryLabel)
+                        }, elseThen: {
+                            $0
+                                .opacity(0.5)
+                        })
+
 
                     Text(formatDate(block.startTime))
                 }
                 .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
                 HStack {
                     Text("END:")
-                        .vibrancyEffectStyle(.quaternaryLabel)
+                        .if(isBlurred, transform: {
+                            $0
+                                .vibrancyEffectStyle(.quaternaryLabel)
+                        }, elseThen: {
+                            $0
+                                .opacity(0.5)
+                        })
 
                     Text(formatDate(block.endTime))
                 }
@@ -138,19 +168,25 @@ struct PeriodBlockItem: View {
 fileprivate extension View {
 
     @ViewBuilder
-    func availableBackgroundBlur() -> some View {
-        if #available(iOS 15, *) {
-            self.background(.regularMaterial)
+    func availableBackgroundBlur(isBlurred: Bool = true) -> some View {
+        if isBlurred {
+            if #available(iOS 15, *) {
+                self.background(.regularMaterial)
+            }
+            else {
+                self
+                    .background(
+                        Color.clear
+                        .blurEffect()
+                        .blurEffectStyle(.regular)
+                    )
+
+            }
         }
         else {
-            self
-                .background(
-                    Color.clear
-                    .blurEffect()
-                    .blurEffectStyle(.regular)
-                )
-
+            self.background(Color.appPrimary)
         }
+
     }
 
     @ViewBuilder

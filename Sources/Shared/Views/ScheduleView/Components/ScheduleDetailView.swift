@@ -9,21 +9,25 @@ import SwiftUI
 import SFSafeSymbols
 import FirebaseAnalytics
 import SwiftUIX
+import SwiftUIVisualEffects
 
 struct ScheduleDetailView: View {
+    init(scheduleDay: ScheduleDay? = nil,
+         horizontalPadding: Bool = true,
+         showBackgroundImage: Bool = true) {
+        self.scheduleDay = scheduleDay
+        self.horizontalPadding = horizontalPadding
+        self.showBackgroundImage = showBackgroundImage
+        if showBackgroundImage {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        }
+    }
+
     @EnvironmentObject var userSettings: UserSettings
     @State var bottomTextScreenRatio: Double = 0
     @State var enableVisualEffects = true
 
-    var gradientTopLocation: CGFloat {
-        print("Top: \(bottomTextScreenRatio - 0.05.clamped(to: 0...1))")
-        return bottomTextScreenRatio - 0.05.clamped(to: 0...1)
-    }
-
-    var gradientBottomLocation: CGFloat {
-        print("bottom: \(bottomTextScreenRatio + 0.05.clamped(to: 0...1))")
-        return bottomTextScreenRatio + 0.05.clamped(to: 0...1)
-    }
+    
 
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
@@ -73,7 +77,9 @@ struct ScheduleDetailView: View {
     }
 
     var shouldFallback: Bool {
-        return scheduleDay?.periods.isEmpty ?? true
+        return userSettings.preferLegacySchedule ||
+        developerScheduleOn ||
+        scheduleDay?.periods.isEmpty ?? true
     }
 
     var horizontalPadding = true
@@ -83,15 +89,18 @@ struct ScheduleDetailView: View {
 
     var body: some View {
         ScrollView {
-            if userSettings.preferLegacySchedule ||
-                developerScheduleOn ||
-                shouldFallback {
+            if shouldFallback {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
+                    .padding(.top, 30)
+                    .vibrancyEffectStyle(.label)
+                    .vibrancyEffect()
             }
             else {
                 ZStack {
                     VStack(spacing: 10) {
-                        PeriodBlockSubview(periods: preLunchPeriods)
+                        ForEach(preLunchPeriods, id: \.self){period in
+                            PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
+                        }
 
                         if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
                         let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
@@ -102,46 +111,75 @@ struct ScheduleDetailView: View {
                                         makeLunchTitle(content: "1st Lunch Times")
                                         PeriodBlockItem(block: firstLunch,
                                                         scheduleTitle: "1st Lunch",
-                                                        twoLine: true)
+                                                        twoLine: true,
+                                                        isBlurred: showBackgroundImage)
                                         PeriodBlockItem(block: firstLunchPeriod,
                                                         scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                                        twoLine: true)
+                                                        twoLine: true,
+                                                        isBlurred: showBackgroundImage)
                                     }
                                     .padding(.trailing, 5)
                                     VStack {
                                         makeLunchTitle(content: "2nd Lunch Times")
                                         PeriodBlockItem(block: secondLunchPeriod,
                                                         scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                                        twoLine: true)
+                                                        twoLine: true,
+                                                        isBlurred: showBackgroundImage)
                                         PeriodBlockItem(block: secondLunch,
                                                         scheduleTitle: "2nd Lunch",
-                                                        twoLine: true)
+                                                        twoLine: true,
+                                                        isBlurred: showBackgroundImage)
                                     }
                                 }
                             }
-                        PeriodBlockSubview(periods: postLunchPeriods)
+
+                        ForEach(postLunchPeriods, id: \.self){period in
+                            PeriodBlockItem(block: period,
+                                            isBlurred: showBackgroundImage)
+                        }
+
                         if let period8 = period8,
                            userSettings.isPeriod8On {
                             Divider()
+                                .if(showBackgroundImage) {
+                                    $0
+                                        .overlay(Color.white)
+                                }
                             Text("Most students don't have period 8, you can turn it off in settings.")
                                 .font(.caption)
-                                .foregroundColor(.platformSecondaryLabel)
-                                .padding(.bottom, 1)
-                            PeriodBlockItem(block: period8)
+                                .if(showBackgroundImage, transform: {
+                                    $0
+                                        .vibrancyEffect()
+                                        .vibrancyEffectStyle(.label)
+                                        .colorScheme(.dark)
+
+                                }, elseThen: {
+                                    $0
+                                        .foregroundColor(.platformSecondaryLabel)
+                                })
+                                    .padding(.bottom, 1)
+
+                                    PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
                         }
                         if let atheleticsInfo = scheduleDay?.atheleticsInfo {
                             Text(atheleticsInfo)
-                                .vibrancyEffect()
-                                .vibrancyEffectStyle(.label)
-                                .colorScheme(.dark)
-                                .overlay(
-                                    GeometryReader {geo -> Color in
-                                        DispatchQueue.main.async {
-                                            bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
-                                        }
-                                        return Color.clear
-                                    }
-                                )
+                                .if(showBackgroundImage, transform: {
+                                    $0
+                                        .vibrancyEffect()
+                                        .vibrancyEffectStyle(.label)
+                                        .colorScheme(.dark)
+                                        .overlay(
+                                            GeometryReader {geo -> Color in
+                                                DispatchQueue.main.async {
+                                                    bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+                                                }
+                                                return Color.clear
+                                            }
+                                        )
+                                }, elseThen: {
+                                    $0
+                                        .foregroundColor(.platformSecondaryLabel)
+                                })
                         }
 
                     }
@@ -152,42 +190,21 @@ struct ScheduleDetailView: View {
         }
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(false)
+        .if(showBackgroundImage) {
+            $0
+                .navigationBarHidden(false)
+        }
         .background (
-            GeometryReader {geo in
-                ZStack {
-                    Image("SM-Field-HiRes")
-                        .resizable()
-                        .scaledToFill()
-                        .scaleEffect(1.4, anchor: .bottom)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
-                        .blur(radius: 3, opaque: true)
-
-                        .saturation(0.6)
-
-                    Image("SM-Field-HiRes")
-                        .resizable()
-                        .scaledToFill()
-                        .scaleEffect(1.4, anchor: .bottom)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
-                        .saturation(0.6)
-                        .blur(radius: 60, opaque: true)
-                        .mask (
-                            LinearGradient(stops: [.init(color: .clear, location: 0),
-                                                   .init(color: .clear, location: gradientTopLocation),
-                                                   .init(color: .black, location: gradientBottomLocation),
-                                                  .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
-                        )
-
-
-
+            ZStack {
+                // 3 cases of background:
+                // 1. Used in TodayView, no background (white)
+                // 2. Used in normal schedule, animated dynamic blur background
+                // 3. Used in fallback text-only, static blur background
+                if showBackgroundImage {
+                    AnimatedBlurBackground(bottomTextScreenRatio: $bottomTextScreenRatio,
+                                           dynamicBlurred: !shouldFallback)
                 }
-
             }
-            .drawingGroup()
-            .edgesIgnoringSafeArea(.all)
         )
 
         .onAppear {
@@ -218,8 +235,17 @@ struct ScheduleDetailView: View {
             .font(.footnote)
             .fontWeight(.bold)
             .padding(.bottom, 2)
-            .shadow(color: Color.black.opacity(0.85), radius: 1, x: 0, y: 0.8)
-            .foregroundColor(Color.white)
+            .if(showBackgroundImage, transform: {
+                $0
+                    .vibrancyEffect()
+                    .vibrancyEffectStyle(.label)
+                    .colorScheme(.dark)
+                    .shadow(color: Color.black.opacity(0.85), radius: 1, x: 0, y: 0.8)
+            }, elseThen: {
+                $0
+                    .foregroundColor(.platformSecondaryLabel)
+
+            })
             .textAlign(.leading)
             .lineLimit(1)
             .minimumScaleFactor(0.5)
@@ -227,14 +253,20 @@ struct ScheduleDetailView: View {
 }
 
 struct ScheduleDetailView_Previews: PreviewProvider {
-    static var settings: UserSettings = {
+    static func configureSettings(legacySchedule: Bool = false) -> UserSettings {
         let settings = UserSettings()
+        settings.preferLegacySchedule = legacySchedule
         settings.editableSettings = [.init(periodNumber: 6, textContent: "AP Calculus BC")]
         return settings
-    }()
+    }
 
     static var previews: some View {
-        ScheduleDetailView(scheduleDay: .sampleScheduleDay)
-            .environmentObject(settings)
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
+            .environmentObject(configureSettings())
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay,
+                           showBackgroundImage: false)
+        .environmentObject(configureSettings(legacySchedule: true))
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: false)
+            .environmentObject(configureSettings())
     }
 }
