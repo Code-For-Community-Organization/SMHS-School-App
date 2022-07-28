@@ -162,24 +162,27 @@ struct ScheduleDetailView: View {
                                     PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
                         }
                         if let atheleticsInfo = scheduleDay?.atheleticsInfo {
-                            Text(atheleticsInfo)
-                                .if(showBackgroundImage, transform: {
-                                    $0
-                                        .vibrancyEffect()
-                                        .vibrancyEffectStyle(.label)
-                                        .colorScheme(.dark)
-                                        .overlay(
-                                            GeometryReader {geo -> Color in
-                                                DispatchQueue.main.async {
-                                                    bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+                            VStack(alignment: .leading) {
+                                Text(atheleticsInfo)
+                                    .if(showBackgroundImage, transform: {
+                                        $0
+                                            .vibrancyEffect()
+                                            .vibrancyEffectStyle(.label)
+                                            .colorScheme(.dark)
+                                            .overlay(
+                                                GeometryReader {geo -> Color in
+                                                    DispatchQueue.main.async {
+                                                        bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+                                                    }
+                                                    return Color.clear
                                                 }
-                                                return Color.clear
-                                            }
-                                        )
-                                }, elseThen: {
-                                    $0
-                                        .foregroundColor(.platformSecondaryLabel)
-                                })
+                                            )
+                                    }, elseThen: {
+                                        $0
+                                            .foregroundColor(.platformSecondaryLabel)
+                                    })
+                            }
+
                         }
 
                     }
