@@ -22,13 +22,13 @@ struct ScheduleDetailView: View {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
     }
-
+    
     @EnvironmentObject var userSettings: UserSettings
     @State var bottomTextScreenRatio: Double = 0
     @State var enableVisualEffects = true
-
     
-
+    
+    
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
@@ -63,11 +63,11 @@ struct ScheduleDetailView: View {
         }
         return []
     }
-
+    
     var period8: ClassPeriod? {
         scheduleDay?.periods.filter {$0.periodNumber == 8}.first
     }
-
+    
     var scheduleDateDescription: String {
         let date = scheduleDay?.date ?? Date()
         let format = DateFormatter()
@@ -75,18 +75,18 @@ struct ScheduleDetailView: View {
         let formattedDate = format.string(from: date)
         return formattedDate
     }
-
+    
     var shouldFallback: Bool {
         return userSettings.preferLegacySchedule ||
         developerScheduleOn ||
         scheduleDay?.periods.isEmpty ?? true
     }
-
+    
     var horizontalPadding = true
     var showBackgroundImage = true
-
+    
     @State private var developerScheduleOn = false
-
+    
     var body: some View {
         ScrollView {
             if shouldFallback {
@@ -101,7 +101,7 @@ struct ScheduleDetailView: View {
                         ForEach(preLunchPeriods, id: \.self){period in
                             PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
                         }
-
+                        
                         if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
                         let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
                             let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
@@ -132,12 +132,12 @@ struct ScheduleDetailView: View {
                                     }
                                 }
                             }
-
+                        
                         ForEach(postLunchPeriods, id: \.self){period in
                             PeriodBlockItem(block: period,
                                             isBlurred: showBackgroundImage)
                         }
-
+                        
                         if let period8 = period8,
                            userSettings.isPeriod8On {
                             Divider()
@@ -152,13 +152,13 @@ struct ScheduleDetailView: View {
                                         .vibrancyEffect()
                                         .vibrancyEffectStyle(.label)
                                         .colorScheme(.dark)
-
+                                    
                                 }, elseThen: {
                                     $0
                                         .foregroundColor(.platformSecondaryLabel)
                                 })
                                     .padding(.bottom, 1)
-
+                                    
                                     PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
                         }
                         if let atheleticsInfo = scheduleDay?.atheleticsInfo {
@@ -182,12 +182,12 @@ struct ScheduleDetailView: View {
                                             .foregroundColor(.platformSecondaryLabel)
                                     })
                             }
-
+                            
                         }
-
+                        
                     }
                     .padding(.horizontal, horizontalPadding ? 16 : 0)
-
+                    
                 }
             }
         }
@@ -209,13 +209,13 @@ struct ScheduleDetailView: View {
                 }
             }
         )
-
+        
         .onAppear {
             Analytics.logEvent("tapped_date_item",
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
                                             "time_stamp": Date().debugDescription,
                                             "time_of_day": formatTime(Date())])
-
+            
         }
         
         .onDeveloperTap(userSettings) {
@@ -223,16 +223,16 @@ struct ScheduleDetailView: View {
                 developerScheduleOn.toggle()
             }
         }
-
-
+        
+        
     }
-
+    
     func formatTime(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date)
     }
-
+    
     func makeLunchTitle(content: String) -> some View {
         Text(content)
             .font(.footnote)
@@ -247,11 +247,11 @@ struct ScheduleDetailView: View {
             }, elseThen: {
                 $0
                     .foregroundColor(.platformSecondaryLabel)
-
+                
             })
-            .textAlign(.leading)
-            .lineLimit(1)
-            .minimumScaleFactor(0.5)
+                .textAlign(.leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
     }
 }
 
@@ -262,7 +262,7 @@ struct ScheduleDetailView_Previews: PreviewProvider {
         settings.editableSettings = [.init(periodNumber: 6, textContent: "AP Calculus BC")]
         return settings
     }
-
+    
     static var previews: some View {
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
             .environmentObject(configureSettings())
