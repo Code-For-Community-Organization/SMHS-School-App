@@ -57,16 +57,9 @@ struct TodayHeroView: View {
                             .textAlign(.leading)
                             .padding(.bottom, 10)
                         ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                           horizontalPadding: false)
+                                           horizontalPadding: false,
+                                           showBackgroundImage: false)
                     }
-                    Text("Detailed Schedule")
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .textAlign(.leading)
-                        .padding(.bottom, 10)
-                    ScheduleDetailView(scheduleDay: .sampleScheduleDay,
-                                       horizontalPadding: false,
-                                       showBackgroundImage: false)
                     
                     AnnoucementBanner(viewModel: todayViewViewModel)
 
