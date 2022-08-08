@@ -20,6 +20,8 @@ class TodayViewViewModel: ObservableObject {
     @Published var selectionMode: PeriodCategory = .firstLunch
     @Published(key: "announcements") var announcements: [Date: AnnoucementResponse] = [:]
     @Published var lastUpdateTime: Date?
+    
+    @Published var showToolbar: Bool = true
 
     var mockDate: Date?
     
@@ -99,7 +101,6 @@ class TodayViewViewModel: ObservableObject {
             })
             .store(in: &anyCancellable)
     }
-
 }
 
 extension TodayViewViewModel {

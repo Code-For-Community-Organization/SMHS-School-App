@@ -13,82 +13,118 @@ struct TodayHeroView: View {
     @StateObject var todayViewViewModel: TodayViewViewModel
     @EnvironmentObject var userSettings: UserSettings
     @Environment(\.openURL) var openURL
-
+    
+    @State var selected: Int?
+    @State var banners: [Banner] = []
+    @Namespace var animate
+    
     var shouldShowTeams: Bool {
         // Get cloud config value for whether should show
         // Only show if user did not already
         // join teams from onboarding prompt
         return Constants.shouldShowJoinTeamsBanner && !userSettings.didJoinTeams
     }
-
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                if let url = Constants.joinTeamsURL,
-                   shouldShowTeams {
-                    TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
+        ZStack {
+            ScrollView {
+                VStack {
+                    if let url = Constants.joinTeamsURL,
+                       shouldShowTeams {
+                        TeamsJoinBanner(showBanner: $todayViewViewModel.showTeamsBanner, action: {
                             openURL(url)
-
                         })
                         .onAppear {
                             todayViewViewModel.showTeamsBanner = true
                         }
                         .padding(.bottom, 5)
-                }
-
-                VStack {
-                    Picker("", selection: $todayViewViewModel.selectionMode){
-                        Text("1st Lunch")
-                            .tag(PeriodCategory.firstLunch)
-                        Text("2nd Lunch")
-                            .tag(PeriodCategory.secondLunch)
-
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.top, -10)
-
-                    ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                     selectionMode: $todayViewViewModel.selectionMode)
-
-                    if scheduleViewViewModel.currentDaySchedule != nil {
-                        Text("Detailed Schedule")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .textAlign(.leading)
-                            .padding(.bottom, 10)
-                        ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                           horizontalPadding: false,
-                                           showBackgroundImage: false)
                     }
                     
-                    AnnoucementBanner(viewModel: todayViewViewModel)
-
+                    VStack {
+                        Picker("", selection: $todayViewViewModel.selectionMode) {
+                            Text("1st Lunch")
+                                .tag(PeriodCategory.firstLunch)
+                            Text("2nd Lunch")
+                                .tag(PeriodCategory.secondLunch)
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.top, -10)
+                        
+                        ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                         selectionMode: $todayViewViewModel.selectionMode)
+                        
+                        if scheduleViewViewModel.currentDaySchedule != nil {
+                            Text("Detailed Schedule")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                                .textAlign(.leading)
+                                .padding(.bottom, 10)
+                            ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
+                                               horizontalPadding: false,
+                                               showBackgroundImage: false)
+                        }
+                        
+                        Text("For you")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        BannersView(banners: $banners, selected: $selected, animate: animate)
+                        
+                        AnnoucementBanner(viewModel: todayViewViewModel)
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
+                
             }
-            .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
-
+            .background(Color.platformBackground)
+            .onboardingModal()
+            .onChange(of: selected, perform: { val in
+                if val != nil {
+                    withAnimation {
+                        todayViewViewModel.showToolbar = false
+                    }
+                }
+                else {
+                    withAnimation {
+                        todayViewViewModel.showToolbar = true
+                    }
+                }
+            })
+            .aboutFooter()
+            .sheet(isPresented: $todayViewViewModel.showAnnoucement,
+                   content: {
+                VStack {
+                    if let html = todayViewViewModel.todayAnnoucementHTML {
+                        WKWebViewRepresentable(HTMLString: html)
+                    }
+                    
+                }
+                .animation(.easeInOut, value: todayViewViewModel.loadingAnnoucements)
+            })
+            .opacity(selected != nil ? 0 : 1)
+            
+            if let selected = selected {
+                BannerDetailView(banner: banners[selected], i: selected, selected: $selected, animate: animate)
+                // sync animate
+            }
         }
-        .background(Color.platformBackground)
-        .onboardingModal()
-        .onAppear{
+        .onAppear {
             todayViewViewModel.updateAnnoucements()
             scheduleViewViewModel.objectWillChange.send()
             if !userSettings.developerSettings.shouldCacheData {
                 scheduleViewViewModel.reset()
             }
-        }
-        .aboutFooter()
-        .sheet(isPresented: $todayViewViewModel.showAnnoucement,
-               content: {
-            VStack {
-                if let html = todayViewViewModel.todayAnnoucementHTML {
-                    WKWebViewRepresentable(HTMLString: html)
+            
+            Task {
+                do {
+                    self.banners = try await Banner.fetch()
                 }
-
+                catch {
+                    print("Error fetching banners: \(error)")
+                    self.banners = []
+                }
             }
-            .animation(.easeInOut, value: todayViewViewModel.loadingAnnoucements)
-        })
+        }
     }
 }
 
