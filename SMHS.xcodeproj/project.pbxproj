@@ -38,6 +38,7 @@
 		621F5CA3266AAB0F006EBE8F /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA2266AAB0F006EBE8F /* CalendarEvent.swift */; };
 		621F5CA5266AAB35006EBE8F /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA4266AAB35006EBE8F /* CalendarManager.swift */; };
 		621F5CA7266ACF05006EBE8F /* SelectedDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F5CA6266ACF05006EBE8F /* SelectedDateView.swift */; };
+		6225B4D128A1C166008999D3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6225B4D028A1C166008999D3 /* FirebaseDatabase */; };
 		622C8D7C288CFB98001A94D3 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C8D7B288CFB98001A94D3 /* Comparable.swift */; };
 		622C8D7D288CFB98001A94D3 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C8D7B288CFB98001A94D3 /* Comparable.swift */; };
 		622CC3902851613D003F33D6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62D1E512263DF778004DBFAD /* WidgetKit.framework */; };
@@ -509,6 +510,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6225B4D128A1C166008999D3 /* FirebaseDatabase in Frameworks */,
 				623D596B27024D43001D05F7 /* Kingfisher in Frameworks */,
 				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
 				6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */,
@@ -1314,6 +1316,7 @@
 				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
 				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
 				62CCF9D4288F1C0400FA85C7 /* SwiftUIX */,
+				6225B4D028A1C166008999D3 /* FirebaseDatabase */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -2444,6 +2447,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 621F5C8E266A9479006EBE8F /* XCRemoteSwiftPackageReference "ElegantCalendar" */;
 			productName = ElegantCalendar;
+		};
+		6225B4D028A1C166008999D3 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 		62382B5826E69FCC00BF8918 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
