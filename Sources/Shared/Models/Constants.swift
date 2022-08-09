@@ -193,6 +193,11 @@ extension Constants {
                                                   options: [.caseInsensitive])
         static let lunchPattern = try! _Regex(pattern: #"^.*(lunch|nutrition).*$"#, options: [.caseInsensitive])
         static let distribution = "distribution"
+        static var periodMappings: [String: String] {
+            let data = remoteConfig.configValue(forKey: "period_name_mapping").dataValue
+            let map = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+            return map ?? ["Academic Per":"Academic Period", "MTG":"Faculty Meeting"]
+        }
     }
 
     static let gradesEmailErrorMsg = "Invalid email address, please use your SMHS email."

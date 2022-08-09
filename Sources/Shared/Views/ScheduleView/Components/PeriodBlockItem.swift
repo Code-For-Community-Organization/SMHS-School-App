@@ -4,6 +4,8 @@
 //
 //  Created by Jevon Mao on 5/20/21.
 //
+//#error("TODO: Fix text too small on lunch revolving classes")
+//#error("TODO: Status bar visibility")
 
 import SwiftUI
 
@@ -14,12 +16,12 @@ struct PeriodBlockItem: View {
     var twoLine: Bool = false
     var isBlurred = true
     var displayedTitle: String {
-        if let title = scheduleTitle {
-            return title
-        }
-        else {
-            return getTitle(block)
-        }
+        let title = scheduleTitle ?? getTitle(block)
+        // Map from API fetched period names to better, readable names
+        // Configurable from Firebase remotely to adapt for changes
+        let periods = Constants.Schedule.periodMappings
+        return periods[title] ?? title
+
     }
 
     var className: String? {

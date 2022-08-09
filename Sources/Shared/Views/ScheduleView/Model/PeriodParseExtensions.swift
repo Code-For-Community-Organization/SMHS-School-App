@@ -83,12 +83,13 @@ extension ScheduleDay {
                                 isAcademicPeriod: Bool = false) -> ClassPeriod {
         let startTime = DateFormatter.formatTime12to24(startTime) ?? currentDate
         let endTime = DateFormatter.formatTime12to24(endTime) ?? currentDate
+        let periodTitle = line.trimmingCharacters(in: .whitespaces)
+
         if isAcademicPeriod {
-            return ClassPeriod(nutritionBlock: .officeHour, startTime: startTime, endTime: endTime)
+            return ClassPeriod(periodTitle, startTime: startTime, endTime: endTime)
         }
         
         guard let period: Character = c.periodPattern.findFirst(in: String(line))?.matched.last else {
-            let periodTitle = line.trimmingCharacters(in: .whitespaces)
             return ClassPeriod(periodTitle,
                                startTime: startTime,
                                endTime: endTime)
