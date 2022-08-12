@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BannersView: View {
     @Binding var banners: [Banner]
-    @Binding var selected: Int?
+    @Binding var selected: Banner?
     
     let animate: Namespace.ID
     
@@ -18,8 +18,7 @@ struct BannersView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 5) {
                     ForEach(banners) { banner in
-                        let index = banners.firstIndex(where: {$0.id == banner.id})!
-                        BannerView(banner: banner, i: index, selected: $selected, animate: animate)
+                        BannerView(banner: banner, selected: $selected, animate: animate)
                     }
                 }
                 .padding(5)

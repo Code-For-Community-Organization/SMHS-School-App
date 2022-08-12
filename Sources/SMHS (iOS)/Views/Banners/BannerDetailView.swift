@@ -10,8 +10,7 @@ import SwiftUIVisualEffects
 
 struct BannerDetailView: View {
     let banner: Banner
-    let i: Int
-    @Binding var selected: Int?
+    @Binding var selected: Banner?
     var animate: Namespace.ID
     
     @State var name: String = ""
@@ -24,28 +23,27 @@ struct BannerDetailView: View {
         ZStack(alignment: .topTrailing) {
             ScrollView(showsIndicators: false) {
                 VStack {
+                    
                     ZStack(alignment: .topLeading) {
                         BannerImage(url: banner.image)
                             .aspectRatio(1, contentMode: .fit)
                             .ignoresSafeArea()
-                            .matchedGeometryEffect(id: "image\(i)", in: animate)
                             .transition(.identity)
                         VStack(alignment: .leading, spacing: 5) {
                             Text(banner.headline)
                                 .bannerHeadline()
-                                .matchedGeometryEffect(id: "headline\(i)", in: animate)
                             Text(banner.title)
                                 .bannerTitle()
-                                .matchedGeometryEffect(id: "title\(i)", in: animate)
                             Spacer()
                             Text(banner.footnote)
                                 .bannerFootnote()
-                                .matchedGeometryEffect(id: "footnote\(i)", in: animate)
                         }
                         .padding(15)
-                        .padding(.top, 20)
+                        .padding(.top, 45) // 20
                     }
-                    .padding(.top, -48)
+                    .ignoresSafeArea()
+                    .matchedGeometryEffect(id: banner.id, in: animate)
+                    
                     VStack(alignment: .leading, spacing: 20) {
                         ForEach(banner.paragraphs, id: \.self) { paragraph in
                             Text(paragraph)

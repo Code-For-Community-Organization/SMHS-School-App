@@ -14,7 +14,7 @@ struct TodayHeroView: View {
     @EnvironmentObject var userSettings: UserSettings
     @Environment(\.openURL) var openURL
     
-    @State var selected: Int?
+    @State var selected: Banner?
     @State var banners: [Banner] = []
     @Namespace var animate
     
@@ -78,6 +78,7 @@ struct TodayHeroView: View {
             }
             .background(Color.platformBackground)
             .onboardingModal()
+            .aboutFooter()
             .onChange(of: selected, perform: { val in
                 if val != nil {
                     withAnimation {
@@ -90,7 +91,6 @@ struct TodayHeroView: View {
                     }
                 }
             })
-            .aboutFooter()
             .sheet(isPresented: $todayViewViewModel.showAnnoucement,
                    content: {
                 VStack {
@@ -104,7 +104,7 @@ struct TodayHeroView: View {
             .opacity(selected != nil ? 0 : 1)
             
             if let selected = selected {
-                BannerDetailView(banner: banners[selected], i: selected, selected: $selected, animate: animate)
+                BannerDetailView(banner: selected, selected: $selected, animate: animate)
                 // sync animate
             }
         }

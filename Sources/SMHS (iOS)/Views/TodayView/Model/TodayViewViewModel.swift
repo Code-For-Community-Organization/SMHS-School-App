@@ -21,7 +21,7 @@ class TodayViewViewModel: ObservableObject {
     @Published(key: "announcements") var announcements: [Date: AnnoucementResponse] = [:]
     @Published var lastUpdateTime: Date?
     
-    @Published var showToolbar: Bool = true
+    @Published var showToolbar = true
 
     var mockDate: Date?
     

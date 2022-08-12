@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import FirebaseDatabase
 
-struct Banner: Identifiable, Codable {
+struct Banner: Identifiable, Codable, Equatable {
     let headline: String
     let title: String
     let footnote: String
