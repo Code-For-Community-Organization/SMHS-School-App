@@ -148,8 +148,6 @@
 		629BE8BD2636444400BC49AD /* ScheduleWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BC2636444400BC49AD /* ScheduleWeek.swift */; };
 		629BE8BF2636489600BC49AD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BE8BE2636489600BC49AD /* Array.swift */; };
 		629EC8352645D50900E236DC /* TodayViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629EC8342645D50900E236DC /* TodayViewViewModel.swift */; };
-		62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
-		62A11A7C26E6A106007F7241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */; };
 		62A11A7F26E6CBDE007F7241 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A7E26E6CBDE007F7241 /* Constants.swift */; };
 		62A11A8926EE9F4A007F7241 /* TeamsJoinBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8826EE9F4A007F7241 /* TeamsJoinBanner.swift */; };
 		62A11A8E26F99FA4007F7241 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A11A8D26F99FA4007F7241 /* OnboardingFeature.swift */; };
@@ -264,6 +262,8 @@
 		F203BBFD28A1AF960002DAD9 /* BannerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBF828A1AF960002DAD9 /* BannerExtensions.swift */; };
 		F203BBFE28A1AF960002DAD9 /* BannersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBF928A1AF960002DAD9 /* BannersView.swift */; };
 		F203BBFF28A1AF960002DAD9 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBFA28A1AF960002DAD9 /* Banner.swift */; };
+		F2297A4A28A56D690032EF99 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F2297A4928A56D690032EF99 /* FirebaseDatabase */; };
+		F2297A4C28A56EC90032EF99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,7 +330,6 @@
 		62328C9526476E42000F26ED /* ProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingView.swift; sourceTree = "<group>"; };
 		62353A512638894500207C15 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		62382B5426E6994D00BF8918 /* AnnoucementBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementBanner.swift; sourceTree = "<group>"; };
-		62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		623A7F17264EEBF700FF3F28 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		623A7F1A264EED2700FF3F28 /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		623A7F22264F595400FF3F28 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -475,6 +474,7 @@
 		F203BBF828A1AF960002DAD9 /* BannerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerExtensions.swift; sourceTree = "<group>"; };
 		F203BBF928A1AF960002DAD9 /* BannersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannersView.swift; sourceTree = "<group>"; };
 		F203BBFA28A1AF960002DAD9 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -807,7 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */,
-				62382B5A26E69FE600BF8918 /* GoogleService-Info.plist */,
+				F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
@@ -1453,7 +1453,6 @@
 				62D1E55C263F17E9004DBFAD /* Settings.bundle in Resources */,
 				626183AB2637168E001C4AD4 /* Assets.xcassets in Resources */,
 				6263E83126BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
-				62A11A7C26E6A106007F7241 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,9 +1463,9 @@
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				6260B0FD2832D85F007DBD3E /* JsonResponses in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
-				62A11A7B26E6A105007F7241 /* GoogleService-Info.plist in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
+				F2297A4C28A56EC90032EF99 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2537,6 +2536,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
 			productName = SwiftUIVisualEffects;
+		};
+		F2297A4928A56D690032EF99 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
