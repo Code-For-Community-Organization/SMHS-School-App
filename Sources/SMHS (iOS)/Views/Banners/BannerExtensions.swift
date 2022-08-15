@@ -23,7 +23,9 @@ struct BannerImage: View {
                 #endif
                 }
             .resizable()
-            .aspectRatio(1, contentMode: .fit)
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 320, height: 320)
+            .clipped()
             .shadow(x: 0, y: -10, blur: 15)
     }
 }
