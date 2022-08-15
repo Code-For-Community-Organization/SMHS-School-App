@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import FirebaseDatabase
+import Alamofire
 
 struct Banner: Identifiable, Codable, Equatable {
     let headline: String
@@ -40,58 +41,44 @@ struct Banner: Identifiable, Codable, Equatable {
         return banners
     }
     
-    func submit(name: String? = nil, phoneNumber: String? = nil, email: String? = nil, school: String? = nil, grade: String? = nil) async throws {
-        print("Submitted form data.")
-        let url = URL(string: "http://127.0.0.1:5000/submit")! // TODO
+    func submit(name: String, phoneNumber: String, email: String, school: String, grade: String) async throws {
+        let endpoint = Endpoint.submit(name: name, phoneNumber: phoneNumber, email: email, school: school, grade: grade, sendEmail: self.email)
         
-        var request = URLRequest(url: url)
-        
-        let body = try JSONSerialization.data(withJSONObject: [
-            "name": name,
-            "phone_number": phoneNumber,
-            "email": email,
-            "school": school,
-            "grade": grade,
-            "send_email": self.email,
-        ])
-        
-        
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body
-        
-        #if DEBUG
-        let db = Database.database().reference()
-        
-        let ref = db.child("0/submissions").childByAutoId()
-        
-        try await ref.setValue([
-            "name": name,
-            "phone_number": phoneNumber,
-            "email": email,
-            "school": school,
-            "grade": grade
-        ])
-        #endif
-        
-        URLSession.shared.dataTask(with: request) { data, res, error in
-            let ok = (200...300).contains((res as? HTTPURLResponse)?.statusCode ?? 0)
-            
-            if ok {
-                print("Successfully sent email.")
+        AF.request(endpoint.request)
+            .response(completionHandler: { result in
+                let res = result.response
                 
-                let db = Database.database().reference()
+                let ok = (200...300).contains(res?.statusCode ?? 0)
                 
-                let ref = db.child("0-submissions").childByAutoId()
-                
-                ref.setValue([
-                    "name": name,
-                    "phone_number": phoneNumber,
-                    "email": email,
-                    "school": school,
-                    "grade": grade
-                ])
-            }
+                if ok {
+                    print("Successfully sent email.")
+                    
+                    Task {
+                        let db = Database.database().reference()
+                        guard let data = try? await db.getData() else { return }
+                        
+                        let index = Array(data.children).firstIndex { child in
+                            let snapshot = child as! DataSnapshot
+                            
+                            let dict = snapshot.value as! [String: Any]
+                            
+                            return dict["title"] as? String == title
+                        }
+                        
+                        guard let index = index else { return }
+                        
+                        let ref = db.child("\(index)/submissions").childByAutoId()
+                        
+                        try await ref.setValue([
+                            "name": name,
+                            "phone_number": phoneNumber,
+                            "email": email,
+                            "school": school,
+                            "grade": grade
+                        ])
+                    }
+                }
+            })
+            .resume()
         }
-    }
 }

@@ -16,7 +16,6 @@ struct BannerView: View {
         ZStack(alignment: .topLeading) {
             BannerImage(url: banner.image)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                .transition(.identity)
             VStack(alignment: .leading, spacing: 5) {
                 Text(banner.headline)
                     .bannerHeadline()
@@ -26,11 +25,9 @@ struct BannerView: View {
                 Text(banner.footnote)
                     .bannerFootnote()
             }
-            .matchedGeometryEffect(id: banner.id, in: animate)
             .padding(10)
         }
-        .aspectRatio(1, contentMode: .fill)
-        .ignoresSafeArea()
+        .aspectRatio(1, contentMode: .fit)
         .cornerRadius(selected != nil ? 0 : 10)
         .padding(.horizontal, selected != nil ? 0 : 15)
         .onTapGesture {

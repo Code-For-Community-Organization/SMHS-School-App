@@ -23,12 +23,9 @@ struct BannerDetailView: View {
         ZStack(alignment: .topTrailing) {
             ScrollView(showsIndicators: false) {
                 VStack {
-                    
                     ZStack(alignment: .topLeading) {
                         BannerImage(url: banner.image)
-                            .aspectRatio(1, contentMode: .fit)
                             .ignoresSafeArea()
-                            .transition(.identity)
                         VStack(alignment: .leading, spacing: 5) {
                             Text(banner.headline)
                                 .bannerHeadline()
@@ -42,7 +39,7 @@ struct BannerDetailView: View {
                         .padding(.top, 45) // 20
                     }
                     .ignoresSafeArea()
-                    .matchedGeometryEffect(id: banner.id, in: animate)
+                    .matchedGeometryEffect(id: banner.id, in: animate, isSource: selected?.id == banner.id)
                     
                     VStack(alignment: .leading, spacing: 20) {
                         ForEach(banner.paragraphs, id: \.self) { paragraph in
@@ -114,6 +111,7 @@ struct BannerDetailView: View {
                     .padding()
                 }
             }
+            .ignoresSafeArea()
             Button(action: {
                 withAnimation(.spring()) {
                     selected = nil

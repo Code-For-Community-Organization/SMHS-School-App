@@ -157,6 +157,7 @@ extension Constants {
         static let host = "api.smhs.app"
         static let main = "/api/v1"
         static let annoucements = "/announcements"
+        static let submit = "/submit"
     }
 
     struct AeriesApiPath {
