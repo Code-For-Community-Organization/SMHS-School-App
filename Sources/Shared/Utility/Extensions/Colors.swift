@@ -266,4 +266,16 @@ extension Color {
         Color(hexadecimal: Constants.Color.fetchedSecondary
               ?? Constants.Color.secondaryHex)
     }
+
+    func makeColor(componentDelta: Double) -> Color {
+        if let components = self.cgColor?.components {
+            return Color(red: components[0] + componentDelta,
+                         green: components[1] + componentDelta,
+                         blue: components[2] + componentDelta)
+        }
+        else {
+            return self
+        }
+
+    }
 }

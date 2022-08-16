@@ -27,7 +27,7 @@ struct Banner: Identifiable, Codable, Equatable {
     
     let email: String
     
-    var id: String { title }
+    let id = UUID()
     
     static func fetch() async throws -> [Banner] {
         let db = Database.database().reference()

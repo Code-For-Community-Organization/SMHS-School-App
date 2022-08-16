@@ -8,9 +8,27 @@
 import SwiftUI
 import Kingfisher
 
+//struct WebpProcessor: ImageProcessor {
+//
+//    // `identifier` should be the same for processors with the same properties/functionality
+//    // It will be used when storing and retrieving the image to/from cache.
+//    let identifier = "com.yourdomain.webpprocessor"
+//
+//    // Convert input data/image to target image and return it.
+//    func process(item: ImageProcessItem, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
+//        switch item {
+//        case .image(let image):
+//            return image
+//        case .data(_):
+//            return nil
+//        }
+//    }
+//}
+
 struct BannerImage: View {
     let url: URL
-    
+    @Binding var selected: Banner?
+
     var body: some View {
         KFImage(url)
             .placeholder {
@@ -26,27 +44,49 @@ struct BannerImage: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: 320, height: 320)
             .clipped()
-            .shadow(x: 0, y: -10, blur: 15)
+            .overlay(
+                KFImage(url)
+                    .setProcessor(BlurImageProcessor(blurRadius: 65))
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 320, height: 320)
+                    .clipped()
+                    .mask {
+                        LinearGradient(stops: [.init(color: .black, location: 0), .init(color: .black, location: 0.1),
+                                               .init(color: .clear, location: 0.4), .init(color: .clear, location: 0.8), .init(color: .black, location: 0.95), .init(color: .black, location: 1)], startPoint: .bottom, endPoint: .top)
+                    }
+                    .opacity(selected == nil ? 1 : 0)
+
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .shadow(color: Color.appPrimary
+                                .makeColor(componentDelta: -0.5)
+                                .opacity(0.3),
+                    radius: 15, x: 5, y: 5)
     }
 }
 
 extension Text {
-    func bannerTitle() -> Text {
+    func bannerTitle() -> some View {
         self
-            .font(.title2)
-            .fontWeight(.bold)
+            .font(.title)
+            .fontWeight(.heavy)
             .foregroundColor(.white)
+            .multilineTextAlignment(.leading)
     }
-    func bannerHeadline() -> Text {
+    func bannerHeadline() -> some View {
         self
             .font(.body)
-            .foregroundColor(.gray)
             .fontWeight(.semibold)
+            .textCase(.uppercase)
+            .foregroundColor(.white)
+            .multilineTextAlignment(.leading)
+            .opacity(0.6)
     }
     
-    func bannerFootnote() -> Text {
+    func bannerFootnote() -> some View {
         self
             .foregroundColor(.white)
+            .multilineTextAlignment(.leading)
     }
 }
 
@@ -62,5 +102,12 @@ extension KFImage {
                         }
                 }
             }
+    }
+}
+
+struct BannerImage_Previews: PreviewProvider {
+    static var previews: some View {
+        let image = URL(string: "https://cdn-ejfid.nitrocdn.com/HahWXuLfKZbQhJjlzjiUHtqlxVqcJYyP/assets/static/optimized/rev-6105aeb/wp-content/uploads/2020/12/topic-faculty-active-engaged-students-1.png")!
+        BannerImage(url: image, selected: .constant(nil))
     }
 }

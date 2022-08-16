@@ -67,9 +67,12 @@ struct TodayHeroView: View {
                         }
                         .padding(.horizontal)
                         
-                        Text("For you")
+                        Text("For You")
                             .font(.title2)
                             .fontWeight(.semibold)
+                            .textAlign(.leading)
+                            .padding(.horizontal)
+
                         BannersView(banners: $banners, selected: $selected, animate: animate)
                         
                         AnnoucementBanner(viewModel: todayViewViewModel)

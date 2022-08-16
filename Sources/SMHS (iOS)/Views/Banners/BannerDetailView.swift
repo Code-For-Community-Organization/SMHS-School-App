@@ -24,7 +24,7 @@ struct BannerDetailView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     ZStack(alignment: .topLeading) {
-                        BannerImage(url: banner.image)
+                        BannerImage(url: banner.image, selected: $selected)
                             .ignoresSafeArea()
                         VStack(alignment: .leading, spacing: 5) {
                             Text(banner.headline)
