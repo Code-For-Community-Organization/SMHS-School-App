@@ -16,61 +16,59 @@ struct NewsDetailedView: View {
     var body: some View {
         GeometryReader {geo in
                 ScrollView {
-                VStack {
-                    if UIScreen.idiom == .pad {
-                        KFImage(newsEntry.imageURL)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: geo.size.width)
-                            .frame(maxHeight: imageHeight)
-                            .clipped()
-                    }
-                    else {
-                        KFImage(newsEntry.imageURL)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: UIScreen.screenWidth)
-                            .frame(maxHeight: imageHeight)
-                            .clipped()
-                    }
-                    Group {
-                        Text(newsEntry.title)
-                            .font(.system(.title, design: .serif))
-                            .fontWeight(.black)
-                            .textAlign(.leading)
-                            .padding(.top, -1)
-                        Text("BY \(newsEntry.author)")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .textAlign(.leading)
-                            .textCase(.uppercase)
-                            .foregroundColor(.platformSecondaryLabel)
-                            .padding(.top, 1)
-                            .padding(.bottom, 20)
-                        
-                        if let text = newsEntry.bodyText {
-                            Text(text)
-                                .font(.system(.subheadline, design: .serif))
-                                .fontWeight(.light)
-                                .lineLimit(nil)
-
+                    VStack {
+                        if UIScreen.idiom == .pad {
+                            KFImage(newsEntry.imageURL)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geo.size.width)
+                                .frame(maxHeight: imageHeight)
+                                .clipped()
                         }
                         else {
-                            Text(NewsEntry.sampleEntry.bodyText!)
-                                .redacted(reason: .placeholder)
+                            KFImage(newsEntry.imageURL)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: UIScreen.screenWidth)
+                                .frame(maxHeight: imageHeight)
+                                .clipped()
+                                .ignoresSafeArea()
                         }
+                        Group {
+                            Text(newsEntry.title)
+                                .font(.system(.title, design: .serif))
+                                .fontWeight(.bold)
+                                .textAlign(.leading)
+                                .padding(.top, -1)
+                            Text("By: \(newsEntry.author)")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .textAlign(.leading)
+                                .foregroundColor(.platformSecondaryLabel)
+                                .padding(.top, 1)
+                                .padding(.bottom, 20)
+
+                            if let text = newsEntry.bodyText {
+                                Text(text)
+                                    .font(.system(.headline, design: .serif))
+                                    .fontWeight(.light)
+                                    .lineLimit(nil)
+
+                            }
+                            else {
+                                Text(NewsEntry.sampleEntry.bodyText!)
+                                    .redacted(reason: .placeholder)
+                            }
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
+                        .frame(maxWidth: 600)
+                        Spacer()
+
                     }
-                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
-                    .frame(maxWidth: 600)
-                    Spacer()
-                    
-                }
-                .padding(.top, 20)
-                
+
             }
-            
+                .edgesIgnoringSafeArea(.top)
         }
-        .edgesIgnoringSafeArea(.top)
         .onAppear {
             var entry = newsEntry
             newsEntry.loadBodyText{entry.bodyText = $0; newsEntry.bodyText = $0}
@@ -84,5 +82,14 @@ struct NewsDetailedView: View {
 struct NewsDetailedView_Previews: PreviewProvider {
     static var previews: some View {
         NewsDetailedView(newsEntry: .constant(.sampleEntry))
+            .environmentObject(NewsViewViewModel())
+
+        NavigationView {
+            NavigationLink("Detail") {
+                NewsDetailedView(newsEntry: .constant(.sampleEntry))
+                    .environmentObject(NewsViewViewModel())
+            }
+        }
+
     }
 }

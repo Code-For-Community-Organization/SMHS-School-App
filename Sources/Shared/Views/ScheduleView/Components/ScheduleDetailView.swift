@@ -217,7 +217,7 @@ struct ScheduleDetailView: View {
                                             "time_of_day": formatTime(Date())])
             
         }
-        
+      
         .onDeveloperTap(userSettings) {
             if userSettings.developerSettings.developerOn {
                 developerScheduleOn.toggle()
