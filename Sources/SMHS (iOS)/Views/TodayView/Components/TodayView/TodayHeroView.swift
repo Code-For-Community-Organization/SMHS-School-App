@@ -41,6 +41,7 @@ struct TodayHeroView: View {
                     }
                     
                     VStack {
+                        VStack {
                         Picker("", selection: $todayViewViewModel.selectionMode) {
                             Text("1st Lunch")
                                 .tag(PeriodCategory.firstLunch)
@@ -63,6 +64,8 @@ struct TodayHeroView: View {
                                                horizontalPadding: false,
                                                showBackgroundImage: false)
                         }
+                        }
+                        .padding(.horizontal)
                         
                         Text("For you")
                             .font(.title2)
@@ -70,8 +73,8 @@ struct TodayHeroView: View {
                         BannersView(banners: $banners, selected: $selected, animate: animate)
                         
                         AnnoucementBanner(viewModel: todayViewViewModel)
+                            .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
                 .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
                 

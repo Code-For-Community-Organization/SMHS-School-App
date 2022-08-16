@@ -14,17 +14,16 @@ struct BannersView: View {
     let animate: Namespace.ID
     
     var body: some View {
-        ZStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 5) {
                     ForEach(banners) { banner in
                         BannerView(banner: banner, selected: $selected, animate: animate)
+                            .matchedGeometryEffect(id: banner.id, in: animate, isSource: selected?.id != banner.id)
                     }
                 }
-                .padding(5)
+                .padding(.horizontal)
             }
             .frame(height: 320)
-        }
     }
 }
 
