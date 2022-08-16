@@ -10,6 +10,7 @@ import SFSafeSymbols
 import FirebaseAnalytics
 import SwiftUIX
 import SwiftUIVisualEffects
+import Introspect
 
 struct ScheduleDetailView: View {
     init(scheduleDay: ScheduleDay? = nil,
@@ -21,6 +22,10 @@ struct ScheduleDetailView: View {
         if showBackgroundImage {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().standardAppearance = appearance
     }
     
     @EnvironmentObject var userSettings: UserSettings
@@ -152,7 +157,7 @@ struct ScheduleDetailView: View {
                                         .vibrancyEffect()
                                         .vibrancyEffectStyle(.label)
                                         .colorScheme(.dark)
-                                    
+
                                 }, elseThen: {
                                     $0
                                         .foregroundColor(.platformSecondaryLabel)
@@ -193,10 +198,6 @@ struct ScheduleDetailView: View {
         }
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
-        .if(showBackgroundImage) {
-            $0
-                .navigationBarHidden(false)
-        }
         .background (
             ZStack {
                 // 3 cases of background:
@@ -209,7 +210,6 @@ struct ScheduleDetailView: View {
                 }
             }
         )
-        
         .onAppear {
             Analytics.logEvent("tapped_date_item",
                                parameters: ["date": scheduleDay?.date.debugDescription as Any,
@@ -264,8 +264,13 @@ struct ScheduleDetailView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
-            .environmentObject(configureSettings())
+        NavigationView {
+            NavigationLink("Detail") {
+                ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
+                    .environmentObject(configureSettings())
+            }
+        }
+
         ScheduleDetailView(scheduleDay: .sampleScheduleDay,
                            showBackgroundImage: false)
         .environmentObject(configureSettings(legacySchedule: true))

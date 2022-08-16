@@ -5,11 +5,11 @@
 //  Created by Jevon Mao on 5/20/21.
 //
 //#error("TODO: Fix text too small on lunch revolving classes")
-//#error("TODO: Status bar visibility")
 
 import SwiftUI
 
 struct PeriodBlockItem: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
     var block: ClassPeriod
     var scheduleTitle: String?
@@ -88,14 +88,14 @@ struct PeriodBlockItem: View {
         .if(isBlurred, transform: {
             $0
                 .vibrancyEffect()
-                .availableBackgroundBlur(isBlurred: isBlurred)
+                .availableBackgroundBlur(colorScheme: colorScheme, isBlurred: isBlurred)
         }, elseThen: {
             $0
                 .background(Color.appPrimary)
         })
 
-        .roundedCorners(cornerRadius: 10)
-        .padding(.vertical, 5)
+            .roundedCorners(cornerRadius: 10)
+            .padding(.vertical, 5)
     }
     
     var doubleLineView: some View {
@@ -126,7 +126,7 @@ struct PeriodBlockItem: View {
                         })
 
 
-                    Text(formatDate(block.startTime))
+                            Text(formatDate(block.startTime))
                 }
                 .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
                 HStack {
@@ -139,7 +139,7 @@ struct PeriodBlockItem: View {
                                 .opacity(0.5)
                         })
 
-                    Text(formatDate(block.endTime))
+                            Text(formatDate(block.endTime))
                 }
                 Spacer()
             }
@@ -170,7 +170,8 @@ struct PeriodBlockItem: View {
 fileprivate extension View {
 
     @ViewBuilder
-    func availableBackgroundBlur(isBlurred: Bool = true) -> some View {
+    func availableBackgroundBlur(colorScheme: ColorScheme,
+                                 isBlurred: Bool = true) -> some View {
         if isBlurred {
             if #available(iOS 15, *) {
                 self.background(.regularMaterial)
@@ -179,10 +180,18 @@ fileprivate extension View {
                 self
                     .background(
                         Color.clear
-                        .blurEffect()
-                        .blurEffectStyle(.regular)
+                            .blurEffect()
+                            .blurEffectStyle(.regular)
+//                            .if(colorScheme == .light, transform: {
+//                                $0
+//                                    .blurEffectStyle(.systemMaterialLight)
+//
+//                            }, elseThen: {
+//                                $0
+//                                    .blurEffectStyle(.systemMaterialDark)
+//                                }
+//                               )
                     )
-
             }
         }
         else {
@@ -198,8 +207,8 @@ fileprivate extension View {
         }
         else {
             self
-            .vibrancyEffect()
-            .vibrancyEffectStyle(.secondaryLabel)
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.secondaryLabel)
         }
     }
 
@@ -210,8 +219,8 @@ fileprivate extension View {
         }
         else {
             self
-            .vibrancyEffect()
-            .vibrancyEffectStyle(.tertiaryLabel)
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.tertiaryLabel)
         }
     }
 }

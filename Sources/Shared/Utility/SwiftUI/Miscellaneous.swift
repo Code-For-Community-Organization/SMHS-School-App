@@ -44,8 +44,8 @@ extension View {
     }
 
     @ViewBuilder func `if`<C1: View, C2: View>(_ condition: @autoclosure () -> Bool,
-                                          transform: (Self) -> C1,
-                                          elseThen: (Self) -> C2) -> some View {
+                                               transform: (Self) -> C1,
+                                               elseThen: (Self) -> C2) -> some View {
         if condition() {
             transform(self)
         } else {
