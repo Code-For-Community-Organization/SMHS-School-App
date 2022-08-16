@@ -33,7 +33,7 @@ struct ScheduleDetailView: View {
     @State var enableVisualEffects = true
     
     
-    
+    @State var tabBarController: UITabBarController?
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
@@ -217,7 +217,13 @@ struct ScheduleDetailView: View {
                                             "time_of_day": formatTime(Date())])
             
         }
-      
+        .introspectTabBarController {tabController in
+            tabController.tabBar.barStyle = .black
+            tabBarController = tabController
+        }
+        .onDisappear {
+            tabBarController?.tabBar.barStyle = .default
+        }
         .onDeveloperTap(userSettings) {
             if userSettings.developerSettings.developerOn {
                 developerScheduleOn.toggle()
