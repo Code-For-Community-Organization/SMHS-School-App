@@ -25,6 +25,11 @@ struct ScheduleListView: View {
 
                     }, geometryProxy: geo)
 
+                    Text("Last Updated: \(scheduleViewModel.scheduleLastUpdateDisplay)")
+                        .font(.caption)
+                        .foregroundColor(.platformSecondaryLabel)
+                        .padding(.top, 2)
+
                     ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
                         VStack(spacing: 0) {
                             ScheduleListHeaderView(scheduleWeek: scheduleWeek)

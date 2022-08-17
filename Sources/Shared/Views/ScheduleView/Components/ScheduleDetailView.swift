@@ -20,7 +20,6 @@ struct ScheduleDetailView: View {
         self.scheduleDay = scheduleDay
         self.horizontalPadding = horizontalPadding
         self.showBackgroundImage = showBackgroundImage
-        self.respondedSurvey = respondedSurvey
 
         if showBackgroundImage {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -95,7 +94,6 @@ struct ScheduleDetailView: View {
     @State var hapticsManager = HapticsManager(impactStyle: .light)
 
     @State private var developerScheduleOn = false
-    @AppStorage("respondedSurvey") var respondedSurvey = false
 
     var body: some View {
         ScrollView {
@@ -107,7 +105,7 @@ struct ScheduleDetailView: View {
 
             }
             else {
-                if showBackgroundImage && !respondedSurvey {
+                if !userSettings.respondedSurvey && showBackgroundImage  {
                     VStack {
                         Text("How do you like the new look?")
                             .font(.title3)
@@ -117,8 +115,8 @@ struct ScheduleDetailView: View {
                         HStack {
                             Button(action: {
                                 hapticsManager.notificationImpact(.success)
-                                respondedSurvey = true
-                                Analytics.logEvent("new_UI_like", parameters: [:])
+                                userSettings.respondedSurvey = true
+                                Analytics.logEvent("new_UI_like_prod", parameters: [:])
                             }) {
                                 Image(systemSymbol: .handThumbsupFill)
                                     .font(.title)
@@ -132,8 +130,8 @@ struct ScheduleDetailView: View {
 
                             Button(action: {
                                 hapticsManager.notificationImpact(.success)
-                                respondedSurvey = true
-                                Analytics.logEvent("new_UI_dislike", parameters: [:])
+                                userSettings.respondedSurvey = true
+                                Analytics.logEvent("new_UI_dislike_prod", parameters: [:])
                             }) {
                                 Image(systemSymbol: .handThumbsdownFill)
                                     .font(.title)
@@ -256,7 +254,7 @@ struct ScheduleDetailView: View {
         }
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
-        .animation(.easeInOut, value: respondedSurvey)
+        .animation(.easeInOut, value: userSettings.respondedSurvey)
         .background (
             ZStack {
                 // 3 cases of background:

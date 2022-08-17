@@ -18,6 +18,7 @@ final class SharedScheduleInformation: ObservableObject {
     @Published var todaySchedule: ScheduleDay?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     @Published var isLoading = false
+    @Published var scheduleLastUpdateTime: Date?
 
     private var currentWeekday: Int?
     
@@ -33,6 +34,14 @@ final class SharedScheduleInformation: ObservableObject {
         return targetDay.first
     }
 
+    var scheduleLastUpdateDisplay: String {
+        if let lastUpdateTime = scheduleLastUpdateTime {
+            return lastUpdateTime.timeAgoDisplay()
+        }
+        else {
+            return "unknown"
+        }
+    }
     // Fetched through API metadata
     // Represents the start and end of school year
     private var minDate: Date?
@@ -96,6 +105,8 @@ final class SharedScheduleInformation: ObservableObject {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
         isLoading = true
+        scheduleLastUpdateTime = Date()
+        
         AF.request(endpoint.request)
             .response {[weak self] response in
             if let data = response.data {
