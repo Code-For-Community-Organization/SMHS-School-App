@@ -22,17 +22,11 @@ struct AnimatedBlurBackground: View {
     var body: some View {
         GeometryReader {geo in
             ZStack {
-                Image("SM-Field-HiRes")
-                    .resizable()
-                    .scaledToFill()
-                    .scaleEffect(1.4, anchor: .bottom)
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .clipped()
+                makeBackgroundImage(geo)
                     .if(dynamicBlurred, transform: {
                         $0
-                            .blur(radius: 3, opaque: true)
-                            .saturation(0.6)
-                        
+                            .blur(radius: 2, opaque: true)
+
                     }, elseThen: {
                         $0
                             .blurEffect()
@@ -40,13 +34,7 @@ struct AnimatedBlurBackground: View {
                     })
 
                 if dynamicBlurred {
-                    Image("SM-Field-HiRes")
-                        .resizable()
-                        .scaledToFill()
-                        .scaleEffect(1.4, anchor: .bottom)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
-                        .saturation(0.6)
+                    makeBackgroundImage(geo)
                         .blur(radius: 60, opaque: true)
                         .mask (
                             LinearGradient(stops: [.init(color: .clear, location: 0),
@@ -63,6 +51,17 @@ struct AnimatedBlurBackground: View {
         }
         .edgesIgnoringSafeArea(.all)
     }
+
+    func makeBackgroundImage(_ geo: GeometryProxy) -> some View {
+        Image("SM-Field-HiRes")
+            .resizable()
+            .scaledToFill()
+            //.scaleEffect(1.4, anchor: .bottom)
+
+            .frame(width: geo.size.width, height: geo.size.height)
+            .clipped()
+            .brightness(-0.1)
+    }
 }
 
 struct AnimatedBlurBackground_Previews: PreviewProvider {
@@ -74,7 +73,7 @@ struct AnimatedBlurBackground_Previews: PreviewProvider {
     }
     static var previews: some View {
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
-            .environmentObject(UserSettings())
+            .environmentObject(configureSettings(legacySchedule: false))
 
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
             .environmentObject(configureSettings(legacySchedule: true))

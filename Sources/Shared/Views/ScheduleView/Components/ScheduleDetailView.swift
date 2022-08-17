@@ -114,6 +114,7 @@ struct ScheduleDetailView: View {
                                 HStack {
                                     VStack {
                                         makeLunchTitle(content: "1st Lunch Times")
+
                                         PeriodBlockItem(block: firstLunch,
                                                         scheduleTitle: "1st Lunch",
                                                         twoLine: true,
@@ -126,6 +127,7 @@ struct ScheduleDetailView: View {
                                     .padding(.trailing, 5)
                                     VStack {
                                         makeLunchTitle(content: "2nd Lunch Times")
+
                                         PeriodBlockItem(block: secondLunchPeriod,
                                                         scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
                                                         twoLine: true,
@@ -244,7 +246,8 @@ struct ScheduleDetailView: View {
         Text(content)
             .font(.footnote)
             .fontWeight(.bold)
-            .padding(.bottom, 2)
+            .padding(.bottom, -7)
+            .padding(.leading)
             .if(showBackgroundImage, transform: {
                 $0
                     .vibrancyEffect()
