@@ -202,14 +202,13 @@ final class SharedScheduleInformation: ObservableObject {
                 return
             }
 
-            if (lastDay < maxDate && lastDay > minDate)
-                && scheduleWeeks.isNotLast(for: currentWeek){
+            if (lastDay < maxDate && lastDay > minDate) {
                 debugPrint("✅ Reloaded infinite scroll list successfully")
                 fetchData(startDate: lastDay)
                 return
             }
         }
-        debugPrint("⚠️ reloadScrollList() called, but did not realod.")
+        debugPrint("⚠️ reloadScrollList() called, but did not reload.")
     }
 }
 

@@ -90,6 +90,12 @@ extension Date {
     func startOfWeek(using calendar: Calendar = .iso8601) -> Date {
             calendar.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: self).date!
         }
+
+    func isEqual(to date: Date, toGranularity component: Calendar.Component, in calendar: Calendar = .current) -> Bool {
+            calendar.isDate(self, equalTo: date, toGranularity: component)
+        }
+
+    func isInSameYear(as date: Date) -> Bool { isEqual(to: date, toGranularity: .year) }
 }
 
 extension TimeInterval {

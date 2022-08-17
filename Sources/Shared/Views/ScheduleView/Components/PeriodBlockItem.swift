@@ -4,7 +4,6 @@
 //
 //  Created by Jevon Mao on 5/20/21.
 //
-//#error("TODO: Fix text too small on lunch revolving classes")
 
 import SwiftUI
 
