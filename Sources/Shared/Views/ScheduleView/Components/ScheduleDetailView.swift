@@ -221,7 +221,9 @@ struct ScheduleDetailView: View {
             
         }
         .introspectTabBarController {tabController in
-            tabController.tabBar.barStyle = .black
+            if !shouldFallback {
+                tabController.tabBar.barStyle = .black
+            }
             tabBarController = tabController
         }
         .onDisappear {
@@ -246,7 +248,7 @@ struct ScheduleDetailView: View {
         Text(content)
             .font(.footnote)
             .fontWeight(.bold)
-            .padding(.bottom, -7)
+            .padding(.bottom, -3)
             .padding(.leading)
             .if(showBackgroundImage, transform: {
                 $0

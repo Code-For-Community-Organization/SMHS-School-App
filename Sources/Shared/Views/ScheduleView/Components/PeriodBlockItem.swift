@@ -69,12 +69,18 @@ struct PeriodBlockItem: View {
                 }
                 else {
                     Text(displayedTitle)
-                        .fontWeight(.medium)
+                        .fontWeight(.semibold)
                         .textAlign(.leading)
                         .font(.headline)
                         .if(isBlurred) {
                             $0.vibrancyEffectStyle(.label)
                         }
+                    if twoLine {
+                        Text("")
+                            .fontWeight(.semibold)
+                            .textAlign(.leading)
+                            .font(.headline)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -109,7 +115,7 @@ struct PeriodBlockItem: View {
         }
         .font(Font.caption.weight(.medium))
         .lineLimit(1)
-        .minimumScaleFactor(0.5)
+        .minimumScaleFactor(1)
     }
 
     var singleLineView: some View {
