@@ -15,10 +15,13 @@ import Introspect
 struct ScheduleDetailView: View {
     init(scheduleDay: ScheduleDay? = nil,
          horizontalPadding: Bool = true,
-         showBackgroundImage: Bool = true) {
+         showBackgroundImage: Bool = true,
+         respondedSurvey: Bool = false) {
         self.scheduleDay = scheduleDay
         self.horizontalPadding = horizontalPadding
         self.showBackgroundImage = showBackgroundImage
+        self.respondedSurvey = respondedSurvey
+
         if showBackgroundImage {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
@@ -89,9 +92,11 @@ struct ScheduleDetailView: View {
     
     var horizontalPadding = true
     var showBackgroundImage = true
-    
+    @State var hapticsManager = HapticsManager(impactStyle: .light)
+
     @State private var developerScheduleOn = false
-    
+    @AppStorage("respondedSurvey") var respondedSurvey = false
+
     var body: some View {
         ScrollView {
             if shouldFallback {
@@ -99,108 +104,159 @@ struct ScheduleDetailView: View {
                     .padding(.top, 30)
                     .vibrancyEffectStyle(.label)
                     .vibrancyEffect()
+
             }
             else {
-                ZStack {
-                    VStack(spacing: 10) {
-                        ForEach(preLunchPeriods, id: \.self){period in
-                            PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
+                if showBackgroundImage && !respondedSurvey {
+                    VStack {
+                        Text("How do you like the new look?")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+
+                        HStack {
+                            Button(action: {
+                                hapticsManager.notificationImpact(.success)
+                                respondedSurvey = true
+                                Analytics.logEvent("new_UI_like", parameters: [:])
+                            }) {
+                                Image(systemSymbol: .handThumbsupFill)
+                                    .font(.title)
+                                    .foregroundColor(.systemGreen)
+                                    .padding(.vertical, 10)
+                                    .frame(maxWidth: .infinity)
+                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+                                    .roundedCorners(cornerRadius: 10)
+                                    .padding(.trailing, 10)
+                            }
+
+                            Button(action: {
+                                hapticsManager.notificationImpact(.success)
+                                respondedSurvey = true
+                                Analytics.logEvent("new_UI_dislike", parameters: [:])
+                            }) {
+                                Image(systemSymbol: .handThumbsdownFill)
+                                    .font(.title)
+                                    .foregroundColor(.systemRed)
+                                    .padding(.vertical, 10)
+                                    .frame(maxWidth: .infinity)
+                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+                                    .roundedCorners(cornerRadius: 10)
+                                    .padding(.leading, 10)
+                            }
                         }
-                        
-                        if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                        let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                            let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                            let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                                HStack {
-                                    VStack {
-                                        makeLunchTitle(content: "1st Lunch Times")
+                        .padding(.bottom)
+                        .padding(.top, 1)
+                        .padding(.horizontal)
 
-                                        PeriodBlockItem(block: firstLunch,
-                                                        scheduleTitle: "1st Lunch",
-                                                        twoLine: true,
-                                                        isBlurred: showBackgroundImage)
-                                        PeriodBlockItem(block: firstLunchPeriod,
-                                                        scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
-                                                        twoLine: true,
-                                                        isBlurred: showBackgroundImage)
-                                    }
-                                    .padding(.trailing, 5)
-                                    VStack {
-                                        makeLunchTitle(content: "2nd Lunch Times")
+                        Divider()
+                            .overlay(Color.white)
+                    }
+                    .padding(.top)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                }
 
-                                        PeriodBlockItem(block: secondLunchPeriod,
-                                                        scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
-                                                        twoLine: true,
-                                                        isBlurred: showBackgroundImage)
-                                        PeriodBlockItem(block: secondLunch,
-                                                        scheduleTitle: "2nd Lunch",
-                                                        twoLine: true,
-                                                        isBlurred: showBackgroundImage)
-                                    }
+                
+                VStack(spacing: 10) {
+                    ForEach(preLunchPeriods, id: \.self){period in
+                        PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
+                    }
+
+                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
+                    let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
+                        let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
+                        let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
+                            HStack {
+                                VStack {
+                                    makeLunchTitle(content: "1st Lunch Times")
+
+                                    PeriodBlockItem(block: firstLunch,
+                                                    scheduleTitle: "1st Lunch",
+                                                    twoLine: true,
+                                                    isBlurred: showBackgroundImage)
+                                    PeriodBlockItem(block: firstLunchPeriod,
+                                                    scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
+                                                    twoLine: true,
+                                                    isBlurred: showBackgroundImage)
+                                }
+                                .padding(.trailing, 5)
+                                VStack {
+                                    makeLunchTitle(content: "2nd Lunch Times")
+
+                                    PeriodBlockItem(block: secondLunchPeriod,
+                                                    scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
+                                                    twoLine: true,
+                                                    isBlurred: showBackgroundImage)
+                                    PeriodBlockItem(block: secondLunch,
+                                                    scheduleTitle: "2nd Lunch",
+                                                    twoLine: true,
+                                                    isBlurred: showBackgroundImage)
                                 }
                             }
-                        
-                        ForEach(postLunchPeriods, id: \.self){period in
-                            PeriodBlockItem(block: period,
-                                            isBlurred: showBackgroundImage)
                         }
-                        
-                        if let period8 = period8,
-                           userSettings.isPeriod8On {
-                            Divider()
-                                .if(showBackgroundImage) {
-                                    $0
-                                        .overlay(Color.white)
-                                }
-                            Text("Most students don't have period 8, you can turn it off in settings.")
-                                .font(.caption)
+
+                    ForEach(postLunchPeriods, id: \.self){period in
+                        PeriodBlockItem(block: period,
+                                        isBlurred: showBackgroundImage)
+                    }
+
+                    if let period8 = period8,
+                       userSettings.isPeriod8On {
+                        Divider()
+                            .if(showBackgroundImage) {
+                                $0
+                                    .overlay(Color.white)
+                            }
+                        Text("Most students don't have period 8, you can turn it off in settings.")
+                            .font(.caption)
+                            .if(showBackgroundImage, transform: {
+                                $0
+                                    .vibrancyEffect()
+                                    .vibrancyEffectStyle(.label)
+                                    .colorScheme(.dark)
+
+                            }, elseThen: {
+                                $0
+                                    .foregroundColor(.platformSecondaryLabel)
+                            })
+                                .padding(.bottom, 1)
+
+                                PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
+                    }
+                    if let atheleticsInfo = scheduleDay?.atheleticsInfo {
+                        VStack(alignment: .leading) {
+                            Text(atheleticsInfo)
                                 .if(showBackgroundImage, transform: {
                                     $0
                                         .vibrancyEffect()
                                         .vibrancyEffectStyle(.label)
                                         .colorScheme(.dark)
-
+                                        .overlay(
+                                            GeometryReader {geo -> Color in
+                                                DispatchQueue.main.async {
+                                                    bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+                                                }
+                                                return Color.clear
+                                            }
+                                        )
                                 }, elseThen: {
                                     $0
                                         .foregroundColor(.platformSecondaryLabel)
                                 })
-                                    .padding(.bottom, 1)
-                                    
-                                    PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
                         }
-                        if let atheleticsInfo = scheduleDay?.atheleticsInfo {
-                            VStack(alignment: .leading) {
-                                Text(atheleticsInfo)
-                                    .if(showBackgroundImage, transform: {
-                                        $0
-                                            .vibrancyEffect()
-                                            .vibrancyEffectStyle(.label)
-                                            .colorScheme(.dark)
-                                            .overlay(
-                                                GeometryReader {geo -> Color in
-                                                    DispatchQueue.main.async {
-                                                        bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
-                                                    }
-                                                    return Color.clear
-                                                }
-                                            )
-                                    }, elseThen: {
-                                        $0
-                                            .foregroundColor(.platformSecondaryLabel)
-                                    })
-                            }
-                            
-                        }
-                        
+
                     }
-                    .padding(.horizontal, horizontalPadding ? 16 : 0)
-                    .padding(.vertical, showBackgroundImage ? 16: 0)
-                    
+
                 }
+                .padding(.horizontal, horizontalPadding ? 16 : 0)
+                .padding(.vertical, showBackgroundImage ? 16: 0)
+                    
+
             }
         }
         .navigationTitle(scheduleDateDescription)
         .navigationBarTitleDisplayMode(.inline)
+        .animation(.easeInOut, value: respondedSurvey)
         .background (
             ZStack {
                 // 3 cases of background:
@@ -220,19 +276,17 @@ struct ScheduleDetailView: View {
                                             "time_of_day": formatTime(Date())])
             
         }
-        .introspectTabBarController {tabController in
-            if !shouldFallback {
-                tabController.tabBar.barStyle = .black
-            }
-            tabBarController = tabController
-        }
-        .onDisappear {
-            tabBarController?.tabBar.barStyle = .default
-        }
+//        .introspectTabBarController {tabController in
+//            if !shouldFallback {
+//                tabController.tabBar.barStyle = .black
+//            }
+//            tabBarController = tabController
+//        }
+//        .onDisappear {
+//            tabBarController?.tabBar.barStyle = .default
+//        }
         .onDeveloperTap(userSettings) {
-            if userSettings.developerSettings.developerOn {
-                developerScheduleOn.toggle()
-            }
+            developerScheduleOn.toggle()
         }
         
         
@@ -276,6 +330,11 @@ struct ScheduleDetailView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay,
+                           showBackgroundImage: true,
+                           respondedSurvey: false)
+            .environmentObject(configureSettings())
+
         NavigationView {
             NavigationLink("Detail") {
                 ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
@@ -286,6 +345,7 @@ struct ScheduleDetailView_Previews: PreviewProvider {
         ScheduleDetailView(scheduleDay: .sampleScheduleDay,
                            showBackgroundImage: false)
         .environmentObject(configureSettings(legacySchedule: true))
+
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: false)
             .environmentObject(configureSettings())
     }

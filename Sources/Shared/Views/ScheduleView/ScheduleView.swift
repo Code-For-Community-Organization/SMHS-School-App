@@ -49,9 +49,8 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.automatic)
         .onDeveloperTap(userSettings) {
-            if userSettings.developerSettings.developerOn {
-                scheduleViewModel.fetchData(purgeExisting: true)
-            }
+            scheduleViewModel.fetchData(purgeExisting: true)
+
         }
         .onAppear{
             scheduleViewModel.reloadData()

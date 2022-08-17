@@ -21,34 +21,43 @@ struct AnimatedBlurBackground: View {
 
     var body: some View {
         GeometryReader {geo in
-            ZStack {
+            if true {
                 makeBackgroundImage(geo)
-                    .if(dynamicBlurred, transform: {
-                        $0
-                            .blur(radius: 2, opaque: true)
-
-                    }, elseThen: {
-                        $0
-                            .blurEffect()
-                            .blurEffectStyle(.systemMaterial)
-                    })
-
-                if dynamicBlurred {
+                    .blurEffect()
+                    .blurEffectStyle(.systemUltraThinMaterial)
+            }
+            else {
+                ZStack {
                     makeBackgroundImage(geo)
-                        .blur(radius: 60, opaque: true)
-                        .mask (
-                            LinearGradient(stops: [.init(color: .clear, location: 0),
-                                                   .init(color: .clear, location: gradientTopLocation),
-                                                   .init(color: .black, location: gradientBottomLocation),
-                                                  .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
-                        )
+                        .if(dynamicBlurred, transform: {
+                            $0
+                                .blur(radius: 2, opaque: true)
+
+                        }, elseThen: {
+                            $0
+                                .blurEffect()
+                                .blurEffectStyle(.systemMaterial)
+                        })
+
+                    if dynamicBlurred {
+                        makeBackgroundImage(geo)
+                            .blur(radius: 60, opaque: true)
+                            .mask (
+                                LinearGradient(stops: [.init(color: .clear, location: 0),
+                                                       .init(color: .clear, location: gradientTopLocation),
+                                                       .init(color: .black, location: gradientBottomLocation),
+                                                      .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
+                            )
+                    }
+                }
+                .if(dynamicBlurred) {
+                    $0
+                        .drawingGroup()
                 }
             }
+
         }
-        .if(dynamicBlurred) {
-            $0
-                .drawingGroup()
-        }
+
         .edgesIgnoringSafeArea(.all)
     }
 
