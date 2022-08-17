@@ -17,7 +17,7 @@ struct ScheduleListView: View {
             ScrollView {
                 LazyVStack {
                     ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)
-                        .padding(.horizontal, 16)
+                        .padding(.leading, 18)
                     ScheduleListBanner(present: $presentCalendar, action: {
                         masterCalendarViewModel.reloadData {
                             presentCalendar = true

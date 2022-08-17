@@ -192,6 +192,7 @@ struct ScheduleDetailView: View {
                         
                     }
                     .padding(.horizontal, horizontalPadding ? 16 : 0)
+                    .padding(.vertical, showBackgroundImage ? 16: 0)
                     
                 }
             }
