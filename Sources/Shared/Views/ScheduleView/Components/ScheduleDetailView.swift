@@ -147,8 +147,10 @@ struct ScheduleDetailView: View {
                         .padding(.top, 1)
                         .padding(.horizontal)
 
-                        Divider()
-                            .overlay(Color.white)
+                        Rectangle()
+                            .frame(maxWidth: .infinity, maxHeight: 0.33)
+                            .padding(.horizontal)
+                            .vibrancyEffect()
                     }
                     .padding(.top)
                     .transition(.move(edge: .top).combined(with: .opacity))
@@ -205,7 +207,7 @@ struct ScheduleDetailView: View {
                                 $0
                                     .overlay(Color.white)
                             }
-                        Text("Most students don't have period 8, you can turn it off in settings.")
+                        Text("Most students don't have period 8. Disable in settings.")
                             .font(.caption)
                             .if(showBackgroundImage, transform: {
                                 $0
@@ -222,26 +224,25 @@ struct ScheduleDetailView: View {
                                 PeriodBlockItem(block: period8, isBlurred: showBackgroundImage)
                     }
                     if let atheleticsInfo = scheduleDay?.atheleticsInfo {
-                        VStack(alignment: .leading) {
-                            Text(atheleticsInfo)
-                                .if(showBackgroundImage, transform: {
-                                    $0
-                                        .vibrancyEffect()
-                                        .vibrancyEffectStyle(.label)
-                                        .colorScheme(.dark)
-                                        .overlay(
-                                            GeometryReader {geo -> Color in
-                                                DispatchQueue.main.async {
-                                                    bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
-                                                }
-                                                return Color.clear
+                        Text(atheleticsInfo)
+                            .if(showBackgroundImage, transform: {
+                                $0
+                                    .vibrancyEffect()
+                                    .vibrancyEffectStyle(.label)
+                                    .colorScheme(.dark)
+                                    .overlay(
+                                        GeometryReader {geo -> Color in
+                                            DispatchQueue.main.async {
+                                                bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
                                             }
-                                        )
-                                }, elseThen: {
-                                    $0
-                                        .foregroundColor(.platformSecondaryLabel)
-                                })
-                        }
+                                            return Color.clear
+                                        }
+                                    )
+                            }, elseThen: {
+                                $0
+                                    .foregroundColor(.platformSecondaryLabel)
+                            })
+                                .textAlign(.leading)
 
                     }
 
