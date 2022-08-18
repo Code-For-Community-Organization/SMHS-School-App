@@ -24,15 +24,6 @@ struct PeriodBlockItem: View {
 
     }
 
-    var className: String? {
-        let periodNumber = block.periodNumber
-        guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
-              matchingPeriod.textContent != "" else {
-            return nil
-        }
-        return matchingPeriod.textContent
-    }
-
     var body: some View {
         VStack {
             VStack {
@@ -49,7 +40,7 @@ struct PeriodBlockItem: View {
 
                 Spacer()
 
-                if let className = className {
+                if let className = block.getUserClassName(userSettings: userSettings) {
                     Text(className)
                         .fontWeight(.semibold)
                         .textAlign(.leading)

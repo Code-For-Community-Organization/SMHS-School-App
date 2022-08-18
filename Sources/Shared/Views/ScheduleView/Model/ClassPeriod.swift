@@ -47,5 +47,13 @@ struct ClassPeriod: Hashable, Codable  {
             return "\(title ?? "Period Block")".capitalized
         }
     }
+
+    func getUserClassName(userSettings: UserSettings) -> String? {
+        if let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
+              matchingPeriod.textContent != "" {
+            return matchingPeriod.textContent
+        }
+        return nil
+    }
 }
 

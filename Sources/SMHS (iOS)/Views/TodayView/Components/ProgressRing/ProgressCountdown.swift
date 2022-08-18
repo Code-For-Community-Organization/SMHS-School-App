@@ -49,7 +49,9 @@ struct ProgressCountDown: View {
                 return "File a bug report to support@smhs.app"
             }
         }
-        return period.getTitle()
+
+        let customTitle = period.getUserClassName(userSettings: userSettings)
+        return customTitle ?? period.getTitle()
     }
     var body: some View {
         VStack {
