@@ -11,15 +11,16 @@ struct PeriodBlockItem: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
     var block: ClassPeriod
-    var scheduleTitle: String?
     var twoLine: Bool = false
     var isBlurred = true
     var displayedTitle: String {
-        let title = scheduleTitle ?? getTitle(block)
+        let title =  block.getTitle()
         // Map from API fetched period names to better, readable names
         // Configurable from Firebase remotely to adapt for changes
         let periods = Constants.Schedule.periodMappings
-        return periods[title] ?? title
+        return periods[title
+            .lowercased()
+            .trimmingCharacters(in: .whitespaces)] ?? title
 
     }
 
@@ -157,18 +158,6 @@ struct PeriodBlockItem: View {
         formatter.dateFormat = "h:mm a"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: date)
-    }
-
-    func getTitle(_ period: ClassPeriod) -> String {
-        switch period.periodCategory {
-        case .singleLunch:
-            return "Nutrition"
-        case .period:
-            let text = "Period \(String(period.periodNumber ?? -1))"
-            return text.autoCapitalized
-        default:
-            return "\(period.title ?? "Period Block")".autoCapitalized
-        }
     }
 }
 

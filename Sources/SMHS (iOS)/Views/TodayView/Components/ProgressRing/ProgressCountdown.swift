@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseCrashlytics
 
 struct ProgressCountDown: View {
     var scheduleDay: ScheduleDay?
@@ -14,27 +15,41 @@ struct ProgressCountDown: View {
     @Binding var countDown: TimeInterval?
     var mockDate: Date?
     var text: String {
-        if let periodNumber = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodNumber {
-            guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
-                  matchingPeriod.textContent != "" else {
-                return "PERIOD \(periodNumber)"
-            }
-            return matchingPeriod.textContent
+        guard let period = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)
+        else {
+            let date = Date()
             
+            if scheduleDay == nil {
+                return "NO SCHOOL 🙌"
+            }
+            else if let day = scheduleDay {
+                if day.isWithinSchoolHours(forDate: date) {
+                    return "Passing Period? (Beta)"
+                }
+                else {
+                    return "Schedule Unavailable"
+                }
+            }
+            else {
+                let userInfo: [String: Any] = [
+                  NSLocalizedDescriptionKey: NSLocalizedString("Failured to find appropriate display text.", comment: ""),
+                  NSLocalizedFailureReasonErrorKey: NSLocalizedString("", comment: ""),
+                  NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("", comment: ""),
+                  "Current time": date.convertToReferenceDateLocalTime(),
+                  "Date": date,
+                  "View": "\(type(of: self))",
+                  "Schedule": scheduleDay?.scheduleText ?? ""
+                ]
+
+                let error = NSError.init(domain: NSCocoaErrorDomain,
+                                         code: 69,
+                                         userInfo: userInfo)
+
+                Crashlytics.crashlytics().record(error: error)
+                return "File a bug report to support@smhs.app"
+            }
         }
-        else if let nutritionSchedule = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory,
-                nutritionSchedule.isLunch {
-            return "NUTRITION"
-        }
-        else if scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)?.periodCategory == .officeHour {
-            return "Office Hours"
-        }
-        else if scheduleDay == nil {
-            return "NO SCHOOL 🙌"
-        }
-        else { 
-            return "SCHEDULE UNAVAILABLE"
-        }
+        return period.getTitle()
     }
     var body: some View {
         VStack {

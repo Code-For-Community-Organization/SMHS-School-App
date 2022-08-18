@@ -196,7 +196,7 @@ extension Constants {
         static var periodMappings: [String: String] {
             let data = remoteConfig.configValue(forKey: "period_name_mapping").dataValue
             let map = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
-            return map ?? ["Academic Per":"Academic Period", "MTG":"Faculty Meeting"]
+            return map ?? ["academic per":"Academic Period", "mtg":"Faculty Meeting"]
         }
     }
 

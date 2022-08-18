@@ -97,6 +97,17 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         }.first
     }
 
+    func isWithinSchoolHours(forDate: Date) -> Bool {
+        let dateConverted = forDate.convertToReferenceDateLocalTime()
+        guard let first = periods.first,
+              let last = periods.last
+        else {
+            return false
+        }
+
+        return dateConverted > first.startTime && dateConverted < last.endTime
+    }
+
 }
 
 extension ScheduleDay {

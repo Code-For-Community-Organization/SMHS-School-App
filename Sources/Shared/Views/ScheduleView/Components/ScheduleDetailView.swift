@@ -171,11 +171,9 @@ struct ScheduleDetailView: View {
                                     makeLunchTitle(content: "1st Lunch Times")
 
                                     PeriodBlockItem(block: firstLunch,
-                                                    scheduleTitle: "1st Lunch",
                                                     twoLine: true,
                                                     isBlurred: showBackgroundImage)
                                     PeriodBlockItem(block: firstLunchPeriod,
-                                                    scheduleTitle:  "Period \(firstLunchPeriod.periodNumber ?? -1)",
                                                     twoLine: true,
                                                     isBlurred: showBackgroundImage)
                                 }
@@ -184,11 +182,9 @@ struct ScheduleDetailView: View {
                                     makeLunchTitle(content: "2nd Lunch Times")
 
                                     PeriodBlockItem(block: secondLunchPeriod,
-                                                    scheduleTitle: "Period \(secondLunchPeriod.periodNumber ?? -1)",
                                                     twoLine: true,
                                                     isBlurred: showBackgroundImage)
                                     PeriodBlockItem(block: secondLunch,
-                                                    scheduleTitle: "2nd Lunch",
                                                     twoLine: true,
                                                     isBlurred: showBackgroundImage)
                                 }
