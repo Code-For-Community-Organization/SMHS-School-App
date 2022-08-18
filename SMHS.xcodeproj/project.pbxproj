@@ -2137,6 +2137,7 @@
 				CODE_SIGN_ENTITLEMENTS = "SMHSSchedule (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 69;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/SMHS (iOS)/Preview Content\"";
 				DEVELOPMENT_TEAM = 2WZXS2AJPY;
 				ENABLE_BITCODE = YES;
