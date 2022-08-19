@@ -203,6 +203,7 @@ struct ScheduleDetailView: View {
                                 $0
                                     .overlay(Color.white)
                             }
+
                         Text("Most students don't have period 8. Disable in settings.")
                             .font(.caption)
                             .if(showBackgroundImage, transform: {

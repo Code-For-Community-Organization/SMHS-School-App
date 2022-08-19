@@ -59,23 +59,26 @@ struct TodayHeroView: View {
                                 .fontWeight(.semibold)
                                 .font(.title2)
                                 .textAlign(.leading)
+
+                            Divider()
                                 .padding(.bottom, 10)
+
                             ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                                horizontalPadding: false,
                                                showBackgroundImage: false)
                         }
                         }
                         .padding(.horizontal)
-                        .padding(.bottom)
-
-                        Divider()
-                            .padding(.horizontal)
+                        .padding(.bottom, 20)
 
                         Text("For You")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .textAlign(.leading)
+
+                        Divider()
                             .padding(.horizontal)
+                            .padding(.bottom, 15)
 
                         BannersView(banners: $banners, selected: $selected, animate: animate)
                         
