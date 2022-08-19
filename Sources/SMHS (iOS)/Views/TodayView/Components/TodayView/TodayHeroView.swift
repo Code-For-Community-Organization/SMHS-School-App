@@ -66,7 +66,11 @@ struct TodayHeroView: View {
                         }
                         }
                         .padding(.horizontal)
-                        
+                        .padding(.bottom)
+
+                        Divider()
+                            .padding(.horizontal)
+
                         Text("For You")
                             .font(.title2)
                             .fontWeight(.semibold)

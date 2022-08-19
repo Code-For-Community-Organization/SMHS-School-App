@@ -10,13 +10,15 @@ import SwiftUI
 struct BannerView: View {
     let banner: Banner
     @Binding var selected: Banner?
+    @State var selectedTemp: Banner?
     var animate: Namespace.ID
     
     var body: some View {
         Button(action: {
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.55, blendDuration: 1)) {
-                selected = banner
-            }
+//            withAnimation(.spring(response: 0.5, dampingFraction: 0.55, blendDuration: 1)) {
+//                selected = banner
+//            }
+            selectedTemp = banner
         }) {
             ZStack(alignment: .topLeading) {
                 BannerImage(url: banner.image, selected: $selected)
@@ -35,6 +37,25 @@ struct BannerView: View {
             .cornerRadius(selected != nil ? 0 : 10)
         }
         .padding(.horizontal, selected != nil ? 0 : 15)
+        .fullScreenCover(item: $selectedTemp) {
+            if let scheme = $0.externalLink.scheme, scheme == "https" {
+                SafariView(url: $0.externalLink)
+            }
+            else {
+                VStack {
+                    Text("Unable to open web page. Non-HTTPS URLs are not allowed.")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.secondaryLabel)
+
+                    Button(action: {selectedTemp = nil}) {
+                        Text("Close")
+                    }
+                    .buttonStyle(HighlightButtonStyle())
+                }
+
+            }
+
+        }
     }
 }
 

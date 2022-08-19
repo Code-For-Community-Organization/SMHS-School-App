@@ -14,7 +14,7 @@ struct Banner: Identifiable, Codable, Equatable {
     let headline: String
     let title: String
     let footnote: String
-    
+    let externalLink: URL
     let image: URL
     
     let paragraphs: [String]
