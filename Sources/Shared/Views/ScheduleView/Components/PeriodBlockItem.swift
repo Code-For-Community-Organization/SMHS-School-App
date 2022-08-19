@@ -8,27 +8,20 @@
 import SwiftUI
 
 struct PeriodBlockItem: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
     var block: ClassPeriod
-    var scheduleTitle: String?
     var twoLine: Bool = false
     var isBlurred = true
     var displayedTitle: String {
-        if let title = scheduleTitle {
-            return title
-        }
-        else {
-            return getTitle(block)
-        }
-    }
+        let title =  block.getTitle()
+        // Map from API fetched period names to better, readable names
+        // Configurable from Firebase remotely to adapt for changes
+        let periods = Constants.Schedule.periodMappings
+        return periods[title
+            .lowercased()
+            .trimmingCharacters(in: .whitespaces)] ?? title
 
-    var className: String? {
-        let periodNumber = block.periodNumber
-        guard let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
-              matchingPeriod.textContent != "" else {
-            return nil
-        }
-        return matchingPeriod.textContent
     }
 
     var body: some View {
@@ -47,7 +40,7 @@ struct PeriodBlockItem: View {
 
                 Spacer()
 
-                if let className = className {
+                if let className = block.getUserClassName(userSettings: userSettings) {
                     Text(className)
                         .fontWeight(.semibold)
                         .textAlign(.leading)
@@ -67,12 +60,18 @@ struct PeriodBlockItem: View {
                 }
                 else {
                     Text(displayedTitle)
-                        .fontWeight(.medium)
+                        .fontWeight(.semibold)
                         .textAlign(.leading)
                         .font(.headline)
                         .if(isBlurred) {
                             $0.vibrancyEffectStyle(.label)
                         }
+                    if twoLine {
+                        Text("")
+                            .fontWeight(.semibold)
+                            .textAlign(.leading)
+                            .font(.headline)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -86,14 +85,14 @@ struct PeriodBlockItem: View {
         .if(isBlurred, transform: {
             $0
                 .vibrancyEffect()
-                .availableBackgroundBlur(isBlurred: isBlurred)
+                .availableBackgroundBlur(colorScheme: colorScheme, isBlurred: isBlurred)
         }, elseThen: {
             $0
                 .background(Color.appPrimary)
         })
 
-        .roundedCorners(cornerRadius: 10)
-        .padding(.vertical, 5)
+            .roundedCorners(cornerRadius: 10)
+            .padding(.vertical, 5)
     }
     
     var doubleLineView: some View {
@@ -107,7 +106,7 @@ struct PeriodBlockItem: View {
         }
         .font(Font.caption.weight(.medium))
         .lineLimit(1)
-        .minimumScaleFactor(0.5)
+        .minimumScaleFactor(1)
     }
 
     var singleLineView: some View {
@@ -124,7 +123,7 @@ struct PeriodBlockItem: View {
                         })
 
 
-                    Text(formatDate(block.startTime))
+                            Text(formatDate(block.startTime))
                 }
                 .frame(width: geo.size.width/CGFloat(2), alignment: .leading)
                 HStack {
@@ -137,7 +136,7 @@ struct PeriodBlockItem: View {
                                 .opacity(0.5)
                         })
 
-                    Text(formatDate(block.endTime))
+                            Text(formatDate(block.endTime))
                 }
                 Spacer()
             }
@@ -151,24 +150,13 @@ struct PeriodBlockItem: View {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: date)
     }
-
-    func getTitle(_ period: ClassPeriod) -> String {
-        switch period.periodCategory {
-        case .singleLunch:
-            return "Nutrition"
-        case .period:
-            let text = "Period \(String(period.periodNumber ?? -1))"
-            return text.autoCapitalized
-        default:
-            return "\(period.title ?? "Period Block")".autoCapitalized
-        }
-    }
 }
 
 fileprivate extension View {
 
     @ViewBuilder
-    func availableBackgroundBlur(isBlurred: Bool = true) -> some View {
+    func availableBackgroundBlur(colorScheme: ColorScheme,
+                                 isBlurred: Bool = true) -> some View {
         if isBlurred {
             if #available(iOS 15, *) {
                 self.background(.regularMaterial)
@@ -177,10 +165,18 @@ fileprivate extension View {
                 self
                     .background(
                         Color.clear
-                        .blurEffect()
-                        .blurEffectStyle(.regular)
+                            .blurEffect()
+                            .blurEffectStyle(.regular)
+//                            .if(colorScheme == .light, transform: {
+//                                $0
+//                                    .blurEffectStyle(.systemMaterialLight)
+//
+//                            }, elseThen: {
+//                                $0
+//                                    .blurEffectStyle(.systemMaterialDark)
+//                                }
+//                               )
                     )
-
             }
         }
         else {
@@ -196,8 +192,8 @@ fileprivate extension View {
         }
         else {
             self
-            .vibrancyEffect()
-            .vibrancyEffectStyle(.secondaryLabel)
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.secondaryLabel)
         }
     }
 
@@ -208,8 +204,8 @@ fileprivate extension View {
         }
         else {
             self
-            .vibrancyEffect()
-            .vibrancyEffectStyle(.tertiaryLabel)
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.tertiaryLabel)
         }
     }
 }

@@ -15,14 +15,7 @@ extension StringProtocol {
             .components(separatedBy:CharacterSet.decimalDigits.inverted)
             .joined())
     }
-    var autoCapitalized: String {
-        if self.contains(" ") {
-            return self.capitalized
-        }
-        else {
-            return self.uppercased()
-        }
-    }
+
     func index<S: StringProtocol>(of string: S, options: String.CompareOptions = []) -> Index? {
         range(of: string, options: options)?.lowerBound
     }

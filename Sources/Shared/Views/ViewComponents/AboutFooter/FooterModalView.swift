@@ -17,7 +17,6 @@ struct FooterModalView: View {
         NavigationView {
             SettingsView {
                 Section(header: Text("\(dateHelper.todayDateDescription), Welcome!")
-                                .textCase(nil)
                                 .font(.title2, weight: .black)) {EmptyView()}
 
                 Section(header: Label("Settings", systemSymbol: .gearshapeFill),
@@ -39,9 +38,17 @@ struct FooterModalView: View {
                 
                 Section(header: Label("Statements", systemSymbol: .infoCircle).textCase(nil)) {
                     NavigationLink("Acknowledgement", destination: Acknowledgements())
+                    Link("Our Website", destination: URL(string: "https://smhs.app")!)
                     Link("Terms and Conditions", destination: URL(string: "https://smhs-schedule.flycricket.io/terms.html")!)
-                    Link("Privacy Policy", destination: URL(string: "https://smhs-schedule.flycricket.io/privacy.html")!)
+                    Link("Privacy Policy", destination: URL(string: "https://smhs.app/privacypolicy/")!)
                 }
+
+                Section(header: Label("Support", systemSymbol: .personFillQuestionmark).textCase(nil)) {
+                    Link("I Need Help", destination: URL(string: "mailto:support@smhs.app")!)
+                    Link("I Have a Privacy Concern", destination: URL(string: "mailto:privacy@smhs.app")!)
+                    Link("I Have Other Questions", destination: URL(string: "mailto:maoj@codeforcommunity.ngo")!)
+                }
+
                 Section {
                     NavigationLink(destination: WhyStatementView()) {Label("Why", systemSymbol: .questionmark)}
                     NavigationLink(destination: HowStatementView()) {Label("How", systemSymbol: .gearshape2)}

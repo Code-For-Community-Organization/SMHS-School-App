@@ -97,45 +97,6 @@ extension Color {
 }
 #endif
 extension Color {
-    public static var systemRed: Color {
-        .init(.systemRed)
-    }
-    
-    public static var systemGreen: Color {
-        .init(.systemGreen)
-    }
-    
-    public static var systemBlue: Color {
-        .init(.systemBlue)
-    }
-    
-    public static var systemOrange: Color {
-        .init(.systemOrange)
-    }
-    
-    public static var systemYellow: Color {
-        .init(.systemYellow)
-    }
-    
-    public static var systemPink: Color {
-        .init(.systemPink)
-    }
-    
-    public static var systemPurple: Color {
-        .init(.systemPurple)
-    }
-    
-    public static var systemTeal: Color {
-        .init(.systemTeal)
-    }
-    
-    public static var systemIndigo: Color {
-        .init(.systemIndigo)
-    }
-    
-    public static var systemGray: Color {
-        .init(.systemGray)
-    }
     
     /// Creates a color from a hexadecimal color code.
     ///

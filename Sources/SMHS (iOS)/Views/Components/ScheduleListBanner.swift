@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScheduleListBanner: View {
-    @AppStorage("showBanner") var showBanner = true
+    @AppStorage("calendarBannerInitialLoad") var firstTime = true
     @State var animate = false
     @Binding var present: Bool
     var action: () -> ()
@@ -38,10 +38,17 @@ struct ScheduleListBanner: View {
         .frame(width: geometryProxy.size.width - 40)
         //.fixedSize(horizontal: true, vertical: true)
         .background(Color.appPrimary)
-        .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
+        .if(firstTime, transform: {
+            $0
+                .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
+        })
         .animation(Animation.easeInOut)
-        .onAppear {animate = true}
-        .onDisappear {animate = false}
+        .onAppear {
+            if firstTime {
+                animate = true
+                firstTime = false
+            }
+        }
         .padding(.vertical, -5)
         .roundedCorners(cornerRadius: 10)
     }

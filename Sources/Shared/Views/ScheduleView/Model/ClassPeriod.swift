@@ -31,5 +31,29 @@ struct ClassPeriod: Hashable, Codable  {
     var periodNumber: Int?
     var startTime: Date
     var endTime: Date
+
+    func getTitle() -> String {
+        switch periodCategory {
+        case .singleLunch:
+            return "Nutrition"
+        case .firstLunch:
+            return "1st Lunch"
+        case .secondLunch:
+            return "2nd Lunch"
+        case .period, .firstLunchPeriod, .secondLunchPeriod:
+            let text = "Period \(String(periodNumber ?? -1))"
+            return text.capitalized
+        default:
+            return "\(title ?? "Period Block")".capitalized
+        }
+    }
+
+    func getUserClassName(userSettings: UserSettings) -> String? {
+        if let matchingPeriod = userSettings.editableSettings.filter({$0.periodNumber == periodNumber}).first,
+              matchingPeriod.textContent != "" {
+            return matchingPeriod.textContent
+        }
+        return nil
+    }
 }
 

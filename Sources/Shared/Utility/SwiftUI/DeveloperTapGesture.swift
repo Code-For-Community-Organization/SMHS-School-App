@@ -12,9 +12,7 @@ extension View {
                         count: Int = 5,
                         perform: @escaping () -> Void) -> some View {
         self.onTapGesture(count: 5) {
-            if userSettings.developerSettings.developerOn {
-                perform()
-            }
+            perform()
         }
     }
 }

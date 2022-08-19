@@ -21,47 +21,55 @@ struct AnimatedBlurBackground: View {
 
     var body: some View {
         GeometryReader {geo in
-            ZStack {
-                Image("SM-Field-HiRes")
-                    .resizable()
-                    .scaledToFill()
-                    .scaleEffect(1.4, anchor: .bottom)
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .clipped()
-                    .if(dynamicBlurred, transform: {
-                        $0
-                            .blur(radius: 3, opaque: true)
-                            .saturation(0.6)
-                        
-                    }, elseThen: {
-                        $0
-                            .blurEffect()
-                            .blurEffectStyle(.systemMaterial)
-                    })
+            if true {
+                makeBackgroundImage(geo)
+                    .blurEffect()
+                    .blurEffectStyle(.systemUltraThinMaterial)
+            }
+            else {
+                ZStack {
+                    makeBackgroundImage(geo)
+                        .if(dynamicBlurred, transform: {
+                            $0
+                                .blur(radius: 2, opaque: true)
 
-                if dynamicBlurred {
-                    Image("SM-Field-HiRes")
-                        .resizable()
-                        .scaledToFill()
-                        .scaleEffect(1.4, anchor: .bottom)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
-                        .saturation(0.6)
-                        .blur(radius: 60, opaque: true)
-                        .mask (
-                            LinearGradient(stops: [.init(color: .clear, location: 0),
-                                                   .init(color: .clear, location: gradientTopLocation),
-                                                   .init(color: .black, location: gradientBottomLocation),
-                                                  .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
-                        )
+                        }, elseThen: {
+                            $0
+                                .blurEffect()
+                                .blurEffectStyle(.systemMaterial)
+                        })
+
+                    if dynamicBlurred {
+                        makeBackgroundImage(geo)
+                            .blur(radius: 60, opaque: true)
+                            .mask (
+                                LinearGradient(stops: [.init(color: .clear, location: 0),
+                                                       .init(color: .clear, location: gradientTopLocation),
+                                                       .init(color: .black, location: gradientBottomLocation),
+                                                      .init(color: .black, location: 1)], startPoint: .top, endPoint: .bottom)
+                            )
+                    }
+                }
+                .if(dynamicBlurred) {
+                    $0
+                        .drawingGroup()
                 }
             }
+
         }
-        .if(dynamicBlurred) {
-            $0
-                .drawingGroup()
-        }
+
         .edgesIgnoringSafeArea(.all)
+    }
+
+    func makeBackgroundImage(_ geo: GeometryProxy) -> some View {
+        Image("SM-Field-HiRes")
+            .resizable()
+            .scaledToFill()
+            //.scaleEffect(1.4, anchor: .bottom)
+
+            .frame(width: geo.size.width, height: geo.size.height)
+            .clipped()
+            .brightness(-0.1)
     }
 }
 
@@ -74,7 +82,7 @@ struct AnimatedBlurBackground_Previews: PreviewProvider {
     }
     static var previews: some View {
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
-            .environmentObject(UserSettings())
+            .environmentObject(configureSettings(legacySchedule: false))
 
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: true)
             .environmentObject(configureSettings(legacySchedule: true))

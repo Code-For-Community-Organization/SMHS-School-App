@@ -17,13 +17,18 @@ struct ScheduleListView: View {
             ScrollView {
                 LazyVStack {
                     ScheduleListHeaderText(subHeaderText: scheduleViewModel.dateHelper.subHeaderText)
-                        .padding(.horizontal, 16)
+                        .padding(.leading, 18)
                     ScheduleListBanner(present: $presentCalendar, action: {
                         masterCalendarViewModel.reloadData {
                             presentCalendar = true
                         }
 
                     }, geometryProxy: geo)
+
+                    Text("Last Updated: \(scheduleViewModel.scheduleLastUpdateDisplay)")
+                        .font(.caption)
+                        .foregroundColor(.platformSecondaryLabel)
+                        .padding(.top, 2)
 
                     ForEach(scheduleViewModel.scheduleWeeks, id: \.self){scheduleWeek in
                         VStack(spacing: 0) {

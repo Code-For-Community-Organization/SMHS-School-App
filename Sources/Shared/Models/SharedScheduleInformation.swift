@@ -18,6 +18,7 @@ final class SharedScheduleInformation: ObservableObject {
     @Published var todaySchedule: ScheduleDay?
     @Published(key: "scheduleWeeks") var scheduleWeeks = [ScheduleWeek]()
     @Published var isLoading = false
+    @Published(key: "scheduleLastUpdateTime") var scheduleLastUpdateTime: Date? = Date()
 
     private var currentWeekday: Int?
     
@@ -33,10 +34,18 @@ final class SharedScheduleInformation: ObservableObject {
         return targetDay.first
     }
 
+    var scheduleLastUpdateDisplay: String {
+        if let lastUpdateTime = scheduleLastUpdateTime {
+            return lastUpdateTime.timeAgoDisplay()
+        }
+        else {
+            return "unknown"
+        }
+    }
     // Fetched through API metadata
     // Represents the start and end of school year
-    private var minDate: Date?
-    private var maxDate: Date?
+    @Published(key: "minDate") private var minDate: Date? = nil
+    @Published(key: "maxDate") private var maxDate: Date? = nil
 
     init(placeholderText: String? = nil,
          scheduleDateHelper: ScheduleDateHelper = ScheduleDateHelper(),
@@ -54,8 +63,8 @@ final class SharedScheduleInformation: ObservableObject {
         self.dateHelper = scheduleDateHelper
         self.urlString = urlString
         self.downloader = downloader
-        print("Called fetch data from initializer...")
-        fetchData(purgeExisting: true)
+        print("Called reload data from initializer...")
+        reloadData()
 
         // Purge all data when app update applied
         // Allow Remote Config override
@@ -96,6 +105,7 @@ final class SharedScheduleInformation: ObservableObject {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
         isLoading = true
+
         AF.request(endpoint.request)
             .response {[weak self] response in
             if let data = response.data {
@@ -114,6 +124,7 @@ final class SharedScheduleInformation: ObservableObject {
                 self?.minDate = formatter.serverTimeFormat(metadata["MINDATE"].text)
                 self?.maxDate = formatter.serverTimeFormat(metadata["MAXDATE"].text)
                 let fetchedSchedule = self?.dateHelper.parseScheduleXML(forDays: scheduleDays)
+                self?.scheduleLastUpdateTime = Date()
                 if purgeExisting {
                     self?.scheduleWeeks = fetchedSchedule ?? []
                 }
@@ -154,20 +165,21 @@ final class SharedScheduleInformation: ObservableObject {
         downloader(urlString){data, error in
             guard let data = data else {
                 #if DEBUG
-                completion?(false)
-                //print("Error occurred while fetching iCS: \(error!)")
+                print("Error occurred while fetching iCS: \(error!)")
                 #endif
+                completion?(false)
                 return
             }
             //Publish changes on main thread
             DispatchQueue.main.async {
                 // Decode iCS calendar into raw string
                 let rawText = String(data: data, encoding: .utf8) ?? ""
-                #if DEBUG
-                #else
                 // Only reload if the downloaded data is different
-                guard self.ICSText != rawText else {return}
-                #endif
+                guard self.ICSText != rawText
+                else {
+                    completion?(false)
+                    return
+                }
                 self.ICSText = rawText
                 self.dateHelper.parseTodayScheduleData(withRawText: rawText) {day in
                     DispatchQueue.main.async {
@@ -193,23 +205,30 @@ final class SharedScheduleInformation: ObservableObject {
     }
 
     // Reloads the infinite scroll as needed
-    func reloadScrollList(currentWeek: ScheduleWeek) {
+    func reloadScrollList(currentWeek: ScheduleWeek, retry: Int = 1) {
         if currentWeek == scheduleWeeks.last {
             guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date,
-                    let minDate = minDate,
+                  let minDate = minDate,
                   let maxDate = maxDate
             else {
+                if retry > 0 {
+                    fetchData {success in
+                        if success {
+                            self.reloadScrollList(currentWeek: currentWeek, retry: retry - 1)
+                        }
+
+                    }
+                }
                 return
             }
 
-            if (lastDay < maxDate && lastDay > minDate)
-                && scheduleWeeks.isNotLast(for: currentWeek){
+            if (lastDay < maxDate && lastDay > minDate) {
                 debugPrint("✅ Reloaded infinite scroll list successfully")
                 fetchData(startDate: lastDay)
                 return
             }
         }
-        debugPrint("⚠️ reloadScrollList() called, but did not realod.")
+        debugPrint("⚠️ reloadScrollList() called, but did not reload.")
     }
 }
 
