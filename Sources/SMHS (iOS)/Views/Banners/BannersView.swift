@@ -23,7 +23,7 @@ struct BannersView: View {
                 }
                 .padding(.horizontal)
             }
-            .frame(height: 320)
+            .frame(height: 3.0/4.0 * UIScreen.screenWidth)
     }
 }
 

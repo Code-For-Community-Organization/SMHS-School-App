@@ -42,13 +42,15 @@ struct BannerImage: View {
                 }
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 320, height: 320)
+            .frame(width: 3.0/4.0 * UIScreen.screenWidth,
+                   height: 3.0/4.0 * UIScreen.screenWidth)
             .clipped()
             .overlay(
                 KFImage(url)
                     .setProcessor(BlurImageProcessor(blurRadius: 65))
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 320, height: 320)
+                    .frame(width: 3.0/4.0 * UIScreen.screenWidth,
+                           height: 3.0/4.0 * UIScreen.screenWidth)
                     .clipped()
                     .mask {
                         LinearGradient(stops: [.init(color: .black, location: 0), .init(color: .black, location: 0.1),
