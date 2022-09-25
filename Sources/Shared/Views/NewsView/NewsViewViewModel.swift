@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import SwiftyXMLParser
 import SwiftSoup
+import FirebaseRemoteConfig
 
 final class NewsViewViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
@@ -20,8 +21,8 @@ final class NewsViewViewModel: ObservableObject {
     } 
     
     func fetchXML() {
-        let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+        let request = makeRequest()
+        cancellable = URLSession.shared.dataTaskPublisher(for: request)
             .retry(2)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {_ in}){data, response in
@@ -30,7 +31,15 @@ final class NewsViewViewModel: ObservableObject {
             }
 
     }
-    
+
+    private func makeRequest() -> URLRequest {
+        let userAgent = Constants.userAgent ?? ""
+        let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
+        var request = try! URLRequest(url: url, method: .get)
+        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+        return request
+    }
+
     private func parseXML(for rawText: String) -> [NewsEntry] {
         do {
             let xml = try XML.parse(rawText)

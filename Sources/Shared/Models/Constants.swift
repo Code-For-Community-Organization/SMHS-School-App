@@ -123,6 +123,10 @@ struct Constants {
             return false
         }
     }
+
+    static var userAgent: String? {
+        remoteConfig.configValue(forKey: "user_agent").stringValue
+    }
 }
 
 extension Constants {
