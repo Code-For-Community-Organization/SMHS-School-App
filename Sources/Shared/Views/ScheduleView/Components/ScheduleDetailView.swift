@@ -44,8 +44,9 @@ struct ScheduleDetailView: View {
         if let firstIndex = firstIndex {
             return Array(periods[0..<firstIndex])
         }
+        let removingPeriod8 = periods.filter({$0.periodNumber != 8})
         
-        return periods //Fallback on all periods, assuming no lunch or single lunch
+        return removingPeriod8 //Fallback on all periods, assuming no lunch or single lunch
     }
     
     //1st or 2nd lunch revolving periods, 2nd out of 3 UI sections
@@ -65,7 +66,7 @@ struct ScheduleDetailView: View {
         let lastIndex = scheduleDay?.periods?.lastIndex{$0.periodCategory.isLunchRevolving}
         if let lastIndex = lastIndex,
            let scheduleDay = scheduleDay,
-           let removingPeriod8 = scheduleDay.periods?.filter {$0.periodNumber != 8}
+           let removingPeriod8 = scheduleDay.periods?.filter({$0.periodNumber != 8})
         {
 
             //lastIndex + 1 to shorten array, remove unwanted

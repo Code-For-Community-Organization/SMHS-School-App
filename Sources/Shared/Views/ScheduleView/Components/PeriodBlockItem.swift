@@ -63,6 +63,7 @@ struct PeriodBlockItem: View {
                         .fontWeight(.semibold)
                         .textAlign(.leading)
                         .font(.headline)
+                        .lineLimit(1)
                         .if(isBlurred) {
                             $0.vibrancyEffectStyle(.label)
                         }
