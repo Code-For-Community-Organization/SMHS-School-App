@@ -89,6 +89,9 @@ class TodayViewViewModel: ObservableObject {
                     case .finished:
                     self?.lastUpdateTime = Date()
                     case .failure(let error):
+                    #if DEBUG
+                    debugPrint(error)
+                    #endif
                         return
                 }
             }, receiveValue: {[weak self] announcement in

@@ -39,32 +39,35 @@ struct ScheduleDetailView: View {
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
-        if let firstIndex = firstIndex,
-           let scheduleDay = scheduleDay {
-            return Array(scheduleDay.periods[0..<firstIndex])
+        let periods = scheduleDay?.periods ?? []
+        let firstIndex = periods.firstIndex{$0.periodCategory.isLunchRevolving}
+        if let firstIndex = firstIndex {
+            return Array(periods[0..<firstIndex])
         }
         
-        return scheduleDay?.periods ?? [] //Fallback on all periods, assuming no lunch or single lunch
+        return periods //Fallback on all periods, assuming no lunch or single lunch
     }
     
     //1st or 2nd lunch revolving periods, 2nd out of 3 UI sections
     var lunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
+        let periods = scheduleDay?.periods ?? []
+        let firstIndex = scheduleDay?.periods?.firstIndex{$0.periodCategory.isLunchRevolving}
+        let lastIndex = scheduleDay?.periods?.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
         if let firstIndex = firstIndex,
-           let lastIndex = lastIndex,
-           let scheduleDay = scheduleDay {
-            return Array(scheduleDay.periods[firstIndex...lastIndex])
+           let lastIndex = lastIndex {
+            return Array(periods[firstIndex...lastIndex])
         }
         return []
     }
     
     //Periods after lunch, 3rd out of 3 UI sections
     var postLunchPeriods: [ClassPeriod] {
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving}
-        if let lastIndex = lastIndex, let scheduleDay = scheduleDay  {
-            let removingPeriod8 = scheduleDay.periods.filter {$0.periodNumber != 8}
+        let lastIndex = scheduleDay?.periods?.lastIndex{$0.periodCategory.isLunchRevolving}
+        if let lastIndex = lastIndex,
+           let scheduleDay = scheduleDay,
+           let removingPeriod8 = scheduleDay.periods?.filter {$0.periodNumber != 8}
+        {
+
             //lastIndex + 1 to shorten array, remove unwanted
             return Array(removingPeriod8.suffix(from: lastIndex + 1))
         }
@@ -72,7 +75,7 @@ struct ScheduleDetailView: View {
     }
     
     var period8: ClassPeriod? {
-        scheduleDay?.periods.filter {$0.periodNumber == 8}.first
+        scheduleDay?.periods?.filter {$0.periodNumber == 8}.first
     }
     
     var scheduleDateDescription: String {
@@ -86,7 +89,7 @@ struct ScheduleDetailView: View {
     var shouldFallback: Bool {
         return userSettings.preferLegacySchedule ||
         developerScheduleOn ||
-        scheduleDay?.periods.isEmpty ?? true
+        scheduleDay?.periods?.isEmpty ?? true
     }
     
     var horizontalPadding = true
