@@ -127,6 +127,10 @@ struct Constants {
     static var userAgent: String? {
         remoteConfig.configValue(forKey: "user_agent").stringValue
     }
+
+    static var showForYou: Bool {
+        remoteConfig.configValue(forKey: "show_for_you").boolValue
+    }
 }
 
 extension Constants {
