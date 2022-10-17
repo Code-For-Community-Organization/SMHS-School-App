@@ -12,17 +12,19 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         self.date = date
         self.scheduleText = scheduleText
         self.mockDate = mockDate
+        self.periods = parseClassPeriods() ?? nil
+        if let periods = self.periods {
+            self.periods = appendOptionalPeriod8(periods: periods)
+        }
     }
 
     internal init(date: Date, scheduleText: String, dayTitle: String) {
-        self.date = date
-        self.scheduleText = scheduleText
+        self.init(date: date, scheduleText: scheduleText)
         self.dayTitle = dayTitle
     }
 
     internal init(date: Date, scheduleText: String) {
-        self.date = date
-        self.scheduleText = scheduleText
+        self.init(date: date, scheduleText: scheduleText, mockDate: nil)
     }
 
     var mockDate: Date?  //Mock representation of current date, for testing
@@ -37,13 +39,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var dayTitle: String?
 
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
-    var periods: [ClassPeriod]? {
-        guard let periods = parseClassPeriods()
-        else {
-            return nil
-        }
-        return appendOptionalPeriod8(periods: periods)
-    }
+    var periods: [ClassPeriod]?
 
     var atheleticsInfo: String {
         guard dayOfTheWeek != 6 && dayOfTheWeek != 0
