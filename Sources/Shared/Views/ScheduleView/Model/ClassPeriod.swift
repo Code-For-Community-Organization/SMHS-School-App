@@ -8,14 +8,14 @@
 import Foundation
 
 struct ClassPeriod: Hashable, Codable  {
-    internal init(nutritionBlock: PeriodCategory, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
-        self.periodCategory = nutritionBlock
+    internal init(category: PeriodCategory, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
+        self.periodCategory = category
         self.periodNumber = periodNumber
         self.startTime = startTime
         self.endTime = endTime
     }
-    internal init(nutritionBlock: PeriodCategory, periodNumber: Int, startTime: Date, endTime: Date) {
-        self.periodCategory = nutritionBlock
+    internal init(category: PeriodCategory, periodNumber: Int, startTime: Date, endTime: Date) {
+        self.periodCategory = category
         self.periodNumber = periodNumber
         self.startTime = startTime
         self.endTime = endTime

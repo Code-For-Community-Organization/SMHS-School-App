@@ -56,7 +56,9 @@ extension ScheduleDay {
 
             // Academic period case
             if c.officeHourPattern.matches(String(line)) {
-                classPeriods.append(parseRegularPeriodLine(line,
+                classPeriods.append(parseRegularPeriodLine(line: line,
+                                                           textLines: textLines,
+                                                           lineNum: lineNum,
                                                            startTime: startTime,
                                                            endTime: endTime,
                                                            isAcademicPeriod: true))
@@ -64,7 +66,11 @@ extension ScheduleDay {
             }
 
             //Regular period
-            classPeriods.append(parseRegularPeriodLine(line, startTime: startTime, endTime: endTime))
+            classPeriods.append(parseRegularPeriodLine(line: line,
+                                                       textLines: textLines,
+                                                       lineNum: lineNum,
+                                                       startTime: startTime,
+                                                       endTime: endTime))
         }
 
         // Not the main return route!!!
@@ -72,29 +78,35 @@ extension ScheduleDay {
     }
     
     func parseRegularLunchPeriodLine(_ line: Substring, startTime: Substring, endTime:Substring) -> ClassPeriod {
-        return ClassPeriod(nutritionBlock: .singleLunch,
+        return ClassPeriod(category: .singleLunch,
                            startTime: DateFormatter.formatTime12to24(startTime) ?? currentDate,
                            endTime: DateFormatter.formatTime12to24(endTime) ?? currentDate)
     }
     
-    func parseRegularPeriodLine(_ line: Substring,
+    func parseRegularPeriodLine(line: Substring,
+                                textLines: [Substring],
+                                lineNum: Int,
                                 startTime: Substring,
                                 endTime:Substring,
                                 isAcademicPeriod: Bool = false) -> ClassPeriod {
         let startTime = DateFormatter.formatTime12to24(startTime) ?? currentDate
         let endTime = DateFormatter.formatTime12to24(endTime) ?? currentDate
-        let periodTitle = line.trimmingCharacters(in: .whitespaces)
+        var periodTitle = line.trimmingCharacters(in: .whitespaces)
 
         if isAcademicPeriod {
-            return ClassPeriod(periodTitle, startTime: startTime, endTime: endTime)
+            return ClassPeriod(category: .officeHour, startTime: startTime, endTime: endTime)
         }
-        
+
+        if periodTitle.isEmpty {
+            periodTitle = textLines[lineNum - 1].trimmingCharacters(in: .whitespaces)
+        }
+
         guard let period: Character = c.periodPattern.findFirst(in: String(line))?.matched.last else {
             return ClassPeriod(periodTitle,
                                startTime: startTime,
                                endTime: endTime)
         }
-        return ClassPeriod(nutritionBlock: .period,
+        return ClassPeriod(category: .period,
                            periodNumber: Int(String(period)),
                            startTime: startTime,
                            endTime: endTime)
@@ -121,12 +133,12 @@ extension ScheduleDay {
         //nutritionIndex is location index of "nutrition" label
         //compare nutritionIndex with location of "period #" label to determine which comes 1st
         if nutritionIndex < textLines[lineNum].range(of: period.matched)!.lowerBound {
-            classPeriods.append(ClassPeriod(nutritionBlock: .firstLunch,
+            classPeriods.append(ClassPeriod(category: .firstLunch,
                                             startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
                                             endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate))
             
             guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {return nil}
-            classPeriods.append(ClassPeriod(nutritionBlock: .secondLunchPeriod,
+            classPeriods.append(ClassPeriod(category: .secondLunchPeriod,
                                             periodNumber: periodNumber,
                                             startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
                                             endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate))
@@ -137,12 +149,12 @@ extension ScheduleDay {
         //Handles case where period # comes before nutrition
         //Reverse the start/end time order
         else {
-            classPeriods.append(ClassPeriod(nutritionBlock: .secondLunch,
+            classPeriods.append(ClassPeriod(category: .secondLunch,
                                             startTime: DateFormatter.formatTime12to24(startTimeLast) ?? currentDate,
                                             endTime: DateFormatter.formatTime12to24(endTimeLast) ?? currentDate))
             
             guard period.matched.last != nil, let periodNumber: Int = Int(String(period.matched.last!)) else {return nil}
-            classPeriods.append(ClassPeriod(nutritionBlock: .firstLunchPeriod,
+            classPeriods.append(ClassPeriod(category: .firstLunchPeriod,
                                             periodNumber: periodNumber,
                                             startTime: DateFormatter.formatTime12to24(startTimeFirst) ?? currentDate,
                                             endTime: DateFormatter.formatTime12to24(endTimeFirst) ?? currentDate))
@@ -163,7 +175,7 @@ extension ScheduleDay {
         else { return periods }
 
         var periods = periods
-        periods.append(.init(nutritionBlock: .period,
+        periods.append(.init(category: .period,
                              periodNumber: 8,
                              startTime: times.start,
                              endTime: times.end))
