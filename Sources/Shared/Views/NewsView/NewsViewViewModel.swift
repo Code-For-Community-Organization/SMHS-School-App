@@ -16,12 +16,13 @@ final class NewsViewViewModel: ObservableObject {
     @Published(key: "newsEntries") var newsEntries = [NewsEntry]()
     @Published var isLoading: Bool = true
     init(newsEntries: [NewsEntry]? = nil) {
-        fetchXML()
-    } 
-    
+        self.newsEntries = newsEntries ?? []
+    }
+
     func fetchXML() {
-        let url = URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+        var request = URLRequest(url: Constants.campusNewEndpoint)
+        request.allHTTPHeaderFields = ["User-Agent": Constants.userAgent]
+        cancellable = URLSession.shared.dataTaskPublisher(for: request)
             .retry(2)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {_ in}){data, response in

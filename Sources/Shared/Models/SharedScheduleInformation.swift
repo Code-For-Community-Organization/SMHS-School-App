@@ -236,8 +236,9 @@ final class SharedScheduleInformation: ObservableObject {
 
 struct Downloader {
     static func load(_ urlString: String, completion: @escaping (Data?, Error?) -> ()) {
-        let url = URL(string: urlString)!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.allHTTPHeaderFields = ["User-Agent": Constants.userAgent]
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 completion(nil, error!)
                 return

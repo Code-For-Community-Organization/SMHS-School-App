@@ -123,6 +123,19 @@ struct Constants {
             return false
         }
     }
+
+    static var userAgent: String {
+        remoteConfig.configValue(forKey: "user_agent").stringValue ?? ""
+    }
+
+    static var campusNewEndpoint: URL {
+
+        guard let url = remoteConfig.configValue(forKey: "campus_news_endpoint").stringValue
+        else {
+            return URL(string: "https://www.smhs.org/fs/post-manager/boards/37/posts/feed")!
+        }
+        return URL(string: url)!
+    }
 }
 
 extension Constants {
