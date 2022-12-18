@@ -38,7 +38,9 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
 
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
     var periods: [ClassPeriod] {
-        appendOptionalPeriod8(periods: parseClassPeriods())
+        let parsedPeriods = parseClassPeriods()
+        let appended = appendOptionalPeriod8(periods: parsedPeriods)
+        return appended
     }
     var atheleticsInfo: String {
         guard dayOfTheWeek != 6 && dayOfTheWeek != 0
@@ -56,7 +58,11 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     var currentDate: Date {
         return mockDate ?? Date()
     }
-    private var currentDateReferenceTime: Date? {currentDate.convertToReferenceDateLocalTime()}
+    // Local time kept, but date information erased
+    private var currentDateReferenceTime: Date {
+        currentDate.convertToReferenceDateLocalTime()
+    }
+
     var title: String {
 
         let formatter = DateFormatter()
@@ -66,11 +72,21 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
 
 
     func getCurrentPeriodRemainingTime(selectionMode: PeriodCategory) -> TimeInterval? {
-        if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime, 
-           let reference = currentDateReferenceTime {
-            return endTime - reference
+        if let endTime = getCurrentPeriod(selectionMode: selectionMode)?.endTime {
+            return endTime - currentDateReferenceTime
         }
-        return nil
+
+        //Handle passing periods
+        else if isWithinSchoolHours() {
+            guard let nextPeriod = getNextPeriod(selectionMode: selectionMode)
+            else {
+                return nil
+            }
+            return nextPeriod.startTime - currentDateReferenceTime
+        }
+        else {
+            return nil
+        }
     }
     
     func getCurrentPeriodRemainingPercent(selectionMode: PeriodCategory) -> Double? {
@@ -80,6 +96,19 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
             let totalTime = endTime - startTime
             return timeRemaining / totalTime
         }
+
+        //Handle passing periods
+        else if isWithinSchoolHours() {
+            guard let nextPeriod = getNextPeriod(selectionMode: selectionMode),
+                  let previousPeriod = getPreviousPeriod(selectionMode: selectionMode)
+            else {
+                return nil
+            }
+
+            let timeLeft = nextPeriod.startTime - currentDateReferenceTime
+            let totalTime = nextPeriod.startTime - previousPeriod.endTime
+            return timeLeft / totalTime
+        }
         return nil
     }
     
@@ -88,7 +117,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         //Current time within period start/end time
         periods.filter {
             //All all periods that contains current time in between its start/end time
-            guard (currentDateReferenceTime?.isBetween($0.startTime, and: $0.endTime)) ?? false else {
+            guard currentDateReferenceTime.isBetween($0.startTime, and: $0.endTime) else {
                 return false
             }
             //Compare against selectionMode only if current period is lunch revolving
@@ -97,15 +126,36 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
         }.first
     }
 
-    func isWithinSchoolHours(forDate: Date) -> Bool {
-        let dateConverted = forDate.convertToReferenceDateLocalTime()
+    private func getNextPeriod(selectionMode: PeriodCategory) -> ClassPeriod? {
+        periods.filter {
+            let isBeforeStartTime = currentDateReferenceTime < $0.startTime
+
+            //Ensure lunch revolving periods correctly compared
+            let isInSameLunchSchedule = $0.periodCategory ~=~ selectionMode
+            return isBeforeStartTime && isInSameLunchSchedule
+        }
+        .first
+    }
+
+    private func getPreviousPeriod(selectionMode: PeriodCategory) -> ClassPeriod? {
+        periods.filter {
+            let isBeforeStartTime = currentDateReferenceTime > $0.endTime
+            let isInSameLunchSchedule = $0.periodCategory ~=~ selectionMode
+            return isBeforeStartTime && isInSameLunchSchedule
+        }.last
+    }
+
+    func isWithinSchoolHours() -> Bool {
         guard let first = periods.first,
               let last = periods.last
         else {
             return false
         }
-
-        return dateConverted > first.startTime && dateConverted < last.endTime
+        // Check if current time is anywhere
+        // between start of 1st period, and
+        // end of last period
+        return currentDateReferenceTime > first.startTime
+        && currentDateReferenceTime < last.endTime
     }
 
 }

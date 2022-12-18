@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClassPeriod: Hashable, Codable  {
+struct ClassPeriod: Hashable, Codable {
     internal init(category: PeriodCategory, periodNumber: Int? = nil, startTime: Date, endTime: Date) {
         self.periodCategory = category
         self.periodNumber = periodNumber
@@ -43,8 +43,12 @@ struct ClassPeriod: Hashable, Codable  {
         case .period, .firstLunchPeriod, .secondLunchPeriod:
             let text = "Period \(String(periodNumber ?? -1))"
             return text.capitalized
-        default:
+        case .officeHour:
+            return "Office Hour"
+        case .unnumberedPeriod:
             return "\(title ?? "Period Block")".capitalized
+        case .passingPeriod:
+            return "Passing Period"
         }
     }
 
