@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
+import SwiftUIVisualEffects
 
 struct ScheduleFallbackSection: View {
     @State private var showFeedbackAlert = false
     @Binding var userOverrideFallback: Bool
     var alternateColored: Bool
     @State private var feedbackText = ""
-    var labelForeground: Color {
-        alternateColored ? .platformSecondaryLabel : .white
-    }
 
     var body: some View {
         HStack {
             if userOverrideFallback {
-                RevertView(labelForegroundColor: labelForeground,
+                RevertView(alternateColored: alternateColored,
                            labelAction: {
                     showFeedbackAlert = true
                 }, buttonAction: {
@@ -28,24 +26,27 @@ struct ScheduleFallbackSection: View {
                 .availabilityAlertSurvey($showFeedbackAlert, $feedbackText)
             }
             else {
-                EnableView(labelForegroundColor: labelForeground) { userOverrideFallback = true }
+                EnableView(alternateColored: alternateColored)
+                { userOverrideFallback = true }
             }
 
             Spacer()
         }
-        .colorScheme(.dark)
-        .if(alternateColored) {view in
+        // No extra padding needed for today view
+        .if(!alternateColored) {view in
             view
                 .padding(.horizontal)
+                .padding(.vertical, 10)
+
         }
-        .padding(.vertical, 10)
+        .padding(.bottom)
         .font(.callout.weight(.light))
         .transition(.opacity)
     }
 }
 
 fileprivate struct RevertView: View {
-    var labelForegroundColor: Color
+    var alternateColored: Bool
     var labelAction: () -> Void
     var buttonAction: () -> Void
 
@@ -53,7 +54,15 @@ fileprivate struct RevertView: View {
         Button(action: labelAction) {
             Label("Tap to submit feedback.", systemSymbol: .exclamationmarkBubble)
                 .padding(.trailing, 10)
-                .foregroundColor(labelForegroundColor)
+                .if(alternateColored, transform: {view in
+                    view
+                        .foregroundColor(.secondaryLabel)
+                }, elseThen: {view in
+                    view
+                        .vibrancyEffect()
+                        .vibrancyEffectStyle(.secondaryLabel)
+
+                })
         }
 
         Button("Revert", systemImage: .arrowUturnLeft) {
@@ -61,26 +70,53 @@ fileprivate struct RevertView: View {
                 buttonAction()
             }
         }
-        .foregroundColor(.appPrimary)
+        .if(alternateColored, transform: {view in
+            view
+                .foregroundColor(.appPrimary)
+        }, elseThen: {view in
+            view
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.label)
+                .colorScheme(.dark)
+
+        })
         .padding(3)
+        .font(.callout.weight(.regular))
     }
 }
 
 fileprivate struct EnableView: View {
-    var labelForegroundColor: Color
+    var alternateColored: Bool
     var action: () -> Void
 
     var body: some View {
         Label("Schedule doesn't look right?", systemSymbol: .exclamationmarkCircle)
-            .foregroundColor(labelForegroundColor)
+            .if(alternateColored, transform: {view in
+                view
+                    .foregroundColor(.secondaryLabel)
+            }, elseThen: {view in
+                view
+                    .vibrancyEffect()
+                    .vibrancyEffectStyle(.secondaryLabel)
+
+            })
 
         Button("Tap Here.") {
             withAnimation {
                 action()
             }
         }
-        .foregroundColor(.appPrimary)
+        .if(alternateColored, transform: {view in
+            view
+                .foregroundColor(.appPrimary)
+        }, elseThen: {view in
+            view
+                .vibrancyEffect()
+                .vibrancyEffectStyle(.label)
+                .colorScheme(.dark)
+        })
         .padding(3)
+        .font(.callout.weight(.regular))
     }
 }
 
@@ -118,5 +154,19 @@ fileprivate extension View {
                                  _ feedbackText: Binding<String>) -> some View {
         self.modifier(AvailabilityAlertSurvey(showFeedbackAlert: showFeedbackAlert,
                                               feedbackText: feedbackText))
+    }
+}
+
+
+struct ScheduleFallbackSection_Previews: PreviewProvider {
+    @State static var userOverride = true
+    static var previews: some View {
+        ZStack {
+            AnimatedBlurBackground(bottomTextScreenRatio: .constant(0),
+                                               dynamicBlurred: false)
+            ScheduleFallbackSection(userOverrideFallback: $userOverride,
+                                    alternateColored: false)
+        }
+
     }
 }

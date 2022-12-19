@@ -55,7 +55,7 @@ struct TodayHeroView: View {
                             .fontWeight(.semibold)
                             .font(.title2)
                             .textAlign(.leading)
-                            .padding(.bottom, 10)
+                            
                         ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                            horizontalPadding: false,
                                            showBackgroundImage: false)
