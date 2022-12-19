@@ -92,11 +92,14 @@ struct ScheduleDetailView: View {
     var horizontalPadding = true
     var showBackgroundImage = true
     @State var hapticsManager = HapticsManager(impactStyle: .light)
-
     @State private var developerScheduleOn = false
+
 
     var body: some View {
         ScrollView {
+            ScheduleFallbackSection(userOverrideFallback: $developerScheduleOn,
+                                    alternateColored: !showBackgroundImage)
+
             if shouldFallback {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
                     .padding(.top, 30)
@@ -156,7 +159,6 @@ struct ScheduleDetailView: View {
                     .transition(.move(edge: .top).combined(with: .opacity))
                 }
 
-                
                 VStack(spacing: 10) {
                     ForEach(preLunchPeriods, id: \.self){period in
                         PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
@@ -226,14 +228,14 @@ struct ScheduleDetailView: View {
                                     .vibrancyEffect()
                                     .vibrancyEffectStyle(.label)
                                     .colorScheme(.dark)
-                                    .overlay(
-                                        GeometryReader {geo -> Color in
-                                            DispatchQueue.main.async {
-                                                bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
-                                            }
-                                            return Color.clear
-                                        }
-                                    )
+//                                    .overlay(
+//                                        GeometryReader {geo -> Color in
+//                                            DispatchQueue.main.async {
+//                                                bottomTextScreenRatio = geo.frame(in: .global).minY / UIScreen.screenHeight
+//                                            }
+//                                            return Color.clear
+//                                        }
+//                                    )
                             }, elseThen: {
                                 $0
                                     .foregroundColor(.platformSecondaryLabel)
@@ -304,7 +306,7 @@ struct ScheduleDetailView: View {
                     .vibrancyEffect()
                     .vibrancyEffectStyle(.label)
                     .colorScheme(.dark)
-                    .shadow(color: Color.black.opacity(0.85), radius: 1, x: 0, y: 0.8)
+                    .shadow(color: Color.label.opacity(0.85), radius: 1, x: 0, y: 0.8)
             }, elseThen: {
                 $0
                     .foregroundColor(.platformSecondaryLabel)
@@ -329,6 +331,7 @@ struct ScheduleDetailView_Previews: PreviewProvider {
                            showBackgroundImage: true,
                            respondedSurvey: false)
             .environmentObject(configureSettings())
+            .previewDisplayName("Standard")
 
         NavigationView {
             NavigationLink("Detail") {
@@ -336,12 +339,15 @@ struct ScheduleDetailView_Previews: PreviewProvider {
                     .environmentObject(configureSettings())
             }
         }
+        .previewDisplayName("Navigation Stack Push")
 
         ScheduleDetailView(scheduleDay: .sampleScheduleDay,
                            showBackgroundImage: false)
         .environmentObject(configureSettings(legacySchedule: true))
+        .previewDisplayName("White Background Plain")
 
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: false)
             .environmentObject(configureSettings())
+            .previewDisplayName("White Background Formatted")
     }
 }
