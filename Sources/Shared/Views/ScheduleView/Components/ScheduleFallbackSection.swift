@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUIVisualEffects
+import FirebaseCrashlytics
 
 struct ScheduleFallbackSection: View {
     @State private var showFeedbackAlert = false
@@ -23,7 +24,7 @@ struct ScheduleFallbackSection: View {
                 }, buttonAction: {
                     userOverrideFallback = false
                 })
-                .availabilityAlertSurvey($showFeedbackAlert, $feedbackText)
+                .availabilityAlertSurvey($showFeedbackAlert, $feedbackText, action: submitResponse)
             }
             else {
                 EnableView(alternateColored: alternateColored)
@@ -42,6 +43,20 @@ struct ScheduleFallbackSection: View {
         .padding(.bottom)
         .font(.callout.weight(.light))
         .transition(.opacity)
+    }
+
+    private func submitResponse() {
+        let userInfo = [
+            NSLocalizedDescriptionKey: NSLocalizedString(Constants.Errors.scheduleUserFeedbackDescription,
+                                                         comment: ""),
+            "View": "\(ScheduleFallbackSection.self)"
+        ]
+
+        let error = NSError.init(domain: NSCocoaErrorDomain,
+                                 code: Constants.Errors.scheduleUserFeedbackCode,
+                                 userInfo: userInfo)
+        Crashlytics.crashlytics().record(error: error)
+        feedbackText = ""
     }
 }
 
@@ -123,6 +138,7 @@ fileprivate struct EnableView: View {
 fileprivate struct AvailabilityAlertSurvey: ViewModifier {
     @Binding var showFeedbackAlert: Bool
     @Binding var feedbackText: String
+    var action: () -> Void
 
     @ViewBuilder
     func body(content: Content) -> some View {
@@ -132,9 +148,7 @@ fileprivate struct AvailabilityAlertSurvey: ViewModifier {
                        isPresented: $showFeedbackAlert,
                        actions: {
                     TextField("Ex. Period 2 class not showing.", text: $feedbackText)
-                    Button("Submit", action: {
-
-                    })
+                    Button("Submit", action: action)
                     Button("Cancel", role: .cancel, action: {})
                 },
                        message: {
@@ -151,9 +165,11 @@ fileprivate struct AvailabilityAlertSurvey: ViewModifier {
 
 fileprivate extension View {
     func availabilityAlertSurvey(_ showFeedbackAlert: Binding<Bool>,
-                                 _ feedbackText: Binding<String>) -> some View {
+                                 _ feedbackText: Binding<String>,
+                                 action: @escaping () -> Void) -> some View {
         self.modifier(AvailabilityAlertSurvey(showFeedbackAlert: showFeedbackAlert,
-                                              feedbackText: feedbackText))
+                                              feedbackText: feedbackText,
+                                              action: action))
     }
 }
 

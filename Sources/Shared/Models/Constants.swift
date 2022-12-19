@@ -219,3 +219,22 @@ extension Constants {
 
     static let gradesPasswordErrorMsg = "Password must not be empty."
 }
+
+extension Constants {
+    struct Labels {
+
+    }
+
+    struct Errors {
+        /* Error code conventions:
+         Code should span from 1001 to 9001, changing the right most digit
+         only until more codes are needed, in which case the second digit
+         from left is used. There should always be a zero seperating code
+         numbers, for easier recognition, if possible. The higher the code number,
+         the more severe the error. Eg. harmless warnings should be 1001, while
+         severe errors should be 9001.
+        */
+        static let scheduleUserFeedbackCode = 5001
+        static let scheduleUserFeedbackDescription = "User submitted a feedback. Possible schedule error."
+    }
+}
