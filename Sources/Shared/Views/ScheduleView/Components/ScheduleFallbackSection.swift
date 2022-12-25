@@ -75,7 +75,8 @@ fileprivate struct RevertView: View {
                 }, elseThen: {view in
                     view
                         .vibrancyEffect()
-                        .vibrancyEffectStyle(.secondaryLabel)
+                        .vibrancyEffectStyle(.label)
+                        .colorScheme(.dark)
 
                 })
         }

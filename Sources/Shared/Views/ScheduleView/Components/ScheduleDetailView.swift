@@ -13,6 +13,8 @@ import SwiftUIVisualEffects
 import Introspect
 
 struct ScheduleDetailView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+
     init(scheduleDay: ScheduleDay? = nil,
          horizontalPadding: Bool = true,
          showBackgroundImage: Bool = true,
@@ -310,7 +312,11 @@ struct ScheduleDetailView: View {
                     .vibrancyEffect()
                     .vibrancyEffectStyle(.label)
                     .colorScheme(.dark)
-                    .shadow(color: Color.label.opacity(0.85), radius: 1, x: 0, y: 0.8)
+                    .if(colorScheme == .light) {view in
+                        view
+                            .shadow(color: Color.label.opacity(0.85), radius: 1, x: 0, y: 0.8)
+
+                    }
             }, elseThen: {
                 $0
                     .foregroundColor(.platformSecondaryLabel)
