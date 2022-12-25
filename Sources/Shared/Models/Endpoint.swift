@@ -170,4 +170,22 @@ extension Endpoint {
                          httpMethod: .GET)
      }
     
+    static func submit(name: String, phoneNumber: String, email: String, school: String, grade: String, sendEmail: String) -> Endpoint {
+        let body = [
+            "name": name,
+            "phone_number": phoneNumber,
+            "email": email,
+            "school": school,
+            "grade": grade,
+            "send_email": sendEmail
+        ]
+        
+        return Endpoint(host: c.SmhsApiPath.host,
+                        path: c.SmhsApiPath.main + c.SmhsApiPath.submit,
+                        requestBody: body,
+                        httpMethod: .POST,
+                        isApplicationJson: true,
+                        jsonEncode: true)
+    }
+    
 }

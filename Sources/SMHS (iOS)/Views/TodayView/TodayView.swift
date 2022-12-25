@@ -30,7 +30,9 @@ struct TodayView: View {
                     }
                 }
                 )
-            TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
+            if todayViewViewModel.showToolbar {
+                TodayViewHeader(viewModel: scheduleViewViewModel, todayViewModel: todayViewViewModel)
+            }
             
         }
         .background(

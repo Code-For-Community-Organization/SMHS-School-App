@@ -20,6 +20,8 @@ class TodayViewViewModel: ObservableObject {
     @Published var selectionMode: PeriodCategory = .firstLunch
     @Published(key: "announcements") var announcements: [Date: AnnoucementResponse] = [:]
     @Published var lastUpdateTime: Date?
+    
+    @Published var showToolbar = true
 
     var mockDate: Date?
     
@@ -87,6 +89,9 @@ class TodayViewViewModel: ObservableObject {
                     case .finished:
                     self?.lastUpdateTime = Date()
                     case .failure(let error):
+                    #if DEBUG
+                    debugPrint(error)
+                    #endif
                         return
                 }
             }, receiveValue: {[weak self] announcement in
@@ -99,7 +104,6 @@ class TodayViewViewModel: ObservableObject {
             })
             .store(in: &anyCancellable)
     }
-
 }
 
 extension TodayViewViewModel {

@@ -136,6 +136,10 @@ struct Constants {
         }
         return URL(string: url)!
     }
+    
+    static var showForYou: Bool {
+        remoteConfig.configValue(forKey: "show_for_you").boolValue
+    }
 }
 
 extension Constants {
@@ -170,6 +174,7 @@ extension Constants {
         static let host = "api.smhs.app"
         static let main = "/api/v1"
         static let annoucements = "/announcements"
+        static let submit = "/submit"
     }
 
     struct AeriesApiPath {
@@ -202,8 +207,8 @@ extension Constants {
 
     struct Schedule {
         static let startTimePattern: _Regex = #"((0?[1-9]|1[0-2]):[0-5][0-9]-)"#.r!
-        static let endTimePattern: _Regex = #"(-(0?[1-9]|1[0-2]):[0-5][0-9])"#.r!
-        static let periodPattern = try! _Regex(pattern: #"(per|period) \d+"#, options: [.caseInsensitive])
+        static let endTimePattern: _Regex = #"-(((0?[1-9]|1[0-2]):[0-5][0-9])|noon)"#.r!
+        static let periodPattern = try! _Regex(pattern: #"(per|period)\s?\d+"#, options: [.caseInsensitive])
         static let officeHourPattern = try! _Regex(pattern: #"(academic *per\w*)|(office *hours?)"#,
                                                   options: [.caseInsensitive])
         static let lunchPattern = try! _Regex(pattern: #"^.*(lunch|nutrition).*$"#, options: [.caseInsensitive])

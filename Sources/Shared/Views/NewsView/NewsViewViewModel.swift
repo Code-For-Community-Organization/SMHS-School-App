@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import SwiftyXMLParser
 import SwiftSoup
+import FirebaseRemoteConfig
 
 final class NewsViewViewModel: ObservableObject {
     private var cancellable: AnyCancellable?

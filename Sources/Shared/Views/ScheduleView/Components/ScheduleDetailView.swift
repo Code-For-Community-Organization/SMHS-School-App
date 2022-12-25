@@ -41,40 +41,45 @@ struct ScheduleDetailView: View {
     var scheduleDay: ScheduleDay?
     //Periods before lunch, 1st out of 3 UI sections
     var preLunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
-        if let firstIndex = firstIndex,
-           let scheduleDay = scheduleDay {
-            return Array(scheduleDay.periods[0..<firstIndex])
+        let periods = scheduleDay?.periods ?? []
+        let firstIndex = periods.firstIndex{$0.periodCategory.isLunchRevolving}
+        if let firstIndex = firstIndex {
+            return Array(periods[0..<firstIndex])
         }
+        let removingPeriod8 = periods.filter({$0.periodNumber != 8})
         
-        return scheduleDay?.periods ?? [] //Fallback on all periods, assuming no lunch or single lunch
+        return removingPeriod8 //Fallback on all periods, assuming no lunch or single lunch
     }
     
     //1st or 2nd lunch revolving periods, 2nd out of 3 UI sections
-    var lunchPeriods: [ClassPeriod] {
-        let firstIndex = scheduleDay?.periods.firstIndex{$0.periodCategory.isLunchRevolving}
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
+    var lunchPeriods: LunchBlock? {
+        let periods = scheduleDay?.periods ?? []
+        let firstIndex = scheduleDay?.periods?.firstIndex{$0.periodCategory.isLunchRevolving}
+        let lastIndex = scheduleDay?.periods?.lastIndex{$0.periodCategory.isLunchRevolving} //Last instance 1st/2nd nutrition block
         if let firstIndex = firstIndex,
-           let lastIndex = lastIndex,
-           let scheduleDay = scheduleDay {
-            return Array(scheduleDay.periods[firstIndex...lastIndex])
+           let lastIndex = lastIndex {
+            let lunchPeriods = Array(periods[firstIndex...lastIndex])
+            return LunchBlock(from: lunchPeriods)
         }
-        return []
+        return nil
     }
     
     //Periods after lunch, 3rd out of 3 UI sections
     var postLunchPeriods: [ClassPeriod] {
-        let lastIndex = scheduleDay?.periods.lastIndex{$0.periodCategory.isLunchRevolving}
-        if let lastIndex = lastIndex, let scheduleDay = scheduleDay  {
-            let removingPeriod8 = scheduleDay.periods.filter {$0.periodNumber != 8}
+        let lastIndex = scheduleDay?.periods?.lastIndex{$0.periodCategory.isLunchRevolving}
+        if let lastIndex = lastIndex,
+           let scheduleDay = scheduleDay,
+           let removingPeriod8 = scheduleDay.periods?.filter({$0.periodNumber != 8})
+        {
+
             //lastIndex + 1 to shorten array, remove unwanted
             return Array(removingPeriod8.suffix(from: lastIndex + 1))
         }
         return []
     }
-    
+
     var period8: ClassPeriod? {
-        scheduleDay?.periods.filter {$0.periodNumber == 8}.first
+        scheduleDay?.periods?.filter {$0.periodNumber == 8}.first
     }
     
     var scheduleDateDescription: String {
@@ -88,7 +93,7 @@ struct ScheduleDetailView: View {
     var shouldFallback: Bool {
         return userSettings.preferLegacySchedule ||
         developerScheduleOn ||
-        scheduleDay?.periods.isEmpty ?? true
+        scheduleDay?.periods?.isEmpty ?? true
     }
     
     var horizontalPadding = true
@@ -109,8 +114,7 @@ struct ScheduleDetailView: View {
             if shouldFallback {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
                     .padding(.top, 30)
-                    .vibrancyEffectStyle(.label)
-                    .vibrancyEffect()
+                    .foregroundColor(.platformBackground)
 
             }
             else {
@@ -170,34 +174,34 @@ struct ScheduleDetailView: View {
                         PeriodBlockItem(block: period, isBlurred: showBackgroundImage)
                     }
 
-                    if let firstLunch = lunchPeriods.first{$0.periodCategory == .firstLunch},
-                    let firstLunchPeriod = lunchPeriods.first{$0.periodCategory == .firstLunchPeriod},
-                        let secondLunch = lunchPeriods.first{$0.periodCategory == .secondLunch},
-                        let secondLunchPeriod = lunchPeriods.first{$0.periodCategory == .secondLunchPeriod} {
-                            HStack {
-                                VStack {
-                                    makeLunchTitle(content: "1st Lunch Times")
-
-                                    PeriodBlockItem(block: firstLunch,
-                                                    twoLine: true,
-                                                    isBlurred: showBackgroundImage)
-                                    PeriodBlockItem(block: firstLunchPeriod,
-                                                    twoLine: true,
-                                                    isBlurred: showBackgroundImage)
-                                }
-                                .padding(.trailing, 5)
-                                VStack {
-                                    makeLunchTitle(content: "2nd Lunch Times")
-
-                                    PeriodBlockItem(block: secondLunchPeriod,
-                                                    twoLine: true,
-                                                    isBlurred: showBackgroundImage)
-                                    PeriodBlockItem(block: secondLunch,
-                                                    twoLine: true,
-                                                    isBlurred: showBackgroundImage)
-                                }
+                    if let lunchPeriods = lunchPeriods {
+                        HStack {
+                            VStack {
+                                // Force unwrap - shouldFallBack should catch nil
+                                let firstLunch = lunchPeriods.firstLunch
+                                makeLunchTitle(content: "1st Lunch Times")
+                                PeriodBlockItem(block: firstLunch.lunchPeriod,
+                                                twoLine: true,
+                                                isBlurred: showBackgroundImage)
+                                PeriodBlockItem(block: firstLunch.revolvingPeriod,
+                                                twoLine: true,
+                                                isBlurred: showBackgroundImage)
+                            }
+                            .padding(.trailing, 5)
+                            VStack {
+                                let secondLunch = lunchPeriods.secondLunch
+                                makeLunchTitle(content: "2nd Lunch Times")
+                                PeriodBlockItem(block: secondLunch.lunchPeriod,
+                                                twoLine: true,
+                                                isBlurred: showBackgroundImage)
+                                PeriodBlockItem(block: secondLunch.revolvingPeriod,
+                                                twoLine: true,
+                                                isBlurred: showBackgroundImage)
                             }
                         }
+                    }
+
+
 
                     ForEach(postLunchPeriods, id: \.self){period in
                         PeriodBlockItem(block: period,
@@ -211,6 +215,7 @@ struct ScheduleDetailView: View {
                                 $0
                                     .overlay(Color.white)
                             }
+
                         Text("Most students don't have period 8. Disable in settings.")
                             .font(.caption)
                             .if(showBackgroundImage, transform: {
@@ -326,6 +331,30 @@ struct ScheduleDetailView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
     }
+
+    struct LunchBlock {
+        struct Lunch {
+            var revolvingPeriod: ClassPeriod
+            var lunchPeriod: ClassPeriod
+        }
+        var firstLunch: Lunch
+        var secondLunch: Lunch
+
+        init?(from lunchPeriods: [ClassPeriod]) {
+            if let firstLunch = lunchPeriods.first(where: {$0.periodCategory == .firstLunch}),
+               let firstLunchPeriod = lunchPeriods.first(where: {$0.periodCategory == .firstLunchPeriod}),
+               let secondLunch = lunchPeriods.first(where: {$0.periodCategory == .secondLunch}),
+               let secondLunchPeriod = lunchPeriods.first(where: {$0.periodCategory == .secondLunchPeriod}) {
+                        self.firstLunch = Lunch(revolvingPeriod: firstLunchPeriod,
+                                           lunchPeriod: firstLunch)
+                        self.secondLunch = Lunch(revolvingPeriod: secondLunchPeriod,
+                                            lunchPeriod: secondLunch)
+                    }
+            else {
+                return nil
+            }
+        }
+    }
 }
 
 struct ScheduleDetailView_Previews: PreviewProvider {
@@ -355,6 +384,10 @@ struct ScheduleDetailView_Previews: PreviewProvider {
                            showBackgroundImage: false)
         .environmentObject(configureSettings(legacySchedule: true))
         .previewDisplayName("White Background Plain")
+
+        ScheduleDetailView(scheduleDay: .sampleScheduleDay,
+                           showBackgroundImage: true)
+        .environmentObject(configureSettings(legacySchedule: true))
 
         ScheduleDetailView(scheduleDay: .sampleScheduleDay, showBackgroundImage: false)
             .environmentObject(configureSettings())

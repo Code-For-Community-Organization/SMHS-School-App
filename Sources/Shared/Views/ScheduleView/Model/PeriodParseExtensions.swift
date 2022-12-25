@@ -10,7 +10,7 @@ import Foundation
 fileprivate typealias c = Constants.Schedule
 
 extension ScheduleDay {
-    func parseClassPeriods() -> [ClassPeriod] {
+    func parseClassPeriods() -> [ClassPeriod]? {
         //Will be returned for value of this variable
         var classPeriods: [ClassPeriod] = [ClassPeriod]()
         
@@ -27,22 +27,22 @@ extension ScheduleDay {
             
             //Normal start/end time format case
             guard let startTime: Substring = c.startTimePattern.findFirst(in: String(line))?.matched.dropLast(), //Optional might be nil because some lines do not contain schedule
-                  let endTime: Substring = c.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
+                  var endTime: Substring = c.endTimePattern.findFirst(in: String(line))?.matched.dropFirst(),
                   "[a-zA-Z]".r!.matches(String(line)) else
-                  {
-                      //Handle 1st/2nd nutrition schedule case
-                      if let nutritionIndex = c.lunchPattern.findFirst(in: String(line))?.range.lowerBound,
-                         let period: Match = c.periodPattern.findFirst(in: String(line)) {
+            {
+                //Handle 1st/2nd nutrition schedule case
+                if let nutritionIndex = c.lunchPattern.findFirst(in: String(line))?.range.lowerBound,
+                   let period: Match = c.periodPattern.findFirst(in: String(line)) {
 
-                          let block = parseNutritionPeriodLines(textLines,
-                                                                lineNum: lineNum,
-                                                                nutritionIndex: nutritionIndex,
-                                                                period: period)
-                          classPeriods.append(contentsOf: block)
-                      }
-                      continue
-                  }
-            
+                    let block = parseNutritionPeriodLines(textLines,
+                                                          lineNum: lineNum,
+                                                          nutritionIndex: nutritionIndex,
+                                                          period: period)
+                    classPeriods.append(contentsOf: block)
+                }
+                continue
+            }
+            endTime = Substring(endTime.replacingOccurrences(of: "noon", with: "12:00"))
             guard let timeIndex = line.index(of: startTime) else {
                 continue
             }
@@ -168,10 +168,10 @@ extension ScheduleDay {
               let p8Days = Constants.period8Days,
               p8Days.contains(self.dayOfTheWeek),
 
-              // Make sure is not school holiday
+                // Make sure is not school holiday
               !Constants.noSchoolIdentifier.contains(dayTitle ?? ""),
 
-              let times = Constants.period8Times
+                let times = Constants.period8Times
         else { return periods }
 
         var periods = periods
