@@ -160,7 +160,7 @@ struct ScheduleDateHelper {
             weeks.append(ScheduleWeek(scheduleDays: [newDay]))
             return weeks
         }
-        let calendar = Calendar.current
+        let calendar = Calendar.iso8601
         let weekOfYear = calendar.component(.weekOfYear, from: newDay.date)
         let previousWeekOfYear = calendar.component(.weekOfYear, from: previousDay.date)
 
@@ -173,19 +173,8 @@ struct ScheduleDateHelper {
             }
             weeks.last!.scheduleDays.append(newDay)
         }
-        // New day's week greater, so create new week
-        else if weekOfYear > previousWeekOfYear {
-            weeks.append(ScheduleWeek(scheduleDays: [newDay]))
-        }
-        // Handle edge case of new year
-        else if !newDay.date.isInSameYear(as: previousDay.date) {
-            weeks.append(ScheduleWeek(scheduleDays: [newDay]))
-        }
-        // Unknown failure case
         else {
-            #if DEBUG
-            debugPrint("⚠️ Method addDayToWeek DID NOT append a new day to the week and failed silently.")
-            #endif
+            weeks.append(ScheduleWeek(scheduleDays: [newDay]))
         }
         return weeks
     }

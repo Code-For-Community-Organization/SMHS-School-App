@@ -11,7 +11,7 @@ import FirebaseAnalytics
 struct FooterModalView: View {
     @EnvironmentObject var userSettings: UserSettings
     var dateHelper = ScheduleDateHelper()
-    let legacyDescriptionText = "Display schedules in a plain text style instead of prettified blocks. (Try temporarily turning this on if schedule seems wrong)."
+    let legacyDescriptionText = "Display schedules in a plain text style instead of prettified blocks."
     
     var body: some View {
         NavigationView {
@@ -23,7 +23,8 @@ struct FooterModalView: View {
                         footer: Text(legacyDescriptionText).padding(.bottom)) {
                     Toggle("Legacy Schedule Style", isOn: $userSettings.preferLegacySchedule)
                 }
-                Section(footer: Text("Whether to show period 8 in schedules. Most students don't have period 8").padding(.bottom)) {
+
+                Section(footer: Text("Whether to show period 8 in schedules.").padding(.bottom)) {
                     Toggle("Period 8", isOn: $userSettings.isPeriod8On)
                 }
 
