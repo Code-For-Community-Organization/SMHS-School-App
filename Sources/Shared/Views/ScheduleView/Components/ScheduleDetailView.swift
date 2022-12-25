@@ -97,8 +97,12 @@ struct ScheduleDetailView: View {
 
     var body: some View {
         ScrollView {
-            ScheduleFallbackSection(userOverrideFallback: $developerScheduleOn,
-                                    alternateColored: !showBackgroundImage)
+            // Don't show revert button if it's already
+            // falled back to plain text schedule
+            if !(scheduleDay?.periods.isEmpty ?? true) {
+                ScheduleFallbackSection(userOverrideFallback: $developerScheduleOn,
+                                        alternateColored: !showBackgroundImage)
+            }
 
             if shouldFallback {
                 ScheduleViewTextLines(scheduleLines: scheduleDay?.scheduleText.lines)
