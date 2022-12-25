@@ -36,7 +36,7 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
 
     var customPeriods = [ClassPeriod]()  //Future feature, no use for now
     var periods: [ClassPeriod] {
-        let parsedPeriods = parseClassPeriods()
+        let parsedPeriods = parseClassPeriods() ?? []
         let appended = appendOptionalPeriod8(periods: parsedPeriods)
         return appended
     }
