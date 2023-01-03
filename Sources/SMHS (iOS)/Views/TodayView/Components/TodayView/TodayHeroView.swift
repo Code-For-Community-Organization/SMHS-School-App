@@ -64,59 +64,9 @@ struct TodayHeroView: View {
                                                horizontalPadding: false,
                                                showBackgroundImage: false)
                         }
-                        
-                        VStack {
-                            VStack {
-                                Picker("", selection: $todayViewViewModel.selectionMode) {
-                                    Text("1st Lunch")
-                                        .tag(PeriodCategory.firstLunch)
-                                    Text("2nd Lunch")
-                                        .tag(PeriodCategory.secondLunch)
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                                .padding(.top, -10)
-                                
-                                ProgressRingView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                                 selectionMode: $todayViewViewModel.selectionMode)
-                                
-                                if scheduleViewViewModel.currentDaySchedule != nil {
-                                    Text("Detailed Schedule")
-                                        .fontWeight(.semibold)
-                                        .font(.title2)
-                                        .textAlign(.leading)
-                                    
-                                    Divider()
-                                        .padding(.bottom, 10)
-                                    
-                                    ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
-                                                       horizontalPadding: false,
-                                                       showBackgroundImage: false)
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 20)
-                            
-                            if Constants.showForYou {
-                                Text("For You")
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                                    .textAlign(.leading)
-                                    .padding(.horizontal)
-                                
-                                Divider()
-                                    .padding(.bottom, 15)
-                                    .padding(.horizontal)
-                                
-                                BannersView(banners: $banners, selected: $selected, animate: animate)
-                                
-                            }
-                            
-                            AnnoucementBanner(viewModel: todayViewViewModel)
-                                .padding(.horizontal)
-                        }
-                        
                     }
                     .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
+                    .padding(.horizontal)
                     
                 }
                 .background(Color.platformBackground)
