@@ -23,8 +23,8 @@ struct ProgressCountDown: View {
                 return "NO SCHOOL 🙌"
             }
             else if let day = scheduleDay {
-                if day.isWithinSchoolHours(forDate: date) {
-                    return "Passing Period? (Beta)"
+                if day.isWithinSchoolHours() {
+                    return "Passing Period"
                 }
                 else {
                     return "Schedule Unavailable"
