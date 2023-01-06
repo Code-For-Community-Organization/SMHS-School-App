@@ -17,6 +17,7 @@ struct SettingsView<Content: View>: View {
             content
         }
         .listStyle(InsetGroupedListStyle())
+        
     }
 }
 
