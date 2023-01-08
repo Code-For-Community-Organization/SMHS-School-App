@@ -203,33 +203,6 @@ final class SharedScheduleInformation: ObservableObject {
         UserDefaults.standard.synchronize()
         ICSText = nil; scheduleWeeks = [];
     }
-
-    // Reloads the infinite scroll as needed
-    func reloadScrollList(currentWeek: ScheduleWeek, retry: Int = 1) {
-        if currentWeek == scheduleWeeks.last {
-            guard let lastDay = scheduleWeeks.last?.scheduleDays.last?.date,
-                  let minDate = minDate,
-                  let maxDate = maxDate
-            else {
-                if retry > 0 {
-                    fetchData {success in
-                        if success {
-                            self.reloadScrollList(currentWeek: currentWeek, retry: retry - 1)
-                        }
-
-                    }
-                }
-                return
-            }
-
-            if (lastDay < maxDate && lastDay > minDate) {
-                debugPrint("✅ Reloaded infinite scroll list successfully")
-                fetchData(startDate: lastDay)
-                return
-            }
-        }
-        debugPrint("⚠️ reloadScrollList() called, but did not reload.")
-    }
 }
 
 

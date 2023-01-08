@@ -191,7 +191,9 @@ extension Constants {
         static let schedule = "/354/calendarfeed.php"
 
 
-        static let pageSize = "25"
+        static var pageSize: String {
+            remoteConfig.configValue(forKey: "umobile_page_size").stringValue ?? "300"
+        }
         static let pageNumber = "1"
         static let categoryId = "0"
         static let mid = "1422"

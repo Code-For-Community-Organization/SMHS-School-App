@@ -67,9 +67,6 @@ struct ScheduleListView: View {
                         }
                         .padding(EdgeInsets(top: 16, leading: 20, bottom: 16, trailing: 20))
                         .textCase(nil)
-                        .onAppear {
-                            scheduleViewModel.reloadScrollList(currentWeek: scheduleWeek)
-                        }
                     }
                     .listItemTint(.appSecondary)
 
