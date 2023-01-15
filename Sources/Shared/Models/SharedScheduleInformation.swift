@@ -105,7 +105,6 @@ final class SharedScheduleInformation: ObservableObject {
         // AppServ API
         let endpoint = Endpoint.getSchedule(date: startDate)
         isLoading = true
-
         AF.request(endpoint.request)
             .response {[weak self] response in
             if let data = response.data {
@@ -143,7 +142,9 @@ final class SharedScheduleInformation: ObservableObject {
                 debugPrint("⚠️ Main API failed, fallback on smhs.org ICS calendar feed.")
                 #endif
                 self?.fetchBackupData() {success in
-                    self?.isLoading = false
+                    DispatchQueue.main.async {
+                        self?.isLoading = false
+                    }
                     #if DEBUG
                     if !success {
                         debugPrint("🚨 Main schedule API and fallback API both failed. ")

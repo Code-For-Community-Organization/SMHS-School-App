@@ -40,7 +40,7 @@ extension Endpoint {
     
     var request: URLRequest {
         var request = URLRequest(url: url)
-        request.cachePolicy = .returnCacheDataElseLoad
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         request.httpMethod = httpMethod.rawValue
         if httpMethod == .POST {
             if jsonEncode {
