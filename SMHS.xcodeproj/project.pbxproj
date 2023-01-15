@@ -263,7 +263,6 @@
 		F203BBFD28A1AF960002DAD9 /* BannerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBF828A1AF960002DAD9 /* BannerExtensions.swift */; };
 		F203BBFE28A1AF960002DAD9 /* BannersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBF928A1AF960002DAD9 /* BannersView.swift */; };
 		F203BBFF28A1AF960002DAD9 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203BBFA28A1AF960002DAD9 /* Banner.swift */; };
-		F2297A4A28A56D690032EF99 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F2297A4928A56D690032EF99 /* FirebaseDatabase */; };
 		F2297A4C28A56EC90032EF99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -2154,7 +2153,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = SMHS;
@@ -2187,7 +2186,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHS;
@@ -2545,11 +2544,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62E3BF04264270AE00E1FF88 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
 			productName = SwiftUIVisualEffects;
-		};
-		F2297A4928A56D690032EF99 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
