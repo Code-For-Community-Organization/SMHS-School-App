@@ -28,14 +28,14 @@ struct FooterModalView: View {
                     Toggle("Period 8", isOn: $userSettings.isPeriod8On)
                 }
 
-                Section(header: Text("Period settings").textCase(nil),
-                        footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
-                            .textCase(nil)
-                            .padding(.bottom)) {
-                    ForEach(userSettings.editableSettings.indices, id: \.self){
-                        PeriodEditItem(setting: $userSettings.editableSettings[$0])
-                    }
-                }
+//                Section(header: Text("Period settings").textCase(nil),
+//                        footer: Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
+//                            .textCase(nil)
+//                            .padding(.bottom)) {
+//                    ForEach(userSettings.indices, id: \.self){
+//                        PeriodEditItem(setting: $userSettings.editableSettings[$0])
+//                    }
+//                }
                 
                 Section(header: Label("Statements", systemSymbol: .infoCircle).textCase(nil)) {
                     NavigationLink("Acknowledgement", destination: Acknowledgements())

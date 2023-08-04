@@ -49,14 +49,26 @@ struct PeriodBlockItem: View {
                             $0.vibrancyEffectStyle(.label)
                         }
 
-
-                    Text(displayedTitle)
-                        .font(.subheadline)
-                        .textAlign(.leading)
-                        .foregroundColor(.platformSecondaryBackground)
-                        .if(isBlurred) {
-                            $0.vibrancyEffectStyle(.tertiaryLabel)
+                    HStack {
+                        Text(displayedTitle)
+                            .font(.subheadline)
+                            .textAlign(.leading)
+                            .foregroundColor(.platformSecondaryBackground)
+                            .if(isBlurred) {
+                                $0.vibrancyEffectStyle(.tertiaryLabel)
+                            }
+                        Spacer()
+                        if let room = block.getUserRoom(userSettings: userSettings) {
+                            Text(room.rawValue)
+                                .font(.subheadline, weight: .semibold)
+                                .textAlign(.trailing)
+                                .foregroundColor(.platformSecondaryBackground)
+                                .if(isBlurred) {
+                                    $0.vibrancyEffectStyle(.tertiaryLabel)
+                                }
                         }
+                    }
+
                 }
                 else {
                     Text(displayedTitle)

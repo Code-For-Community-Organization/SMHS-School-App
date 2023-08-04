@@ -15,7 +15,6 @@ final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
     @Published(key: "userSettings") private var __editableSettings = [EditableSetting]()
-    @Published var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
     @Published(key: "isPeriod8On") var isPeriod8On = true
     @Published(key: "didJoinTeams") var didJoinTeams = false
@@ -26,8 +25,7 @@ final class UserSettings: ObservableObject {
     var anyCancellable: Set<AnyCancellable> = []
     
     init(){
-        editableSettings = __editableSettings
-        if editableSettings.isEmpty {
+        if __editableSettings.isEmpty {
             resetEditableSettings()
         }
         
@@ -43,28 +41,45 @@ final class UserSettings: ObservableObject {
         let periods = 1...7
         var settings = [EditableSetting]()
         for period in periods {
-            settings.append(.init(periodNumber: period, textContent: ""))
+            settings.append(.init(periodNumber: period))
         }
-        self.editableSettings = settings
+        self.__editableSettings = settings
     }
 
-    func commitEditableSettings() {
-        __editableSettings = editableSettings
+    func commitEditableSettings(_ settings: [EditableSetting]) {
+        __editableSettings = settings
     }
 
     func resetDeveloperSettings()
     {
         self.developerSettings = DeveloperSettings()
     }
+
+    func getEditableSettings() -> [EditableSetting] {
+        __editableSettings
+    }
 }
+
 struct EditableSetting: Codable, Hashable {
+    internal init(periodNumber: Int, subject: String, room: Classroom) {
+        self.periodNumber = periodNumber
+        self.subject = subject
+        self.room = room
+    }
+
+    internal init(periodNumber: Int) {
+        self.periodNumber = periodNumber
+        self.subject = ""
+    }
+
     var periodNumber: Int
     var title: String {
         "Period \(periodNumber)"
     }
-    var textContent: String
+    var subject: String
+    var room: Classroom?
     
-    static let sampleSetting = EditableSetting(periodNumber: 1, textContent: "")
+    static let sampleSetting = EditableSetting(periodNumber: 1, subject: "Math", room: .g305)
 }
 
 struct DeveloperSettings: Codable {

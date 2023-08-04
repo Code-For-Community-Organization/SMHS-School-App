@@ -12,6 +12,8 @@ struct PeriodEditSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showActionSheet = false
     @Binding var showModal: Bool
+    @State var editableSettings = [EditableSetting]()
+
     var body: some View {
         NavigationView {
             VStack {
@@ -22,8 +24,8 @@ struct PeriodEditSettingsView: View {
                     .padding(.horizontal, 20)
                 SettingsView {
                     Section(header: Text("Period settings")) {
-                        ForEach(userSettings.editableSettings.indices, id: \.self){
-                            PeriodEditItem(setting: $userSettings.editableSettings[$0])
+                        ForEach(editableSettings.indices, id: \.self){
+                            PeriodEditItem(setting: $editableSettings[$0])
                         }
                     }
                 }
@@ -32,7 +34,7 @@ struct PeriodEditSettingsView: View {
             .navigationBarTitle("Period Names")
             .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
                                 trailing: Button("Done", action: {
-                userSettings.commitEditableSettings()
+                userSettings.commitEditableSettings(editableSettings)
                 presentationMode.wrappedValue.dismiss()
 
             }))
@@ -47,6 +49,9 @@ struct PeriodEditSettingsView: View {
                 }
         .introspectViewController{viewController in
             viewController.isModalInPresentation = true
+        }
+        .onAppear {
+            editableSettings = userSettings.getEditableSettings()
         }
     }
 }

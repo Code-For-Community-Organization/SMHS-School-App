@@ -10,8 +10,19 @@ import SwiftUI
 struct PeriodEditItem: View {
     @Binding var setting: EditableSetting
     var body: some View {
-        TextField(setting.title, text: $setting.textContent)
-            .disableAutocorrection(true)
+        VStack {
+            TextField(setting.title, text: $setting.subject)
+                .disableAutocorrection(true)
+
+            Picker("Room", selection: $setting.room) {
+                Text("Select a room").tag(nil as Classroom?)
+                ForEach(Classroom.allCases, id: \.self) { room in
+                        Text(room.rawValue).tag(room as Classroom?)
+                    }
+                }
+                .pickerStyle(.automatic)
+        }
+
     }
 }
 
