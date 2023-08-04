@@ -79,7 +79,7 @@ struct NewsEntryListItem: View {
                     .padding(.bottom, 0.5)
                 Text(newsEntry.title)
                     .font(.system(.headline, design: .default))
-                    .fontWeight(.heavy)
+                    .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                     .textAlign(.leading)
                 Spacer()

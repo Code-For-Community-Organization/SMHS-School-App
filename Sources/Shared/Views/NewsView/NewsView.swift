@@ -34,6 +34,8 @@ struct NewsView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .animation(.default)
+                    .transition(.opacity)
                 }
 
             }
