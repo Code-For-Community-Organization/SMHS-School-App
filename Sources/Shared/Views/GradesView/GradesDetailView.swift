@@ -12,8 +12,8 @@ struct GradesDetailView: View {
     @StateObject var viewModel: GradesDetailViewModel
     
     var body: some View {
-        ZStack {
-            Color.platformSecondaryBackground.ignoresSafeArea()
+//        ZStack {
+//            Color.platformSecondaryBackground.ignoresSafeArea()
             VStack {
                 if viewModel.overallPercent.isNaN {
                     ProgressView()
@@ -30,7 +30,7 @@ struct GradesDetailView: View {
                 }
 
                 ScrollView {
-                    LazyVStack(spacing: 15) {
+                    VStack(spacing: 15) {
                         ForEach(Array(viewModel.detailedAssignments.enumerated()), id: \.element) {index, assignmentGrade in
                             GradesDetailRow(viewModel: viewModel,
                                             assignmentGrade: assignmentGrade,
@@ -58,7 +58,7 @@ struct GradesDetailView: View {
                 }
             }
             
-        }
+        //}
 
     }
 }

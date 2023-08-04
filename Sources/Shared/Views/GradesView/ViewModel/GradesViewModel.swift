@@ -205,6 +205,12 @@ extension GradesViewModel {
                 return referencePeriods.contains(summary.period)
             }
 
+        guard !courses.isEmpty
+        else {
+            return supplement.map {
+                CourseGrade.GradeSummary(periodNum: String($0.period), periodName: $0.courseName, gradePercent: Double($0.average) ?? .nan, currentMark: $0.currentMark, gradebookNumber: 0, code: .current, term: .fall, teacherName: $0.teacherName)
+            }
+        }
         guard supplementSummaryCourses.count == courses.count
         else {
             return courses

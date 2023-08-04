@@ -15,7 +15,7 @@ struct BannersView: View {
     
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 5) {
+                HStack(spacing: 5) {
                     ForEach(banners.filter{$0.isActive}) { banner in
                         BannerView(banner: banner, selected: $selected, animate: animate)
                             .matchedGeometryEffect(id: banner.id, in: animate, isSource: selected?.id != banner.id)

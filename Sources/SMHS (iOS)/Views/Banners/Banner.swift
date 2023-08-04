@@ -36,7 +36,7 @@ struct Banner: Identifiable, Codable, Equatable {
         
         let data = try JSONSerialization.data(withJSONObject: snapshot.value as Any)
         
-        let banners = try JSONDecoder().decode([Banner].self, from: data)
+        let banners = try JSONDecoder().decode([Banner].self, from: data).filter{$0.isActive}
         
         return banners
     }
