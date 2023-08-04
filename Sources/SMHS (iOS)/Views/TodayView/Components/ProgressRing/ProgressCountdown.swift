@@ -63,7 +63,8 @@ struct ProgressCountDown: View {
                 .minimumScaleFactor(0.5)
                 .lineLimit(2)
                 .frame(maxWidth: 200, maxHeight: 50)
-           if let countDown = countDown, let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds() {
+           if let countDown = countDown {
+            let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds()
             HStack {
                 Text("\(hours)")
                     .fontWeight(.medium)

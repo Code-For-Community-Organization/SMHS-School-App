@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/abseil-cpp-SwiftPM.git",
       "state" : {
-        "revision" : "fffc3c2729be5747390ad02d5100291a0d9ad26a",
-        "version" : "0.20200225.4"
+        "revision" : "583de9bd60f66b40e78d08599cc92036c2e7e4e1",
+        "version" : "0.20220203.2"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
-        "version" : "5.4.4"
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
       "state" : {
-        "revision" : "734a8247442fde37df4364c21f6a0085b6a36728",
-        "version" : "0.7.2"
+        "revision" : "dd3eda2b05a3f459fc3073695ad1b28659066eab",
+        "version" : "0.9.1"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "2f972249c520cbf87ac8856f176ebc994cb1c9a6",
-        "version" : "8.7.0"
+        "revision" : "111d8d6ad1a1afd6c8e9561d26e55ab1e74fcb42",
+        "version" : "8.15.0"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "4901bde146b0269da35470d261f741f0e910d8df",
-        "version" : "8.7.0"
+        "revision" : "ef819db8c58657a6ca367322e73f3b6322afe0a2",
+        "version" : "8.15.0"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleDataTransport.git",
       "state" : {
-        "revision" : "7fb27ea49414b9c5483503cd06baa821c8654d1e",
-        "version" : "9.1.1"
+        "revision" : "aae45a320fd0d11811820335b1eabc8753902a40",
+        "version" : "9.2.5"
       }
     },
     {
@@ -77,17 +77,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "616fac2626b6b2d1424d79a6f786b4e2ed1cfb49",
-        "version" : "7.5.2"
+        "revision" : "c38ce365d77b04a9a300c31061c5227589e5597b",
+        "version" : "7.11.5"
       }
     },
     {
-      "identity" : "grpc-swiftpm",
+      "identity" : "grpc-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/grpc-SwiftPM.git",
+      "location" : "https://github.com/grpc/grpc-ios.git",
       "state" : {
-        "revision" : "fb405dd2c7901485f7e158b24e3a0a47e4efd8b5",
-        "version" : "1.28.4"
+        "revision" : "8440b914756e0d26d4f4d054a1c1581daedfc5b6",
+        "version" : "1.44.3-grpc"
       }
     },
     {
@@ -95,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "bc6a19702ac76ac4e488b68148710eb815f9bc56",
-        "version" : "1.7.0"
+        "revision" : "4e9bbf2808b8fee444e84a48f5f3c12641987d3e",
+        "version" : "1.7.2"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "8c65ddf756c633d01d9ae01092bf72f0c66dfc60",
-        "version" : "7.0.0"
+        "revision" : "c75584ac759cbb16b204d0a7de3ebf53ea6b304d",
+        "version" : "7.9.0"
       }
     },
     {
@@ -131,8 +131,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
-        "revision" : "611337c330350c9c1823ad6d671e7f936af5ee13",
-        "version" : "2.0.0"
+        "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
+        "version" : "2.3.1"
       }
     },
     {
@@ -149,8 +149,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
-        "version" : "1.18.0"
+        "revision" : "ce20dc083ee485524b802669890291c0d8090170",
+        "version" : "1.22.1"
       }
     },
     {
@@ -158,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
-        "version" : "1.9.0"
+        "revision" : "dc46eeb3928a75390651fac6c1ef7f93ad59a73b",
+        "version" : "1.11.1"
       }
     },
     {
@@ -176,8 +176,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/scinfu/SwiftSoup",
       "state" : {
-        "revision" : "02c63b7be50bda384f22c56c64d347231754a07e",
-        "version" : "2.3.3"
+        "revision" : "8b6cf29eead8841a1fa7822481cb3af4ddaadba6",
+        "version" : "2.6.1"
       }
     },
     {
@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/SwiftUI-Introspect",
       "state" : {
-        "revision" : "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-        "version" : "0.1.3"
+        "revision" : "ccb973cfff703cba53fb88197413485c060eb26b",
+        "version" : "0.10.0"
       }
     },
     {
@@ -203,8 +203,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
-        "revision" : "889c781539cdd1e6a1111472c711082522aa35c6",
-        "version" : "0.1.2"
+        "revision" : "75d5be2c85ec1e3ccbd9d99d321dd3abb5955e8d",
+        "version" : "0.1.6"
       }
     },
     {
@@ -212,8 +212,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yahoojapan/SwiftyXMLParser",
       "state" : {
-        "revision" : "ad5eeeaf7797f69e26943aaa53c81c6a9fdaa516",
-        "version" : "5.5.0"
+        "revision" : "d7a1d23f04c86c1cd2e8f19247dd15d74e0ea8be",
+        "version" : "5.6.0"
       }
     }
   ],
