@@ -115,56 +115,56 @@ struct ScheduleDetailView: View {
 
             }
             else {
-                if !userSettings.respondedSurvey && showBackgroundImage  {
-                    VStack {
-                        Text("How do you like the new look?")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-
-                        HStack {
-                            Button(action: {
-                                hapticsManager.notificationImpact(.success)
-                                userSettings.respondedSurvey = true
-                                Analytics.logEvent("new_UI_like_prod", parameters: [:])
-                            }) {
-                                Image(systemSymbol: .handThumbsupFill)
-                                    .font(.title)
-                                    .foregroundColor(.systemGreen)
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
-                                    .roundedCorners(cornerRadius: 10)
-                                    .padding(.trailing, 10)
-                            }
-
-                            Button(action: {
-                                hapticsManager.notificationImpact(.success)
-                                userSettings.respondedSurvey = true
-                                Analytics.logEvent("new_UI_dislike_prod", parameters: [:])
-                            }) {
-                                Image(systemSymbol: .handThumbsdownFill)
-                                    .font(.title)
-                                    .foregroundColor(.systemRed)
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
-                                    .roundedCorners(cornerRadius: 10)
-                                    .padding(.leading, 10)
-                            }
-                        }
-                        .padding(.bottom)
-                        .padding(.top, 1)
-                        .padding(.horizontal)
-
-                        Rectangle()
-                            .frame(maxWidth: .infinity, maxHeight: 0.33)
-                            .padding(.horizontal)
-                            .vibrancyEffect()
-                    }
-                    .padding(.top)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                }
+//                if !userSettings.respondedSurvey && showBackgroundImage  {
+//                    VStack {
+//                        Text("How do you like the new look?")
+//                            .font(.title3)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(.white)
+//
+//                        HStack {
+//                            Button(action: {
+//                                hapticsManager.notificationImpact(.success)
+//                                userSettings.respondedSurvey = true
+//                                Analytics.logEvent("new_UI_like_prod", parameters: [:])
+//                            }) {
+//                                Image(systemSymbol: .handThumbsupFill)
+//                                    .font(.title)
+//                                    .foregroundColor(.systemGreen)
+//                                    .padding(.vertical, 10)
+//                                    .frame(maxWidth: .infinity)
+//                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+//                                    .roundedCorners(cornerRadius: 10)
+//                                    .padding(.trailing, 10)
+//                            }
+//
+//                            Button(action: {
+//                                hapticsManager.notificationImpact(.success)
+//                                userSettings.respondedSurvey = true
+//                                Analytics.logEvent("new_UI_dislike_prod", parameters: [:])
+//                            }) {
+//                                Image(systemSymbol: .handThumbsdownFill)
+//                                    .font(.title)
+//                                    .foregroundColor(.systemRed)
+//                                    .padding(.vertical, 10)
+//                                    .frame(maxWidth: .infinity)
+//                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+//                                    .roundedCorners(cornerRadius: 10)
+//                                    .padding(.leading, 10)
+//                            }
+//                        }
+//                        .padding(.bottom)
+//                        .padding(.top, 1)
+//                        .padding(.horizontal)
+//
+//                        Rectangle()
+//                            .frame(maxWidth: .infinity, maxHeight: 0.33)
+//                            .padding(.horizontal)
+//                            .vibrancyEffect()
+//                    }
+//                    .padding(.top)
+//                    .transition(.move(edge: .top).combined(with: .opacity))
+//                }
 
                 VStack(spacing: 10) {
                     ForEach(preLunchPeriods, id: \.self){period in
