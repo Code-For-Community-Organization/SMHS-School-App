@@ -31,7 +31,11 @@ struct PeriodEditSettingsView: View {
             }
             .navigationBarTitle("Period Names")
             .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
-                                trailing: Button("Done", action: {presentationMode.wrappedValue.dismiss()}))
+                                trailing: Button("Done", action: {
+                userSettings.commitEditableSettings()
+                presentationMode.wrappedValue.dismiss()
+
+            }))
     
         }
         .navigationBarTitleDisplayMode(.inline)

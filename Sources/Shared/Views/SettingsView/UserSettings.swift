@@ -14,7 +14,8 @@ import UIKit
 final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()
-    @Published(key: "userSettings") var editableSettings = [EditableSetting]()
+    @Published(key: "userSettings") private var __editableSettings = [EditableSetting]()
+    @Published var editableSettings = [EditableSetting]()
     @Published(key: "preferLegacySchedule") var preferLegacySchedule = false
     @Published(key: "isPeriod8On") var isPeriod8On = true
     @Published(key: "didJoinTeams") var didJoinTeams = false
@@ -25,6 +26,7 @@ final class UserSettings: ObservableObject {
     var anyCancellable: Set<AnyCancellable> = []
     
     init(){
+        editableSettings = __editableSettings
         if editableSettings.isEmpty {
             resetEditableSettings()
         }
@@ -35,6 +37,7 @@ final class UserSettings: ObservableObject {
         #endif
 
     }
+
     func resetEditableSettings()
     {
         let periods = 1...7
@@ -44,7 +47,11 @@ final class UserSettings: ObservableObject {
         }
         self.editableSettings = settings
     }
-    
+
+    func commitEditableSettings() {
+        __editableSettings = editableSettings
+    }
+
     func resetDeveloperSettings()
     {
         self.developerSettings = DeveloperSettings()
