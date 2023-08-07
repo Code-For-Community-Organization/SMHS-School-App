@@ -67,6 +67,16 @@ struct ContentView: View {
               switch newScenePhase {
               case .active:
                 sharedScheduleInformation.objectWillChange.send()
+                Constants.remoteConfig.fetchAndActivate {status, error in
+                      switch status {
+                      case .successFetchedFromRemote:
+                          debugPrint("✅ Success fetched from remote config")
+                      case .successUsingPreFetchedData:
+                          debugPrint("✅ Remote config use pre-fetched data")
+                      case .error:
+                          debugPrint("🚨 Remote config fetching error, \(error?.localizedDescription ?? "")")
+                      }
+                }
                 let activeCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
                 UserDefaults.standard.set(activeCount+1, forKey:"activeSceneCount")
               case .inactive:

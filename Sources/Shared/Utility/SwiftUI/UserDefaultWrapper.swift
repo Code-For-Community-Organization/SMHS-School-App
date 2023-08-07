@@ -14,7 +14,9 @@ extension Published where Value: Codable {
     init(wrappedValue defaultValue: Value, key: String) {
         if let data = UserDefaults.standard.data(forKey: key) {
             do {
-                let value = try JSONDecoder().decode(Value.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "inf.", negativeInfinity: "-inf.", nan: "N/A")
+                let value = try decoder.decode(Value.self, from: data)
                 self.init(initialValue: value)
             } catch {
                 #if DEBUG
@@ -29,11 +31,13 @@ extension Published where Value: Codable {
         projectedValue
             .sink { val in
                 do {
-                    let data = try JSONEncoder().encode(val)
+                    let encoder = JSONEncoder()
+                    encoder.nonConformingFloatEncodingStrategy = .convertToString(positiveInfinity: "inf.", negativeInfinity: "-inf.", nan: "N/A")
+                    let data = try encoder.encode(val)
                     UserDefaults.standard.set(data, forKey: key)
                 } catch {
                     #if DEBUG
-                    print("Error while decoding data")
+                    print("Error while decoding data: \(error)")
                     #endif
                 }
             }

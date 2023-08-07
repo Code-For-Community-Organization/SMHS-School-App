@@ -62,12 +62,35 @@ struct TodayHeroView: View {
                             
                             ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                                horizontalPadding: false,
-                                               showBackgroundImage: false)
+                                               showBackgroundImage: false,
+                                               disableScroll: true)
                         }
                     }
                     .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)
                     .padding(.horizontal)
-                    
+
+                    if Constants.showForYou && !banners.isEmpty {
+                        Group {
+                            Text("For You")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .textAlign(.leading)
+                                .padding(.horizontal)
+
+                            Divider()
+                                .padding(.bottom, 15)
+                                .padding(.horizontal)
+
+                            BannersView(banners: $banners, selected: $selected, animate: animate)
+                        }
+                        .transition(.opacity)
+
+
+                    }
+
+                    AnnoucementBanner(viewModel: todayViewViewModel)
+                                                .padding(.horizontal)
+
                 }
                 .background(Color.platformBackground)
                 .onboardingModal()

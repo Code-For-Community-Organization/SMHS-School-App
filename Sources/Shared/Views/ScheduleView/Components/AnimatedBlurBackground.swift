@@ -77,7 +77,7 @@ struct AnimatedBlurBackground_Previews: PreviewProvider {
     static func configureSettings(legacySchedule: Bool = false) -> UserSettings {
         let settings = UserSettings()
         settings.preferLegacySchedule = legacySchedule
-        settings.editableSettings = [.init(periodNumber: 6, textContent: "AP Calculus BC")]
+        //settings.editableSettings = [.init(periodNumber: 6, subject: "AP Calculus BC", room: .g301)]
         return settings
     }
     static var previews: some View {

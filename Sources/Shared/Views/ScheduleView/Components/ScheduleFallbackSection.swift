@@ -40,7 +40,7 @@ struct ScheduleFallbackSection: View {
                 .padding(.vertical, 10)
 
         }
-        .padding(.bottom)
+        .padding(.bottom, 5)
         .font(.callout.weight(.light))
         .transition(.opacity)
     }

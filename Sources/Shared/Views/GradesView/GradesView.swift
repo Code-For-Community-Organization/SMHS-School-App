@@ -11,12 +11,20 @@ import SwiftUIVisualEffects
 struct GradesView: View {
     @StateObject var gradesViewModel = GradesViewModel()
     @EnvironmentObject var userSettings: UserSettings
-    
+    @State var showLoginView = false
+
     var body: some View {
         NavigationView {
-            if !gradesViewModel.gradesResponse.isEmpty {
+            if showLoginView {
+                GradesLoginView(gradesViewModel: gradesViewModel)
+                    .navigationBarTitle("Grades")
+                    .loadingAnimatable(reload: gradesViewModel.reloadData,
+                                       isLoading: $gradesViewModel.isLoading,
+                                       shouldReload: .constant(false))
+            }
+            else {
                 ScrollView {
-                    LazyVStack(spacing: 17) {
+                    VStack(spacing: 17) {
                         ForEach(getCoursesList(), id: \.self){
                             CourseGradeItem(course: $0)
                         }
@@ -41,18 +49,17 @@ struct GradesView: View {
                 .loadingAnimatable(reload: gradesViewModel.reloadData,
                                    isLoading: $gradesViewModel.isLoading,
                                    shouldReload: !$gradesViewModel.userInitiatedLogin)
+                .padding(.top, 1)
+                .onAppear {
+                    showLoginView = getCoursesList().isEmpty
+                }
                 .onDisappear {gradesViewModel.userInitiatedLogin = false}
-                
-            }
-            else {
-                GradesLoginView(gradesViewModel: gradesViewModel)
-                    .navigationBarTitle("Grades")
-                    .loadingAnimatable(reload: gradesViewModel.reloadData,
-                                       isLoading: $gradesViewModel.isLoading,
-                                       shouldReload: .constant(false))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onChange(of: gradesViewModel.gradesResponse) {response in
+            showLoginView = response.isEmpty
+        }
 
     }
     

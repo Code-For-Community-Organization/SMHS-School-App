@@ -12,26 +12,34 @@ struct PeriodEditSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showActionSheet = false
     @Binding var showModal: Bool
+    @State var editableSettings = [EditableSetting]()
+
     var body: some View {
         NavigationView {
             VStack {
-                Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
+                Text("Label periods 1 through 7 with customized subjects and rooms for a more organized school experience.")
                     .foregroundColor(.platformSecondaryLabel)
                     .textAlign(.leading)
                     .font(.callout)
                     .padding(.horizontal, 20)
                 SettingsView {
                     Section(header: Text("Period settings")) {
-                        ForEach(userSettings.editableSettings.indices, id: \.self){
-                            PeriodEditItem(setting: $userSettings.editableSettings[$0])
+                        ForEach(editableSettings.indices, id: \.self){
+                            PeriodEditItem(setting: $editableSettings[$0])
                         }
                     }
                 }
                 
-            }
-            .navigationBarTitle("Period Names")
+            }            
+            .navigationBarTitle("Class Settings")
             .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
-                                trailing: Button("Done", action: {presentationMode.wrappedValue.dismiss()}))
+                                trailing: Button("Done", action: {
+                DispatchQueue.main.async {
+                    userSettings.commitEditableSettings(editableSettings)
+                }
+                presentationMode.wrappedValue.dismiss()
+
+            }))
     
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -43,6 +51,9 @@ struct PeriodEditSettingsView: View {
                 }
         .introspectViewController{viewController in
             viewController.isModalInPresentation = true
+        }
+        .onAppear {
+            editableSettings = userSettings.getEditableSettings()
         }
     }
 }

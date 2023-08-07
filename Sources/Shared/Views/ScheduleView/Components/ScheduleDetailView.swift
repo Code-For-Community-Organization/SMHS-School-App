@@ -18,10 +18,12 @@ struct ScheduleDetailView: View {
     init(scheduleDay: ScheduleDay? = nil,
          horizontalPadding: Bool = true,
          showBackgroundImage: Bool = true,
-         respondedSurvey: Bool = false) {
+         respondedSurvey: Bool = false,
+         disableScroll: Bool = false) {
         self.scheduleDay = scheduleDay
         self.horizontalPadding = horizontalPadding
         self.showBackgroundImage = showBackgroundImage
+        self.disableScroll = disableScroll
 
         if showBackgroundImage {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -90,11 +92,13 @@ struct ScheduleDetailView: View {
     var shouldFallback: Bool {
         return userSettings.preferLegacySchedule ||
         developerScheduleOn ||
+        scheduleDay?.scheduleText.contains(Constants.fallbackIdentifier) ?? false ||
         scheduleDay?.periods.isEmpty ?? true
     }
     
-    var horizontalPadding = true
-    var showBackgroundImage = true
+    var horizontalPadding: Bool
+    var showBackgroundImage: Bool
+    var disableScroll: Bool
     @State var hapticsManager = HapticsManager(impactStyle: .light)
     @State private var developerScheduleOn = false
 
@@ -115,56 +119,56 @@ struct ScheduleDetailView: View {
 
             }
             else {
-                if !userSettings.respondedSurvey && showBackgroundImage  {
-                    VStack {
-                        Text("How do you like the new look?")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-
-                        HStack {
-                            Button(action: {
-                                hapticsManager.notificationImpact(.success)
-                                userSettings.respondedSurvey = true
-                                Analytics.logEvent("new_UI_like_prod", parameters: [:])
-                            }) {
-                                Image(systemSymbol: .handThumbsupFill)
-                                    .font(.title)
-                                    .foregroundColor(.systemGreen)
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
-                                    .roundedCorners(cornerRadius: 10)
-                                    .padding(.trailing, 10)
-                            }
-
-                            Button(action: {
-                                hapticsManager.notificationImpact(.success)
-                                userSettings.respondedSurvey = true
-                                Analytics.logEvent("new_UI_dislike_prod", parameters: [:])
-                            }) {
-                                Image(systemSymbol: .handThumbsdownFill)
-                                    .font(.title)
-                                    .foregroundColor(.systemRed)
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
-                                    .roundedCorners(cornerRadius: 10)
-                                    .padding(.leading, 10)
-                            }
-                        }
-                        .padding(.bottom)
-                        .padding(.top, 1)
-                        .padding(.horizontal)
-
-                        Rectangle()
-                            .frame(maxWidth: .infinity, maxHeight: 0.33)
-                            .padding(.horizontal)
-                            .vibrancyEffect()
-                    }
-                    .padding(.top)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                }
+//                if !userSettings.respondedSurvey && showBackgroundImage  {
+//                    VStack {
+//                        Text("How do you like the new look?")
+//                            .font(.title3)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(.white)
+//
+//                        HStack {
+//                            Button(action: {
+//                                hapticsManager.notificationImpact(.success)
+//                                userSettings.respondedSurvey = true
+//                                Analytics.logEvent("new_UI_like_prod", parameters: [:])
+//                            }) {
+//                                Image(systemSymbol: .handThumbsupFill)
+//                                    .font(.title)
+//                                    .foregroundColor(.systemGreen)
+//                                    .padding(.vertical, 10)
+//                                    .frame(maxWidth: .infinity)
+//                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+//                                    .roundedCorners(cornerRadius: 10)
+//                                    .padding(.trailing, 10)
+//                            }
+//
+//                            Button(action: {
+//                                hapticsManager.notificationImpact(.success)
+//                                userSettings.respondedSurvey = true
+//                                Analytics.logEvent("new_UI_dislike_prod", parameters: [:])
+//                            }) {
+//                                Image(systemSymbol: .handThumbsdownFill)
+//                                    .font(.title)
+//                                    .foregroundColor(.systemRed)
+//                                    .padding(.vertical, 10)
+//                                    .frame(maxWidth: .infinity)
+//                                    .background(BlurEffect().blurEffectStyle(.systemChromeMaterial))
+//                                    .roundedCorners(cornerRadius: 10)
+//                                    .padding(.leading, 10)
+//                            }
+//                        }
+//                        .padding(.bottom)
+//                        .padding(.top, 1)
+//                        .padding(.horizontal)
+//
+//                        Rectangle()
+//                            .frame(maxWidth: .infinity, maxHeight: 0.33)
+//                            .padding(.horizontal)
+//                            .vibrancyEffect()
+//                    }
+//                    .padding(.top)
+//                    .transition(.move(edge: .top).combined(with: .opacity))
+//                }
 
                 VStack(spacing: 10) {
                     ForEach(preLunchPeriods, id: \.self){period in
@@ -213,7 +217,7 @@ struct ScheduleDetailView: View {
                                     .overlay(Color.white)
                             }
 
-                        Text("Most students don't have period 8. Disable in settings.")
+                        Text("For some students only. Disable in settings.")
                             .font(.caption)
                             .if(showBackgroundImage, transform: {
                                 $0
@@ -249,12 +253,13 @@ struct ScheduleDetailView: View {
                                     .foregroundColor(.platformSecondaryLabel)
                             })
                                 .textAlign(.leading)
+                                .textSelection(.enabled)
 
                     }
 
                 }
                 .padding(.horizontal, horizontalPadding ? 16 : 0)
-                .padding(.vertical, showBackgroundImage ? 16: 0)
+                .padding(.bottom, showBackgroundImage ? 16: 0)
                     
 
             }
@@ -281,6 +286,7 @@ struct ScheduleDetailView: View {
                                             "time_of_day": formatTime(Date())])
             
         }
+        .scrollDisabled(disableScroll)
 //        .introspectTabBarController {tabController in
 //            if !shouldFallback {
 //                tabController.tabBar.barStyle = .black
@@ -358,7 +364,7 @@ struct ScheduleDetailView_Previews: PreviewProvider {
     static func configureSettings(legacySchedule: Bool = false) -> UserSettings {
         let settings = UserSettings()
         settings.preferLegacySchedule = legacySchedule
-        settings.editableSettings = [.init(periodNumber: 6, textContent: "AP Calculus BC")]
+        //settings.editableSettings = [.init(periodNumber: 6, subject: "AP Calculus BC", room: .g301)]
         return settings
     }
     
