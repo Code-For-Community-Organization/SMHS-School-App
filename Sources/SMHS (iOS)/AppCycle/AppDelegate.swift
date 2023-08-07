@@ -18,7 +18,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         setupFirebaseRemoteConfig()
         setupPushNotifications()
         setupFirebaseMessaging()
-
+        #if DEBUG
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+        #endif
         return true
     }
 
