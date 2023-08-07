@@ -18,10 +18,12 @@ struct ScheduleDetailView: View {
     init(scheduleDay: ScheduleDay? = nil,
          horizontalPadding: Bool = true,
          showBackgroundImage: Bool = true,
-         respondedSurvey: Bool = false) {
+         respondedSurvey: Bool = false,
+         disableScroll: Bool = false) {
         self.scheduleDay = scheduleDay
         self.horizontalPadding = horizontalPadding
         self.showBackgroundImage = showBackgroundImage
+        self.disableScroll = disableScroll
 
         if showBackgroundImage {
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -90,11 +92,13 @@ struct ScheduleDetailView: View {
     var shouldFallback: Bool {
         return userSettings.preferLegacySchedule ||
         developerScheduleOn ||
+        scheduleDay?.scheduleText.contains(Constants.fallbackIdentifier) ?? false ||
         scheduleDay?.periods.isEmpty ?? true
     }
     
-    var horizontalPadding = true
-    var showBackgroundImage = true
+    var horizontalPadding: Bool
+    var showBackgroundImage: Bool
+    var disableScroll: Bool
     @State var hapticsManager = HapticsManager(impactStyle: .light)
     @State private var developerScheduleOn = false
 
@@ -213,7 +217,7 @@ struct ScheduleDetailView: View {
                                     .overlay(Color.white)
                             }
 
-                        Text("Most students don't have period 8. Disable in settings.")
+                        Text("For some students only. Disable in settings.")
                             .font(.caption)
                             .if(showBackgroundImage, transform: {
                                 $0
@@ -249,12 +253,13 @@ struct ScheduleDetailView: View {
                                     .foregroundColor(.platformSecondaryLabel)
                             })
                                 .textAlign(.leading)
+                                .textSelection(.enabled)
 
                     }
 
                 }
                 .padding(.horizontal, horizontalPadding ? 16 : 0)
-                .padding(.vertical, showBackgroundImage ? 16: 0)
+                .padding(.bottom, showBackgroundImage ? 16: 0)
                     
 
             }
@@ -281,6 +286,7 @@ struct ScheduleDetailView: View {
                                             "time_of_day": formatTime(Date())])
             
         }
+        .scrollDisabled(disableScroll)
 //        .introspectTabBarController {tabController in
 //            if !shouldFallback {
 //                tabController.tabBar.barStyle = .black

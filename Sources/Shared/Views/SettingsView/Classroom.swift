@@ -7,11 +7,19 @@
 
 import Foundation
 
-enum Classroom: String, Codable, CaseIterable, CustomStringConvertible {
+enum Classroom: String, Codable, CaseIterable, CustomStringConvertible, Comparable {
+    static func < (lhs: Classroom, rhs: Classroom) -> Bool {
+        lhs.rawValue.compare(rhs.rawValue, options: .numeric) == .orderedAscending
+    }
+
     var description: String {
         return self.rawValue
     }
-
+    case aBuilding = "A Building"
+    case bBuilding = "B Building"
+    case cBuilding = "C Building"
+    case sBuilding = "S Building"
+    case trailers = "Trailers"
     case storage = "Storage"
     case rr = "RR"
     case a146 = "A146"

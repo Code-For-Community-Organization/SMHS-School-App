@@ -57,6 +57,17 @@ struct Constants {
         }
     }
 
+    static var fallbackIdentifier: [String] {
+        let data = remoteConfig.configValue(forKey: "fallback_identifier").jsonValue
+        if let values = (data as? [String: [String]]),
+           let identifiers = values["contains"] {
+            return identifiers
+        }
+        else {
+            return ["mass"]
+        }
+    }
+
     static var shouldPurgeOnUpdate: Bool {
         remoteConfig.configValue(forKey: "purge_data_onupdate").boolValue
     }
@@ -226,6 +237,7 @@ extension Constants {
 }
 
 extension Constants {
+    static let coursesJsonPath = "Courses"
     struct Labels {
 
     }

@@ -17,7 +17,7 @@ struct PeriodEditSettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Customize and edit your class names for each period. (Ex. Period 2 might be English)")
+                Text("Label periods 1 through 7 with customized subjects and rooms for a more organized school experience.")
                     .foregroundColor(.platformSecondaryLabel)
                     .textAlign(.leading)
                     .font(.callout)
@@ -30,11 +30,13 @@ struct PeriodEditSettingsView: View {
                     }
                 }
                 
-            }
-            .navigationBarTitle("Period Names")
+            }            
+            .navigationBarTitle("Class Settings")
             .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
                                 trailing: Button("Done", action: {
-                userSettings.commitEditableSettings(editableSettings)
+                DispatchQueue.main.async {
+                    userSettings.commitEditableSettings(editableSettings)
+                }
                 presentationMode.wrappedValue.dismiss()
 
             }))

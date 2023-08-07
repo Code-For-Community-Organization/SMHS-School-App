@@ -28,13 +28,9 @@ struct PeriodBlockItem: View {
         VStack {
             VStack {
                 Group {
-                    if twoLine {
-                        doubleLineView
-                    }
-                    else {
-                        singleLineView
-                            .padding(.bottom, 4)
-                    }
+                    doubleLineView
+                        .padding(.bottom, 4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .vibrancyEffectStyle(.tertiaryLabel)
 
@@ -45,6 +41,9 @@ struct PeriodBlockItem: View {
                         .fontWeight(.semibold)
                         .textAlign(.leading)
                         .font(.headline)
+                        .lineLimit(nil)
+                        .allowsTightening(true)
+                        //.minimumScaleFactor(0.8)
                         .if(isBlurred) {
                             $0.vibrancyEffectStyle(.label)
                         }
@@ -59,7 +58,7 @@ struct PeriodBlockItem: View {
                             }
                         Spacer()
                         if let room = block.getUserRoom(userSettings: userSettings) {
-                            Text(room.rawValue)
+                            Text(twoLine ? room.rawValue : "Room: \(room.rawValue)")
                                 .font(.subheadline, weight: .semibold)
                                 .textAlign(.trailing)
                                 .foregroundColor(.platformSecondaryBackground)
@@ -109,17 +108,15 @@ struct PeriodBlockItem: View {
     }
     
     var doubleLineView: some View {
-        VStack {
-            Text("START: \(formatDate(block.startTime))")
-                .textAlign(.leading)
-
-            Text("END: \(formatDate(block.endTime))")
-                .textAlign(.leading)
-
+        HStack {
+            Text("\(formatDate(block.startTime))")
+            Image(systemSymbol: .arrowRightSquare)
+            Text("\(formatDate(block.endTime))")
         }
-        .font(Font.caption.weight(.medium))
         .lineLimit(1)
-        .minimumScaleFactor(1)
+        .minimumScaleFactor(0.1)
+        .allowsTightening(true)
+        .font(Font.caption.weight(.medium))
     }
 
     var singleLineView: some View {
@@ -222,3 +219,10 @@ fileprivate extension View {
         }
     }
 }
+
+struct PeriodBlockItem_Previews: PreviewProvider {
+    static var previews: some View {
+        ScheduleDetailView()
+    }
+}
+

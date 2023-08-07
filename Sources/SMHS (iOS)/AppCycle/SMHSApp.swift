@@ -17,8 +17,8 @@ struct SMHSApp: App {
         let activeSceneCount = UserDefaults.standard.integer(forKey: "activeSceneCount")
         // increment received number by one
         UserDefaults.standard.set(currentCount+1, forKey:"launchCount")
-        if currentCount > 8 ||
-            activeSceneCount > 20 {
+        if currentCount > 15 ||
+            activeSceneCount > 35 {
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
                 if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                     SKStoreReviewController.requestReview(in: scene)

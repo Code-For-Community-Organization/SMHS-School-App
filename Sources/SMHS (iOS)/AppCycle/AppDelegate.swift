@@ -87,16 +87,15 @@ extension AppDelegate: MessagingDelegate {
 
         config.configSettings = settings
         Constants.remoteConfig = config
-        Constants.remoteConfig.fetch {status, error in
-            if status == .success {
-                config.activate {_, _ in}
-            } else {
-        #if DEBUG
-                debugPrint("Config not fetched")
-                debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
-        #endif
+        Constants.remoteConfig.fetchAndActivate {status, error in
+            switch status {
+            case .successFetchedFromRemote:
+                debugPrint("✅ Success fetched from remote config")
+            case .successUsingPreFetchedData:
+                debugPrint("✅ Remote config use pre-fetched data")
+            case .error:
+                debugPrint("🚨 Remote config fetching error, \(error?.localizedDescription ?? "")")
             }
-
         }
 
     }

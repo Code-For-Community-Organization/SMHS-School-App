@@ -15,6 +15,7 @@ struct ScheduleViewTextLines: View {
             if let scheduleLines = scheduleLines {
                 ForEach(scheduleLines, id: \.self){
                     Text($0)
+                        .textSelection(.enabled)
                         .textAlign(.leading)
                         .padding(.vertical, lineSpacing)
                         .foregroundColor(.platformLabel)

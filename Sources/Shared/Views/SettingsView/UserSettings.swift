@@ -61,7 +61,7 @@ final class UserSettings: ObservableObject {
 }
 
 struct EditableSetting: Codable, Hashable {
-    internal init(periodNumber: Int, subject: String, room: Classroom) {
+    internal init(periodNumber: Int, subject: Course, room: Classroom) {
         self.periodNumber = periodNumber
         self.subject = subject
         self.room = room
@@ -69,17 +69,16 @@ struct EditableSetting: Codable, Hashable {
 
     internal init(periodNumber: Int) {
         self.periodNumber = periodNumber
-        self.subject = ""
     }
 
     var periodNumber: Int
     var title: String {
         "Period \(periodNumber)"
     }
-    var subject: String
+    var subject: Course?
     var room: Classroom?
     
-    static let sampleSetting = EditableSetting(periodNumber: 1, subject: "Math", room: .g305)
+    static let sampleSetting = EditableSetting(periodNumber: 1)
 }
 
 struct DeveloperSettings: Codable {

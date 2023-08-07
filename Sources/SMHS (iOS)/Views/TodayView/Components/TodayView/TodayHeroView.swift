@@ -62,7 +62,8 @@ struct TodayHeroView: View {
                             
                             ScheduleDetailView(scheduleDay: scheduleViewViewModel.currentDaySchedule,
                                                horizontalPadding: false,
-                                               showBackgroundImage: false)
+                                               showBackgroundImage: false,
+                                               disableScroll: true)
                         }
                     }
                     .padding(.top, (shouldShowTeams && todayViewViewModel.showTeamsBanner) ? 54 : 80)

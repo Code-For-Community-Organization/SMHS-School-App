@@ -6,28 +6,78 @@
 //
 
 import SwiftUI
+import SwiftlySearch
 
 struct PeriodEditItem: View {
     @Binding var setting: EditableSetting
-    var body: some View {
-        VStack {
-            TextField(setting.title, text: $setting.subject)
-                .disableAutocorrection(true)
+    @State var searchText = ""
+    @State var isNavigationActive = false
+    //@State var selection: Course?
 
-            Picker("Room", selection: $setting.room) {
-                Text("Select a room").tag(nil as Classroom?)
-                ForEach(Classroom.allCases, id: \.self) { room in
-                        Text(room.rawValue).tag(room as Classroom?)
-                    }
+    var searchResults: [Course] {
+        if searchText.isEmpty {
+            return Course.getAll()
+        }
+        else {
+            return Course.getAll().filter{$0.title.localizedCaseInsensitiveContains(searchText)}
+        }
+    }
+
+    var body: some View {
+        NavigationLink(isActive: $isNavigationActive, destination: {
+            List(searchResults, id: \.self, selection: $setting.subject) {
+                Text($0.title)
                 }
-                .pickerStyle(.automatic)
+                .overlay(
+                    Group {
+                        if searchResults.isEmpty && !searchText.isEmpty {
+                            Text("No Results")
+                                .font(.title3)
+                                .fontWeight(.heavy)
+                        }
+                    }
+                )
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Find your class")
+
+        }, label: {
+            VStack {
+                if let selection = setting.subject {
+                    Label(selection.title, systemSymbol: .checkmarkCircleFill)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                else {
+                    Text(setting.title)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                Picker(selection: $setting.room, content: {
+                    Text("Select a room").tag(nil as Classroom?)
+                    ForEach(Classroom.allCases.sorted(), id: \.self) { room in
+                            Text(room.rawValue).tag(room as Classroom?)
+                        }
+                }, label: {
+                    Label("Room", systemImage: "door.left.hand.closed")
+                })
+                .pickerStyle(.menu)
+
+            }
+
+        })
+        .onChange(of: setting.subject) {_ in
+            isNavigationActive = false
         }
 
+//        TextField(setting.title, text: $setting.subject?.name)
+//            .disableAutocorrection(true)
+//
     }
 }
 
 struct PeriodEditItem_Previews: PreviewProvider {
     static var previews: some View {
-        PeriodEditItem(setting: .constant(.sampleSetting))
+        PeriodEditSettingsView(showModal: .constant(true))
+            .environmentObject(UserSettings())
     }
 }

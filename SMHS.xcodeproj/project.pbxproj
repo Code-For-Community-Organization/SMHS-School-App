@@ -206,6 +206,9 @@
 		62CFAA42264756F9003B2EA0 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFAA40264756F9003B2EA0 /* TimeInterval.swift */; };
 		62D1D8212A7D4B930085D185 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1D8202A7D4B930085D185 /* Classroom.swift */; };
 		62D1D8222A7D4B930085D185 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1D8202A7D4B930085D185 /* Classroom.swift */; };
+		62D1D8252A7D79660085D185 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 62D1D8242A7D79660085D185 /* Courses.json */; };
+		62D1D8272A7D79FB0085D185 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1D8262A7D79FB0085D185 /* Course.swift */; };
+		62D1D82A2A7D7B6D0085D185 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 62D1D8292A7D7B6D0085D185 /* SwiftyJSON */; };
 		62D1E508263DD41C004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
 		62D1E509263DD41C004DBFAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E507263DD41C004DBFAD /* Date.swift */; };
 		62D1E50B263DD712004DBFAD /* ScheduleDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */; };
@@ -443,6 +446,8 @@
 		62CFAA3C264756ED003B2EA0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		62CFAA40264756F9003B2EA0 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		62D1D8202A7D4B930085D185 /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
+		62D1D8242A7D79660085D185 /* Courses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; };
+		62D1D8262A7D79FB0085D185 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		62D1E507263DD41C004DBFAD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		62D1E50A263DD712004DBFAD /* ScheduleDateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateHelper.swift; sourceTree = "<group>"; };
 		62D1E512263DF778004DBFAD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -524,6 +529,7 @@
 				62E3BF08264270B400E1FF88 /* SwiftUIVisualEffects in Frameworks */,
 				62CCF9D5288F1C0400FA85C7 /* SwiftUIX in Frameworks */,
 				62D321072649D9BA00C99C42 /* SwiftyXMLParser in Frameworks */,
+				62D1D82A2A7D7B6D0085D185 /* SwiftyJSON in Frameworks */,
 				62D321162649E64C00C99C42 /* SwiftSoup in Frameworks */,
 				6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */,
 				623D596426FFCFC1001D05F7 /* Alamofire in Frameworks */,
@@ -810,8 +816,8 @@
 		626A225C260035F100903C39 = {
 			isa = PBXGroup;
 			children = (
+				62D1D8232A7D79300085D185 /* Resources */,
 				6261DF2827122329009F6234 /* SMHSSchedule (iOS).entitlements */,
-				F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */,
 				6263E83026BCEA69009EC880 /* ElegantCalendar.xcassets */,
 				62D1E55B263F17E9004DBFAD /* Settings.bundle */,
 				62C9E887263BD2AC00CCA5C5 /* Assets */,
@@ -1096,6 +1102,7 @@
 				62B227C8265CD06E0023A7E6 /* AboutDevView.swift */,
 				62B227D8265D9A430023A7E6 /* FeaturesStatementView.swift */,
 				62D1D8202A7D4B930085D185 /* Classroom.swift */,
+				62D1D8262A7D79FB0085D185 /* Course.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1106,6 +1113,15 @@
 				62C9E8AD263D1DBE00CCA5C5 /* AppVersionStatus.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		62D1D8232A7D79300085D185 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2297A4B28A56EC90032EF99 /* GoogleService-Info.plist */,
+				62D1D8242A7D79660085D185 /* Courses.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		62D321012649D8C800C99C42 /* NewsView */ = {
@@ -1322,6 +1338,7 @@
 				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
 				62CCF9D4288F1C0400FA85C7 /* SwiftUIX */,
 				6225B4D028A1C166008999D3 /* FirebaseDatabase */,
+				62D1D8292A7D7B6D0085D185 /* SwiftyJSON */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -1416,6 +1433,7 @@
 				623D596226FFCFC1001D05F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				623D596927024D43001D05F7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				62CCF9D3288F1C0300FA85C7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				62D1D8282A7D7B6D0085D185 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 626A2266260035F100903C39 /* Products */;
 			projectDirPath = "";
@@ -1468,6 +1486,7 @@
 				626A2270260035F200903C39 /* Preview Assets.xcassets in Resources */,
 				6260B0FD2832D85F007DBD3E /* JsonResponses in Resources */,
 				62D1E55D263F17E9004DBFAD /* Settings.bundle in Resources */,
+				62D1D8252A7D79660085D185 /* Courses.json in Resources */,
 				6263E83226BCEA69009EC880 /* ElegantCalendar.xcassets in Resources */,
 				626A226D260035F200903C39 /* Assets.xcassets in Resources */,
 				F2297A4C28A56EC90032EF99 /* GoogleService-Info.plist in Resources */,
@@ -1618,6 +1637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D1D8272A7D79FB0085D185 /* Course.swift in Sources */,
 				62D321042649D8D700C99C42 /* NewsView.swift in Sources */,
 				62C9E8A5263D13CB00CCA5C5 /* HighlightButtonStyle.swift in Sources */,
 				623A7F1B264EED2700FF3F28 /* InformationCard.swift in Sources */,
@@ -2027,7 +2047,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -2097,7 +2117,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2134,7 +2154,7 @@
 				INFOPLIST_FILE = "Sources/SMHS (iOS)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SMCHS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2167,7 +2187,7 @@
 				INFOPLIST_FILE = "Sources/SMHS (iOS)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SMCHS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2393,6 +2413,14 @@
 				minimumVersion = 0.1.2;
 			};
 		};
+		62D1D8282A7D7B6D0085D185 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON#swiftyjson-model-generator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		62D321052649D9BA00C99C42 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yahoojapan/SwiftyXMLParser";
@@ -2500,6 +2528,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62CCF9D3288F1C0300FA85C7 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		62D1D8292A7D7B6D0085D185 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62D1D8282A7D7B6D0085D185 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 		62D321062649D9BA00C99C42 /* SwiftyXMLParser */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -37,6 +37,11 @@ extension StringProtocol {
         }
         return result
     }
+    
+    //https://stackoverflow.com/questions/52711049/detect-if-string-contains-any-element-of-a-string-array
+    func contains(_ strings: [String]) -> Bool {
+            strings.contains { contains($0) }
+        }
 }
 
 extension String {
