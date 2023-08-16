@@ -2162,7 +2162,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = SMHS;
@@ -2195,7 +2195,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.1.1;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jevonmao.SMHSSchedule;
 				PRODUCT_NAME = SMHS;
