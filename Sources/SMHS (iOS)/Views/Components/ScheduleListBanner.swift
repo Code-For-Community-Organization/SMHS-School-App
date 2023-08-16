@@ -35,22 +35,22 @@ struct ScheduleListBanner: View {
             .padding(EdgeInsets(top: 20, leading: 15, bottom: 20, trailing: 15))
         }
                           // 20 padding on each side
-        .frame(width: geometryProxy.size.width - 40)
+        .frame(width: geometryProxy.size.width)
         //.fixedSize(horizontal: true, vertical: true)
         .background(Color.appPrimary)
-        .if(firstTime, transform: {
-            $0
-                .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
-        })
-        .animation(Animation.easeInOut)
-        .onAppear {
-            if firstTime {
-                animate = true
-                firstTime = false
-            }
-        }
+//        .if(firstTime, transform: {
+//            $0
+//                .scaleEffect(x: 1, y: animate ? 1 : 0, anchor: .top)
+//        })
+//        .animation(Animation.easeInOut)
+//        .onAppear {
+//            if firstTime {
+//                animate = true
+//                firstTime = false
+//            }
+//        }
         .padding(.vertical, -5)
-        .roundedCorners(cornerRadius: 10)
+        //.roundedCorners(cornerRadius: 10)
     }
 }
 

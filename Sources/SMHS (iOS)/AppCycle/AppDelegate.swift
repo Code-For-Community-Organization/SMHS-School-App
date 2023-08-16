@@ -99,6 +99,7 @@ extension AppDelegate: MessagingDelegate {
                 debugPrint("🚨 Remote config fetching error, \(error?.localizedDescription ?? "")")
             }
         }
+        Constants.remoteConfig.configSettings.minimumFetchInterval = TimeInterval(Constants.minimumFetchInterval)
 
     }
 

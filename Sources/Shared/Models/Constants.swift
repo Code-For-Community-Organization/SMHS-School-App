@@ -64,7 +64,7 @@ struct Constants {
             return identifiers
         }
         else {
-            return ["mass"]
+            return ["mass", "Mass"]
         }
     }
 
@@ -151,6 +151,10 @@ struct Constants {
     static var showForYou: Bool {
         remoteConfig.configValue(forKey: "show_for_you").boolValue
     }
+
+    static var minimumFetchInterval: Int {
+        remoteConfig.configValue(forKey: "minimum_fetch_interval").numberValue.intValue
+    }
 }
 
 extension Constants {
@@ -208,7 +212,11 @@ extension Constants {
 
 
         static var pageSize: String {
-            remoteConfig.configValue(forKey: "umobile_page_size").stringValue ?? "300"
+            if let size = remoteConfig.configValue(forKey: "umobile_page_size").stringValue, size.count != 0 {
+                return size
+            } else {
+                return "300"
+            }
         }
         static let pageNumber = "1"
         static let categoryId = "0"

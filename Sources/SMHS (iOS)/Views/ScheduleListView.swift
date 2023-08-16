@@ -82,8 +82,6 @@ struct ScheduleListView: View {
             .fullScreenCover(isPresented: $presentCalendar) {
                 MasterCalendarView(calendarViewModel: masterCalendarViewModel)
             }
-            .transition(.opacity)
-            .animation(.default)
         }
 
     }
