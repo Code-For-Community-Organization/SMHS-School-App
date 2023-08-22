@@ -35,12 +35,10 @@ struct TodayView: View {
             }
             
         }
-        .background(
-            EmptyView()
-                .sheet(isPresented: $todayViewViewModel.showEditModal) {
-                    PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)
-                }
-        )
+//        .background(
+//            EmptyView()
+//
+//        )
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.appPrimary)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -49,6 +47,9 @@ struct TodayView: View {
         }
         .onDisappear {
             todayViewViewModel.showNetworkError = true
+        }
+        .sheet(isPresented: $todayViewViewModel.showEditModal) {
+            PeriodEditSettingsView(showModal: $todayViewViewModel.showEditModal).environmentObject(userSettings)
         }
     }
 }
@@ -85,6 +86,8 @@ struct TodayViewHeader: View {
                             .font(Font.subheadline.weight(.semibold))
                     }
                     .foregroundColor(.appSecondary)
+                    .padding(2)
+                    .contentShape(Rectangle())
                 })
             }
         }

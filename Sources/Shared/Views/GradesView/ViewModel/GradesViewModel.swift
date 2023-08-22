@@ -123,7 +123,7 @@ extension GradesViewModel {
 //MARK: - Login & Logout methods
 extension GradesViewModel {
 
-    func reloadData() {
+    @MainActor func reloadData() {
         #if DEBUG
         loginAndFetch()
         #else
@@ -131,7 +131,7 @@ extension GradesViewModel {
         #endif
     }
 
-    func reloadData(lastReload: Date? = nil,
+    @MainActor func reloadData(lastReload: Date? = nil,
                     interval: Double? = nil,
                     reloader: (() -> Void)? = nil) {
         let _reloader = reloader ?? loginAndFetch
@@ -150,7 +150,7 @@ extension GradesViewModel {
         }
     }
     
-    func loginAndFetch() {
+    @MainActor func loginAndFetch() {
         registerAnalyticEvent()
         guard !email.isEmpty && !password.isEmpty else {
             return

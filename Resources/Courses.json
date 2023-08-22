@@ -6364,6 +6364,21 @@
             "institutionTypeId": 5,
             "programTypeId": null,
             "parentCourseId": null
-        }
+        },
+        {
+            "title": "Religion 1"
+        },
+        {
+            "title": "Religion 2"
+        },
+        {
+            "title": "Religion 3"
+        },
+        {
+            "title": "Religion 4"
+        },
+        {
+            "title": "Health"
+        },
     ]
 }

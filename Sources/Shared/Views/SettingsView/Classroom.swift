@@ -19,6 +19,8 @@ enum Classroom: String, Codable, CaseIterable, CustomStringConvertible, Comparab
     case bBuilding = "B Building"
     case cBuilding = "C Building"
     case sBuilding = "S Building"
+    case gBuilding = "G Building"
+    case rBuilding = "R Building"
     case trailers = "Trailers"
     case storage = "Storage"
     case rr = "RR"

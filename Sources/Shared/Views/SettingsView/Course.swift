@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 
 struct Course: Codable, Equatable, Hashable, Identifiable {
-    let title: String
+    var title: String
     var id = UUID()
     static func getAll() -> [Course] {
         if let path = Bundle.main.path(forResource: Constants.coursesJsonPath, ofType: "json") {

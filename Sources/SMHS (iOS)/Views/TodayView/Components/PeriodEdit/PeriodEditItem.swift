@@ -31,9 +31,14 @@ struct PeriodEditItem: View {
                 .overlay(
                     Group {
                         if searchResults.isEmpty && !searchText.isEmpty {
-                            Text("No Results")
-                                .font(.title3)
-                                .fontWeight(.heavy)
+                            VStack {
+                                Text("No Results")
+                                    .font(.title3)
+                                    .fontWeight(.heavy)
+
+                                Link("Report Missing Subject", destination: createSupportEmailURL())
+                            }
+
                         }
                     }
                 )
@@ -42,8 +47,16 @@ struct PeriodEditItem: View {
         }, label: {
             VStack {
                 if let selection = setting.subject {
-                    Label(selection.title, systemSymbol: .checkmarkCircleFill)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        Image(systemSymbol: .checkmarkCircleFill)
+                            .foregroundColor(.appPrimary)
+                        let titleBinding = Binding(get: {
+                            selection.title
+                        }, set: {
+                            setting.subject?.title = $0
+                        })
+                        TextField("Enter subject", text: titleBinding)
+                    }
                 }
                 else {
                     Text(setting.title)
@@ -53,14 +66,21 @@ struct PeriodEditItem: View {
                 }
 
                 Picker(selection: $setting.room, content: {
-                    Text("Select a room").tag(nil as Classroom?)
+                    Text("Default").tag(nil as Classroom?)
                     ForEach(Classroom.allCases.sorted(), id: \.self) { room in
                             Text(room.rawValue).tag(room as Classroom?)
                         }
                 }, label: {
-                    Label("Room", systemImage: "door.left.hand.closed")
+                    HStack {
+                        Image(systemName: "door.left.hand.closed")
+                            .foregroundColor(.appPrimary)
+                        Text("Room")
+                    }
+
                 })
                 .pickerStyle(.menu)
+                .tint(.appPrimary)
+
 
             }
 
@@ -73,6 +93,16 @@ struct PeriodEditItem: View {
 //            .disableAutocorrection(true)
 //
     }
+
+    private func createSupportEmailURL() -> URL {
+            var components = URLComponents(string: "mailto:support@sm6hs.app")!
+            components.queryItems = [
+                URLQueryItem(name: "subject", value: "[BUG REPORT SMHS] - Missing Subject"),
+                URLQueryItem(name: "body", value: "Hello,\n\nI wanted to report a missing subject:\n\n")
+            ]
+
+            return components.url!
+        }
 }
 
 struct PeriodEditItem_Previews: PreviewProvider {

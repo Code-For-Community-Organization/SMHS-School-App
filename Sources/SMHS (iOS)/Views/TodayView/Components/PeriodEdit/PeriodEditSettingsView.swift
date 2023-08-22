@@ -23,14 +23,14 @@ struct PeriodEditSettingsView: View {
                     .font(.callout)
                     .padding(.horizontal, 20)
                 SettingsView {
-                    Section(header: Text("Period settings")) {
+                    Section(header: Text("Tap to personalize subject title")) {
                         ForEach(editableSettings.indices, id: \.self){
                             PeriodEditItem(setting: $editableSettings[$0])
                         }
                     }
                 }
                 
-            }            
+            }
             .navigationBarTitle("Class Settings")
             .navigationBarItems(leading: Button("Clear", action: {showActionSheet = true}),
                                 trailing: Button("Done", action: {
@@ -53,7 +53,11 @@ struct PeriodEditSettingsView: View {
             viewController.isModalInPresentation = true
         }
         .onAppear {
-            editableSettings = userSettings.getEditableSettings()
+            DispatchQueue.main.async {
+                withAnimation {
+                    editableSettings = userSettings.getEditableSettings()
+                }
+            }
         }
     }
 }

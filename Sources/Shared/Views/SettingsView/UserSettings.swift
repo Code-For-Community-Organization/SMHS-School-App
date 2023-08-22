@@ -11,6 +11,7 @@ import Network
 import FirebaseAnalytics
 import UIKit
 
+@MainActor
 final class UserSettings: ObservableObject {
     //Developer-only settings for debug scheme
     @Published(key: "developerSettings") var developerSettings = DeveloperSettings()

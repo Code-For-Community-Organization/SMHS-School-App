@@ -52,7 +52,7 @@ struct ClassPeriod: Hashable, Codable {
         }
     }
 
-    func getUserClassName(userSettings: UserSettings) -> String? {
+    @MainActor func getUserClassName(userSettings: UserSettings) -> String? {
         if let matchingPeriod = userSettings.getEditableSettings().filter({$0.periodNumber == periodNumber}).first,
            let title = matchingPeriod.subject?.title {
             return title
@@ -60,7 +60,7 @@ struct ClassPeriod: Hashable, Codable {
         return nil
     }
 
-    func getUserRoom(userSettings: UserSettings) -> Classroom? {
+    @MainActor func getUserRoom(userSettings: UserSettings) -> Classroom? {
         if let matchingPeriod = userSettings.getEditableSettings().filter({$0.periodNumber == periodNumber}).first,
            let room = matchingPeriod.room {
             return room
