@@ -44,12 +44,18 @@ struct ScheduleListView: View {
                                                 Text(day.title)
                                                     .textAlign(.leading)
                                                     .foregroundColor(.platformLabel)
+                                                    .font(Font.body.weight(.medium))
+
+                                                if day.isLateStart {
+                                                    Image(systemSymbol: .clockArrowCirclepath)
+                                                        .foregroundColor(.appPrimary)
+                                                }
+
                                                 Spacer()
                                                 Image(systemSymbol: .chevronRight)
                                                     .font(Font.footnote.weight(.heavy))
                                                     .foregroundColor(Color.platformSecondaryLabel)
                                             }
-                                            .font(Font.body.weight(.medium))
 
                                         })
                                         .padding(12)

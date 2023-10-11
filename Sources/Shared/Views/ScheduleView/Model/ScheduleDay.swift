@@ -53,6 +53,28 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
 
         return ""
     }
+
+    var isLateStart: Bool {
+        guard let localTime = periods.first(where: {$0.periodCategory == .period})?.startTime
+        else {
+            return false
+        }
+        // Create a Calendar instance
+        let calendar = Calendar.currentUtc
+        
+        // Define the components you want to extract from the current date
+        let components = calendar.dateComponents([.hour, .minute], from: localTime)
+
+        // Extract the hour and minute components
+        if let hour = components.hour, let minute = components.minute {
+            // Compare with 8:00 AM (8 hours and 0 minutes)
+            return hour > 8 || (hour == 8 && minute > 30)
+        }
+        else {
+            // Default fallback
+            return false
+        }
+    }
     
     var currentDate: Date {
         return mockDate ?? Date()

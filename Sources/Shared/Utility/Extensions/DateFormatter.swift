@@ -19,8 +19,7 @@ extension DateFormatter {
         //DateFormatter for 12hr time `String` to `Date`
         let formatter = getLocalTimeFormatter(withFormat: "h:mm")
         guard var date = formatter.date(from: String(time)) else {return nil}
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        let calendar = Calendar.currentUtc
         if calendar.component(.hour, from: date) <= 6 {
             date = calendar.date(byAdding: .hour, value: 12, to: date)!
         }

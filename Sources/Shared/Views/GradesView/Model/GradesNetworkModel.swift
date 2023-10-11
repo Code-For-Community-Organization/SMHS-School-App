@@ -11,7 +11,6 @@ import Foundation
 struct GradesNetworkModel {
     func fetch(with request: URLRequest) -> AnyPublisher<Bool, RequestError> {
         return URLSession.shared.dataTaskPublisher(for: request)
-            .retry(3)
             .tryMap{_, response in
                 guard let response = response as? HTTPURLResponse else {
                     preconditionFailure("Cannot cast response into HTTPURLResponse")
@@ -45,7 +44,6 @@ struct GradesNetworkModel {
 
     func fetch<T: Decodable>(with request: URLRequest, type: T.Type) -> AnyPublisher<T, RequestError> {
         return URLSession.shared.dataTaskPublisher(for: request)
-            .retry(3)
             .tryMap{data, response in
                 guard let response = response as? HTTPURLResponse else {
                     preconditionFailure("Cannot cast response into HTTPURLResponse")

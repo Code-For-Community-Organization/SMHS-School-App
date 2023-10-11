@@ -11,4 +11,10 @@ extension Calendar {
     // iso8601 calendar counts Monday as
     // 1st day of week, instead of Sunday
     static let iso8601 = Calendar(identifier: .iso8601)
+
+    static let currentUtc: Calendar = {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        return calendar
+    }()
 }

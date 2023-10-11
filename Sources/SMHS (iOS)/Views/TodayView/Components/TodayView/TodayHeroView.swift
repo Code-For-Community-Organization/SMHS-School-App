@@ -112,6 +112,14 @@ struct TodayHeroView: View {
                     VStack {
                         if let html = todayViewViewModel.todayAnnoucementHTML {
                             WKWebViewRepresentable(HTMLString: html)
+                                .padding()
+                                .background (
+                                    ZStack {
+                                        AnimatedBlurBackground(bottomTextScreenRatio: .constant(0),
+                                                               dynamicBlurred: false)
+
+                                    }
+                                )
                         }
                         
                     }
@@ -125,7 +133,6 @@ struct TodayHeroView: View {
                 }
             }
             .onAppear {
-                todayViewViewModel.updateAnnoucements()
                 scheduleViewViewModel.objectWillChange.send()
                 if !userSettings.developerSettings.shouldCacheData {
                     scheduleViewViewModel.reset()

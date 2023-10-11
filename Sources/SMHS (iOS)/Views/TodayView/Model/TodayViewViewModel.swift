@@ -42,7 +42,7 @@ class TodayViewViewModel: ObservableObject {
             return lastUpdateTime.timeAgoDisplay()
         }
         else {
-            return "unknown"
+            return "unavailable"
         }
     }
 
@@ -79,7 +79,7 @@ class TodayViewViewModel: ObservableObject {
 
     func fetchAnnoucements() {
         loadingAnnoucements = true
-        let endpoint = Endpoint.getAnnoucements(date: mockDate ?? Date())
+        let endpoint = Endpoint.getAnnoucements(date: Date.getLastMonday())
         TodayNetworkModel.fetch(with: endpoint.request, type: AnnoucementResponse.self)
             .removeDuplicates()
             .receive(on: RunLoop.main)

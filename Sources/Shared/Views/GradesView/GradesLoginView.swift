@@ -14,23 +14,6 @@ struct GradesLoginView: View {
     var body: some View {
         VStack {
             Form {
-                Section {
-                    HStack {
-                        LinearGradient(colors: [Color.appPrimary, Color.appSecondary],
-                                                        startPoint: .topLeading,
-                                                        endPoint: .bottomTrailing)
-                            .mask(Image(systemName: "network.badge.shield.half.filled")
-                                    .imageScale(.large))
-                            .frame(width: 50, height: 50)
-
-                        Spacer()
-                        Text("Your email and password can never be tracked. Industry standard technology such as HTTPS and AES-256 military grade encryption is used to protect your data.")
-                            .foregroundColor(.secondaryLabel)
-                            .padding()
-                    }
-                    .font(Font.system(.callout, design: .rounded).weight(.medium))
-
-                }
                 Section(header: Text("Aeries Email").textCase(nil),
                         footer: Text(gradesViewModel.emailErrorMsg)
                             .lineLimit(nil)
@@ -39,25 +22,29 @@ struct GradesLoginView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .keyboardType(.emailAddress)
-                        .introspectTextField { textfield in
-                            textfield.returnKeyType = .go
-                        }
-                    
+                        .submitLabel(.next)
+
                 }
                 Section(header: Text("Aeries Password").textCase(nil),
                         footer: Text(gradesViewModel.passwordErrorMsg)
                             .lineLimit(nil)
                             .foregroundColor(.red)) {
                     SecureField("Password", text: $gradesViewModel.password)
-                        .introspectTextField { textfield in
-                            textfield.returnKeyType = .go
-                        }
+                                    .submitLabel(.go)
+
                 }
+                Section(content: {EmptyView()}, footer: {
+                    LoginButton(gradesViewModel: gradesViewModel)
+                        .animation(nil)
+                        .opacity(gradesViewModel.isValid ? 1 : 0.3)
+                        .disabled(gradesViewModel.isValid ? false : true)
+                })
+                SectionLabelCard(systemName: "network.badge.shield.half.filled",
+                                 text: "Your email and password is always stored locally. Industry standard technology such as HTTPS and AES-256 military grade encryption is used to protect your data.")
+                SectionLabelCard(systemName: "star.bubble", text: "This beta feature is currently in early access, we are actively working to improve the experience.")
+
             }
-            LoginButton(gradesViewModel: gradesViewModel)
-                .animation(nil)
-                .opacity(gradesViewModel.isValid ? 1 : 0.3)
-                .disabled(gradesViewModel.isValid ? false : true)
+
             
         }
         .alert(isPresented: $gradesViewModel.showNetworkError) {

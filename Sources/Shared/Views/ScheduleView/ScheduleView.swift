@@ -29,6 +29,7 @@ struct ScheduleView: View {
                             .font(.title3)
                             .imageScale(.large)
                             .padding(5)
+                            .foregroundColor(.appSecondary)
                     }
                     //TODO: Enable slider button after custom schedule fully implemented
                     //Button(action: {presentModal = true}, label: Image(systemSymbol: .sliderHorizontal3))

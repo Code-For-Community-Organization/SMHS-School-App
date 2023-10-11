@@ -17,19 +17,16 @@ struct LoginButton: View {
                 gradesViewModel.loginAndFetch()
             }
         }){
-            ZStack {
-                Text("Log In")
-                    .fontWeight(.semibold)
-                    .padding()
-            }
-            .frame(width: min(CGFloat(400), UIScreen.screenWidth - 100))
-            .background(Color.appPrimary)
-            .foregroundColor(.platformBackground)
-            .roundedCorners(cornerRadius: 10)
-     
+            Text("Log In")
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity)
+                .padding(10)
+
         }
+        .buttonStyle(.borderedProminent)
+        .tint(.appPrimary)
         .disabled(gradesViewModel.isLoading)
-        .padding(.bottom)
+        .padding(.horizontal)
     }
 }
 

@@ -173,14 +173,13 @@ extension GradesViewModel {
                 .combineLatest(getSummarySupplementPublisher)
 
             }
-            .retry(2)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: {[weak self] completion in
                 self?.isLoading = false
                 switch completion {
                 case let .failure(requestError):
                     self?.networkErrorTitle = "Login Failed"
-                    self?.networkErrorMsg = requestError.localizedDescription
+                    self?.networkErrorMsg = requestError.errorMessage
                     self?.showNetworkError = true
                 case .finished:
                     break

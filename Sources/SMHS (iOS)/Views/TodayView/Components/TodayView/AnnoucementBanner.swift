@@ -12,13 +12,18 @@ struct AnnoucementBanner: View {
 
     var body: some View {
         Button(action: {
+            if !viewModel.isAnnoucementAvailable {
+                viewModel.updateAnnoucements()
+            }
             var haptics = HapticsManager(impactStyle: .light)
             viewModel.showAnnoucement = viewModel.isAnnoucementAvailable
-            haptics.notificationImpact(.error)
+            if !viewModel.isAnnoucementAvailable {
+                haptics.notificationImpact(.error)
+            }
         }, label: {
             VStack {
                 HStack(alignment: .top) {
-                        Label("Daily Announcement", systemSymbol: .megaphoneFill)
+                        Label("Weekly Announcement", systemSymbol: .megaphoneFill)
                             .font(Font.title3.weight(.semibold))
                             .textAlign(.leading)
                             .padding(.bottom, 10)
@@ -34,10 +39,11 @@ struct AnnoucementBanner: View {
                 }
                 else {
                     if viewModel.isAnnoucementAvailable {
-                        Text("✅ Last Updated: \(viewModel.lastUpdateDisplay)")
+                        Text("Last Updated: \(viewModel.lastUpdateDisplay)")
                         .font(.caption)
                         .foregroundColor(.platformSecondaryBackground)
                         .padding(.top, 2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     else {
                         Label(

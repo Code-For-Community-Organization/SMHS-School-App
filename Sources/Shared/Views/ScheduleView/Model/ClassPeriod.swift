@@ -32,6 +32,7 @@ struct ClassPeriod: Hashable, Codable {
     var startTime: Date
     var endTime: Date
 
+
     func getTitle() -> String {
         switch periodCategory {
         case .singleLunch:
@@ -67,5 +68,6 @@ struct ClassPeriod: Hashable, Codable {
         }
         return nil
     }
+
 }
 

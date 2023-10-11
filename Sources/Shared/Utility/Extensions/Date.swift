@@ -38,8 +38,7 @@ extension Date {
 
     func convertToReferenceDateLocalTime(convert: Bool = true) -> Date {
         let localDate = convert ? self.localDate() : self
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        var calendar = Calendar.currentUtc
         var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: localDate)
         dateComponents.year = 2000
         dateComponents.month = 1
@@ -96,6 +95,14 @@ extension Date {
         }
 
     func isInSameYear(as date: Date) -> Bool { isEqual(to: date, toGranularity: .year) }
+
+    static func getLastMonday() -> Date {
+        let cal = Calendar.current
+        var comps = cal.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date())
+        comps.weekday = 2 // Monday
+        let mondayInWeek = cal.date(from: comps)!
+        return mondayInWeek
+    }
 }
 
 extension TimeInterval {
