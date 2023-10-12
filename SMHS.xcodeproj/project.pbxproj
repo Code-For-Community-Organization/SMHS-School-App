@@ -112,7 +112,6 @@
 		626184232637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		626184242637384E001C4AD4 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626184222637384E001C4AD4 /* RoundedCorners.swift */; };
 		6261DF21271124DF009F6234 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF20271124DF009F6234 /* FirebaseCrashlytics */; };
-		6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6261DF2427121E3D009F6234 /* FirebaseMessaging */; };
 		6262638F264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626390264DC5E3004146CE /* DeveloperSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262638E264DC5E3004146CE /* DeveloperSettingsView.swift */; };
 		62626392264DCFA0004146CE /* PeriodEditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62626391264DCFA0004146CE /* PeriodEditSettingsView.swift */; };
@@ -137,6 +136,7 @@
 		627752F72665FC87000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
 		627752F92665FC8F000BAD0B /* HeaderOverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627752F62665FC87000BAD0B /* HeaderOverlayLabel.swift */; };
 		6279EAD02630F6EE00CF3870 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279EACF2630F6EE00CF3870 /* UIScreen.swift */; };
+		627AD7BB2AD7738B00129DF0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 627AD7BA2AD7738B00129DF0 /* FirebaseMessaging */; };
 		62863BAC26AF3DFB00084C28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62863BAB26AF3DFB00084C28 /* LoginButton.swift */; };
 		62863BAE26AF461100084C28 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62863BAD26AF461100084C28 /* Dictionary.swift */; };
 		6287EA6426548BC6007B41CB /* ScheduleListBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287EA6326548BC6007B41CB /* ScheduleListBanner.swift */; };
@@ -522,10 +522,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627AD7BB2AD7738B00129DF0 /* FirebaseMessaging in Frameworks */,
 				6225B4D128A1C166008999D3 /* FirebaseDatabase in Frameworks */,
 				623D596B27024D43001D05F7 /* Kingfisher in Frameworks */,
 				62382B5926E69FCC00BF8918 /* FirebaseRemoteConfig in Frameworks */,
-				6261DF2527121E3D009F6234 /* FirebaseMessaging in Frameworks */,
 				621F5C90266A9479006EBE8F /* ElegantCalendar in Frameworks */,
 				623A7F21264F3B3100FF3F28 /* SwiftlySearch in Frameworks */,
 				62C9E8A8263D1D4E00CCA5C5 /* Introspect in Frameworks */,
@@ -1339,10 +1339,10 @@
 				623D596326FFCFC1001D05F7 /* Alamofire */,
 				623D596A27024D43001D05F7 /* Kingfisher */,
 				6261DF20271124DF009F6234 /* FirebaseCrashlytics */,
-				6261DF2427121E3D009F6234 /* FirebaseMessaging */,
 				62CCF9D4288F1C0400FA85C7 /* SwiftUIX */,
 				6225B4D028A1C166008999D3 /* FirebaseDatabase */,
 				62D1D8292A7D7B6D0085D185 /* SwiftyJSON */,
+				627AD7BA2AD7738B00129DF0 /* FirebaseMessaging */,
 			);
 			productName = "SMHS Schedule";
 			productReference = 626A2265260035F100903C39 /* SMHS.app */;
@@ -2518,7 +2518,7 @@
 			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		6261DF2427121E3D009F6234 /* FirebaseMessaging */ = {
+		627AD7BA2AD7738B00129DF0 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 624B06DA26D3521B001C2EAE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
