@@ -32,12 +32,7 @@ struct GradesNetworkModel {
                 return true
             }
             .mapError {error -> RequestError in
-                switch error {
-                case RequestError.validationError(let error):
-                    return .validationError(error: error)
-                default:
-                    return .unknownError(error: error.localizedDescription)
-                }
+                return .unknownError(error: String(describing: error))
             }
             .eraseToAnyPublisher()
     }
@@ -66,12 +61,7 @@ struct GradesNetworkModel {
             }
             .decode(type: type, decoder: JSONDecoder())
             .mapError {error -> RequestError in
-                switch error {
-                case RequestError.validationError(let error):
-                    return .validationError(error: error)
-                default:
-                    return .unknownError(error: "")
-                }
+                return .unknownError(error: String(describing: error))
             }
             .eraseToAnyPublisher()
     }

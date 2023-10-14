@@ -105,6 +105,24 @@ enum TermGrouping: String, Codable {
     case current = "Current Terms"
     case dropped = "Dropped Gradebooks"
     case prior = "Prior Terms"
+    case future = "Future Terms"
+    case unknown // Add an unknown case
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+
+        switch rawValue {
+            case "Current Terms":
+                self = .current
+            case "Dropped Gradebooks":
+                self = .dropped
+            case "Prior Terms":
+                self = .prior
+            default:
+                self = .unknown
+        }
+    }
 }
 
 typealias Welcome = [GradesSupplementSummary]
