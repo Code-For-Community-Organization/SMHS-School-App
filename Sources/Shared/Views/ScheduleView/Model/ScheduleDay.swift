@@ -42,13 +42,16 @@ struct ScheduleDay: Hashable, Identifiable, Codable {
     }
 
     var atheleticsInfo: String {
+        let seperator = "^\(Constants.scheduleSeperator.first!)+"
         guard dayOfTheWeek != 6 && dayOfTheWeek != 0
         else {
-            return scheduleText
+            return scheduleText.removingRegexMatches(pattern: seperator)
         }
 
         if let index = scheduleText.index(of:  Constants.scheduleSeperator) {
-            return String(scheduleText[index...])
+            let fullInfo = String(scheduleText[index...])
+            let cleaned = fullInfo.removingRegexMatches(pattern: seperator)
+            return cleaned
         }
 
         return ""
