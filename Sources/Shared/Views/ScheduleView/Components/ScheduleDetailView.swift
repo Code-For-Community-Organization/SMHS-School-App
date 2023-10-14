@@ -9,7 +9,6 @@ import SwiftUI
 import SFSafeSymbols
 import FirebaseAnalytics
 import SwiftUIX
-import SwiftUIVisualEffects
 import Introspect
 
 struct ScheduleDetailView: View {
@@ -192,10 +191,10 @@ struct ScheduleDetailView: View {
                             VStack {
                                 let secondLunch = lunchPeriods.secondLunch
                                 makeLunchTitle(content: "2nd Lunch Times")
-                                PeriodBlockItem(block: secondLunch.lunchPeriod,
+                                PeriodBlockItem(block: secondLunch.revolvingPeriod,
                                                 twoLine: true,
                                                 isBlurred: showBackgroundImage)
-                                PeriodBlockItem(block: secondLunch.revolvingPeriod,
+                                PeriodBlockItem(block: secondLunch.lunchPeriod,
                                                 twoLine: true,
                                                 isBlurred: showBackgroundImage)
                             }
