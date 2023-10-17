@@ -22,6 +22,7 @@ struct PeriodEditSettingsView: View {
                     .textAlign(.leading)
                     .font(.callout)
                     .padding(.horizontal, 20)
+                    .padding(.vertical)
                 SettingsView {
                     Section(header: Text("Tap to personalize subject title")) {
                         ForEach(editableSettings.indices, id: \.self){

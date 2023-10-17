@@ -18,13 +18,12 @@ struct ProgressCountDown: View {
         guard let period = scheduleDay?.getCurrentPeriod(selectionMode: selectionMode)
         else {
             let date = Date()
-            
-            if scheduleDay == nil {
-                return "NO SCHOOL 🙌"
-            }
-            else if let day = scheduleDay {
-                if day.isWithinSchoolHours() {
-                    return "Passing Period"
+            if let day = scheduleDay {
+                if day.periods.isEmpty {
+                    return "No School 🙌"
+                }
+                else if day.isWithinSchoolHours() {
+                    return "Passing Period 🍫"
                 }
                 else {
                     return "Schedule Unavailable"
@@ -55,14 +54,16 @@ struct ProgressCountDown: View {
     }
     var body: some View {
         VStack {
-            
             Text(text)
                 .font(.title3)
                 .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
                 .padding(.bottom, 20)
-                .minimumScaleFactor(0.5)
-                .lineLimit(2)
-                .frame(maxWidth: 200, maxHeight: 50)
+                .lineLimit(2, reservesSpace: true)
+                .minimumScaleFactor(0.85)
+                .frame(maxWidth: 180, maxHeight: 50)
+                .padding(.horizontal, 10)
+
            if let countDown = countDown {
             let (hours, minutes, seconds) = countDown.secondsToHoursMinutesSeconds()
             HStack {
