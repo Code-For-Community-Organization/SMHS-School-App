@@ -26,6 +26,12 @@ extension DateFormatter {
         return date
     }
 
+    static var monthSlashDayFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/dd"
+        return dateFormatter
+    }()
+
     func serverTimeFormat(_ time: String?) -> Date? {
         self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         guard let time = time

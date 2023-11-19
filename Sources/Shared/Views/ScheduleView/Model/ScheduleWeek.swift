@@ -10,20 +10,18 @@ import Foundation
 struct ScheduleWeek: Hashable, Codable {
     var startDate: Date? {scheduleDays.first?.date ?? nil}
     var endDate: Date? {scheduleDays.last?.date ?? nil}
-    var weekText: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/dd"
+    var weekText: String = ""
+
+    var scheduleDays: [ScheduleDay]
+    init(scheduleDays: [ScheduleDay]) {
+        self.scheduleDays = scheduleDays
+        let dateFormatter = DateFormatter.monthSlashDayFormatter
         if let startDate = startDate, let endDate = endDate {
             let startDate = dateFormatter.string(from: startDate)
             let endDate = dateFormatter.string(from: endDate)
-            return "Week of \(startDate) to \(endDate)"
-        }
-        else {
-            return ""
+            self.weekText = "Week of \(startDate) to \(endDate)"
         }
     }
-    var scheduleDays: [ScheduleDay]
-    
     subscript(dayIndex: Int) -> ScheduleDay {
         get {
             scheduleDays[dayIndex]
